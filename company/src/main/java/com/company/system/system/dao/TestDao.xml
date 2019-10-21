@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.system.system.dao.TestDao">
+	<!-- 测试mybatis和spring-->
+    <select id="test" resultType="com.company.system.system.bean.Test">
+        select *
+        from sg_datacenter.SG_SCH_DEV_OUTAGEDATA_BEFOREDAY m where m.plan_id = #{id}
+    </select>
+    
+</mapper>

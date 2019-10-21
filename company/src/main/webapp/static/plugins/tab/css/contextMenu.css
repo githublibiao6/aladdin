@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.contextMenu {
+	position: absolute; z-index: 998; border: 1px solid #999;
+	padding: 0px; margin: 0px; display: none;
+	background:url(../image/line.png) 18px 0 repeat-y #f1f1f1;
+	box-shadow:2px 2px 2px rgba(0, 0, 0, .6);
+	color: #000000; 
+}
+.contextMenu li {
+	list-style: none; padding-left: 25px; padding-right:15px ;position: relative; white-space: nowrap;
+	line-height: 24px; height: 24px; cursor: pointer;
+	color: #000000; 
+}
+.contextMenu li .icon { margin: 4px; }
+.contextMenu span.title { margin-right: 24px; }
+.contextMenu li ul {
+	position: absolute; display: none; padding: 0px; margin: 0px;
+	border: 1px solid #999; z-index: 999;
+}
+.contextMenu li.hover { color: #000000 ; background-color: #3399FF; }
+.contextMenu li.disabled { color: #AAA; cursor: default; background-color: transparent; }
