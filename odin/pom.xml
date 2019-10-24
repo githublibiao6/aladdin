@@ -9,6 +9,10 @@
   <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../extract-service</module>
+      <module>../extract-dao</module>
+        <module>../extract-pojo</module>
+      <module>../extract-controller</module>
+      <module>../extract-interface</module>
     </modules>
     <packaging>pom</packaging>
 
