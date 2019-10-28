@@ -43,6 +43,11 @@
       <artifactId>extract-interface</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>com.aladdin</groupId>
+      <artifactId>extract-dao</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -54,7 +59,7 @@
           <version>2.2</version>
           <configuration>
             <!--端口控制-->
-            <port>8185</port>
+            <port>8188</port>
             <warSourceDirectory>src/main/webapp</warSourceDirectory>
             <!--编码-->
             <uriEncoding>UTF-8</uriEncoding>

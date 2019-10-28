@@ -1,4 +1,4 @@
-package java.com.aladdin.manage.admin.pojo;
+package com.aladdin.manage.admin.pojo;
 
 /**
  * 管理员实体类

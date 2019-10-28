@@ -7,7 +7,13 @@
    <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-        classpath*:*.xml;
+        classpath*:springContext.xml
+        classpath*:provider.xml
+        classpath*:spring-mybatis.xml
+        classpath*:mybatis-config.xml
+<!--        classpath*:db.properties-->
+<!--        classpath*:system.properties-->
+<!--        classpath*:*.xml;-->
 <!--        classpath*:spring-mybatis.xml-->
 <!--         classpath*:provider.xml -->
 <!--        classpath*:applicationContext-shiro.xml-->
