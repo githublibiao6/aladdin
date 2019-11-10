@@ -55,7 +55,7 @@
         <!-- 扫描 xml文件 -->
         <property name="mapperLocations">
             <array>
-                <value>classpath:/com/aladdin/**/**/*.xml</value>
+                <value>classpath:/com/aladdin/manage/admin/dao/AdminDao.xml</value>
                <!--  <value>classpath:/com/jsp/manage/org/**/*.xml</value> -->
             </array>
         </property>

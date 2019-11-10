@@ -14,6 +14,7 @@
   <groupId>com.aladdin</groupId>
   <artifactId>extract-controller</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <name>extract-controller</name>
   <!-- FIXME change it to the project's website -->
@@ -27,6 +28,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.aladdin</groupId>
+      <artifactId>extract-interface</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
@@ -35,8 +41,34 @@
   </dependencies>
 
   <build>
+    <finalName>ex</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <!--端口控制-->
+            <port>8888</port>
+            <warSourceDirectory>src/main/webapp</warSourceDirectory>
+            <!--编码-->
+            <uriEncoding>UTF-8</uriEncoding>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <!-- 指定web.xml的路径  -->
+            <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+            <!-- 指定jsp、js、css的路劲 -->
+            <warSourceDirectory>webapp</warSourceDirectory>
+          </configuration>
+        </plugin>
+
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>

@@ -1,11 +1,13 @@
 package com.aladdin.manage.admin.pojo;
 
+import java.io.Serializable;
+
 /**
  * 管理员实体类
  * @author lb
  * @date 2018年5月14日 下午10:33:42
  */
-public class AdminTest {
+public class AdminTest implements Serializable {
 
     private String id; // 编码
     private String loginName; // 登录名
