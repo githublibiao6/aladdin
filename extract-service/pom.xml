@@ -8,14 +8,13 @@
     <artifactId>odin</artifactId>
     <groupId>com.aladdin</groupId>
     <version>1.0-SNAPSHOT</version>
-    <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
   <groupId>com.aladdin</groupId>
-  <artifactId>extract-pojo</artifactId>
+  <artifactId>extract-interface</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>extract-pojo</name>
+  <name>extract-interface</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -32,6 +31,11 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.aladdin</groupId>
+      <artifactId>extract-pojo</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -43,7 +47,7 @@
           <version>2.2</version>
           <configuration>
             <!--端口控制-->
-            <port>8187</port>
+            <port>8060</port>
             <warSourceDirectory>src/main/webapp</warSourceDirectory>
             <!--编码-->
             <uriEncoding>UTF-8</uriEncoding>
