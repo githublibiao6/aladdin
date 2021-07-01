@@ -1,7 +1,7 @@
 package com.aladdin.system.manage.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * test controller
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2018年6月5日 下午8:56:11
  */
 @RequestMapping("test")
-@Controller
+@RestController
 public class TestController {
 
     /**
