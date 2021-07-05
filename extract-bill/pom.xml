@@ -2,18 +2,18 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>odin-parent</artifactId>
-        <groupId>com.aladdin</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../odin/pom.xml</relativePath>
+        <groupId>com.aladdin.mis</groupId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../odin-parent/pom.xml</relativePath>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>bill</artifactId>
+    <artifactId>extract-bill</artifactId>
     <packaging>war</packaging>
 
-    <name>bill Maven Webapp</name>
+    <name>extract-bill</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

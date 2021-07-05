@@ -6,17 +6,17 @@
 
   <parent>
     <artifactId>odin-parent</artifactId>
-    <groupId>com.aladdin</groupId>
+    <groupId>com.aladdin.mis</groupId>
     <version>0.1-SNAPSHOT</version>
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
   <groupId>com.aladdin</groupId>
-  <artifactId>extract-mapper</artifactId>
+  <artifactId>extract-log</artifactId>
   <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>extract-dao</name>
+  <name>extract-log</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -27,17 +27,10 @@
   </properties>
 
   <dependencies>
-    <!-- 持久层框架 -->
     <dependency>
-      <groupId>org.mybatis.spring.boot</groupId>
-      <artifactId>mybatis-spring-boot-starter</artifactId>
-      <version>1.3.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.aladdin</groupId>
+      <groupId>com.aladdin.mis</groupId>
       <artifactId>extract-pojo</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apps.omnipotent.manager.dao.AdminDao">
+    <!-- 查看传入的admin是否存在 -->
+     <select id="verification" resultType="com.apps.omnipotent.manager.bean.Admin">
+        select *
+        from be_admin m where m.login_name = #{admin.loginName} and m.login_password = #{admin.loginPassword}
+    </select>
+    <!-- 根据登录名获得admin -->
+    <select id="getByname" resultType="com.apps.omnipotent.manager.bean.Admin">
+        select *
+        from be_admin m where m.login_name = #{name} and  m.login_password= #{pass}
+    </select>
+
+    <select id="list" resultType="com.apps.omnipotent.manager.bean.Admin">
+        select t.* from be_admin t  where effective_flag = 1
+    </select>
+
+    <select id="pageList" resultType="com.apps.omnipotent.manager.bean.Admin">
+        select t.* from be_admin t  where effective_flag = 1
+    </select>
+
+    <select id="findById" resultType="com.apps.omnipotent.manager.bean.Admin">
+        select * from be_admin where id=#{id}
+    </select>
+
+    <update  id="remove" parameterType="com.apps.omnipotent.manager.bean.Admin">
+        delete from be_admin  where id=#{id}
+    </update >
+
+    <insert id="add" parameterType="com.apps.omnipotent.manager.bean.Admin">
+    	insert into be_admin (id,login_name,login_password,notes,effective_flag)
+    	values(#{id},#{loginName},#{loginPassword},#{notes},1)
+    </insert>
+
+    <update  id="update" parameterType="com.apps.omnipotent.manager.bean.Admin">
+        update be_admin set login_name=#{loginName},notes=#{notes} where id=#{id}
+    </update >
+</mapper>

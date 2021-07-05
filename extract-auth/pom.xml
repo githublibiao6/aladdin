@@ -6,7 +6,7 @@
 
   <parent>
     <artifactId>odin-parent</artifactId>
-    <groupId>com.aladdin</groupId>
+    <groupId>com.aladdin.mis</groupId>
     <version>0.1-SNAPSHOT</version>
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
@@ -27,7 +27,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.aladdin</groupId>
+      <groupId>com.aladdin.mis</groupId>
       <artifactId>extract-pojo</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>

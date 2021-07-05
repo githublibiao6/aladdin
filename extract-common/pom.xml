@@ -6,17 +6,17 @@
 
   <parent>
     <artifactId>odin</artifactId>
-    <groupId>com.aladdin</groupId>
+    <groupId>com.aladdin.mis</groupId>
     <version>0.1-SNAPSHOT</version>
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.aladdin</groupId>
-  <artifactId>extract-service</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <groupId>com.aladdin.mis</groupId>
+  <artifactId>extract-common</artifactId>
+  <version>0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>extract-service</name>
+  <name>extract-common</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -28,16 +28,11 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.aladdin</groupId>
+      <groupId>com.aladdin.mis</groupId>
       <artifactId>extract-pojo</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.aladdin</groupId>
-      <artifactId>extract-dao</artifactId>
-      <version>1.1-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <build>
