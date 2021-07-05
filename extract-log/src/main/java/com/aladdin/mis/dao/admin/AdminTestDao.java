@@ -1,4 +1,4 @@
-package com.aladdin.manage.admin.dao;
+package com.aladdin.mis.dao.admin;
 
 import com.aladdin.manage.admin.pojo.AdminTest;
 

@@ -8,8 +8,11 @@ import java.io.Serializable;
  * @date 2018年5月14日 下午10:33:42
  */
 public class AdminTest implements Serializable {
+    /**
+    * 编码
+     */
+    private String id;
 
-    private String id; // 编码
     private String loginName; // 登录名
     private String loginPassword; // 登陆密码
     private String deptId; // 部门

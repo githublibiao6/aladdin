@@ -1,4 +1,4 @@
-package com.aladdin;
+package com.aladdin.mis.controller;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
