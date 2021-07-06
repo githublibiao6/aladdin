@@ -13,7 +13,7 @@
 
   <groupId>com.aladdin.mis</groupId>
   <artifactId>extract-pojo</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>${project.version}</version>
 
   <name>extract-pojo</name>
   <!-- FIXME change it to the project's website -->
