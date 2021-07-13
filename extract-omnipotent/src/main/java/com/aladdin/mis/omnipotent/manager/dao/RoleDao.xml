@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.omnipotent.manager.dao.RoleDao">
+
+    <select id="findById" resultType="com.aladdin.mis.omnipotent.manager.bean.Role">
+        select * from be_role where id=#{id}
+    </select>
+
+
+    <!--<update  id="remove" parameterType="com.apps.omnipotent.manager.bean.Role">
+        update be_role  set delete_flag = 0 where id=#{id}
+    </update >
+
+    <insert id="add" parameterType="com.apps.omnipotent.manager.bean.Role">
+    	insert into be_role (id,code,name,notes,effective_flag,delete_flag)
+    	values(#{id},#{code},#{name},#{notes},'1','1')
+    </insert>
+
+    <update  id="update" parameterType="com.apps.omnipotent.manager.bean.Role">
+    	update be_role set name=#{name},code=#{code},notes=#{notes}
+         where id=#{id}
+    </update >-->
+</mapper>

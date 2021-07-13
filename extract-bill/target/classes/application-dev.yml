@@ -1,0 +1,26 @@
+server:
+  port: 808
+  servlet:
+    context-path: /bill
+spring:
+  cloud:
+    config:
+      enabled: true
+    nacos:
+      discovery:
+        server-addr: 121.199.72.15:8848
+        namespace: dev
+      config:
+        server-addr: 121.199.72.15:8848
+        namespace: dev
+#        extension-configs:
+#          - data-id: application-base.yml
+#            group: common_group
+#          - data-id: application-db.yml
+#            group: common_group
+#          - data-id: application-redis.yml
+#            group: common_group
+#          - data-id: application-third.yml
+#            group: common_group
+#          - data-id: application-applets.yml
+#            group: common_group
