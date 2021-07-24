@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @version: 1.0.0
  */
 @RestController
-@RequestMapping("base")
+@RequestMapping("getWay")
 public class BaseController {
 
     @RequestMapping("index")
     public void index(){
-        System.err.println("index");
+        System.err.println("index-getway");
     }
 }
