@@ -1,5 +1,6 @@
 package com.aladdin.mis;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,10 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author 李标
  */
 @SpringBootApplication
-public class ApiApplication {
+@MapperScan(basePackages = {"com.aladdin.mis.mapper.**"})
+public class DaoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiApplication.class, args);
+        SpringApplication.run(DaoApplication.class, args);
     }
 
 }

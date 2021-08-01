@@ -1,9 +1,5 @@
 package com.aladdin.mis.dao.admin;
 
-import com.aladdin.manage.admin.pojo.AdminTest;
-
-import java.util.List;
-
 /**
  * admin dao
  * @author lb
@@ -11,5 +7,5 @@ import java.util.List;
  */
 public interface AdminTestDao {
 
-    List<AdminTest> list();
+//    List<AdminTest> list();
 }

@@ -1,16 +1,14 @@
 package com.aladdin.mis.omnipotent.system.utils;
 
 
-import com.aladdin.mis.mis.omnipotent.system.redis.entity.*;
 import com.aladdin.mis.omnipotent.system.redis.entity.*;
 import com.alibaba.fastjson.JSON;
-import com.apps.omnipotent.system.redis.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.*;
-import redis.clients.util.Slowlog;
+import redis.clients.jedis.util.Slowlog;
 
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
