@@ -111,12 +111,12 @@
 <!--      <version>${springboot.version}</version>-->
 <!--    </dependency>-->
 
-    <!-- autoconfigure -->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-autoconfigure</artifactId>-->
-<!--      <version>${springboot.version}</version>-->
-<!--    </dependency>-->
+<!--     autoconfigure -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
 
   </dependencies>
 

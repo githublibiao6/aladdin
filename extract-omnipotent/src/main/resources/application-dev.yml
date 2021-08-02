@@ -3,12 +3,22 @@ server:
   servlet:
     context-path: /om
 spring:
+  cloud:
+    config:
+      enabled: true
+    nacos:
+      discovery:
+        server-addr: 121.199.72.15:8848
+        namespace: dev
+      config:
+        server-addr: 121.199.72.15:8848
+        namespace: dev
   datasource:
     username: root
     password: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://127.0.0.1:3306/company?serverTimezone=UTC&characterEncoding=utf-8
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
   # rabbitmq配置
   rabbitmq:
     host: 127.0.0.1
@@ -46,6 +56,7 @@ spring:
         max-wait: -1
         # 最大活跃连接数，负数为不限制
         max-active: -1
+  # nacos 配置
 pagehelper:
   helper-dialect: mysql
   reasonable: true
@@ -55,3 +66,4 @@ pagehelper:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+

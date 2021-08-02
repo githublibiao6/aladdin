@@ -22,7 +22,7 @@ public class DbConfig {
 
     private boolean debug = true;
     private final String ORACLE_DERIVE_CLASS = "oracle.jdbc.driver.OracleDriver";
-    private final String MYSQL_DERIVE_CLASS = "com.mysql.cj.jdbc.Driver";
+    private final String MYSQL_DERIVE_CLASS = "com.mysql.jdbc.Driver";
 
     /**
      * 创建数据源

@@ -1,11 +1,8 @@
 package com.aladdin.mis.omnipotent;
 
-import com.aladdin.mis.omnipotent.system.filter.LogCostFilter;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -27,6 +24,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  */
 
 /**
+ * @author 李标
  * @Description:  springboot 启动
  * @Author: cles
  * @Date: 2020/4/29 23:17
@@ -36,11 +34,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 // 需要手动配置com.apps.omnipotent.system.mongodb.config.MongoConfig
 //@SpringBootApplication(exclude = MongoAutoConfiguration.class)
 @SpringBootApplication()
-/**
- * 开启异步调用
- */
+//  开启异步调用
 @EnableAsync
-@MapperScan("com.apps.omnipotent.**.dao")
+@MapperScan("com.aladdin.mis.omnipotent.**.dao")
 @EnableMongoRepositories
 public class DemoApplication {
     public static void main(String[] args) {
@@ -50,12 +46,12 @@ public class DemoApplication {
     /**
      * 过滤器
      */
-    @Bean
-    public FilterRegistrationBean setFilter(){
-        FilterRegistrationBean filterBean = new FilterRegistrationBean();
-        filterBean.setFilter(new LogCostFilter());
-        filterBean.setName("FilterController");
-        filterBean.addUrlPatterns("/*");
-        return filterBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean setFilter(){
+//        FilterRegistrationBean filterBean = new FilterRegistrationBean();
+//        filterBean.setFilter(new LogCostFilter());
+//        filterBean.setName("FilterController");
+//        filterBean.addUrlPatterns("/*");
+//        return filterBean;
+//    }
 }
