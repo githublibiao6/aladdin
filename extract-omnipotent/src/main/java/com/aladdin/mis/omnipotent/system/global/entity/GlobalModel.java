@@ -18,6 +18,7 @@ import java.util.Date;
 @Data
 public class GlobalModel extends BaseModel {
 
+    private String id;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date sys001;

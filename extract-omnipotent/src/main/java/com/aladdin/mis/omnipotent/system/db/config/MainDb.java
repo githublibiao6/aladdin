@@ -87,7 +87,7 @@ public class MainDb {
             tableInfo.setPks(pks);
             map.put(tableName,tableInfo);
         });
-        getRequestMappingMethod("com.apps.omnipotent");
+        getRequestMappingMethod("com.aladdin.mis");
     }
 
     /**

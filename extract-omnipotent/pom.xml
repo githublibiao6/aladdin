@@ -23,6 +23,12 @@
     <dependencies>
         <dependency>
             <groupId>com.aladdin.mis</groupId>
+            <artifactId>extract-common</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.aladdin.mis</groupId>
             <artifactId>extract-pojo</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -185,6 +191,7 @@
             <artifactId>reflections</artifactId>
             <version>0.9.10</version>
         </dependency>
+
     </dependencies>
 
 
