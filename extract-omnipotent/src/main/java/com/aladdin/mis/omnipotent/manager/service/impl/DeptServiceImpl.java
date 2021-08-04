@@ -5,7 +5,6 @@ import com.aladdin.mis.omnipotent.manager.dao.DeptDao;
 import com.aladdin.mis.omnipotent.manager.service.DeptService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,8 +49,8 @@ public class DeptServiceImpl extends GlobalServiceImpl implements DeptService {
 
     @Override
     public boolean add(Dept m) {
-        String id = m.save();
-        return !StringUtil.isBlank(id);
+        Integer id = m.save();
+        return id  != null;
     }
 
     @Override
@@ -61,7 +60,7 @@ public class DeptServiceImpl extends GlobalServiceImpl implements DeptService {
     }
 
     @Override
-    public boolean remove(String id){
+    public boolean remove(Integer id){
         Dept d = new Dept();
         d.setId(id);
         return d.delete();
@@ -72,7 +71,7 @@ public class DeptServiceImpl extends GlobalServiceImpl implements DeptService {
     }
 
     @Override
-    public Dept findById(String menuId){
+    public Dept findById(Integer menuId){
         return dao.findById(menuId);
     }
 }

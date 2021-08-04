@@ -16,10 +16,9 @@ import lombok.Data;
 @Table("be_role_menu")
 @Data
 public class RoleMenu extends GlobalModel {
-    private String id;
 
     @TableField("role_id")
-    private String roleId;
+    private Integer roleId;
 
     @TableField("menu_id")
     private String menuId;

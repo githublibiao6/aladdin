@@ -59,7 +59,7 @@ public interface DateLogService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean remove(String id);
+    boolean remove(Integer id);
 
     /**
      * 功能描述：根据主键查询文章
@@ -71,5 +71,5 @@ public interface DateLogService {
      * @return: com.apps.omnipotent.business.entity.DateLog
      * @version: 1.0.0
      */
-    DateLog detail(String id);
+    DateLog detail(Integer id);
 }

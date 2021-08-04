@@ -81,7 +81,7 @@ public class DictionaryTeamsController extends GlobalController {
     public Result delete(@RequestBody JSONObject json) {
         result = new Result();
         DictionaryTeams m = JSONObject.parseObject(json.toJSONString(),DictionaryTeams.class);
-        boolean flag = teamsService.remove(json.getString("id"));
+        boolean flag = teamsService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -93,7 +93,7 @@ public class DictionaryTeamsController extends GlobalController {
 
     @RequestMapping("/page")
     @ResponseBody
-    public Result page(PageEntity entity, @RequestParam(value = "dic_id", defaultValue = "0") String dicId) {
+    public Result page(PageEntity entity, @RequestParam(value = "dic_id", defaultValue = "0") Integer dicId) {
         result = new Result();
         result.setCode(20000);
         PageEntity page = teamsService.page(dicId,entity);

@@ -16,6 +16,6 @@ public interface DeptDao {
 
     List<Dept> list();
 
-    Dept findById(String id);
+    Dept findById(Integer id);
 
 }

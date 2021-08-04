@@ -91,7 +91,7 @@ public class EssayController extends GlobalController {
     @ResponseBody
     public Result remove(@RequestBody JSONObject json) {
         result = new Result();
-        boolean flag = service.remove(json.getString("id"));
+        boolean flag = service.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");

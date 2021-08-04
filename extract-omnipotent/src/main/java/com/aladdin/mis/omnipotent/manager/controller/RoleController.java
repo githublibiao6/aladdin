@@ -68,7 +68,7 @@ public class RoleController extends GlobalController {
      */
     @RequestMapping("/listMenusByRoleId")
     @ResponseBody
-    public  Result listMenusByRoleId(@RequestParam(value = "role_id", defaultValue = "") String roleId) {
+    public  Result listMenusByRoleId(@RequestParam(value = "role_id", defaultValue = "") Integer roleId) {
         result = new Result();
         List<RoleMenu> list = service.findByRoleId(roleId);
         result.setData(list);
@@ -112,7 +112,7 @@ public class RoleController extends GlobalController {
 
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
-    public Result deleteOne(@RequestParam(value = "id", defaultValue = "") String id) {
+    public Result deleteOne(@RequestParam(value = "id", defaultValue = "") Integer id) {
         boolean flag = service.remove(id);
         String msg = "";
         result.setSuccess(flag);

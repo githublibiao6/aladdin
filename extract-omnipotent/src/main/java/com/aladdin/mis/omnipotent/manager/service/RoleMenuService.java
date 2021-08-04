@@ -21,12 +21,12 @@ public interface RoleMenuService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean removeByRoleId(String roleId);
+    boolean removeByRoleId(Integer roleId);
 
     /**
      * 根据角色查询角色权限
      * @param roleId 角色id
      * @return list
      */
-    List<RoleMenu> findByRoleId(String roleId);
+    List<RoleMenu> findByRoleId(Integer roleId);
 }

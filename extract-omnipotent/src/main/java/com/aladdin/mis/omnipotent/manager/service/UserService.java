@@ -72,5 +72,5 @@ public interface UserService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean remove(String id);
+    boolean remove(Integer id);
 }

@@ -77,7 +77,7 @@ public class DictionaryController extends GlobalController {
     public Result remove(@RequestBody JSONObject json) {
         result = new Result();
         Dictionary m = JSONObject.parseObject(json.toJSONString(),Dictionary.class);
-        boolean flag = dicService.remove(json.getString("id"));
+        boolean flag = dicService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");

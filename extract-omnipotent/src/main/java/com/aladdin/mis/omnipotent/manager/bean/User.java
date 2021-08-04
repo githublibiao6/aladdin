@@ -21,10 +21,6 @@ import java.util.Date;
 public class User extends GlobalModel {
 
     /**
-     主键
-     */
-    private String id;
-    /**
      * 名称
      */
     private String name;

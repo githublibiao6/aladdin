@@ -1,11 +1,10 @@
 package com.aladdin.mis.omnipotent.manager.service.impl;
 
-import com.aladdin.mis.omnipotent.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.omnipotent.manager.bean.DictionaryTeams;
 import com.aladdin.mis.omnipotent.manager.dao.DicTeamsDao;
+import com.aladdin.mis.omnipotent.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,7 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl implements Dic
     private DicTeamsDao dao;
 
     @Override
-    public PageEntity page(String dicId, PageEntity entity) {
+    public PageEntity page(Integer dicId, PageEntity entity) {
         List<DictionaryTeams> pageMenus = dao.listTeamsByDicId(dicId);
         return null;
     }
@@ -38,8 +37,8 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl implements Dic
      */
     @Override
     public boolean add(DictionaryTeams m) {
-        String id = m.save();
-        return !StringUtil.isBlank(id);
+        Integer id = m.save();
+        return id != null;
     }
 
     /**
@@ -68,13 +67,13 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl implements Dic
      * @version: 1.0.0
      */
     @Override
-    public boolean remove(String id) {
+    public boolean remove(Integer id) {
         DictionaryTeams mode = new DictionaryTeams();
         mode.setId(id);
         return mode.delete();
     }
 
-    public List<DictionaryTeams> listTeamsByDicId(String id) {
+    public List<DictionaryTeams> listTeamsByDicId(Integer id) {
         return dao.listTeamsByDicId(id);
     }
 }

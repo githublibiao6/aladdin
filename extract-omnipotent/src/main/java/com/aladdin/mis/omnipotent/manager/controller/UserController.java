@@ -132,7 +132,7 @@ public class UserController extends GlobalController {
     @ResponseBody
     public Result delete(@RequestBody JSONObject json) {
         User m = JSONObject.parseObject(json.toJSONString(),User.class);
-        boolean flag = service.remove(json.getString("pk"));
+        boolean flag = service.remove(json.getInteger("pk"));
         String msg ;
         result.setSuccess(flag);
         if(flag){

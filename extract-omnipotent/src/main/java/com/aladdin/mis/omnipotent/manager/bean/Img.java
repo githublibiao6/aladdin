@@ -15,10 +15,6 @@ import lombok.Data;
 public class Img extends GlobalModel {
 
     /**
-     * 主键
-     */
-    private String id;
-    /**
      * 类别
      */
     private String code;

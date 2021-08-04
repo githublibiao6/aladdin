@@ -40,11 +40,8 @@ public class UserServiceImpl extends GlobalServiceImpl implements UserService {
 
     @Override
     public boolean add(User m) {
-        m.setCreateTime(new Date());
-        m.setCreateUser("");
-        m.setDeleteFlag("1");
-        String id = m.save();
-        return !StringUtil.isBlank(id);
+        Integer id = m.save();
+        return id != null;
     }
 
     @Override
@@ -53,7 +50,7 @@ public class UserServiceImpl extends GlobalServiceImpl implements UserService {
     }
 
     @Override
-    public boolean remove(String id) {
+    public boolean remove(Integer id) {
         User mode = new User();
         mode.setId(id);
         return mode.delete();

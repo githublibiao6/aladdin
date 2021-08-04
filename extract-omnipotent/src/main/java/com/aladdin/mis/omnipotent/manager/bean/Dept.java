@@ -12,7 +12,6 @@ import lombok.Data;
 @Table("be_dept")
 @Data
 public class Dept extends GlobalModel {
-    private String id;
     /**
      * 编号
      */

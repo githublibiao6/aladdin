@@ -35,7 +35,7 @@ public class ImgServiceImpl extends GlobalServiceImpl implements ImgService {
         img.setUniqueKey(id);
         String url = EVMUtils.zxingCodeCreate(id, "D:/voice/picture/2018/",500,"D:/voice/picture/2018/5.jpg");
         img.setUrl(url);
-        String imgId = img.save();
+        Integer imgId = img.save();
 
         return img;
     }

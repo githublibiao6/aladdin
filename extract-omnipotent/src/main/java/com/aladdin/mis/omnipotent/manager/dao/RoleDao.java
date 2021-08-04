@@ -39,7 +39,7 @@ public interface RoleDao {
      * @return: com.apps.omnipotent.manager.bean.Role
      * @version: 1.0.0
      */
-    Role findById(String id);
+    Role findById(Integer id);
 
     /**
      * 根据用户获取用户的角色
@@ -47,5 +47,5 @@ public interface RoleDao {
      * @return list
      */
     @Select("select * from be_role where id in (select t.role_id from be_user_role t where sys005 = 1 and user_id=#{id} ) and sys005 = '1'")
-    List<Role> queryRolesByUserId(String id);
+    List<Role> queryRolesByUserId(Integer id);
 }

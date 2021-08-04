@@ -65,7 +65,7 @@ public interface DeptService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean remove(String id);
+    boolean remove(Integer id);
     /**
      * 功能描述：
      *  < 根据人员获取角色 >
@@ -88,5 +88,5 @@ public interface DeptService {
      * @return: com.apps.omnipotent.manager.bean.Role
      * @version: 1.0.0
      */
-    Dept findById(String id);
+    Dept findById(Integer id);
 }

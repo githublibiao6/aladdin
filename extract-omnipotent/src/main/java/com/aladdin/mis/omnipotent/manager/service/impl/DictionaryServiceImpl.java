@@ -1,9 +1,8 @@
 package com.aladdin.mis.omnipotent.manager.service.impl;
 
-import com.aladdin.mis.omnipotent.manager.service.DictionaryService;
 import com.aladdin.mis.omnipotent.manager.bean.Dictionary;
 import com.aladdin.mis.omnipotent.manager.dao.DicDao;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
+import com.aladdin.mis.omnipotent.manager.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +41,8 @@ public class DictionaryServiceImpl implements DictionaryService {
     */
     @Override
     public boolean add(Dictionary m) {
-        String id = m.save();
-        return !StringUtil.isBlank(id);
+        Integer id = m.save();
+        return id != null;
     }
 
     /**
@@ -72,7 +71,7 @@ public class DictionaryServiceImpl implements DictionaryService {
      * @version: 1.0.0
      */
     @Override
-    public boolean remove(String id) {
+    public boolean remove(Integer id) {
         Dictionary mode = new Dictionary();
         mode.setId(id);
         return mode.delete();

@@ -45,7 +45,7 @@ public interface RoleService {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Role>
      * @version: 1.0.0
      */
-    List<RoleMenu> findByRoleId(String roleId);
+    List<RoleMenu> findByRoleId(Integer roleId);
     /**
      * 功能描述：
      *  < 新增>
@@ -80,7 +80,7 @@ public interface RoleService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean remove(String id);
+    boolean remove(Integer id);
     /**
      * 功能描述：
      *  < 根据人员获取角色 >
@@ -91,7 +91,7 @@ public interface RoleService {
      * @return: java.util.Set<java.lang.String>
      * @version: 1.0.0
      */
-    Set<String> getRolesByUserId(String id);
+    Set<String> getRolesByUserId(Integer id);
 
     /**
      * 功能描述：
@@ -103,5 +103,5 @@ public interface RoleService {
      * @return: com.apps.omnipotent.manager.bean.Role
      * @version: 1.0.0
      */
-    Role findById(String id);
+    Role findById(Integer id);
 }

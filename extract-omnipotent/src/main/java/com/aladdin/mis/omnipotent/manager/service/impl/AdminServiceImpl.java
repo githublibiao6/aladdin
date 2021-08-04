@@ -52,7 +52,6 @@ public class AdminServiceImpl extends GlobalServiceImpl {
     }
 
     public boolean add(Admin admin) {
-        admin.setId(UUID.randomUUID().toString());
         boolean flag = true;
 
         admin.setLoginPassword(UUID.randomUUID().toString());

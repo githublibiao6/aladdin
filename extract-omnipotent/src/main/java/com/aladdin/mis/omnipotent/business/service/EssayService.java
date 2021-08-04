@@ -60,7 +60,7 @@ public interface EssayService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean remove(String id);
+    boolean remove(Integer id);
 
     /**
      * 功能描述：根据主键查询文章

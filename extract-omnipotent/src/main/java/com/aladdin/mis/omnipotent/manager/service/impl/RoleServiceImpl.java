@@ -1,13 +1,12 @@
 package com.aladdin.mis.omnipotent.manager.service.impl;
 
-import com.aladdin.mis.omnipotent.manager.service.RoleService;
+import com.aladdin.mis.omnipotent.manager.bean.Role;
 import com.aladdin.mis.omnipotent.manager.bean.RoleMenu;
 import com.aladdin.mis.omnipotent.manager.dao.RoleDao;
-import com.aladdin.mis.omnipotent.manager.bean.Role;
 import com.aladdin.mis.omnipotent.manager.service.RoleMenuService;
+import com.aladdin.mis.omnipotent.manager.service.RoleService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,24 +52,22 @@ public class RoleServiceImpl extends GlobalServiceImpl implements RoleService {
     }
 
     @Override
-    public  List<RoleMenu> findByRoleId(String roleId) {
+    public  List<RoleMenu> findByRoleId(Integer roleId) {
         return roleMenuService.findByRoleId(roleId);
     }
 
 
     @Override
     public boolean add(Role role, String menus) {
-        role.setEffectiveFlag("1");
-        role.setDeleteFlag("1");
-        String id = role.save();
-        if(StringUtil.notBlank(id)){
+        Integer id = role.save();
+        if(id != null){
             saveRoleMenu(id, menus);
         }
-        return !StringUtil.isBlank(id);
+        return id != null;
     }
 
     @Override
-    public Set<String> getRolesByUserId(String id) {
+    public Set<String> getRolesByUserId(Integer id) {
         Set<String> set = new HashSet<>();
         List<Role> list  = dao.queryRolesByUserId(id);
         // todo 根据admin查询角色
@@ -81,7 +78,7 @@ public class RoleServiceImpl extends GlobalServiceImpl implements RoleService {
     }
 
     @Override
-    public boolean remove(String id){
+    public boolean remove(Integer id){
         Role role = new Role();
         role.setId(id);
         return role.delete();
@@ -97,7 +94,7 @@ public class RoleServiceImpl extends GlobalServiceImpl implements RoleService {
     }
 
     @Override
-    public Role findById(String menuId){
+    public Role findById(Integer menuId){
         return dao.findById(menuId);
     }
 
@@ -112,7 +109,7 @@ public class RoleServiceImpl extends GlobalServiceImpl implements RoleService {
      * @return: void
      * @version: 1.0.0
      */
-    private void saveRoleMenu(String roleId, String menus){
+    private void saveRoleMenu(Integer roleId, String menus){
         roleMenuService.removeByRoleId(roleId);
         String[] arr = menus.split(",");
         for (String menu : arr) {

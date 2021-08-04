@@ -13,7 +13,6 @@ import lombok.Data;
 @Data
 public class Admin extends GlobalModel {
 
-    private String id;
     /**
      * 登录名
      */

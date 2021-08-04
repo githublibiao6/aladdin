@@ -5,7 +5,6 @@ import com.aladdin.mis.omnipotent.system.core.Table;
 import com.aladdin.mis.omnipotent.system.core.TableField;
 import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 /**
  * 用户角色model
@@ -16,11 +15,6 @@ import org.springframework.data.annotation.Id;
 @Data
 public class UserRole extends GlobalModel {
 
-    /**
-     主键
-     */
-    @Id
-    private String id;
     /**
      * 名称
      */

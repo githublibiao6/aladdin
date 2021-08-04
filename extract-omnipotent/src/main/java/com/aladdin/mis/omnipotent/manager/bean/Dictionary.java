@@ -1,7 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.bean;
 
 import com.aladdin.mis.omnipotent.system.core.Table;
-import com.aladdin.mis.omnipotent.system.core.TableField;
 import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
 import lombok.Data;
 
@@ -14,11 +13,6 @@ import lombok.Data;
 @Data
 public class Dictionary extends GlobalModel {
 
-    /**
-     * 主键
-     */
-    @TableField("id")
-    private String id;
     /**
     * 编码
      */

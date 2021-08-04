@@ -15,10 +15,6 @@ import java.util.Date;
 public class Employee extends GlobalModel {
 
     /**
-     *
-     */
-    private String id;
-    /**
      * 姓名
      */
     private String name;

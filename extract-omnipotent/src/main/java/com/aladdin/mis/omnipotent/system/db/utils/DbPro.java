@@ -92,15 +92,15 @@ public class DbPro {
         return 1;
     }
 
-    public String save(String tableName,String primaryKey,  List<JSONObject> list) {
+    public Integer save(String tableName,String primaryKey,  List<JSONObject> list) {
         JSONObject object = DbMaker.getDbSqlMaker(dataSource.getDbType()).saveSql(tableName, primaryKey , list);
         String sql = object.getString("sql");
         log.info(sql);
         int n = DbHelper.save(dataSource,sql);
         if(n > 0){
-            return object.getString("id");
+            return object.getInteger("id");
         }
-        return null;
+        return 0;
     }
 
     public int update(String tableName ,String primaryKey, List<JSONObject> list) {

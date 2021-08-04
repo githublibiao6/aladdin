@@ -43,7 +43,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
      * @return: String
      * @version: 1.0.0
      */
-    public String save(){
+    public Integer save(){
         String tableName = getTableName();
         List<JSONObject> list =  getTableField();
         // 生成时间，与生成人员
@@ -55,6 +55,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
                 t.put(CREATE_USER_FIELD, SessionUtils.getUserId());
             }
         });
+        list.remove(0);
         return Db.use().save(tableName, getPrimaryKey(tableName), list);
     }
 
@@ -193,6 +194,22 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             obj.put(TABLE_FIELD, column);
             list.add(obj);
         }
+        // 单独获取主键
+        JSONObject id = new JSONObject();
+        try {
+            PropertyDescriptor pd = new PropertyDescriptor("id", clazz);
+            Method getMethod = pd.getReadMethod();
+            Object value = getMethod.invoke(this);
+            id.put(FIELD_VALUE, value);
+            id.put("entity_field", "id");
+            id.put("table_name", tableName);
+            id.put("entity_name", "id");
+            id.put("id","int");
+            id.put(TABLE_FIELD, "id");
+        } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        list.add(0, id);
         return list;
     }
 

@@ -25,7 +25,7 @@ public interface DictionaryTeamsService {
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageEntity page(String dicId, PageEntity entity);
+    PageEntity page(Integer dicId, PageEntity entity);
     /**
      * 功能描述：
      *  <添加字典>
@@ -60,6 +60,6 @@ public interface DictionaryTeamsService {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean remove(String id);
+    boolean remove(Integer id);
 
 }

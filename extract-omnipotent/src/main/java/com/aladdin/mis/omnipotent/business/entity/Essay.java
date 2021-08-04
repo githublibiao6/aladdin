@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.business.entity;
 import com.aladdin.mis.omnipotent.system.core.Table;
 import com.aladdin.mis.omnipotent.system.core.TableField;
 import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -13,9 +14,9 @@ import java.util.Date;
  * @date 2018年5月14日 下午10:33:42
  */
 @Table("essay")
+@Data
 public class Essay extends GlobalModel {
 
-    private String id;
     /**
      * 文本
      */
@@ -44,142 +45,4 @@ public class Essay extends GlobalModel {
     @TableField("sub_title")
     private String subTitle;
 
-    /**
-     * 创建者
-     */
-    @TableField("create_user")
-    private String createUser;
-    /**
-     * 创建时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField("create_time")
-    private Date createTime;
-
-    /**
-     * 创建者
-     */
-    @TableField("modify_user")
-    private String modifyUser;
-    /**
-     * 创建时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField("modify_time")
-    private Date modifyTime;
-
-    /**
-     * 生效标志
-     */
-    @TableField("effective_flag")
-    private String effectiveFlag;
-    /**
-     * 删除标志
-     */
-    @TableField("delete_flag")
-    private String deleteFlag;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getArticle() {
-        return article;
-    }
-
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getEffectiveFlag() {
-        return effectiveFlag;
-    }
-
-    public void setEffectiveFlag(String effectiveFlag) {
-        this.effectiveFlag = effectiveFlag;
-    }
-
-    public String getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(String deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public String getModifyUser() {
-        return modifyUser;
-    }
-
-    public void setModifyUser(String modifyUser) {
-        this.modifyUser = modifyUser;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
-
-    public Integer getImportance() {
-        return importance;
-    }
-
-    public void setImportance(Integer importance) {
-        this.importance = importance;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getPublishTime() {
-        return publishTime;
-    }
-
-    public void setPublishTime(Date publishTime) {
-        this.publishTime = publishTime;
-    }
 }

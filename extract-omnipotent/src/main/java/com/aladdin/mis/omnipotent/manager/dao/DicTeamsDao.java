@@ -26,7 +26,7 @@ public interface DicTeamsDao {
      * @version: 1.0.0
      */
     @Select("select * from be_dictionary_teams where dic_id=#{id} order by sort asc")
-    List<DictionaryTeams> listTeamsByDicId(@Param("id") String id);
+    List<DictionaryTeams> listTeamsByDicId(@Param("id") Integer id);
 
     /**
      * 功能描述：

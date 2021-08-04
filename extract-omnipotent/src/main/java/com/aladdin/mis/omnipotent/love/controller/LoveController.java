@@ -80,7 +80,7 @@ public class LoveController extends GlobalController {
     @ResponseBody
     public Result remove(@RequestBody JSONObject json) {
         result = new Result();
-        boolean flag = service.remove(json.getString("id"));
+        boolean flag = service.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -92,7 +92,7 @@ public class LoveController extends GlobalController {
 
     @RequestMapping("/detail")
     @ResponseBody
-    public Result detail(@RequestParam(value = "id",defaultValue = "") String id) {
+    public Result detail(@RequestParam(value = "id",defaultValue = "") Integer id) {
         result = new Result();
         DateLog dateLog = service.detail(id);
         result.setData(dateLog);

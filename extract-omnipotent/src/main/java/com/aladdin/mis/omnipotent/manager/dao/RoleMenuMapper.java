@@ -29,7 +29,7 @@ public interface RoleMenuMapper {
      * @version: 1.0.0
      */
     @Update("update be_role_menu set sys005='0' where role_id=#{roleId} ")
-    int removeByRoleId(String roleId);
+    int removeByRoleId(Integer roleId);
 
 
     /**
@@ -43,5 +43,5 @@ public interface RoleMenuMapper {
      * @version: 1.0.0
      */
     @Select("select * from be_role_menu where role_id=#{roleId} and sys005='1'")
-    List<RoleMenu> findByRoleId(String roleId);
+    List<RoleMenu> findByRoleId(Integer roleId);
 }

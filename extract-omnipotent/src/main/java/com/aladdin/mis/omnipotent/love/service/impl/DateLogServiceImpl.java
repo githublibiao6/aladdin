@@ -1,12 +1,11 @@
 package com.aladdin.mis.omnipotent.love.service.impl;
 
+import com.aladdin.mis.omnipotent.business.entity.Essay;
 import com.aladdin.mis.omnipotent.love.dao.DateLogMapper;
 import com.aladdin.mis.omnipotent.love.entity.DateLog;
-import com.aladdin.mis.omnipotent.business.entity.Essay;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,8 +43,8 @@ public class DateLogServiceImpl extends GlobalServiceImpl implements DateLogServ
     */
     @Override
     public boolean add(DateLog m) {
-        String id = m.save();
-        return !StringUtil.isBlank(id);
+        Integer id = m.save();
+        return id  != null;
     }
 
     /**
@@ -75,14 +74,14 @@ public class DateLogServiceImpl extends GlobalServiceImpl implements DateLogServ
      * @version: 1.0.0
      */
     @Override
-    public boolean remove(String id) {
+    public boolean remove(Integer id) {
         Essay mode = new Essay();
         mode.setId(id);
         return mode.delete();
     }
 
     @Override
-    public DateLog detail(String id) {
+    public DateLog detail(Integer id) {
         return null;
     }
 }

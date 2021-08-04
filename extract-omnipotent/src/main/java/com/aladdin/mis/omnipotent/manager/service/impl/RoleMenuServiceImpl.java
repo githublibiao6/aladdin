@@ -26,13 +26,13 @@ public class RoleMenuServiceImpl extends GlobalServiceImpl implements RoleMenuSe
 
 
     @Override
-    public boolean removeByRoleId(String roleId) {
+    public boolean removeByRoleId(Integer roleId) {
         mapper.removeByRoleId(roleId);
         return true;
     }
 
     @Override
-    public List<RoleMenu> findByRoleId(String roleId) {
+    public List<RoleMenu> findByRoleId(Integer roleId) {
         return mapper.findByRoleId(roleId);
     }
 }

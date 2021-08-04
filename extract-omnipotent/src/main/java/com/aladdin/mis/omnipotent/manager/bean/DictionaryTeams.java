@@ -15,10 +15,6 @@ import lombok.Data;
 public class DictionaryTeams extends GlobalModel {
 
     /**
-     * 主键
-     */
-    private String id;
-    /**
      * 字典对象
      */
     @TableField("dic_id")
