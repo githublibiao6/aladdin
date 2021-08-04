@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.love;
 
-import com.aladdin.mis.utils.fileUtils.CommonFileUtil;
+import com.aladdin.mis.utils.fileUtils.EntityFileUtil;
 
 public class Test {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class Test {
         content.append("@Data \n");
         content.append("public class DateLog extends GlobalModel { \n");
         content.append("} \n");
-        boolean result = CommonFileUtil.writeContentToFile(content.toString(),  filePath, "Data.java");
+        boolean result = EntityFileUtil.writeContentToFile(content.toString(),  filePath, "Data.java");
         System.err.println(result);
     }
 }

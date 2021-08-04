@@ -3,13 +3,12 @@ package com.aladdin.mis.utils.fileUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystem;
 
 /**
  * 常用的文件工具类
  * @author cles
  */
-public  class CommonFileUtil {
+public  class EntityFileUtil {
 
     public static boolean writeContentToFile(String content, String filePath, String fileName){
         String path = filePath+"/"+fileName;

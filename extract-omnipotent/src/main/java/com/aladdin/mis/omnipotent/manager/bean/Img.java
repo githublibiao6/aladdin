@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.manager.bean;
 import com.aladdin.mis.omnipotent.system.core.Table;
 import com.aladdin.mis.omnipotent.system.core.TableField;
 import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
+import lombok.Data;
 
 /**
  * 管理员实体类
@@ -10,6 +11,7 @@ import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
  * @date 2018年5月14日 下午10:33:42
  */
 @Table("be_img")
+@Data
 public class Img extends GlobalModel {
 
     /**
@@ -29,36 +31,4 @@ public class Img extends GlobalModel {
      * 图片地址
      */
     private String url;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getUniqueKey() {
-        return uniqueKey;
-    }
-
-    public void setUniqueKey(String uniqueKey) {
-        this.uniqueKey = uniqueKey;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

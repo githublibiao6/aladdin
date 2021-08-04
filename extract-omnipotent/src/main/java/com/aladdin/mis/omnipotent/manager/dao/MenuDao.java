@@ -5,7 +5,6 @@ import com.aladdin.mis.omnipotent.manager.bean.Menu;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.qo.MenuQo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -125,21 +124,22 @@ public interface MenuDao {
      * @param roles 角色集合
      * @return list
      */
-    @SelectProvider(type = MenuDao.MenuProvider.class,method = "queryByRoles")
+//    @SelectProvider(type = MenuDao.MenuProvider.class,method = "queryByRoles")
+    @Select("select t.* from be_menu t")
     List<Menu> queryByRoles(@Param("roles") Set<String> roles);
 
     class MenuProvider {
 
 
         public String queryByRoles(Set<String> roles) {
-            StringBuilder codeSql = new StringBuilder();
+            StringBuilder param1 = new StringBuilder();
             roles.forEach(t->{
-                codeSql.append("'").append(t).append("',");
+                param1.append("'").append(t).append("',");
             });
-            codeSql.deleteCharAt(codeSql.length()-1);
+            param1.deleteCharAt(param1.length()-1);
             StringBuilder sql = new StringBuilder("select t.* from be_menu t where sys005='1' and t.menu_id in " +
-                    "(select m.menu_id from  be_role_menu m where sys005='1' and role_id in ");
-            sql.append(" (select id from be_role where code in ("+codeSql+") and sys005='1')  ) ");
+                    "(select m.menu_id from  be_role_menu m where sys005='1'  ");
+//            sql.append(" and role_id in (select id from be_role where code in ("+param1+") and sys005='1')  ) ");
             return sql.toString();
         }
     }
