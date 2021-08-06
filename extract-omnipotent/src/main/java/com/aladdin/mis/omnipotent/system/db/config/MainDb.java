@@ -4,14 +4,14 @@ package com.aladdin.mis.omnipotent.system.db.config;
  */
 
 import com.aladdin.mis.omnipotent.system.core.DbTableInfo;
-import com.aladdin.mis.omnipotent.system.core.Table;
-import com.aladdin.mis.omnipotent.system.core.TableField;
-import com.aladdin.mis.omnipotent.system.db.bean.TableFieldInfo;
-import com.aladdin.mis.omnipotent.system.db.bean.TableInfo;
+import com.aladdin.mis.system.annotation.entity.Table;
+import com.aladdin.mis.system.annotation.entity.TableField;
 import com.aladdin.mis.omnipotent.system.db.utils.Db;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
+import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.system.db.entity.TableFieldInfo;
+import com.aladdin.mis.system.db.entity.TableInfo;
 import com.alibaba.druid.pool.DruidDataSource;
-import com.aladdin.mis.omnipotent.system.db.factory.DbMaker;
+import com.aladdin.mis.common.db.factory.DbMaker;
 import org.reflections.Reflections;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

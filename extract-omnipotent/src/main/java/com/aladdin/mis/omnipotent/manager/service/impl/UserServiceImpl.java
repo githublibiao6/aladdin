@@ -5,7 +5,7 @@ import com.aladdin.mis.omnipotent.manager.dao.UserDao;
 import com.aladdin.mis.omnipotent.manager.service.UserService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
+import com.aladdin.mis.common.string.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

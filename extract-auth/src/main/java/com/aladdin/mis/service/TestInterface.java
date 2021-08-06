@@ -1,6 +1,6 @@
 package com.aladdin.mis.service;
 
-import com.aladdin.mis.system.admin.po.AdminTest;
+import com.aladdin.mis.system.annotation.po.AdminTest;
 
 import java.util.List;
 

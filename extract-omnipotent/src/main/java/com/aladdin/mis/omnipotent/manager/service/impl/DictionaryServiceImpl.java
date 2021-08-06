@@ -3,7 +3,7 @@ package com.aladdin.mis.omnipotent.manager.service.impl;
 import com.aladdin.mis.omnipotent.manager.service.DictionaryService;
 import com.aladdin.mis.omnipotent.manager.bean.Dictionary;
 import com.aladdin.mis.omnipotent.manager.dao.DicDao;
-import com.aladdin.mis.omnipotent.system.utils.StringUtil;
+import com.aladdin.mis.common.string.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

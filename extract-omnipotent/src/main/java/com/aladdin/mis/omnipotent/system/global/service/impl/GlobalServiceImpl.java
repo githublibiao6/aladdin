@@ -1,11 +1,11 @@
 package com.aladdin.mis.omnipotent.system.global.service.impl;
 
-import com.aladdin.mis.omnipotent.system.db.bean.TableFieldInfo;
-import com.aladdin.mis.omnipotent.system.db.bean.TableInfo;
 import com.aladdin.mis.omnipotent.system.global.dao.GlobalMapper;
+import com.aladdin.mis.system.db.entity.TableFieldInfo;
+import com.aladdin.mis.system.db.entity.TableInfo;
 import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.system.core.BaseModel;
-import com.aladdin.mis.omnipotent.system.core.BaseModelUtil;
+import com.aladdin.mis.common.system.base.BaseModel;
+import com.aladdin.mis.util.BaseModelUtil;
 import com.aladdin.mis.omnipotent.system.db.config.MainDb;
 import com.aladdin.mis.omnipotent.system.db.utils.Db;
 import com.aladdin.mis.omnipotent.system.global.service.GlobalService;
