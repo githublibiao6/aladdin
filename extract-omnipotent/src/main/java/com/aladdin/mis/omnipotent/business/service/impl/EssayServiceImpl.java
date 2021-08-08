@@ -1,10 +1,14 @@
 package com.aladdin.mis.omnipotent.business.service.impl;
 
 import com.aladdin.mis.omnipotent.business.dao.EssayDao;
-import com.aladdin.mis.omnipotent.business.entity.Essay;
+import com.aladdin.mis.business.blog.entity.Essay;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+<<<<<<< HEAD
+=======
+import com.aladdin.mis.common.string.utils.StringUtil;
+>>>>>>> ad7b8372fb695547346b195f89a3479ae6cc4d85
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

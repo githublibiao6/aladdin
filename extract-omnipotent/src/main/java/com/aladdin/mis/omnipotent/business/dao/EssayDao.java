@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.business.dao;
 
-import com.aladdin.mis.omnipotent.business.entity.Essay;
+import com.aladdin.mis.business.blog.entity.Essay;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 

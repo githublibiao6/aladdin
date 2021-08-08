@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent;
 
-import com.aladdin.mis.omnipotent.system.db.bean.TableInfo;
+import com.aladdin.mis.system.db.entity.TableInfo;
 import com.alibaba.fastjson.JSONObject;
 import com.aladdin.mis.omnipotent.manager.bean.Menu;
 import com.aladdin.mis.omnipotent.manager.service.impl.MenuServiceImpl;

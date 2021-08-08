@@ -7,6 +7,10 @@ import com.aladdin.mis.omnipotent.manager.service.RoleMenuService;
 import com.aladdin.mis.omnipotent.manager.service.RoleService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+<<<<<<< HEAD
+=======
+import com.aladdin.mis.common.string.utils.StringUtil;
+>>>>>>> ad7b8372fb695547346b195f89a3479ae6cc4d85
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

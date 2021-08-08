@@ -1,6 +1,11 @@
 package com.aladdin.mis.omnipotent.manager.bean;
 
+<<<<<<< HEAD
 import com.aladdin.mis.omnipotent.system.core.Table;
+=======
+import com.aladdin.mis.system.annotation.entity.Table;
+import com.aladdin.mis.system.annotation.entity.TableField;
+>>>>>>> ad7b8372fb695547346b195f89a3479ae6cc4d85
 import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
 import lombok.Data;
 

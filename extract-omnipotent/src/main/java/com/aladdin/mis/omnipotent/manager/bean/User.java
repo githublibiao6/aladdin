@@ -1,8 +1,8 @@
 package com.aladdin.mis.omnipotent.manager.bean;
 
 
-import com.aladdin.mis.omnipotent.system.core.Table;
-import com.aladdin.mis.omnipotent.system.core.TableField;
+import com.aladdin.mis.system.annotation.entity.Table;
+import com.aladdin.mis.system.annotation.entity.TableField;
 import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.global.service;
 
-import com.aladdin.mis.omnipotent.system.core.BaseModel;
+import com.aladdin.mis.common.system.base.BaseModel;
 
 /**
  * 功能描述：

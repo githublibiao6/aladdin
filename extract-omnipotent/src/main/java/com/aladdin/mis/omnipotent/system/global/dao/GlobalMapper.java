@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.system.global.dao;
 
-import com.aladdin.mis.omnipotent.system.core.BaseModel;
-import com.aladdin.mis.omnipotent.system.core.BaseModelUtil;
+import com.aladdin.mis.common.system.base.BaseModel;
+import com.aladdin.mis.util.BaseModelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Component;

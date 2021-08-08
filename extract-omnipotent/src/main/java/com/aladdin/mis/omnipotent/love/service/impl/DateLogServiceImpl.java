@@ -3,9 +3,17 @@ package com.aladdin.mis.omnipotent.love.service.impl;
 import com.aladdin.mis.omnipotent.business.entity.Essay;
 import com.aladdin.mis.omnipotent.love.dao.DateLogMapper;
 import com.aladdin.mis.omnipotent.love.entity.DateLog;
+<<<<<<< HEAD
 import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+=======
+import com.aladdin.mis.business.blog.entity.Essay;
+import com.aladdin.mis.omnipotent.love.service.DateLogService;
+import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.common.string.utils.StringUtil;
+>>>>>>> ad7b8372fb695547346b195f89a3479ae6cc4d85
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

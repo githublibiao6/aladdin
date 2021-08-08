@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
-import com.aladdin.mis.omnipotent.business.entity.Essay;
+import com.aladdin.mis.business.blog.entity.Essay;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.alibaba.fastjson.JSONObject;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;

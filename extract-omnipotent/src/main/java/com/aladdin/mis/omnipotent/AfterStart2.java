@@ -18,3 +18,4 @@ public class AfterStart2 implements CommandLineRunner {
         log.info("启动后执行2");
     }
 }
+git s

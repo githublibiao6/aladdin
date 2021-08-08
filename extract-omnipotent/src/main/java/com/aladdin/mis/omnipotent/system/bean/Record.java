@@ -3,8 +3,6 @@ package com.aladdin.mis.omnipotent.system.bean;
  * Created by cles on 2020/5/10 23:24
  */
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
