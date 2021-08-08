@@ -1,13 +1,13 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.omnipotent.manager.service.impl.UserServiceImpl;
-import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.manager.bean.Admin;
-import com.aladdin.mis.omnipotent.manager.bean.User;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
+import com.aladdin.mis.service.impl.UserServiceImpl;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;

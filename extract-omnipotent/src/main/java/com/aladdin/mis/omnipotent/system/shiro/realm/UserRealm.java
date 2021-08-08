@@ -3,10 +3,10 @@ package com.aladdin.mis.omnipotent.system.shiro.realm;
  * Created by cles on 2020/4/23 22:39
  */
 
-import com.aladdin.mis.omnipotent.manager.bean.Admin;
-import com.aladdin.mis.omnipotent.manager.service.impl.AdminServiceImpl;
-import com.aladdin.mis.omnipotent.manager.service.impl.MenuServiceImpl;
-import com.aladdin.mis.omnipotent.manager.service.impl.RoleServiceImpl;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.service.impl.AdminServiceImpl;
+import com.aladdin.mis.service.impl.MenuServiceImpl;
+import com.aladdin.mis.service.impl.RoleServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;

@@ -1,13 +1,9 @@
 package com.aladdin.mis.omnipotent;
 
+import com.aladdin.mis.dao.db.config.MainDb;
+import com.aladdin.mis.omnipotent.system.db.utils.Db;
 import com.aladdin.mis.system.db.entity.TableInfo;
 import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.manager.bean.Menu;
-import com.aladdin.mis.omnipotent.manager.service.impl.MenuServiceImpl;
-import com.aladdin.mis.omnipotent.manager.bean.Role;
-import com.aladdin.mis.omnipotent.manager.service.impl.RoleServiceImpl;
-import com.aladdin.mis.omnipotent.system.db.config.MainDb;
-import com.aladdin.mis.omnipotent.system.db.utils.Db;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

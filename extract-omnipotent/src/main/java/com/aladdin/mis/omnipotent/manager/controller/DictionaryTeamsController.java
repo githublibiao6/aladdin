@@ -1,13 +1,13 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.manager.bean.Dictionary;
-import com.aladdin.mis.omnipotent.manager.bean.DictionaryTeams;
-import com.aladdin.mis.omnipotent.manager.service.impl.DictionaryServiceImpl;
-import com.aladdin.mis.omnipotent.manager.service.impl.DictionaryTeamsServiceImpl;
+import com.aladdin.mis.manager.bean.Dictionary;
+import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.service.impl.DictionaryServiceImpl;
+import com.aladdin.mis.service.impl.DictionaryTeamsServiceImpl;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

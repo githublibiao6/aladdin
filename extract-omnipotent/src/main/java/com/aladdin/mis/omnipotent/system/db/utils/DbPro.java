@@ -4,9 +4,9 @@ package com.aladdin.mis.omnipotent.system.db.utils;
  */
 
 import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.dao.db.factory.DbMaker;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.common.db.factory.DbMaker;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 

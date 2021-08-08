@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.dao;
 
-import com.aladdin.mis.omnipotent.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.QueryCondition;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

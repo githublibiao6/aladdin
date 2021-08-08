@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.dao;
 
-import com.aladdin.mis.omnipotent.manager.bean.Role;
+import com.aladdin.mis.manager.bean.Role;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 

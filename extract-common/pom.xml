@@ -47,8 +47,9 @@
 
     <dependency>
       <groupId>com.aladdin.mis</groupId>
-      <artifactId>extract-pojo</artifactId>
+      <artifactId>extract-dao</artifactId>
       <version>${project.version}</version>
     </dependency>
+
   </dependencies>
 </project>

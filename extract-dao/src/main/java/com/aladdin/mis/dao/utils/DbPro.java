@@ -3,12 +3,12 @@ package com.aladdin.mis.dao.utils;
  * Created by cles on 2020/5/10 22:53
  */
 
-import com.aladdin.mis.common.db.factory.DbMaker;
-import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.dao.db.factory.DbMaker;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class DbPro {
             return getUserName();
         }else if("mysql".equals(getDbType())){
             Map  m =  findFirst("select database() table_schema");
-            if(m != null && m.get("table_schema") != null && StringUtil.notBlank(m.get("table_schema").toString())){
+            if(m != null && m.get("table_schema") != null && StringUtils.isNotBlank(m.get("table_schema").toString())){
                 return m.get("table_schema").toString();
             }else {
                 return null;

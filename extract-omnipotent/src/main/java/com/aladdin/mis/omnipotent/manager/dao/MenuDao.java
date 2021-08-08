@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.manager.dao;
 
 
-import com.aladdin.mis.omnipotent.manager.bean.Menu;
+import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.qo.MenuQo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

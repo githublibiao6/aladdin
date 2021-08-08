@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.global.entity;
 
-import com.aladdin.mis.common.system.base.BaseModel;
+import com.aladdin.mis.system.base.BaseModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

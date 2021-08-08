@@ -6,7 +6,7 @@ package com.aladdin.mis.omnipotent.system.db.utils;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.system.bean.Record;
+import com.aladdin.mis.system.bean.Record;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;

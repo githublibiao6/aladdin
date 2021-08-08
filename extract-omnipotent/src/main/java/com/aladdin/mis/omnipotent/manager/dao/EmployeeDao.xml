@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.omnipotent.manager.dao.EmployeeDao">
+<mapper namespace="com.aladdin.mis.manager.dao.EmployeeDao">
 
     <!-- 获取所有的员工信息 -->
-    <select id="listEmployee" resultType="com.aladdin.mis.omnipotent.manager.bean.Dept">
+    <select id="listEmployee" resultType="com.aladdin.mis.manager.bean.Dept">
         select * from employee
     </select>
 
     <!-- 根据id获取员工信息 -->
-    <select id="getEmployee" resultType="com.aladdin.mis.omnipotent.manager.bean.Dept">
+    <select id="getEmployee" resultType="com.aladdin.mis.manager.bean.Dept">
         select * from employee where id = #{id}
     </select>
 </mapper>

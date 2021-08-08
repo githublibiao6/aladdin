@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.dao;
 
-import com.aladdin.mis.omnipotent.manager.bean.Dept;
+import com.aladdin.mis.manager.bean.Dept;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

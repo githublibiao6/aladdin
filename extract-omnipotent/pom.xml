@@ -25,11 +25,10 @@
             <groupId>com.aladdin.mis</groupId>
             <artifactId>extract-common</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.aladdin.mis</groupId>
-            <artifactId>extract-pojo</artifactId>
+            <artifactId>extract-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!--声明spring boot内嵌tomcat的作用范围  在运行时不起作用-->
@@ -95,12 +94,7 @@
             <artifactId>qrgen</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- 获取配置文件 -->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>-->
+
         <!-- mybatis 插件 -->
         <!--<dependency>
             <groupId>com.baomidou</groupId>
@@ -163,11 +157,6 @@
 <!--            <optional>true</optional>-->
 <!--        </dependency>-->
         <!---->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.9.10</version>
-        </dependency>
 
     </dependencies>
 

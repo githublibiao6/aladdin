@@ -1,8 +1,8 @@
 package com.aladdin.mis.business.blog.entity;
 
-import com.aladdin.mis.system.annotation.entity.Table;
-import com.aladdin.mis.system.annotation.entity.TableField;
-import com.aladdin.mis.common.system.base.GlobalModel;
+import com.aladdin.mis.annotation.entity.Table;
+import com.aladdin.mis.annotation.entity.TableField;
+import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,7 +17,6 @@ import java.util.Date;
 @Data
 public class Essay extends GlobalModel {
 
-    private String id;
     /**
      * 文本
      */

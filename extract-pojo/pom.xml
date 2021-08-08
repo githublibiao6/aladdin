@@ -41,10 +41,9 @@
   <dependencies>
 
     <dependency>
-      <groupId>com.aladdin.mis</groupId>
-      <artifactId>extract-dao</artifactId>
-      <version>${project.version}</version>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.10</version>
     </dependency>
-
   </dependencies>
 </project>

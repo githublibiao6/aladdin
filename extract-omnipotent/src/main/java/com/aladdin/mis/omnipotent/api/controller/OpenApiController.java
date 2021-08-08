@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.api.controller;
 
-import com.aladdin.mis.omnipotent.manager.service.impl.MenuServiceImpl;
+import com.aladdin.mis.service.impl.MenuServiceImpl;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;

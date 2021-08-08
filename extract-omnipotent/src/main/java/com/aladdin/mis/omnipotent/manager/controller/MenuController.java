@@ -1,12 +1,12 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.omnipotent.manager.service.impl.MenuServiceImpl;
-import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.manager.bean.Admin;
-import com.aladdin.mis.omnipotent.manager.bean.Menu;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.qo.MenuQo;
+import com.aladdin.mis.service.impl.MenuServiceImpl;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;

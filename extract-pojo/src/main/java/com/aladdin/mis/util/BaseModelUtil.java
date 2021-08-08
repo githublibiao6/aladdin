@@ -3,10 +3,8 @@ package com.aladdin.mis.util;
  * Created by cles on 2020/5/31 12:12
  */
 
-import com.aladdin.mis.system.annotation.entity.Table;
-import com.aladdin.mis.system.db.entity.TableInfo;
 
-import java.util.List;
+import com.aladdin.mis.annotation.entity.Table;
 
 /**
  * @description: 尝试

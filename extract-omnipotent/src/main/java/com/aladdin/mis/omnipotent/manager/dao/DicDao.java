@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.dao;
 
-import com.aladdin.mis.omnipotent.manager.bean.Dictionary;
+import com.aladdin.mis.manager.bean.Dictionary;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
-import com.aladdin.mis.omnipotent.manager.service.ProjectService;
+import com.aladdin.mis.service.ProjectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

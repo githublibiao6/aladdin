@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.dao;
 
-import com.aladdin.mis.omnipotent.manager.bean.Img;
+import com.aladdin.mis.manager.bean.Img;
 
 /**
  * 图片dao

@@ -1,9 +1,9 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.omnipotent.manager.bean.Admin;
-import com.aladdin.mis.omnipotent.manager.service.impl.AdminServiceImpl;
+import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.service.impl.AdminServiceImpl;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

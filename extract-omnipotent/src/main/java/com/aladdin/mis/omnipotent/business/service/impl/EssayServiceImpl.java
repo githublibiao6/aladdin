@@ -3,12 +3,8 @@ package com.aladdin.mis.omnipotent.business.service.impl;
 import com.aladdin.mis.omnipotent.business.dao.EssayDao;
 import com.aladdin.mis.business.blog.entity.Essay;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
-import com.aladdin.mis.omnipotent.system.global.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
-<<<<<<< HEAD
-=======
-import com.aladdin.mis.common.string.utils.StringUtil;
->>>>>>> ad7b8372fb695547346b195f89a3479ae6cc4d85
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +51,9 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
     */
     @Override
     public boolean add(Essay m) {
-        Integer id = m.save();
-        return id  != null;
+//        Integer id = m.save();
+//        return id  != null;
+        return false;
     }
 
     /**
@@ -71,7 +68,8 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
      */
     @Override
     public boolean update(Essay m) {
-        return m.update();
+//        return m.update();
+        return false;
     }
 
     /**
@@ -88,7 +86,8 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
     public boolean remove(Integer id) {
         Essay mode = new Essay();
         mode.setId(id);
-        return mode.delete();
+//        return mode.delete();
+        return false;
     }
 
     /**

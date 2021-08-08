@@ -123,7 +123,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     function getFontFamilyId(configName) {
         // Search for plugin configured font family
         var configFamily = $.grep(FAMILIES, function(family) {
-            return family.config == configName;
+            return com.aladdin.mis.common.db.factory.config == configName;
         })[0];
         // Fallback to default font family
         return (!!configFamily)? configFamily.id : 0;
@@ -134,7 +134,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     function getThemeId(configName) {
         // Search for plugin configured theme
         var configTheme = $.grep(THEMES, function(theme) {
-            return theme.config == configName;
+            return com.aladdin.mis.common.db.factory.config == configName;
         })[0];
         // Fallback to default theme
         return (!!configTheme)? configTheme.id : 0;
@@ -197,14 +197,14 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                 ],
                 $.map(FAMILIES, function(family) {
                     family.onClick = function(e) {
-                        return changeFontFamily(family.config, e);
+                        return changeFontFamily(com.aladdin.mis.common.db.factory.config, e);
                     };
 
                     return family;
                 }),
                 $.map(THEMES, function(theme) {
                     theme.onClick = function(e) {
-                        return changeColorTheme(theme.config, e);
+                        return changeColorTheme(com.aladdin.mis.common.db.factory.config, e);
                     };
 
                     return theme;
