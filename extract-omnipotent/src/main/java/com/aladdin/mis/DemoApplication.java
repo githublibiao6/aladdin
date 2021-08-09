@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent;
+package com.aladdin.mis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -36,7 +36,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication()
 //  开启异步调用
 @EnableAsync
-@MapperScan("com.aladdin.mis.omnipotent.**.dao")
+@MapperScan("com.aladdin.mis.dao.**")
 @EnableMongoRepositories
 public class DemoApplication {
     public static void main(String[] args) {

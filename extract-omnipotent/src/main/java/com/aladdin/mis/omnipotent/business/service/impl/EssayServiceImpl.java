@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.business.service.impl;
 
 import com.aladdin.mis.business.blog.entity.Essay;
-import com.aladdin.mis.omnipotent.business.dao.EssayDao;
+import com.aladdin.mis.dao.business.EssayDao;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.GlobalServiceImpl;

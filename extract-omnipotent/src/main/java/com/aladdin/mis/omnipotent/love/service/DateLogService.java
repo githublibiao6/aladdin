@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.love.service;
 
-import com.aladdin.mis.omnipotent.love.entity.DateLog;
+import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 
 import java.util.List;

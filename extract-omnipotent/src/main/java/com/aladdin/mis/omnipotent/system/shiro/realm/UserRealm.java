@@ -4,7 +4,7 @@ package com.aladdin.mis.omnipotent.system.shiro.realm;
  */
 
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.service.impl.AdminServiceImpl;
+import com.aladdin.mis.service.AdminService;
 import com.aladdin.mis.service.impl.MenuServiceImpl;
 import com.aladdin.mis.service.impl.RoleServiceImpl;
 import org.apache.shiro.SecurityUtils;
@@ -33,7 +33,7 @@ import java.util.Set;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    AdminServiceImpl adminService;
+    AdminService adminService;
     @Autowired
     RoleServiceImpl roleService;
     @Autowired

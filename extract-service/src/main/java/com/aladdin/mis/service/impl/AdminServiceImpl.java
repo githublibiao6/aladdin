@@ -3,6 +3,7 @@ package com.aladdin.mis.service.impl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
+import com.aladdin.mis.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
  * @date 2018年6月5日 下午8:55:47
  */
 @Service
-public class AdminServiceImpl extends GlobalServiceImpl {
+public class AdminServiceImpl extends GlobalServiceImpl implements AdminService {
 
     @Autowired
     AdminDao dao;
@@ -42,14 +43,17 @@ public class AdminServiceImpl extends GlobalServiceImpl {
     public Admin getByname(String username, String pass) {
         return dao.getByName(username,pass);
     }
+    @Override
     public List<Admin> list() {
         return dao.list();
     }
+    @Override
     public List<Admin>  pagelist() {
         List<Admin>  list = dao.pageList();
         return list;
     }
 
+    @Override
     public boolean add(Admin admin) {
         boolean flag = true;
 
@@ -61,9 +65,12 @@ public class AdminServiceImpl extends GlobalServiceImpl {
         return flag;
     }
 
+    @Override
     public Admin findById(String id){
         return dao.findById(id);
     }
+
+    @Override
     public boolean remove(String menuId){
         boolean flag = true;
         int num = dao.remove(menuId);
@@ -72,6 +79,7 @@ public class AdminServiceImpl extends GlobalServiceImpl {
         }
         return flag;
     }
+    @Override
     public boolean update(Admin admin){
         boolean flag = false;
 

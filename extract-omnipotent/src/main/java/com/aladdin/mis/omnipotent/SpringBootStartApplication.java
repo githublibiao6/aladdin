@@ -1,6 +1,7 @@
 package com.aladdin.mis.omnipotent;
 
 
+import com.aladdin.mis.DemoApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.Ordered;

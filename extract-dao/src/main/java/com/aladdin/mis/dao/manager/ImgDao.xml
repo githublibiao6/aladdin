@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.manager.dao.ImgDao">
+<mapper namespace="com.aladdin.mis.dao.manager.ImgDao">
      <select id="findByCodeAndId" resultType="com.aladdin.mis.manager.bean.Img">
         select t.* from be_img t where t.code = #{code} and t.unique_key=#{id}
     </select>

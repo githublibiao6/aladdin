@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.dao.db.config.DbConfig;
-import com.aladdin.mis.omnipotent.system.db.utils.Db;
+import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;

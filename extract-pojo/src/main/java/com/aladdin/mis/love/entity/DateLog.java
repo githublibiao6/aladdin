@@ -1,7 +1,7 @@
-package com.aladdin.mis.omnipotent.love.entity;
+package com.aladdin.mis.love.entity;
 
 import com.aladdin.mis.annotation.entity.Table;
-import com.aladdin.mis.omnipotent.system.global.entity.GlobalModel;
+import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 
 /**

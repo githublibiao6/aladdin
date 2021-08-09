@@ -1,6 +1,6 @@
-package com.aladdin.mis.omnipotent.love.dao;
+package com.aladdin.mis.dao.love;
 
-import com.aladdin.mis.omnipotent.love.entity.DateLog;
+import com.aladdin.mis.love.entity.DateLog;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Repository;
 

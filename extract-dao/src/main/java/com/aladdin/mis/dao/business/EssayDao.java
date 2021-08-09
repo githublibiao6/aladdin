@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.business.dao;
+package com.aladdin.mis.dao.business;
 
 import com.aladdin.mis.business.blog.entity.Essay;
 import org.apache.ibatis.annotations.Select;

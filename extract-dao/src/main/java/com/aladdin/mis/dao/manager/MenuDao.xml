@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.manager.dao.MenuDao">
+<mapper namespace="com.aladdin.mis.dao.manager.MenuDao">
 
     <select id="findById" resultType="com.aladdin.mis.manager.bean.Menu">
         select * from be_menu where menu_id=#{menuId}
