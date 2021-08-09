@@ -2,10 +2,10 @@ package com.aladdin.mis.omnipotent.business.controller;
 
 import com.aladdin.mis.business.blog.entity.Essay;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
-import com.alibaba.fastjson.JSONObject;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -31,7 +31,7 @@ public class EssayController extends GlobalController {
 
     @RequestMapping("/page")
     @ResponseBody
-    public  Result pageList(HttpServletRequest request,  PageEntity entity, @RequestHeader("X-Token") String token) {
+    public  Result pageList(HttpServletRequest request, PageEntity entity, @RequestHeader("X-Token") String token) {
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
         System.err.println("是否已经登录："+subject.isAuthenticated());

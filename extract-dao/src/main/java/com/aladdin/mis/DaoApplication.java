@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author 李标
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.aladdin.mis.mapper.**"})
+@MapperScan(basePackages = {"com.aladdin.mis.dao.**"})
 public class DaoApplication {
 
     public static void main(String[] args) {

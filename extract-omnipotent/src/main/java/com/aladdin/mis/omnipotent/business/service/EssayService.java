@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.business.service;
 
 import com.aladdin.mis.business.blog.entity.Essay;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

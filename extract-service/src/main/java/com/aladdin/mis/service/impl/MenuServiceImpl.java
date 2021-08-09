@@ -153,6 +153,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     * @Author: cles
     * @Date: 2020/4/15 23:34
     */
+    @Override
     public List<Menu> queryByRoleId(String code) {
         return dao.queryByRoleId(code);
     }

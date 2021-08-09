@@ -4,7 +4,7 @@ import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.RoleServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -116,4 +116,6 @@ public interface MenuService {
      * @return set
      */
     Set<String> queryByRoles(Set<String> roles);
+
+    List<Menu> queryByRoleId(String code);
 }

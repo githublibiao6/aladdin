@@ -4,7 +4,7 @@ import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.qo.MenuQo;
+import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.aladdin.mis.service.impl.MenuServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;

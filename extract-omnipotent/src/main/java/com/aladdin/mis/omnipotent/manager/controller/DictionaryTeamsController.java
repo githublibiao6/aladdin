@@ -4,7 +4,7 @@ import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.DictionaryServiceImpl;
 import com.aladdin.mis.service.impl.DictionaryTeamsServiceImpl;
 import com.alibaba.fastjson.JSONObject;
