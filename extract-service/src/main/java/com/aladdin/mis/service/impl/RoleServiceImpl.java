@@ -1,11 +1,11 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.RoleDao;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.manager.dao.RoleDao;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.RoleMenuService;
 import com.aladdin.mis.service.RoleService;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

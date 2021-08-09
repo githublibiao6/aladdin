@@ -1,8 +1,8 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.dao.AdminDao;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.QueryCondition;
+import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

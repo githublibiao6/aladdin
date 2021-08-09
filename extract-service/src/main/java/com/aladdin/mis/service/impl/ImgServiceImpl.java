@@ -1,9 +1,8 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.ImgDao;
 import com.aladdin.mis.service.ImgService;
 import com.aladdin.mis.manager.bean.Img;
-import com.aladdin.mis.manager.dao.ImgDao;
-import com.aladdin.mis.omnipotent.system.utils.EVMUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +31,8 @@ public class ImgServiceImpl extends GlobalServiceImpl implements ImgService {
         Img img = new Img();
         img.setCode(code);
         img.setUniqueKey(id);
-        String url = EVMUtils.zxingCodeCreate(id, "D:/voice/picture/2018/",500,"D:/voice/picture/2018/5.jpg");
-        img.setUrl(url);
+//        String url = EVMUtils.zxingCodeCreate(id, "D:/voice/picture/2018/",500,"D:/voice/picture/2018/5.jpg");
+//        img.setUrl(url);
 //        Integer imgId = img.save();
 
         return img;

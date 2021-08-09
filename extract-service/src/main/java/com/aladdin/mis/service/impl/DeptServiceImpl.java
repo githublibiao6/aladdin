@@ -1,9 +1,9 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.DeptDao;
 import com.aladdin.mis.manager.bean.Dept;
-import com.aladdin.mis.manager.dao.DeptDao;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.DeptService;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

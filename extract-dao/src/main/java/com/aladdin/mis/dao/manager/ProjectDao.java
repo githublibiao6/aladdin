@@ -1,7 +1,7 @@
-package com.aladdin.mis.omnipotent.manager.dao;
+package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.Project;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.QueryCondition;
+import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

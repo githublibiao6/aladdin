@@ -1,10 +1,9 @@
 package com.aladdin.mis.service.impl;
 
-import com.aladdin.mis.manager.dao.MenuDao;
+import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.aladdin.mis.service.MenuService;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.qo.MenuQo;
-import com.aladdin.mis.omnipotent.system.utils.ConvertUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +49,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public List<Map> listMap() {
         List<Map> list = dao.listMap();
-        ConvertUtils.convertTree(list,"menu_id","parent","children","-1",true);
+//        ConvertUtils.convertTree(list,"menu_id","parent","children","-1",true);
         return list;
     }
 

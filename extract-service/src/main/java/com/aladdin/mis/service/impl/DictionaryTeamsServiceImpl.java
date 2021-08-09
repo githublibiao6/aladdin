@@ -1,9 +1,9 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.DicTeamsDao;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
-import com.aladdin.mis.manager.dao.DicTeamsDao;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.DictionaryTeamsService;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.PageEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

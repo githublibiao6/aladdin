@@ -2,7 +2,7 @@ package com.aladdin.mis.service;
 
 
 import com.aladdin.mis.manager.bean.Menu;
-import com.aladdin.mis.omnipotent.system.pagehelper.entity.qo.MenuQo;
+import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

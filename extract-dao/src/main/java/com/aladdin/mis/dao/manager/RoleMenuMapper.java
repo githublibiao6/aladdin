@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.manager.dao;
+package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.RoleMenu;
 import org.apache.ibatis.annotations.Select;

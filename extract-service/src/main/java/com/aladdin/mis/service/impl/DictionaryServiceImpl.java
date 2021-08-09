@@ -1,7 +1,7 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.DicDao;
 import com.aladdin.mis.manager.bean.Dictionary;
-import com.aladdin.mis.manager.dao.DicDao;
 import com.aladdin.mis.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.dao.manager.RoleMenuMapper;
 import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.manager.dao.RoleMenuMapper;
 import com.aladdin.mis.service.RoleMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
