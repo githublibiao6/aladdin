@@ -5,9 +5,6 @@ package com.aladdin.mis.omnipotent.system.shiro.config;
 
 import com.aladdin.mis.omnipotent.system.shiro.realm.UserRealm;
 import com.aladdin.mis.omnipotent.system.shiro.service.ShiroService;
-
-import javax.servlet.Filter;
-
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
@@ -21,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -32,6 +30,20 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+
+    /**
+     * @Description:  开启注解
+     * @return: org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor
+     * @Author: cles
+     * @Date: 2020/5/15 0:22
+     */
+    @Bean(name = "sourceAdvisor")
+    public AuthorizationAttributeSourceAdvisor sourceAdvisor(){
+        AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
+        advisor.setSecurityManager(securityManager());
+        return advisor;
+    }
 
     /**
      * 附名后正确运行
@@ -55,11 +67,12 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // 添加自己的过滤器
         Map<String, Filter> filterMap = new HashMap<String, Filter>(1);
-        filterMap.put("jwt", new CustomRolesAuthorizationFilter());
+//        filterMap.put("jwt", new CustomRolesAuthorizationFilter()); // 自己定义的过滤类型
+        filterMap.put("authc", new ShiroFormAuthenticationFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
         //设置规则
         filterChainDefinitionMap = shiroService.loadFilterChainDefinitions();
-        filterChainDefinitionMap.put("/**","jwt");
+//        filterChainDefinitionMap.put("/**","jwt");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;
@@ -134,19 +147,6 @@ public class ShiroConfig {
         //指定强制使用cglib为action创建代理对象
         defaultAdvisorAutoProxyCreator.setProxyTargetClass(true);
         return defaultAdvisorAutoProxyCreator;
-    }
-
-   /**
-   * @Description:  开启注解
-   * @return: org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor
-   * @Author: cles
-   * @Date: 2020/5/15 0:22
-   */
-    @Bean(name = "sourceAdvisor")
-    public AuthorizationAttributeSourceAdvisor sourceAdvisor(){
-        AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
-        advisor.setSecurityManager(securityManager());
-        return advisor;
     }
 
     /**

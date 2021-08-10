@@ -140,7 +140,7 @@ public class AdminController extends GlobalController {
 
     @RequestMapping("/findById.do")
     @ResponseBody
-    public Result findById(String id) {
+    public Result findById(int id) {
         Admin admin = service.findById(id);
         result.setData(admin);
         return result;

@@ -14,5 +14,5 @@ public interface AdminService {
     boolean add(Admin menu);
     boolean update(Admin menu);
     boolean remove(String id);
-    Admin findById(String id);
+    Admin findById(int id);
 }

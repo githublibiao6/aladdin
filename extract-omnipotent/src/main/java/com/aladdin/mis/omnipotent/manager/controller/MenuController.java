@@ -111,6 +111,8 @@ public class MenuController extends GlobalController {
     @RequestMapping("/treeList")
     @ResponseBody
     public Result treeList(MenuQo qo) {
+        Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
+        System.err.println("Realm - admin2:"+ a);
         List<Menu> list = service.tree(qo);
         result.setData(list);
         result.setCode(20000);
@@ -135,6 +137,7 @@ public class MenuController extends GlobalController {
         Session session = SecurityUtils.getSubject().getSession();
         System.err.println(session.getAttribute("userId"));
         Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
+        System.err.println("Realm - admin1:"+ a);
         List<Menu> list = service.list(null);
         result.setData(list);
         result.setCode(20000);

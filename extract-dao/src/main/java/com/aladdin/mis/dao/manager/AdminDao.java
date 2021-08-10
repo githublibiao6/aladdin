@@ -43,7 +43,7 @@ public interface AdminDao {
 
     int  update(Admin menu);
 
-    Admin  findById(String id);
+    Admin  findById(int id);
 
     int  remove(String id);
 }

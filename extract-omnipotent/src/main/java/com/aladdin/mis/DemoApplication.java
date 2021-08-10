@@ -36,7 +36,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication()
 //  开启异步调用
 @EnableAsync
-@MapperScan("com.aladdin.mis.dao.**")
+@MapperScan("com.aladdin.mis.dao")
 @EnableMongoRepositories
 public class DemoApplication {
     public static void main(String[] args) {

@@ -63,7 +63,7 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         Admin admin0 = (Admin) getAvailablePrincipal(principals);
-        Admin admin = adminService.findById("001");
+        Admin admin = adminService.findById(1);
 
         if (admin == null) {
             throw new UnknownAccountException("No account found for admin [" + admin0.getLoginName() + "]");
@@ -76,16 +76,15 @@ public class UserRealm extends AuthorizingRealm {
         // 获取菜单权限
         Set<String> perms = new HashSet<>();
 
-        System.err.println("当前用户："+admin.getLoginName());
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
         // 用户权限
         Set<String> permissions = menuService.queryByRoles(roles);
 
-        permissions.add("/**");
+//        permissions.add("/**");
         info.setRoles(roles);
         info.setStringPermissions(permissions);
-        info.addStringPermission("menu/page");
+//        info.addStringPermission("/roles/list");
         return info;
     }
 
@@ -105,7 +104,13 @@ public class UserRealm extends AuthorizingRealm {
         if (username == null) {
             throw new AccountException("Null usernames are not allowed by this realm.");
         }
-        Admin admin = adminService.findById("001");
+        Admin admin = null;
+        try{
+            admin = adminService.findById(1);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
         //单用户登录
         //处理session
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();
@@ -138,13 +143,6 @@ public class UserRealm extends AuthorizingRealm {
         // todo upToken.getPassword() 前台传的密码
         // 和 admin.getLoginPassword() 比较
         SimpleAuthenticationInfo  info = new SimpleAuthenticationInfo(admin, upToken.getPassword(), getName());
-        System.err.println("info:"+info);
-        // 盐值？
-//        info.setCredentialsSalt(ByteSource.Util.bytes(10));
-        Session session = SecurityUtils.getSubject().getSession();
-        System.err.println("Realm - userId" + session.getAttribute("userId"));
-        Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
-        System.err.println("Realm - admin:"+ a);
         return info;
     }
 }

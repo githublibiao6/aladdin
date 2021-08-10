@@ -1,5 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
+import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
@@ -7,6 +8,7 @@ import com.aladdin.mis.omnipotent.system.global.entity.Result;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.RoleServiceImpl;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +47,8 @@ public class RoleController extends GlobalController {
     @RequestMapping("/list")
     @ResponseBody
     public  Result list() {
+        Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
+        System.err.println("Realm - admin3:"+ a);
         List<Role> list = service.list();
         result.setData(list);
         result.setCode(20000);

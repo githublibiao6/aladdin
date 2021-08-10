@@ -34,7 +34,6 @@ public class SystemController extends GlobalController {
         HashMap map = new HashMap();
         map.put("token","admin-token");
         result.setData(map);
-        System.err.println(json);
         Enumeration<String> set = request.getParameterNames();
         while (set.hasMoreElements()){
             System.err.println(set.nextElement());

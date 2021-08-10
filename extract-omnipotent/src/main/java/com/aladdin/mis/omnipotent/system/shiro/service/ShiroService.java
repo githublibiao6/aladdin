@@ -7,7 +7,6 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -62,6 +61,8 @@ public class ShiroService {
         filterChainDefinitionMap.put("/user/info","anon");
 //        filterChainDefinitionMap.put("/menu/list","authc");
 //        filterChainDefinitionMap.put("/menu/page","anon");
+        filterChainDefinitionMap.put("/menu/list","anon");
+        filterChainDefinitionMap.put("/menu/treeList","anon");
         filterChainDefinitionMap.put("/logout","logout");
         //过滤器规则，从上而下顺序执行，将/**放在最后
         filterChainDefinitionMap.put("/**","authc");

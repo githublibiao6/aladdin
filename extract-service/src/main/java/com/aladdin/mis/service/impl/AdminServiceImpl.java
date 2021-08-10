@@ -66,7 +66,7 @@ public class AdminServiceImpl extends GlobalServiceImpl implements AdminService 
     }
 
     @Override
-    public Admin findById(String id){
+    public Admin findById(int id){
         return dao.findById(id);
     }
 
