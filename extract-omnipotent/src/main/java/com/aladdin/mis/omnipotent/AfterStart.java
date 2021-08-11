@@ -45,11 +45,11 @@ public class AfterStart implements ApplicationRunner {
 //            JedisUtil.setList("role"+code,menuList);
         });
         /* 将主数据源的表缓存 */
-        MainDb.init();
+        /*MainDb.init();
         Map<String, TableInfo> map = MainDb.getTableMap();
         List<JSONObject> t = Db.use().findList("select * from be_admin");
         map.forEach((k,v)->{
             System.err.println(k);
-        });
+        });*/
     }
 }

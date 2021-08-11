@@ -69,6 +69,10 @@ public class SystemController extends GlobalController {
             System.err.println("user");
 //            return "redirect:/normal/showComputerProblems";
         }
+        // 生成的sessionId 返回给前端
+        subject.getSession().setTimeout(1000 * 10);
+        String sessionId = (String)subject.getSession().getId();
+        result.setData(sessionId);
         return result;
     }
 

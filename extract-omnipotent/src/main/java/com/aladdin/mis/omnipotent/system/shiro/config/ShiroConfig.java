@@ -8,10 +8,15 @@ import com.aladdin.mis.omnipotent.system.shiro.service.ShiroService;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.SessionListener;
+import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.Cookie;
+import org.apache.shiro.web.servlet.ShiroHttpSession;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
@@ -19,9 +24,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
 import javax.servlet.Filter;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @description: shiro
@@ -68,11 +71,16 @@ public class ShiroConfig {
         // 添加自己的过滤器
         Map<String, Filter> filterMap = new HashMap<String, Filter>(1);
 //        filterMap.put("jwt", new CustomRolesAuthorizationFilter()); // 自己定义的过滤类型
-        filterMap.put("authc", new ShiroFormAuthenticationFilter());
+//        filterMap.put("authc", new ShiroFormAuthenticationFilter());
+
+        filterMap.put("authc", new UserFormAuthenticationFilter());
+        filterMap.put("perms", new CustomPermissionsAuthorizationFilter());
+
         shiroFilterFactoryBean.setFilters(filterMap);
         //设置规则
         filterChainDefinitionMap = shiroService.loadFilterChainDefinitions();
 //        filterChainDefinitionMap.put("/**","jwt");
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;
@@ -118,11 +126,55 @@ public class ShiroConfig {
      * 管理session
      * @return
      */
-    @Bean
+    /*@Bean
     public DefaultWebSessionManager sessionManager() {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         // 去掉shiro登录时url里的JSESSIONID
         sessionManager.setSessionIdUrlRewritingEnabled(false);
+
+        sessionManager.setSessionDAO(redisSessionDAO());
+        sessionListeners.add(customSessionListener());
+
+        return sessionManager;
+    }*/
+
+    /**
+     * @Description: 自定义的 shiro session 缓存管理器
+     * 用于跨域等情况下获取请求头中的sessionId
+     * @method: sessionManager
+     * @author: MengyuWu
+     * @date: 18:38 2019-8-26
+     * @throws
+     **/
+
+    @Bean
+    public SessionManager sessionManager()
+    {
+        // 将我们继承后重写的shiro session 注册
+        MySessionManager sessionManager = new MySessionManager();
+
+        Collection<SessionListener> sessionListeners = new ArrayList<>();
+        sessionManager.setSessionListeners(sessionListeners);
+        // 单位为毫秒，600000毫秒为1个小时
+        sessionManager.setSessionValidationInterval(3600000 * 12);
+        // 3600000 milliseconds = 1 hour
+        sessionManager.setGlobalSessionTimeout(3600000 * 12);
+        // 是否删除无效的，默认也是开启
+        sessionManager.setDeleteInvalidSessions(true);
+        // 是否开启 检测，默认开启
+        sessionManager.setSessionValidationSchedulerEnabled(true);
+        // 创建会话Cookie
+        Cookie cookie = new SimpleCookie(ShiroHttpSession.DEFAULT_SESSION_ID_NAME);
+        cookie.setName("WEBID");
+        cookie.setHttpOnly(true);
+        sessionManager.setSessionIdCookie(cookie);
+
+        // 单位为毫秒，600000毫秒为1个小时
+        sessionManager.setSessionValidationInterval(3600000 * 12);
+        // 3600000 milliseconds = 1 hour
+        sessionManager.setGlobalSessionTimeout(3600000 * 12);
+        // 是否删除无效的，默认也是开启
+        sessionManager.setDeleteInvalidSessions(true);
         return sessionManager;
     }
 
