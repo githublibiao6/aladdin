@@ -47,8 +47,6 @@ public class RoleController extends GlobalController {
     @RequestMapping("/list")
     @ResponseBody
     public  Result list() {
-        Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
-        System.err.println("Realm - admin3:"+ a);
         List<Role> list = service.list();
         result.setData(list);
         result.setCode(20000);

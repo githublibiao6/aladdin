@@ -39,7 +39,6 @@ public class SystemController extends GlobalController {
             System.err.println(set.nextElement());
         }
         Subject subject = SecurityUtils.getSubject();
-        System.err.println("是否已经登录："+subject.isAuthenticated());
         // shiro 调用
         UsernamePasswordToken token = new UsernamePasswordToken(json.getString("username"), json.getString("password"));
         //如果获取不到用户名就是登录失败，但登录失败的话，会直接抛出异常
@@ -70,7 +69,7 @@ public class SystemController extends GlobalController {
 //            return "redirect:/normal/showComputerProblems";
         }
         // 生成的sessionId 返回给前端
-        subject.getSession().setTimeout(1000 * 10);
+        subject.getSession().setTimeout(1000 * 60 * 30);
         String sessionId = (String)subject.getSession().getId();
         result.setData(sessionId);
         return result;

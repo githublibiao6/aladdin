@@ -87,7 +87,6 @@ public class UserController extends GlobalController {
     @RequestMapping("/list")
     @ResponseBody
     public  Result list(@RequestParam(value = "name",defaultValue = "") String name) {
-        System.err.println(name);
         List<User> list = service.list(name);
         result.setData(list);
         result.setCode(20000);

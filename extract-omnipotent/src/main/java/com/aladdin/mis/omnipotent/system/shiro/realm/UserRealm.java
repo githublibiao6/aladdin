@@ -63,11 +63,11 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         Admin admin0 = (Admin) getAvailablePrincipal(principals);
-//        Admin admin = adminService.findById(1);
-        Admin admin = new Admin();
-        admin.setId(1);
-        admin.setLoginName("1");
-        admin.setLoginPassword("1");
+        Admin admin = adminService.findById(1);
+//        Admin admin = new Admin();
+//        admin.setId(1);
+//        admin.setLoginName("1");
+//        admin.setLoginPassword("1");
 
         if (admin == null) {
             throw new UnknownAccountException("No account found for admin [" + admin0.getLoginName() + "]");
@@ -109,15 +109,15 @@ public class UserRealm extends AuthorizingRealm {
             throw new AccountException("Null usernames are not allowed by this realm.");
         }
         Admin admin = new Admin();
-        admin.setId(1);
-        admin.setLoginName("1");
-        admin.setLoginPassword("1");
-        /*try{
+//        admin.setId(1);
+//        admin.setLoginName("1");
+//        admin.setLoginPassword("1");
+        try{
             admin = adminService.findById(1);
         }catch (Exception e){
             e.printStackTrace();
             return null;
-        }*/
+        }
         //单用户登录
         //处理session
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();

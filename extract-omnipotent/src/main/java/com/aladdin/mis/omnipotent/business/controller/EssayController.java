@@ -8,7 +8,6 @@ import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,10 +32,6 @@ public class EssayController extends GlobalController {
     @ResponseBody
     public  Result pageList(HttpServletRequest request, PageEntity entity, @RequestHeader("X-Token") String token) {
         Subject subject = SecurityUtils.getSubject();
-        Session session = subject.getSession();
-        System.err.println("是否已经登录："+subject.isAuthenticated());
-        System.err.println("userId:"+ session.getAttribute("userId"));
-        System.err.println("token:"+ token);
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);
         PageInfo page = service.page(entity);

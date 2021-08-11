@@ -40,7 +40,6 @@ public class CustomRolesAuthorizationFilter extends RolesAuthorizationFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws IOException {
         Subject subject = getSubject(request, response);
-        System.err.println(subject.getPrincipal()+"222333");
         if (subject.getPrincipal() != null) {
             return true;
         } else {

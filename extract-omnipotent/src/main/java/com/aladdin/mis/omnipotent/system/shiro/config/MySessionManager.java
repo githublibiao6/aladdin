@@ -36,7 +36,6 @@ public class MySessionManager extends DefaultWebSessionManager {
     protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
         String id = WebUtils.toHttp(request).getHeader("Authorization");
         //如果请求头中有 Authorization （前端请求头中设置的名字）则其值为sessionId
-        System.err.println("新加的值"+ id);
         if (!StringUtils.isEmpty(id)) {
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID_SOURCE, REFERENCED_SESSION_ID_SOURCE);
             request.setAttribute(ShiroHttpServletRequest.REFERENCED_SESSION_ID, id);
@@ -45,11 +44,6 @@ public class MySessionManager extends DefaultWebSessionManager {
         } else {
             //否则按默认规则从cookie取sessionId
             Serializable m = super.getSessionId(request, response);
-            if(m == null){
-                System.err.println("默认值"+ null);
-                return m;
-            }
-            System.err.println("默认值"+ m.toString());
             return m;
         }
     }

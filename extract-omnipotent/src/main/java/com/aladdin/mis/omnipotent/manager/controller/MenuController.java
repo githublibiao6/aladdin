@@ -1,6 +1,5 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.global.entity.Result;
@@ -8,8 +7,6 @@ import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.aladdin.mis.service.impl.MenuServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -111,8 +108,6 @@ public class MenuController extends GlobalController {
     @RequestMapping("/treeList")
     @ResponseBody
     public Result treeList(MenuQo qo) {
-        Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
-        System.err.println("Realm - admin2:"+ a);
         List<Menu> list = service.tree(qo);
         result.setData(list);
         result.setCode(20000);
@@ -134,10 +129,6 @@ public class MenuController extends GlobalController {
     @ResponseBody
     public Result list() {
 //        String hello = dubboService.sayHello("  dubbo "); // 执行远程方法
-        Session session = SecurityUtils.getSubject().getSession();
-        System.err.println(session.getAttribute("userId"));
-        Admin a = (Admin) SecurityUtils.getSubject().getPrincipal();
-        System.err.println("Realm - admin1:"+ a);
         List<Menu> list = service.list(null);
         result.setData(list);
         result.setCode(20000);
