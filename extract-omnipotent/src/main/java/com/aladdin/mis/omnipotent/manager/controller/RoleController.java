@@ -1,14 +1,12 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.RoleServiceImpl;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

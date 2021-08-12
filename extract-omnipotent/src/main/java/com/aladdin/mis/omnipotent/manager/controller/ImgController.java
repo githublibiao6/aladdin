@@ -1,8 +1,8 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.manager.bean.Img;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.service.impl.ImgServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

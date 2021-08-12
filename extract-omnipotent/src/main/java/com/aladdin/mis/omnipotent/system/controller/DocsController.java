@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -43,12 +43,7 @@
             <artifactId>tomcat-juli</artifactId>
             <version>${tomcat.version}</version>
         </dependency>-->
-        <!-- aop
-        当我们需要使用CGLIB来实现AOP的时候，需要配置spring.aop.proxy-target-class=true，不然默认使用的是标准Java的实现，就会报错-->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>-->
+
 
         <!-- rabbitmq -->
 <!--        <dependency>-->

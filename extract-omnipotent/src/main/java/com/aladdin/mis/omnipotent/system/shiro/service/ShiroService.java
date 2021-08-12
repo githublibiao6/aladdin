@@ -58,11 +58,11 @@ public class ShiroService {
         // 开放接口
         filterChainDefinitionMap.put("/api/**","anon");
         // 获取信息接口
-        filterChainDefinitionMap.put("/user/info","anon");
+//        filterChainDefinitionMap.put("/user/info","anon");
 //        filterChainDefinitionMap.put("/menu/list","authc");
 //        filterChainDefinitionMap.put("/menu/page","anon");
 //        filterChainDefinitionMap.put("/menu/list","anon");
-        filterChainDefinitionMap.put("/menu/treeList","anon");
+//        filterChainDefinitionMap.put("/menu/treeList","anon");
         filterChainDefinitionMap.put("/logout","logout");
         //过滤器规则，从上而下顺序执行，将/**放在最后
         filterChainDefinitionMap.put("/**","authc");

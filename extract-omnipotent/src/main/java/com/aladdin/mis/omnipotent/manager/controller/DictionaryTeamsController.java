@@ -2,8 +2,8 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.DictionaryServiceImpl;
 import com.aladdin.mis.service.impl.DictionaryTeamsServiceImpl;

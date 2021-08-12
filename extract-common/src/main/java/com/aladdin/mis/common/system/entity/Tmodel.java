@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.global.entity;
+package com.aladdin.mis.common.system.entity;
 
 /**
  * 基础model(默认参数)

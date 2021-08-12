@@ -2,8 +2,8 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.UserServiceImpl;
@@ -41,7 +41,6 @@ public class UserController extends GlobalController {
         Permissions permissions1 = new Permissions("1","query");
         Permissions permissions2 = new Permissions("2","add");
         Set<Permissions> permissionsSet = new HashSet<>();
-        System.out.println("info"+token);
         HashMap map = new HashMap();
         map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
         map.put("introduction","I am a super administrator");

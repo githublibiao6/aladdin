@@ -1,8 +1,8 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -79,7 +79,7 @@ public class SystemController extends GlobalController {
     @ResponseBody
     public Result login() {
         result.setMessage("请求被拦截了");
-        result.setCode(404);
+        result.setCode(50014);
         result.setSuccess(false);
         return result;
     }

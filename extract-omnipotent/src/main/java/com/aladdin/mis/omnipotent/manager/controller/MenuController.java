@@ -1,8 +1,9 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
+import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.manager.bean.Menu;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.aladdin.mis.service.impl.MenuServiceImpl;
 import com.alibaba.fastjson.JSONObject;
@@ -107,6 +108,7 @@ public class MenuController extends GlobalController {
      */
     @RequestMapping("/treeList")
     @ResponseBody
+    @WebLog
     public Result treeList(MenuQo qo) {
         List<Menu> list = service.tree(qo);
         result.setData(list);
@@ -127,6 +129,7 @@ public class MenuController extends GlobalController {
      */
     @RequestMapping("/list")
     @ResponseBody
+    @WebLog
     public Result list() {
 //        String hello = dubboService.sayHello("  dubbo "); // 执行远程方法
         List<Menu> list = service.list(null);

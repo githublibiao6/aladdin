@@ -100,7 +100,6 @@ public class AlipayServiceImpl2 implements AlipayService {
         System.err.println(key.length());
         System.err.println(last);
         System.err.print(AliPayConfig.merchantPrivateKey);
-        System.err.println(111);
         // 面对面支付？
 //        AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest ();
         // 网页支付

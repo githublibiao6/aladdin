@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.pagehelper.util;
 
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.entity.Result;
 
 import java.util.List;
 

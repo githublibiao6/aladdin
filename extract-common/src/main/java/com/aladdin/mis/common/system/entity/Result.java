@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.global.entity;
+package com.aladdin.mis.common.system.entity;
 
 public class Result {
     private  String message="successful";

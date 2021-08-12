@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.global.entity;
+package com.aladdin.mis.common.system.entity;
 
 import com.aladdin.mis.system.base.BaseModel;
 import com.fasterxml.jackson.annotation.JsonFormat;

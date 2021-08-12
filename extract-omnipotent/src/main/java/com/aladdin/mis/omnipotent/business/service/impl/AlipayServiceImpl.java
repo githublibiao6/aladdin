@@ -66,7 +66,6 @@ public class AlipayServiceImpl implements AlipayService {
         try {
             response = alipayClient.pageExecute(request);
             res = response.getBody();
-            System.err.println(111);
             System.err.println(res);
             System.err.println(response.getOutTradeNo());
         } catch (AlipayApiException e) {

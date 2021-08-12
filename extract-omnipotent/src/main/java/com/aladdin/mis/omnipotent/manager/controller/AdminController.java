@@ -1,8 +1,8 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.service.impl.AdminServiceImpl;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +59,7 @@ public class AdminController extends GlobalController {
     public Result paageList(Integer page, Integer limit) {
         List<Admin>  list = service.pagelist();
         result.setData(list);
-        result=page(list,page,limit);
+//        result=page(list,page,limit);
         return result;
     }
 

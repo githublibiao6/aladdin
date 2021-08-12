@@ -2,8 +2,8 @@ package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.dao.db.config.DbConfig;
 import com.aladdin.mis.dao.utils.Db;
-import com.aladdin.mis.omnipotent.system.global.controller.GlobalController;
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
@@ -69,7 +69,6 @@ public class TestController  extends GlobalController {
             boolean flag = db.createDataSource("test",
                     "jdbc:mysql://127.0.0.1:3306/company?serverTimezone=UTC&characterEncoding=utf-8","root",
                     "mysql","mysql");
-            System.err.println(1111);
             System.err.println(flag);
             List<Map> list = Db.use("test").find("select * from be_admin");
             System.err.println(list.size());
@@ -115,7 +114,6 @@ public class TestController  extends GlobalController {
         System.out.println(cols);
         System.out.println(cols.first());
         cols.forEach((Block<? super String>) s->{
-            System.err.println(1);
             System.out.println(s);
         });
         MongoCollection<Document> collection = db.getCollection("table");

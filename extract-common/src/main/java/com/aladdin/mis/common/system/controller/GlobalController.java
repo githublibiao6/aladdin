@@ -1,9 +1,7 @@
-package com.aladdin.mis.omnipotent.system.global.controller;
+package com.aladdin.mis.common.system.controller;
 
 
-import com.aladdin.mis.omnipotent.system.global.entity.Result;
-import com.aladdin.mis.omnipotent.system.pagehelper.util.LayuiPageHandle;
-import com.aladdin.mis.omnipotent.system.pagehelper.util.PageHandle;
+import com.aladdin.mis.common.system.entity.Result;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.List;
 
 /**
  * @author cles
@@ -27,11 +24,11 @@ public abstract class GlobalController {
 
     protected Result result = new Result();
 
-    PageHandle layui = new LayuiPageHandle();
+//    PageHandle layui = new LayuiPageHandle();
 
-    public <T> Result page(List<T> list,Integer page,Integer limit){
-        return layui.turnPage(result,list,page,limit);
-    }
+//    public <T> Result page(List<T> list,Integer page,Integer limit){
+//        return layui.turnPage(result,list,page,limit);
+//    }
 
     /**
      * 获取前台传入的参数
@@ -60,5 +57,9 @@ public abstract class GlobalController {
             e.printStackTrace();
         }
         return "http://"+address.getHostAddress() +":"+request.getServerPort()+"/"+request.getContextPath();
+    }
+
+    public HttpServletRequest getRequest() {
+        return this.request;
     }
 }
