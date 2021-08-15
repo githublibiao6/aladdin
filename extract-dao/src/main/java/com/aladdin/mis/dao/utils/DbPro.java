@@ -4,6 +4,7 @@ package com.aladdin.mis.dao.utils;
  */
 
 import com.aladdin.mis.dao.db.factory.DbMaker;
+import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
@@ -92,18 +93,18 @@ public class DbPro {
         return 1;
     }
 
-    public String save(String tableName,String primaryKey,  List<JSONObject> list) {
+    public int save(String tableName,String primaryKey,  List<TableFieldInfo> list) {
         JSONObject object = DbMaker.getDbSqlMaker(dataSource.getDbType()).saveSql(tableName, primaryKey , list);
         String sql = object.getString("sql");
         log.info(sql);
         int n = DbHelper.save(dataSource,sql);
         if(n > 0){
-            return object.getString("id");
+            return n;
         }
-        return null;
+        return 0;
     }
 
-    public int update(String tableName ,String primaryKey, List<JSONObject> list) {
+    public int update(String tableName ,String primaryKey, List<TableFieldInfo> list) {
         String sql = DbMaker.getDbSqlMaker(dataSource.getDbType()).updateSql(tableName, primaryKey, list);
         log.info(sql);
         return DbHelper.update(dataSource,sql);

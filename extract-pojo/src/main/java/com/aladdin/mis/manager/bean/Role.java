@@ -1,6 +1,7 @@
 package com.aladdin.mis.manager.bean;
 
 import com.aladdin.mis.annotation.entity.Table;
+import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 
@@ -15,8 +16,14 @@ import lombok.Data;
 @Table("be_role")
 @Data
 public class Role extends GlobalModel {
+
+    @TableField("code")
     private String code;
+
+    @TableField("name")
     private String name;
+
+    @TableField("comments")
     private String comments;
 
 }

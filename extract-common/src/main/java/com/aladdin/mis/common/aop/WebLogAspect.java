@@ -10,9 +10,8 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
@@ -45,53 +44,32 @@ public class WebLogAspect {
 
     }
 
-    @AfterReturning(value = "@annotation(webLog)")
-    public void  doAround(JoinPoint joinPoint, WebLog webLog){
+
+    @Around(value = "@annotation(webLog)")
+    public void  doAround(ProceedingJoinPoint point, WebLog webLog){
         //获取方法名（是方法名不是RequestMapping）
-        String methodName = joinPoint.getSignature().getName();
+        String methodName = point.getSignature().getName();
         //获取所有参数和参数值
-        Map<String,Object> map=this.getNameAndValue(joinPoint);
+        Map<String,Object> map = this.getNameAndValue(point);
         //将所有参数转成JSON保存（最好加密一下，我这里没加密）
         JSONObject json = new JSONObject(map);
-        GlobalController baseController = (GlobalController)joinPoint.getThis();
+        GlobalController baseController = (GlobalController)point.getThis();
         HttpServletRequest request = baseController.getRequest();
+
+        System.out.println(baseController.getProjectUrl());
+        baseController.getIp();
         System.out.println("userLog:" + methodName + "--");
         System.err.println(request.getHeader("Authorization"));
         Subject subject = SecurityUtils.getSubject();
         Object m = subject.getPrincipal();
         System.err.println(json);
         System.err.println(webLog.value());
-        if(map.get("uid")!=null) {
-            Integer uid = Integer.parseInt(map.get("uid").toString());
-//            FUser user = null;
-            //通过UID获取TOKEN
-//            String token=redisAPPTool.getToken(uid);
-//            if(token != null) {
-                //通过TOKEN获取用户信息
-//                user=redisAPPTool.getUserByToken(token);
-//                if (user == null) {
-//                    user = fUser;
-//                }
-//                //用户日志
-//                FUserLog fUserLog=new FUserLog();
-//                //用户ID
-//                fUserLog.setFuserid(uid);
-//                //访问接口方法名
-//                fUserLog.setFmodule(methodName);
-//                //类型
-//                fUserLog.setFtype(FUserLogEnum.LOG_TYPE_OPERATION);
-//                //接口描述
-//                fUserLog.setFdescription(userLog.value());
-//                //参数JSON
-//                fUserLog.setFjosn(json.toString());
-//                //IP地址
-//                fUserLog.setFip(Utils.getIpAddr(baseController.getRequest()));
-                //插入
-                //fUserLogService.addLog(fUserLog);
-//            }
-        }else {
-            System.out.println("私有接口错误");
+        try {
+            point.proceed();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
+
         //UserLog log = method.getAnnotation(UserLog.class);
     }
 

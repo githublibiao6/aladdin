@@ -29,6 +29,25 @@ public class RoleController extends GlobalController {
     RoleServiceImpl service;
 
     /**
+     * 添加字典
+     */
+    @RequestMapping("/add")
+    @ResponseBody
+    public Result add(@RequestBody JSONObject json) {
+        result = new Result();
+        Role m = JSONObject.parseObject(json.toJSONString(),Role.class);
+        boolean flag = service.add(m, json.getString("menus"));
+        if(flag){
+            result.setMessage("添加成功");
+        }else {
+            result.setMessage("添加失败");
+        }
+        result.setData(m);
+        result.setSuccess(flag);
+        return result;
+    }
+
+    /**
      * 菜单跳转
      *
      * @return
@@ -73,25 +92,6 @@ public class RoleController extends GlobalController {
         List<RoleMenu> list = service.findByRoleId(roleId);
         result.setData(list);
         result.setCode(20000);
-        return result;
-    }
-
-    /**
-     * 添加字典
-     */
-    @RequestMapping("/add")
-    @ResponseBody
-    public Result add(@RequestBody JSONObject json) {
-        result = new Result();
-        Role m = JSONObject.parseObject(json.toJSONString(),Role.class);
-        boolean flag = service.add(m, json.getString("menus"));
-        if(flag){
-            result.setMessage("添加成功");
-        }else {
-            result.setMessage("添加失败");
-        }
-        result.setData(m);
-        result.setSuccess(flag);
         return result;
     }
 

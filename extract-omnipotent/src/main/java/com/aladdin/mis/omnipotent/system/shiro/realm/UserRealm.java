@@ -15,8 +15,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,22 +121,21 @@ public class UserRealm extends AuthorizingRealm {
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();
         DefaultWebSessionManager sessionManager = (DefaultWebSessionManager) securityManager.getSessionManager();
         //获取当前已登录的用户session列表
-        Collection<Session> sessions = sessionManager.getSessionDAO().getActiveSessions();
-        System.err.println(sessions.size());
-        Admin temp;
-        for(Session session : sessions){
-            //清除该用户以前登录时保存的session，强制退出
-            System.err.println(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
-            Object attribute = session.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
-            if (attribute == null) {
-                continue;
-            }
-
-            temp = (Admin) ((SimplePrincipalCollection) attribute).getPrimaryPrincipal();
-            if(username.equals(temp.getLoginName())) {
-                sessionManager.getSessionDAO().delete(session);
-            }
-        }
+//        Collection<Session> sessions = sessionManager.getSessionDAO().getActiveSessions();
+//        System.err.println(sessions.size());
+//        for(Session session : sessions){
+//            //清除该用户以前登录时保存的session，强制退出
+//            System.err.println(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
+//            Object attribute = session.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
+//            if (attribute == null) {
+//                continue;
+//            }
+//
+//            temp = (Admin) ((SimplePrincipalCollection) attribute).getPrimaryPrincipal();
+//            if(username.equals(temp.getLoginName())) {
+//                sessionManager.getSessionDAO().delete(session);
+//            }
+//        }
 
         Collection<Session> sessions2 = sessionManager.getSessionDAO().getActiveSessions();
         System.err.println(sessions2.size());

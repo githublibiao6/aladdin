@@ -17,7 +17,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.Cookie;
 import org.apache.shiro.web.servlet.ShiroHttpSession;
 import org.apache.shiro.web.servlet.SimpleCookie;
-import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -168,6 +167,8 @@ public class ShiroConfig {
         cookie.setName("WEBID");
         cookie.setHttpOnly(true);
         sessionManager.setSessionIdCookie(cookie);
+        // 处理sessionDao
+//        sessionManager.setSessionDAO();
 
         // 单位为毫秒，600000毫秒为1个小时
         sessionManager.setSessionValidationInterval(3600000 * 12);

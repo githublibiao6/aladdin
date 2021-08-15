@@ -77,6 +77,7 @@ public class AdminController extends GlobalController {
     @ResponseBody
     public List<Admin> treeList() {
         List<Admin> list = service.list();
+        service.insertSelective(new Admin());
         return list;
     }
 

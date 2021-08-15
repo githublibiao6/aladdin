@@ -24,17 +24,17 @@ public interface GlobalService<T> {
 
     /**
      * 插入实体
-     * @param model) 实体
+     * @param model 实体
      * @return model
      */
-    BaseModel insertSelective(BaseModel model);
+    int insertSelective(BaseModel model);
 
     /**
      * 插入实体
      * @param model 实体
      * @return model
      */
-    BaseModel updateSelective(BaseModel model);
+    int updateSelective(BaseModel model);
     /**
      * 更新实体
      * @param primaryKey) 实体

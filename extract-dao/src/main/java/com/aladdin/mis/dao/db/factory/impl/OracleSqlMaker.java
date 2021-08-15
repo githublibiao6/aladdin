@@ -4,6 +4,7 @@ package com.aladdin.mis.dao.db.factory.impl;
  */
 
 import com.aladdin.mis.dao.db.factory.BaseSqlMaker;
+import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;
@@ -16,12 +17,12 @@ import java.util.List;
 public class OracleSqlMaker extends BaseSqlMaker {
 
     @Override
-    public JSONObject saveSql(String tableName, String primaryKey, List<JSONObject> list) {
+    public JSONObject saveSql(String tableName, String primaryKey, List<TableFieldInfo> list) {
         return null;
     }
 
     @Override
-    public String updateSql(String tableName, String primaryKey, List<JSONObject> list) {
+    public String updateSql(String tableName, String primaryKey, List<TableFieldInfo> list) {
         return null;
     }
 }

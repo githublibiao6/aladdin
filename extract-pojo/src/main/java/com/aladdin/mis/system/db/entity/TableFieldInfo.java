@@ -12,7 +12,9 @@ import lombok.Data;
  */
 @Data
 public class TableFieldInfo {
+    private String tableName;
     private String fieldName;
+    private Object fieldValue;
     private String columnName;
     private String columnComment;
     private String colType;

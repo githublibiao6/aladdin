@@ -129,7 +129,6 @@ public class MenuController extends GlobalController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    @WebLog
     public Result list() {
 //        String hello = dubboService.sayHello("  dubbo "); // 执行远程方法
         List<Menu> list = service.list(null);

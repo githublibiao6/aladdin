@@ -4,8 +4,8 @@ package com.aladdin.mis.dao.db.factory.impl;
  */
 
 import com.aladdin.mis.dao.db.factory.BaseSqlMaker;
+import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,21 +22,22 @@ import java.util.concurrent.atomic.AtomicReference;
 public class MysqlSqlMaker extends BaseSqlMaker {
 
     @Override
-    public JSONObject saveSql(String tableName, String primaryKey, List<JSONObject> list) {
+    public JSONObject saveSql(String tableName, String primaryKey, List<TableFieldInfo> list) {
         // 设置默认的id
         AtomicReference<String> id = new AtomicReference<>(UUID.randomUUID().toString());
         StringBuilder sql = new StringBuilder("INSERT INTO "+tableName);
-        List<JSONObject> columns = new ArrayList<>();
+        List<TableFieldInfo> columns = new ArrayList<>();
         AtomicReference<String> primaryValue = new AtomicReference<>("");
         list.forEach(t->{
-            if(primaryKey.equals(t.getString("table_field"))){
-                if(StringUtils.isBlank(t.getString("field_value"))){
-                    t.put("field_value", id);
-                }else {
-                    id.set(t.getString("field_value"));
-                }
-            }
-            if(t.get("field_value") != null){
+//            id 默认为自增的int
+//            if(primaryKey.equals(t.getColumnName())){
+//                if(t.getFieldValue() != null){
+//                    t.put("field_value", id);
+//                }else {
+//                    id.set(t.getString("field_value"));
+//                }
+//            }
+            if(t.getFieldValue() != null){
                 columns.add(t);
             }
         });
@@ -46,23 +47,23 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         sql.append("(");
         columns.forEach(t->{
 
-            sql.append(t.getString("table_field")).append(",");
+            sql.append(t.getColumnName()).append(",");
         });
         sql.deleteCharAt(sql.length()-1);
         sql.append(" ) VALUES (");
         columns.forEach(t->{
-            switch (t.getString("field_type")){
+            switch (t.getColType()){
                 case "int":
-                    sql.append(t.getIntValue("field_value")).append(",");
+                    sql.append(t.getFieldValue()).append(",");
                     break;
                 case "String":
                     sql.append("'")
-                            .append(t.getString("field_value"))
+                            .append(t.getFieldValue())
                             .append("'")
                             .append(",");
                     break;
                 case "Date":
-                    Date date = t.getDate("field_value");
+                    Date date = (Date) t.getFieldValue();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String value = sdf.format(date);
                     sql.append("'")
@@ -84,34 +85,34 @@ public class MysqlSqlMaker extends BaseSqlMaker {
     }
 
     @Override
-    public String updateSql(String tableName, String primaryKey, List<JSONObject> list) {
+    public String updateSql(String tableName, String primaryKey, List<TableFieldInfo> list) {
 //        UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
         StringBuilder sql = new StringBuilder("UPDATE "+tableName +" SET ");
-        List<JSONObject> columns = new ArrayList<>();
-        AtomicReference<String> primaryValue = new AtomicReference<>("");
+        List<TableFieldInfo> columns = new ArrayList<>();
+        AtomicReference<Object> primaryValue = new AtomicReference<>("");
         list.forEach(t->{
-            if(primaryKey.equals(t.getString("table_field"))){
-                primaryValue.set(t.getString("field_value"));
-            }else if(t.get("field_value") != null){
+            if(primaryKey.equals(t.getColumnName())){
+                primaryValue.set(t.getFieldValue());
+            }else if(t.getFieldValue() != null){
                 columns.add(t);
             }
         });
-        if(StringUtils.isBlank(primaryValue.get())){
+        if(primaryValue.get() == null){
             throw new RuntimeException("update must has primary key");
         }
         columns.forEach(t->{
-            switch (t.getString("field_type")){
+            switch (t.getColType()){
                 case "int":
-                    sql.append(t.getString("table_field")).append("=")
-                            .append(t.getIntValue("field_value")).append(",");
+                    sql.append(t.getFieldValue()).append("=")
+                            .append(t.getFieldValue()).append(",");
                     break;
                 case "String":
-                    sql.append(t.getString("table_field")).append("=").append("'")
-                            .append(t.getString("field_value")).append("'").append(",");
+                    sql.append(t.getFieldValue()).append("=").append("'")
+                            .append(t.getFieldValue()).append("'").append(",");
                     break;
                 case "Date":
-                    sql.append(t.getString("table_field")).append("=");
-                    Date date = t.getDate("field_value");
+                    sql.append(t.getFieldValue()).append("=");
+                    Date date = (Date) t.getFieldValue();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String value = sdf.format(date);
                     sql.append("'")

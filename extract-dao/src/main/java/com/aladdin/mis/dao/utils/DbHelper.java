@@ -58,20 +58,25 @@ public class DbHelper {
         DruidPooledConnection conn = DbHelper.getInstance().getConnection(dataSource);
         //3.操作数据库，实现增删改查
         Statement stmt = null;
-        int rs ;
+        int count ;
         try {
             conn.setAutoCommit(false);
             stmt = conn.createStatement();
-            rs = stmt.executeUpdate(sql);
+            count = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             //如果有数据，rs.next()返回true
             //获取列集
-            if(rs>0) {
+            if(count>0) {
                 // 更新/删除成功 提交事务
                 //提交事务
                 conn.commit();
+                ResultSet rs = stmt.getGeneratedKeys();
+                while(rs.next()){
+                    return rs.getInt(1);
+                }
             }else{
                 // 更新/删除失败 回滚事务
                 conn.rollback();
+                return 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,7 +85,7 @@ public class DbHelper {
             // 关闭记录集
             closeConnection(null, conn, stmt);
         }
-        return rs;
+        return 0;
     }
 
     /**

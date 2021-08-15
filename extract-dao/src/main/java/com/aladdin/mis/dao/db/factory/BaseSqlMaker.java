@@ -3,6 +3,7 @@ package com.aladdin.mis.dao.db.factory;
   Created by cles on 2020/5/31 21:41
  */
 
+import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public abstract class BaseSqlMaker {
      * @return: java.lang.String
      * @version: 1.0.0
      */
-    public abstract JSONObject saveSql(String tableName,String primaryKey, List<JSONObject> list);
+    public abstract JSONObject saveSql(String tableName,String primaryKey, List<TableFieldInfo> list);
 
     /**
      * 功能描述：
@@ -56,5 +57,5 @@ public abstract class BaseSqlMaker {
      * @return: java.lang.String
      * @version: 1.0.0
      */
-    public abstract String updateSql(String tableName,String primaryKey, List<JSONObject> list);
+    public abstract String updateSql(String tableName,String primaryKey, List<TableFieldInfo> list);
 }

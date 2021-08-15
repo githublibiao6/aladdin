@@ -50,7 +50,7 @@ public class BaseModelUtil {
 //        }else {
 //            return pks.get(0);
 //        }
-        return "";
+        return "id";
 
     }
 
