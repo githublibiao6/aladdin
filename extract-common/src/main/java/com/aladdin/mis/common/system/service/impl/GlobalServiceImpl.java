@@ -49,11 +49,10 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public int insertSelective(BaseModel baseModel) {
+    public <T> T insertSelective(BaseModel baseModel) {
         TableInfo table = baseModel.save();
         int id = Db.use().save(table.getTableName(), "id", table.getFields());
-        return  id;
-//        return baseModel;
+        return  detailQuery(id);
     }
 
     @Override
@@ -63,9 +62,13 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public int updateSelective(BaseModel baseModel) {
+    public <T> T updateSelective(BaseModel baseModel) {
         TableInfo table = baseModel.update();
-        return Db.use().update(table.getTableName(), "id", table.getFields());
+        int count = Db.use().update(table.getTableName(), "id", table.getFields());
+        if(count > 0){
+            return detailQuery(table.getIdValue());
+        }
+        return null;
     }
 
     @Override
