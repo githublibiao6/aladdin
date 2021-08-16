@@ -112,7 +112,7 @@ public class ShiroConfig {
          *SecurityManager安全管理器需要到realm中去验证认证信息，所以给SecurityManager设置Realm。*/
         DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
         DefaultSessionStorageEvaluator defaultSessionStorageEvaluator = new DefaultSessionStorageEvaluator();
-        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
+//        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
         subjectDAO.setSessionStorageEvaluator(defaultSessionStorageEvaluator);
         manager.setSubjectDAO(subjectDAO);
 
@@ -136,6 +136,7 @@ public class ShiroConfig {
 
         return sessionManager;
     }*/
+
 
     /**
      * @Description: 自定义的 shiro session 缓存管理器
@@ -173,7 +174,7 @@ public class ShiroConfig {
         // 单位为毫秒，600000毫秒为1个小时
         sessionManager.setSessionValidationInterval(3600000 * 12);
         // 3600000 milliseconds = 1 hour
-        sessionManager.setGlobalSessionTimeout(3600000 * 12);
+        sessionManager.setGlobalSessionTimeout(1000 * 60 * 60 * 12);
         // 是否删除无效的，默认也是开启
         sessionManager.setDeleteInvalidSessions(true);
         return sessionManager;

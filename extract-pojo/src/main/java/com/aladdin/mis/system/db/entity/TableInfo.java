@@ -14,6 +14,7 @@ import java.util.List;
  */
 @Data
 public class TableInfo {
+    private String className;
     private String tableName;
     private String tableComment;
     private List<TableFieldInfo> fields;
