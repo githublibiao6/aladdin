@@ -1,5 +1,6 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @author lb
  *
  */
-public interface UserService {
+public interface UserService extends GlobalService<User> {
 
 
     /**

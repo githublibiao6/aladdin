@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
@@ -110,8 +111,8 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     }
 
     @Override
-    public Menu findById(String menuId){
-        Menu m = detailQuery(menuId, Menu.class);
+    public Menu findById(Integer menuId){
+        Menu m = detailQuery(menuId);
         System.err.println(m);
         return m;
     }

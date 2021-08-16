@@ -1,5 +1,7 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.manager.bean.Employee;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class EmployeeService {
+public class EmployeeService  extends GlobalServiceImpl<Employee> {
 
 //    @Autowired
 //    EmployeeDao dao;

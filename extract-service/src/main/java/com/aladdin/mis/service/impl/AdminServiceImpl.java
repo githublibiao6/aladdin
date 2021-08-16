@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
@@ -16,7 +17,7 @@ import java.util.UUID;
  * @date 2018年6月5日 下午8:55:47
  */
 @Service
-public class AdminServiceImpl extends GlobalServiceImpl implements AdminService {
+public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminService {
 
     @Autowired
     AdminDao dao;

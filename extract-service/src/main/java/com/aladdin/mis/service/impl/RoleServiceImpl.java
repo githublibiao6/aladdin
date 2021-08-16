@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.RoleDao;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
@@ -23,7 +24,7 @@ import java.util.Set;
 *
  */
 @Service
-public class RoleServiceImpl extends GlobalServiceImpl implements RoleService {
+public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleService {
 
     @Autowired
     RoleDao dao;
@@ -80,10 +81,8 @@ public class RoleServiceImpl extends GlobalServiceImpl implements RoleService {
 
     @Override
     public boolean remove(Integer id){
-        Role role = new Role();
-        role.setId(id);
-//        return role.delete();
-        return false;
+        deleteById(id);
+        return  true;
     }
     @Override
     public boolean update(Role role, String menus){

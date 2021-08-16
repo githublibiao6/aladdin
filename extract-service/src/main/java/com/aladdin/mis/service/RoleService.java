@@ -1,5 +1,6 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
@@ -12,7 +13,7 @@ import java.util.Set;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
-public interface RoleService {
+public interface RoleService extends GlobalService<Role> {
     /**
      * 功能描述：
      *  < 分页获取 >

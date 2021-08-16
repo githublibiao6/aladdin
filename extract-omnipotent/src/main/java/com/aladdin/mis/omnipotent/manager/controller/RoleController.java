@@ -1,9 +1,9 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.manager.bean.Role;
-import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.manager.bean.Role;
+import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.RoleServiceImpl;
 import com.alibaba.fastjson.JSONObject;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RequestMapping("roles")
 @Controller
-public class RoleController extends GlobalController {
+public class RoleController extends GlobalController/*<Role, RoleServiceImpl>*/ {
 
     @Autowired
     RoleServiceImpl service;

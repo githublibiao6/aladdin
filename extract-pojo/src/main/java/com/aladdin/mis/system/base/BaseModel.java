@@ -48,15 +48,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
         TableInfo info = new TableInfo();
         info.setTableName(getTableName());
         List<TableFieldInfo> list =  getTableField();
-        // 生成时间，与生成人员
-        list.forEach(t->{
-            if(CREATE_TIME_FIELD.equals(t.getColumnName())){
-//                t.setFieldValue(CREATE_TIME_FIELD, new Date());
-            }
-            if(CREATE_USER_FIELD.equals(t.getFieldValue())){
-//                t.put(CREATE_USER_FIELD, SessionUtils.getUserId());
-            }
-        });
+
         list.remove(0);
         info.setFields(list);
         return info;
@@ -71,21 +63,23 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
      * @return: boolean
      * @version: 1.0.0
      */
-    public boolean delete(){
+    public TableInfo delete(){
+        TableInfo info = new TableInfo();
+        info.setTableName(getTableName());
         String tableName = getTableName();
         List<TableFieldInfo> list =  getTableField();
         String primaryKey = getPrimaryKey(tableName);
-        AtomicReference<Object> id = new AtomicReference<>("");
+        AtomicReference<Integer> id = new AtomicReference<>();
         list.forEach(t->{
             if(primaryKey.equals(t.getColumnName())){
-                id.set(t.getFieldValue());
+                id.set((Integer) t.getFieldValue());
             }
         });
         if(id.get() == null){
             throw new RuntimeException("primary key can not be null");
         }
-//        Db.use().deleteById(tableName , getPrimaryKey(tableName) ,id.get());
-        return true;
+        info.setIdValue(id.get());
+        return info;
     }
 
     /**
@@ -142,7 +136,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
      * @return: java.lang.String
      * @version: 1.0.0
      */
-    private String getTableName(){
+    public String getTableName(){
         return BaseModelUtil.getTableName(this.getClass());
     }
 

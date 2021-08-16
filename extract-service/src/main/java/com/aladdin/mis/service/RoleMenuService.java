@@ -1,5 +1,6 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.RoleMenu;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
-public interface RoleMenuService {
+public interface RoleMenuService extends GlobalService<RoleMenu> {
 
     /**
      * 功能描述：

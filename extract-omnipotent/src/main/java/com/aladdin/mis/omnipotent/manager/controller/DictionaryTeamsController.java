@@ -24,7 +24,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "dictionaryteams")
-public class DictionaryTeamsController extends GlobalController {
+public class DictionaryTeamsController extends GlobalController/*<DictionaryTeams, DictionaryTeamsServiceImpl>*/ {
 
     @Autowired
     DictionaryServiceImpl dicService;

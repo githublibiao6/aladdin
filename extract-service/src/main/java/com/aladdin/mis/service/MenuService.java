@@ -1,6 +1,7 @@
 package com.aladdin.mis.service;
 
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
@@ -18,7 +19,7 @@ import java.util.Set;
  * @return:
  * @version: 1.0.0
  */
-public interface MenuService {
+public interface MenuService  extends GlobalService<Menu> {
     /**
      * 功能描述：
      *  < 获取所有 >
@@ -108,7 +109,7 @@ public interface MenuService {
      * @return: com.apps.omnipotent.manager.bean.Menu
      * @version: 1.0.0
      */
-    Menu findById(String id);
+    Menu findById(Integer id);
 
     /**
      * 根据角色获取 菜单

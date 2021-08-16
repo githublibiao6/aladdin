@@ -1,5 +1,6 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dictionary;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author lb
  *
  */
-public interface DictionaryService {
+public interface DictionaryService extends GlobalService<Dictionary> {
     /**
      * 功能描述：
      *  <获取全部字典>

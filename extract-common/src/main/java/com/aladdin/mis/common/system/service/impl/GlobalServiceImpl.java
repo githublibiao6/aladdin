@@ -1,9 +1,9 @@
-package com.aladdin.mis.service.impl;
+package com.aladdin.mis.common.system.service.impl;
 
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.global.GlobalMapper;
 import com.aladdin.mis.dao.utils.Db;
-import com.aladdin.mis.service.GlobalService;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.base.BaseModel;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
@@ -11,6 +11,8 @@ import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
@@ -30,16 +32,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
 
     @Override
-    public <T> T detailQuery(String id, Class<T> clazz) {
+    public <T> T detailQuery(Integer id) {
 
+        Class<T> clazz = (Class<T>) getT();
         String tableName = BaseModelUtil.getTableName(clazz);
         String primaryKey = BaseModelUtil.getPrimaryKey(tableName);
         TableInfo table = MainDb.getTableInfo(tableName);
-        String sql = "select * from "+tableName+" m where m.sys005='1' and "+primaryKey+"='"+id+"'";
+        String sql = "select * from "+tableName+" m where "+primaryKey+"="+id ;
         Map map = Db.use().findFirst(sql);
         List<TableFieldInfo> list = table.getFields();
         JSONObject json = new JSONObject();
-
         list.forEach(t->{
             json.put(t.getFieldName(), map.get(t.getColumnName()));
         });
@@ -55,9 +57,9 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public boolean deleteById(String primaryKey) {
-
-        return false;
+    public boolean deleteById(Integer primaryKey) {
+        Class<T> m = getT();
+        return Db.use().deleteById(BaseModelUtil.getTableName(m) , "id",  primaryKey) > 0;
     }
 
     @Override
@@ -69,10 +71,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     @Override
     public boolean delete(BaseModel baseModel) {
         try{
-//            baseModel.delete();
+            TableInfo table = baseModel.delete();
+            return Db.use().deleteById(table.getTableName(), "id",  table.getIdValue()) > 0;
         }catch (Exception e){
             return false;
         }
-        return true;
+    }
+
+    private Class<T> getT() {
+        Type type = getClass().getGenericSuperclass();
+        Type[] parameter = ((ParameterizedType) type).getActualTypeArguments();
+        return (Class<T>)parameter[0];
     }
 }

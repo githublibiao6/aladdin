@@ -27,8 +27,8 @@ public abstract class BaseSqlMaker {
      * @return: java.lang.String
      * @version: 1.0.0
      */
-    public String deleteSql(String tableName,String primaryKey, String id){
-        return "update "+tableName+"  set sys005 = '0' where "+primaryKey+"='"+id+"'";
+    public String deleteSql(String tableName,String primaryKey, Integer id){
+        return "update "+tableName+"  set sys005 = '0' where "+primaryKey+"= "+id ;
     }
 
     /**

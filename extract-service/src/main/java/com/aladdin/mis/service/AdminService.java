@@ -1,5 +1,6 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/28 23:13
 */
-public interface AdminService {
+public interface AdminService  extends GlobalService<Admin> {
     List<Admin> list();
     List<Admin> pagelist();
     boolean add(Admin menu);

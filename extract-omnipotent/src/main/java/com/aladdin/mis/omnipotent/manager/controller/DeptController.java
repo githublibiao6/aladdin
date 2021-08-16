@@ -1,5 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.service.impl.DeptServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @RequestMapping("dept")
 @Controller
-public class DeptController {
+public class DeptController extends GlobalController/*<Dept, DeptServiceImpl>*/ {
 
     @Autowired
     DeptServiceImpl service;

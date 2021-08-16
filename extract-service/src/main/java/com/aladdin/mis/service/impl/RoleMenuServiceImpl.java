@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.RoleMenuMapper;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.service.RoleMenuService;
@@ -18,7 +19,7 @@ import java.util.List;
 *
  */
 @Service
-public class RoleMenuServiceImpl extends GlobalServiceImpl implements RoleMenuService {
+public class RoleMenuServiceImpl extends GlobalServiceImpl<RoleMenu> implements RoleMenuService {
 
     @Autowired
     RoleMenuMapper mapper;

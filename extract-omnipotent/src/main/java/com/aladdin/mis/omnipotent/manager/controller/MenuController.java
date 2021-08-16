@@ -178,7 +178,7 @@ public class MenuController extends GlobalController {
 
     @RequestMapping("/findById")
     @ResponseBody
-    public Result findById(String menuId) {
+    public Result findById(Integer menuId) {
         Menu menu = service.findById(menuId);
         result.setData(menu);
         return result;

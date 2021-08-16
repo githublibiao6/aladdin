@@ -1,4 +1,4 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.common.system.service;
 
 import com.aladdin.mis.system.base.BaseModel;
 
@@ -17,10 +17,9 @@ public interface GlobalService<T> {
      *
      * 插入实体
      * @param id 实体
-     * @param clazz 所需class
      * @return model
      */
-    <T> T detailQuery(String id, Class<T> clazz);
+    <T> T detailQuery(Integer id);
 
     /**
      * 插入实体
@@ -40,7 +39,7 @@ public interface GlobalService<T> {
      * @param primaryKey) 实体
      * @return model
      */
-    boolean deleteById(String primaryKey);
+    boolean deleteById(Integer primaryKey);
 
     /**
      * 删除

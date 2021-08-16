@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DicTeamsDao;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
@@ -16,7 +17,7 @@ import java.util.List;
  *
  */
 @Service
-public class DictionaryTeamsServiceImpl extends GlobalServiceImpl implements DictionaryTeamsService {
+public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeams> implements DictionaryTeamsService {
 
     @Autowired
     private DicTeamsDao dao;

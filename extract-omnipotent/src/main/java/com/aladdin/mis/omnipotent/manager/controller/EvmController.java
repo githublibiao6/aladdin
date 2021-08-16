@@ -1,6 +1,5 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.omnipotent.system.utils.EVMUtils;
 import com.google.zxing.Result;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/evm")
-public class EvmController extends GlobalController {
+public class EvmController {
 
 
     /** 测试异步执行

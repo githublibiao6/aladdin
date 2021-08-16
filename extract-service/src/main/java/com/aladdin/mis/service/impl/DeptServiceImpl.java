@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DeptDao;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
@@ -20,7 +21,7 @@ import java.util.Set;
 *
  */
 @Service
-public class DeptServiceImpl extends GlobalServiceImpl implements DeptService {
+public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptService {
 
     @Autowired
     DeptDao dao;

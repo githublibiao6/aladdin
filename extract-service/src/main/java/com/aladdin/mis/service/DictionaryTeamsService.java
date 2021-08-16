@@ -1,5 +1,6 @@
 package com.aladdin.mis.service;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public interface DictionaryTeamsService {
+public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> {
 
 
     /**

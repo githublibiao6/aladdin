@@ -1,5 +1,6 @@
 package com.aladdin.mis.service.impl;
 
+import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.ImgDao;
 import com.aladdin.mis.service.ImgService;
 import com.aladdin.mis.manager.bean.Img;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
 *
  */
 @Service
-public class ImgServiceImpl extends GlobalServiceImpl implements ImgService {
+public class ImgServiceImpl extends GlobalServiceImpl<Img> implements ImgService {
 
     @Autowired
     ImgDao dao;

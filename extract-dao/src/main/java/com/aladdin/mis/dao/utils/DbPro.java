@@ -83,7 +83,7 @@ public class DbPro {
     * @Author: cles
     * @Date: 2020/6/14 23:25
     */
-    public int  deleteById(String tableName,String primaryKey, String id){
+    public int  deleteById(String tableName,String primaryKey, Integer id){
         String sql = DbMaker.getDbSqlMaker(dataSource.getDbType()).deleteSql(tableName, primaryKey, id);
         return DbHelper.update(dataSource, sql);
     }

@@ -1,8 +1,9 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.service.AdminService;
 import com.aladdin.mis.service.impl.AdminServiceImpl;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @RequestMapping("admin")
 @Controller
-public class AdminController extends GlobalController {
+public class AdminController extends GlobalController<Admin> {
 
     @Autowired
     AdminServiceImpl service;

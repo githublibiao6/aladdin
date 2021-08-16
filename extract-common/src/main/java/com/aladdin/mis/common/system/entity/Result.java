@@ -1,5 +1,9 @@
 package com.aladdin.mis.common.system.entity;
 
+import com.aladdin.mis.common.system.support.ResultCodeEnum;
+import lombok.Data;
+
+@Data
 public class Result {
     private  String message="successful";
     private  boolean success=true;
@@ -7,58 +11,15 @@ public class Result {
     private  int count;
     private Object data;
 
-    public boolean getSuccess() {
-        return success;
+    public Result(){
+
     }
 
-    public boolean isSuccess() {
-        return success;
+    public Result(boolean success, int code, String message){
+
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "message='" + message + '\'' +
-                ", success=" + success +
-                ", code='" + code + '\'' +
-                ", count=" + count +
-                ", data=" + data +
-                '}';
+    public static Result success(Object data){
+        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg());
     }
 }

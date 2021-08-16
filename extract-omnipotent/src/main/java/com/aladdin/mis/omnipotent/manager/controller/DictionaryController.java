@@ -1,9 +1,9 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.dao.utils.Db;
-import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.service.impl.DictionaryServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/dictionary")
-public class DictionaryController extends GlobalController {
+public class DictionaryController extends GlobalController/*<Dictionary, DictionaryServiceImpl>*/{
 
     @Autowired
     private DictionaryServiceImpl dicService;

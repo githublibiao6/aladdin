@@ -1,9 +1,9 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.aladdin.mis.service.impl.UserServiceImpl;
@@ -26,7 +26,7 @@ import java.util.Set;
  */
 @RequestMapping("user")
 @Controller
-public class UserController extends GlobalController {
+public class UserController extends GlobalController/*<User, UserServiceImpl>*/ {
 
     @Autowired
     private UserServiceImpl service;
