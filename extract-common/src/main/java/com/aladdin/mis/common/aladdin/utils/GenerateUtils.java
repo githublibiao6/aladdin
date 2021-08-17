@@ -27,25 +27,5 @@ public  class GenerateUtils {
         System.err.println(LocalDateTime.now());
 //        GenerateEntityUtils.writeContentToFile(po);
 
-        String code = null;
-        String[] areaCode = {"","",""};
-        if(code != null){
-            if(code.length() >= 12){
-                areaCode[0] = "\""+code.substring(0, 6)+"\"";
-                areaCode[1] = "\""+code.substring(0, 9)+"\"";
-                areaCode[2] = "\""+code.substring(0, 12)+"\"";
-            }else if(code.length() >= 9){
-                areaCode[0] = "\""+code.substring(0, 6)+"\"";
-                areaCode[1] = "\""+code.substring(0, 9)+"\"";
-                areaCode[2] = "\""+code+"\"";
-            }else {
-                areaCode[0] = "\""+code.substring(0, 6)+"\"";
-                areaCode[1] = "\""+code+"\"";
-                areaCode[2] = "\""+code+"\"";
-            }
-        }else {
-            areaCode = new String[0];
-        }
-        System.err.println(Arrays.toString(areaCode));
     }
 }
