@@ -103,15 +103,15 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         columns.forEach(t->{
             switch (t.getColType()){
                 case "int":
-                    sql.append(t.getFieldValue()).append("=")
+                    sql.append(t.getColumnName()).append("=")
                             .append(t.getFieldValue()).append(",");
                     break;
                 case "String":
-                    sql.append(t.getFieldValue()).append("=").append("'")
+                    sql.append(t.getColumnName()).append("=").append("'")
                             .append(t.getFieldValue()).append("'").append(",");
                     break;
                 case "Date":
-                    sql.append(t.getFieldValue()).append("=");
+                    sql.append(t.getColumnName()).append("=");
                     Date date = (Date) t.getFieldValue();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String value = sdf.format(date);

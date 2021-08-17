@@ -2,7 +2,6 @@ package com.aladdin.mis.common.system.service.impl;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.dao.db.config.MainDb;
-import com.aladdin.mis.dao.global.GlobalMapper;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.system.base.BaseModel;
@@ -11,7 +10,6 @@ import com.aladdin.mis.system.db.entity.TableInfo;
 import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -22,10 +20,8 @@ import java.util.Map;
 /**
  * 功能描述：
  *  < 全局service方法 >
- * @Description:
  * @Author: cles
  * @Date: 2020/6/23 23:23
- * @return:
  * @version: 1.0.0
  */
 public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T> {
@@ -36,19 +32,22 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private static final String CREATE_USER_FIELD = "sys003";
     private static final String UPDATE_USER_FIELD = "sys004";
 
-    @Autowired
-    GlobalMapper<T> mapper;
-
-
     @Override
     public <T> T detailQuery(Integer id) {
-
         Class<T> clazz = (Class<T>) getT();
+        return detailQuery(id, clazz);
+    }
+
+    private <T> T detailQuery(Integer id, Class<T> clazz) {
+
         String tableName = BaseModelUtil.getTableName(clazz);
         String primaryKey = BaseModelUtil.getPrimaryKey(tableName);
         TableInfo table = MainDb.getTableInfo(tableName);
         String sql = "select * from "+tableName+" m where "+primaryKey+"="+id ;
         Map map = Db.use().findFirst(sql);
+        if(map == null){
+            return null;
+        }
         List<TableFieldInfo> list = table.getFields();
         JSONObject json = new JSONObject();
         list.forEach(t->{
@@ -59,7 +58,12 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
     @Override
     public <T> T insertSelective(BaseModel baseModel) {
-        TableInfo table = baseModel.save();
+        return  (T)detailQuery(insert(baseModel), baseModel.getClass());
+    }
+
+    @Override
+    public int insert(BaseModel baseModel) {
+        TableInfo table = baseModel.saveInfo();
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
         Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
@@ -78,22 +82,18 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         time.setColType("Date");
         list.add(time);
         int id = Db.use().save(tableName, "id", list);
-        return  detailQuery(id);
+        return id;
     }
 
-    @Override
-    public boolean deleteById(Integer primaryKey) {
-        Class<T> m = getT();
-        return Db.use().deleteById(BaseModelUtil.getTableName(m) , "id",  primaryKey) > 0;
-    }
+
 
     @Override
     public  boolean updateSelective(BaseModel baseModel) {
-        TableInfo table = baseModel.update();
+        TableInfo table = baseModel.updateInfo();
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        TableFieldInfo user = new TableFieldInfo();
         Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
+        TableFieldInfo user = new TableFieldInfo();
         user.setFieldValue(admin.getId());
         user.setFieldName(UPDATE_USER_FIELD);
         user.setTableName(tableName);
@@ -108,16 +108,20 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         time.setColType("Date");
         list.add(time);
         int count = Db.use().update(tableName, "id", list);
-        if(count > 0){
-            return true;
-        }
-        return false;
+        return count > 0;
+    }
+
+
+    @Override
+    public boolean deleteById(Integer primaryKey) {
+        Class<T> m = getT();
+        return Db.use().deleteById(BaseModelUtil.getTableName(m) , "id",  primaryKey) > 0;
     }
 
     @Override
     public boolean delete(BaseModel baseModel) {
         try{
-            TableInfo table = baseModel.delete();
+            TableInfo table = baseModel.deleteInfo();
             return Db.use().deleteById(table.getTableName(), "id",  table.getIdValue()) > 0;
         }catch (Exception e){
             return false;

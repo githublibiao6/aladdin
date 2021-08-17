@@ -2,7 +2,6 @@ package com.aladdin.mis.common.system.controller;
 
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.system.base.BaseModel;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +14,7 @@ import java.net.UnknownHostException;
 /**
  * @author cles
  */
-public abstract class GlobalController<T extends BaseModel> {
+public abstract class GlobalController {
 
     @Autowired
     public HttpServletRequest request;

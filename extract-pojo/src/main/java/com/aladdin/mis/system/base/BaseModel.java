@@ -38,7 +38,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
      * @return: String
      * @version: 1.0.0
      */
-    public TableInfo save(){
+    public TableInfo saveInfo(){
         TableInfo info = new TableInfo();
         info.setTableName(getTableName());
         List<TableFieldInfo> list =  getTableField();
@@ -57,7 +57,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
      * @return: boolean
      * @version: 1.0.0
      */
-    public TableInfo delete(){
+    public TableInfo deleteInfo(){
         TableInfo info = new TableInfo();
         info.setTableName(getTableName());
         String tableName = getTableName();
@@ -108,7 +108,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
      * @return: boolean
      * @version: 1.0.0
      */
-    public TableInfo update(){
+    public TableInfo updateInfo(){
         TableInfo info = new TableInfo();
         info.setTableName(getTableName());
         List<TableFieldInfo> list =  getTableField();

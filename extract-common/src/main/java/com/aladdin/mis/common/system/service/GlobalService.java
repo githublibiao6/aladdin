@@ -21,12 +21,21 @@ public interface GlobalService<T> {
      */
     <T> T detailQuery(Integer id);
 
+
     /**
-     * 插入实体
+     * 直接插入，返回id
+     * @param baseModel model
+     * @return int
+     */
+    int insert(BaseModel baseModel);
+
+    /**
+     * 插入实体。返回当前实体
      * @param model 实体
      * @return model
      */
     <T> T insertSelective(BaseModel model);
+
 
     /**
      * 插入实体

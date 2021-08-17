@@ -117,7 +117,7 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
             RoleMenu roleMenu = new RoleMenu();
             roleMenu.setMenuId(menu);
             roleMenu.setRoleId(roleId);
-            roleMenu.save();
+            insertSelective(roleMenu);
         }
     }
 }

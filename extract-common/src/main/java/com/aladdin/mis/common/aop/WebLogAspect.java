@@ -11,7 +11,9 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
@@ -46,7 +48,7 @@ public class WebLogAspect {
 
 
     @Around(value = "@annotation(webLog)")
-    public void  doAround(ProceedingJoinPoint point, WebLog webLog){
+    public Object doAround(ProceedingJoinPoint point, WebLog webLog){
         //获取方法名（是方法名不是RequestMapping）
         String methodName = point.getSignature().getName();
         //获取所有参数和参数值
@@ -64,13 +66,13 @@ public class WebLogAspect {
         Object m = subject.getPrincipal();
         System.err.println(json);
         System.err.println(webLog.value());
+        Object result= null;
         try {
-            point.proceed();
+            result = point.proceed();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-
-        //UserLog log = method.getAnnotation(UserLog.class);
+        return result;
     }
 
     /**
