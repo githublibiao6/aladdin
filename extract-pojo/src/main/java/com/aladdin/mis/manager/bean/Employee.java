@@ -59,22 +59,7 @@ public class Employee extends GlobalModel {
      * 合同结束时间
      */
     private Date contractEnd;
-    /**
-     * 创建人
-     */
-    private String createUser;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-    /**
-     * 修改人
-     */
-    private Date modifyUser;
-    /**
-     * 修改时间
-     */
-    private Date modifyTime;
+
     /**
      * 在职状态
      */

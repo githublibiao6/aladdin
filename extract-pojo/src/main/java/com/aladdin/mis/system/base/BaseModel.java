@@ -29,12 +29,6 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class BaseModel<T extends BaseModel> implements Serializable {
 
-    private static final String CREATE_TIME_FIELD = "sys001";
-    private static final String UPDATE_TIME_FIELD = "sys002";
-    private static final String CREATE_USER_FIELD = "sys002";
-    private static final String UPDATE_USER_FIELD = "sys002";
-    private static final String TABLE_FIELD = "table_field";
-    private static final String FIELD_VALUE = "field_value";
     /**
      * 功能描述：
      *  < 实体直接保存 >
@@ -207,7 +201,6 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             id.setTableName(tableName);
             id.setColumnName("id");
             id.setColType("int");
-            id.setColumnName("id");
         } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }

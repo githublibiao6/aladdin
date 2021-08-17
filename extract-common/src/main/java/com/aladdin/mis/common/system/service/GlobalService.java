@@ -33,7 +33,7 @@ public interface GlobalService<T> {
      * @param model 实体
      * @return model
      */
-    <T> T updateSelective(BaseModel model);
+    boolean updateSelective(BaseModel model);
     /**
      * 更新实体
      * @param primaryKey) 实体

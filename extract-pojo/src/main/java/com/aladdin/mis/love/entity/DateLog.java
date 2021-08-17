@@ -40,39 +40,4 @@ public class DateLog extends GlobalModel {
 //     */
 //    @TableField("sub_title")
 //    private String subTitle;
-//
-//    /**
-//     * 创建者
-//     */
-//    @TableField("create_user")
-//    private String createUser;
-//    /**
-//     * 创建时间
-//     */
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-//    @TableField("create_time")
-//    private Date createTime;
-//
-//    /**
-//     * 创建者
-//     */
-//    @TableField("modify_user")
-//    private String modifyUser;
-//    /**
-//     * 创建时间
-//     */
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-//    @TableField("modify_time")
-//    private Date modifyTime;
-//
-//    /**
-//     * 生效标志
-//     */
-//    @TableField("effective_flag")
-//    private String effectiveFlag;
-//    /**
-//     * 删除标志
-//     */
-//    @TableField("delete_flag")
-//    private String deleteFlag;
 }

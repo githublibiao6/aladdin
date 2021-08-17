@@ -1,18 +1,21 @@
 package com.aladdin.mis.common.system.service.impl;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.global.GlobalMapper;
 import com.aladdin.mis.dao.utils.Db;
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.system.base.BaseModel;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
 import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +29,12 @@ import java.util.Map;
  * @version: 1.0.0
  */
 public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T> {
+
+
+    private static final String CREATE_TIME_FIELD = "sys001";
+    private static final String UPDATE_TIME_FIELD = "sys002";
+    private static final String CREATE_USER_FIELD = "sys003";
+    private static final String UPDATE_USER_FIELD = "sys004";
 
     @Autowired
     GlobalMapper<T> mapper;
@@ -51,7 +60,24 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     @Override
     public <T> T insertSelective(BaseModel baseModel) {
         TableInfo table = baseModel.save();
-        int id = Db.use().save(table.getTableName(), "id", table.getFields());
+        String tableName = table.getTableName();
+        List<TableFieldInfo> list = table.getFields();
+        Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
+        TableFieldInfo user = new TableFieldInfo();
+        user.setFieldValue(admin.getId());
+        user.setFieldName(CREATE_USER_FIELD);
+        user.setTableName(tableName);
+        user.setColumnName(CREATE_USER_FIELD);
+        user.setColType("int");
+        list.add(user);
+        TableFieldInfo time = new TableFieldInfo();
+        time.setFieldValue(new Date());
+        time.setFieldName(CREATE_TIME_FIELD);
+        time.setTableName(tableName);
+        time.setColumnName(CREATE_TIME_FIELD);
+        time.setColType("Date");
+        list.add(time);
+        int id = Db.use().save(tableName, "id", list);
         return  detailQuery(id);
     }
 
@@ -62,13 +88,30 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public <T> T updateSelective(BaseModel baseModel) {
+    public  boolean updateSelective(BaseModel baseModel) {
         TableInfo table = baseModel.update();
-        int count = Db.use().update(table.getTableName(), "id", table.getFields());
+        String tableName = table.getTableName();
+        List<TableFieldInfo> list = table.getFields();
+        TableFieldInfo user = new TableFieldInfo();
+        Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
+        user.setFieldValue(admin.getId());
+        user.setFieldName(UPDATE_USER_FIELD);
+        user.setTableName(tableName);
+        user.setColumnName(UPDATE_USER_FIELD);
+        user.setColType("int");
+        list.add(user);
+        TableFieldInfo time = new TableFieldInfo();
+        time.setFieldValue(new Date());
+        time.setFieldName(UPDATE_TIME_FIELD);
+        time.setTableName(tableName);
+        time.setColumnName(UPDATE_TIME_FIELD);
+        time.setColType("Date");
+        list.add(time);
+        int count = Db.use().update(tableName, "id", list);
         if(count > 0){
-            return detailQuery(table.getIdValue());
+            return true;
         }
-        return null;
+        return false;
     }
 
     @Override

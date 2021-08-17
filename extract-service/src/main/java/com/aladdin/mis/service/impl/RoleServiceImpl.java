@@ -59,12 +59,12 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
 
     @Override
     public boolean add(Role role, String menus) {
-//        Integer id = role.save();
-        int id = insertSelective(role);
-//        Integer id = 0;
-//        if(id != null){
-//            saveRoleMenu(id, menus);
-//        }
+        role = insertSelective(role);
+        System.err.println(role);
+        Integer id = 0;
+        if(role.getId() != null){
+            saveRoleMenu(id, menus);
+        }
         return false;
     }
 
@@ -86,11 +86,11 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
     }
     @Override
     public boolean update(Role role, String menus){
-//        if(role.update()){
-//            saveRoleMenu(role.getId(), menus);
-//        }else {
-//            return false;
-//        }
+        if(updateSelective(role)){
+            saveRoleMenu(role.getId(), menus);
+        }else {
+            return false;
+        }
         return true;
     }
 
@@ -117,7 +117,7 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
             RoleMenu roleMenu = new RoleMenu();
             roleMenu.setMenuId(menu);
             roleMenu.setRoleId(roleId);
-//            roleMenu.save();
+            roleMenu.save();
         }
     }
 }
