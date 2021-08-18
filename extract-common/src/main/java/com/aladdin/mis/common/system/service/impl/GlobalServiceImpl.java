@@ -62,7 +62,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public int insert(BaseModel baseModel) {
+    public Integer insert(BaseModel baseModel) {
         TableInfo table = baseModel.saveInfo();
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
@@ -81,8 +81,12 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         time.setColumnName(CREATE_TIME_FIELD);
         time.setColType("Date");
         list.add(time);
-        int id = Db.use().save(tableName, "id", list);
-        return id;
+        try{
+            Integer id = Db.use().save(tableName, "id", list);
+            return id;
+        }catch (Exception e){
+            return null;
+        }
     }
 
 

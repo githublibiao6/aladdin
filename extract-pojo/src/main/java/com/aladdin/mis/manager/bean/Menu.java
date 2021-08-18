@@ -19,8 +19,7 @@ import java.util.List;
 @Data
 @Table("be_menu")
 public class Menu extends GlobalModel {
-    @TableField("menu_id")
-    private String menuId;
+
     /**
      图标
      */
@@ -36,7 +35,7 @@ public class Menu extends GlobalModel {
     /**
      * 父级菜单
      */
-    private String parent;
+    private Integer parent;
     /**
      * 级别
      */
@@ -56,8 +55,10 @@ public class Menu extends GlobalModel {
     /**
      * 是否有子节点
      */
+    @TableField(exist = false)
     private boolean hasChildren;
 
+    @TableField(exist = false)
     private List<Menu> children;
 
 }

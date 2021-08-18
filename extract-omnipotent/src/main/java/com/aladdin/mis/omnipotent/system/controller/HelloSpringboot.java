@@ -31,7 +31,6 @@ public class HelloSpringboot {
      **/
     @RequestMapping("/index")
     public String say(Menu m, Model model, @RequestParam(value = "s",defaultValue = "1") String s) {
-        System.out.println(m.getParent());
         HelloService.me.index();
         List<Menu> list = service.list();
         model.addAttribute("list","list1231");

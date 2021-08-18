@@ -34,12 +34,11 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(@RequestBody JSONObject json) {
+    public Result add(@RequestBody Dictionary model) {
         result = new Result();
-        Dictionary m = JSONObject.parseObject(json.toJSONString(),Dictionary.class);
-        boolean flag = dicService.add(m);
-        result.setSuccess(flag);
-        if(flag){
+        Integer id = dicService.insert(model);
+        result.setSuccess(id != null);
+        if(result.isSuccess()){
             result.setMessage("添加成功");
         }else {
             result.setMessage("添加失败");
@@ -49,10 +48,9 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(@RequestBody JSONObject json) {
+    public Result update(@RequestBody Dictionary model) {
         result = new Result();
-        Dictionary m = JSONObject.parseObject(json.toJSONString(),Dictionary.class);
-        boolean flag = dicService.update(m);
+        boolean flag = dicService.updateSelective(model);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("更新成功");

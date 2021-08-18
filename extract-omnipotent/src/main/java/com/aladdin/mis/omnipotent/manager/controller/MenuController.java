@@ -114,7 +114,6 @@ public class MenuController extends GlobalController {
         result.setData(list);
         result.setCode(20000);
         result.setMessage("菜单信息");
-        System.err.println("获取完之后？");
         return result;
     }
 

@@ -2,7 +2,8 @@ package com.aladdin.mis.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
-import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.aladdin.mis.manager.qo.DictionaryQo;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 
@@ -19,14 +20,13 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * 功能描述：
      *  < 分页获取字典项 >
      * @Description: page
-     * @param dicId
-     * @param entity
+     * @param qo
      * @Author: cles
      * @Date: 2020/6/23 23:02
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageEntity page(Integer dicId, PageEntity entity);
+    PageInfo page(DictionaryQo qo);
     /**
      * 功能描述：
      *  <添加字典>

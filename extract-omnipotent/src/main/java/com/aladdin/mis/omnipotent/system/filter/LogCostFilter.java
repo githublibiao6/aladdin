@@ -30,9 +30,9 @@ public class LogCostFilter  implements Filter {
         String requestURI = request.getRequestURI();
         if (!requestURI.contains("login")) {
             System.err.println("LogCostFilter method" + request.getMethod());
-            String token = request.getHeader("X-Token");
-            System.err.println("LogCostFilter X-Token : "+ token);
-            filterChain.doFilter(servletRequest, servletResponse);
+//            String token = request.getHeader("X-Token");
+//            System.err.println("LogCostFilter X-Token : "+ token);
+//            filterChain.doFilter(servletRequest, servletResponse);
             /*if (session != null && session.getAttribute("name") != null) {
                 filterChain.doFilter(request, response);
             } else {

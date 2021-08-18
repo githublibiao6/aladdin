@@ -20,7 +20,7 @@ public interface EssayDao {
      * 获取全部dictionary
      * @return
      */
-    @Select( "select * from Essay m where m.delete_flag='1'")
+    @Select( "select * from Essay m where m.sys005='1'")
     List<Essay> listEssay();
 
     /**

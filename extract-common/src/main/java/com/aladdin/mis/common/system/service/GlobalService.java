@@ -27,7 +27,7 @@ public interface GlobalService<T> {
      * @param baseModel model
      * @return int
      */
-    int insert(BaseModel baseModel);
+    Integer insert(BaseModel baseModel);
 
     /**
      * 插入实体。返回当前实体

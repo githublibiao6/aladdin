@@ -116,7 +116,7 @@ public interface MenuDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
-    @Select("select t.* from be_menu t where sys005='1' and t.menu_id in (select m.menu_id from  be_role_menu m where role_id= #{roleId})")
+    @Select("select t.* from be_menu t where sys005='1' and t.id in (select m.menu_id from  be_role_menu m where role_id= #{roleId})")
     List<Menu> queryByRoleId(String roleId);
 
     /**

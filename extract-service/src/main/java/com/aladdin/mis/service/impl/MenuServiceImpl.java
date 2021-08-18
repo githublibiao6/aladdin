@@ -73,22 +73,22 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public List<Menu> tree(MenuQo qo) {
         List<Menu> list = list(qo);
-        convertMenuTree(list, "-1");
-        return list.stream().filter(s-> "-1".equals(s.getParent())).collect(Collectors.toList());
+        convertMenuTree(list, -1 );
+        return list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
     }
 
-    private void convertMenuTree(List<Menu> list,  String pid){
+    private void convertMenuTree(List<Menu> list,  Integer pid){
         list.forEach(t->{
             List<Menu> children = new ArrayList<>();
             if(pid.equals(t.getParent())){
                 for (Menu record : list) {
-                    if(record.getParent().equals(t.getMenuId())){
+                    if(record.getParent().equals(t.getId())){
                         children.add(record);
                     }
                 }
                 if(children.size() > 0){
                     children.forEach(child->{
-                        convertMenuTree(list, t.getMenuId());
+                        convertMenuTree(list, t.getId());
                     });
                     t.setChildren(children);
                     t.setHasChildren(true);
@@ -101,9 +101,8 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public boolean add(Menu menu) {
-        menu.setMenuId(UUID.randomUUID().toString());
         boolean flag = true;
-        int num = dao.add(menu);
+        int num = insertSelective(menu);
         if(num > 1){
             flag = false;
         }
@@ -139,12 +138,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public boolean update(Menu menu ){
-        boolean flag = false;
-        int num = dao.update(menu);
-        if(num > 0){
-            flag = true;
-        }
-        return flag;
+        return updateSelective(menu);
     }
 
     /**

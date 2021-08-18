@@ -18,7 +18,7 @@ public interface DicDao {
      * 获取全部dictionary
      * @return
      */
-    @Select( "select * from be_dictionary m where m.delete_flag='1'")
+    @Select( "select * from be_dictionary m where m.sys005='1'")
     List<Dictionary> listDictionary();
 
     /**

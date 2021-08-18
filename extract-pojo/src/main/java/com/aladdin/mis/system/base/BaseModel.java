@@ -160,7 +160,19 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
         Class<? extends BaseModel> clazz = this.getClass();
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields){
-           String fieldName  = field.getName();
+
+            String fieldName  = field.getName();
+
+            boolean tableFieldExists = field.isAnnotationPresent(TableField.class);
+            String column = field.getName();
+            if(tableFieldExists){
+                TableField tableField = field.getDeclaredAnnotation(TableField.class);
+                if(!tableField.exist()){
+                    continue;
+                }
+                column = tableField.value();
+            }
+
             TableFieldInfo obj = new TableFieldInfo();
             obj.setFieldName(fieldName);
             Type type = field.getGenericType();
@@ -180,13 +192,6 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
                 e.printStackTrace();
             }
             obj.setTableName(tableName);
-//            obj.setFieldName(clazz.getName());
-            boolean tableFieldExists = field.isAnnotationPresent(TableField.class);
-            String column = null;
-            if(tableFieldExists){
-                TableField tableField = field.getDeclaredAnnotation(TableField.class);
-                column = tableField.value();
-            }
             obj.setColumnName(column);
             list.add(obj);
         }

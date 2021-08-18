@@ -30,7 +30,7 @@ public class EssayController extends GlobalController {
 
     @RequestMapping("/page")
     @ResponseBody
-    public  Result pageList(HttpServletRequest request, PageEntity entity, @RequestHeader("X-Token") String token) {
+    public  Result pageList(HttpServletRequest request, PageEntity entity) {
         Subject subject = SecurityUtils.getSubject();
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);

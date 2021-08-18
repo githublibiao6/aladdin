@@ -25,7 +25,7 @@ public interface UserDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0
      */
-    @Select( "select * from be_user m where m.delete_flag='1' and name like '%${name}%'")
+    @Select( "select * from be_user m where m.sys005='1' and name like '%${name}%'")
     List<User> listUser(@Param("name") String name);
 
     /**
@@ -37,6 +37,6 @@ public interface UserDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0
      */
-    @Select( "select * from be_user m where m.delete_flag='1'")
+    @Select( "select * from be_user m where m.sys005='1'")
     List<User> pageUser();
 }
