@@ -100,7 +100,7 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
      * @version: 1.0.0
      */
     @Override
-    public Essay detail(String id) {
+    public Essay detail(Integer id) {
         return dao.findById(id);
     }
 }

@@ -72,5 +72,5 @@ public interface EssayService {
      * @return: com.apps.omnipotent.business.entity.Essay
      * @version: 1.0.0
      */
-    Essay detail(String id);
+    Essay detail(Integer id);
 }

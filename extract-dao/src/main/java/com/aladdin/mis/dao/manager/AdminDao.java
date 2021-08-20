@@ -2,8 +2,8 @@ package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * @author lb
  * @date 2018年6月5日 下午8:56:31
  */
-@Component
+@Mapper
 public interface AdminDao {
     /**
      * 功能描述：

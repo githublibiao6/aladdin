@@ -98,11 +98,10 @@ public class EssayController extends GlobalController {
 
     @RequestMapping("/detail")
     @ResponseBody
-    public Result detail(@RequestParam(value = "id",defaultValue = "") String id) {
+    public Result detail(@RequestParam(value = "id",defaultValue = "") Integer id) {
         result = new Result();
         Essay essay = service.detail(id);
         result.setData(essay);
-
         return result;
     }
 }
