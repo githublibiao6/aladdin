@@ -63,4 +63,6 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
 #  mybatis 驼峰
-
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
