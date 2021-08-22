@@ -4,9 +4,9 @@ package com.aladdin.mis.omnipotent.system.shiro.realm;
  */
 
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.service.AdminService;
-import com.aladdin.mis.service.impl.MenuServiceImpl;
-import com.aladdin.mis.service.impl.RoleServiceImpl;
+import com.aladdin.mis.manager.service.AdminService;
+import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
+import com.aladdin.mis.manager.service.impl.RoleServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;

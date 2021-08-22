@@ -22,14 +22,19 @@ public class MysqlTableInfo implements DbTableInfo {
     }
 
     @Override
-    public List<Map> listTableColumns() {
+    public List<Map> listTableColumns(String tableName) {
         String tableSchema = Db.use().getTableSchema();
-        return Db.use().find("SELECT " +
+        String sql = "SELECT " +
                 "table_name,column_name," +
                 "data_type col_type," +
                 "CHARACTER_MAXIMUM_LENGTH col_length," +
                 "column_type," +
+                "column_comment," +
                 "column_key pk FROM information_schema.COLUMNS\n" +
-                "WHERE TABLE_SCHEMA ='"+tableSchema+"'");
+                "WHERE TABLE_SCHEMA ='"+tableSchema+"'";
+        if(tableName != null){
+            sql += " and table_name = '"+tableName+"'";
+        }
+        return Db.use().find(sql);
     }
 }

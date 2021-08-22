@@ -1,10 +1,10 @@
-package com.aladdin.mis.service.impl;
+package com.aladdin.mis.manager.service.impl;
 
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.manager.service.MenuService;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
-import com.aladdin.mis.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

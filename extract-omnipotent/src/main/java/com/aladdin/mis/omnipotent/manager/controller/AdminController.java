@@ -3,7 +3,7 @@ package com.aladdin.mis.omnipotent.manager.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.service.impl.AdminServiceImpl;
+import com.aladdin.mis.manager.service.AdminService;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ import java.util.List;
 public class AdminController extends GlobalController {
 
     @Autowired
-    AdminServiceImpl service;
+    AdminService service;
 
     /**
      * 菜单跳转

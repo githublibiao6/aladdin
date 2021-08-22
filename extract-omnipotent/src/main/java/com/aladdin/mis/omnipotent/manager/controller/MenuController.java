@@ -5,7 +5,7 @@ import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
-import com.aladdin.mis.service.impl.MenuServiceImpl;
+import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

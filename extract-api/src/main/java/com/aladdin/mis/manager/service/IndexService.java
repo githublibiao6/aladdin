@@ -1,4 +1,4 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.manager.service;
 
 /**
  * @author xiao.ws

@@ -20,7 +20,7 @@ public class OracleTableInfo  implements DbTableInfo {
     }
 
     @Override
-    public List<Map> listTableColumns() {
+    public List<Map> listTableColumns(String tableName) {
         return null;
     }
 }

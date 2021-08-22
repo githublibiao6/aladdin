@@ -1,4 +1,4 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.dao.manager.ProjectDao;
 import com.aladdin.mis.manager.bean.Project;

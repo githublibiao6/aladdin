@@ -1,10 +1,10 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.manager.bean.DictionaryTeams;
-import com.aladdin.mis.manager.qo.DictionaryQo;
-import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
+import com.aladdin.mis.manager.bean.User;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
+
+import java.util.List;
 
 
 /**
@@ -12,24 +12,36 @@ import org.springframework.stereotype.Service;
  * @author lb
  *
  */
-@Service
-public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> {
+public interface UserService extends GlobalService<User> {
 
 
     /**
      * 功能描述：
-     *  < 分页获取字典项 >
+     *  < 分页 >
      * @Description: page
-     * @param qo
      * @Author: cles
-     * @Date: 2020/6/23 23:02
+     * @Date: 2020/7/1 23:51
+     * @param entity 参数1
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageInfo page(DictionaryQo qo);
+    PageEntity page(PageEntity entity);
+
     /**
      * 功能描述：
-     *  <添加字典>
+     *  <获取全部数据>
+     * @Description: list
+     * @Author: cles
+     * @Date: 2020/6/18 0:32
+     * @param name 参数1
+     * @return: java.util.List<com.apps.omnipotent.manager.bean.Dictionary>
+     * @version: 1.0.0
+     */
+    List<User> list(String name);
+
+    /**
+     * 功能描述：
+     *  <添加>
      * @Description: add
      * @Author: cles
      * @Date: 2020/6/18 0:32
@@ -37,11 +49,11 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean add(DictionaryTeams m);
+    boolean add(User m);
 
     /**
      * 功能描述：
-     *  < 更新字典 >
+     *  < 更新 >
      * @Description: update
      * @Author: cles
      * @Date: 2020/6/21 23:45
@@ -49,11 +61,11 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean update(DictionaryTeams m);
+    boolean update(User m);
 
     /**
      * 功能描述：
-     *  < 根据id删除字典>
+     *  < 根据id删除>
      * @Description: remove
      * @Author: cles
      * @Date: 2020/6/21 23:19
@@ -62,5 +74,4 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @version: 1.0.0
      */
     boolean remove(Integer id);
-
 }

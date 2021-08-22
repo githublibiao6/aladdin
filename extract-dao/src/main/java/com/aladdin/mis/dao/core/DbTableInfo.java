@@ -20,12 +20,14 @@ public interface DbTableInfo {
      * @return: java.util.List<java.util.Map>
      */
     List<Map> listTable();
+
     /**
-    * @Description: 获取所有的字段
-    * @Param: []
-    * @return: java.util.List<java.util.Map>
-    * @Author: cles
-    * @Date: 2020/6/10 21:22
-    */
-    List<Map> listTableColumns();
+     * a
+     * @Description: 获取所有的字段
+     * @return: java.util.List<java.util.Map>
+     * @Author: cles
+     * @Date: 2020/6/10 21:22
+     * @return
+     */
+    List<Map> listTableColumns(String tableName);
 }

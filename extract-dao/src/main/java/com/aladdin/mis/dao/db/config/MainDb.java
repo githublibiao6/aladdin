@@ -67,7 +67,7 @@ public class MainDb {
     public static void init(){
         DbTableInfo dbTableInfo = DbMaker.getDbTableInfo(Db.use().getDbType());
         List<Map> tables = dbTableInfo.listTable();
-        List<Map> fields = dbTableInfo.listTableColumns();
+        List<Map> fields = dbTableInfo.listTableColumns(null);
         tables.forEach(t->{
             String tableName = t.get("table_name").toString();
             TableInfo tableInfo = new TableInfo();
@@ -90,6 +90,27 @@ public class MainDb {
         getRequestMappingMethod("com.aladdin.mis");
     }
 
+    public static TableInfo  initTableInfo(String tableName){
+        TableInfo tableInfo = new TableInfo();
+        tableInfo.setTableName(tableName);
+        DbTableInfo dbTableInfo = DbMaker.getDbTableInfo(Db.use().getDbType());
+        List<Map> fields = dbTableInfo.listTableColumns(tableName);
+        List<TableFieldInfo> list = new ArrayList<>();
+        List<String> pks = new ArrayList<>();
+        fields.forEach(f->{
+            if(tableName.equals(f.get("table_name"))){
+                TableFieldInfo field = convertField(f);
+                list.add(field);
+                if(field.isPk()){
+                    pks.add(field.getColumnName());
+                }
+            }
+        });
+        tableInfo.setFields(list);
+        tableInfo.setPks(pks);
+        return tableInfo;
+    }
+
     /**
      * 功能描述：
      *  < 将字段map转为字段实体>
@@ -103,13 +124,34 @@ public class MainDb {
     private static TableFieldInfo convertField(Map map){
         TableFieldInfo field = new TableFieldInfo();
         if(map.get("column_name") != null){
-            field.setColumnName(map.get("column_name").toString());
+            String colName = map.get("column_name").toString();
+            field.setColName(colName);
+            field.setColumnName(firstCharLower(toCamelCase(colName)));
         }
         if(map.get("col_type") != null){
             field.setColType(map.get("col_type").toString());
+            switch (map.get("col_type").toString()){
+                case "varchar":
+                    field.setColumnType("String");
+                    break;
+                case "int":
+                    field.setColumnType("Integer");
+                case "timestamp":
+                case "date":
+                case "datetime":
+                    field.setColumnType("Date");
+                    break;
+                default:
+                    break;
+            }
         }
         if(map.get("col_length") != null){
             field.setColLength(map.get("col_length").toString());
+        }
+        if(map.get("column_comment") != null){
+            field.setColumnComment(map.get("column_comment").toString());
+        }else {
+            field.setColumnComment(map.get("column_name").toString());
         }
         field.setPk(false);
         if(map.get("pk") != null && StringUtils.isEmpty(map.get("pk"))){
@@ -167,5 +209,51 @@ public class MainDb {
 
     public static Map<String, TableInfo> getTableMap(){
         return map;
+    }
+
+    private static String firstCharLower(String str) {
+        if(str == null){
+            return null;
+        }
+        if(str.length() == 1){
+            return str.toLowerCase();
+        }
+        return str.substring(0,1).toLowerCase() + str.substring(1);
+    }
+
+    private static String firstCharUp(String str) {
+        if(str == null){
+            return null;
+        }
+        if(str.length() == 1){
+            return str.toUpperCase();
+        }
+        return str.substring(0,1).toUpperCase() + str.substring(1);
+    }
+
+    /**
+     * 带下划线的字符串转为驼峰
+     * 例如：hello_world->HelloWorld
+     * @param str 转换前字符串
+     * @return 转换后的驼峰式命名的字符串
+     */
+    private static String toCamelCase(String str) {
+        StringBuilder result = new StringBuilder();
+        if (str == null || str.isEmpty()) {
+            return "";
+        } else if (!str.contains("_")) {
+            // 不含下划线，不转换
+            return firstCharUp(str);
+        }
+        // 用下划线将原始字符串分割
+        String camel[] = str.split("_");
+        for (String s :  camel) {
+            // 跳过空字符串
+            if (s.isEmpty()) {
+                continue;
+            }
+            result.append(firstCharUp(s));
+        }
+        return result.toString();
     }
 }

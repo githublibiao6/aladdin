@@ -1,10 +1,10 @@
-package com.aladdin.mis.service.impl;
+package com.aladdin.mis.manager.service.impl;
 
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserDao;
 import com.aladdin.mis.manager.bean.User;
+import com.aladdin.mis.manager.service.UserService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.aladdin.mis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.manager.bean.Menu;
-import com.aladdin.mis.service.impl.MenuServiceImpl;
+import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import org.springframework.beans.factory.annotation.Autowired;

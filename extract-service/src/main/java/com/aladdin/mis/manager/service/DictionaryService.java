@@ -1,8 +1,7 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.aladdin.mis.manager.bean.Dictionary;
 
 import java.util.List;
 
@@ -12,36 +11,21 @@ import java.util.List;
  * @author lb
  *
  */
-public interface UserService extends GlobalService<User> {
-
-
+public interface DictionaryService extends GlobalService<Dictionary> {
     /**
      * 功能描述：
-     *  < 分页 >
-     * @Description: page
-     * @Author: cles
-     * @Date: 2020/7/1 23:51
-     * @param entity 参数1
-     * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
-     * @version: 1.0.0
-     */
-    PageEntity page(PageEntity entity);
-
-    /**
-     * 功能描述：
-     *  <获取全部数据>
+     *  <获取全部字典>
      * @Description: list
      * @Author: cles
      * @Date: 2020/6/18 0:32
-     * @param name 参数1
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Dictionary>
      * @version: 1.0.0
      */
-    List<User> list(String name);
+    List<Dictionary> list();
 
     /**
      * 功能描述：
-     *  <添加>
+     *  <添加字典>
      * @Description: add
      * @Author: cles
      * @Date: 2020/6/18 0:32
@@ -49,11 +33,11 @@ public interface UserService extends GlobalService<User> {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean add(User m);
+    boolean add(Dictionary m);
 
     /**
      * 功能描述：
-     *  < 更新 >
+     *  < 更新字典 >
      * @Description: update
      * @Author: cles
      * @Date: 2020/6/21 23:45
@@ -61,11 +45,11 @@ public interface UserService extends GlobalService<User> {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean update(User m);
+    boolean update(Dictionary m);
 
     /**
      * 功能描述：
-     *  < 根据id删除>
+     *  < 根据id删除字典>
      * @Description: remove
      * @Author: cles
      * @Date: 2020/6/21 23:19
@@ -74,4 +58,5 @@ public interface UserService extends GlobalService<User> {
      * @version: 1.0.0
      */
     boolean remove(Integer id);
+
 }

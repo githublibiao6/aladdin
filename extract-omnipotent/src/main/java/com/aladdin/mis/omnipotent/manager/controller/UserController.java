@@ -6,7 +6,7 @@ import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.aladdin.mis.service.impl.UserServiceImpl;
+import com.aladdin.mis.manager.service.impl.UserServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

@@ -1,9 +1,10 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.manager.bean.Dictionary;
-
-import java.util.List;
+import com.aladdin.mis.manager.bean.DictionaryTeams;
+import com.aladdin.mis.manager.qo.DictionaryQo;
+import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 
 /**
@@ -11,18 +12,21 @@ import java.util.List;
  * @author lb
  *
  */
-public interface DictionaryService extends GlobalService<Dictionary> {
+@Service
+public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> {
+
+
     /**
      * 功能描述：
-     *  <获取全部字典>
-     * @Description: list
+     *  < 分页获取字典项 >
+     * @Description: page
+     * @param qo
      * @Author: cles
-     * @Date: 2020/6/18 0:32
-     * @return: java.util.List<com.apps.omnipotent.manager.bean.Dictionary>
+     * @Date: 2020/6/23 23:02
+     * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    List<Dictionary> list();
-
+    PageInfo page(DictionaryQo qo);
     /**
      * 功能描述：
      *  <添加字典>
@@ -33,7 +37,7 @@ public interface DictionaryService extends GlobalService<Dictionary> {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean add(Dictionary m);
+    boolean add(DictionaryTeams m);
 
     /**
      * 功能描述：
@@ -45,7 +49,7 @@ public interface DictionaryService extends GlobalService<Dictionary> {
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean update(Dictionary m);
+    boolean update(DictionaryTeams m);
 
     /**
      * 功能描述：

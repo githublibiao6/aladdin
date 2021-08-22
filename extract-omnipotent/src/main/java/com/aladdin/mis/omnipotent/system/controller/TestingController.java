@@ -29,8 +29,8 @@ import java.util.Set;
 * @Date: 2020/4/17 23:46
 */
 @Controller
-@RequestMapping("/test")
-public class TestController  extends GlobalController {
+@RequestMapping("/testing")
+public class TestingController  extends GlobalController {
 
     @Autowired
     private AsyncServiceImpl asyncService;
