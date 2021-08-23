@@ -1,6 +1,6 @@
 package com.aladdin.mis.manager.service;
 
-import com.aladdin.mis.dao.manager.ProjectDao;
+import com.aladdin.mis.dao.manager.Project1Dao;
 import com.aladdin.mis.manager.bean.Project;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import java.util.Map;
  * @date 2018年6月24日 下午7:01:35
  */
 @Service
-public class ProjectService {
+public class Project1Service {
 
     @Autowired
-    ProjectDao dao;
+    Project1Dao dao;
 
     /**
      * 获得全部的project（分页查询）

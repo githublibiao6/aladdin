@@ -79,6 +79,11 @@ public  class GenerateUtils {
         po.setFilePath(controllerFilePath);
         GenerateControllerUtils.writeControllerToFile(po);
 
+        String xmlPath = path.replaceAll("extract-omnipotent/target/classes","extract-dao");
+        xmlPath += "src/main/resources/mybatis-mapper/" + module+"/";
+        po.setFilePath(xmlPath);
+        GenerateXmlUtils.writeXmlToFile(po);
+
 
 
     }

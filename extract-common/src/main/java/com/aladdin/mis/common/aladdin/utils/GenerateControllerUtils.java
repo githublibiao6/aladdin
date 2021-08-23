@@ -38,6 +38,6 @@ public  class GenerateControllerUtils {
 
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName()+"Controller.java", true);
+                po.getFilePath(), po.getEntityName()+"Controller.java", false);
     }
 }

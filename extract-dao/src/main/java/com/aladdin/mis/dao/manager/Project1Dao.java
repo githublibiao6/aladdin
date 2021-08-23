@@ -11,7 +11,7 @@ import java.util.List;
  * @author lb
  * @date 2018年6月5日 下午8:56:31
  */
-public interface ProjectDao {
+public interface Project1Dao {
 
     /**
      * 根据条件获得Project

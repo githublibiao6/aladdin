@@ -3,8 +3,8 @@ package com.aladdin.mis.business.blog.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -20,6 +20,7 @@ public class Essay extends GlobalModel {
     /**
      * 文本
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private String article;
     /**
      * 标题
@@ -36,7 +37,6 @@ public class Essay extends GlobalModel {
     /**
      * 发布时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("publish_time")
     private Date publishTime;
     /**

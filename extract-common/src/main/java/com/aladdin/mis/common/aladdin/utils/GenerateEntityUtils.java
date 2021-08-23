@@ -26,6 +26,8 @@ public  class GenerateEntityUtils {
         content.append(po.getTableFieldPath()+"\n");
         content.append(po.getBaseModelPath() +"\n");
         content.append("import java.util.Date;\n");
+        content.append("import com.fasterxml.jackson.annotation.JsonFormat;\n");
+        content.append("import org.springframework.format.annotation.DateTimeFormat;\n");
 
         content.append("import lombok.Data;\n\n");
         content.append("/**\n");
@@ -50,6 +52,10 @@ public  class GenerateEntityUtils {
             content.append("    *  "+t.getColumnName()+t.getColumnComment()==null?"":t.getColumnComment() +"\n");
             content.append("    */\n");
             content.append("    @TableField(\""+t.getColName()+"\")\n");
+            if("Date".equals(t.getColumnType())){
+                content.append("    @JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\",timezone=\"GMT+8\")\n");
+                content.append("    @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")\n");
+            }
             content.append("    private "+t.getColumnType()+" "+ t.getColumnName() +";\n");
             content.append("\n");
         });

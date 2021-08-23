@@ -34,6 +34,6 @@ public  class GenerateServiceImplUtils {
         content.append("    private "+po.getEntityName()+"Dao "+ StringUtil.firstCharLower(po.getEntityName())+"Dao;\n\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName()+"ServiceImpl.java", true);
+                po.getFilePath(), po.getEntityName()+"ServiceImpl.java", false);
     }
 }

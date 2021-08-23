@@ -29,6 +29,6 @@ public  class GenerateDaoUtils {
 
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName()+"Dao.java", true);
+                po.getFilePath(), po.getEntityName()+"Dao.java", false);
     }
 }
