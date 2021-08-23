@@ -182,6 +182,8 @@ public class MainDb {
             for (Field field : fieldList) {
                 String fieldName = field.getName();
                 boolean tableFieldExists = field.isAnnotationPresent(TableField.class);
+                String type = field.getGenericType().toString();
+
                 if(tableFieldExists){
                     TableField tableField = field.getDeclaredAnnotation(TableField.class);
                     fieldName = tableField.value();
@@ -190,6 +192,9 @@ public class MainDb {
                 list.forEach(t->{
                     if(finalFieldName.equals(t.getColumnName())){
                         t.setFieldName(field.getName());
+                        if("class [Ljava.lang.String;".equals(type)){
+                            t.setColumnType("String[]");
+                        }
                     }
                 });
             }
