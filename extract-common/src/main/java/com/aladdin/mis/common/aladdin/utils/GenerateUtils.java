@@ -15,6 +15,7 @@ public  class GenerateUtils {
 
     public static void create(String tableName, String module) {
         GeneratePo po = new GeneratePo();
+        po.setOverWrite(true);
         po.setTableInfo(MainDb.initTableInfo(tableName));
         po.setTablePath("import com.aladdin.mis.annotation.entity.Table;");
         po.setTableFieldPath("import com.aladdin.mis.annotation.entity.TableField;");
@@ -22,6 +23,7 @@ public  class GenerateUtils {
         po.setBaseServicePath("import com.aladdin.mis.common.system.service.GlobalService;");
         po.setBaseServiceImplPath("import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;");
         po.setBaseControllerPath("import com.aladdin.mis.common.system.controller.GlobalController;");
+        po.setWeoLogPath("import com.aladdin.mis.common.annotation.WebLog;");
         String className = StringUtil.toCamelCase(po.getTableInfo().getTableName());
         po.setEntityName(className);
         String packagePath = "com.aladdin.mis";
@@ -40,6 +42,26 @@ public  class GenerateUtils {
         GenerateEntityUtils.writeEntityToFile(po);
 
         po.setImportEntityClass("import "+ packagePath +"." +module +".entity."+po.getEntityName()+";");
+
+        String entityQoPath = packagePath +"." +module +".qo";
+        po.setPackagePath(entityQoPath);
+        entityQoPath = entityQoPath.replaceAll("\\.", "\\/");
+        String entityQoFilePath = path.replaceAll("extract-omnipotent/target/classes","extract-pojo");
+        entityQoFilePath += "src/main/java/" +  entityQoPath;
+        po.setFilePath(entityQoFilePath);
+        GenerateEntityQoUtils.writeEntityToFile(po);
+
+        po.setImportEntityQoClass("import "+ packagePath +"." +module +".qo."+po.getEntityName()+"Qo;");
+
+        String entityVoPath = packagePath +"." +module +".vo";
+        po.setPackagePath(entityVoPath);
+        entityVoPath = entityVoPath.replaceAll("\\.", "\\/");
+        String entityVoFilePath = path.replaceAll("extract-omnipotent/target/classes","extract-pojo");
+        entityVoFilePath += "src/main/java/" + entityVoPath;
+        po.setFilePath(entityVoFilePath);
+        GenerateEntityVoUtils.writeEntityToFile(po);
+
+        po.setImportEntityVoClass("import "+ packagePath +"." +module +".vo."+po.getEntityName()+"Vo;");
 
         String daoPath = packagePath +".dao." +module ;
         po.setPackagePath(daoPath);

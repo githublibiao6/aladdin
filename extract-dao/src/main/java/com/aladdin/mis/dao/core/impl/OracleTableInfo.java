@@ -23,4 +23,9 @@ public class OracleTableInfo  implements DbTableInfo {
     public List<Map> listTableColumns(String tableName) {
         return null;
     }
+
+    @Override
+    public Map listTableInfo(String tableName) {
+        return null;
+    }
 }

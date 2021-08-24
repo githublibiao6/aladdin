@@ -14,11 +14,13 @@ public  class GenerateServiceUtils {
 
     public static void writeServiceToFile(GeneratePo po){
         TableInfo tableInfo = po.getTableInfo();
-
+        String  tableComment = tableInfo.getTableComment();
 
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
         content.append(po.getBaseServicePath() +"\n");
         content.append(po.getImportEntityClass() +"\n");
+        content.append(po.getImportEntityQoClass() +"\n");
+        content.append("import com.github.pagehelper.PageInfo;\n");
         content.append("/**\n");
         content.append(" * "+ po.getEntityName() +"Service\n");
         content.append(" * @author cles\n");
@@ -26,8 +28,35 @@ public  class GenerateServiceUtils {
         content.append("*/\n");
         content.append("public interface "+ po.getEntityName() +"Service extends GlobalService<"+po.getEntityName()+">  {\n");
 
+        content.append("    /**\n" +
+                "     * 分页查询\n" +
+                "     * @param qo\n" +
+                "     * @return\n" +
+                "     */\n" +
+                "    PageInfo<Project> paginate(ProjectQo qo);\n");
+
+        content.append("    /**\n" +
+                "     * 删除"+tableComment+"\n" +
+                "     * @param entity\n" +
+                "     * @return flag\n" +
+                "     */\n" +
+                "    boolean remove(Project entity);\n");
+
+        content.append("    /**\n" +
+                "     * 更新"+tableComment+"\n" +
+                "     * @param entity\n" +
+                "     * @return flag\n" +
+                "     */\n" +
+                "    boolean update(Project entity);\n");
+
+        content.append("    /**\n" +
+                "     * 保存"+tableComment+"\n" +
+                "     * @param entity\n" +
+                "     * @return m\n" +
+                "     */\n" +
+                "    Project save(Project entity);\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), StringUtil.toCamelCase(tableInfo.getTableName())+"Service.java", false);
+                po.getFilePath(), StringUtil.toCamelCase(tableInfo.getTableName())+"Service.java", po.isOverWrite());
     }
 }

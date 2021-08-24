@@ -17,11 +17,15 @@ public class GeneratePo {
     private String baseServicePath;
     private String baseServiceImplPath;
     private String baseControllerPath;
+    private String weoLogPath;
     private String tablePath;
     private String tableFieldPath;
     private String entityName;
     private String importEntityClass;
+    private String importEntityQoClass;
+    private String importEntityVoClass;
     private String importDaoClass;
     private String importServiceClass;
     private String importServiceImplClass;
+    private boolean overWrite;
 }

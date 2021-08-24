@@ -92,8 +92,14 @@ public class MainDb {
 
     public static TableInfo  initTableInfo(String tableName){
         TableInfo tableInfo = new TableInfo();
+
         tableInfo.setTableName(tableName);
+
         DbTableInfo dbTableInfo = DbMaker.getDbTableInfo(Db.use().getDbType());
+        Map tableMap = dbTableInfo.listTableInfo(tableName);
+        if(tableMap.get("table_comment") != null){
+            tableInfo.setTableComment(tableMap.get("table_comment").toString());
+        }
         List<Map> fields = dbTableInfo.listTableColumns(tableName);
         List<TableFieldInfo> list = new ArrayList<>();
         List<String> pks = new ArrayList<>();
@@ -171,6 +177,10 @@ public class MainDb {
         for (Class clazz : classesList) {
             List<Field> fieldList = new ArrayList<>();
             Table table = (Table) clazz.getAnnotation(Table.class);
+            if(table == null){
+                System.err.println(clazz);
+                continue;
+            }
             String tableName = table.value();
             TableInfo tableInfo = map.get(tableName);
             List<TableFieldInfo> list = tableInfo.getFields();

@@ -22,7 +22,7 @@ public interface DbTableInfo {
     List<Map> listTable();
 
     /**
-     * a
+     * 获取表字段
      * @Description: 获取所有的字段
      * @return: java.util.List<java.util.Map>
      * @Author: cles
@@ -30,4 +30,6 @@ public interface DbTableInfo {
      * @return
      */
     List<Map> listTableColumns(String tableName);
+
+    Map listTableInfo(String tableName);
 }

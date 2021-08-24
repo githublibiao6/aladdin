@@ -25,7 +25,8 @@ public class MysqlTableInfo implements DbTableInfo {
     public List<Map> listTableColumns(String tableName) {
         String tableSchema = Db.use().getTableSchema();
         String sql = "SELECT " +
-                "table_name,column_name," +
+                "table_name," +
+                "column_name," +
                 "data_type col_type," +
                 "CHARACTER_MAXIMUM_LENGTH col_length," +
                 "column_type," +
@@ -36,5 +37,19 @@ public class MysqlTableInfo implements DbTableInfo {
             sql += " and table_name = '"+tableName+"'";
         }
         return Db.use().find(sql);
+    }
+
+    @Override
+    public Map listTableInfo(String tableName) {
+        String tableSchema = Db.use().getTableSchema();
+        String sql = "SELECT " +
+                " table_name," +
+                " table_comment " +
+                " FROM information_schema.TABLES\n" +
+                "WHERE TABLE_SCHEMA ='"+tableSchema+"'";
+        if(tableName != null){
+            sql += " and table_name = '"+tableName+"'";
+        }
+        return Db.use().findFirst(sql);
     }
 }

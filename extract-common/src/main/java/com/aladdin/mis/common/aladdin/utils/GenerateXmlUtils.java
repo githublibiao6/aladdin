@@ -42,6 +42,6 @@ public  class GenerateXmlUtils {
         content.append("</mapper>\n");
 
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName()+"Dao.xml", false);
+                po.getFilePath(), po.getEntityName()+"Dao.xml", po.isOverWrite());
     }
 }
