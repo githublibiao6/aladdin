@@ -4,6 +4,7 @@ import com.aladdin.mis.engineering.entity.Project;
 import com.aladdin.mis.engineering.service.ProjectService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.engineering.qo.ProjectQo;
+import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.github.pagehelper.PageInfo;
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * 工程项目 ProjectService--- 
  * @author cles
- * @date 2021-08-25T01:30:11.914
+ * @date 2021-08-25T23:05:09.524
 */
 @RequestMapping("project")
 @Controller
@@ -32,7 +33,7 @@ public class ProjectController  extends GlobalController {
     @PostMapping("paginate")
     @WebLog("分页查询 工程项目")
     public Result paginate(@RequestBody ProjectQo qo){
-        PageInfo<Project> page = projectService.paginate(qo);
+        PageInfo<ProjectVo> page = projectService.paginate(qo);
         result.setData(page);
         return result ;
     }    /**

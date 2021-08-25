@@ -35,7 +35,54 @@
         <result property="sys005" column="sys005"/>
         <result property="sys006" column="sys006"/>
         <result property="sys007" column="sys007"/>
-</resultMap>
+    </resultMap>
 
-
-</mapper>
+<select id="paginate" resultType="com.aladdin.mis.engineering.vo.ProjectVo">
+        select <include refid="baseColumn"></include>
+        from project t where 1=1
+        <if test="id!= null and id != '' ">
+            and t.id = #{id}
+        </if>
+        <if test="projectCode!= null and projectCode != '' ">
+            and t.project_code = #{projectCode}
+        </if>
+        <if test="projectName!= null and projectName != '' ">
+            and t.project_name = #{projectName}
+        </if>
+        <if test="introduce!= null and introduce != '' ">
+            and t.introduce = #{introduce}
+        </if>
+        <if test="startDate!= null and startDate != '' ">
+            and t.start_date = #{startDate}
+        </if>
+        <if test="endDate!= null and endDate != '' ">
+            and t.end_date = #{endDate}
+        </if>
+        <if test="status!= null and status != '' ">
+            and t.status = #{status}
+        </if>
+        <if test="remark!= null and remark != '' ">
+            and t.remark = #{remark}
+        </if>
+        <if test="sys001!= null and sys001 != '' ">
+            and t.sys001 = #{sys001}
+        </if>
+        <if test="sys002!= null and sys002 != '' ">
+            and t.sys002 = #{sys002}
+        </if>
+        <if test="sys003!= null and sys003 != '' ">
+            and t.sys003 = #{sys003}
+        </if>
+        <if test="sys004!= null and sys004 != '' ">
+            and t.sys004 = #{sys004}
+        </if>
+        <if test="sys005!= null and sys005 != '' ">
+            and t.sys005 = #{sys005}
+        </if>
+        <if test="sys006!= null and sys006 != '' ">
+            and t.sys006 = #{sys006}
+        </if>
+        <if test="sys007!= null and sys007 != '' ">
+            and t.sys007 = #{sys007}
+        </if>
+    </select></mapper>

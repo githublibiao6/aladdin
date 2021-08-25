@@ -21,6 +21,7 @@ public  class GenerateControllerUtils {
         content.append(po.getImportServiceClass() +"\n");
         content.append(po.getBaseControllerPath() +"\n");
         content.append(po.getImportEntityQoClass() +"\n");
+        content.append(po.getImportEntityVoClass() +"\n");
         content.append(po.getWeoLogPath() +"\n");
         content.append("import com.aladdin.mis.common.system.entity.Result;\n");
         content.append("import com.github.pagehelper.PageInfo;\n");
@@ -40,7 +41,8 @@ public  class GenerateControllerUtils {
         content.append("@Controller\n");
         content.append("public class "+ po.getEntityName() +"Controller  extends GlobalController {\n");
         content.append("    @Autowired\n");
-        content.append("    private "+po.getEntityName()+"Service "+ StringUtil.firstCharLower(po.getEntityName())+"Service;\n\n");
+        String service = StringUtil.firstCharLower(po.getEntityName())+"Service";
+        content.append("    private "+po.getEntityName()+"Service "+ service+";\n\n");
 
         content.append("    /**\n" +
                 "     * 分页查询"+tableComment+"\n" +
@@ -48,7 +50,7 @@ public  class GenerateControllerUtils {
                 "    @PostMapping(\"paginate\")\n" +
                 "    @WebLog(\"分页查询 "+tableComment+"\")\n" +
                 "    public Result paginate(@RequestBody "+po.getEntityName()+"Qo qo){\n" +
-                "        PageInfo<Project> page = projectService.paginate(qo);\n" +
+                "        PageInfo<"+po.getEntityName()+"Vo> page = "+service+".paginate(qo);\n" +
                 "        result.setData(page);\n" +
                 "        return result ;\n" +
                 "    }");
@@ -58,8 +60,8 @@ public  class GenerateControllerUtils {
                 "     */\n" +
                 "    @PostMapping(\"save\")\n" +
                 "    @WebLog(\""+tableComment+"保存\")\n" +
-                "    public Result save(@RequestBody Project entity){\n" +
-                "        Project data = projectService.save(entity);\n" +
+                "    public Result save(@RequestBody "+po.getEntityName()+" entity){\n" +
+                "        "+po.getEntityName()+" data = "+service+".save(entity);\n" +
                 "        result.setData(data);\n" +
                 "        return result ;\n" +
                 "    }");
@@ -70,7 +72,7 @@ public  class GenerateControllerUtils {
                 "    @PostMapping(\"delete\")\n" +
                 "    @WebLog(\"删除"+tableComment+"\")\n" +
                 "    public Result delete(@RequestBody "+po.getEntityName()+" entity){\n" +
-                "        boolean flag = projectService.remove(entity);\n" +
+                "        boolean flag = "+service+".remove(entity);\n" +
                 "        if(flag){\n" +
                 "            result.setData(entity);\n" +
                 "            result.setMessage(\"刪除成功\");\n" +
@@ -85,8 +87,8 @@ public  class GenerateControllerUtils {
                 "     */\n" +
                 "    @PostMapping(\"update\")\n" +
                 "    @WebLog(\""+tableComment+"更新\")\n" +
-                "    public Result update(@RequestBody Project entity){\n" +
-                "        boolean flag = projectService.update(entity);\n" +
+                "    public Result update(@RequestBody "+po.getEntityName()+" entity){\n" +
+                "        boolean flag = "+service+".update(entity);\n" +
                 "        if(flag){\n" +
                 "            result.setData(entity);\n" +
                 "            result.setMessage(\"更新成功\");\n" +

@@ -3,16 +3,15 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Data;
 
 /**
  * 工程项目
  * @author cles
- * @date 2021-08-25T01:30:11.893
+ * @date 2021-08-25T23:05:09.513
 */
 @Table("project")
 @Data

@@ -2,12 +2,13 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.Project;
+import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.aladdin.mis.engineering.qo.ProjectQo;
 import com.github.pagehelper.PageInfo;
 /**
  * ProjectService
  * @author cles
- * @date 2021-08-25T01:30:11.909
+ * @date 2021-08-25T23:05:09.519
 */
 public interface ProjectService extends GlobalService<Project>  {
     /**
@@ -15,23 +16,27 @@ public interface ProjectService extends GlobalService<Project>  {
      * @param qo
      * @return
      */
-    PageInfo<Project> paginate(ProjectQo qo);
+    PageInfo<ProjectVo> paginate(ProjectQo qo);
+
     /**
      * 删除工程项目
      * @param entity
      * @return flag
      */
     boolean remove(Project entity);
+
     /**
      * 更新工程项目
      * @param entity
      * @return flag
      */
     boolean update(Project entity);
+
     /**
      * 保存工程项目
      * @param entity
      * @return m
      */
     Project save(Project entity);
+
 }

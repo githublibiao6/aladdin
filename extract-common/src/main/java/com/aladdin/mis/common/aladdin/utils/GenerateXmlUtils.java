@@ -38,7 +38,18 @@ public  class GenerateXmlUtils {
             }
         });
 
-        content.append("</resultMap>\n\n\n");
+        content.append("    </resultMap>\n\n");
+        content.append("<select id=\"paginate\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
+                "        select <include refid=\"baseColumn\"></include>\n" +
+                "        from "+tableInfo.getTableName()+" t where 1=1\n");
+
+        fields.forEach(t->{
+            content.append("        <if test=\""+t.getColumnName()+"!= null and "+t.getColumnName()+" != '' "+"\">\n" +
+                    "            and t."+t.getColName()+" = #{"+t.getColumnName()+"}\n" +
+                    "        </if>\n" );
+        });
+
+        content.append("    </select>");
         content.append("</mapper>\n");
 
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),

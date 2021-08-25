@@ -19,6 +19,7 @@ public  class GenerateServiceUtils {
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
         content.append(po.getBaseServicePath() +"\n");
         content.append(po.getImportEntityClass() +"\n");
+        content.append(po.getImportEntityVoClass() +"\n");
         content.append(po.getImportEntityQoClass() +"\n");
         content.append("import com.github.pagehelper.PageInfo;\n");
         content.append("/**\n");
@@ -33,28 +34,28 @@ public  class GenerateServiceUtils {
                 "     * @param qo\n" +
                 "     * @return\n" +
                 "     */\n" +
-                "    PageInfo<Project> paginate(ProjectQo qo);\n");
+                "    PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo);\n\n");
 
         content.append("    /**\n" +
                 "     * 删除"+tableComment+"\n" +
                 "     * @param entity\n" +
                 "     * @return flag\n" +
                 "     */\n" +
-                "    boolean remove(Project entity);\n");
+                "    boolean remove("+po.getEntityName()+" entity);\n\n");
 
         content.append("    /**\n" +
                 "     * 更新"+tableComment+"\n" +
                 "     * @param entity\n" +
                 "     * @return flag\n" +
                 "     */\n" +
-                "    boolean update(Project entity);\n");
+                "    boolean update("+po.getEntityName()+" entity);\n\n");
 
         content.append("    /**\n" +
                 "     * 保存"+tableComment+"\n" +
                 "     * @param entity\n" +
                 "     * @return m\n" +
                 "     */\n" +
-                "    Project save(Project entity);\n");
+                "    Project save("+po.getEntityName()+" entity);\n\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                 po.getFilePath(), StringUtil.toCamelCase(tableInfo.getTableName())+"Service.java", po.isOverWrite());

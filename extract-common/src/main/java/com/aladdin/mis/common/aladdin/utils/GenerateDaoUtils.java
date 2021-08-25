@@ -17,6 +17,8 @@ public  class GenerateDaoUtils {
 
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
         content.append(po.getImportEntityClass() +"\n");
+        content.append(po.getImportEntityQoClass() +"\n");
+        content.append(po.getImportEntityVoClass() +"\n");
         content.append("import org.springframework.stereotype.Repository;\n\n");
         content.append("import java.util.List;\n");
         content.append("/**\n");
@@ -26,6 +28,13 @@ public  class GenerateDaoUtils {
         content.append("*/\n");
         content.append("@Repository\n");
         content.append("public interface "+ po.getEntityName() +"Dao {\n");
+
+        content.append("    /**\n" +
+                "     * 列表\n" +
+                "     * @param qo\n" +
+                "     * @return list\n" +
+                "     */\n" +
+                "    List<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo);");
 
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
