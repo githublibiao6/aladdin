@@ -11,7 +11,7 @@ import lombok.Data;
 /**
  * 工程项目
  * @author cles
- * @date 2021-08-25T23:05:09.513
+ * @date 2021-08-26T23:02:39.361
 */
 @Table("project")
 @Data
@@ -61,11 +61,5 @@ public class Project extends GlobalModel {
     */
     @TableField("remark")
     private String remark;
-
-    /**
-状态位(自定义两位状态)
-    */
-    @TableField("sys006")
-    private String sys006;
 
 }

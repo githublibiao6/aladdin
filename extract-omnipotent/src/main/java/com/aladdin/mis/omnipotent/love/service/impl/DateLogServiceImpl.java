@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.love.service.impl;
 
-import com.aladdin.mis.business.blog.entity.Essay;
+import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.dao.love.DateLogMapper;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;

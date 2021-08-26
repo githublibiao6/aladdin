@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 工程项目查询实体 
  * @author cles
- * @date 2021-08-25T23:05:09.515
+ * @date 2021-08-26T23:02:39.362
 */
 @Data
 public class ProjectQo extends Project {
