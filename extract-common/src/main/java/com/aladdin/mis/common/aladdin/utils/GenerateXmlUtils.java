@@ -39,7 +39,7 @@ public  class GenerateXmlUtils {
         });
 
         content.append("    </resultMap>\n\n");
-        content.append("<select id=\"paginate\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
+        content.append("<select id=\"paginate\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportDaoClass().length()-1 )+"\">\n" +
                 "        select <include refid=\"baseColumn\"></include>\n" +
                 "        from "+tableInfo.getTableName()+" t where 1=1\n");
 

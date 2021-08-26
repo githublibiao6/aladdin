@@ -41,7 +41,7 @@ public  class GenerateEntityUtils {
 
         List<TableFieldInfo> fields = tableInfo.getFields();
 
-        String s = "id,sys001,sys002,sys003,sys004,sys005,sys005,sys007";
+        String s = "id,sys001,sys002,sys003,sys004,sys005,sys006,sys007";
         Set<String >set = new HashSet<>(Arrays.asList(s.split(",")));
 
         fields.forEach(t->{
