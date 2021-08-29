@@ -26,6 +26,7 @@ public  class GenerateEntityUtils {
         content.append(po.getTableFieldPath()+"\n");
         content.append(po.getBaseModelPath() +"\n");
         content.append("import java.util.Date;\n");
+        content.append("import java.util.List;\n");
         content.append("import com.fasterxml.jackson.annotation.JsonFormat;\n");
         content.append("import org.springframework.format.annotation.DateTimeFormat;\n");
 

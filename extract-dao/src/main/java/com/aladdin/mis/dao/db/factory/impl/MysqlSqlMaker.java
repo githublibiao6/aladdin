@@ -57,6 +57,7 @@ public class MysqlSqlMaker extends BaseSqlMaker {
                     sql.append(t.getFieldValue()).append(",");
                     break;
                 case "String":
+                case "List<String>":
                     sql.append("'")
                             .append(t.getFieldValue())
                             .append("'")

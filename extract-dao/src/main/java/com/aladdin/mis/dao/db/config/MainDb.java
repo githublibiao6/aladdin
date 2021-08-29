@@ -134,11 +134,20 @@ public class MainDb {
             field.setColName(colName);
             field.setColumnName(firstCharLower(toCamelCase(colName)));
         }
+        if(map.get("column_comment") != null){
+            field.setColumnComment(map.get("column_comment").toString());
+        }else {
+            field.setColumnComment(map.get("column_name").toString());
+        }
         if(map.get("col_type") != null){
             field.setColType(map.get("col_type").toString());
             switch (map.get("col_type").toString()){
                 case "varchar":
-                    field.setColumnType("String");
+                    if(field.getColumnComment() != null && field.getColumnComment().endsWith("list")){
+                        field.setColumnType("List<String> ");
+                    }else {
+                        field.setColumnType("String");
+                    }
                     break;
                 case "int":
                     field.setColumnType("Integer");
@@ -153,11 +162,6 @@ public class MainDb {
         }
         if(map.get("col_length") != null){
             field.setColLength(map.get("col_length").toString());
-        }
-        if(map.get("column_comment") != null){
-            field.setColumnComment(map.get("column_comment").toString());
-        }else {
-            field.setColumnComment(map.get("column_name").toString());
         }
         field.setPk(false);
         if(map.get("pk") != null && StringUtils.isEmpty(map.get("pk"))){
