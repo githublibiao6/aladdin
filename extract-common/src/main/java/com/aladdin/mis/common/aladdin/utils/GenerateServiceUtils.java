@@ -55,7 +55,7 @@ public  class GenerateServiceUtils {
                 "     * @param entity\n" +
                 "     * @return m\n" +
                 "     */\n" +
-                "    Project save("+po.getEntityName()+" entity);\n\n");
+                "    "+po.getEntityName()+" save("+po.getEntityName()+" entity);\n\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                 po.getFilePath(), StringUtil.toCamelCase(tableInfo.getTableName())+"Service.java", po.isOverWrite());

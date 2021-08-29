@@ -62,7 +62,7 @@ public  class GenerateServiceImplUtils {
                 "    }\n\n");
 
         content.append("    @Override\n" +
-                "    public Project save("+po.getEntityName()+" entity) {\n" +
+                "    public "+po.getEntityName()+" save("+po.getEntityName()+" entity) {\n" +
                 "        return insertSelective(entity);\n" +
                 "    }\n\n");
 

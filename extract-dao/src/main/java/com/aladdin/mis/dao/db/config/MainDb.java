@@ -183,6 +183,9 @@ public class MainDb {
             }
             String tableName = table.value();
             TableInfo tableInfo = map.get(tableName);
+            if(tableInfo == null){
+                continue;
+            }
             List<TableFieldInfo> list = tableInfo.getFields();
             Field[] fields  = clazz.getDeclaredFields();
             Class parentClazz = clazz.getSuperclass();

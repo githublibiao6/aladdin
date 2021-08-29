@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.engineering.ProjectPlanUserDao">
+
+    <sql id="baseColumn">
+        id,
+        user_id,
+        plan_id,
+        sys001,
+        sys002,
+        sys003,
+        sys004,
+        sys005,
+        sys006,
+        sys007
+  </sql>
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectPlanUser" id="baseResultMap"> 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="plan_id" column="planId"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+<select id="paginate" resultType="com.aladdin.mis.engineering.vo.ProjectPlanUserVo">
+        select <include refid="baseColumn"></include>
+        from project_plan_user t where 1=1
+        <if test="id  != null and id != '' ">
+            and t.id = #{id}
+        </if>
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="planId  != null and planId != '' ">
+            and t.plan_id = #{planId}
+        </if>
+        <if test="sys001  != null and sys001 != '' ">
+            and t.sys001 = #{sys001}
+        </if>
+        <if test="sys002  != null and sys002 != '' ">
+            and t.sys002 = #{sys002}
+        </if>
+        <if test="sys003  != null and sys003 != '' ">
+            and t.sys003 = #{sys003}
+        </if>
+        <if test="sys004  != null and sys004 != '' ">
+            and t.sys004 = #{sys004}
+        </if>
+        <if test="sys005  != null and sys005 != '' ">
+            and t.sys005 = #{sys005}
+        </if>
+        <if test="sys006  != null and sys006 != '' ">
+            and t.sys006 = #{sys006}
+        </if>
+        <if test="sys007  != null and sys007 != '' ">
+            and t.sys007 = #{sys007}
+        </if>
+    </select></mapper>
