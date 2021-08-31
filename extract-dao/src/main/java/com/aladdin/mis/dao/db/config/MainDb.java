@@ -142,6 +142,9 @@ public class MainDb {
         if(map.get("col_type") != null){
             field.setColType(map.get("col_type").toString());
             switch (map.get("col_type").toString()){
+                case "text":
+                    field.setColumnType("String");
+                    break;
                 case "varchar":
                     if(field.getColumnComment() != null && field.getColumnComment().endsWith("list")){
                         field.setColumnType("List<String>");

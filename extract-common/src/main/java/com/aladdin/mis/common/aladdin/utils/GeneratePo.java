@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class GeneratePo {
+    private String module;
     private String filePath;
     private String packagePath;
     private TableInfo tableInfo;

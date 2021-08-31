@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.system.SysWebLogDao">
+
+    <sql id="baseColumn">
+        id,
+        post_num,
+        ip,
+        url,
+        request_param,
+        response,
+        user_id,
+        status,
+        cost,
+        start_time,
+        end_time,
+        sys001,
+        sys002,
+        sys003,
+        sys004,
+        sys005,
+        sys006,
+        sys007
+  </sql>
+    <resultMap type="com.aladdin.mis.system.entity.SysWebLog" id="baseResultMap"> 
+        <id property="id" column="id"/>
+        <result property="post_num" column="postNum"/>
+        <result property="ip" column="ip"/>
+        <result property="url" column="url"/>
+        <result property="request_param" column="requestParam"/>
+        <result property="response" column="response"/>
+        <result property="user_id" column="userId"/>
+        <result property="status" column="status"/>
+        <result property="cost" column="cost"/>
+        <result property="start_time" column="startTime"/>
+        <result property="end_time" column="endTime"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+<select id="paginate" resultType="com.aladdin.mis.system.vo.SysWebLogVo">
+        select <include refid="baseColumn"></include>
+        from sys_web_log t where 1=1
+        <if test="id  != null and id != '' ">
+            and t.id = #{id}
+        </if>
+        <if test="postNum  != null and postNum != '' ">
+            and t.post_num = #{postNum}
+        </if>
+        <if test="ip  != null and ip != '' ">
+            and t.ip = #{ip}
+        </if>
+        <if test="url  != null and url != '' ">
+            and t.url = #{url}
+        </if>
+        <if test="requestParam  != null and requestParam != '' ">
+            and t.request_param = #{requestParam}
+        </if>
+        <if test="response  != null and response != '' ">
+            and t.response = #{response}
+        </if>
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="status  != null and status != '' ">
+            and t.status = #{status}
+        </if>
+        <if test="cost  != null and cost != '' ">
+            and t.cost = #{cost}
+        </if>
+        <if test="startTime  != null and startTime != '' ">
+            and t.start_time = #{startTime}
+        </if>
+        <if test="endTime  != null and endTime != '' ">
+            and t.end_time = #{endTime}
+        </if>
+        <if test="sys001  != null and sys001 != '' ">
+            and t.sys001 = #{sys001}
+        </if>
+        <if test="sys002  != null and sys002 != '' ">
+            and t.sys002 = #{sys002}
+        </if>
+        <if test="sys003  != null and sys003 != '' ">
+            and t.sys003 = #{sys003}
+        </if>
+        <if test="sys004  != null and sys004 != '' ">
+            and t.sys004 = #{sys004}
+        </if>
+        <if test="sys005  != null and sys005 != '' ">
+            and t.sys005 = #{sys005}
+        </if>
+        <if test="sys006  != null and sys006 != '' ">
+            and t.sys006 = #{sys006}
+        </if>
+        <if test="sys007  != null and sys007 != '' ">
+            and t.sys007 = #{sys007}
+        </if>
+    </select></mapper>

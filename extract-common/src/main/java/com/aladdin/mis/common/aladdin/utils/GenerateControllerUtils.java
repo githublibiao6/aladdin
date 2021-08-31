@@ -38,7 +38,7 @@ public  class GenerateControllerUtils {
         content.append(" * @author cles\n");
         content.append(" * @date "+ LocalDateTime.now() +"\n");
         content.append("*/\n");
-        content.append("@RequestMapping(\""+ StringUtil.firstCharLower(po.getEntityName()) +"\")\n");
+        content.append("@RequestMapping(\""+po.getModule()+"/"+ StringUtil.firstCharLower(po.getEntityName()) +"\")\n");
         content.append("@Controller\n");
         content.append("public class "+ po.getEntityName() +"Controller  extends GlobalController {\n");
         content.append("    @Autowired\n");
