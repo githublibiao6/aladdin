@@ -144,13 +144,14 @@ public class MainDb {
             switch (map.get("col_type").toString()){
                 case "varchar":
                     if(field.getColumnComment() != null && field.getColumnComment().endsWith("list")){
-                        field.setColumnType("List<String> ");
+                        field.setColumnType("List<String>");
                     }else {
                         field.setColumnType("String");
                     }
                     break;
                 case "int":
                     field.setColumnType("Integer");
+                    break;
                 case "timestamp":
                 case "date":
                 case "datetime":
@@ -208,7 +209,7 @@ public class MainDb {
                 String finalFieldName = fieldName;
                 list.forEach(t->{
                     if(finalFieldName.equals(t.getColumnName())){
-                        t.setFieldName(field.getName());
+                        t.setColumnName(field.getName());
                         if("class [Ljava.lang.String;".equals(type)){
                             t.setColumnType("String[]");
                         }

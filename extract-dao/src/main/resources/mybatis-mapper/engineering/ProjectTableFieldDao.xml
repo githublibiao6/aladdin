@@ -5,6 +5,7 @@
     <sql id="baseColumn">
         id,
         project_id,
+        table_id,
         column_name,
         column_type,
         column_comment,
@@ -21,6 +22,7 @@
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectTableField" id="baseResultMap"> 
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
+        <result property="table_id" column="tableId"/>
         <result property="column_name" column="columnName"/>
         <result property="column_type" column="columnType"/>
         <result property="column_comment" column="columnComment"/>
@@ -43,6 +45,9 @@
         </if>
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
+        </if>
+        <if test="tableId  != null and tableId != '' ">
+            and t.table_id = #{tableId}
         </if>
         <if test="columnName  != null and columnName != '' ">
             and t.column_name = #{columnName}

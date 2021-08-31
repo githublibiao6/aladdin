@@ -4,6 +4,7 @@ import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
 import java.util.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
@@ -11,41 +12,9 @@ import lombok.Data;
 /**
  * 项目表
  * @author cles
- * @date 2021-08-29T23:32:52.583
+ * @date 2021-08-31T22:04:34.573
 */
-@Table("project_table")
+@Table("Project_table")
 @Data
 public class ProjectTable extends GlobalModel {
-    /**
-
-    */
-    @TableField("project_id")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date projectId;
-
-    /**
-
-    */
-    @TableField("table_name")
-    private String tableName;
-
-    /**
-表描述
-    */
-    @TableField("table_comment")
-    private String tableComment;
-
-    /**
-备注信息
-    */
-    @TableField("remark")
-    private String remark;
-
-    /**
-表状态
-    */
-    @TableField("status")
-    private String status;
-
 }

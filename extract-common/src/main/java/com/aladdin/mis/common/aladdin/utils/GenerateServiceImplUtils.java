@@ -51,6 +51,16 @@ public  class GenerateServiceImplUtils {
                 "       return new PageInfo<>(list);\n" +
                 "}\n");
 
+        content.append("    /**\n" +
+                "     * 查询详情\n" +
+                "     * @param qo\n" +
+                "     * @return\n" +
+                "     */\n" +
+                "   @Override\n" +
+                "    public "+po.getEntityName()+" detail("+po.getEntityName()+" qo){\n" +
+                "       return detailQuery(qo.getId());\n" +
+                "}\n");
+
         content.append("    @Override\n" +
                 "    public boolean remove("+po.getEntityName()+" entity) {\n" +
                 "        return delete(entity);\n" +

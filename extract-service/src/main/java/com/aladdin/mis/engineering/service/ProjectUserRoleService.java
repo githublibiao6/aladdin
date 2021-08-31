@@ -8,7 +8,7 @@ import com.github.pagehelper.PageInfo;
 /**
  * ProjectUserRoleService
  * @author cles
- * @date 2021-08-29T23:33:30.146
+ * @date 2021-08-31T22:03:55.836
 */
 public interface ProjectUserRoleService extends GlobalService<ProjectUserRole>  {
     /**

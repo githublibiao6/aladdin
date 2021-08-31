@@ -37,6 +37,13 @@ public  class GenerateServiceUtils {
                 "    PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo);\n\n");
 
         content.append("    /**\n" +
+                "     * 查询详情\n" +
+                "     * @param qo\n" +
+                "     * @return entity\n" +
+                "     */\n" +
+                "    "+po.getEntityName()+" detail("+po.getEntityName()+" qo);\n\n");
+
+        content.append("    /**\n" +
                 "     * 删除"+tableComment+"\n" +
                 "     * @param entity\n" +
                 "     * @return flag\n" +

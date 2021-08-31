@@ -13,6 +13,7 @@ import org.apache.shiro.SecurityUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,13 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         List<TableFieldInfo> list = table.getFields();
         JSONObject json = new JSONObject();
         list.forEach(t->{
-            json.put(t.getFieldName(), map.get(t.getColumnName()));
+            if("List<String>".equals(t.getColumnType()) && map.get(t.getColName()) != null){
+                String value = map.get(t.getColName()).toString();
+                value = value.substring(1, value.length()-1);
+                json.put(t.getColumnName(), Arrays.asList(value.split(",")));
+            }else {
+                json.put(t.getColumnName(), map.get(t.getColName()));
+            }
         });
         return JSONObject.parseObject(json.toJSONString(),clazz);
     }
@@ -69,22 +76,21 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
         TableFieldInfo user = new TableFieldInfo();
         user.setFieldValue(admin.getId());
-        user.setFieldName(CREATE_USER_FIELD);
         user.setTableName(tableName);
         user.setColumnName(CREATE_USER_FIELD);
         user.setColType("int");
         list.add(user);
         TableFieldInfo time = new TableFieldInfo();
         time.setFieldValue(new Date());
-        time.setFieldName(CREATE_TIME_FIELD);
         time.setTableName(tableName);
         time.setColumnName(CREATE_TIME_FIELD);
-        time.setColType("Date");
+        time.setColType("date");
         list.add(time);
         try{
             Integer id = Db.use().save(tableName, "id", list);
             return id;
         }catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }
@@ -99,17 +105,15 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
         TableFieldInfo user = new TableFieldInfo();
         user.setFieldValue(admin.getId());
-        user.setFieldName(UPDATE_USER_FIELD);
         user.setTableName(tableName);
         user.setColumnName(UPDATE_USER_FIELD);
         user.setColType("int");
         list.add(user);
         TableFieldInfo time = new TableFieldInfo();
         time.setFieldValue(new Date());
-        time.setFieldName(UPDATE_TIME_FIELD);
         time.setTableName(tableName);
         time.setColumnName(UPDATE_TIME_FIELD);
-        time.setColType("Date");
+        time.setColType("date");
         list.add(time);
         int count = Db.use().update(tableName, "id", list);
         return count > 0;

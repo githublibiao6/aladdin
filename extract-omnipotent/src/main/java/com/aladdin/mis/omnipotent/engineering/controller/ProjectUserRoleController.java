@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  *  ProjectUserRoleService--- 
  * @author cles
- * @date 2021-08-29T23:33:30.148
+ * @date 2021-08-31T22:03:55.931
 */
 @RequestMapping("projectUserRole")
 @Controller
@@ -32,6 +33,7 @@ public class ProjectUserRoleController  extends GlobalController {
      */
     @PostMapping("paginate")
     @WebLog("分页查询 ")
+    @ResponseBody
     public Result paginate(@RequestBody ProjectUserRoleQo qo){
         PageInfo<ProjectUserRoleVo> page = projectUserRoleService.paginate(qo);
         result.setData(page);
@@ -41,6 +43,7 @@ public class ProjectUserRoleController  extends GlobalController {
      */
     @PostMapping("save")
     @WebLog("保存")
+    @ResponseBody
     public Result save(@RequestBody ProjectUserRole entity){
         ProjectUserRole data = projectUserRoleService.save(entity);
         result.setData(data);
@@ -50,6 +53,7 @@ public class ProjectUserRoleController  extends GlobalController {
      */
     @PostMapping("delete")
     @WebLog("删除")
+    @ResponseBody
     public Result delete(@RequestBody ProjectUserRole entity){
         boolean flag = projectUserRoleService.remove(entity);
         if(flag){
@@ -64,6 +68,7 @@ public class ProjectUserRoleController  extends GlobalController {
      */
     @PostMapping("update")
     @WebLog("更新")
+    @ResponseBody
     public Result update(@RequestBody ProjectUserRole entity){
         boolean flag = projectUserRoleService.update(entity);
         if(flag){

@@ -15,7 +15,7 @@ public  class GenerateUtils {
 
     public static void create(String tableName, String module) {
         GeneratePo po = new GeneratePo();
-        po.setOverWrite(false);
+        po.setOverWrite(true);
         po.setTableInfo(MainDb.initTableInfo(tableName));
         po.setTablePath("import com.aladdin.mis.annotation.entity.Table;");
         po.setTableFieldPath("import com.aladdin.mis.annotation.entity.TableField;");

@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * ProjectPlanService
  * @author cles
- * @date 2021-08-29T23:32:16.051
+ * @date 2021-08-31T22:26:17.069
 */
 @Service
 public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> implements ProjectPlanService{
@@ -33,6 +33,15 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
        List<ProjectPlanVo> list = projectPlanDao.paginate(qo);
        return new PageInfo<>(list);
+}
+    /**
+     * 查询详情
+     * @param qo
+     * @return
+     */
+   @Override
+    public ProjectPlan detail(ProjectPlan qo){
+       return detailQuery(qo.getId());
 }
     @Override
     public boolean remove(ProjectPlan entity) {

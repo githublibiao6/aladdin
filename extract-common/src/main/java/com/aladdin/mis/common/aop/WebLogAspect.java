@@ -69,8 +69,8 @@ public class WebLogAspect {
         Object result= null;
         try {
             result = point.proceed();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
         return result;
     }

@@ -161,8 +161,6 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields){
 
-            String fieldName  = field.getName();
-
             boolean tableFieldExists = field.isAnnotationPresent(TableField.class);
             String column = field.getName();
             if(tableFieldExists){
@@ -174,14 +172,13 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             }
 
             TableFieldInfo obj = new TableFieldInfo();
-            obj.setFieldName(fieldName);
             Type type = field.getGenericType();
             if (int.class.equals(type) || Integer.class.equals(type)) {
                 obj.setColType("int");
-            }else if(String.class.equals(type)){
-                obj.setColType("String");
             }else if(Date.class.equals(type)){
-                obj.setColType("Date");
+                obj.setColType("date");
+            }else {
+                obj.setColType("varchar");
             }
             try {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
@@ -202,7 +199,6 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             Method getMethod = pd.getReadMethod();
             Object value = getMethod.invoke(this);
             id.setFieldValue(value);
-            id.setFieldName("id");
             id.setTableName(tableName);
             id.setColumnName("id");
             id.setColType("int");

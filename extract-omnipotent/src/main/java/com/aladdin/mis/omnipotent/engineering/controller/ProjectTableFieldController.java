@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * 项目表字段 ProjectTableFieldService--- 
  * @author cles
- * @date 2021-08-29T23:33:00.411
+ * @date 2021-08-31T22:05:10.402
 */
 @RequestMapping("projectTableField")
 @Controller
@@ -32,6 +33,7 @@ public class ProjectTableFieldController  extends GlobalController {
      */
     @PostMapping("paginate")
     @WebLog("分页查询 项目表字段")
+    @ResponseBody
     public Result paginate(@RequestBody ProjectTableFieldQo qo){
         PageInfo<ProjectTableFieldVo> page = projectTableFieldService.paginate(qo);
         result.setData(page);
@@ -41,6 +43,7 @@ public class ProjectTableFieldController  extends GlobalController {
      */
     @PostMapping("save")
     @WebLog("项目表字段保存")
+    @ResponseBody
     public Result save(@RequestBody ProjectTableField entity){
         ProjectTableField data = projectTableFieldService.save(entity);
         result.setData(data);
@@ -50,6 +53,7 @@ public class ProjectTableFieldController  extends GlobalController {
      */
     @PostMapping("delete")
     @WebLog("删除项目表字段")
+    @ResponseBody
     public Result delete(@RequestBody ProjectTableField entity){
         boolean flag = projectTableFieldService.remove(entity);
         if(flag){
@@ -64,6 +68,7 @@ public class ProjectTableFieldController  extends GlobalController {
      */
     @PostMapping("update")
     @WebLog("项目表字段更新")
+    @ResponseBody
     public Result update(@RequestBody ProjectTableField entity){
         boolean flag = projectTableFieldService.update(entity);
         if(flag){

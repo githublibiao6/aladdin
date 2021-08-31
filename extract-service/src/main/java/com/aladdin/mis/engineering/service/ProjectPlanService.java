@@ -8,7 +8,7 @@ import com.github.pagehelper.PageInfo;
 /**
  * ProjectPlanService
  * @author cles
- * @date 2021-08-29T23:32:16.050
+ * @date 2021-08-31T22:26:17.068
 */
 public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
     /**
@@ -17,6 +17,13 @@ public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
      * @return
      */
     PageInfo<ProjectPlanVo> paginate(ProjectPlanQo qo);
+
+    /**
+     * 查询详情
+     * @param qo
+     * @return entity
+     */
+    ProjectPlan detail(ProjectPlan qo);
 
     /**
      * 删除项目计划

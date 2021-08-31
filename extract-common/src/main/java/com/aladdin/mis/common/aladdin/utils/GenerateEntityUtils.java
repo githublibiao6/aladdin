@@ -50,7 +50,7 @@ public  class GenerateEntityUtils {
                 return;
             }
             content.append("    /**\n");
-            content.append("    *  "+t.getColumnName()+t.getColumnComment()==null?"":t.getColumnComment() +"\n");
+            content.append("    * "+t.getColumnName()+(t.getColumnComment()==null?"":t.getColumnComment()) +"\n");
             content.append("    */\n");
             content.append("    @TableField(\""+t.getColName()+"\")\n");
             if("Date".equals(t.getColumnType())){

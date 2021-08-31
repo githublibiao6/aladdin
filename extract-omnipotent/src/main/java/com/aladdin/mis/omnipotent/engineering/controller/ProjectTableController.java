@@ -1,25 +1,23 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.engineering.entity.ProjectTable;
-import com.aladdin.mis.engineering.service.ProjectTableService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectTableQo;
-import com.aladdin.mis.engineering.vo.ProjectTableVo;
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.engineering.entity.ProjectTable;
+import com.aladdin.mis.engineering.qo.ProjectTableQo;
+import com.aladdin.mis.engineering.service.ProjectTableService;
+import com.aladdin.mis.engineering.vo.ProjectTableVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
- * 项目表 ProjectTableService--- 
+ * 项目表 ProjectTableService---
  * @author cles
- * @date 2021-08-29T23:32:52.590
+ * @date 2021-08-31T22:04:34.679
 */
 @RequestMapping("projectTable")
 @Controller
@@ -32,6 +30,7 @@ public class ProjectTableController  extends GlobalController {
      */
     @PostMapping("paginate")
     @WebLog("分页查询 项目表")
+    @ResponseBody
     public Result paginate(@RequestBody ProjectTableQo qo){
         PageInfo<ProjectTableVo> page = projectTableService.paginate(qo);
         result.setData(page);
@@ -41,6 +40,7 @@ public class ProjectTableController  extends GlobalController {
      */
     @PostMapping("save")
     @WebLog("项目表保存")
+    @ResponseBody
     public Result save(@RequestBody ProjectTable entity){
         ProjectTable data = projectTableService.save(entity);
         result.setData(data);
@@ -50,6 +50,7 @@ public class ProjectTableController  extends GlobalController {
      */
     @PostMapping("delete")
     @WebLog("删除项目表")
+    @ResponseBody
     public Result delete(@RequestBody ProjectTable entity){
         boolean flag = projectTableService.remove(entity);
         if(flag){
@@ -64,6 +65,7 @@ public class ProjectTableController  extends GlobalController {
      */
     @PostMapping("update")
     @WebLog("项目表更新")
+    @ResponseBody
     public Result update(@RequestBody ProjectTable entity){
         boolean flag = projectTableService.update(entity);
         if(flag){
