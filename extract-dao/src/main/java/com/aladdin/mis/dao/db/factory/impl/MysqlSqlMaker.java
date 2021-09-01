@@ -102,8 +102,11 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             throw new RuntimeException("update must has primary key");
         }
         columns.forEach(t->{
-            switch (t.getColType()){
+            if(t.getColumnType() == null)
+                System.err.println(t.getColumnName());
+            switch (t.getColumnType()){
                 case "int":
+                case "Integer":
                     sql.append(t.getColumnName()).append("=")
                             .append(t.getFieldValue()).append(",");
                     break;

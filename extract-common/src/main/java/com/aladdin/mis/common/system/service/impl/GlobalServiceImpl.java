@@ -11,12 +11,10 @@ import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.*;
+import java.util.*;
 
 /**
  * 功能描述：
@@ -84,7 +82,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         time.setFieldValue(new Date());
         time.setTableName(tableName);
         time.setColumnName(CREATE_TIME_FIELD);
-        time.setColType("date");
+        time.setColType("Date");
         list.add(time);
         try{
             Integer id = Db.use().save(tableName, "id", list);
@@ -95,28 +93,57 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         }
     }
 
-
-
     @Override
     public  boolean updateSelective(BaseModel baseModel) {
-        TableInfo table = baseModel.updateInfo();
+        TableInfo table = MainDb.getTableInfo(getTableName(baseModel.getClass()));
+        table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
         Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
         TableFieldInfo user = new TableFieldInfo();
-        user.setFieldValue(admin.getId());
-        user.setTableName(tableName);
-        user.setColumnName(UPDATE_USER_FIELD);
-        user.setColType("int");
-        list.add(user);
-        TableFieldInfo time = new TableFieldInfo();
-        time.setFieldValue(new Date());
-        time.setTableName(tableName);
-        time.setColumnName(UPDATE_TIME_FIELD);
-        time.setColType("date");
-        list.add(time);
+        list.forEach(t->{
+            if(UPDATE_USER_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(admin.getId());
+            }
+            if(UPDATE_TIME_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(new Date());
+            }
+        });
         int count = Db.use().update(tableName, "id", list);
         return count > 0;
+    }
+
+    private List<TableFieldInfo> setTableField(List<TableFieldInfo> list , BaseModel baseModel)  {
+        Field[] fields = baseModel.getClass().getDeclaredFields();
+        Map<String, Object> map = new HashMap<>(16);
+        for (Field field : fields){
+            try {
+                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), baseModel.getClass());
+                Method getMethod = pd.getReadMethod();
+                Object value = getMethod.invoke(baseModel);
+                String column = field.getName();
+                map.put(column,value);
+            } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        // 单独获取主键
+        try {
+            PropertyDescriptor pd = new PropertyDescriptor("id", baseModel.getClass());
+            Method getMethod = pd.getReadMethod();
+            Object value = getMethod.invoke(baseModel);
+            map.put("id",value);
+        } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        list.forEach(t->{
+            t.setFieldValue(map.get(t.getColumnName()));
+        });
+        return list;
+    }
+
+    private String getTableName(Class clazz){
+        return BaseModelUtil.getTableName(clazz);
     }
 
 

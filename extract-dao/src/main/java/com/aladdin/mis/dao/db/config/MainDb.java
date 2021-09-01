@@ -186,7 +186,6 @@ public class MainDb {
             List<Field> fieldList = new ArrayList<>();
             Table table = (Table) clazz.getAnnotation(Table.class);
             if(table == null){
-                System.err.println(clazz);
                 continue;
             }
             String tableName = table.value();
@@ -215,6 +214,30 @@ public class MainDb {
                         t.setColumnName(field.getName());
                         if("class [Ljava.lang.String;".equals(type)){
                             t.setColumnType("String[]");
+                        }
+                        if(t.getColType() != null){
+                            switch (t.getColType()){
+                                case "text":
+                                    t.setColumnType("String");
+                                    break;
+                                case "varchar":
+                                    if(t.getColumnComment() != null && t.getColumnComment().endsWith("list")){
+                                        t.setColumnType("List<String>");
+                                    }else {
+                                        t.setColumnType("String");
+                                    }
+                                    break;
+                                case "int":
+                                    t.setColumnType("Integer");
+                                    break;
+                                case "timestamp":
+                                case "date":
+                                case "datetime":
+                                    t.setColumnType("Date");
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                 });

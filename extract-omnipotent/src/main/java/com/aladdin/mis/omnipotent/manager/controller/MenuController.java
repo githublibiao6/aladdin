@@ -65,12 +65,28 @@ public class MenuController extends GlobalController {
         return result;
     }
 
+    @RequestMapping("/add")
+    @ResponseBody
+    @WebLog("新增菜单")
+    public Result add(@RequestBody Menu menu) {
+        boolean flag = service.add(menu);
+        String msg ;
+        result.setSuccess(flag);
+        if(flag){
+            msg = "添加成功";
+        }else {
+            msg = "添加失败";
+        }
+        result.setMessage(msg);
+        return result;
+    }
+
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(@RequestBody JSONObject json) {
+    @WebLog("编辑菜单")
+    public Result update(@RequestBody Menu menu) {
         result = new Result();
-        Menu m = JSONObject.parseObject(json.toJSONString(),Menu.class);
-        boolean flag = service.update(m);
+        boolean flag = service.update(menu);
         String msg = "更新成功" ;
         result.setSuccess(flag);
         if(!flag){
@@ -117,7 +133,6 @@ public class MenuController extends GlobalController {
         return result;
     }
 
-
     /**
      * 获取菜单
      *
@@ -159,21 +174,6 @@ public class MenuController extends GlobalController {
     @RequestMapping("/addoreditrender.do")
     public String addOrEditRender() {
         return "system/menu/addoredit";
-    }
-
-    @RequestMapping("/add.do")
-    @ResponseBody
-    public Result add(Menu menu) {
-        boolean flag = service.add(menu);
-        String msg ;
-        result.setSuccess(flag);
-        if(flag){
-            msg = "添加成功";
-        }else {
-            msg = "添加失败";
-        }
-        result.setMessage(msg);
-        return result;
     }
 
     @RequestMapping("/findById")
