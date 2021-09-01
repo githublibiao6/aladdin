@@ -68,22 +68,19 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
     @Override
     public Integer insert(BaseModel baseModel) {
-        TableInfo table = baseModel.saveInfo();
+        TableInfo table = MainDb.getTableInfo(getTableName(baseModel.getClass()));
+        table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
         Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
-        TableFieldInfo user = new TableFieldInfo();
-        user.setFieldValue(admin.getId());
-        user.setTableName(tableName);
-        user.setColumnName(CREATE_USER_FIELD);
-        user.setColType("int");
-        list.add(user);
-        TableFieldInfo time = new TableFieldInfo();
-        time.setFieldValue(new Date());
-        time.setTableName(tableName);
-        time.setColumnName(CREATE_TIME_FIELD);
-        time.setColType("Date");
-        list.add(time);
+        list.forEach(t->{
+            if(CREATE_USER_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(admin.getId());
+            }
+            if(CREATE_TIME_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(new Date());
+            }
+        });
         try{
             Integer id = Db.use().save(tableName, "id", list);
             return id;
@@ -145,7 +142,6 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private String getTableName(Class clazz){
         return BaseModelUtil.getTableName(clazz);
     }
-
 
     @Override
     public boolean deleteById(Integer primaryKey) {

@@ -37,6 +37,9 @@ public class MysqlSqlMaker extends BaseSqlMaker {
 //                    id.set(t.getString("field_value"));
 //                }
 //            }
+            if("id".equals(t.getColumnName())){
+                return;
+            }
             if(t.getFieldValue() != null){
                 columns.add(t);
             }
@@ -52,8 +55,9 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         sql.deleteCharAt(sql.length()-1);
         sql.append(" ) VALUES (");
         columns.forEach(t->{
-            switch (t.getColType()){
+            switch (t.getColumnType()){
                 case "int":
+                case "Integer":
                     sql.append(t.getFieldValue()).append(",");
                     break;
                 case "String":
