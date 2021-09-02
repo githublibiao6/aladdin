@@ -1,5 +1,6 @@
 package com.aladdin.mis.pagehelper.entity.qo;
 
+import com.aladdin.mis.manager.bean.Menu;
 import lombok.Data;
 
 /**
@@ -8,7 +9,7 @@ import lombok.Data;
  * @date 2018年6月5日 下午9:03:15
  */
 @Data
-public class MenuQo {
+public class MenuQo extends Menu {
     /**
      * 当前页码
      */

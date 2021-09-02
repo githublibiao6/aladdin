@@ -50,7 +50,7 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         sql.append("(");
         columns.forEach(t->{
 
-            sql.append(t.getColumnName()).append(",");
+            sql.append(t.getColName()).append(",");
         });
         sql.deleteCharAt(sql.length()-1);
         sql.append(" ) VALUES (");
@@ -111,15 +111,15 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             switch (t.getColumnType()){
                 case "int":
                 case "Integer":
-                    sql.append(t.getColumnName()).append("=")
+                    sql.append(t.getColName()).append("=")
                             .append(t.getFieldValue()).append(",");
                     break;
                 case "String":
-                    sql.append(t.getColumnName()).append("=").append("'")
+                    sql.append(t.getColName()).append("=").append("'")
                             .append(t.getFieldValue()).append("'").append(",");
                     break;
                 case "Date":
-                    sql.append(t.getColumnName()).append("=");
+                    sql.append(t.getColName()).append("=");
                     Date date = (Date) t.getFieldValue();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String value = sdf.format(date);

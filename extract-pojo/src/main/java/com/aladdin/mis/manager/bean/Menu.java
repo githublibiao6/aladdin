@@ -27,6 +27,7 @@ public class Menu extends GlobalModel {
     /**
      * 菜单名称
      */
+    @TableField("menu_text")
     private String menuText;
     /**
      *  地址
@@ -47,6 +48,7 @@ public class Menu extends GlobalModel {
     /**
      * 菜单类型
      */
+    @TableField("menu_type")
     private String menuType;
     /**
      * 是否是一级菜单

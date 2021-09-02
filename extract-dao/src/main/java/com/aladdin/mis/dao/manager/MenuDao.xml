@@ -7,6 +7,16 @@
         select * from be_menu where menu_id=#{menuId}
     </select>
 
+    <select id="list" resultType="com.aladdin.mis.manager.bean.Menu">
+        select distinct t.* from be_menu t
+        left join be_menu p on t.id=p.parent
+        where t.sys005='1'
+        <if test="menuText  != null and menuText != '' ">
+            and (t.menu_text like concat('%',#{menuText},'%') or p.menu_text like concat('%',#{menuText},'%'))
+        </if>
+        order by t.level asc
+    </select>
+
     <update  id="remove" parameterType="com.aladdin.mis.manager.bean.Menu">
         update be_menu  set delete_flag = 0 where menuId=#{menuId}
     </update >

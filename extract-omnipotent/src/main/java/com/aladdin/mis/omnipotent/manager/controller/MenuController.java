@@ -1,19 +1,15 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
+import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
-import com.alibaba.fastjson.JSONObject;
+import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -99,9 +95,8 @@ public class MenuController extends GlobalController {
 
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
-    public Result delete(@RequestBody JSONObject json) {
-        Menu m = JSONObject.parseObject(json.toJSONString(),Menu.class);
-        boolean flag = service.remove(json.getString("pk"));
+    public Result delete(@RequestBody Menu menu) {
+        boolean flag = service.deleteById(menu.getId());
         String msg ;
         result.setSuccess(flag);
         if(flag){
@@ -122,10 +117,10 @@ public class MenuController extends GlobalController {
      * @author lb
      * @date 2018年8月21日 下午9:56:33
      */
-    @RequestMapping("/treeList")
+    @PostMapping("/treeList")
     @ResponseBody
-    @WebLog
-    public Result treeList(MenuQo qo) {
+    @WebLog("树形菜单查询")
+    public Result treeList(@RequestBody  MenuQo qo) {
         List<Menu> list = service.tree(qo);
         result.setData(list);
         result.setCode(20000);

@@ -64,7 +64,6 @@ public class WebLogAspect {
         System.err.println(request.getHeader("Authorization"));
         Subject subject = SecurityUtils.getSubject();
         Object m = subject.getPrincipal();
-        System.err.println(json);
         System.err.println(webLog.value());
         Object result= null;
         try {
