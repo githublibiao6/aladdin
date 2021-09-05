@@ -8,7 +8,7 @@
     </select>
 
     <select id="list" resultType="com.aladdin.mis.manager.bean.Menu">
-        select distinct t.* from be_menu t
+        select distinct t.id menuId, t.* from be_menu t
         left join be_menu p on t.id=p.parent
         where t.sys005='1'
         <if test="menuText  != null and menuText != '' ">

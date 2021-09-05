@@ -61,6 +61,9 @@ public class Menu extends GlobalModel {
     private boolean hasChildren;
 
     @TableField(exist = false)
+    private Integer menuId;
+
+    @TableField(exist = false)
     private List<Menu> children;
 
 }

@@ -115,7 +115,7 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
         String[] arr = menus.split(",");
         for (String menu : arr) {
             RoleMenu roleMenu = new RoleMenu();
-            roleMenu.setMenuId(menu);
+            roleMenu.setMenuId(Integer.parseInt(menu));
             roleMenu.setRoleId(roleId);
             insertSelective(roleMenu);
         }

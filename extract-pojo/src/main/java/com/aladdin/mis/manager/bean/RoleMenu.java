@@ -21,5 +21,5 @@ public class RoleMenu extends GlobalModel {
     private Integer roleId;
 
     @TableField("menu_id")
-    private String menuId;
+    private Integer menuId;
 }
