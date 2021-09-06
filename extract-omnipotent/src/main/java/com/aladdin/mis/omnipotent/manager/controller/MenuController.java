@@ -153,8 +153,8 @@ public class MenuController extends GlobalController {
      */
     @RequestMapping("/listMap")
     @ResponseBody
-    public Result listMap(MenuQo qo) {
-        List<Menu> data = service.tree(qo);
+    public Result listMap() {
+        List<Menu> data = service.tree(null);
         result.setData(data);
         System.err.println(result.toString());
         result.setCode(20000);

@@ -25,7 +25,7 @@ public interface DicTeamsDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.DictionaryTeams>
      * @version: 1.0.0
      */
-    @Select("select * from be_dictionary_teams where dic_id=#{id} order by sort asc")
+    @Select("select * from be_dictionary_teams where dic_id=#{id} and sys005=1  order by sort asc")
     List<DictionaryTeams> listTeamsByDicId(@Param("id") Integer id);
 
     /**

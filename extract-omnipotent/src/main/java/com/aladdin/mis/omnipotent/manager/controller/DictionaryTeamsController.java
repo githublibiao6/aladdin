@@ -7,7 +7,6 @@ import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.manager.qo.DictionaryQo;
 import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
 import com.aladdin.mis.manager.service.impl.DictionaryTeamsServiceImpl;
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,10 +38,9 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(@RequestBody JSONObject json) {
+    public Result add(@RequestBody DictionaryTeams teams) {
         result = new Result();
-        DictionaryTeams m = JSONObject.parseObject(json.toJSONString(),DictionaryTeams.class);
-        boolean flag = teamsService.add(m);
+        boolean flag = teamsService.insert(teams) != null;
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
@@ -78,10 +76,9 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
      */
     @RequestMapping("/delete")
     @ResponseBody
-    public Result delete(@RequestBody JSONObject json) {
+    public Result delete(@RequestBody DictionaryTeams model) {
         result = new Result();
-        DictionaryTeams m = JSONObject.parseObject(json.toJSONString(),DictionaryTeams.class);
-        boolean flag = teamsService.remove(json.getInteger("id"));
+        boolean flag = teamsService.deleteById(model.getId());
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");

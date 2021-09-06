@@ -13,10 +13,10 @@ public class MenuQo extends Menu {
     /**
      * 当前页码
      */
-    private int page;
+    private Integer page;
     /**
      * 每页数量
      */
-    private int limit;
+    private Integer limit;
 
 }

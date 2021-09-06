@@ -32,7 +32,7 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeam
         limit = limit == null ? 10 : limit;
         Integer dicId = qo.getDicId();
         List<DictionaryTeams> list = dao.listTeamsByDicId(dicId);
-        PageHelper.offsetPage(0, limit);
+        PageHelper.offsetPage(page, limit);
         return new PageInfo<>(list);
     }
 
