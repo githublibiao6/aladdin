@@ -55,7 +55,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     }
 
     @Override
-    public PageInfo page(MenuQo qo) {
+    public PageInfo<Menu> page(MenuQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());
         return new PageInfo(dao.list(qo));
     }

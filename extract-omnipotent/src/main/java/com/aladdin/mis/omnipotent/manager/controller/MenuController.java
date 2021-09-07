@@ -54,8 +54,8 @@ public class MenuController extends GlobalController {
      */
     @RequestMapping("/page")
     @ResponseBody
-    public  Result pageList(MenuQo qo) {
-        PageInfo page = service.page(qo);
+    public  Result pageList(@RequestBody MenuQo qo) {
+        PageInfo<Menu> page = service.page(qo);
         result.setData(page);
         result.setCode(20000);
         return result;

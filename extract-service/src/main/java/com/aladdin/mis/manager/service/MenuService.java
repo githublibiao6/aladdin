@@ -54,7 +54,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
-    PageInfo page(MenuQo qo);
+    PageInfo<Menu> page(MenuQo qo);
     /**
      * 功能描述：
      *  < 分页 >

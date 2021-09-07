@@ -30,7 +30,8 @@ public class BaseModelUtil {
             Table table = (Table) clazz.getAnnotation(Table.class);
             tableName = table.value();
         }else {
-            throw new RuntimeException(clazz +" has not bind table");
+//            throw new RuntimeException(clazz +" has not bind table");
+            return null;
         }
         return tableName;
     }
