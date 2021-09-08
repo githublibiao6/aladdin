@@ -3,7 +3,7 @@ package com.aladdin.mis.omnipotent.manager.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.qo.DeptQo;
+import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminService;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.github.pagehelper.PageInfo;
@@ -56,8 +56,8 @@ public class AdminController extends GlobalController {
      */
     @PostMapping("/page")
     @ResponseBody
-    public Result paageList(@RequestBody DeptQo qo) {
-        PageInfo<Admin> page = service.pagelist(qo);
+    public Result pageList(@RequestBody AdminQo qo) {
+        PageInfo<Admin> page = service.pageList(qo);
         result.setData(page);
 //        result=page(list,page,limit);
         return result;
@@ -108,9 +108,9 @@ public class AdminController extends GlobalController {
         return "system/admin/addoredit";
     }
 
-    @RequestMapping("/add.do")
+    @RequestMapping("/save")
     @ResponseBody
-    public Result add(Admin admin) {
+    public Result add(@RequestBody Admin admin) {
         boolean flag = service.add(admin);
         String msg ;
         result.setSuccess(flag);
@@ -125,7 +125,7 @@ public class AdminController extends GlobalController {
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(Admin admin) {
+    public Result update(@RequestBody Admin admin) {
         boolean flag = service.update(admin);
         String msg ;
         result.setSuccess(flag);

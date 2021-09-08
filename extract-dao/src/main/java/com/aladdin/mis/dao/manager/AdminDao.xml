@@ -19,6 +19,9 @@
 
     <select id="pageList" resultType="com.aladdin.mis.manager.bean.Admin">
         select t.* from be_admin t  where sys005 = 1
+        <if test="deptId  != null and deptId != '' ">
+            and t.dept_id = #{deptId}
+        </if>
     </select>
 
     <select id="findById" resultType="com.aladdin.mis.manager.bean.Admin">

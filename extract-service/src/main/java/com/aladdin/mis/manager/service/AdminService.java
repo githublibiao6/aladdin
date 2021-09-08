@@ -2,7 +2,7 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.qo.DeptQo;
+import com.aladdin.mis.manager.qo.AdminQo;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 */
 public interface AdminService  extends GlobalService<Admin> {
     List<Admin> list();
-    PageInfo<Admin> pagelist(DeptQo qo);
+    PageInfo<Admin> pageList(AdminQo qo);
     boolean add(Admin menu);
     boolean update(Admin menu);
     boolean remove(Integer id);

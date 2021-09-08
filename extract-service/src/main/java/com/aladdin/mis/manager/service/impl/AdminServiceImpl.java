@@ -3,7 +3,7 @@ package com.aladdin.mis.manager.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.qo.DeptQo;
+import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import com.github.pagehelper.PageHelper;
@@ -52,7 +52,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         return dao.list();
     }
     @Override
-    public PageInfo<Admin> pagelist(DeptQo qo) {
+    public PageInfo<Admin> pageList(AdminQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());
         List<Admin>  list = dao.pageList(qo);
         return new PageInfo<>(list);
@@ -60,12 +60,12 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
 
     @Override
     public boolean add(Admin admin) {
-        boolean flag = true;
+        boolean flag = false;
 
         admin.setLoginPassword(UUID.randomUUID().toString());
-        int num = dao.add(admin);
+        int num = insert(admin);
         if(num > 0){
-            flag = false;
+            flag = true;
         }
         return flag;
     }
@@ -81,15 +81,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     }
     @Override
     public boolean update(Admin admin){
-        boolean flag = false;
-
-//        admin.setDeleteFlag("1");
-        System.out.println(admin.getId());
-        int num = dao.update(admin);
-        if(num > 0){
-            flag = true;
-        }
-        return flag;
+        return updateSelective(admin);
     }
 
     /**
