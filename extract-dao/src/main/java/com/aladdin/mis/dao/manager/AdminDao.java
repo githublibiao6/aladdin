@@ -1,6 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -37,7 +38,7 @@ public interface AdminDao {
 
     List<Admin> list();
 
-    List<Admin> pageList();
+    List<Admin> pageList(DeptQo qo);
 
     int  add(Admin menu);
 

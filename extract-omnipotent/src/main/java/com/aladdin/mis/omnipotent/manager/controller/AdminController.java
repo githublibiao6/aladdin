@@ -3,13 +3,13 @@ package com.aladdin.mis.omnipotent.manager.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.service.AdminService;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -54,11 +54,11 @@ public class AdminController extends GlobalController {
     /**
      * 获取分页菜单
      */
-    @RequestMapping("/pagelist.do")
+    @PostMapping("/page")
     @ResponseBody
-    public Result paageList(Integer page, Integer limit) {
-        List<Admin>  list = service.pagelist();
-        result.setData(list);
+    public Result paageList(@RequestBody DeptQo qo) {
+        PageInfo<Admin> page = service.pagelist(qo);
+        result.setData(page);
 //        result=page(list,page,limit);
         return result;
     }
@@ -123,7 +123,7 @@ public class AdminController extends GlobalController {
         return result;
     }
 
-    @RequestMapping("/update.do")
+    @RequestMapping("/update")
     @ResponseBody
     public Result update(Admin admin) {
         boolean flag = service.update(admin);
@@ -146,10 +146,10 @@ public class AdminController extends GlobalController {
         result.setData(admin);
         return result;
     }
-    @RequestMapping(value="/remove.do",method= RequestMethod.DELETE)
+    @RequestMapping(value="/remove",method= RequestMethod.DELETE)
     @ResponseBody
-    public Result remove(String id) {
-        boolean flag = service.remove(id);
+    public Result remove(@RequestBody Admin admin) {
+        boolean flag = service.remove(admin.getId());
         String msg ;
         result.setSuccess(flag);
         if(flag){

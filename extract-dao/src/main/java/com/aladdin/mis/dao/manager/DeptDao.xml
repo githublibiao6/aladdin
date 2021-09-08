@@ -3,8 +3,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.DeptDao">
     <!-- 获取所有的部门信息 -->
-    <select id="list" resultType="com.aladdin.mis.manager.bean.Dept">
-        select * from dept
+    <select id="list" resultType="com.aladdin.mis.manager.vo.DeptVo">
+        select * from be_dept where sys005=1
     </select>
 
     <!-- 根据id获取部门详细信息 -->

@@ -2,7 +2,10 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dept;
+import com.aladdin.mis.manager.qo.DeptQo;
+import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 import java.util.Set;
@@ -33,7 +36,10 @@ public interface DeptService extends GlobalService<Dept> {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Role>
      * @version: 1.0.0
      */
-    List<Dept> list();
+    List<DeptVo> list();
+
+
+    List<DeptVo> treeList();
     /**
      * 功能描述：
      *  < 新增>
@@ -90,4 +96,19 @@ public interface DeptService extends GlobalService<Dept> {
      * @version: 1.0.0
      */
     Dept findById(Integer id);
+
+    /**
+     * 分页查询组织机构
+     * @param qo 查询条件
+     * @return page
+     */
+    PageInfo<DeptVo> paginate(DeptQo qo);
+
+    /**
+     * 保存组织机构
+     * @param entity
+     * @return
+     */
+    Dept save(Dept entity);
+
 }

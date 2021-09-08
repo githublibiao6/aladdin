@@ -1,23 +1,20 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.engineering.entity.Project;
-import com.aladdin.mis.engineering.service.ProjectService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectQo;
-import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.engineering.entity.Project;
+import com.aladdin.mis.engineering.qo.ProjectQo;
+import com.aladdin.mis.engineering.service.ProjectService;
+import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 /**
- * 工程项目 ProjectService--- 
+ * 工程项目 ProjectService---
  * @author cles
  * @date 2021-08-26T23:02:39.368
 */
@@ -73,4 +70,5 @@ public class ProjectController  extends GlobalController {
             result.setMessage("更新失败");
         }
         return result ;
-    }}
+    }
+}

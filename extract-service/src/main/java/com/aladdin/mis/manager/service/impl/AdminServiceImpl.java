@@ -3,8 +3,11 @@ package com.aladdin.mis.manager.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,9 +52,10 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         return dao.list();
     }
     @Override
-    public List<Admin>  pagelist() {
-        List<Admin>  list = dao.pageList();
-        return list;
+    public PageInfo<Admin> pagelist(DeptQo qo) {
+        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
+        List<Admin>  list = dao.pageList(qo);
+        return new PageInfo<>(list);
     }
 
     @Override
@@ -72,13 +76,8 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     }
 
     @Override
-    public boolean remove(String menuId){
-        boolean flag = true;
-        int num = dao.remove(menuId);
-        if(num > 1){
-            flag = false;
-        }
-        return flag;
+    public boolean remove(Integer id){
+        return deleteById(id);
     }
     @Override
     public boolean update(Admin admin){

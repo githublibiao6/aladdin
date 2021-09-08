@@ -22,9 +22,13 @@ public class Admin extends GlobalModel {
      */
     private String loginPassword;
     /**
+     * 联系方式
+     */
+    private String phone;
+    /**
      * 部门
      */
-    private String deptId;
+    private Integer deptId;
     /**
      * 说明
      */
