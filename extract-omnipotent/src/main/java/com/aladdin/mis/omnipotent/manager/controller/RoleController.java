@@ -65,6 +65,10 @@ public class RoleController extends GlobalController/*<Role, RoleServiceImpl>*/ 
     @ResponseBody
     public  Result list() {
         List<Role> list = service.list();
+        list.forEach(t->{
+            t.setHasChildren(false);
+            t.setRoleId(t.getId());
+        });
         result.setData(list);
         result.setCode(20000);
         return result;

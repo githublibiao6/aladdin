@@ -156,7 +156,6 @@ public class MenuController extends GlobalController {
     public Result listMap() {
         List<Menu> data = service.tree(null);
         result.setData(data);
-        System.err.println(result.toString());
         result.setCode(20000);
         return result;
     }

@@ -126,6 +126,7 @@ public class AdminController extends GlobalController {
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody Admin admin) {
+        result = new Result();
         boolean flag = service.update(admin);
         String msg ;
         result.setSuccess(flag);
@@ -146,7 +147,7 @@ public class AdminController extends GlobalController {
         result.setData(admin);
         return result;
     }
-    @RequestMapping(value="/remove",method= RequestMethod.DELETE)
+    @PostMapping(value="/remove")
     @ResponseBody
     public Result remove(@RequestBody Admin admin) {
         boolean flag = service.remove(admin.getId());

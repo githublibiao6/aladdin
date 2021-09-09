@@ -5,6 +5,8 @@ import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 菜单model
 * @Description
@@ -25,5 +27,14 @@ public class Role extends GlobalModel {
 
     @TableField("comments")
     private String comments;
+
+    @TableField(exist = false)
+    private Integer roleId;
+
+    @TableField(exist = false)
+    private List<Role> children;
+
+    @TableField(exist = false)
+    private boolean hasChildren;
 
 }
