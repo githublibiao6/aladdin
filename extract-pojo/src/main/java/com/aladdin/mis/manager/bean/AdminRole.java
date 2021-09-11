@@ -11,18 +11,18 @@ import lombok.Data;
 * @author cles
  * @date 2018年8月20日 下午10:50:54
  */
-@Table("be_user_role")
+@Table("be_admin_role")
 @Data
-public class UserRole extends GlobalModel {
+public class AdminRole extends GlobalModel {
 
     /**
      * 名称
      */
-    @TableField("user_id")
-    private String userId;
+    @TableField("admin_id")
+    private Integer adminId;
     /**
      * 角色
      */
     @TableField("role_id")
-    private String roleId;
+    private Integer roleId;
 }

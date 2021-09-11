@@ -46,6 +46,6 @@ public interface RoleDao {
      * @param id 用户主键
      * @return list
      */
-    @Select("select * from be_role where id in (select t.role_id from be_user_role t where sys005 = 1 and user_id=#{id} ) and sys005 = '1'")
+    @Select("select * from be_role where id in (select t.role_id from be_admin_role t where sys005 = 1 and admin_id=#{id} ) and sys005 = '1'")
     List<Role> queryRolesByUserId(Integer id);
 }

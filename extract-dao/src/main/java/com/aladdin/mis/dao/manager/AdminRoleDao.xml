@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.dao.manager.AdminRoleDao">
+
+    <!-- 根据id获取部门详细信息 -->
+    <select id="getRoleByAdmin" resultType="com.aladdin.mis.manager.bean.AdminRole">
+        select * from be_admin_role where admin_id = #{adminId} and sys005=1
+    </select>
+
+    <update  id="removeByAdmin">
+        update be_admin_role set sys005=0 where admin_id=#{adminId}
+    </update >
+</mapper>

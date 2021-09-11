@@ -1,6 +1,7 @@
 package com.aladdin.mis.manager.bean;
 
 import com.aladdin.mis.annotation.entity.Table;
+import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 
@@ -33,4 +34,10 @@ public class Admin extends GlobalModel {
      * 说明
      */
     private String notes;
+
+    /**
+     * 说明
+     */
+    @TableField(exist = false)
+    private String roles;
 }

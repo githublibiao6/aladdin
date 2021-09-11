@@ -4,6 +4,7 @@ import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.qo.AdminQo;
+import com.aladdin.mis.manager.service.AdminRoleService;
 import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import com.github.pagehelper.PageHelper;
@@ -24,6 +25,9 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
 
     @Autowired
     AdminDao dao;
+
+    @Autowired
+    AdminRoleService adminRoleService;
     /**
      * 根据用户名和密码获得 admin
      * @param admin
@@ -61,11 +65,12 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     @Override
     public boolean add(Admin admin) {
         boolean flag = false;
-
+        String roles = admin.getRoles();
         admin.setLoginPassword(UUID.randomUUID().toString());
         int num = insert(admin);
         if(num > 0){
             flag = true;
+            adminRoleService.setRoles(admin.getId(), roles);
         }
         return flag;
     }
@@ -79,8 +84,10 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     public boolean remove(Integer id){
         return deleteById(id);
     }
+
     @Override
     public boolean update(Admin admin){
+        adminRoleService.setRoles(admin.getId(), admin.getRoles());
         return updateSelective(admin);
     }
 
