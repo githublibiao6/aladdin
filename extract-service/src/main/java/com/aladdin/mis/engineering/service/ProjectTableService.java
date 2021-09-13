@@ -8,7 +8,7 @@ import com.github.pagehelper.PageInfo;
 /**
  * ProjectTableService
  * @author cles
- * @date 2021-08-31T22:04:34.671
+ * @date 2021-09-14T00:07:18.683
 */
 public interface ProjectTableService extends GlobalService<ProjectTable>  {
     /**
@@ -17,6 +17,13 @@ public interface ProjectTableService extends GlobalService<ProjectTable>  {
      * @return
      */
     PageInfo<ProjectTableVo> paginate(ProjectTableQo qo);
+
+    /**
+     * 查询详情
+     * @param qo
+     * @return entity
+     */
+    ProjectTable detail(ProjectTable qo);
 
     /**
      * 删除项目表

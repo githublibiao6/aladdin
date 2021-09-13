@@ -12,9 +12,39 @@ import lombok.Data;
 /**
  * 项目表
  * @author cles
- * @date 2021-08-31T22:04:34.573
+ * @date 2021-09-14T00:07:18.660
 */
-@Table("Project_table")
+@Table("project_table")
 @Data
 public class ProjectTable extends GlobalModel {
+    /**
+    * projectId
+    */
+    @TableField("project_id")
+    private Integer projectId;
+
+    /**
+    * tableName
+    */
+    @TableField("table_name")
+    private String tableName;
+
+    /**
+    * tableComment表描述
+    */
+    @TableField("table_comment")
+    private String tableComment;
+
+    /**
+    * remark备注信息
+    */
+    @TableField("remark")
+    private String remark;
+
+    /**
+    * status表状态
+    */
+    @TableField("status")
+    private String status;
+
 }

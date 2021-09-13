@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.engineering.entity.ProjectTable;
 import com.aladdin.mis.engineering.qo.ProjectTableQo;
 import com.aladdin.mis.engineering.vo.ProjectTableVo;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * ProjectTableService
  * @author cles
- * @date 2021-08-31T22:04:34.671
+ * @date 2021-09-14T00:07:18.680
 */
 @Repository
 public interface ProjectTableDao {
@@ -18,4 +17,4 @@ public interface ProjectTableDao {
      * @param qo
      * @return list
      */
-    List<ProjectTableVo> paginate(ProjectTableQo qo);}
+    List<ProjectTableVo> list(ProjectTableQo qo);}

@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * ProjectTableService
  * @author cles
- * @date 2021-08-31T22:04:34.673
+ * @date 2021-09-14T00:07:18.685
 */
 @Service
 public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> implements ProjectTableService{
@@ -31,8 +31,17 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
    @Override
     public PageInfo<ProjectTableVo> paginate(ProjectTableQo qo){
        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
-       List<ProjectTableVo> list = projectTableDao.paginate(qo);
+       List<ProjectTableVo> list = projectTableDao.list(qo);
        return new PageInfo<>(list);
+}
+    /**
+     * 查询详情
+     * @param qo
+     * @return
+     */
+   @Override
+    public ProjectTable detail(ProjectTable qo){
+       return detailQuery(qo.getId());
 }
     @Override
     public boolean remove(ProjectTable entity) {
