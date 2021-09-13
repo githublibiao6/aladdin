@@ -40,4 +40,10 @@ public class Admin extends GlobalModel {
      */
     @TableField(exist = false)
     private String roles;
+
+    /**
+     * 组织机构
+     */
+    @TableField(exist = false)
+    private String deptName;
 }

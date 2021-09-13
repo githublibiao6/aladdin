@@ -19,4 +19,6 @@ public class DeptVo extends Dept {
 
     private String label;
 
+    private String parentName;
+
 }

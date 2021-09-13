@@ -34,7 +34,7 @@ public  class GenerateDaoUtils {
                 "     * @param qo\n" +
                 "     * @return list\n" +
                 "     */\n" +
-                "    List<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo);");
+                "    List<"+po.getEntityName()+"Vo> list("+po.getEntityName()+"Qo qo);");
 
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),

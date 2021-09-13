@@ -14,11 +14,13 @@
     </select>
 
     <select id="list" resultType="com.aladdin.mis.manager.bean.Admin">
-        select t.* from be_admin t  where sys005 = 1
+        select t.*, d.name deptName  from be_admin t
+          left join be_dept d on t.dept_id = d.id where t.sys005 = 1
     </select>
 
     <select id="pageList" resultType="com.aladdin.mis.manager.bean.Admin">
-        select t.* from be_admin t  where sys005 = 1
+        select t.*, d.name deptName  from be_admin t
+        left join be_dept d on t.dept_id = d.id where t.sys005 = 1
         <if test="deptId  != null and deptId != '' ">
             and t.dept_id = #{deptId}
         </if>

@@ -30,6 +30,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private static final String UPDATE_TIME_FIELD = "sys002";
     private static final String CREATE_USER_FIELD = "sys003";
     private static final String UPDATE_USER_FIELD = "sys004";
+    private static final String FLAG = "sys005";
 
     @Override
     public <T> T detailQuery(Integer id) {
@@ -79,6 +80,9 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             }
             if(CREATE_TIME_FIELD.equals(t.getColumnName())){
                 t.setFieldValue(new Date());
+            }
+            if(FLAG.equals(t.getColumnName())){
+                t.setFieldValue(1);
             }
         });
         try{

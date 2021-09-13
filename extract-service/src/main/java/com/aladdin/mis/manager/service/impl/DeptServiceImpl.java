@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 /**
@@ -55,7 +56,7 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
         List<DeptVo> list = list();
         list.forEach(t->{t.setLabel(t.getName());});
         convertDeptTree(list, -1);
-        return list;
+        return list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
     }
 
     private void convertDeptTree(List<DeptVo> list, Integer pid){
@@ -65,6 +66,7 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
                 for (Dept record : list) {
                     if(record.getParent().equals(t.getId())){
                         DeptVo vo = (DeptVo) record;
+                        vo.setParentName(t.getName());
                         children.add(vo);
                     }
                 }

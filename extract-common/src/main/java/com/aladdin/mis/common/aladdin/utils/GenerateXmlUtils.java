@@ -41,7 +41,7 @@ public  class GenerateXmlUtils {
         });
 
         content.append("    </resultMap>\n\n");
-        content.append("<select id=\"paginate\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
+        content.append("<select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
                 "        select <include refid=\"baseColumn\"></include>\n" +
                 "        from "+tableInfo.getTableName()+" t where 1=1\n");
 
@@ -51,7 +51,7 @@ public  class GenerateXmlUtils {
                     "        </if>\n" );
         });
 
-        content.append("    </select>");
+        content.append("    </select>\n\n");
         content.append("</mapper>\n");
 
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),

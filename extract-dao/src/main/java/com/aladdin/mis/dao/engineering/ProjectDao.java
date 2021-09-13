@@ -17,4 +17,4 @@ public interface ProjectDao {
      * @param qo
      * @return list
      */
-    List<ProjectVo> paginate(ProjectQo qo);}
+    List<ProjectVo> list(ProjectQo qo);}

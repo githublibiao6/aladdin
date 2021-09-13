@@ -47,7 +47,7 @@ public  class GenerateServiceImplUtils {
                 "   @Override\n" +
                 "    public PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo){\n" +
                 "       PageHelper.offsetPage(qo.getPage(), qo.getLimit());\n" +
-                "       List<"+po.getEntityName()+"Vo> list = "+dao+".paginate(qo);\n" +
+                "       List<"+po.getEntityName()+"Vo> list = "+dao+".list(qo);\n" +
                 "       return new PageInfo<>(list);\n" +
                 "}\n");
 

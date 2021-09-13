@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectDao">
 
     <sql id="baseColumn">
@@ -19,7 +19,7 @@
         sys006,
         sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.Project" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.Project" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="project_code" column="projectCode"/>
         <result property="project_name" column="projectName"/>
@@ -37,7 +37,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="paginate" resultType="com.aladdin.mis.engineering.vo.ProjectVo">
+<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectVo">
         select <include refid="baseColumn"></include>
         from project t where 1=1
         <if test="id  != null and id != '' ">
@@ -85,4 +85,6 @@
         <if test="sys007  != null and sys007 != '' ">
             and t.sys007 = #{sys007}
         </if>
-    </select></mapper>
+    </select>
+
+</mapper>

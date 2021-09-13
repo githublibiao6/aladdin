@@ -31,7 +31,7 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
    @Override
     public PageInfo<ProjectVo> paginate(ProjectQo qo){
        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
-       List<ProjectVo> list = projectDao.paginate(qo);
+       List<ProjectVo> list = projectDao.list(qo);
        return new PageInfo<>(list);
 }
     @Override
