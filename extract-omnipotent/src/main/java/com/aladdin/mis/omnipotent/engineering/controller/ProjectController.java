@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
  * 工程项目 ProjectService---
  * @author cles
@@ -29,6 +31,7 @@ public class ProjectController  extends GlobalController {
      */
     @PostMapping("paginate")
     @WebLog("分页查询 工程项目")
+    @ResponseBody
     public Result paginate(@RequestBody ProjectQo qo){
         PageInfo<ProjectVo> page = projectService.paginate(qo);
         result.setData(page);
@@ -38,6 +41,7 @@ public class ProjectController  extends GlobalController {
      */
     @PostMapping("save")
     @WebLog("工程项目保存")
+    @ResponseBody
     public Result save(@RequestBody Project entity){
         Project data = projectService.save(entity);
         result.setData(data);
@@ -47,6 +51,7 @@ public class ProjectController  extends GlobalController {
      */
     @PostMapping("delete")
     @WebLog("删除工程项目")
+    @ResponseBody
     public Result delete(@RequestBody Project entity){
         boolean flag = projectService.remove(entity);
         if(flag){
@@ -61,6 +66,7 @@ public class ProjectController  extends GlobalController {
      */
     @PostMapping("update")
     @WebLog("工程项目更新")
+    @ResponseBody
     public Result update(@RequestBody Project entity){
         boolean flag = projectService.update(entity);
         if(flag){
