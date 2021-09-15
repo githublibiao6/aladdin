@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageInfo;
 
+import java.util.Date;
 import java.util.List;
 /**
  * ProjectService
@@ -41,7 +42,16 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
 
     @Override
     public boolean update(Project entity) {
-        return updateSelective(entity);
+       Project m = detailQuery(entity.getId());
+       String oldStatus = m.getStatus();
+       String status = entity.getStatus();
+       if(status.compareTo(oldStatus) <= 0){
+           entity.setStatus(oldStatus);
+       }
+       if("0".equals(oldStatus) && "1".equals(status)){
+           entity.setStartDate(new Date());
+       }
+       return updateSelective(entity);
     }
 
     @Override

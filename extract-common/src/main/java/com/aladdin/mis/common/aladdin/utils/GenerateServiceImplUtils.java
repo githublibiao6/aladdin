@@ -63,17 +63,17 @@ public  class GenerateServiceImplUtils {
 
         content.append("    @Override\n" +
                 "    public boolean remove("+po.getEntityName()+" entity) {\n" +
-                "        return delete(entity);\n" +
+                "       return delete(entity);\n" +
                 "    }\n\n");
 
         content.append("    @Override\n" +
                 "    public boolean update("+po.getEntityName()+" entity) {\n" +
-                "        return updateSelective(entity);\n" +
+                "       return updateSelective(entity);\n" +
                 "    }\n\n");
 
         content.append("    @Override\n" +
                 "    public "+po.getEntityName()+" save("+po.getEntityName()+" entity) {\n" +
-                "        return insertSelective(entity);\n" +
+                "       return insertSelective(entity);\n" +
                 "    }\n\n");
 
         content.append("}\n\n");

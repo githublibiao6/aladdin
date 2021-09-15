@@ -4,6 +4,7 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
+import com.aladdin.mis.manager.qo.DictionaryQo;
 import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,20 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
         }else {
             result.setMessage("添加失败");
         }
+        return result;
+    }
+
+    /**
+     *  查询字典树
+     */
+    @RequestMapping("/queryByCode")
+    @ResponseBody
+    public Result queryByCode(DictionaryQo qo) {
+        List<JSONObject> records = Db.use().findList("select t.dic_value key, t.dic_text  text" +
+                "  from be_dictionary_teams t where t.sys005=1 " +
+                "  and dic_id = (select id from be_dictionary where code='"+qo.getCode()+"' and sys005=1) ");
+        result.setData(records);
+        result.setCode(20000);
         return result;
     }
 

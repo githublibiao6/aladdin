@@ -103,7 +103,7 @@ public  class GenerateUtils {
         GenerateControllerUtils.writeControllerToFile(po);
 
         String xmlPath = path.replaceAll("extract-omnipotent/target/classes","extract-dao");
-        xmlPath += "src/main/resources/com/aladdin/mis/dao/" + module+"/";
+        xmlPath += "src/main/resources/com/aladdin/mis/dao/ " + module+"/";
         po.setFilePath(xmlPath);
         GenerateXmlUtils.writeXmlToFile(po);
 

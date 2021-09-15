@@ -20,4 +20,6 @@ public class DictionaryQo {
 
     private Integer dicId;
 
+    private String  code;
+
 }

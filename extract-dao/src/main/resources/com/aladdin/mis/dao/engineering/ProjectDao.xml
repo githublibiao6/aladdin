@@ -11,6 +11,7 @@
         end_date,
         status,
         remark,
+        dept_id,
         sys001,
         sys002,
         sys003,
@@ -26,6 +27,7 @@
         <result property="introduce" column="introduce"/>
         <result property="start_date" column="startDate"/>
         <result property="end_date" column="endDate"/>
+        <result property="dept_id" column="deptId"/>
         <result property="status" column="status"/>
         <result property="remark" column="remark"/>
         <result property="sys001" column="sys001"/>
@@ -63,6 +65,9 @@
         </if>
         <if test="remark  != null and remark != '' ">
             and t.remark = #{remark}
+        </if>
+        <if test="deptId  != null and deptId != '' ">
+            and t.dept_id = #{deptId}
         </if>
         <if test="sys001  != null and sys001 != '' ">
             and t.sys001 = #{sys001}

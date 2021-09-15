@@ -3,10 +3,11 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
  * 工程项目
@@ -55,6 +56,12 @@ public class Project extends GlobalModel {
     */
     @TableField("status")
     private String status;
+
+    /**
+    * 项目状态
+    */
+    @TableField("dept_id")
+    private Integer deptId;
 
     /**
 备注
