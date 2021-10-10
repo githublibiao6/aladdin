@@ -52,10 +52,14 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
      */
     @RequestMapping("/queryByCode")
     @ResponseBody
-    public Result queryByCode(DictionaryQo qo) {
-        List<JSONObject> records = Db.use().findList("select t.dic_value key, t.dic_text  text" +
+    public Result queryByCode(@RequestBody DictionaryQo qo) {
+        Map<String, String> map = new HashMap<>();
+        List<JSONObject> records = Db.use().findList("select t.dic_value 'key', t.dic_text  text " +
                 "  from be_dictionary_teams t where t.sys005=1 " +
                 "  and dic_id = (select id from be_dictionary where code='"+qo.getCode()+"' and sys005=1) ");
+        for (JSONObject record : records) {
+            map.put(record.getString("key"), map.get("text"));
+        }
         result.setData(records);
         result.setCode(20000);
         return result;
