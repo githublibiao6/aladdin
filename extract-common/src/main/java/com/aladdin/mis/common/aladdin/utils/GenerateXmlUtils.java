@@ -53,7 +53,7 @@ public  class GenerateXmlUtils {
 
         content.append("    </select>\n\n");
         content.append("</mapper>\n");
-
+        System.err.println(content);
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                 po.getFilePath(), po.getEntityName()+"Dao.xml", po.isOverWrite());
     }
