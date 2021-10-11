@@ -8,12 +8,14 @@
   <artifactId>odin-parent</artifactId>
   <version>0.1-SNAPSHOT</version>
     <modules>
+        <module>../extract-pojo</module>
         <module>../extract-api</module>
+        <module>../extract-chat</module>
+        <module>../extract-demo</module>
         <module>../extract-service</module>
         <module>../extract-dao</module>
         <module>../extract-auth</module>
         <module>../extract-omnipotent</module>
-        <module>../extract-pojo</module>
         <module>../extract-common</module>
         <module>../extract-file</module>
         <module>../extract-bill</module>
