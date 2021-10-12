@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.dao.engineering.GenerateDao">
+
+
+<select id="listTable" resultType="com.aladdin.mis.engineering.vo.GenerateVo">
+    select table_name, create_time, table_comment, table_rows
+        from information_schema.tables where table_schema= #{tableSchema}
+        <if test="tableName != null and tableName != '' ">
+            and table_name = #{tableName}
+        </if>
+        <if test="tableComment  != null and tableComment != '' ">
+            and table_comment = #{tableComment}
+        </if>
+
+    </select>
+
+</mapper>

@@ -36,7 +36,9 @@ public class ProjectController  extends GlobalController {
         PageInfo<ProjectVo> page = projectService.paginate(qo);
         result.setData(page);
         return result ;
-    }    /**
+    }
+
+    /**
      * 保存工程项目
      */
     @PostMapping("save")
@@ -46,7 +48,9 @@ public class ProjectController  extends GlobalController {
         Project data = projectService.save(entity);
         result.setData(data);
         return result ;
-    }    /**
+    }
+
+    /**
      * 删除工程项目
      */
     @PostMapping("delete")
@@ -61,7 +65,9 @@ public class ProjectController  extends GlobalController {
             result.setMessage("刪除失败");
         }
         return result ;
-    }    /**
+    }
+
+    /**
      * 更新工程项目
      */
     @PostMapping("update")

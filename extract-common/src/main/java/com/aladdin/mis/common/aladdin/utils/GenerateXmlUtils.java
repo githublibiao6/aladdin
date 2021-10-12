@@ -4,7 +4,10 @@ import com.aladdin.mis.common.file.utils.CommonFileUtil;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 常用的文件工具类
@@ -45,7 +48,13 @@ public  class GenerateXmlUtils {
                 "        select <include refid=\"baseColumn\"></include>\n" +
                 "        from "+tableInfo.getTableName()+" t where 1=1\n");
 
+        String s = "id,sys001,sys002,sys003,sys004,sys005,sys006,sys007";
+        Set<String > set = new HashSet<>(Arrays.asList(s.split(",")));
+
         fields.forEach(t->{
+            if(set.contains(t.getColumnName())){
+                return;
+            }
             content.append("        <if test=\""+t.getColumnName()+"  != null and "+t.getColumnName()+" != '' "+"\">\n" +
                     "            and t."+t.getColName()+" = #{"+t.getColumnName()+"}\n" +
                     "        </if>\n" );

@@ -55,7 +55,7 @@ public  class GenerateControllerUtils {
                 "        PageInfo<"+po.getEntityName()+"Vo> page = "+service+".paginate(qo);\n" +
                 "        result.setData(page);\n" +
                 "        return result ;\n" +
-                "    }");
+                "    }\n\n");
 
         content.append("    /**\n" +
                 "     * 查询"+tableComment+"详情\n" +
@@ -67,7 +67,7 @@ public  class GenerateControllerUtils {
                 "        "+po.getEntityName()+" entity = "+service+".detail(qo);\n" +
                 "        result.setData(entity);\n" +
                 "        return result ;\n" +
-                "    }");
+                "    }\n\n");
 
         content.append("    /**\n" +
                 "     * 保存"+tableComment+"\n" +
@@ -79,7 +79,7 @@ public  class GenerateControllerUtils {
                 "        "+po.getEntityName()+" data = "+service+".save(entity);\n" +
                 "        result.setData(data);\n" +
                 "        return result ;\n" +
-                "    }");
+                "    }\n\n");
 
         content.append("    /**\n" +
                 "     * 删除"+tableComment+"\n" +
@@ -96,7 +96,7 @@ public  class GenerateControllerUtils {
                 "            result.setMessage(\"刪除失败\");\n" +
                 "        }\n" +
                 "        return result ;\n" +
-                "    }");
+                "    }\n\n");
 
         content.append("    /**\n" +
                 "     * 更新"+tableComment+"\n" +
@@ -113,7 +113,7 @@ public  class GenerateControllerUtils {
                 "            result.setMessage(\"更新失败\");\n" +
                 "        }\n" +
                 "        return result ;\n" +
-                "    }");
+                "    }\n\n");
 
 
         content.append("}\n");

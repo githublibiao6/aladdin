@@ -22,7 +22,7 @@ public  class GenerateDaoUtils {
         content.append("import org.springframework.stereotype.Repository;\n\n");
         content.append("import java.util.List;\n");
         content.append("/**\n");
-        content.append(" * "+ po.getEntityName() +"Service\n");
+        content.append(" * "+ po.getEntityName() +"Dao\n");
         content.append(" * @author cles\n");
         content.append(" * @date "+ LocalDateTime.now() +"\n");
         content.append("*/\n");
