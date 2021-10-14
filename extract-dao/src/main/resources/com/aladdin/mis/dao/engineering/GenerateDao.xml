@@ -5,6 +5,26 @@
 
 <select id="listTable" resultType="com.aladdin.mis.engineering.vo.GenerateVo">
     select table_name, create_time, table_comment, table_rows
+    from information_schema.tables where table_schema= #{tableSchema}
+    <if test="tableName != null and tableName != '' ">
+        and table_name like concat('%',#{tableName},'%')
+    </if>
+    <if test="tableComment  != null and tableComment != '' ">
+        and table_comment = #{tableComment}
+    </if>
+
+</select>
+
+    <select id="listTableFields" resultType="com.aladdin.mis.engineering.vo.GenerateVo">
+
+        SELECT table_name,
+        column_name,data_type col_type," +
+        CHARACTER_MAXIMUM_LENGTH col_length," +
+        column_type," +
+        column_comment," +
+        column_key pk FROM information_schema.COLUMNS\n" +
+        WHERE TABLE_SCHEMA = #{tableSchema}
+        select table_name, create_time, table_comment, table_rows
         from information_schema.tables where table_schema= #{tableSchema}
         <if test="tableName != null and tableName != '' ">
             and table_name like concat('%',#{tableName},'%')
