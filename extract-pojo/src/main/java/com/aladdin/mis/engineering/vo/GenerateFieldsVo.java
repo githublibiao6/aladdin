@@ -10,13 +10,15 @@ import lombok.Data;
 @Data
 public class GenerateFieldsVo {
 
-    private String fieldName;
+    private String tableName;
 
-    private String createTime;
+    private String columnName;
 
-    private String fieldComment;
+    private String columnKey;
 
-    private String fieldType;
+    private String columnComment;
+
+    private String columnType;
 
     private Integer length;
 
