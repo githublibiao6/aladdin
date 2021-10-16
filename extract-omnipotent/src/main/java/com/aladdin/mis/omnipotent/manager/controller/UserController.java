@@ -4,10 +4,11 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
-import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.impl.UserServiceImpl;
+import com.aladdin.mis.omnipotent.system.shiro.entity.Permissions;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,18 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
 
     @Autowired
     private UserServiceImpl service;
+
+    /**
+     * 获取分页
+     */
+    @RequestMapping("/page")
+    @ResponseBody
+    public  Result pageList(UserQo entity) {
+        PageInfo<User> page = service.page(entity);
+        result.setData(page);
+        result.setCode(20000);
+        return result;
+    }
 
     /**
      * 菜单跳转
@@ -65,18 +78,6 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
         result.setCode(20000);
         result.setSuccess(true);
         result.setMessage("用户重置");
-        return result;
-    }
-
-    /**
-     * 获取分页
-     */
-    @RequestMapping("/page")
-    @ResponseBody
-    public  Result pageList(PageEntity entity) {
-        PageEntity page = service.page(entity);
-        result.setData(page);
-        result.setCode(20000);
         return result;
     }
 
