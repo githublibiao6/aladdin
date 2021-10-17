@@ -5,6 +5,7 @@ import com.aladdin.mis.dao.manager.UserDao;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.UserService;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,14 +29,17 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
 
     @Override
-    public PageInfo<User> page(UserQo entity) {
-        List<User> page = dao.pageUser();
-        return null;
+    public PageInfo<User> page(UserQo qo) {
+        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
+        List<User> list = dao.listUser(qo);
+        return new PageInfo<>(list);
     }
 
     @Override
     public List<User> list(String name) {
-        return dao.listUser(name);
+        UserQo qo = new UserQo();
+        qo.setName(name);
+        return dao.listUser(qo);
     }
 
     @Override

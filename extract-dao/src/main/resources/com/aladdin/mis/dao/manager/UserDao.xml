@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.dao.manager.UserDao">
+
+    <select id="listUser" resultType="Map">
+        select * from be_user m where m.sys005='1'
+        <if test="name != null and name != '' ">
+            and name like concat('%',#{name},'%')
+        </if>
+    </select>
+
+</mapper>
