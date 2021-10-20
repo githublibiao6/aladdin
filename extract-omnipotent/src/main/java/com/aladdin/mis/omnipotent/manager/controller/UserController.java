@@ -98,10 +98,9 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(@RequestBody JSONObject json) {
+    public Result add(@RequestBody User user) {
         result = new Result();
-        User m = JSONObject.parseObject(json.toJSONString(),User.class);
-        boolean flag = service.add(m);
+        boolean flag = service.add(user);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
