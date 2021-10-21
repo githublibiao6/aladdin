@@ -51,10 +51,12 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     public Admin getByname(String username, String pass) {
         return dao.getByName(username,pass);
     }
+
     @Override
     public List<Admin> list() {
         return dao.list();
     }
+
     @Override
     public PageInfo<Admin> pageList(AdminQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());

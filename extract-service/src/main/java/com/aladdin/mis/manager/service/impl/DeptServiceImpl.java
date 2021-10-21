@@ -86,8 +86,7 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
 
     @Override
     public boolean add(Dept m) {
-        Integer id = 0;
-//        Integer id = m.save();
+        Integer id = insert(m);
         return id  != null;
     }
 

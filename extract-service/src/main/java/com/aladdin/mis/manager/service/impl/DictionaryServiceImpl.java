@@ -42,9 +42,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
     */
     @Override
     public boolean add(Dictionary m) {
-//        Integer id = m.save();
-//        return id != null;
-        return false;
+        return  insertSelective(m);
     }
 
     /**
@@ -59,8 +57,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
      */
     @Override
     public boolean update(Dictionary m) {
-//        return m.update();、
-        return false;
+        return updateSelective(m);
     }
 
     /**
@@ -75,9 +72,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
      */
     @Override
     public boolean remove(Integer id) {
-        Dictionary mode = new Dictionary();
-        mode.setId(id);
-//        return mode.delete();
-        return false;
+
+        return deleteById(id);
     }
 }
