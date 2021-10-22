@@ -101,12 +101,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public boolean add(Menu menu) {
-        boolean flag = true;
-        Menu num = insertSelective(menu);
-        if(num == null){
-            flag = false;
-        }
-        return flag;
+        return insertSelective(menu);
     }
 
     @Override

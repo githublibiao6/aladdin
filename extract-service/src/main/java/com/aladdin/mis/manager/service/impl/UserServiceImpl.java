@@ -44,19 +44,16 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
     @Override
     public boolean add(User m) {
-        insertSelective(m);
-        return false;
+        return insertSelective(m);
     }
 
     @Override
     public boolean update(User m) {
-        updateSelective(m);
-        return false;
+        return updateSelective(m);
     }
 
     @Override
     public boolean remove(Integer id) {
-        deleteById(id);
-        return false;
+        return  deleteById(id);
     }
 }
