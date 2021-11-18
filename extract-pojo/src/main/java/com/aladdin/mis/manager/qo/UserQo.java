@@ -19,4 +19,9 @@ public class UserQo extends User {
      */
     private Integer limit;
 
+    /**
+     * 每页数量
+     */
+    private Integer departId;
+
 }

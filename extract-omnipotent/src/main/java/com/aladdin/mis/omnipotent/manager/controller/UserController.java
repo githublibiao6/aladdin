@@ -37,7 +37,7 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
      */
     @RequestMapping("/page")
     @ResponseBody
-    public  Result pageList(UserQo entity) {
+    public  Result pageList(@RequestBody UserQo entity) {
         PageInfo<User> page = service.page(entity);
         result.setData(page);
         result.setCode(20000);

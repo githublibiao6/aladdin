@@ -16,7 +16,7 @@ import java.util.Date;
 * @author lb
 * @date 2018年8月20日 下午10:50:54
  */
-@Table("be_user")
+@Table("user")
 @Data
 public class User extends GlobalModel {
 

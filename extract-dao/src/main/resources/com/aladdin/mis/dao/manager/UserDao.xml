@@ -3,7 +3,7 @@
 <mapper namespace="com.aladdin.mis.dao.manager.UserDao">
 
     <select id="listUser" resultType="Map">
-        select * from be_user m where m.sys005='1'
+        select * from user m where m.sys005='1'
         <if test="name != null and name != '' ">
             and name like concat('%',#{name},'%')
         </if>
