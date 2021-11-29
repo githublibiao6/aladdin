@@ -20,7 +20,7 @@
     <artifactId>odin-parent</artifactId>
     <groupId>com.aladdin.mis</groupId>
     <version>0.1-SNAPSHOT</version>
-    <relativePath>../odin-parent/pom.xml</relativePath>
+<!--    <relativePath>../odin-parent/pom.xml</relativePath>-->
   </parent>
 
   <groupId>com.aladdin.mis</groupId>

@@ -11,7 +11,7 @@
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.aladdin</groupId>
+  <groupId>com.aladdin.mis</groupId>
   <artifactId>extract-auth</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -26,11 +26,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.aladdin.mis</groupId>
-      <artifactId>extract-pojo</artifactId>
-      <version>0.1-SNAPSHOT</version>
-    </dependency>
 
     <dependency>
       <groupId>com.aladdin.mis</groupId>
