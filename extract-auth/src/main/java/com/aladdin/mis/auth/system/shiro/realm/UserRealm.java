@@ -32,10 +32,13 @@ public class UserRealm extends AuthorizingRealm {
 
     @Autowired
     AdminService adminService;
+
     @Autowired
     RoleService roleService;
+
     @Autowired
     MenuService menuService;
+
 
     /* 判断密码？ */
     /*{

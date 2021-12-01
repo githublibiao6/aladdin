@@ -1,5 +1,6 @@
 package com.aladdin.mis.auth;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -27,6 +28,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2020/4/29 23:17
  */
 @SpringBootApplication()
+@MapperScan("com.aladdin.mis")
 //  开启异步调用
 public class AuthApplication {
     public static void main(String[] args) {
