@@ -26,6 +26,7 @@
             <artifactId>extract-service</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.aladdin.mis</groupId>
             <artifactId>extract-dao</artifactId>

@@ -13,7 +13,7 @@
 
   <groupId>com.aladdin.mis</groupId>
   <artifactId>extract-auth</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
 
   <name>extract-auth</name>
   <!-- FIXME change it to the project's website -->
@@ -29,9 +29,16 @@
 
     <dependency>
       <groupId>com.aladdin.mis</groupId>
-      <artifactId>extract-common</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <artifactId>extract-service</artifactId>
+      <version>${project.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.aladdin.mis</groupId>
+      <artifactId>extract-dao</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>
