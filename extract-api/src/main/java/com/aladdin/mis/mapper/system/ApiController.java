@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author lb
  * @date 2018年6月5日 下午8:56:11
  */
-@RequestMapping("test")
+@RequestMapping("api")
 @RestController
-public class TestController {
+public class ApiController {
 
     /**
      * 菜单跳转

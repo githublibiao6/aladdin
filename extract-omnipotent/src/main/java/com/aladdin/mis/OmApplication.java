@@ -38,9 +38,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @MapperScan("com.aladdin.mis.dao")
 @EnableMongoRepositories
-public class DemoApplication {
+public class OmApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(OmApplication.class, args);
     }
 
     /**
