@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
 * @Description: 系统
@@ -31,7 +32,7 @@ public class AuthController {
     public Result login(HttpServletRequest request, @RequestBody JSONObject json) {
         Result result = new Result();
         result.setCode(20000);
-        HashMap map = new HashMap();
+        Map<String, String> map = new HashMap<>(16);
         map.put("token","admin-token");
         result.setData(map);
         Enumeration<String> set = request.getParameterNames();

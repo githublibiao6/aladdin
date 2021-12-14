@@ -1,5 +1,5 @@
 package com.aladdin.mis.omnipotent.system.shiro.config;
-/**
+/*
  * Created by cles on 2020/5/18 23:08
  */
 
