@@ -1,10 +1,17 @@
-package com.aladdin.mis.common.system.support;
+package com.aladdin.mis.common.enums;
 
 /*
  *  Created by cles on 2021/8/16 22:14
  */
 
+/**
+ * @author libia
+ */
+
 public enum ResultCodeEnum {
+    /**
+     * 返回结果code
+     */
     SUCCESS(2000, "后台处理成功"),
     FAIL(5000, "服务器内部出错"),
     FAIL_NOT_IMPLEMENTED(5001, "服务器不支持当前请求的功能"),

@@ -1,10 +1,17 @@
 package com.aladdin.mis.common.system.entity;
 
-import com.aladdin.mis.common.system.support.ResultCodeEnum;
+import com.aladdin.mis.common.enums.ResultCodeEnum;
 import lombok.Data;
 
+/**
+ * @author libia
+ */
 @Data
 public class Result {
+    /**
+     * 请求唯一主键，方便查询日志，及服务之间的调用排查
+     */
+    private  String requestId;
     private  String message="successful";
     private  boolean success=true;
     private  int code=20000;
