@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 请求日志
@@ -34,6 +34,12 @@ public class SysWebLog extends GlobalModel {
     */
     @TableField("url")
     private String url;
+
+    /**
+    * url请求地址
+    */
+    @TableField("method")
+    private String method;
 
     /**
     * requestParam参数
@@ -71,7 +77,7 @@ public class SysWebLog extends GlobalModel {
     @TableField("start_time")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date startTime;
+    private LocalDateTime startTime;
 
     /**
     * endTime结束时间
@@ -79,6 +85,6 @@ public class SysWebLog extends GlobalModel {
     @TableField("end_time")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date endTime;
+    private LocalDateTime endTime;
 
 }

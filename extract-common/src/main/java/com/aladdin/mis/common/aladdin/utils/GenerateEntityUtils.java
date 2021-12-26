@@ -25,7 +25,8 @@ public  class GenerateEntityUtils {
         content.append(po.getTablePath()+"\n");
         content.append(po.getTableFieldPath()+"\n");
         content.append(po.getBaseModelPath() +"\n");
-        content.append("import java.util.Date;\n");
+        content.append("import java.time.LocalDateTime;\n");
+        content.append("import java.time.LocalDate;\n");
         content.append("import java.util.List;\n");
         content.append("import com.fasterxml.jackson.annotation.JsonFormat;\n");
         content.append("import org.springframework.format.annotation.DateTimeFormat;\n");
@@ -54,6 +55,10 @@ public  class GenerateEntityUtils {
             content.append("    */\n");
             content.append("    @TableField(\""+t.getColName()+"\")\n");
             if("Date".equals(t.getColumnType())){
+                content.append("    @JsonFormat(pattern=\"yyyy-MM-dd\",timezone=\"GMT+8\")\n");
+                content.append("    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\n");
+            }
+            if("DateTime".equals(t.getColumnType())){
                 content.append("    @JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\",timezone=\"GMT+8\")\n");
                 content.append("    @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")\n");
             }

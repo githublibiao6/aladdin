@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent;
 
 
-import com.aladdin.mis.DemoApplication;
+import com.aladdin.mis.OmApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.Ordered;
@@ -12,7 +12,7 @@ public class SpringBootStartApplication  extends SpringBootServletInitializer im
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(DemoApplication.class);
+        return application.sources(OmApplication.class);
     }
 
     @Override

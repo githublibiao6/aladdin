@@ -155,10 +155,12 @@ public class MainDb {
                 case "int":
                     field.setColumnType("Integer");
                     break;
-                case "timestamp":
                 case "date":
+                    field.setColumnType("LocalDate");
+                    break;
+                case "timestamp":
                 case "datetime":
-                    field.setColumnType("Date");
+                    field.setColumnType("LocalDateTime");
                     break;
                 default:
                     break;
