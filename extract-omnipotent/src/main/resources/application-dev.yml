@@ -66,3 +66,9 @@ pagehelper:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+global:
+  sso:
+    enable: true
+    url: http://localhost:8081/sso
+
