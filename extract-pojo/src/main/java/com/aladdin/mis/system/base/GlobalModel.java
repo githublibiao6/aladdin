@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 基础model(默认参数)
@@ -20,10 +20,10 @@ public class GlobalModel extends BaseModel {
     private Integer id;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date sys001;
+    private LocalDateTime sys001;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date sys002;
+    private LocalDateTime sys002;
     private Integer sys003;
     private Integer sys004;
     private String sys005;

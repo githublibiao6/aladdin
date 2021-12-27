@@ -6,6 +6,7 @@ package com.aladdin.mis.common.aop;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.manager.bean.User;
+import com.aladdin.mis.system.entity.SysWebLog;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -18,6 +19,8 @@ import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +36,7 @@ public class WebLogAspect {
 //    @Autowired
 //    RedisAPPTool redisAPPTool;
 //    @Autowired
-//    FUserLogService fUserLogService;
+//    SysWebLogService sysWebLogService;
 
     static User user = new User();
     static {
@@ -49,14 +52,21 @@ public class WebLogAspect {
 
     @Around(value = "@annotation(webLog)")
     public Object doAround(ProceedingJoinPoint point, WebLog webLog){
+        SysWebLog log = new SysWebLog();
+        LocalDateTime start = LocalDateTime.now();
+        log.setStartTime(start);
+        log.setStatus("1");
         //获取方法名（是方法名不是RequestMapping）
         String methodName = point.getSignature().getName();
         //获取所有参数和参数值
         Map<String,Object> map = this.getNameAndValue(point);
         //将所有参数转成JSON保存（最好加密一下，我这里没加密）
         JSONObject json = new JSONObject(map);
+        log.setRequestParam(json.toJSONString());
         GlobalController baseController = (GlobalController)point.getThis();
         HttpServletRequest request = baseController.getRequest();
+        String method = request.getMethod();
+        log.setMethod(method);
 
         System.out.println(baseController.getProjectUrl());
         baseController.getIp();
@@ -69,8 +79,19 @@ public class WebLogAspect {
         try {
             result = point.proceed();
         } catch (Throwable e) {
+            log.setStatus("0");
             e.printStackTrace();
         }
+        LocalDateTime end = LocalDateTime.now();
+        log.setEndTime(end);
+        // 耗时
+        Duration duration = Duration.between(start,  end);
+        long cost = duration.toMillis();
+        log.setCost((int) cost);
+        if(result != null){
+            log.setResponse(result.toString());
+        }
+        // todo log保存
         return result;
     }
 
