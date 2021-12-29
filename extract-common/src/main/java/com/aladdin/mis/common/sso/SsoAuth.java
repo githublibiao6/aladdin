@@ -34,12 +34,25 @@ public class SsoAuth {
         this.url = url;
     }
 
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
     /**
      * 检验是否登录
      * @param token
      */
     public static void verifyLogin(String token){
 
+        System.err.println("模拟sso登录");
+    }
 
+    public static void verifyAuth(String token){
+
+        System.err.println("模拟sso权限");
     }
 }
