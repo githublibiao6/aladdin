@@ -69,6 +69,7 @@ public class SystemController extends GlobalController {
 //            return "redirect:/normal/showComputerProblems";
         }
         // 生成的sessionId 返回给前端
+        // session 超时时间
         subject.getSession().setTimeout(1000 * 60 * 30);
         String sessionId = (String)subject.getSession().getId();
         result.setData(sessionId);

@@ -131,8 +131,8 @@ public class ShiroConfig {
         // 去掉shiro登录时url里的JSESSIONID
         sessionManager.setSessionIdUrlRewritingEnabled(false);
 
-        sessionManager.setSessionDAO(redisSessionDAO());
-        sessionListeners.add(customSessionListener());
+//        sessionManager.setSessionDAO(redisSessionDAO());
+//        sessionListeners.add(customSessionListener());
 
         return sessionManager;
     }*/
