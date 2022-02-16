@@ -28,7 +28,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date: 2020/4/29 23:17
  */
 @SpringBootApplication()
-@MapperScan("com.aladdin.mis")
+@MapperScan("com.aladdin.mis.dao")
 //  开启异步调用
 public class AuthApplication {
     public static void main(String[] args) {

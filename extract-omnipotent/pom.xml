@@ -29,6 +29,12 @@
 
         <dependency>
             <groupId>com.aladdin.mis</groupId>
+            <artifactId>extract-auth</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aladdin.mis</groupId>
             <artifactId>extract-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
