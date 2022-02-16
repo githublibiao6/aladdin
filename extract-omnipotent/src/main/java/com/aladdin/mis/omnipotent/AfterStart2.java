@@ -5,6 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * 启动后执行
+ * @author cles
+ */
 @Slf4j
 @Component
 @Order(value = 2)
