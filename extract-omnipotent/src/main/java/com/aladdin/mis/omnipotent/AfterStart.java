@@ -36,20 +36,24 @@ public class AfterStart implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        log.info("启动后执行");
-        /*将菜单缓存进redis*/
-        List<Role> list= roleService.list();
-        list.forEach(role->{
-            String code = role.getCode();
-            List<Menu> menuList = menuService.queryByRoleId(code);
+        try{
+            log.info("启动后执行");
+            /*将菜单缓存进redis*/
+            List<Role> list= roleService.list();
+            list.forEach(role->{
+                String code = role.getCode();
+                List<Menu> menuList = menuService.queryByRoleId(code);
 //            JedisUtil.setList("role"+code,menuList);
-        });
-        /* 将主数据源的表缓存 */
-        MainDb.init();
-        Map<String, TableInfo> map = MainDb.getTableMap();
-        List<JSONObject> t = Db.use().findList("select * from be_admin");
-        map.forEach((k,v)->{
-            System.err.println(k);
-        });
+            });
+            /* 将主数据源的表缓存 */
+            MainDb.init();
+            Map<String, TableInfo> map = MainDb.getTableMap();
+            List<JSONObject> t = Db.use().findList("select * from be_admin");
+            map.forEach((k,v)->{
+                System.err.println(k);
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
