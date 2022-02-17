@@ -1,16 +1,17 @@
-package com.aladdin.mis.omnipotent.system.controller;
+package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.system.user.vo.OmUser;
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
 
 /**
 * @Description: 系统
@@ -19,26 +20,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 */
 @Slf4j
 @Controller
-@RequestMapping("/system")
-public class LoginController extends GlobalController {
+@RequestMapping("/auth")
+public class AuthLoginController extends GlobalController {
 
     @Autowired
     private AuthLoginService authLoginService;
 
     @RequestMapping("/login")
     @ResponseBody
-    public Result login(@RequestBody JSONObject json) {
+    public Result login(@RequestBody OmUser user) {
         result = new Result();
         result.setCode(20000);
-//        Enumeration<String> set = request.getParameterNames();
-//        while (set.hasMoreElements()){
-//            System.err.println(set.nextElement());
-//        }
-        // shiro 调用
-        OmUser user = new OmUser();
-        user.setUserName(json.getString("username"));
-        user.setPassword(json.getString("password"));
+        HashMap map = new HashMap();
+        map.put("token","admin-token");
+        result.setData(map);
         result = authLoginService.signIn(user);
+
         return result;
     }
 

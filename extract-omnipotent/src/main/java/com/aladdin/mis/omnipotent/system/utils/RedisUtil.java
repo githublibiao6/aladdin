@@ -2,7 +2,7 @@ package com.aladdin.mis.omnipotent.system.utils;
 
 
 import com.aladdin.mis.common.string.utils.StringUtil;
-import com.aladdin.mis.omnipotent.system.redis.entity.*;
+import com.aladdin.mis.common.redis.entity.*;
 import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

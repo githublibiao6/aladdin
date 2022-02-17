@@ -7,6 +7,7 @@ import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.manager.service.MenuService;
 import com.aladdin.mis.manager.service.RoleService;
+import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
@@ -63,7 +64,7 @@ public class UserRealm extends AuthorizingRealm {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
 
-        Admin admin0 = (Admin) getAvailablePrincipal(principals);
+        OmUser admin0 = (OmUser) getAvailablePrincipal(principals);
         Admin admin = adminService.findById(1);
 //        Admin admin = new Admin();
 //        admin.setId(1);
@@ -71,7 +72,7 @@ public class UserRealm extends AuthorizingRealm {
 //        admin.setLoginPassword("1");
 
         if (admin == null) {
-            throw new UnknownAccountException("No account found for admin [" + admin0.getLoginName() + "]");
+            throw new UnknownAccountException("No account found for admin [" + admin0.getUserName() + "]");
         }
         //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
         //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限

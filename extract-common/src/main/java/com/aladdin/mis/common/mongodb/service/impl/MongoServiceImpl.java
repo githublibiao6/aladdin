@@ -1,9 +1,9 @@
-package com.aladdin.mis.omnipotent.system.mongodb.service.impl;
+package com.aladdin.mis.common.mongodb.service.impl;
 /*
  *  Created by cles on 2020/12/1 23:10
  */
 
-import com.aladdin.mis.omnipotent.system.mongodb.service.MongoService;
+import com.aladdin.mis.common.mongodb.service.MongoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

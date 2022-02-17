@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.mongodb.service;
+package com.aladdin.mis.common.mongodb.service;
 /*
  *  Created by cles on 2020/12/1 22:44
  */

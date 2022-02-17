@@ -1,10 +1,9 @@
-package com.aladdin.mis.omnipotent.system.mongodb.config;
+package com.aladdin.mis.common.mongodb.config;
 /**
  * Created by cles on 2020/5/12 22:42
  */
 
 import com.mongodb.MongoClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 

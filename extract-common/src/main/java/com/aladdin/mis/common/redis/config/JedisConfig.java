@@ -1,7 +1,7 @@
-package com.aladdin.mis.omnipotent.system.redis.config;
+package com.aladdin.mis.common.redis.config;
 
 
-import com.aladdin.mis.omnipotent.system.redis.entity.Connect;
+import com.aladdin.mis.common.redis.entity.Connect;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

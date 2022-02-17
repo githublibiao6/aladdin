@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.redis.service;
+package com.aladdin.mis.common.redis.service;
 
 public interface RedisService {
 

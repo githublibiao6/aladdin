@@ -65,13 +65,6 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>-->
 
-        <!-- mongodb -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
-
         <!-- 支付宝  -->
         <dependency>
             <groupId>com.alipay.sdk</groupId>
@@ -130,17 +123,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
         </dependency>
-        <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+
 
         <!-- 处理 Spring Boot Configuration Annotation Processor not found in classpath-->
 <!--        <dependency>-->

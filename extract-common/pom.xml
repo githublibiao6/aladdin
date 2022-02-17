@@ -52,5 +52,26 @@
         <version>2.2.2.RELEASE</version>
     </dependency>
 
+    <!-- redis -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <!-- redis -->
+
+    <!-- mongodb -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+      <version>${springboot.version}</version>
+    </dependency>
+    <!-- mongodb -->
+
   </dependencies>
 </project>

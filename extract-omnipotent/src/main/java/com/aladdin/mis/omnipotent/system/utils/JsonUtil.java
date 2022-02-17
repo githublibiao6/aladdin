@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.system.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.aladdin.mis.omnipotent.system.redis.entity.KeyBean;
+import com.aladdin.mis.common.redis.entity.KeyBean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

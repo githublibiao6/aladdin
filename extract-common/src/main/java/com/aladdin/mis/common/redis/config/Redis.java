@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.redis.config;
+package com.aladdin.mis.common.redis.config;
 /*
  *  Created by cles on 2020/8/3 0:25
  */

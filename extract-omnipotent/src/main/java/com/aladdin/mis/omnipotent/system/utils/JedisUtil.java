@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.system.utils;
 
-import com.aladdin.mis.omnipotent.system.redis.config.JedisConfig;
-import com.aladdin.mis.omnipotent.system.redis.config.Redis;
+import com.aladdin.mis.common.redis.config.JedisConfig;
+import com.aladdin.mis.common.redis.config.Redis;
 
 /**
  * jedis工具类

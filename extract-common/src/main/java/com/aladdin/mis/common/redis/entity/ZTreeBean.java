@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.redis.entity;
+package com.aladdin.mis.common.redis.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
