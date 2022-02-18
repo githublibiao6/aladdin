@@ -60,7 +60,7 @@ public class AuthLoginServiceImpl implements AuthLoginService {
         subject.getSession().setTimeout(1000 * 60 * 30);
         String sessionId = (String)subject.getSession().getId();
         result.setData(sessionId);
-        return null;
+        return result;
     }
 
     @Override

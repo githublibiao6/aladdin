@@ -15,7 +15,6 @@ public class Result {
     private  String message="successful";
     private  boolean success=true;
     private  int code=20000;
-    private  int count;
     private Object data;
 
     public Result(){

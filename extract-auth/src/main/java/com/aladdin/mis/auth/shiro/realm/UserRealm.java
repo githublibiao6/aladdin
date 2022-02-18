@@ -64,7 +64,7 @@ public class UserRealm extends AuthorizingRealm {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
 
-        OmUser admin0 = (OmUser) getAvailablePrincipal(principals);
+        OmUser user = (OmUser) getAvailablePrincipal(principals);
         Admin admin = adminService.findById(1);
 //        Admin admin = new Admin();
 //        admin.setId(1);
@@ -72,7 +72,7 @@ public class UserRealm extends AuthorizingRealm {
 //        admin.setLoginPassword("1");
 
         if (admin == null) {
-            throw new UnknownAccountException("No account found for admin [" + admin0.getUserName() + "]");
+            throw new UnknownAccountException("No account found for admin [" + user.getUserName() + "]");
         }
         //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
         //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
@@ -120,6 +120,9 @@ public class UserRealm extends AuthorizingRealm {
             e.printStackTrace();
             return null;
         }
+        OmUser user = new OmUser();
+        user.setUserName(admin.getLoginName());
+        user.setPassword(admin.getLoginPassword());
         //单用户登录
         //处理session
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();
@@ -150,7 +153,7 @@ public class UserRealm extends AuthorizingRealm {
 
         // todo upToken.getPassword() 前台传的密码
         // 和 admin.getLoginPassword() 比较
-        SimpleAuthenticationInfo  info = new SimpleAuthenticationInfo(admin, upToken.getPassword(), getName());
+        SimpleAuthenticationInfo  info = new SimpleAuthenticationInfo(user, upToken.getPassword(), getName());
         return info;
     }
 }
