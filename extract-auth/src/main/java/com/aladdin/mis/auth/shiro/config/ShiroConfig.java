@@ -74,6 +74,8 @@ public class ShiroConfig {
 
         filterMap.put("authc", new UserFormAuthenticationFilter());
         filterMap.put("perms", new CustomPermissionsAuthorizationFilter());
+//        filterMap.put("authc", new ShiroFormAuthenticationFilter());
+
 
         shiroFilterFactoryBean.setFilters(filterMap);
         //设置规则

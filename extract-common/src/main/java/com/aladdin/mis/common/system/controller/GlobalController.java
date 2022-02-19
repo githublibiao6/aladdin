@@ -2,7 +2,9 @@ package com.aladdin.mis.common.system.controller;
 
 
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +59,10 @@ public abstract class GlobalController {
             e.printStackTrace();
         }
         return "http://"+address.getHostAddress() +":"+request.getServerPort()+"/"+request.getContextPath();
+    }
+
+    public OmUser getCurrentUser(){
+        return (OmUser) SecurityUtils.getSubject().getPrincipal();
     }
 
     public HttpServletRequest getRequest() {

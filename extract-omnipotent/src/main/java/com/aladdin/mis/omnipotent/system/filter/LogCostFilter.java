@@ -32,7 +32,6 @@ public class LogCostFilter  implements Filter {
             System.err.println("LogCostFilter method" + request.getMethod());
             String token = request.getHeader("X-Token");
             System.err.println("LogCostFilter X-Token : "+ token);
-            filterChain.doFilter(servletRequest, servletResponse);
             /*if (session != null && session.getAttribute("name") != null) {
                 filterChain.doFilter(request, response);
             } else {
@@ -44,9 +43,8 @@ public class LogCostFilter  implements Filter {
                 }
                 return;
             }*/
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
         }
+        filterChain.doFilter(servletRequest, servletResponse);
 
     }
 

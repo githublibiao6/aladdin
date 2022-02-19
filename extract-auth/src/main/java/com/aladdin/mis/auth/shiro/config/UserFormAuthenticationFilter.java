@@ -38,7 +38,7 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
             throws Exception{
-
+        // 判断是否登陆过
         if (isLoginRequest(request, response)) {
             if (isLoginSubmission(request, response)) {
                 return executeLogin(request, response);

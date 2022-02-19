@@ -1,10 +1,13 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.dao.db.config.DbConfig;
-import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.dao.db.config.DbConfig;
+import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -41,6 +44,9 @@ public class TestingController  extends GlobalController {
     @Autowired
     private MongoClient mongoClient;
 
+    @Autowired
+    private AdminService adminService;
+
     /** 测试异步执行
      * @Author cles
      * @Description
@@ -51,6 +57,25 @@ public class TestingController  extends GlobalController {
     @ResponseBody
     public Result say() {
         asyncService.executeAsync();
+        return result;
+    }
+
+    /**
+     * 获取菜单
+     *
+     * @return List<Role>
+     * @Description
+     * @MethodName index
+     * @author lb
+     * @date 2018年8月21日 下午9:56:33
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public Result list() {
+        OmUser user = getCurrentUser();
+        System.err.println(user);
+        List<Admin> list = adminService.list();
+        result.setData(list);
         return result;
     }
 
