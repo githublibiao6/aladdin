@@ -3,6 +3,7 @@ package com.aladdin.mis.auth.shiro.config;
  * Created by cles on 2020/5/18 23:08
  */
 
+import com.aladdin.mis.common.system.entity.Result;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
@@ -56,8 +57,12 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter
             httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
 
             // 返回固定的JSON串
+            Result result = new Result();
+            result.setData(null);
+            result.setCode(10001);
+            result.setMessage("未登录或登录信息已过期，请重新登录");
             WebUtils.toHttp(response).setContentType("application/json; charset=utf-8");
-            WebUtils.toHttp(response).getWriter().print(JSONObject.toJSONString("{}"));
+            WebUtils.toHttp(response).getWriter().print(JSONObject.toJSONString(result));
             return false;
         }
     }

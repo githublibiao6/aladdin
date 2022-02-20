@@ -72,15 +72,16 @@ public class ShiroConfig {
 //        filterMap.put("jwt", new CustomRolesAuthorizationFilter()); // 自己定义的过滤类型
 //        filterMap.put("authc", new ShiroFormAuthenticationFilter());
 
+        filterMap.put("jwt", new CustomPermissionsAuthorizationFilter());
         filterMap.put("authc", new UserFormAuthenticationFilter());
-        filterMap.put("perms", new CustomPermissionsAuthorizationFilter());
 //        filterMap.put("authc", new ShiroFormAuthenticationFilter());
 
 
         shiroFilterFactoryBean.setFilters(filterMap);
         //设置规则
         filterChainDefinitionMap = shiroService.loadFilterChainDefinitions();
-//        filterChainDefinitionMap.put("/**","jwt");
+        filterChainDefinitionMap.put("/testing","jwt");
+//        filterChainDefinitionMap.put("/**","authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 

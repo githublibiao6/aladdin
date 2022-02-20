@@ -64,7 +64,7 @@ public class ShiroService {
 //        filterChainDefinitionMap.put("/menu/list","anon");
 //        filterChainDefinitionMap.put("/menu/treeList","anon");
         filterChainDefinitionMap.put("/logout","logout");
-        //过滤器规则，从上而下顺序执行，将/**放在最后
+        //过滤器规则，从上而下顺序执行，匹配到就停止，将/**放在最后
         filterChainDefinitionMap.put("/**","authc");
         /*filterChainDefinitionMap.put("/user/login", "anon");
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
