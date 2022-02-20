@@ -14,6 +14,8 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -69,6 +71,8 @@ public class TestingController  extends GlobalController {
      * @author lb
      * @date 2018年8月21日 下午9:56:33
      */
+    @RequiresRoles({"user"})
+    @RequiresPermissions("list")
     @RequestMapping("/list")
     @ResponseBody
     public Result list() {

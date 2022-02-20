@@ -42,6 +42,10 @@ public class LoginController extends GlobalController {
         return result;
     }
 
+    /**
+     * 未登录的路径 可在ShiroConfig 中设置
+     * shiroFilterFactoryBean.setLoginUrl("/system/interceptLogin");
+     */
     @RequestMapping("/interceptLogin")
     @ResponseBody
     public Result login() {

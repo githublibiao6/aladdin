@@ -73,7 +73,7 @@ public class ShiroConfig {
 //        filterMap.put("authc", new ShiroFormAuthenticationFilter());
 
         filterMap.put("jwt", new CustomPermissionsAuthorizationFilter());
-        filterMap.put("authc", new UserFormAuthenticationFilter());
+//        filterMap.put("authc", new UserFormAuthenticationFilter());
 //        filterMap.put("authc", new ShiroFormAuthenticationFilter());
 
 
