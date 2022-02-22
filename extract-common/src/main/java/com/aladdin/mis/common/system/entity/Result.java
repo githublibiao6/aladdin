@@ -3,6 +3,8 @@ package com.aladdin.mis.common.system.entity;
 import com.aladdin.mis.common.enums.ResultCodeEnum;
 import lombok.Data;
 
+import java.util.UUID;
+
 /**
  * @author libia
  */
@@ -11,7 +13,7 @@ public class Result {
     /**
      * 请求唯一主键，方便查询日志，及服务之间的调用排查
      */
-    private  String requestId;
+    private  String requestId = UUID.randomUUID().toString();
     private  String message="successful";
     private  boolean success=true;
     private  int code=20000;

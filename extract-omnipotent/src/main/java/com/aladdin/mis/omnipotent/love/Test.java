@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.love;
 
 
-import com.aladdin.mis.common.file.utils.EntityFileUtil;
+import com.aladdin.mis.common.utils.EntityFileUtil;
 
 public class Test {
     public static void main(String[] args) {

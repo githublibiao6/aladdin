@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.aladdin.utils;
 
-import com.aladdin.mis.common.file.utils.CommonFileUtil;
+import com.aladdin.mis.common.utils.CommonFileUtil;
 import com.aladdin.mis.common.string.utils.StringUtil;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;

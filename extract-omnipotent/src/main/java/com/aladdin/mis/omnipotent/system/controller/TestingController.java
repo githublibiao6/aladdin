@@ -1,5 +1,6 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
+import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.db.config.DbConfig;
@@ -14,8 +15,6 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -71,10 +70,11 @@ public class TestingController  extends GlobalController {
      * @author lb
      * @date 2018年8月21日 下午9:56:33
      */
-    @RequiresRoles({"user"})
-    @RequiresPermissions("list")
+//    @RequiresRoles({"admin"})
+//    @RequiresPermissions("list")
     @RequestMapping("/list")
     @ResponseBody
+    @WebLog
     public Result list() {
         OmUser user = getCurrentUser();
         System.err.println(user);

@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,7 +21,8 @@ import java.util.List;
  * @version: 1.0.0
  */
 @Slf4j
-public  class MongoServiceImpl<T>  implements MongoService<T> {
+@Service
+public class MongoServiceImpl<T>  implements MongoService<T> {
 
     @Autowired
     public MongoTemplate mongoTemplate;

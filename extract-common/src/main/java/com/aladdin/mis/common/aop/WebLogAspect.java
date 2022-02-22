@@ -4,9 +4,12 @@ package com.aladdin.mis.common.aop;
  */
 
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.mongodb.service.VisitLogService;
 import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.system.entity.SysWebLog;
+import com.aladdin.mis.system.entity.VisitLog;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -16,6 +19,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.CodeSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +37,9 @@ import java.util.Map;
 @Aspect
 @Component
 public class WebLogAspect {
-//    @Autowired
-//    RedisAPPTool redisAPPTool;
+    @Autowired
+    VisitLogService visitLogService;
+
 //    @Autowired
 //    SysWebLogService sysWebLogService;
 
@@ -52,12 +57,13 @@ public class WebLogAspect {
 
     @Around(value = "@annotation(webLog)")
     public Object doAround(ProceedingJoinPoint point, WebLog webLog){
-        SysWebLog log = new SysWebLog();
+        VisitLog log = new VisitLog();
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
-        log.setStatus("1");
+        log.setCode(2000);
         //获取方法名（是方法名不是RequestMapping）
         String methodName = point.getSignature().getName();
+        log.setMethodName(methodName);
         //获取所有参数和参数值
         Map<String,Object> map = this.getNameAndValue(point);
         //将所有参数转成JSON保存（最好加密一下，我这里没加密）
@@ -66,33 +72,39 @@ public class WebLogAspect {
         GlobalController baseController = (GlobalController)point.getThis();
         HttpServletRequest request = baseController.getRequest();
         String method = request.getMethod();
-        log.setMethod(method);
+        log.setRequestType(method);
+        log.setRequestUrl(request.getRequestURL().toString());
 
-        System.out.println(baseController.getProjectUrl());
-        baseController.getIp();
-        System.out.println("userLog:" + methodName + "--");
-        System.err.println(request.getHeader("Authorization"));
+        String ip = baseController.getIp();
+        log.setRequestIp(ip);
         Subject subject = SecurityUtils.getSubject();
-        Object m = subject.getPrincipal();
-        System.err.println(webLog.value());
-        Object result= null;
+        OmUser m = (OmUser)subject.getPrincipal();
+        if(m != null){
+            log.setRequestUserName(m.getUserName());
+        }
+        Object resultData = null;
         try {
-            result = point.proceed();
+            resultData = point.proceed();
         } catch (Throwable e) {
-            log.setStatus("0");
+            log.setCode(19999);
             e.printStackTrace();
         }
         LocalDateTime end = LocalDateTime.now();
         log.setEndTime(end);
-        // 耗时
         Duration duration = Duration.between(start,  end);
         long cost = duration.toMillis();
-        log.setCost((int) cost);
-        if(result != null){
-            log.setResponse(result.toString());
+        log.setCost(cost);
+        if(resultData != null){
+            System.err.println(resultData.toString());
+            Result result = (Result) resultData;
+            log.setRequestId(result.getRequestId());
+            log.setCode(result.getCode());
+            log.setMessage(result.getMessage());
+            log.setResponseData(resultData.toString());
         }
+        visitLogService.saveVisitLog(log);
         // todo log保存
-        return result;
+        return resultData;
     }
 
     /**
