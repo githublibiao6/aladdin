@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.exception;
+package com.aladdin.mis.common.exception;
 /**
  * Created by cles on 2020/5/31 16:42
  */
