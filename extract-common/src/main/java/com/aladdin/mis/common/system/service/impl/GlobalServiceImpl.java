@@ -3,10 +3,10 @@ package com.aladdin.mis.common.system.service.impl;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.utils.Db;
-import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.system.base.BaseModel;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
@@ -14,6 +14,7 @@ import org.apache.shiro.SecurityUtils;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -55,6 +56,10 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
                 String value = map.get(t.getColName()).toString();
                 value = value.substring(1, value.length()-1);
                 json.put(t.getColumnName(), Arrays.asList(value.split(",")));
+            }if("LocalDateTime".equals(t.getColumnType()) && map.get(t.getColName()) != null){
+                String value = map.get(t.getColName()).toString();
+                value = value.substring(0, 19);
+                json.put(t.getColumnName(), value);
             }else {
                 json.put(t.getColumnName(), map.get(t.getColName()));
             }
@@ -73,13 +78,13 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
+        OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
         list.forEach(t->{
             if(CREATE_USER_FIELD.equals(t.getColumnName())){
-                t.setFieldValue(admin.getId());
+                t.setFieldValue(user.getUserId());
             }
             if(CREATE_TIME_FIELD.equals(t.getColumnName())){
-                t.setFieldValue(new Date());
+                t.setFieldValue(LocalDateTime.now());
             }
             if(FLAG.equals(t.getColumnName())){
                 t.setFieldValue(1);
@@ -100,14 +105,14 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
-        TableFieldInfo user = new TableFieldInfo();
+        OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
+//        TableFieldInfo user = new TableFieldInfo();
         list.forEach(t->{
             if(UPDATE_USER_FIELD.equals(t.getColumnName())){
-                t.setFieldValue(admin.getId());
+                t.setFieldValue(user.getUserId());
             }
             if(UPDATE_TIME_FIELD.equals(t.getColumnName())){
-                t.setFieldValue(new Date());
+                t.setFieldValue(LocalDateTime.now());
             }
         });
         int count = Db.use().update(tableName, "id", list);

@@ -14,6 +14,11 @@ import java.time.LocalDateTime;
 public class VisitLog {
 
     /**
+     * 请求人session
+     */
+    private String sessionId;
+
+    /**
      * 请求识别符
      */
     private String requestId;

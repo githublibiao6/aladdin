@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -20,7 +19,7 @@ import java.util.List;
 /**
  *  BeLoginLogService--- 
  * @author cles
- * @date 2022-02-24T22:09:10.289
+ * @date 2022-02-24T23:38:47.815
 */
 @RequestMapping("system/beLoginLog")
 @Controller

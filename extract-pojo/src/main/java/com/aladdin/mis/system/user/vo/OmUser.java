@@ -14,6 +14,11 @@ import lombok.Data;
 public class OmUser {
 
     /**
+     * 用户主键
+     */
+    private String userId;
+
+    /**
      * 用户名称
      */
     private String userName;

@@ -2,7 +2,6 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.impl.UserServiceImpl;
@@ -55,7 +54,6 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
         map.put("id","001");
         // 就能拿出用户的所有信息，包括角色和权限
         Subject c = SecurityUtils.getSubject();
-        Admin a = (Admin)SecurityUtils.getSubject().getPrincipal();
         String[] roles= {"admin"};
         map.put("roles",roles);
         result.setCode(20000);

@@ -14,8 +14,13 @@ import java.time.LocalDateTime;
 public class SqlLog {
 
     /**
-    * 请求人名称
+    * 请求人session
     */
+    private String sessionId;
+
+    /**
+     * 请求人名称
+     */
     private String requestUserName;
 
     /**

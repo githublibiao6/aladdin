@@ -16,6 +16,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -177,6 +179,12 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             }else if(Date.class.equals(type)){
                 obj.setColType("date");
                 obj.setColumnType("Date");
+            }else if(LocalDate.class.equals(type)){
+                obj.setColType("date");
+                obj.setColumnType("LocalDate");
+            }else if(LocalDateTime.class.equals(type)){
+                obj.setColType("datetime");
+                obj.setColumnType("LocalDateTime");
             }else {
                 obj.setColType("varchar");
                 obj.setColumnType("String");
@@ -203,6 +211,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             id.setTableName(tableName);
             id.setColumnName("id");
             id.setColType("int");
+            id.setColumnType("int");
         } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }

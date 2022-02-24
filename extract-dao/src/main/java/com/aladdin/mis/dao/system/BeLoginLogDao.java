@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * BeLoginLogDao
  * @author cles
- * @date 2022-02-24T22:09:10.284
+ * @date 2022-02-24T23:38:47.811
 */
 @Repository
 public interface BeLoginLogDao {

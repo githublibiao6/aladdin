@@ -54,11 +54,11 @@ public  class GenerateEntityUtils {
             content.append("    * "+t.getColumnName()+(t.getColumnComment()==null?"":t.getColumnComment()) +"\n");
             content.append("    */\n");
             content.append("    @TableField(\""+t.getColName()+"\")\n");
-            if("Date".equals(t.getColumnType())){
+            if("Date".equals(t.getColumnType()) || "LocalDate".equals(t.getColumnType())){
                 content.append("    @JsonFormat(pattern=\"yyyy-MM-dd\",timezone=\"GMT+8\")\n");
                 content.append("    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\n");
             }
-            if("DateTime".equals(t.getColumnType())){
+            if("DateTime".equals(t.getColumnType()) || "LocalDateTime".equals(t.getColumnType())){
                 content.append("    @JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\",timezone=\"GMT+8\")\n");
                 content.append("    @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")\n");
             }

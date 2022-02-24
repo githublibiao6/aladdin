@@ -3,6 +3,8 @@ package com.aladdin.mis.omnipotent.system.controller;
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.system.entity.BeLoginLog;
+import com.aladdin.mis.system.service.BeLoginLogService;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,10 @@ public class LoginController extends GlobalController {
     @Autowired
     private AuthLoginService authLoginService;
 
+    @Autowired
+    private BeLoginLogService beLoginLogService;
+
+
     @RequestMapping("/login")
     @ResponseBody
     public Result login(@RequestBody JSONObject json) {
@@ -39,6 +45,13 @@ public class LoginController extends GlobalController {
         user.setUserName(json.getString("username"));
         user.setPassword(json.getString("password"));
         result = authLoginService.signIn(user);
+
+        BeLoginLog loginLog = new BeLoginLog();
+
+        loginLog.setLoginIp(getIp());
+        loginLog.setLoginType("10");
+
+        beLoginLogService.saveLoginLog(loginLog);
         return result;
     }
 

@@ -14,6 +14,11 @@ import java.time.LocalDateTime;
 public class VisitExceptionLog {
 
     /**
+     * 请求人session
+     */
+    private String sessionId;
+
+    /**
     * 异常标题
     */
     private String title;

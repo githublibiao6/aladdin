@@ -3,17 +3,16 @@ package com.aladdin.mis.system.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
- * 
+ *
  * @author cles
- * @date 2022-02-24T22:09:10.279
+ * @date 2022-02-24T23:38:47.804
 */
 @Table("be_login_log")
 @Data
@@ -46,6 +45,8 @@ public class BeLoginLog extends GlobalModel {
     * loginTime
     */
     @TableField("login_time")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime loginTime;
 
     /**
@@ -58,6 +59,8 @@ public class BeLoginLog extends GlobalModel {
     * lastLoginTime
     */
     @TableField("last_login_time")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastLoginTime;
 
     /**
@@ -82,6 +85,8 @@ public class BeLoginLog extends GlobalModel {
     * logoutTime
     */
     @TableField("logout_time")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime logoutTime;
 
 }

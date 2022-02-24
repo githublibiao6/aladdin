@@ -8,6 +8,9 @@ import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,6 +76,24 @@ public class MysqlSqlMaker extends BaseSqlMaker {
                     String value = sdf.format(date);
                     sql.append("'")
                             .append(value)
+                            .append("'")
+                            .append(",");
+                    break;
+                case "LocalDate":
+                    LocalDate localDate = (LocalDate) t.getFieldValue();
+                    DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    String localDates = dtf1.format(localDate);
+                    sql.append("'")
+                            .append(localDates)
+                            .append("'")
+                            .append(",");
+                    break;
+                case "LocalDateTime":
+                    LocalDateTime dateTime = (LocalDateTime) t.getFieldValue();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String dateTimes = dtf.format(dateTime);
+                    sql.append("'")
+                            .append(dateTimes)
                             .append("'")
                             .append(",");
                     break;

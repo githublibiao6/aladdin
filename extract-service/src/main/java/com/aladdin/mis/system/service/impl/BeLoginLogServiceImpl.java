@@ -1,16 +1,19 @@
 package com.aladdin.mis.system.service.impl;
 
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.system.service.BeLoginLogService;
-import com.aladdin.mis.system.entity.BeLoginLog;
-import com.aladdin.mis.system.vo.BeLoginLogVo;
-import com.aladdin.mis.system.qo.BeLoginLogQo;
+import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.system.BeLoginLogDao;
+import com.aladdin.mis.system.entity.BeLoginLog;
+import com.aladdin.mis.system.qo.BeLoginLogQo;
+import com.aladdin.mis.system.service.BeLoginLogService;
+import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.system.vo.BeLoginLogVo;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.github.pagehelper.PageInfo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 /**
  * BeLoginLogService
@@ -56,6 +59,18 @@ public class BeLoginLogServiceImpl extends GlobalServiceImpl<BeLoginLog> impleme
     @Override
     public BeLoginLog save(BeLoginLog entity) {
        return insertSelective(entity);
+    }
+
+    @Override
+    public void saveLoginLog(BeLoginLog loginLog) {
+
+        OmUser user = UserUtil.getCurrentUser();
+        if(user != null){
+            loginLog.setUserName(user.getUserName());
+            loginLog.setUserType("1");
+        }
+        loginLog.setLoginTime(LocalDateTime.now());
+        insert(loginLog);
     }
 
 }

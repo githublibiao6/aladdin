@@ -1,13 +1,10 @@
 package com.aladdin.mis.omnipotent;
 
 import com.aladdin.mis.dao.db.config.MainDb;
-import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
 import com.aladdin.mis.manager.service.impl.RoleServiceImpl;
-import com.aladdin.mis.system.db.entity.TableInfo;
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,7 +13,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 /**
 * @Description:  加载后执行
@@ -47,11 +43,11 @@ public class AfterStart implements ApplicationRunner {
             });
             /* 将主数据源的表缓存 */
             MainDb.init();
-            Map<String, TableInfo> map = MainDb.getTableMap();
-            List<JSONObject> t = Db.use().findList("select * from be_admin");
-            map.forEach((k,v)->{
+//            Map<String, TableInfo> map = MainDb.getTableMap();
+//            List<JSONObject> t = Db.use().findList("select * from be_admin");
+            /*map.forEach((k,v)->{
                 System.err.println(k);
-            });
+            });*/
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -17,6 +17,13 @@ import java.time.LocalDateTime;
 @Table("sys_web_log")
 @Data
 public class SysWebLog extends GlobalModel {
+
+
+    /**
+     * 请求人session
+     */
+    private String sessionId;
+
     /**
     * postNum请求编号
     */

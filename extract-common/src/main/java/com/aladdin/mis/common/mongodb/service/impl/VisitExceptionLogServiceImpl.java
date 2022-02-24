@@ -6,6 +6,8 @@ package com.aladdin.mis.common.mongodb.service.impl;
 import com.aladdin.mis.common.mongodb.service.MongoService;
 import com.aladdin.mis.common.mongodb.service.VisitExceptionLogService;
 import com.aladdin.mis.system.entity.VisitExceptionLog;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,12 @@ public class VisitExceptionLogServiceImpl implements VisitExceptionLogService {
 
     @Override
     public void saveVisitExceptionLog(VisitExceptionLog log) {
+        Subject subject = SecurityUtils.getSubject();
+        if(subject != null){
+            String sessionId = (String) subject.getSession().getId();
+            log.setSessionId(sessionId);
+        }
+
         log.setCreateTime(LocalDateTime.now());
         mongoService.save(log);
 

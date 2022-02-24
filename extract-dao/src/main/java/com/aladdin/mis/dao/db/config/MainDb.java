@@ -232,10 +232,12 @@ public class MainDb {
                                 case "int":
                                     t.setColumnType("Integer");
                                     break;
-                                case "timestamp":
                                 case "date":
+                                    t.setColumnType("LocalDate");
+                                    break;
+                                case "timestamp":
                                 case "datetime":
-                                    t.setColumnType("Date");
+                                    t.setColumnType("LocalDateTime");
                                     break;
                                 default:
                                     break;
