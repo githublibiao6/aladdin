@@ -61,6 +61,10 @@ public abstract class GlobalController {
         return "http://"+address.getHostAddress() +":"+request.getServerPort()+"/"+request.getContextPath();
     }
 
+    /**
+     * 获取当前用户
+     * @return
+     */
     public OmUser getCurrentUser(){
         return (OmUser) SecurityUtils.getSubject().getPrincipal();
     }

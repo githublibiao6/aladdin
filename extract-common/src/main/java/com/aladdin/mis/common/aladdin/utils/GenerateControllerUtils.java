@@ -29,7 +29,6 @@ public  class GenerateControllerUtils {
         content.append("import org.springframework.web.bind.annotation.RequestMapping;\n");
         content.append("import org.springframework.web.bind.annotation.PostMapping;\n");
         content.append("import org.springframework.web.bind.annotation.ResponseBody;\n");
-        content.append("import org.springframework.web.bind.annotation.ResponseBody;\n");
         content.append("import org.springframework.beans.factory.annotation.Autowired;\n");
         content.append("import org.springframework.stereotype.Controller;\n\n");
         content.append("import java.util.List;\n");

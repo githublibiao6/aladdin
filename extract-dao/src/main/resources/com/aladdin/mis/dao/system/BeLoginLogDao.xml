@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.system.BeLoginLogDao">
+
+    <sql id="baseColumn">
+        id,
+        user_id,
+        user_type,
+        user_name,
+        login_ip,
+        login_time,
+        login_type,
+        last_login_time,
+        depart_id,
+        depart_name,
+        session_id,
+        logout_time,
+        sys001,
+        sys002,
+        sys003,
+        sys004,
+        sys005,
+        sys006,
+        sys007
+  </sql>
+    <resultMap type="com.aladdin.mis.system.entity.BeLoginLog" id="baseResultMap"> 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="user_type" column="userType"/>
+        <result property="user_name" column="userName"/>
+        <result property="login_ip" column="loginIp"/>
+        <result property="login_time" column="loginTime"/>
+        <result property="login_type" column="loginType"/>
+        <result property="last_login_time" column="lastLoginTime"/>
+        <result property="depart_id" column="departId"/>
+        <result property="depart_name" column="departName"/>
+        <result property="session_id" column="sessionId"/>
+        <result property="logout_time" column="logoutTime"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+<select id="list" resultType="com.aladdin.mis.system.vo.BeLoginLogVo">
+        select <include refid="baseColumn"></include>
+        from be_login_log t where 1=1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="userType  != null and userType != '' ">
+            and t.user_type = #{userType}
+        </if>
+        <if test="userName  != null and userName != '' ">
+            and t.user_name = #{userName}
+        </if>
+        <if test="loginIp  != null and loginIp != '' ">
+            and t.login_ip = #{loginIp}
+        </if>
+        <if test="loginTime  != null and loginTime != '' ">
+            and t.login_time = #{loginTime}
+        </if>
+        <if test="loginType  != null and loginType != '' ">
+            and t.login_type = #{loginType}
+        </if>
+        <if test="lastLoginTime  != null and lastLoginTime != '' ">
+            and t.last_login_time = #{lastLoginTime}
+        </if>
+        <if test="departId  != null and departId != '' ">
+            and t.depart_id = #{departId}
+        </if>
+        <if test="departName  != null and departName != '' ">
+            and t.depart_name = #{departName}
+        </if>
+        <if test="sessionId  != null and sessionId != '' ">
+            and t.session_id = #{sessionId}
+        </if>
+        <if test="logoutTime  != null and logoutTime != '' ">
+            and t.logout_time = #{logoutTime}
+        </if>
+    </select>
+
+</mapper>

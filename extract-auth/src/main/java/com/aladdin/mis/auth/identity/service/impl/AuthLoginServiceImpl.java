@@ -33,8 +33,6 @@ public class AuthLoginServiceImpl implements AuthLoginService {
             Session session = subject.getSession();
             session.setAttribute("userId",123);
             System.err.println(session.getAttribute("userId"));
-//            System.err.println(session.getAttribute("session"));
-//            System.err.println(SecurityUtils.getSubject().getSession().getAttribute("session"));
             //重点！！！！！！
             //getAuthenticationInfo 执行时机
             // 会触发 Realm的doGetAuthenticationInfo方法
