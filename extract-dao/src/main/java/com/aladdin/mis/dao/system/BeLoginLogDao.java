@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.system;
 
-import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.qo.BeLoginLogQo;
 import com.aladdin.mis.system.vo.BeLoginLogVo;
 import org.springframework.stereotype.Repository;
@@ -18,4 +17,6 @@ public interface BeLoginLogDao {
      * @param qo
      * @return list
      */
-    List<BeLoginLogVo> list(BeLoginLogQo qo);}
+    List<BeLoginLogVo> list(BeLoginLogQo qo);
+
+}

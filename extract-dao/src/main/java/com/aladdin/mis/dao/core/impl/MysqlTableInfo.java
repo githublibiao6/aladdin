@@ -18,7 +18,7 @@ public class MysqlTableInfo implements DbTableInfo {
     @Override
     public List<Map> listTable() {
         String tableSchema = Db.use().getTableSchema();
-        return Db.use().find("select table_name, create_time, table_comment, table_rows from information_schema.tables where table_schema='"+tableSchema+"'");
+        return Db.use().baseFind("select table_name, create_time, table_comment, table_rows from information_schema.tables where table_schema='"+tableSchema+"'");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MysqlTableInfo implements DbTableInfo {
         if(tableName != null){
             sql += " and table_name = '"+tableName+"'";
         }
-        return Db.use().find(sql);
+        return Db.use().baseFind(sql);
     }
 
     @Override

@@ -1,22 +1,22 @@
 package com.aladdin.mis.dao.system;
 
-import com.aladdin.mis.system.qo.SysWebLogQo;
-import com.aladdin.mis.system.vo.SysWebLogVo;
+import com.aladdin.mis.system.entity.SqlLog;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 /**
  * SysWebLogService
  * @author cles
  * @date 2021-09-01T00:35:30.806
 */
 @Repository
-public interface SysWebLogDao {
+public interface SqlLogDao {
     /**
      * 列表
-     * @param qo
+     * @param m
      * @return list
      */
-    List<SysWebLogVo> paginate(SysWebLogQo qo);
+    List<SqlLog> save(SqlLog m);
 
 }

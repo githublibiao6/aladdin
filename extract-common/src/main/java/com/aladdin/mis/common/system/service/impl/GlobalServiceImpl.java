@@ -44,8 +44,8 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         String tableName = BaseModelUtil.getTableName(clazz);
         String primaryKey = BaseModelUtil.getPrimaryKey(tableName);
         TableInfo table = MainDb.getTableInfo(tableName);
-        String sql = "select * from "+tableName+" m where "+primaryKey+"="+id ;
-        Map map = Db.use().findFirst(sql);
+
+        Map map = Db.use().findByPrimaryKey(tableName, primaryKey, id );
         if(map == null){
             return null;
         }

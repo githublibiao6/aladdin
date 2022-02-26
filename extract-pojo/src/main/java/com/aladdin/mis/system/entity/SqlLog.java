@@ -44,7 +44,7 @@ public class SqlLog {
      * 表主键
      */
 
-    private String tableId;
+    private int tableId;
 
     /**
      * 开始时间
@@ -67,6 +67,11 @@ public class SqlLog {
      * 执行状态
      */
     private int code;
+
+    /**
+     * 错误信息
+     */
+    private String  errorMsg;
 
 
 

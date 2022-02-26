@@ -36,7 +36,7 @@ public  class GenerateDaoUtils {
                 "     */\n" +
                 "    List<"+po.getEntityName()+"Vo> list("+po.getEntityName()+"Qo qo);");
 
-        content.append("}\n");
+        content.append("\n}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                 po.getFilePath(), po.getEntityName()+"Dao.java", po.isOverWrite());
     }
