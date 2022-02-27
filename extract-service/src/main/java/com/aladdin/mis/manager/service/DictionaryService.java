@@ -2,8 +2,10 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dictionary;
+import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -59,4 +61,10 @@ public interface DictionaryService extends GlobalService<Dictionary> {
      */
     boolean remove(Integer id);
 
+    /**
+     * 根据dictKey获取字典数据
+     * @param dictKey
+     * @return
+     */
+    Map<String, JSONObject> queryDictByCode(String dictKey);
 }

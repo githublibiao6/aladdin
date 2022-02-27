@@ -22,4 +22,6 @@ public class DictionaryQo {
 
     private String  code;
 
+    private String  dictKey;
+
 }

@@ -1,6 +1,8 @@
 package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.Dictionary;
+import com.aladdin.mis.manager.vo.DictVo;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +22,13 @@ public interface DicDao {
      */
     @Select( "select * from be_dictionary m where m.sys005='1'")
     List<Dictionary> listDictionary();
+
+    /**
+     * 获取
+     * @param dictKeys
+     * @return
+     */
+    List<DictVo> queryDictByCode(@Param("dictKeys") String[] dictKeys);
 
     /**
      * 根据code查询记录

@@ -4,10 +4,15 @@ import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DicDao;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.service.DictionaryService;
+import com.aladdin.mis.manager.vo.DictVo;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 /**
@@ -74,5 +79,25 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
     public boolean remove(Integer id) {
 
         return deleteById(id);
+    }
+
+    @Override
+    public  Map<String, JSONObject> queryDictByCode(String dictKey) {
+        if(dictKey == null || dictKey.isEmpty()){
+            return null;
+        }
+        // 后续改为从缓存中获取
+        String[] array = dictKey.split(",");
+        List<DictVo> list = dao.queryDictByCode(array);
+        Map<String, JSONObject> data = new HashMap<>();
+        Map<String, List<DictVo>> map = list.stream().collect(Collectors.groupingBy(s -> s.getCode()));
+        map.forEach((k,v) -> {
+            JSONObject o = new JSONObject();
+            v.forEach(t->{
+                o.put(t.getDicValue(), t.getDicText());
+            });
+            data.put(k, o);
+        });
+        return data;
     }
 }

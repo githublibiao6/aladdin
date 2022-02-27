@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.DicDao">
 
-    <!--<select id="listDictionary" resultType="Map">
-        select * from be_dictionary m where m.delete_flag='1'
-    </select>-->
+    <select id="queryDictByCode" resultType="com.aladdin.mis.manager.vo.DictVo">
+        select m.*, t.code from be_dictionary_teams m
+        left join be_dictionary t on t.id = m.dic_id
+        where m.sys005 = '1' and t.code in
+        <foreach collection="dictKeys" item="key"
+                 separator="," open="(" close=")">
+            #{key}
+        </foreach>
+    </select>
 
 </mapper>

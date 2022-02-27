@@ -5,7 +5,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.qo.DictionaryQo;
-import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
+import com.aladdin.mis.manager.service.DictionaryService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ import java.util.Map;
 public class DictionaryController extends GlobalController/*<Dictionary, DictionaryServiceImpl>*/{
 
     @Autowired
-    private DictionaryServiceImpl dicService;
+    private DictionaryService dicService;
 
     /**
      * 添加字典
@@ -46,6 +46,18 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
         }
         return result;
     }
+
+    @RequestMapping("/loadDictByCode")
+    @ResponseBody
+    public Result loadDictByKey(@RequestBody DictionaryQo qo) {
+        result = new Result();
+        Map<String, JSONObject> map = dicService.queryDictByCode(qo.getCode());
+        result.setData(map);
+        result.setMessage("查询成功");
+        return result;
+    }
+
+
 
     /**
      *  查询字典树
