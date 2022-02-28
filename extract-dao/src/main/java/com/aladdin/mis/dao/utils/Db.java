@@ -6,6 +6,7 @@ package com.aladdin.mis.dao.utils;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
@@ -15,6 +16,7 @@ import java.util.HashMap;
  * @Date 2020/5/10 22:44
  */
 @Slf4j
+@Component
 public class Db {
     private static HashMap<String , DruidDataSource> map = new HashMap<>();
     private static DruidDataSource main = null ;

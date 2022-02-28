@@ -12,9 +12,8 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.security.auth.Subject;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,10 +26,10 @@ import java.util.Map;
  */
 @Slf4j
 @Data
+@Component
 public class DbPro {
 
-    @Autowired
-    private SqlLogDao sqlLogDao;
+    private static SqlLogDao sqlLogDao;
 
     private static DruidDataSource dataSource;
     /**
@@ -40,6 +39,15 @@ public class DbPro {
     public DbPro(){
 
     }
+
+    public static SqlLogDao getSqlLogDao() {
+        return sqlLogDao;
+    }
+
+    public static void setSqlLogDao(SqlLogDao sqlLogDao) {
+        DbPro.sqlLogDao = sqlLogDao;
+    }
+
     public String getUserName(){
         return dataSource.getUsername();
     }
@@ -76,7 +84,7 @@ public class DbPro {
 
     public List<Map> find(String sql){
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
@@ -94,7 +102,7 @@ public class DbPro {
 
     public List<JSONObject> findList(String sql){
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
@@ -114,7 +122,7 @@ public class DbPro {
     public Map findByPrimaryKey(String tableName, String primaryKey, Integer id) {
         String sql = "select * from "+tableName+" m where "+primaryKey+"="+id ;
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setTableName(tableName);
         log.setTableId(id);
         log.setCode(0);
@@ -151,7 +159,7 @@ public class DbPro {
     public int  deleteById(String tableName,String primaryKey, Integer id){
         String sql = DbMaker.getDbSqlMaker(dataSource.getDbType()).deleteSql(tableName, primaryKey, id);
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setTableName(tableName);
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
@@ -171,7 +179,7 @@ public class DbPro {
 
     public int  delete(String sql){
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
@@ -193,7 +201,7 @@ public class DbPro {
         log.info(sql);
         int n = 0;
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setTableName(tableName);
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
@@ -215,7 +223,7 @@ public class DbPro {
     public int update(String tableName ,String primaryKey, List<TableFieldInfo> list) {
         String sql = DbMaker.getDbSqlMaker(dataSource.getDbType()).updateSql(tableName, primaryKey, list);
         SqlLog log = new SqlLog();
-        log.setSql(sql);
+        log.setExecuteSql(sql);
         log.setCode(0);
         log.setTableName(tableName);
         LocalDateTime start = LocalDateTime.now();

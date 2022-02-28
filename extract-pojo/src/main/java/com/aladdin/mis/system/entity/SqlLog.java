@@ -32,7 +32,7 @@ public class SqlLog {
      * 执行语句
      */
 
-    private String sql;
+    private String executeSql;
 
     /**
      * 表名

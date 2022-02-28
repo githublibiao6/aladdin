@@ -1,6 +1,8 @@
 package com.aladdin.mis.omnipotent;
 
 import com.aladdin.mis.dao.db.config.MainDb;
+import com.aladdin.mis.dao.system.SqlLogDao;
+import com.aladdin.mis.dao.utils.DbPro;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
@@ -30,9 +32,14 @@ public class AfterStart implements ApplicationRunner {
     @Autowired
     MenuServiceImpl menuService;
 
+    @Autowired
+    private SqlLogDao sqlLogDao;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         try{
+            // 临时处理sqlDao为空的问题
+            DbPro.setSqlLogDao(sqlLogDao);
             log.info("启动后执行");
             /*将菜单缓存进redis*/
             List<Role> list= roleService.list();

@@ -15,6 +15,7 @@ import org.reflections.Reflections;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -27,6 +28,7 @@ import java.util.*;
  */
 @Configuration
 @ConfigurationProperties(prefix = "spring.datasource")
+@Component
 public class MainDb {
 
     private static Map<String , TableInfo> map = new HashMap<>();

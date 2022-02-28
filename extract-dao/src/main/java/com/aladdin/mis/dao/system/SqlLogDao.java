@@ -3,12 +3,10 @@ package com.aladdin.mis.dao.system;
 import com.aladdin.mis.system.entity.SqlLog;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
- * SysWebLogService
+ * SqlLogDao
  * @author cles
- * @date 2021-09-01T00:35:30.806
+ * @date 2021-09-01 00:35:30.806
 */
 @Repository
 public interface SqlLogDao {
@@ -17,6 +15,6 @@ public interface SqlLogDao {
      * @param m
      * @return list
      */
-    List<SqlLog> save(SqlLog m);
+    int save(SqlLog m);
 
 }

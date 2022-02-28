@@ -26,6 +26,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
     @Autowired
     private DicDao dao;
 
+
     /**
     * @Description: 获取全部字典
     * @Param: []

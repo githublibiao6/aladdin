@@ -28,8 +28,8 @@ public class ExceptionController{
     @ExceptionHandler(value = {Exception.class})
     @ResponseBody
     public Result error(Exception e){
-        VisitExceptionLog log = new VisitExceptionLog();
         e.printStackTrace();
+        VisitExceptionLog log = new VisitExceptionLog();
         Result result = new Result();
         result.setCode(500);
         result.setSuccess(false);
@@ -38,7 +38,7 @@ public class ExceptionController{
         log.setCode(404);
         log.setException(e.getMessage());
         log.setException(ExceptionUtil.getStackTrace(e));
-        log.setTitle("未找到指定路径");
+        log.setTitle("未知错误");
         visitExceptionLogService.saveVisitExceptionLog(log);
         return result;
 
