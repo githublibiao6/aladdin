@@ -5,6 +5,9 @@ import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
 import com.github.pagehelper.PageInfo;
+
+import java.util.List;
+
 /**
  * BeUserMenuService
  * @author cles
@@ -46,4 +49,10 @@ public interface BeUserMenuService extends GlobalService<BeUserMenu>  {
      */
     BeUserMenu save(BeUserMenu entity);
 
+    /**
+     * 根据用户查询权限
+     * @param userId
+     * @return
+     */
+    List<BeUserMenuVo> queryMenuByUserId(Integer userId);
 }

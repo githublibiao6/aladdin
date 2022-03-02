@@ -7,7 +7,7 @@ import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 
 /**
- * 用户角色model
+ * 用户角色model user_role
 * @author cles
  * @date 2018年8月20日 下午10:50:54
  */

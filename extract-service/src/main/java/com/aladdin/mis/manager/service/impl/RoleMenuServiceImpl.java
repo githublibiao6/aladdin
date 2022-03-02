@@ -35,4 +35,9 @@ public class RoleMenuServiceImpl extends GlobalServiceImpl<RoleMenu> implements 
     public List<RoleMenu> findByRoleId(Integer roleId) {
         return mapper.findByRoleId(roleId);
     }
+
+    @Override
+    public List<RoleMenu> findByRoleIds(List<Integer> roles) {
+        return mapper.findByRoleIds(roles);
+    }
 }

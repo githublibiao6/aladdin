@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.dao.manager.BeUserMenuDao">
+
+    <sql id="baseColumn">
+        id,
+        user_id,
+        menu_id,
+        sys001,
+        sys002,
+        sys003,
+        sys004,
+        sys005,
+        sys006,
+        sys007
+  </sql>
+    <resultMap type="com.aladdin.mis.manager.entity.BeUserMenu" id="baseResultMap">
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="menu_id" column="menuId"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.manager.vo.BeUserMenuVo">
+        select <include refid="baseColumn"></include>
+        from be_user_menu t where 1=1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="menuId  != null and menuId != '' ">
+            and t.menu_id = #{menuId}
+        </if>
+    </select>
+
+
+</mapper>

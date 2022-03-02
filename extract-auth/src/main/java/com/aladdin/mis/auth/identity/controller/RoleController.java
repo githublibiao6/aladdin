@@ -94,6 +94,9 @@ public class RoleController extends GlobalController/*<Role, RoleServiceImpl>*/ 
     public  Result listMenusByRoleId(@RequestParam(value = "role_id", defaultValue = "") Integer roleId) {
         result = new Result();
         List<RoleMenu> list = service.findByRoleId(roleId);
+        list.forEach(t->{
+            t.setDisabled(true);
+        });
         result.setData(list);
         result.setCode(20000);
         return result;

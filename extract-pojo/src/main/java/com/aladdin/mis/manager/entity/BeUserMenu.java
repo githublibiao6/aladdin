@@ -17,12 +17,12 @@ public class BeUserMenu extends GlobalModel {
     * userId
     */
     @TableField("user_id")
-    private String userId;
+    private Integer userId;
 
     /**
     * menuId
     */
     @TableField("menu_id")
-    private String menuId;
+    private Integer menuId;
 
 }

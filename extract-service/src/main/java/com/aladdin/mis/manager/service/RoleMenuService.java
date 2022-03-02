@@ -30,4 +30,11 @@ public interface RoleMenuService extends GlobalService<RoleMenu> {
      * @return list
      */
     List<RoleMenu> findByRoleId(Integer roleId);
+
+    /**
+     * 根据多个角色查询角色权限
+     * @param roles
+     * @return
+     */
+    List<RoleMenu> findByRoleIds(List<Integer> roles);
 }

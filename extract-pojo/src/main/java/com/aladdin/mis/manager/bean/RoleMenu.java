@@ -22,4 +22,7 @@ public class RoleMenu extends GlobalModel {
 
     @TableField("menu_id")
     private Integer menuId;
+
+    @TableField(exist = false)
+    private boolean disabled;
 }

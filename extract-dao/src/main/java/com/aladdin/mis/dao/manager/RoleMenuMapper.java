@@ -1,6 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.RoleMenu;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
@@ -44,4 +45,16 @@ public interface RoleMenuMapper {
      */
     @Select("select * from be_role_menu where role_id=#{roleId} and sys005='1'")
     List<RoleMenu> findByRoleId(Integer roleId);
+
+    /**
+     * 功能描述：
+     *  < 根据菜单和角色查询菜单角色关联 >
+     * @Description: findByMenuAndRole
+     * @Author: cles
+     * @Date: 2020/7/8 22:42
+     * @param roles 参数1
+     * @return: com.apps.omnipotent.manager.bean.RoleMenu
+     * @version: 1.0.0
+     */
+    List<RoleMenu> findByRoleIds(@Param("roles") List<Integer> roles);
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.dao.manager.RoleMenuMapper">
+
+
+    <select id="findByRoleIds" resultType="com.aladdin.mis.manager.vo.RoleMenuVo">
+        select t.*
+        from be_role_menu t where 1=1 and t.role_id in
+        <foreach collection="roles" item="role"
+                 separator="," open="(" close=")">
+            #{role}
+        </foreach>
+    </select>
+
+</mapper>
