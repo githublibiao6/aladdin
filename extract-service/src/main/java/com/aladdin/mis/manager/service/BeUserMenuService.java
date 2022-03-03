@@ -55,4 +55,11 @@ public interface BeUserMenuService extends GlobalService<BeUserMenu>  {
      * @return
      */
     List<BeUserMenuVo> queryMenuByUserId(Integer userId);
+
+    /**
+     * 保存用户的个人权限
+     * @param userId
+     * @param menus
+     */
+    void saveUserMenu(Integer userId, String menus);
 }

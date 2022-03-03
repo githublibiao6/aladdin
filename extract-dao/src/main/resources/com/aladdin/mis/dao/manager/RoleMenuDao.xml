@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.dao.manager.RoleMenuMapper">
+<mapper namespace="com.aladdin.mis.dao.manager.RoleMenuDao">
 
+    <update id="removeByRoleId" >
+        update be_role_menu set sys005='0' where role_id=#{roleId}
+    </update>
+
+    <select id="findByRoleId" resultType="com.aladdin.mis.manager.vo.RoleMenuVo">
+        select * from be_role_menu where role_id=#{roleId} and sys005='1'
+    </select>
 
     <select id="findByRoleIds" resultType="com.aladdin.mis.manager.vo.RoleMenuVo">
         select t.*

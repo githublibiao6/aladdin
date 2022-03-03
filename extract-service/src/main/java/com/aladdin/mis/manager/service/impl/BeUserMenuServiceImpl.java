@@ -80,13 +80,7 @@ public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> impleme
         // 用户单独配置的权限
         List<BeUserMenuVo> data = beUserMenuDao.list(qo);
 
-        // 用户角色配置的权限
-        List<Integer> roles = new ArrayList<>();
-        List<AdminRole> list = adminRoleService.getRoleByAdmin(userId);
-        list.forEach(t->{
-            roles.add(t.getRoleId());
-        });
-        List<RoleMenu> roleMenus = roleMenuService.findByRoleIds(roles);
+        List<RoleMenu> roleMenus = getUserRoleMenu(userId);
 
         Set<Integer> menuSet = new HashSet<>();
         // 先加入用户角色的权限，且编辑不可修改
@@ -107,6 +101,55 @@ public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> impleme
             }
         });
         return result;
+    }
+
+    @Override
+    public void saveUserMenu(Integer userId, String menus) {
+
+        // 先删除用户原有的权限
+        beUserMenuDao.removeByUserId(userId);
+        if(menus == null || menus.isEmpty()){
+            return;
+        }
+        String[] array = menus.split(",");
+
+        // 权限集合
+        Set<Integer> menuSet = new HashSet<>();
+        for (String s : array){
+            menuSet.add(Integer.parseInt(s));
+        }
+        // 获取用户角色所有用的权限
+        List<RoleMenu> roleMenus =  getUserRoleMenu(userId);
+
+        // 去除角色拥有的权限
+        roleMenus.forEach(t->{
+            menuSet.remove(t.getMenuId());
+        });
+
+        // 剩下的权限就是用户独有的权限
+        // 保存
+        if(!menuSet.isEmpty()){
+            menuSet.forEach(t->{
+                BeUserMenu userMenu = new BeUserMenu();
+                userMenu.setMenuId(t);
+                userMenu.setUserId(userId);
+                insert(userMenu);
+            });
+        }
+    }
+
+    /**
+     * 获取用户拥有的角色 拥有的权限
+     * @return
+     */
+    private List<RoleMenu> getUserRoleMenu(Integer userId){
+        List<Integer> roles = new ArrayList<>();
+        List<AdminRole> list = adminRoleService.getRoleByAdmin(userId);
+        list.forEach(t->{
+            roles.add(t.getRoleId());
+        });
+        List<RoleMenu> roleMenus =  roleMenuService.findByRoleIds(roles);
+        return roleMenus;
     }
 
 }
