@@ -49,6 +49,19 @@ public class MenuController extends GlobalController {
     }
 
     /**
+     * 获取分页
+     */
+    @RequestMapping("/saveUserMenu")
+    @ResponseBody
+    public  Result saveUserMenu(@RequestParam(value = "userId", defaultValue = "") Integer userId,
+                                @RequestParam(value = "menus", defaultValue = "") String menus) {
+        result = new Result();
+        userMenuService.saveUserMenu(userId,menus);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
      * 菜单跳转
      *
      * @return
