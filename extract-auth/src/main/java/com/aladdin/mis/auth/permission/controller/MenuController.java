@@ -51,12 +51,12 @@ public class MenuController extends GlobalController {
     /**
      * 获取分页
      */
-    @RequestMapping("/saveUserMenu")
+    @PostMapping("/saveUserMenu")
     @ResponseBody
-    public  Result saveUserMenu(@RequestParam(value = "userId", defaultValue = "") Integer userId,
-                                @RequestParam(value = "menus", defaultValue = "") String menus) {
+    public  Result saveUserMenu(@RequestBody BeUserMenuVo vo) {
         result = new Result();
-        userMenuService.saveUserMenu(userId,menus);
+
+        userMenuService.saveUserMenu(vo.getUserId(), vo.getMenus());
         result.setCode(20000);
         return result;
     }

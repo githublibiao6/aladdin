@@ -17,8 +17,13 @@ public class BeUserMenuVo extends BeUserMenu {
     private boolean disabled;
 
     /**
-     * 是否选中状态
+     * 角色主键
      */
     private Integer roleId;
+
+    /**
+     * 所拥有的的菜单权限
+     */
+    private String menus;
 
 }
