@@ -12,7 +12,7 @@
 
     <select id="findByRoleIds" resultType="com.aladdin.mis.manager.vo.RoleMenuVo">
         select t.*
-        from be_role_menu t where 1=1 and t.role_id in
+        from be_role_menu t where sys005 = 1 and t.role_id in
         <foreach collection="roles" item="role"
                  separator="," open="(" close=")">
             #{role}
