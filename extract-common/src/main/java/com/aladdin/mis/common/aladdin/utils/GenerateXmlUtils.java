@@ -59,7 +59,9 @@ public  class GenerateXmlUtils {
                     "            and t."+t.getColName()+" = #{"+t.getColumnName()+"}\n" +
                     "        </if>\n" );
         });
-
+        content.append("        <if test= \" sortInfo  != null and sortInfo != '' "+"\">\n" +
+                "           order by ${sortInfo}" +
+                "        </if>\n" );
         content.append("    </select>\n\n");
         content.append("</mapper>\n");
         System.err.println(content);

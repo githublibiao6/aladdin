@@ -45,6 +45,7 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
        Project m = detailQuery(entity.getId());
        String oldStatus = m.getStatus();
        String status = entity.getStatus();
+       // 项目只能更新为下一级？
        if(status.compareTo(oldStatus) <= 0){
            entity.setStatus(oldStatus);
        }

@@ -18,7 +18,7 @@ import java.util.Date;
 @Data
 public class Project extends GlobalModel {
     /**
-项目代码
+     * 项目代码
     */
     @TableField("project_code")
     private String projectCode;

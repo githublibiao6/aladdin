@@ -30,9 +30,16 @@ public  class GenerateEntityQoUtils {
         content.append("*/\n");
         content.append("@Data\n");
         content.append("public class "+StringUtil.toCamelCase(tableInfo.getTableName())+"Qo extends "+po.getEntityName()+" {\n\n");
-
-        content.append("    private Integer page;\n");
-        content.append("    private Integer limit;\n");
+        content.append("    private Integer page;\n\n");
+        content.append("    private Integer limit;\n\n");
+        content.append("    /**\n");
+        content.append("    * 关键字条件过滤 \n");
+        content.append("     */\n");
+        content.append("    private String  keyWord;\n");
+        content.append("    /**\n");
+        content.append("    * 排序条件 \n");
+        content.append("     */\n");
+        content.append("    private String  sortInfo;\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                 po.getFilePath(), po.getEntityName() +"Qo.java", true);

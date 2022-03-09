@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("project")
 @Controller
 public class ProjectController  extends GlobalController {
+
     @Autowired
     private ProjectService projectService;
 
