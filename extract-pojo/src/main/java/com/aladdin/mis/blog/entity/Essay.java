@@ -6,7 +6,7 @@ import com.aladdin.mis.system.base.GlobalModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 随笔
@@ -38,7 +38,8 @@ public class Essay extends GlobalModel {
      * 发布时间
      */
     @TableField("publish_time")
-    private Date publishTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private LocalDateTime publishTime;
     /**
      * 副标题
      */
