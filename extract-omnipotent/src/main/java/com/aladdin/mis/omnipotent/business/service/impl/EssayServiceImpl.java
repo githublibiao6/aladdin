@@ -51,8 +51,7 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
     */
     @Override
     public boolean add(Essay m) {
-//        Integer id = m.save();
-//        return id  != null;
+        insert(m);
         return false;
     }
 
@@ -68,8 +67,7 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
      */
     @Override
     public boolean update(Essay m) {
-//        return m.update();
-        return false;
+        return updateSelective(m);
     }
 
     /**
@@ -84,10 +82,7 @@ public class EssayServiceImpl extends GlobalServiceImpl implements EssayService 
      */
     @Override
     public boolean remove(Integer id) {
-        Essay mode = new Essay();
-        mode.setId(id);
-//        return mode.delete();
-        return false;
+        return remove(id);
     }
 
     /**

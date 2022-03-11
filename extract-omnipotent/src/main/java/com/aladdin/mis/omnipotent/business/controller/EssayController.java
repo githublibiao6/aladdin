@@ -1,9 +1,9 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
 import com.aladdin.mis.blog.entity.Essay;
-import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
@@ -11,7 +11,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -44,9 +47,8 @@ public class EssayController extends GlobalController {
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(@RequestBody JSONObject json) {
+    public Result add(@RequestBody Essay m) {
         result = new Result();
-        Essay m = JSONObject.parseObject(json.toJSONString(),Essay.class);
         boolean flag = service.add(m);
         result.setSuccess(flag);
         if(flag){
@@ -59,9 +61,8 @@ public class EssayController extends GlobalController {
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(@RequestBody JSONObject json) {
+    public Result update(@RequestBody Essay m) {
         result = new Result();
-        Essay m = JSONObject.parseObject(json.toJSONString(),Essay.class);
         boolean flag = service.update(m);
         result.setSuccess(flag);
         if(flag){

@@ -18,28 +18,39 @@ import java.time.LocalDateTime;
 public class Essay extends GlobalModel {
 
     /**
-     * 文本
-     */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private String article;
-    /**
-     * 标题
-     */
-    private String title;
-    /**
-     * 重要性
-     */
-    private Integer importance;
-    /**
-     * 状态
-     */
-    private String status;
-    /**
      * 发布时间
      */
     @TableField("publish_time")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private LocalDateTime publishTime;
+
+    /**
+     * 作者
+     */
+    @TableField("publisher")
+    private String publisher;
+
+    /**
+     * 文本
+     */
+    @TableField("article")
+    private String article;
+    /**
+     * 标题
+     */
+    @TableField("title")
+    private String title;
+    /**
+     * 重要性
+     */
+    @TableField("importance")
+    private Integer importance;
+    /**
+     * 状态
+     */
+    @TableField("status")
+    private String status;
+
     /**
      * 副标题
      */
