@@ -30,6 +30,12 @@ public class Admin extends GlobalModel {
      * 部门
      */
     private Integer deptId;
+
+    /**
+     * 管理员状态
+     */
+    private String status;
+
     /**
      * 说明
      */
