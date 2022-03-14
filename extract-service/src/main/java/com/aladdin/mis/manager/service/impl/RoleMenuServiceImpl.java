@@ -4,6 +4,7 @@ import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.RoleMenuDao;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.manager.service.RoleMenuService;
+import com.aladdin.mis.manager.vo.RoleMenuVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,7 @@ public class RoleMenuServiceImpl extends GlobalServiceImpl<RoleMenu> implements 
     }
 
     @Override
-    public List<RoleMenu> findByRoleIds(List<Integer> roles) {
+    public List<RoleMenuVo> findByRoleIds(List<Integer> roles) {
         return mapper.findByRoleIds(roles);
     }
 }

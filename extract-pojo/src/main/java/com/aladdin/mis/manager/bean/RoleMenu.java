@@ -25,4 +25,5 @@ public class RoleMenu extends GlobalModel {
 
     @TableField(exist = false)
     private boolean disabled;
+
 }

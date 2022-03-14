@@ -83,6 +83,11 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     }
 
     @Override
+    public List<Admin> findByAccount(String account) {
+        return dao.findByAccount(account);
+    }
+
+    @Override
     public boolean remove(Integer id){
         return deleteById(id);
     }

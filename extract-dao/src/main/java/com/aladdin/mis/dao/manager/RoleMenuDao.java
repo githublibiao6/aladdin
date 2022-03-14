@@ -1,6 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.RoleMenu;
+import com.aladdin.mis.manager.vo.RoleMenuVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -52,5 +53,5 @@ public interface RoleMenuDao {
      * @return: com.apps.omnipotent.manager.bean.RoleMenu
      * @version: 1.0.0
      */
-    List<RoleMenu> findByRoleIds(@Param("roles") List<Integer> roles);
+    List<RoleMenuVo> findByRoleIds(@Param("roles") List<Integer> roles);
 }

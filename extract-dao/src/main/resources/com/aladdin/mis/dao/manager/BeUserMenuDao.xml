@@ -29,7 +29,10 @@
 
     <select id="list" resultType="com.aladdin.mis.manager.vo.BeUserMenuVo">
         select <include refid="baseColumn"></include>
-        from be_user_menu t where sys005=1
+        ,m.url menuPermissions
+        from be_user_menu t
+        left join be_menu m
+        where sys005=1
         <if test="userId  != null and userId != '' ">
             and t.user_id = #{userId}
         </if>

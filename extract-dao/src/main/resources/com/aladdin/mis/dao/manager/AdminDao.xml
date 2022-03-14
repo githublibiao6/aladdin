@@ -31,6 +31,12 @@
         select * from be_admin where id=#{id}
     </select>
 
+    <select id="findByAccount" resultType="com.aladdin.mis.manager.bean.Admin">
+        select * from be_admin where sys005=1
+        and (login_name like concat('%',#{account},'%')
+           or phone like concat('%',#{account},'%'))
+    </select>
+
     <update  id="remove" parameterType="com.aladdin.mis.manager.bean.Admin">
         delete from be_admin  where id=#{id}
     </update >

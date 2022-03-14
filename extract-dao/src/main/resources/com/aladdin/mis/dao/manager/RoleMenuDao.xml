@@ -11,8 +11,12 @@
     </select>
 
     <select id="findByRoleIds" resultType="com.aladdin.mis.manager.vo.RoleMenuVo">
-        select t.*
-        from be_role_menu t where sys005 = 1 and t.role_id in
+        select t.*, r.code roleCode
+        ,m.url menuPermissions
+        from be_role_menu t
+        left join be_role r on t.role_id=r.id
+        left join be_menu m on t.menu_id=m.id
+        where sys005 = 1 and t.role_id in
         <foreach collection="roles" item="role"
                  separator="," open="(" close=")">
             #{role}

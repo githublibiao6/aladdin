@@ -47,4 +47,11 @@ public interface AdminDao {
     Admin  findById(int id);
 
     int  remove(String id);
+
+    /**
+     * 根据账号获取用户
+     * @param account
+     * @return
+     */
+    List<Admin> findByAccount(@Param("account") String account);
 }

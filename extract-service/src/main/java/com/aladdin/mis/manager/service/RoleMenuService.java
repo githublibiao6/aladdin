@@ -2,6 +2,7 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.RoleMenu;
+import com.aladdin.mis.manager.vo.RoleMenuVo;
 
 import java.util.List;
 
@@ -36,5 +37,5 @@ public interface RoleMenuService extends GlobalService<RoleMenu> {
      * @param roles
      * @return
      */
-    List<RoleMenu> findByRoleIds(List<Integer> roles);
+    List<RoleMenuVo> findByRoleIds(List<Integer> roles);
 }

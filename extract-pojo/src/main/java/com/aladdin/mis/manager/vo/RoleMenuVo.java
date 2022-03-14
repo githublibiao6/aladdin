@@ -16,5 +16,14 @@ public class RoleMenuVo extends RoleMenu {
      */
     private boolean disabled;
 
+    /**
+     * 角色code
+     */
+    private String roleCode;
+
+    /**
+     * 菜单权限
+     */
+    private String menuPermissions;
 
 }

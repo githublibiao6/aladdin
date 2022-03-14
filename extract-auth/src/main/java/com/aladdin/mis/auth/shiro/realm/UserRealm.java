@@ -4,9 +4,8 @@ package com.aladdin.mis.auth.shiro.realm;
  */
 
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.service.AdminService;
-import com.aladdin.mis.manager.service.MenuService;
-import com.aladdin.mis.manager.service.RoleService;
+import com.aladdin.mis.manager.service.*;
+import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -22,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,6 +36,9 @@ public class UserRealm extends AuthorizingRealm {
 
     @Autowired
     RoleService roleService;
+
+    @Autowired
+    BeUserMenuService userMenuService;
 
     @Autowired
     MenuService menuService;
@@ -65,28 +68,43 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         OmUser user = (OmUser) getAvailablePrincipal(principals);
-        Admin admin = adminService.findById(1);
+        List<Admin> list = adminService.findByAccount(user.getUserName());
+
+        if(list == null || list.isEmpty()){
+            throw new UnknownAccountException("No account found for admin [" + user.getUserName() + "]");
+        }
+
+        if(list.size() > 1){
+            throw new UnknownAccountException("Duplicate account found for admin [" + user.getUserName() + "]");
+        }
 //        Admin admin = new Admin();
 //        admin.setId(1);
 //        admin.setLoginName("1");
 //        admin.setLoginPassword("1");
+        Admin admin = list.get(0);
 
-        if (admin == null) {
-            throw new UnknownAccountException("No account found for admin [" + user.getUserName() + "]");
-        }
         //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
         //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
         // Object a = SecurityUtils.getSubject().getPrincipal();
-        Set<String> roles = roleService.getRolesByUserId(admin.getId());
-        roles.add("admin");
+//        Set<String> roles = roleService.getRolesByUserId(admin.getId());
+        Set<String> roles = new HashSet<>();
+        roles.add("guest");
+        // 获取用户的权限
+        List<BeUserMenuVo> userMenuVos = userMenuService.queryMenuByUserId(admin.getId());
+        userMenuVos.forEach(t->{
+            roles.add(t.getRoleCode());
+        });
+
         // 获取菜单权限
-        Set<String> perms = new HashSet<>();
+        Set<String> permissions = new HashSet<>();
+        userMenuVos.forEach(t->{
+            permissions.add(t.getMenuPermissions());
+        });
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
         // 用户权限
-        Set<String> permissions = menuService.queryByRoles(roles);
-
+//        Set<String> permissions = menuService.queryByRoles(roles);
 //        permissions.add("/**");
         info.setRoles(roles);
         info.setStringPermissions(permissions);

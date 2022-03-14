@@ -22,8 +22,19 @@ public class BeUserMenuVo extends BeUserMenu {
     private Integer roleId;
 
     /**
+     * 角色code
+     */
+    private String roleCode;
+
+    /**
+     * 菜单权限
+     */
+    private String menuPermissions;
+
+    /**
      * 所拥有的的菜单权限
      */
     private String menus;
+
 
 }
