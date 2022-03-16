@@ -78,11 +78,35 @@ public class WebLogAspect {
         String ip = baseController.getIp();
         log.setRequestIp(ip);
         Subject subject = SecurityUtils.getSubject();
+
         OmUser m = (OmUser)subject.getPrincipal();
         if(m != null){
             log.setRequestUserName(m.getUserName());
         }
         Object resultData = null;
+
+        // 通过webLog控制的都需要加校验控制
+        boolean permitted = subject.isPermitted("menu/treeList");
+//        if(!permitted){
+//            Result result = new Result();
+//            result.setRequestId(result.getRequestId());
+//            result.setCode(401);
+//            result.setSuccess(false);
+//            result.setMessage("无权限，请联系管理员吧！（unauthorized）");
+//            result.setData(log.getRequestUrl());
+//
+//            log.setRequestId(result.getRequestId());
+//            log.setCode(401);
+//            log.setMessage("无权限，请联系管理员吧！（unauthorized）");
+//            log.setResponseData(JSONObject.toJSONString(result));
+//            LocalDateTime end = LocalDateTime.now();
+//            log.setEndTime(end);
+//            Duration duration = Duration.between(start,  end);
+//            long cost = duration.toMillis();
+//            log.setCost(cost);
+//            visitLogService.saveVisitLog(log);
+//            return result;
+//        }
         try {
             resultData = point.proceed();
         } catch (Throwable e) {
@@ -94,6 +118,7 @@ public class WebLogAspect {
         Duration duration = Duration.between(start,  end);
         long cost = duration.toMillis();
         log.setCost(cost);
+
         if(resultData != null){
             System.err.println(resultData.toString());
             Result result = (Result) resultData;
