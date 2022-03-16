@@ -3,16 +3,16 @@
 <mapper namespace="com.aladdin.mis.dao.manager.BeUserMenuDao">
 
     <sql id="baseColumn">
-        id,
-        user_id,
-        menu_id,
-        sys001,
-        sys002,
-        sys003,
-        sys004,
-        sys005,
-        sys006,
-        sys007
+        t.id,
+        t.user_id,
+        t.menu_id,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
   </sql>
     <resultMap type="com.aladdin.mis.manager.entity.BeUserMenu" id="baseResultMap">
         <id property="id" column="id"/>
@@ -31,8 +31,8 @@
         select <include refid="baseColumn"></include>
         ,m.url menuPermissions
         from be_user_menu t
-        left join be_menu m
-        where sys005=1
+        left join be_menu m on t.menu_id = m.id
+        where t.sys005=1
         <if test="userId  != null and userId != '' ">
             and t.user_id = #{userId}
         </if>
