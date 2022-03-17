@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class AliyunSms {
 
-    private final static String accessKeyId="LTAI5tCwwC4uGt2SMAqn3yeJ";
-    private final static String accessKeySecret="fxDJtmxRtNcCrIFIQFBpV9FXNg0v23";
+    private final static String accessKeyId="";
+    private final static String accessKeySecret="";
 
 
     /**
