@@ -33,11 +33,11 @@ public  class GenerateEntityQoUtils {
         content.append("    private Integer page;\n\n");
         content.append("    private Integer limit;\n\n");
         content.append("    /**\n");
-        content.append("    * 关键字条件过滤 \n");
+        content.append("     * 关键字条件过滤 \n");
         content.append("     */\n");
         content.append("    private String  keyWord;\n");
         content.append("    /**\n");
-        content.append("    * 排序条件 \n");
+        content.append("     * 排序条件 \n");
         content.append("     */\n");
         content.append("    private String  sortInfo;\n");
         content.append("}\n");

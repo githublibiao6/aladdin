@@ -51,8 +51,8 @@ public  class GenerateEntityUtils {
                 return;
             }
             content.append("    /**\n");
-            content.append("    * "+t.getColumnName()+(t.getColumnComment()==null?"":t.getColumnComment()) +"\n");
-            content.append("    */\n");
+            content.append("     * "+t.getColumnName()+(t.getColumnComment()==null?"":t.getColumnComment()) +"\n");
+            content.append("     */\n");
             content.append("    @TableField(\""+t.getColName()+"\")\n");
             if("Date".equals(t.getColumnType()) || "LocalDate".equals(t.getColumnType())){
                 content.append("    @JsonFormat(pattern=\"yyyy-MM-dd\",timezone=\"GMT+8\")\n");
