@@ -1,29 +1,34 @@
-package com.aladdin.mis.omnipotent.manager.controller;
+package com.aladdin.mis.auth.permission.controller;
 
-import com.aladdin.mis.manager.entity.BeUserMenu;
-import com.aladdin.mis.manager.service.BeUserMenuService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.manager.qo.BeUserMenuQo;
-import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.manager.entity.BeUserMenu;
+import com.aladdin.mis.manager.qo.BeUserMenuQo;
+import com.aladdin.mis.manager.service.BeUserMenuService;
+import com.aladdin.mis.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+
 /**
- *  BeUserMenuService--- 
+ *  BeUserMenuService---
  * @author cles
  * @date 2022-03-01T22:38:09.377
 */
 @RequestMapping("manager/beUserMenu")
 @Controller
 public class BeUserMenuController  extends GlobalController {
+
     @Autowired
     private BeUserMenuService beUserMenuService;
 
@@ -94,6 +99,22 @@ public class BeUserMenuController  extends GlobalController {
         }else {
             result.setMessage("更新失败");
         }
+        return result ;
+    }
+
+    /**
+     * 更新
+     */
+    @PostMapping("getUserPermissions")
+    @WebLog("获取个体用户的权限")
+    @ResponseBody
+    public Result getUserPermissions(){
+        result = new Result();
+        Subject subject = SecurityUtils.getSubject();
+        OmUser omUser = (OmUser) subject.getPrincipal();
+        List<BeUserMenuVo> list = beUserMenuService.queryMenuByUserId(omUser.getUserId());
+        result.setData(list);
+        result.setMessage("获取用户权限成功");
         return result ;
     }
 

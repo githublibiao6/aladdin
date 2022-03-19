@@ -36,5 +36,10 @@ public class BeUserMenuVo extends BeUserMenu {
      */
     private String menus;
 
+    /**
+     * 菜单权限
+     */
+    private String menuType;
+
 
 }

@@ -30,6 +30,7 @@
     <select id="list" resultType="com.aladdin.mis.manager.vo.BeUserMenuVo">
         select <include refid="baseColumn"></include>
         ,m.url menuPermissions
+        ,m.menu_type menuType
         from be_user_menu t
         left join be_menu m on t.menu_id = m.id
         where t.sys005=1

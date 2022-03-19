@@ -101,6 +101,7 @@ public class UserRealm extends AuthorizingRealm {
             permissions.add(t.getMenuPermissions());
         });
 
+
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 
         // 用户权限

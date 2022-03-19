@@ -26,4 +26,9 @@ public class RoleMenuVo extends RoleMenu {
      */
     private String menuPermissions;
 
+    /**
+     * 菜单类型
+     */
+    private String menuType;
+
 }
