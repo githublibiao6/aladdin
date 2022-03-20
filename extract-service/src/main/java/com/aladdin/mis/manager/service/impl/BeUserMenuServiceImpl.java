@@ -88,6 +88,10 @@ public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> impleme
             BeUserMenuVo vo = new BeUserMenuVo();
             vo.setDisabled(true);
             vo.setRoleId(t.getRoleId());
+            vo.setMenuPermissions(t.getMenuPermissions());
+            vo.setRoleId(t.getRoleId());
+            vo.setId(t.getId());
+            vo.setMenuType(t.getMenuType());
             vo.setMenuId(t.getMenuId());
             vo.setRoleCode(t.getRoleCode());
             menuSet.add(t.getMenuId());

@@ -101,9 +101,7 @@ public class UserRealm extends AuthorizingRealm {
             permissions.add(t.getMenuPermissions());
         });
 
-
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-
         // 用户权限
 //        Set<String> permissions = menuService.queryByRoles(roles);
 //        permissions.add("/**");
@@ -141,6 +139,7 @@ public class UserRealm extends AuthorizingRealm {
             return null;
         }
         OmUser user = new OmUser();
+        user.setUserId(1);
         user.setUserName(admin.getLoginName());
         user.setPassword(admin.getLoginPassword());
         //单用户登录

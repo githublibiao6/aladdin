@@ -4,7 +4,11 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
-import com.aladdin.mis.manager.service.impl.UserServiceImpl;
+import com.aladdin.mis.manager.service.BeUserMenuService;
+import com.aladdin.mis.manager.service.RoleService;
+import com.aladdin.mis.manager.service.UserService;
+import com.aladdin.mis.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * user controller
@@ -26,7 +32,13 @@ import java.util.List;
 public class UserController extends GlobalController/*<User, UserServiceImpl>*/ {
 
     @Autowired
-    private UserServiceImpl service;
+    private UserService service;
+
+    @Autowired
+    private BeUserMenuService userMenuService;
+
+    @Autowired
+    private RoleService roleService;
 
     /**
      * 获取分页
@@ -41,25 +53,30 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
     }
 
     /**
-     * 菜单跳转
+     * 获取用户权限
      * @return
      */
     @RequestMapping("/info")
     @ResponseBody
     public Result info(String token) {
-        HashMap map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
         map.put("introduction","I am a super administrator");
         map.put("name","super Admin");
         map.put("id","001");
         // 就能拿出用户的所有信息，包括角色和权限
-        Subject c = SecurityUtils.getSubject();
-        String[] roles= {"admin"};
+        Subject subject = SecurityUtils.getSubject();
+        // 获取当前登录用户
+        OmUser omUser = (OmUser) subject.getPrincipal();
+        Integer userId = omUser.getUserId();
+        // 获取用户角色
+        Set<String> roles = roleService.getRolesByUserId(userId);
+        // 获取用户权限
+        List<BeUserMenuVo> permissions = userMenuService.queryMenuByUserId(userId);
         map.put("roles",roles);
+        map.put("permissions",permissions);
         result.setCode(20000);
         result.setData(map);
-        System.out.println(map);
-        System.out.println(roles[0]);
         result.setMessage("用户查询信息");
         return result;
     }
