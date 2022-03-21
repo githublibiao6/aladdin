@@ -28,5 +28,15 @@ public class OmUser {
      */
     private String password;
 
+    /**
+     * 机构id
+     */
+    private Integer deptId;
+
+    /**
+     * 机构名称
+     */
+    private String deptName;
+
 
 }

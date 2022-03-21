@@ -4,6 +4,7 @@ package com.aladdin.mis.auth.shiro.realm;
  */
 
 import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.service.*;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.system.user.vo.OmUser;
@@ -32,16 +33,19 @@ import java.util.Set;
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired
-    AdminService adminService;
+    private AdminService adminService;
 
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
     @Autowired
-    BeUserMenuService userMenuService;
+    private BeUserMenuService userMenuService;
 
     @Autowired
-    MenuService menuService;
+    private MenuService menuService;
+
+    @Autowired
+    private DeptService deptService;
 
 
     /* 判断密码？ */
@@ -123,6 +127,8 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         String username = upToken.getUsername();
+        char[] passwordChar = upToken.getPassword();
+        String password = String.valueOf(passwordChar);
 
         // Null username is invalid
         if (username == null) {
@@ -133,15 +139,32 @@ public class UserRealm extends AuthorizingRealm {
 //        admin.setLoginName("1");
 //        admin.setLoginPassword("1");
         try{
-            admin = adminService.findById(1);
+            List<Admin> list = adminService.findByAccount(username);
+            if(list == null || list.isEmpty()){
+                throw new UnknownAccountException("No account found for admin [" + username + "]");
+            }
+            if(list.size() > 1){
+                throw new AccountException("Unclear user.Expected one result (or null) to be returned by selectOne(), but found: "+ list.size());
+            }
+            if(!password.equals(admin.getLoginPassword())){
+                throw new AccountException("User password error");
+            }
+            admin = list.get(0);
+
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
+        Integer deptId = admin.getDeptId();
+        Dept dept = deptService.findById(deptId);
         OmUser user = new OmUser();
-        user.setUserId(1);
+        user.setUserId(admin.getId());
         user.setUserName(admin.getLoginName());
         user.setPassword(admin.getLoginPassword());
+        user.setDeptId(deptId);
+        if(dept != null){
+            user.setUserName(dept.getName());
+        }
         //单用户登录
         //处理session
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();
@@ -165,10 +188,6 @@ public class UserRealm extends AuthorizingRealm {
 
         Collection<Session> sessions2 = sessionManager.getSessionDAO().getActiveSessions();
         System.err.println(sessions2.size());
-
-        if (admin == null) {
-            throw new UnknownAccountException("No account found for admin [" + username + "]");
-        }
 
         // todo upToken.getPassword() 前台传的密码
         // 和 admin.getLoginPassword() 比较

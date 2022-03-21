@@ -54,9 +54,10 @@ public interface AdminService  extends GlobalService<Admin> {
     Admin findById(int id);
 
     /**
-     * 根据id查询详情
+     * 根据账号获取用户查询详情
      * @param account
      * @return
      */
     List<Admin> findByAccount(String account);
+
 }
