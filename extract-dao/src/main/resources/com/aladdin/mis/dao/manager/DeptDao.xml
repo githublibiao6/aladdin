@@ -9,6 +9,6 @@
 
     <!-- 根据id获取部门详细信息 -->
     <select id="findById" resultType="com.aladdin.mis.manager.bean.Dept">
-        select * from dept where id = #{id}
+        select * from be_dept where id = #{id}
     </select>
 </mapper>

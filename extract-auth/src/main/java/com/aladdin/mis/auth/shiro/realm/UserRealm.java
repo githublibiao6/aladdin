@@ -72,20 +72,6 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         OmUser user = (OmUser) getAvailablePrincipal(principals);
-        List<Admin> list = adminService.findByAccount(user.getUserName());
-
-        if(list == null || list.isEmpty()){
-            throw new UnknownAccountException("No account found for admin [" + user.getUserName() + "]");
-        }
-
-        if(list.size() > 1){
-            throw new UnknownAccountException("Duplicate account found for admin [" + user.getUserName() + "]");
-        }
-//        Admin admin = new Admin();
-//        admin.setId(1);
-//        admin.setLoginName("1");
-//        admin.setLoginPassword("1");
-        Admin admin = list.get(0);
 
         //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
         //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
@@ -94,7 +80,7 @@ public class UserRealm extends AuthorizingRealm {
         Set<String> roles = new HashSet<>();
         roles.add("guest");
         // 获取用户的权限
-        List<BeUserMenuVo> userMenuVos = userMenuService.queryMenuByUserId(admin.getId());
+        List<BeUserMenuVo> userMenuVos = userMenuService.queryMenuByUserId(user.getUserId());
         userMenuVos.forEach(t->{
             roles.add(t.getRoleCode());
         });
@@ -138,33 +124,29 @@ public class UserRealm extends AuthorizingRealm {
 //        admin.setId(1);
 //        admin.setLoginName("1");
 //        admin.setLoginPassword("1");
-        try{
-            List<Admin> list = adminService.findByAccount(username);
-            if(list == null || list.isEmpty()){
-                throw new UnknownAccountException("No account found for admin [" + username + "]");
-            }
-            if(list.size() > 1){
-                throw new AccountException("Unclear user.Expected one result (or null) to be returned by selectOne(), but found: "+ list.size());
-            }
-            if(!password.equals(admin.getLoginPassword())){
-                throw new AccountException("User password error");
-            }
-            admin = list.get(0);
-
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
+        List<Admin> list = adminService.findByAccount(username);
+        if(list == null || list.isEmpty()){
+            throw new UnknownAccountException("未找到该用户");
         }
+        if(list.size() > 1){
+            throw new AccountException("重复的用户");
+        }
+        admin = list.get(0);
+        if(!password.equals(admin.getLoginPassword())){
+            throw new AccountException("密码错误");
+        }
+
         Integer deptId = admin.getDeptId();
         Dept dept = deptService.findById(deptId);
+        if(deptId == null || dept == null){
+            throw new AccountException("用户无权限");
+        }
         OmUser user = new OmUser();
         user.setUserId(admin.getId());
         user.setUserName(admin.getLoginName());
         user.setPassword(admin.getLoginPassword());
         user.setDeptId(deptId);
-        if(dept != null){
-            user.setUserName(dept.getName());
-        }
+        user.setDeptName(dept.getName());
         //单用户登录
         //处理session
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();

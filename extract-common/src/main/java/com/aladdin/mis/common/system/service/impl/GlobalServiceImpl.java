@@ -79,9 +79,15 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
         OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
+        if(user == null){
+            user = new OmUser();
+            user.setDeptId(0);
+            user.setUserId(0);
+        }
+        OmUser finalUser = user;
         list.forEach(t->{
             if(CREATE_USER_FIELD.equals(t.getColumnName())){
-                t.setFieldValue(user.getUserId());
+                t.setFieldValue(finalUser.getUserId());
             }
             if(CREATE_TIME_FIELD.equals(t.getColumnName())){
                 t.setFieldValue(LocalDateTime.now());
@@ -106,10 +112,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
         OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
+        if(user == null){
+            user = new OmUser();
+            user.setDeptId(0);
+            user.setUserId(0);
+        }
 //        TableFieldInfo user = new TableFieldInfo();
+        OmUser finalUser = user;
         list.forEach(t->{
             if(UPDATE_USER_FIELD.equals(t.getColumnName())){
-                t.setFieldValue(user.getUserId());
+                t.setFieldValue(finalUser.getUserId());
             }
             if(UPDATE_TIME_FIELD.equals(t.getColumnName())){
                 t.setFieldValue(LocalDateTime.now());

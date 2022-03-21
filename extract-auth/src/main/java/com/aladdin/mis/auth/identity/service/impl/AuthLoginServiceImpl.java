@@ -4,6 +4,7 @@ import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -38,6 +39,11 @@ public class AuthLoginServiceImpl implements AuthLoginService {
             // 会触发 Realm的doGetAuthenticationInfo方法
             subject.login(token);
 
+        }catch (AccountException accountException){
+            result.setMessage(accountException.getMessage());
+            result.setSuccess(false);
+            result.setCode(10001);
+            return result;
         }catch (Exception e){
             e.printStackTrace();
         }
