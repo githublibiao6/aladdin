@@ -18,10 +18,12 @@
         left join be_role r on t.role_id=r.id
         left join be_menu m on t.menu_id=m.id
         where t.sys005 = 1 and t.role_id in
-        <foreach collection="roles" item="role"
-                 separator="," open="(" close=")">
-            #{role}
-        </foreach>
+        <if test="roles != null and roles != ''">
+            <foreach collection="roles" item="role"
+                     separator="," open="(" close=")">
+                #{role}
+            </foreach>
+        </if>
     </select>
 
 </mapper>

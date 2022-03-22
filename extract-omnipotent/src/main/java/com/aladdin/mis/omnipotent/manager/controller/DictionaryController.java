@@ -86,7 +86,12 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
     @ResponseBody
     public Result update(@RequestBody Dictionary model) {
         result = new Result();
-        boolean flag = dicService.updateSelective(model);
+        boolean flag = false;
+        try{
+            flag = dicService.updateSelective(model);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         result.setSuccess(flag);
         if(flag){
             result.setMessage("更新成功");

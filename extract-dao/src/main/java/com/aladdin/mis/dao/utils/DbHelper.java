@@ -9,10 +9,9 @@ import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -187,7 +186,18 @@ public class DbHelper {
                     //通过序号获取列名,起始值为1
                     String columnName = metaData.getColumnLabel(i+1);
                     //通过列名获取值.如果列值为空,columnValue为null,不是字符型
-                    String columnValue = rs.getString(columnName);
+                    Object columnValue = rs.getObject(columnName);
+                    // 处理时间格式的字段
+                    if(columnValue == null){
+                        obj.put(columnName, null);
+                        continue;
+                    }
+                    if(columnValue instanceof Timestamp){
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        LocalDateTime timeValue = ((Timestamp) columnValue).toLocalDateTime();
+                        obj.put(columnName, dtf.format(timeValue));
+                        continue;
+                    }
                     obj.put(columnName,columnValue);
                 }
                 list.add(obj);
