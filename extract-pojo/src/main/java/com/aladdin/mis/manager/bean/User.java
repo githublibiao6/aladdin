@@ -4,13 +4,13 @@ package com.aladdin.mis.manager.bean;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
- * 人员model
+ * 人员model（个人基本信息）
 * @Description
 * @MethodName  GlobalModel
 * @author lb
@@ -21,18 +21,33 @@ import java.util.Date;
 public class User extends GlobalModel {
 
     /**
-     * 名称
+     * 账号
      */
-    private String name;
+    private String account;
+
     /**
-     *  密码
+     * 账号
      */
     private String password;
+
+    /**
+     * 姓名
+     */
+    private String name;
+
+    /**
+     * 手机
+     */
+    private String phone;
+    /**
+     * 邮箱地址
+     */
+    private String email;
     /**
      * 身份证号
      */
-    @TableField("citizen_no")
-    private String citizenNo;
+    @TableField("id_card")
+    private String idCard;
 
     /**
      * 照片地址
@@ -45,9 +60,9 @@ public class User extends GlobalModel {
     private String sex;
 
     /**
-     * 位置
+     * 住址
      */
-    private String position;
+    private String address;
     /**
      * 说明
      */
@@ -67,21 +82,10 @@ public class User extends GlobalModel {
     private String marriage;
 
     /**
-     * 手机
-     */
-    private String phone;
-
-    /**
      * 办公室电话
      */
     @TableField("office_no")
     private String officeNo;
-
-    /**
-     * 邮件
-     */
-    @TableField("officeNo")
-    private String email;
 
     /**
      * 学历
@@ -94,17 +98,44 @@ public class User extends GlobalModel {
     private String degree;
 
     /**
-     * 开始时间
+     * 人员状态
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField("contract_start")
-    private Date contractStart;
+    private String status;
 
     /**
-     * 开始时间
+     * 备注
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @TableField("contract_end")
-    private Date contractEnd;
+    private String remark;
+
+    /**
+     * qq
+     */
+    private String qq;
+
+    /**
+     * 微信
+     */
+    private String weChart;
+
+    /**
+     *  最近一次登录时间
+     */
+    @TableField("last_login_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private LocalDateTime lastLoginTime;
+
+    /**
+     * 密码输错次数
+     */
+    @TableField("error_times")
+    private int errorTimes;
+
+    /**
+     * 更新密码的时间s
+     */
+    @TableField("update_pwd_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private LocalDateTime updatePwdTime;
+
 
 }

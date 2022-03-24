@@ -121,10 +121,9 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
 
     @RequestMapping("/update")
     @ResponseBody
-    public Result update(@RequestBody JSONObject json) {
+    public Result update(@RequestBody User user) {
         result = new Result();
-        User m = JSONObject.parseObject(json.toJSONString(),User.class);
-        boolean flag = service.update(m);
+        boolean flag = service.update(user);
         result.setSuccess(flag);
         String msg = "更新成功" ;
         if(!flag){
