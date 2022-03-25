@@ -22,6 +22,6 @@ public class UserQo extends User {
     /**
      * 每页数量
      */
-    private Integer departId;
+    private String keyWord;
 
 }

@@ -8,6 +8,14 @@
         <if test="name != null and name != '' ">
             and name like concat('%',#{name},'%')
         </if>
+        <if test="keyWord != null and keyWord != '' ">
+            and (
+                    name like concat('%',#{keyWord},'%')
+                or phone like concat('%',#{keyWord},'%')
+                or id_card like concat('%',#{keyWord},'%')
+                or email like concat('%',#{keyWord},'%')
+            )
+        </if>
     </select>
 
 </mapper>
