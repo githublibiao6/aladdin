@@ -90,8 +90,26 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
         // 后续改为从缓存中获取
         String[] array = dictKey.split(",");
         List<DictVo> list = dao.queryDictByCode(array);
+
+        return handleDict(list);
+    }
+
+
+    @Override
+    public  Map<String, JSONObject> loadAllDictionary() {
+
+        List<DictVo> list = dao.queryAllDictionary();
+        return handleDict(list);
+    }
+
+    /**
+     * 处理字典合集
+     * @param list
+     * @return
+     */
+    private Map<String, JSONObject> handleDict(List<DictVo> list){
         Map<String, JSONObject> data = new HashMap<>();
-        Map<String, List<DictVo>> map = list.stream().collect(Collectors.groupingBy(s -> s.getCode()));
+        Map<String, List<DictVo>> map = list.stream().collect(Collectors.groupingBy(DictVo::getCode));
         map.forEach((k,v) -> {
             JSONObject o = new JSONObject();
             v.forEach(t->{

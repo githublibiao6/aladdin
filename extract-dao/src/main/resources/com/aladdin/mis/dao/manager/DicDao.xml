@@ -12,4 +12,10 @@
         </foreach>
     </select>
 
+    <select id="queryAllDictionary" resultType="com.aladdin.mis.manager.vo.DictVo">
+        select m.*, t.code from be_dictionary_teams m
+        left join be_dictionary t on t.id = m.dic_id
+        where m.sys005 = '1'
+    </select>
+
 </mapper>

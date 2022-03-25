@@ -67,4 +67,11 @@ public interface DictionaryService extends GlobalService<Dictionary> {
      * @return
      */
     Map<String, JSONObject> queryDictByCode(String dictKey);
+
+
+    /**
+     * 获取所有的字典
+     * @return
+     */
+    Map<String, JSONObject> loadAllDictionary();
 }

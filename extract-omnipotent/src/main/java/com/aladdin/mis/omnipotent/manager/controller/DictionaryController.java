@@ -63,6 +63,15 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
     }
 
 
+    @RequestMapping("/loadAllDictionary")
+    @ResponseBody
+    public Result loadAllDictionary() {
+        Map<String, JSONObject> map = dicService.loadAllDictionary();
+        result.setData(map);
+        result.setCode(20000);
+        return result;
+    }
+
 
     /**
      *  查询字典树

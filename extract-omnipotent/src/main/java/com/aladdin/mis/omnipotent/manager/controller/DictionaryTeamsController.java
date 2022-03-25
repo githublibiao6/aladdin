@@ -70,7 +70,7 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
      * @Description: delete
      * @Author: cles
      * @Date: 2020/6/21 23:46
-     * @param json 参数1
+     * @param model 参数1
      * @return: com.apps.omnipotent.system.global.entity.Result
      * @version: 1.0.0
      */
@@ -106,4 +106,5 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
         result.setCode(20000);
         return result;
     }
+
 }

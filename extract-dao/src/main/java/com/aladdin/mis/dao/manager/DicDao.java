@@ -31,6 +31,12 @@ public interface DicDao {
     List<DictVo> queryDictByCode(@Param("dictKeys") String[] dictKeys);
 
     /**
+     * 获取
+     * @return
+     */
+    List<DictVo> queryAllDictionary();
+
+    /**
      * 根据code查询记录
      * @param code
      * @return
