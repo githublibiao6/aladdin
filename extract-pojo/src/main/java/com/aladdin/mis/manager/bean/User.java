@@ -10,7 +10,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 人员model（个人基本信息）
+ * 人员model（基础）
 * @Description
 * @MethodName  GlobalModel
 * @author lb
@@ -50,6 +50,12 @@ public class User extends GlobalModel {
     private String idCard;
 
     /**
+     * 身份证号
+     */
+    @TableField("birth")
+    private String birth;
+
+    /**
      * 照片地址
      */
     @TableField("photo_uri")
@@ -66,46 +72,12 @@ public class User extends GlobalModel {
     /**
      * 说明
      */
-    private String comments;
-    /**
-     * 生日
-     */
-    private String birth;
-    /**
-     * 国籍
-     */
-    private String nation;
-
-    /**
-     * 婚姻
-     */
-    private String marriage;
-
-    /**
-     * 办公室电话
-     */
-    @TableField("office_no")
-    private String officeNo;
-
-    /**
-     * 学历
-     */
-    private String education;
-
-    /**
-     * 学位
-     */
-    private String degree;
+    private String notes;
 
     /**
      * 人员状态
      */
     private String status;
-
-    /**
-     * 备注
-     */
-    private String remark;
 
     /**
      * qq
