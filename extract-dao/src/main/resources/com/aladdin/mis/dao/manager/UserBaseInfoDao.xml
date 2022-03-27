@@ -15,4 +15,10 @@
         </if>
     </select>
 
+    <select id="getUserInfoByUserId " resultType="com.aladdin.mis.manager.bean.UserBaseInfo">
+        select * from user_base_info m where m.sys005='1'
+
+        and m.user_id = #{userId}
+    </select>
+
 </mapper>
