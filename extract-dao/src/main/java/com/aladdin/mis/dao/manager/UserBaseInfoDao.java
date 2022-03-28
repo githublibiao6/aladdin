@@ -26,4 +26,16 @@ public interface UserBaseInfoDao {
      */
     List<UserBaseInfo> listUser(UserQo qo);
 
+    /**
+     * 功能描述：
+     *  < 获取指定id人员的基本信息数据 >
+     * @Description: listUser
+     * @Author: cles
+     * @Date: 2020/7/2 23:09
+     * @param qo 参数1
+     * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
+     * @version: 1.0.0
+     */
+    UserBaseInfo getUserInfoByUserId(UserQo qo);
+
 }
