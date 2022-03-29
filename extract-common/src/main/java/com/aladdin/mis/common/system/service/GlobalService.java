@@ -1,6 +1,8 @@
 package com.aladdin.mis.common.system.service;
 
+import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.system.base.BaseModel;
+import com.github.pagehelper.PageInfo;
 
 /**
  * 功能描述：
@@ -12,6 +14,14 @@ import com.aladdin.mis.system.base.BaseModel;
  * @version: 1.0.0
  */
 public interface GlobalService<T> {
+
+    /**
+     *
+     * 插入实体
+     * @param condition 实体
+     * @return model
+     */
+    <T> PageInfo<T> pageInfo(QueryCondition condition);
 
     /**
      *

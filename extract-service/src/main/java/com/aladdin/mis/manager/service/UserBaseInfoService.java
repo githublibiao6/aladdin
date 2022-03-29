@@ -2,8 +2,6 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
-import com.aladdin.mis.manager.qo.UserQo;
-import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -16,17 +14,17 @@ import java.util.List;
 public interface UserBaseInfoService extends GlobalService<UserBaseInfo> {
 
 
-    /**
-     * 功能描述：
-     *  < 分页 >
-     * @Description: page
-     * @Author: cles
-     * @Date: 2020/7/1 23:51
-     * @param entity 参数1
-     * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
-     * @version: 1.0.0
-     */
-    PageInfo<UserBaseInfo> page(UserQo entity);
+//    /**
+//     * 功能描述：
+//     *  < 分页 >
+//     * @Description: page
+//     * @Author: cles
+//     * @Date: 2020/7/1 23:51
+//     * @param entity 参数1
+//     * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
+//     * @version: 1.0.0
+//     */
+//    PageInfo<UserBaseInfo> page(UserQo entity);
 
     /**
      * 功能描述：

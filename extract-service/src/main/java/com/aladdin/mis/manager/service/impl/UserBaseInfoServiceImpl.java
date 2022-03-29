@@ -5,8 +5,6 @@ import com.aladdin.mis.dao.manager.UserBaseInfoDao;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.UserBaseInfoService;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +24,6 @@ public class UserBaseInfoServiceImpl extends GlobalServiceImpl<UserBaseInfo> imp
 
     @Autowired
     private UserBaseInfoDao dao;
-
-
-    @Override
-    public PageInfo<UserBaseInfo> page(UserQo qo) {
-        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
-        List<UserBaseInfo> list = dao.listUser(qo);
-        return new PageInfo<>(list);
-    }
 
     @Override
     public List<UserBaseInfo> list(String name) {

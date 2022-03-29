@@ -1,5 +1,6 @@
 package com.aladdin.mis.common.system.service.impl;
 
+import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.utils.Db;
@@ -9,13 +10,18 @@ import com.aladdin.mis.system.db.entity.TableInfo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 功能描述：
@@ -32,6 +38,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private static final String CREATE_USER_FIELD = "sys003";
     private static final String UPDATE_USER_FIELD = "sys004";
     private static final String FLAG = "sys005";
+
+    @Override
+    public <T> PageInfo<T> pageInfo(QueryCondition condition) {
+        PageHelper.offsetPage(condition.getPage(), condition.getLimit());
+        Class<T> m = (Class<T>) getT();
+        String tableName = getTableName(m);
+        List<JSONObject> list = Db.use().findList("select *from "+tableName);
+        PageInfo<JSONObject> page = new PageInfo<JSONObject>(list);
+        return (PageInfo<T>) page;
+    }
 
     @Override
     public <T> T detailQuery(Integer id) {
