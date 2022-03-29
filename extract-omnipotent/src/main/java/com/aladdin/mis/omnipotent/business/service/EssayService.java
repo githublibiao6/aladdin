@@ -1,6 +1,7 @@
 package com.aladdin.mis.omnipotent.business.service;
 
 import com.aladdin.mis.blog.entity.Essay;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
 
@@ -12,9 +13,9 @@ import java.util.List;
  * @author lb
  *
  */
-public interface EssayService {
+public interface EssayService extends GlobalService<Essay> {
 
-    PageInfo page(PageEntity entity) ;
+    PageInfo<Essay> page(PageEntity entity) ;
     /**
      * 功能描述：
      *  <获取全部字典>

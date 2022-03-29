@@ -31,13 +31,13 @@ public class EssayController extends GlobalController {
     @Autowired
     private EssayService service;
 
-    @RequestMapping("/page")
+    @RequestMapping("/page1")
     @ResponseBody
-    public  Result pageList(HttpServletRequest request, PageEntity entity) {
+    public Result page1(HttpServletRequest request, PageEntity entity) {
         Subject subject = SecurityUtils.getSubject();
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);
-        PageInfo page = service.page(entity);
+        PageInfo<Essay> page = service.page(entity);
         result.setData(page);
         result.setCode(20000);
         return result;

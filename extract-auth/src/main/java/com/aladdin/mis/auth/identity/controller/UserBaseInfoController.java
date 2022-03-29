@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author lb
  * @date 2018年6月5日 下午8:56:11
  */
-@RequestMapping("user")
+@RequestMapping("userbaseinfo")
 @Controller
-public class UserBaseInfoController extends GlobalController/*<User, UserServiceImpl>*/ {
+public class UserBaseInfoController extends GlobalController {
 
     @Autowired
     private UserBaseInfoService service;
@@ -34,7 +34,7 @@ public class UserBaseInfoController extends GlobalController/*<User, UserService
      */
     @RequestMapping("/page")
     @ResponseBody
-    public  Result pageList(@RequestBody UserQo entity) {
+    public Result pageInfo(@RequestBody UserQo entity) {
         // 待测试公用查询
         QueryCondition condition = new QueryCondition();
         condition.setPage(1);

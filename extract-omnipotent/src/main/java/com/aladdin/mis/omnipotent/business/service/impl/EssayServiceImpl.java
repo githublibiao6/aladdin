@@ -19,15 +19,15 @@ import java.util.List;
  *
  */
 @Service
-public class EssayServiceImpl extends GlobalServiceImpl implements EssayService {
+public class EssayServiceImpl extends GlobalServiceImpl<Essay> implements EssayService {
 
     @Autowired
     private EssayDao dao;
 
     @Override
-    public PageInfo page(PageEntity entity) {
+    public PageInfo<Essay> page(PageEntity entity) {
         PageHelper.offsetPage(entity.getPage(), entity.getLimit());
-        return new PageInfo(dao.listEssay());
+        return new PageInfo<>(dao.listEssay());
     }
 
     /**

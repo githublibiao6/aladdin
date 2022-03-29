@@ -16,7 +16,7 @@ import java.net.UnknownHostException;
 /**
  * @author cles
  */
-public abstract class GlobalController {
+public  abstract class  GlobalController{
 
     @Autowired
     public HttpServletRequest request;
