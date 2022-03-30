@@ -13,7 +13,7 @@ import lombok.Data;
 * @author lb
 * @date 2018年8月20日 下午10:50:54
  */
-@Table("user")
+@Table("user_base_info")
 @Data
 public class UserBaseInfo extends GlobalModel {
 

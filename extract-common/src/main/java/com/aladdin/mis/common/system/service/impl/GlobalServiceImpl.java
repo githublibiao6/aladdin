@@ -18,10 +18,7 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 功能描述：
@@ -45,9 +42,9 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
         TableInfo table = MainDb.getTableInfo(tableName);
-        
+
         List<JSONObject> list = Db.use().findList("select *from "+tableName);
-        PageInfo<JSONObject> page = new PageInfo<JSONObject>(list);
+        PageInfo<JSONObject> page = new PageInfo<>(list);
         return (PageInfo<T>) page;
     }
 

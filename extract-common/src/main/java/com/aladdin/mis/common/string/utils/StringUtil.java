@@ -60,6 +60,12 @@ public class StringUtil {
     }
 
 
+    /**
+     * 首字母转小写
+     * HELLO -> hELLO
+     * @param str
+     * @return
+     */
     public static String firstCharLower(String str) {
         if(str == null){
             return null;
@@ -70,6 +76,12 @@ public class StringUtil {
         return str.substring(0,1).toLowerCase() + str.substring(1);
     }
 
+    /**
+     * 首字母转大写
+     * HELLO -> hELLO
+     * @param str
+     * @return
+     */
     public static String firstCharUp(String str) {
         if(str == null){
             return null;

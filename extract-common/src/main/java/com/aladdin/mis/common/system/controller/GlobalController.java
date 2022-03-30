@@ -4,7 +4,6 @@ package com.aladdin.mis.common.system.controller;
 import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.manager.bean.UserBaseInfo;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.system.base.BaseModel;
 import com.aladdin.mis.system.user.vo.OmUser;
@@ -44,7 +43,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
 //    }
 
     /**
-     * 获取分页
+     * 获取通用分页
      */
     @RequestMapping("/pageInfo")
     @ResponseBody
@@ -53,8 +52,37 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         QueryCondition condition = new QueryCondition();
         condition.setPage(1);
         condition.setLimit(10);
-        PageInfo<UserBaseInfo> page = getBaseService().pageInfo(condition);
+        PageInfo<T> page = getBaseService().pageInfo(condition);
         result.setData(page);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 获取通用保存分页
+     */
+    @RequestMapping("/saveInfo")
+    @ResponseBody
+    public Result saveInfo(@RequestBody T entity) {
+        if(entity.getPrimaryKey() == null){
+            T data = getBaseService().insertSelective(entity);
+            result.setData(data);
+        }else {
+            boolean data = getBaseService().updateSelective(entity);
+            result.setData(data);
+        }
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 获取分页
+     */
+    @RequestMapping("/updateInfo")
+    @ResponseBody
+    public Result updateInfo(@RequestBody T entity) {
+        boolean data = getBaseService().updateSelective(entity);
+        result.setData(data);
         result.setCode(20000);
         return result;
     }

@@ -33,6 +33,29 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
 
     /**
      * 功能描述：
+     *  < 获取主键值 >
+     * @Description: save
+     * @Author: cles
+     * @Date: 2020/6/19 0:18
+     * @return: String
+     * @version: 1.0.0
+     */
+    public Integer getPrimaryKey (){
+        TableInfo info = new TableInfo();
+        info.setTableName(getTableName());
+        List<TableFieldInfo> list =  getTableField();
+        String primaryKey = getPrimaryKey(info.getTableName());
+        AtomicReference<Integer> id = new AtomicReference<>();
+        list.forEach(t->{
+            if(primaryKey.equals(t.getColumnName())){
+                id.set((Integer) t.getFieldValue());
+            }
+        });
+        return id.get();
+    }
+
+    /**
+     * 功能描述：
      *  < 实体直接保存 >
      * @Description: save
      * @Author: cles
@@ -114,17 +137,12 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
         TableInfo info = new TableInfo();
         info.setTableName(getTableName());
         List<TableFieldInfo> list =  getTableField();
-        String primaryKey = getPrimaryKey(info.getTableName());
-        AtomicReference<Integer> id = new AtomicReference<>();
-        list.forEach(t->{
-            if(primaryKey.equals(t.getColumnName())){
-                id.set((Integer) t.getFieldValue());
-            }
-        });
-        if(id.get() == null){
+
+        Integer primaryKey = getPrimaryKey();
+        if(primaryKey == null){
             throw new RuntimeException("primary key can not be null");
         }
-        info.setIdValue(id.get());
+        info.setIdValue(primaryKey);
         info.setFields(list);
         return info;
     }
@@ -193,6 +211,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
                 PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
                 Method getMethod = pd.getReadMethod();
                 Object value = getMethod.invoke(this);
+                // 设置字段值
                 obj.setFieldValue(value);
             } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();

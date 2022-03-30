@@ -32,9 +32,21 @@ public class TableFieldInfo {
      * 数据库列长度
      */
     private String colLength;
+    /**
+     * java字段名称
+     */
     private String columnName;
+    /**
+     * java字段类型
+     */
     private String columnType;
+    /**
+     * java字段注释
+     */
     private String columnComment;
+    /**
+     * 是否主键
+     */
     private boolean pk;
 
 }
