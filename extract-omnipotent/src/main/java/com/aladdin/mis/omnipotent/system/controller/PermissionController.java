@@ -1,5 +1,6 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
 import com.aladdin.mis.common.system.entity.Result;
@@ -38,5 +39,10 @@ public class PermissionController extends GlobalController {
         result.setData(list);
         result.setMessage("菜单查询信息");
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

@@ -44,6 +44,8 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         PageHelper.offsetPage(condition.getPage(), condition.getLimit());
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
+        TableInfo table = MainDb.getTableInfo(tableName);
+        
         List<JSONObject> list = Db.use().findList("select *from "+tableName);
         PageInfo<JSONObject> page = new PageInfo<JSONObject>(list);
         return (PageInfo<T>) page;

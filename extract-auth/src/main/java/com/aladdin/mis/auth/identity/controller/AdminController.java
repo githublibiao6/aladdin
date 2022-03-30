@@ -2,6 +2,7 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminService;
@@ -28,6 +29,11 @@ public class AdminController extends GlobalController {
 
     @Autowired
     AdminService service;
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 
     /**
      * 菜单跳转
@@ -164,4 +170,5 @@ public class AdminController extends GlobalController {
         result.setMessage(msg);
         return result;
     }
+
 }

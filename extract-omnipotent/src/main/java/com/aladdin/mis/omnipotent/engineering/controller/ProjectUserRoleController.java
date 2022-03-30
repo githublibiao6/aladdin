@@ -1,24 +1,22 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.engineering.entity.ProjectUserRole;
-import com.aladdin.mis.engineering.service.ProjectUserRoleService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectUserRoleQo;
-import com.aladdin.mis.engineering.vo.ProjectUserRoleVo;
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.engineering.entity.ProjectUserRole;
+import com.aladdin.mis.engineering.qo.ProjectUserRoleQo;
+import com.aladdin.mis.engineering.service.ProjectUserRoleService;
+import com.aladdin.mis.engineering.vo.ProjectUserRoleVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
- *  ProjectUserRoleService--- 
+ *  ProjectUserRoleService---
  * @author cles
  * @date 2021-08-31T22:03:55.931
 */
@@ -78,4 +76,10 @@ public class ProjectUserRoleController  extends GlobalController {
             result.setMessage("更新失败");
         }
         return result ;
-    }}
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
+}

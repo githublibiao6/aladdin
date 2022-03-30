@@ -1,11 +1,20 @@
 package com.aladdin.mis.common.system.controller;
 
 
+import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.manager.bean.UserBaseInfo;
+import com.aladdin.mis.manager.qo.UserQo;
+import com.aladdin.mis.system.base.BaseModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,13 +25,15 @@ import java.net.UnknownHostException;
 /**
  * @author cles
  */
-public  abstract class  GlobalController{
+public abstract class  GlobalController<T extends BaseModel, M extends GlobalService<T>> {
 
     @Autowired
     public HttpServletRequest request;
 
     @Autowired
     public HttpServletResponse response;
+
+    protected abstract GlobalService<T> getBaseService();
 
     protected Result result = new Result();
 
@@ -31,6 +42,22 @@ public  abstract class  GlobalController{
 //    public <T> Result page(List<T> list,Integer page,Integer limit){
 //        return layui.turnPage(result,list,page,limit);
 //    }
+
+    /**
+     * 获取分页
+     */
+    @RequestMapping("/pageInfo")
+    @ResponseBody
+    public Result pageInfo(@RequestBody UserQo entity) {
+        // 待测试公用查询
+        QueryCondition condition = new QueryCondition();
+        condition.setPage(1);
+        condition.setLimit(10);
+        PageInfo<UserBaseInfo> page = getBaseService().pageInfo(condition);
+        result.setData(page);
+        result.setCode(20000);
+        return result;
+    }
 
     /**
      * 获取前台传入的参数

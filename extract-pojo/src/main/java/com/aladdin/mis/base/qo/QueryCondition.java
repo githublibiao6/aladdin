@@ -5,6 +5,8 @@ package com.aladdin.mis.base.qo;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author cles
  * @description: 基础查询类
@@ -14,8 +16,19 @@ import lombok.Data;
 @Data
 public class QueryCondition {
 
+    /**
+     * 页码
+     */
     private Integer page;
 
+    /**
+     * 数量
+     */
     private Integer limit;
+
+    /**
+     * 查询字段
+     */
+    private List<String> columns;
 
 }

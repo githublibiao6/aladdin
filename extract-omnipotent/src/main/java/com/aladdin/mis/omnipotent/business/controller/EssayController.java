@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.business.controller;
 import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
@@ -104,5 +105,10 @@ public class EssayController extends GlobalController {
         Essay essay = service.detail(id);
         result.setData(essay);
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

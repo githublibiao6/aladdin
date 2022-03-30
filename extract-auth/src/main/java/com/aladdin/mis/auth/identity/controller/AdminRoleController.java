@@ -2,6 +2,7 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.AdminRole;
 import com.aladdin.mis.manager.service.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class AdminRoleController extends GlobalController/*<User, UserServiceImp
     @Autowired
     private AdminRoleService adminRoleService;
 
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
+
     /**
      * 获取分页
      */
@@ -35,4 +42,5 @@ public class AdminRoleController extends GlobalController/*<User, UserServiceImp
         result.setCode(20000);
         return result;
     }
+
 }

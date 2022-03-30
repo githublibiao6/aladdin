@@ -2,6 +2,7 @@ package com.aladdin.mis.omnipotent.api.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.omnipotent.system.utils.FileUtil;
 import com.aladdin.mis.omnipotent.system.utils.JedisUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +37,10 @@ public class FileController extends GlobalController {
         result.setData(JedisUtil.use(0).getList("list"));
         FileUtil.downLoadFile(response,file);
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

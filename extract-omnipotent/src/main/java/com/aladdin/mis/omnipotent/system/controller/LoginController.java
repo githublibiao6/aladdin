@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.system.controller;
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.service.BeLoginLogService;
 import com.aladdin.mis.system.user.vo.OmUser;
@@ -94,4 +95,8 @@ public class LoginController extends GlobalController {
         return result;
     }
 
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 }

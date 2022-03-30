@@ -2,6 +2,7 @@ package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.service.GlobalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,5 +39,10 @@ public class DocsController extends GlobalController {
     @RequestMapping("/indexUrl")
     public String url() {
         return "document/_book/index";
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

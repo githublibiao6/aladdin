@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.api.controller;
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class OpenApiController extends GlobalController {
         }
         result.setSuccess(true);
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Img;
 import com.aladdin.mis.manager.service.impl.ImgServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,4 +77,8 @@ public class ImgController extends GlobalController/*<Img, ImgServiceImpl>*/ {
         return result;
     }
 
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 }

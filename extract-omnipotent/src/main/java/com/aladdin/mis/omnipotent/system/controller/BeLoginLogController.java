@@ -1,23 +1,22 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.system.entity.BeLoginLog;
-import com.aladdin.mis.system.service.BeLoginLogService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.system.qo.BeLoginLogQo;
-import com.aladdin.mis.system.vo.BeLoginLogVo;
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.system.entity.BeLoginLog;
+import com.aladdin.mis.system.qo.BeLoginLogQo;
+import com.aladdin.mis.system.service.BeLoginLogService;
+import com.aladdin.mis.system.vo.BeLoginLogVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
- *  BeLoginLogService--- 
+ *  BeLoginLogService---
  * @author cles
  * @date 2022-02-24T23:38:47.815
 */
@@ -97,4 +96,8 @@ public class BeLoginLogController  extends GlobalController {
         return result ;
     }
 
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 }

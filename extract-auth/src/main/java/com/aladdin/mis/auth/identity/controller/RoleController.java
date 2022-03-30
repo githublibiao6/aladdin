@@ -2,6 +2,7 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.manager.service.impl.RoleServiceImpl;
@@ -130,5 +131,10 @@ public class RoleController extends GlobalController/*<Role, RoleServiceImpl>*/ 
         }
         result.setMessage(msg);
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

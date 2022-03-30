@@ -1,5 +1,6 @@
 package com.aladdin.mis.omnipotent.love.controller;
 
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.common.system.controller.GlobalController;
@@ -98,5 +99,10 @@ public class LoveController extends GlobalController {
         result.setData(dateLog);
 
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

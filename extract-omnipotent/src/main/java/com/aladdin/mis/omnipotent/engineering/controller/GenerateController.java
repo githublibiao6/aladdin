@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.qo.GenerateQo;
 import com.aladdin.mis.engineering.service.GenerateService;
 import com.aladdin.mis.engineering.vo.GenerateVo;
@@ -54,5 +55,10 @@ public class GenerateController extends GlobalController {
         }
         result.setSuccess(true);
         return result;
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
     }
 }

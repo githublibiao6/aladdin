@@ -2,6 +2,7 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.BeUserMenuService;
@@ -150,4 +151,8 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
         return result;
     }
 
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 }

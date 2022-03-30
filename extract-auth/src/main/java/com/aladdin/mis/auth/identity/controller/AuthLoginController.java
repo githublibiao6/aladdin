@@ -3,6 +3,7 @@ package com.aladdin.mis.auth.identity.controller;
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.user.vo.OmUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class AuthLoginController extends GlobalController {
 
     @Autowired
     private AuthLoginService authLoginService;
+
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 
     @RequestMapping("/login")
     @ResponseBody

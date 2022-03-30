@@ -1,14 +1,12 @@
 package com.aladdin.mis.auth.identity.controller;
 
-import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
-import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.UserBaseInfoService;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,27 +21,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @RequestMapping("userbaseinfo")
 @Controller
-public class UserBaseInfoController extends GlobalController {
+public class UserBaseInfoController extends GlobalController<UserBaseInfo, UserBaseInfoService> {
 
     @Autowired
     private UserBaseInfoService service;
 
-
-    /**
-     * 获取分页
-     */
-    @RequestMapping("/page")
-    @ResponseBody
-    public Result pageInfo(@RequestBody UserQo entity) {
-        // 待测试公用查询
-        QueryCondition condition = new QueryCondition();
-        condition.setPage(1);
-        condition.setLimit(10);
-        PageInfo<UserBaseInfo> page = service.pageInfo(condition);
-        result.setData(page);
-        result.setCode(20000);
-        return result;
+    @Override
+    protected GlobalService<UserBaseInfo> getBaseService() {
+        return service;
     }
+
+//    /**
+//     * 获取分页
+//     */
+//    @RequestMapping("/page")
+//    @ResponseBody
+//    public Result pageInfo(@RequestBody UserQo entity) {
+//        // 待测试公用查询
+//        QueryCondition condition = new QueryCondition();
+//        condition.setPage(1);
+//        condition.setLimit(10);
+//        PageInfo<UserBaseInfo> page = service.pageInfo(condition);
+//        result.setData(page);
+//        result.setCode(20000);
+//        return result;
+//    }
 
     /**
      * 添加字典

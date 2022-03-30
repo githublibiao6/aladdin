@@ -1,24 +1,22 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.engineering.entity.ProjectTable;
-import com.aladdin.mis.engineering.service.ProjectTableService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectTableQo;
-import com.aladdin.mis.engineering.vo.ProjectTableVo;
 import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.engineering.entity.ProjectTable;
+import com.aladdin.mis.engineering.qo.ProjectTableQo;
+import com.aladdin.mis.engineering.service.ProjectTableService;
+import com.aladdin.mis.engineering.vo.ProjectTableVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
- * 项目表 ProjectTableService--- 
+ * 项目表 ProjectTableService---
  * @author cles
  * @date 2021-09-14T00:07:18.702
 */
@@ -88,4 +86,10 @@ public class ProjectTableController  extends GlobalController {
             result.setMessage("更新失败");
         }
         return result ;
-    }}
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
+}

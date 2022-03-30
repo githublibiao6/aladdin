@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.qo.ProjectPlanQo;
 import com.aladdin.mis.engineering.service.ProjectPlanService;
@@ -85,4 +86,10 @@ public class ProjectPlanController  extends GlobalController {
             result.setMessage("更新失败");
         }
         return result ;
-    }}
+    }
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
+}
