@@ -55,6 +55,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
+    public <T> List<T> listInfo(QueryCondition condition) {
+        Class<T> m = (Class<T>) getT();
+        String tableName = getTableName(m);
+
+        List<JSONObject> list = Db.use().findList("select *from "+tableName);
+        list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
+        return (List<T>) list;
+    }
+
+    @Override
     public <T> T detailQuery(Integer id) {
         Class<T> clazz = (Class<T>) getT();
         return detailQuery(id, clazz);

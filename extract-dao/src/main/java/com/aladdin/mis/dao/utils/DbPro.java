@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -106,7 +107,7 @@ public class DbPro {
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
-        List<JSONObject> list = null;
+        List<JSONObject> list = new ArrayList<>();
         try{
             list = DbHelper.findList(dataSource,sql);
         }catch (Exception e){

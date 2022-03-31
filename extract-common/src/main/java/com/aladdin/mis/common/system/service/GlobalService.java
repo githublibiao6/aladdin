@@ -4,6 +4,8 @@ import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.system.base.BaseModel;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
+
 /**
  * 功能描述：
  *  < 全局service方法 >
@@ -17,15 +19,23 @@ public interface GlobalService<T> {
 
     /**
      *
-     * 插入实体
+     * 通用分页
      * @param condition 实体
      * @return model
      */
     <T> PageInfo<T> pageInfo(QueryCondition condition);
 
     /**
+     * 通用list
+     * @param condition
+     * @param <T>
+     * @return
+     */
+    <T> List<T> listInfo(QueryCondition condition);
+
+    /**
      *
-     * 插入实体
+     * 通用详情
      * @param id 实体
      * @return model
      */
@@ -48,13 +58,14 @@ public interface GlobalService<T> {
 
 
     /**
-     * 插入实体
+     * 通用更新实体
      * @param model 实体
      * @return model
      */
     boolean updateSelective(BaseModel model);
+
     /**
-     * 更新实体
+     * 通用删除
      * @param primaryKey) 实体
      * @return model
      */

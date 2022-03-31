@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.List;
 
 /**
  * @author cles
@@ -52,7 +53,24 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         QueryCondition condition = new QueryCondition();
         condition.setPage(1);
         condition.setLimit(10);
+        condition.setPage(2);
+        condition.addExpression("id",1);
         PageInfo<T> page = getBaseService().pageInfo(condition);
+        result.setData(page);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 获取通用list
+     */
+    @RequestMapping("/listInfo")
+    @ResponseBody
+    public Result listInfo(@RequestBody UserQo entity) {
+        QueryCondition condition = new QueryCondition();
+        condition.setPage(1);
+        condition.setLimit(10);
+        List<T> page = getBaseService().listInfo(condition);
         result.setData(page);
         result.setCode(20000);
         return result;
@@ -82,6 +100,18 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result updateInfo(@RequestBody T entity) {
         boolean data = getBaseService().updateSelective(entity);
+        result.setData(data);
+        result.setCode(20000);
+        return result;
+    }
+
+     /**
+     * 根据主键删除数据
+     */
+    @RequestMapping("/deleteInfo")
+    @ResponseBody
+    public Result deleteInfo(@RequestBody T entity) {
+        boolean data = getBaseService().deleteById(entity.getPrimaryKey());
         result.setData(data);
         result.setCode(20000);
         return result;
