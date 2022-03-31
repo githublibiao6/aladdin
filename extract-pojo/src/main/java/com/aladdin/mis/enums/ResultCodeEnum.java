@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.enums;
+package com.aladdin.mis.enums;
 
 /*
  *  Created by cles on 2021/8/16 22:14

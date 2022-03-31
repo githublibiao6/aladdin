@@ -3,6 +3,7 @@ package com.aladdin.mis.base.qo;
  *  Created by cles on 2022/3/28 23:25
  */
 
+import com.aladdin.mis.enums.FieldOperationEnumCode;
 import lombok.Data;
 
 /**
@@ -31,7 +32,7 @@ public class FieldCondition {
 
 
     public FieldCondition addExpression(String field, Object value) {
-        this.operation = "eq";
+        this.operation = FieldOperationEnumCode.EQ.getOperation();
         setField(field);
         setValue(value);
         return this;

@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.system.entity;
 
-import com.aladdin.mis.common.enums.ResultCodeEnum;
+import com.aladdin.mis.enums.ResultCodeEnum;
 import lombok.Data;
 
 import java.util.UUID;

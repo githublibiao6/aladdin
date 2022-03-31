@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.enums;
+package com.aladdin.mis.enums;
 
 /**
  * 常见http响应代码枚举
