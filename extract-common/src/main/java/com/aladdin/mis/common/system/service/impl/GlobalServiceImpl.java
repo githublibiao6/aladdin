@@ -2,6 +2,7 @@ package com.aladdin.mis.common.system.service.impl;
 
 import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.common.utils.JSONObjectUtil;
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.system.base.BaseModel;
@@ -18,7 +19,10 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 功能描述：
@@ -45,6 +49,8 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
         List<JSONObject> list = Db.use().findList("select *from "+tableName);
         PageInfo<JSONObject> page = new PageInfo<>(list);
+        List<JSONObject> pageList = page.getList();
+        pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
         return (PageInfo<T>) page;
     }
 

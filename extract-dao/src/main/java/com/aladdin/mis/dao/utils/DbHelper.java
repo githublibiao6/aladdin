@@ -184,11 +184,10 @@ public class DbHelper {
                 JSONObject obj = new JSONObject();
                 for (int i = 0; i < columnCount; i++) {
                     //通过序号获取列名,起始值为1
-                    String colName = metaData.getColumnLabel(i+1);
+                    String columnName = metaData.getColumnLabel(i+1);
 
                     //通过列名获取值.如果列值为空,columnValue为null,不是字符型
-                    Object columnValue = rs.getObject(colName);
-                    String columnName = StringUtil.toCamelCase(colName);
+                    Object columnValue = rs.getObject(columnName);
                     // 处理时间格式的字段
                     if(columnValue == null){
                         obj.put(columnName, null);
