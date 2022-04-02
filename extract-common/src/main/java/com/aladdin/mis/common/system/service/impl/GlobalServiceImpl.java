@@ -70,6 +70,11 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return detailQuery(id, clazz);
     }
 
+    @Override
+    public T getByCondition(QueryCondition condition) {
+        return null;
+    }
+
     private <T> T detailQuery(Integer id, Class<T> clazz) {
 
         String tableName = BaseModelUtil.getTableName(clazz);

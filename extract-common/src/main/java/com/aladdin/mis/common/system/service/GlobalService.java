@@ -43,6 +43,14 @@ public interface GlobalService<T> {
 
 
     /**
+     * 根据条件获取一条数据
+     * @param condition
+     * @return
+     */
+    T getByCondition(QueryCondition condition);
+
+
+    /**
      * 直接插入，返回id
      * @param baseModel model
      * @return int
@@ -77,4 +85,5 @@ public interface GlobalService<T> {
      * @return
      */
     boolean delete(BaseModel model);
+
 }

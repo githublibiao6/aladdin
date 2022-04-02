@@ -4,16 +4,13 @@ package com.aladdin.mis.common.system.controller;
 import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.system.base.BaseModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,11 +43,9 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     /**
      * 获取通用分页
      */
-    @RequestMapping("/pageInfo")
+    @PostMapping("/pageInfo")
     @ResponseBody
-    public Result pageInfo(@RequestBody UserQo entity) {
-        // 待测试公用查询
-        QueryCondition condition = new QueryCondition();
+    public Result pageInfo(@RequestBody QueryCondition condition) {
         condition.setPage(1);
         condition.setLimit(10);
         condition.setPage(2);
@@ -64,10 +59,9 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     /**
      * 获取通用list
      */
-    @RequestMapping("/listInfo")
+    @PostMapping("/listInfo")
     @ResponseBody
-    public Result listInfo(@RequestBody UserQo entity) {
-        QueryCondition condition = new QueryCondition();
+    public Result listInfo(@RequestBody QueryCondition condition) {
         condition.setPage(1);
         condition.setLimit(10);
         List<T> page = getBaseService().listInfo(condition);
@@ -112,6 +106,56 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result deleteInfo(@RequestBody T entity) {
         boolean data = getBaseService().deleteById(entity.getPrimaryKey());
+        result.setData(data);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 根据主键删除数据
+     * [restful]
+     */
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public Result deleteInfo(@PathVariable("id") Integer id) {
+        boolean data = getBaseService().deleteById(id);
+        result.setData(data);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 根据主键删除数据
+     */
+    @RequestMapping("/detailInfo")
+    @ResponseBody
+    public Result detailInfo(@RequestBody T entity) {
+        T data = getBaseService().detailQuery(entity.getPrimaryKey());
+        result.setData(data);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 根据主键删除数据
+     * [restful]
+     */
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Result detailInfo(@PathVariable("id") Integer id) {
+        T data = getBaseService().detailQuery(id);
+        result.setData(data);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 根据主键删除数据
+     */
+    @RequestMapping("/getByCondition")
+    @ResponseBody
+    public Result detailQuery(@RequestBody QueryCondition condition) {
+        T data = getBaseService().getByCondition(condition);
         result.setData(data);
         result.setCode(20000);
         return result;
