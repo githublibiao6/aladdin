@@ -71,11 +71,28 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     }
 
     /**
-     * 获取通用保存分页
+     * 获取通用保存
      */
     @RequestMapping("/saveInfo")
     @ResponseBody
     public Result saveInfo(@RequestBody T entity) {
+        if(entity.getPrimaryKey() == null){
+            T data = getBaseService().insertSelective(entity);
+            result.setData(data);
+        }else {
+            boolean data = getBaseService().updateSelective(entity);
+            result.setData(data);
+        }
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 获取通用保存
+     */
+    @PutMapping("/")
+    @ResponseBody
+    public Result saveOrUpdate(@RequestBody T entity) {
         if(entity.getPrimaryKey() == null){
             T data = getBaseService().insertSelective(entity);
             result.setData(data);
