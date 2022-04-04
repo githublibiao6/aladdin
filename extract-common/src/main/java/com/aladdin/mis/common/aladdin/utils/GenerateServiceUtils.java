@@ -29,40 +29,40 @@ public  class GenerateServiceUtils {
         content.append("*/\n");
         content.append("public interface "+ po.getEntityName() +"Service extends GlobalService<"+po.getEntityName()+">  {\n");
 
-        content.append("    /**\n" +
-                "     * 分页查询\n" +
-                "     * @param qo\n" +
-                "     * @return\n" +
-                "     */\n" +
-                "    PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo);\n\n");
-
-        content.append("    /**\n" +
-                "     * 查询详情\n" +
-                "     * @param qo\n" +
-                "     * @return entity\n" +
-                "     */\n" +
-                "    "+po.getEntityName()+" detail("+po.getEntityName()+" qo);\n\n");
-
-        content.append("    /**\n" +
-                "     * 删除"+tableComment+"\n" +
-                "     * @param entity\n" +
-                "     * @return flag\n" +
-                "     */\n" +
-                "    boolean remove("+po.getEntityName()+" entity);\n\n");
-
-        content.append("    /**\n" +
-                "     * 更新"+tableComment+"\n" +
-                "     * @param entity\n" +
-                "     * @return flag\n" +
-                "     */\n" +
-                "    boolean update("+po.getEntityName()+" entity);\n\n");
-
-        content.append("    /**\n" +
-                "     * 保存"+tableComment+"\n" +
-                "     * @param entity\n" +
-                "     * @return m\n" +
-                "     */\n" +
-                "    "+po.getEntityName()+" save("+po.getEntityName()+" entity);\n\n");
+//        content.append("    /**\n" +
+//                "     * 分页查询\n" +
+//                "     * @param qo\n" +
+//                "     * @return\n" +
+//                "     */\n" +
+//                "    PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo);\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 查询详情\n" +
+//                "     * @param qo\n" +
+//                "     * @return entity\n" +
+//                "     */\n" +
+//                "    "+po.getEntityName()+" detail("+po.getEntityName()+" qo);\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 删除"+tableComment+"\n" +
+//                "     * @param entity\n" +
+//                "     * @return flag\n" +
+//                "     */\n" +
+//                "    boolean remove("+po.getEntityName()+" entity);\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 更新"+tableComment+"\n" +
+//                "     * @param entity\n" +
+//                "     * @return flag\n" +
+//                "     */\n" +
+//                "    boolean update("+po.getEntityName()+" entity);\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 保存"+tableComment+"\n" +
+//                "     * @param entity\n" +
+//                "     * @return m\n" +
+//                "     */\n" +
+//                "    "+po.getEntityName()+" save("+po.getEntityName()+" entity);\n\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                 po.getFilePath(), StringUtil.toCamelCase(tableInfo.getTableName())+"Service.java", po.isOverWrite());

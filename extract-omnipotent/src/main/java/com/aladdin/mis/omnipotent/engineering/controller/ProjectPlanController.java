@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
  * 项目计划 ProjectPlanService---
  * @author cles
@@ -22,9 +23,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 */
 @RequestMapping("projectPlan")
 @Controller
-public class ProjectPlanController  extends GlobalController {
+public class ProjectPlanController  extends GlobalController<ProjectPlan, ProjectPlanService> {
+
     @Autowired
     private ProjectPlanService projectPlanService;
+
+    @Override
+    protected GlobalService<ProjectPlan> getBaseService() {
+        return projectPlanService;
+    }
 
     /**
      * 分页查询项目计划
@@ -86,10 +93,5 @@ public class ProjectPlanController  extends GlobalController {
             result.setMessage("更新失败");
         }
         return result ;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }

@@ -23,10 +23,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 */
 @RequestMapping("project")
 @Controller
-public class ProjectController  extends GlobalController {
+public class ProjectController  extends GlobalController<Project, ProjectService> {
 
     @Autowired
     private ProjectService projectService;
+
+    @Override
+    protected GlobalService<Project> getBaseService() {
+        return projectService;
+    }
 
     /**
      * 分页查询工程项目
@@ -84,10 +89,5 @@ public class ProjectController  extends GlobalController {
             result.setMessage("更新失败");
         }
         return result ;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }

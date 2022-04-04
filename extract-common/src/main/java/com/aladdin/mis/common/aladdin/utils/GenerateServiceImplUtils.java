@@ -39,42 +39,42 @@ public  class GenerateServiceImplUtils {
         String dao = StringUtil.firstCharLower(po.getEntityName())+"Dao";
         content.append("    private "+po.getEntityName()+"Dao "+ dao +";\n\n");
 
-        content.append("    /**\n" +
-                "     * 分页查询\n" +
-                "     * @param qo\n" +
-                "     * @return\n" +
-                "     */\n" +
-                "   @Override\n" +
-                "    public PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo){\n" +
-                "       PageHelper.offsetPage(qo.getPage(), qo.getLimit());\n" +
-                "       List<"+po.getEntityName()+"Vo> list = "+dao+".list(qo);\n" +
-                "       return new PageInfo<>(list);\n" +
-                "}\n");
-
-        content.append("    /**\n" +
-                "     * 查询详情\n" +
-                "     * @param qo\n" +
-                "     * @return\n" +
-                "     */\n" +
-                "   @Override\n" +
-                "    public "+po.getEntityName()+" detail("+po.getEntityName()+" qo){\n" +
-                "       return detailQuery(qo.getId());\n" +
-                "}\n");
-
-        content.append("    @Override\n" +
-                "    public boolean remove("+po.getEntityName()+" entity) {\n" +
-                "       return delete(entity);\n" +
-                "    }\n\n");
-
-        content.append("    @Override\n" +
-                "    public boolean update("+po.getEntityName()+" entity) {\n" +
-                "       return updateSelective(entity);\n" +
-                "    }\n\n");
-
-        content.append("    @Override\n" +
-                "    public "+po.getEntityName()+" save("+po.getEntityName()+" entity) {\n" +
-                "       return insertSelective(entity);\n" +
-                "    }\n\n");
+//        content.append("    /**\n" +
+//                "     * 分页查询\n" +
+//                "     * @param qo\n" +
+//                "     * @return\n" +
+//                "     */\n" +
+//                "   @Override\n" +
+//                "    public PageInfo<"+po.getEntityName()+"Vo> paginate("+po.getEntityName()+"Qo qo){\n" +
+//                "       PageHelper.offsetPage(qo.getPage(), qo.getLimit());\n" +
+//                "       List<"+po.getEntityName()+"Vo> list = "+dao+".list(qo);\n" +
+//                "       return new PageInfo<>(list);\n" +
+//                "}\n");
+//
+//        content.append("    /**\n" +
+//                "     * 查询详情\n" +
+//                "     * @param qo\n" +
+//                "     * @return\n" +
+//                "     */\n" +
+//                "   @Override\n" +
+//                "    public "+po.getEntityName()+" detail("+po.getEntityName()+" qo){\n" +
+//                "       return detailQuery(qo.getId());\n" +
+//                "}\n");
+//
+//        content.append("    @Override\n" +
+//                "    public boolean remove("+po.getEntityName()+" entity) {\n" +
+//                "       return delete(entity);\n" +
+//                "    }\n\n");
+//
+//        content.append("    @Override\n" +
+//                "    public boolean update("+po.getEntityName()+" entity) {\n" +
+//                "       return updateSelective(entity);\n" +
+//                "    }\n\n");
+//
+//        content.append("    @Override\n" +
+//                "    public "+po.getEntityName()+" save("+po.getEntityName()+" entity) {\n" +
+//                "       return insertSelective(entity);\n" +
+//                "    }\n\n");
 
         content.append("}\n\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),

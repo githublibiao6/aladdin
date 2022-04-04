@@ -44,75 +44,81 @@ public  class GenerateControllerUtils {
         String service = StringUtil.firstCharLower(po.getEntityName())+"Service";
         content.append("    private "+po.getEntityName()+"Service "+ service+";\n\n");
 
-        content.append("    /**\n" +
-                "     * 分页查询"+tableComment+"\n" +
-                "     */\n" +
-                "    @PostMapping(\"paginate\")\n" +
-                "    @WebLog(\"分页查询 "+tableComment+"\")\n" +
-                "    @ResponseBody\n" +
-                "    public Result paginate(@RequestBody "+po.getEntityName()+"Qo qo){\n" +
-                "        PageInfo<"+po.getEntityName()+"Vo> page = "+service+".paginate(qo);\n" +
-                "        result.setData(page);\n" +
-                "        return result ;\n" +
-                "    }\n\n");
+        content.append("\n" +
+        "    @Override" +
+        "    protected GlobalService<"+po.getEntityName()+"> getBaseService(){\n" +
+        "        return "+service+" ;\n" +
+        "    }\n\n");
 
-        content.append("    /**\n" +
-                "     * 查询"+tableComment+"详情\n" +
-                "     */\n" +
-                "    @PostMapping(\"detail\")\n" +
-                "    @WebLog(\"查询 "+tableComment+"详情\")\n" +
-                "    @ResponseBody\n" +
-                "    public Result detail(@RequestBody "+po.getEntityName()+" qo){\n" +
-                "        "+po.getEntityName()+" entity = "+service+".detail(qo);\n" +
-                "        result.setData(entity);\n" +
-                "        return result ;\n" +
-                "    }\n\n");
-
-        content.append("    /**\n" +
-                "     * 保存"+tableComment+"\n" +
-                "     */\n" +
-                "    @PostMapping(\"save\")\n" +
-                "    @WebLog(\""+tableComment+"保存\")\n" +
-                "    @ResponseBody\n" +
-                "    public Result save(@RequestBody "+po.getEntityName()+" entity){\n" +
-                "        "+po.getEntityName()+" data = "+service+".save(entity);\n" +
-                "        result.setData(data);\n" +
-                "        return result ;\n" +
-                "    }\n\n");
-
-        content.append("    /**\n" +
-                "     * 删除"+tableComment+"\n" +
-                "     */\n" +
-                "    @PostMapping(\"delete\")\n" +
-                "    @WebLog(\"删除"+tableComment+"\")\n" +
-                "    @ResponseBody\n" +
-                "    public Result delete(@RequestBody "+po.getEntityName()+" entity){\n" +
-                "        boolean flag = "+service+".remove(entity);\n" +
-                "        if(flag){\n" +
-                "            result.setData(entity);\n" +
-                "            result.setMessage(\"刪除成功\");\n" +
-                "        }else {\n" +
-                "            result.setMessage(\"刪除失败\");\n" +
-                "        }\n" +
-                "        return result ;\n" +
-                "    }\n\n");
-
-        content.append("    /**\n" +
-                "     * 更新"+tableComment+"\n" +
-                "     */\n" +
-                "    @PostMapping(\"update\")\n" +
-                "    @WebLog(\""+tableComment+"更新\")\n" +
-                "    @ResponseBody\n" +
-                "    public Result update(@RequestBody "+po.getEntityName()+" entity){\n" +
-                "        boolean flag = "+service+".update(entity);\n" +
-                "        if(flag){\n" +
-                "            result.setData(entity);\n" +
-                "            result.setMessage(\"更新成功\");\n" +
-                "        }else {\n" +
-                "            result.setMessage(\"更新失败\");\n" +
-                "        }\n" +
-                "        return result ;\n" +
-                "    }\n\n");
+//        content.append("    /**\n" +
+//                "     * 分页查询"+tableComment+"\n" +
+//                "     */\n" +
+//                "    @PostMapping(\"paginate\")\n" +
+//                "    @WebLog(\"分页查询 "+tableComment+"\")\n" +
+//                "    @ResponseBody\n" +
+//                "    public Result paginate(@RequestBody "+po.getEntityName()+"Qo qo){\n" +
+//                "        PageInfo<"+po.getEntityName()+"Vo> page = "+service+".paginate(qo);\n" +
+//                "        result.setData(page);\n" +
+//                "        return result ;\n" +
+//                "    }\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 查询"+tableComment+"详情\n" +
+//                "     */\n" +
+//                "    @PostMapping(\"detail\")\n" +
+//                "    @WebLog(\"查询 "+tableComment+"详情\")\n" +
+//                "    @ResponseBody\n" +
+//                "    public Result detail(@RequestBody "+po.getEntityName()+" qo){\n" +
+//                "        "+po.getEntityName()+" entity = "+service+".detail(qo);\n" +
+//                "        result.setData(entity);\n" +
+//                "        return result ;\n" +
+//                "    }\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 保存"+tableComment+"\n" +
+//                "     */\n" +
+//                "    @PostMapping(\"save\")\n" +
+//                "    @WebLog(\""+tableComment+"保存\")\n" +
+//                "    @ResponseBody\n" +
+//                "    public Result save(@RequestBody "+po.getEntityName()+" entity){\n" +
+//                "        "+po.getEntityName()+" data = "+service+".save(entity);\n" +
+//                "        result.setData(data);\n" +
+//                "        return result ;\n" +
+//                "    }\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 删除"+tableComment+"\n" +
+//                "     */\n" +
+//                "    @PostMapping(\"delete\")\n" +
+//                "    @WebLog(\"删除"+tableComment+"\")\n" +
+//                "    @ResponseBody\n" +
+//                "    public Result delete(@RequestBody "+po.getEntityName()+" entity){\n" +
+//                "        boolean flag = "+service+".remove(entity);\n" +
+//                "        if(flag){\n" +
+//                "            result.setData(entity);\n" +
+//                "            result.setMessage(\"刪除成功\");\n" +
+//                "        }else {\n" +
+//                "            result.setMessage(\"刪除失败\");\n" +
+//                "        }\n" +
+//                "        return result ;\n" +
+//                "    }\n\n");
+//
+//        content.append("    /**\n" +
+//                "     * 更新"+tableComment+"\n" +
+//                "     */\n" +
+//                "    @PostMapping(\"update\")\n" +
+//                "    @WebLog(\""+tableComment+"更新\")\n" +
+//                "    @ResponseBody\n" +
+//                "    public Result update(@RequestBody "+po.getEntityName()+" entity){\n" +
+//                "        boolean flag = "+service+".update(entity);\n" +
+//                "        if(flag){\n" +
+//                "            result.setData(entity);\n" +
+//                "            result.setMessage(\"更新成功\");\n" +
+//                "        }else {\n" +
+//                "            result.setMessage(\"更新失败\");\n" +
+//                "        }\n" +
+//                "        return result ;\n" +
+//                "    }\n\n");
 
 
         content.append("}\n");

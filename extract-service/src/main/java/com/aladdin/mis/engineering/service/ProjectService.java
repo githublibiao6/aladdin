@@ -5,12 +5,14 @@ import com.aladdin.mis.engineering.entity.Project;
 import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.aladdin.mis.engineering.qo.ProjectQo;
 import com.github.pagehelper.PageInfo;
+
 /**
  * ProjectService
  * @author cles
  * @date 2021-08-26T23:02:39.366
 */
 public interface ProjectService extends GlobalService<Project>  {
+
     /**
      * 分页查询
      * @param qo
