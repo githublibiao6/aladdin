@@ -27,7 +27,7 @@ public  class GenerateServiceUtils {
         content.append(" * @author cles\n");
         content.append(" * @date "+ LocalDateTime.now() +"\n");
         content.append("*/\n");
-        content.append("public interface "+ po.getEntityName() +"Service extends GlobalService<"+po.getEntityName()+">  {\n");
+        content.append("public interface "+ po.getEntityName() +"Service extends GlobalService<"+po.getEntityName()+">  {\n\n");
 
 //        content.append("    /**\n" +
 //                "     * 分页查询\n" +
