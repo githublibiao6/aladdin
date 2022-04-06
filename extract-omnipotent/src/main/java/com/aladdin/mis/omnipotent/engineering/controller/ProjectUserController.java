@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("engineering/projectUser")
 @Controller
 public class ProjectUserController  extends GlobalController<ProjectUser, ProjectUserService> {
+
     @Autowired
     private ProjectUserService projectUserService;
 

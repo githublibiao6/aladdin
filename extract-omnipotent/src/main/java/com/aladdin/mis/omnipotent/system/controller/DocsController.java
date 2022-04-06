@@ -1,12 +1,12 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.common.system.service.GlobalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -17,11 +17,16 @@ import java.net.UnknownHostException;
 */
 @Controller
 @RequestMapping("/document")
-public class DocsController extends GlobalController {
+public class DocsController {
+
+
+    @Autowired
+    public HttpServletRequest request;
 
     @RequestMapping("/index")
     @ResponseBody
     public Result index() {
+        Result result = new Result();
         InetAddress address = null;
         try {
             address = InetAddress.getLocalHost();
@@ -41,8 +46,4 @@ public class DocsController extends GlobalController {
         return "document/_book/index";
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

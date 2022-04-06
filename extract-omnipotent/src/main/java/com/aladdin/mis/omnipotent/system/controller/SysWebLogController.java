@@ -22,9 +22,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 */
 @RequestMapping("system/sysWebLog")
 @Controller
-public class SysWebLogController  extends GlobalController {
+public class SysWebLogController  extends GlobalController<SysWebLog, SysWebLogService> {
+
     @Autowired
     private SysWebLogService sysWebLogService;
+
+    @Override
+    protected GlobalService<SysWebLog> getBaseService() {
+        return sysWebLogService;
+    }
 
     /**
      * 分页查询请求日志
@@ -88,8 +94,4 @@ public class SysWebLogController  extends GlobalController {
         return result ;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

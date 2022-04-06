@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("engineering/projectTable")
 @Controller
 public class ProjectTableController  extends GlobalController<ProjectTable, ProjectTableService> {
+
     @Autowired
     private ProjectTableService projectTableService;
 

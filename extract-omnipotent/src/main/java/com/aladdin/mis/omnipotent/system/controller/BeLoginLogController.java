@@ -22,9 +22,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 */
 @RequestMapping("system/beLoginLog")
 @Controller
-public class BeLoginLogController  extends GlobalController {
+public class BeLoginLogController  extends GlobalController<BeLoginLog, BeLoginLogService> {
+
     @Autowired
     private BeLoginLogService beLoginLogService;
+
+
+    @Override
+    protected GlobalService<BeLoginLog> getBaseService() {
+        return beLoginLogService;
+    }
 
     /**
      * 分页查询
@@ -96,8 +103,4 @@ public class BeLoginLogController  extends GlobalController {
         return result ;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

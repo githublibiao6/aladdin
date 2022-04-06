@@ -1,10 +1,8 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
-import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.controller.GlobalController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +18,15 @@ import java.util.List;
 */
 @Controller
 @RequestMapping("/permission")
-public class PermissionController extends GlobalController {
+public class PermissionController {
+
     @Autowired
     MenuServiceImpl service;
 
     @RequestMapping("/index")
     @ResponseBody
     public Result say(@RequestParam(value = "s",defaultValue = "1") String s) {
+        Result result = new Result();
         System.err.println(2000);
         /*HashMap map = new HashMap();
         map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
@@ -39,10 +39,5 @@ public class PermissionController extends GlobalController {
         result.setData(list);
         result.setMessage("菜单查询信息");
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }
