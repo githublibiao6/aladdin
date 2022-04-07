@@ -69,13 +69,20 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             if(!columnCol.containsKey(field)){
                 throw new MyException("类"+table.getClassName() + "不包含字段" + t.getField());
             }
-//            switch (t.getOperation()){
-//                case FieldOperationEnumCode.EQ.getOperation():
-//                    sql.append("");
-//                    break;
-//                default:
-//                    break;
-//            }
+            switch (t.getOperation()){
+                case "=":
+                    sql.append(columnCol.get(field))
+                            .append("=")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                case ">":
+                    sql.append(columnCol.get(field))
+                            .append(">")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                default:
+                    break;
+            }
         });
         return sql.toString();
     }
