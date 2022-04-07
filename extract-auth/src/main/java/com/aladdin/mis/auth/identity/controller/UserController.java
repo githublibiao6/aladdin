@@ -8,6 +8,7 @@ import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.BeUserMenuService;
 import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.manager.service.UserService;
+import com.aladdin.mis.manager.service.impl.UserServiceImpl;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
@@ -30,7 +31,7 @@ import java.util.Set;
  */
 @RequestMapping("user")
 @Controller
-public class UserController extends GlobalController/*<User, UserServiceImpl>*/ {
+public class UserController extends GlobalController<User, UserServiceImpl> {
 
     @Autowired
     private UserService service;
@@ -40,6 +41,29 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
 
     @Autowired
     private RoleService roleService;
+
+    @Override
+    protected GlobalService<User> getBaseService() {
+        return service;
+    }
+
+
+    /**
+     * 获取通用保存
+     */
+    @RequestMapping("/register")
+    @ResponseBody
+    public Result register(@RequestBody User entity) {
+        if(entity.getPrimaryKey() == null){
+            User data = getBaseService().insertSelective(entity);
+            result.setData(data);
+        }else {
+            boolean data = getBaseService().updateSelective(entity);
+            result.setData(data);
+        }
+        result.setCode(20000);
+        return result;
+    }
 
     /**
      * 获取分页
@@ -149,10 +173,5 @@ public class UserController extends GlobalController/*<User, UserServiceImpl>*/ 
         }
         result.setMessage(msg);
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }
