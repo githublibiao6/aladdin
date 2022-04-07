@@ -76,6 +76,8 @@ public class MainDb {
             tableInfo.setTableName(tableName);
             List<TableFieldInfo> list = new ArrayList<>();
             List<String> pks = new ArrayList<>();
+            Map<String, String> colColumn = new HashMap<>();
+            Map<String, String> columnCol = new HashMap<>();
             fields.forEach(f->{
                 if(tableName.equals(f.get("table_name"))){
                     TableFieldInfo field = convertField(f);
@@ -83,9 +85,13 @@ public class MainDb {
                     if(field.isPk()){
                         pks.add(field.getColumnName());
                     }
+                    colColumn.put(field.getColName(), field.getColumnName());
+                    columnCol.put(field.getColumnName(), field.getColName());
                 }
             });
             tableInfo.setFields(list);
+            tableInfo.setColumnCol(columnCol);
+            tableInfo.setColColumn(colColumn);
             tableInfo.setPks(pks);
             map.put(tableName,tableInfo);
         });

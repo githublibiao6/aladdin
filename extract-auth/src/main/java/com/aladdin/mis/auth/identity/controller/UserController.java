@@ -1,5 +1,6 @@
 package com.aladdin.mis.auth.identity.controller;
 
+import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
@@ -47,18 +48,18 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
         return service;
     }
 
-
     /**
-     * 获取通用保存
+     * 注册新用户
      */
     @RequestMapping("/register")
     @ResponseBody
     public Result register(@RequestBody User entity) {
+        service.getByCondition(QueryCondition.newInstance());
         if(entity.getPrimaryKey() == null){
-            User data = getBaseService().insertSelective(entity);
+            User data = service.insertSelective(entity);
             result.setData(data);
         }else {
-            boolean data = getBaseService().updateSelective(entity);
+            boolean data = service.updateSelective(entity);
             result.setData(data);
         }
         result.setCode(20000);

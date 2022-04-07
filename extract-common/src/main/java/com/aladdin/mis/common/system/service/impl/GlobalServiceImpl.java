@@ -1,6 +1,8 @@
 package com.aladdin.mis.common.system.service.impl;
 
+import com.aladdin.mis.base.qo.FieldCondition;
 import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.common.exception.MyException;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.common.utils.JSONObjectUtil;
 import com.aladdin.mis.dao.db.config.MainDb;
@@ -41,7 +43,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private static final String FLAG = "sys005";
 
     @Override
-    public <T> PageInfo<T> pageInfo(QueryCondition condition) {
+    public <T> PageInfo<T> pageByCondition(QueryCondition condition) {
         PageHelper.offsetPage(condition.getPage(), condition.getLimit());
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
@@ -54,8 +56,32 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return (PageInfo<T>) page;
     }
 
+    private String getCondition(QueryCondition condition, TableInfo table){
+        if(condition == null){
+            return "";
+        }
+        Map<String, String> columnCol = table.getColumnCol();
+
+        StringBuffer sql = new StringBuffer();
+        List<FieldCondition> list = condition.getFieldConditions();
+        list.forEach(t->{
+            String field = t.getField();
+            if(!columnCol.containsKey(field)){
+                throw new MyException("类"+table.getClassName() + "不包含字段" + t.getField());
+            }
+//            switch (t.getOperation()){
+//                case FieldOperationEnumCode.EQ.getOperation():
+//                    sql.append("");
+//                    break;
+//                default:
+//                    break;
+//            }
+        });
+        return sql.toString();
+    }
+
     @Override
-    public <T> List<T> listInfo(QueryCondition condition) {
+    public <T> List<T> queryByCondition(QueryCondition condition) {
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
 

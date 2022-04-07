@@ -23,7 +23,7 @@ public interface GlobalService<T> {
      * @param condition 实体
      * @return model
      */
-    <T> PageInfo<T> pageInfo(QueryCondition condition);
+    <T> PageInfo<T> pageByCondition(QueryCondition condition);
 
     /**
      * 通用list
@@ -31,7 +31,7 @@ public interface GlobalService<T> {
      * @param <T>
      * @return
      */
-    <T> List<T> listInfo(QueryCondition condition);
+    <T> List<T> queryByCondition(QueryCondition condition);
 
     /**
      *

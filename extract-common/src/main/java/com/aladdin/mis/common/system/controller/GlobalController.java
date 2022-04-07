@@ -50,8 +50,22 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         condition.setLimit(10);
         condition.setPage(2);
         condition.addExpression("id",1);
-        PageInfo<T> page = getBaseService().pageInfo(condition);
+        PageInfo<T> page = getBaseService().pageByCondition(condition);
         result.setData(page);
+        result.setCode(20000);
+        return result;
+    }
+
+    /**
+     * 获取通用entity
+     */
+    @PostMapping("/getInfo")
+    @ResponseBody
+    public Result getInfo(@RequestBody QueryCondition condition) {
+        condition.setPage(1);
+        condition.setLimit(10);
+        T data = getBaseService().getByCondition(condition);
+        result.setData(data);
         result.setCode(20000);
         return result;
     }
@@ -64,7 +78,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     public Result listInfo(@RequestBody QueryCondition condition) {
         condition.setPage(1);
         condition.setLimit(10);
-        List<T> page = getBaseService().listInfo(condition);
+        List<T> page = getBaseService().queryByCondition(condition);
         result.setData(page);
         result.setCode(20000);
         return result;
