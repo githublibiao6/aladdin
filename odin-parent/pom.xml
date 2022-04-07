@@ -36,7 +36,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- 声明版本号，以后统一在这里进行管理-->
     <project.version>0.1-SNAPSHOT</project.version>
-    <springboot.version>2.2.5.RELEASE</springboot.version>
+    <springboot.version>2.5.12</springboot.version>
   </properties>
 
   <dependencies>
