@@ -47,7 +47,7 @@ public interface GlobalService<T> {
      * @param condition
      * @return
      */
-    T getByCondition(QueryCondition condition);
+    <T> T getByCondition(QueryCondition condition);
 
 
     /**

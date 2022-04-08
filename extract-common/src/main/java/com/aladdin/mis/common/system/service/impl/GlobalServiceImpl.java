@@ -1,6 +1,7 @@
 package com.aladdin.mis.common.system.service.impl;
 
 import com.aladdin.mis.base.qo.FieldCondition;
+import com.aladdin.mis.base.qo.OrderCondition;
 import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.exception.MyException;
 import com.aladdin.mis.common.system.service.GlobalService;
@@ -49,7 +50,11 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         String tableName = getTableName(m);
         TableInfo table = MainDb.getTableInfo(tableName);
 
-        List<JSONObject> list = Db.use().findList("select *from "+tableName);
+        String sql = "select * from " + tableName + " where sys05=1 " +
+                getCondition(condition, table) +
+                getOrder(condition, table);
+
+        List<JSONObject> list = Db.use().findList(sql);
         PageInfo<JSONObject> page = new PageInfo<>(list);
         List<JSONObject> pageList = page.getList();
         pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
@@ -67,18 +72,66 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         list.forEach(t->{
             String field = t.getField();
             if(!columnCol.containsKey(field)){
-                throw new MyException("类"+table.getClassName() + "不包含字段" + t.getField());
+                throw new MyException("类"+table.getClassName() + "不包含字段" + field);
             }
+            sql.append(" and ");
             switch (t.getOperation()){
-                case "=":
+                case "eq":
                     sql.append(columnCol.get(field))
                             .append("=")
                             .append("'").append(t.getValue()).append("'");
                     break;
-                case ">":
+                case "ne":
+                    sql.append(columnCol.get(field))
+                            .append("!=")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                case "gt":
                     sql.append(columnCol.get(field))
                             .append(">")
                             .append("'").append(t.getValue()).append("'");
+                    break;
+                case "ge":
+                    sql.append(columnCol.get(field))
+                            .append(">=")
+                            .append("'").append(t.getValue()).append("'");
+                case "lt":
+                    sql.append(columnCol.get(field))
+                            .append("<")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                case "le":
+                    sql.append(columnCol.get(field))
+                            .append("<=")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                case "lk":
+                    sql.append(columnCol.get(field))
+                            .append("like")
+                            .append("'%").append(t.getValue()).append("%'");
+                    break;
+                case "llk":
+                    sql.append(columnCol.get(field))
+                            .append("like")
+                            .append("'%").append(t.getValue()).append("'");
+                    break;
+                case "rlk":
+                    sql.append(columnCol.get(field))
+                            .append("like")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                case "nk":
+                    sql.append(columnCol.get(field))
+                            .append("not like")
+                            .append("'").append(t.getValue()).append("'");
+                    break;
+                case "null":
+                    sql.append(columnCol.get(field))
+                            .append("is null");
+                    break;
+                case "not null":
+                    sql.append(columnCol.get(field))
+                            .append("is not null");
                     break;
                 default:
                     break;
@@ -87,12 +140,46 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return sql.toString();
     }
 
+    private String getOrder(QueryCondition condition, TableInfo table){
+        if(condition == null){
+            return "";
+        }
+        Map<String, String> columnCol = table.getColumnCol();
+
+        StringBuffer sql = new StringBuffer(" order by ");
+        List<OrderCondition> list = condition.getOrderConditions();
+        if(list == null || list.isEmpty()){
+            return " order by sys001 desc";
+        }
+        list.forEach(t->{
+            String field = t.getOrderField();
+            if(!columnCol.containsKey(field)){
+                throw new MyException("类"+table.getClassName() + "不包含字段" + field);
+            }
+            sql.append(field ).append(t.getOrderType()).append(",");
+
+        });
+        sql.deleteCharAt(sql.length()-1);
+        return sql.toString();
+    }
+
     @Override
     public <T> List<T> queryByCondition(QueryCondition condition) {
+
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
+        TableInfo table = MainDb.getTableInfo(tableName);
 
-        List<JSONObject> list = Db.use().findList("select *from "+tableName);
+        StringBuilder sql = new StringBuilder("select * from "+tableName);
+        sql.append(" where sys05=1 ");
+        sql.append(getCondition(condition, table));
+        sql.append(getOrder(condition, table));
+        Integer limit = condition.getLimit();
+        if(limit != null && limit > 0){
+            sql.append(" limit ").append(limit);
+        }
+        List<JSONObject> list = Db.use().findList(sql.toString());
+
         list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
         return (List<T>) list;
     }
@@ -104,8 +191,20 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public T getByCondition(QueryCondition condition) {
-        return null;
+    public <T> T getByCondition(QueryCondition condition) {
+        Class<T> m = (Class<T>) getT();
+        String tableName = getTableName(m);
+        TableInfo table = MainDb.getTableInfo(tableName);
+
+        StringBuilder sql = new StringBuilder("select * from "+tableName);
+        sql.append(" where sys05=1 ");
+        sql.append(getCondition(condition, table));
+        sql.append(getOrder(condition, table));
+        sql.append(" limit ").append("1");
+        List<JSONObject> list = Db.use().findList(sql.toString());
+        list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
+
+        return (T) list.get(0);
     }
 
     private <T> T detailQuery(Integer id, Class<T> clazz) {
