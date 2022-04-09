@@ -23,7 +23,7 @@ public class FieldCondition {
     /**
      * 过滤符号
      */
-    private String operation;
+    private String op;
 
     /**
      * 过滤值
@@ -32,14 +32,14 @@ public class FieldCondition {
 
 
     public FieldCondition addExpression(String field, Object value) {
-        this.operation = FieldOperationEnumCode.EQ.getOperation();
+        this.op = FieldOperationEnumCode.EQ.getOperation();
         setField(field);
         setValue(value);
         return this;
     }
 
     public FieldCondition addExpression(String field, String operation, Object value) {
-        this.operation = operation;
+        this.op = operation;
         addExpression(field, value);
         return this;
     }

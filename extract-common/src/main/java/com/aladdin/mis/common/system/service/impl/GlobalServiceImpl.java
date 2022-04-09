@@ -22,10 +22,7 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.*;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 功能描述：
@@ -50,14 +47,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         String tableName = getTableName(m);
         TableInfo table = MainDb.getTableInfo(tableName);
 
-        String sql = "select * from " + tableName + " where sys05=1 " +
+        String sql = "select * from " + tableName + " where sys005=1 " +
                 getCondition(condition, table) +
                 getOrder(condition, table);
 
         List<JSONObject> list = Db.use().findList(sql);
         PageInfo<JSONObject> page = new PageInfo<>(list);
         List<JSONObject> pageList = page.getList();
-        pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
+        if(pageList != null && !pageList.isEmpty()){
+            pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
+        }
         return (PageInfo<T>) page;
     }
 
@@ -75,7 +74,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
                 throw new MyException("类"+table.getClassName() + "不包含字段" + field);
             }
             sql.append(" and ");
-            switch (t.getOperation()){
+            switch (t.getOp()){
                 case "eq":
                     sql.append(columnCol.get(field))
                             .append("=")
@@ -171,7 +170,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         TableInfo table = MainDb.getTableInfo(tableName);
 
         StringBuilder sql = new StringBuilder("select * from "+tableName);
-        sql.append(" where sys05=1 ");
+        sql.append(" where sys005=1 ");
         sql.append(getCondition(condition, table));
         sql.append(getOrder(condition, table));
         Integer limit = condition.getLimit();
@@ -179,7 +178,9 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             sql.append(" limit ").append(limit);
         }
         List<JSONObject> list = Db.use().findList(sql.toString());
-
+        if(list == null){
+            return new ArrayList<>();
+        }
         list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
         return (List<T>) list;
     }
@@ -197,11 +198,14 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         TableInfo table = MainDb.getTableInfo(tableName);
 
         StringBuilder sql = new StringBuilder("select * from "+tableName);
-        sql.append(" where sys05=1 ");
+        sql.append(" where sys005=1 ");
         sql.append(getCondition(condition, table));
         sql.append(getOrder(condition, table));
         sql.append(" limit ").append("1");
         List<JSONObject> list = Db.use().findList(sql.toString());
+        if(list == null || list.isEmpty()){
+            return null;
+        }
         list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
 
         return (T) list.get(0);

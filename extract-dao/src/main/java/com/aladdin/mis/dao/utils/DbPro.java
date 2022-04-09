@@ -107,12 +107,13 @@ public class DbPro {
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
-        List<JSONObject> list = new ArrayList<>();
+        List<JSONObject> list ;
         try{
             list = DbHelper.findList(dataSource,sql);
         }catch (Exception e){
             log.setCode(1);
             log.setErrorMsg(e.getMessage());
+            list = new ArrayList<>();
         }
         log.setSqlType("Q");
         saveSqlLog(start, log);

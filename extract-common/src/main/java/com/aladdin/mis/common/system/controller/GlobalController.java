@@ -65,6 +65,8 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         condition.setPage(1);
         condition.setLimit(10);
         T data = getBaseService().getByCondition(condition);
+        if(data == null)
+            result.setMessage("查无数据");
         result.setData(data);
         result.setCode(20000);
         return result;

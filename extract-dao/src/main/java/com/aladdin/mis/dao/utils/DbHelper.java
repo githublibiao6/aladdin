@@ -155,7 +155,7 @@ public class DbHelper {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return  new ArrayList<>();
         }finally {
             // 关闭记录集
             closeConnection(rs, conn, stmt);
@@ -205,7 +205,7 @@ public class DbHelper {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return new ArrayList<>();
         }finally {
             // 关闭记录集
             closeConnection(rs, conn, stmt);
