@@ -58,12 +58,12 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
                 getOrder(condition, table);
 
         List<JSONObject> list = Db.use().findList(sql);
-        PageInfo<JSONObject> page = new PageInfo<>(list);
-        List<JSONObject> pageList = page.getList();
+        PageInfo<JSONObject> pageInfo = new PageInfo<>(list);
+        List<JSONObject> pageList = pageInfo.getList();
         if(pageList != null && !pageList.isEmpty()){
             pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
         }
-        return (PageInfo<T>) page;
+        return (PageInfo<T>) pageInfo;
     }
 
     private String getCondition(QueryCondition condition, TableInfo table){
