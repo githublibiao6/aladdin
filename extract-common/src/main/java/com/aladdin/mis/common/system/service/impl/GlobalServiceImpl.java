@@ -42,7 +42,13 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
     @Override
     public <T> PageInfo<T> pageByCondition(QueryCondition condition) {
-        PageHelper.offsetPage(condition.getPage(), condition.getLimit());
+        Integer page = condition.getPage();
+        Integer limit = condition.getLimit();
+        if (page == null)
+            page = 1;
+        if(limit == null)
+            limit = 10;
+        PageHelper.offsetPage(page, limit);
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
         TableInfo table = MainDb.getTableInfo(tableName);

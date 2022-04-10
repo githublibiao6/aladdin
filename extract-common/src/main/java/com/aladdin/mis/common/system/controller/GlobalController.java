@@ -46,10 +46,6 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @PostMapping("/pageInfo")
     @ResponseBody
     public Result pageInfo(@RequestBody QueryCondition condition) {
-        condition.setPage(1);
-        condition.setLimit(10);
-        condition.setPage(2);
-        condition.addExpression("id",1);
         PageInfo<T> page = getBaseService().pageByCondition(condition);
         result.setData(page);
         result.setCode(20000);
