@@ -1,6 +1,5 @@
 package com.aladdin.mis.auth.identity.controller;
 
-import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
@@ -54,7 +53,8 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     @RequestMapping("/register")
     @ResponseBody
     public Result register(@RequestBody User entity) {
-        service.getByCondition(QueryCondition.newInstance());
+
+        result = service.register(entity);
         if(entity.getPrimaryKey() == null){
             User data = service.insertSelective(entity);
             result.setData(data);

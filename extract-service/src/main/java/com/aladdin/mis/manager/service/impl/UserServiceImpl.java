@@ -1,5 +1,7 @@
 package com.aladdin.mis.manager.service.impl;
 
+import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserDao;
 import com.aladdin.mis.manager.bean.User;
@@ -55,5 +57,19 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
     @Override
     public boolean remove(Integer id) {
         return  deleteById(id);
+    }
+
+    @Override
+    public Result register(User entity) {
+        Result result = new Result();
+        User userPhone = getByCondition(QueryCondition.newInstance().addExpression("phone", entity.getPhone()));
+        if(userPhone != null){
+            return Result.error(50015, "用户手机号已被占用");
+        }
+        User userAccount = getByCondition(QueryCondition.newInstance().addExpression("account", entity.getAccount()));
+        if(userAccount != null){
+            return Result.error(50016, "用户名已存在");
+        }
+        return null;
     }
 }

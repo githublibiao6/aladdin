@@ -6,7 +6,9 @@ package com.aladdin.mis.base.qo;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author cles
@@ -36,6 +38,11 @@ public class QueryCondition {
      * 字段过滤
      */
     private List<FieldCondition> fieldConditions = new ArrayList<>();
+
+    /**
+     * 字段or过滤
+     */
+    private Map<String, List<FieldCondition>> orConditions = new HashMap<>();
 
     /**
      * 排序字段

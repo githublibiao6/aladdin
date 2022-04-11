@@ -1,5 +1,6 @@
 package com.aladdin.mis.manager.service;
 
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
@@ -75,4 +76,11 @@ public interface UserService extends GlobalService<User> {
      * @version: 1.0.0
      */
     boolean remove(Integer id);
+
+    /**
+     * 用户注册
+     * @param entity
+     * @return
+     */
+    Result register(User entity);
 }

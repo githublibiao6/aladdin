@@ -24,10 +24,20 @@ public class Result {
     }
 
     public Result(boolean success, int code, String message){
-
+        this.success = success;
+        this.code = code;
+        this.message = message;
     }
 
     public static Result success(Object data){
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg());
+    }
+
+    public static Result success(String message, Object data){
+        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message);
+    }
+
+    public static Result error( int code, String message){
+        return new Result(false, code, message);
     }
 }

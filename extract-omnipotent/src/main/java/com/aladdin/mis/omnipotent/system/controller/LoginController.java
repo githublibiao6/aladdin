@@ -63,7 +63,7 @@ public class LoginController extends GlobalController {
     @RequestMapping("/interceptLogin")
     @ResponseBody
     public Result login() {
-        result.setMessage("请求被拦截了");
+        result.setMessage("用户未登录");
         result.setCode(50014);
         result.setSuccess(false);
         return result;
