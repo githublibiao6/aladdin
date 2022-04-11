@@ -55,14 +55,7 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     public Result register(@RequestBody User entity) {
 
         result = service.register(entity);
-        if(entity.getPrimaryKey() == null){
-            User data = service.insertSelective(entity);
-            result.setData(data);
-        }else {
-            boolean data = service.updateSelective(entity);
-            result.setData(data);
-        }
-        result.setCode(20000);
+
         return result;
     }
 

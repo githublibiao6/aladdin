@@ -65,6 +65,27 @@ public class QueryCondition {
         return this;
     }
 
+    public QueryCondition addOrExpression(String type , String field, Object value) {
+        FieldCondition fieldCondition = FieldCondition.newInstance().addExpression(field, value);
+        return handleOr(type, fieldCondition);
+    }
+
+    public QueryCondition addOrExpression(String type ,String field, String operation, Object value) {
+        FieldCondition fieldCondition =  FieldCondition.newInstance().addExpression(field , operation, value);
+        return handleOr(type, fieldCondition);
+    }
+
+    private QueryCondition handleOr(String type, FieldCondition fieldCondition){
+        if(orConditions.get(type) == null || orConditions.get(type).isEmpty()){
+            List<FieldCondition> list = new ArrayList<>();
+            list.add(fieldCondition);
+            orConditions.put(type,list);
+        }else {
+            orConditions.get(type).add(fieldCondition);
+        }
+        return this;
+    }
+
     public QueryCondition setLimit(Integer limit) {
         this.limit = limit;
         return this;

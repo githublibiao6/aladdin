@@ -54,6 +54,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         TableInfo table = MainDb.getTableInfo(tableName);
 
         String sql = "select * from " + tableName + " where sys005=1 " +
+                getOrCondition(condition, table) +
                 getCondition(condition, table) +
                 getOrder(condition, table);
 
@@ -79,69 +80,107 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             if(!columnCol.containsKey(field)){
                 throw new MyException("类"+table.getClassName() + "不包含字段" + field);
             }
+
             sql.append(" and ");
-            switch (t.getOp()){
-                case "eq":
-                    sql.append(columnCol.get(field))
-                            .append("=")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "ne":
-                    sql.append(columnCol.get(field))
-                            .append("!=")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "gt":
-                    sql.append(columnCol.get(field))
-                            .append(">")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "ge":
-                    sql.append(columnCol.get(field))
-                            .append(">=")
-                            .append("'").append(t.getValue()).append("'");
-                case "lt":
-                    sql.append(columnCol.get(field))
-                            .append("<")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "le":
-                    sql.append(columnCol.get(field))
-                            .append("<=")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "lk":
-                    sql.append(columnCol.get(field))
-                            .append("like")
-                            .append("'%").append(t.getValue()).append("%'");
-                    break;
-                case "llk":
-                    sql.append(columnCol.get(field))
-                            .append("like")
-                            .append("'%").append(t.getValue()).append("'");
-                    break;
-                case "rlk":
-                    sql.append(columnCol.get(field))
-                            .append("like")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "nk":
-                    sql.append(columnCol.get(field))
-                            .append("not like")
-                            .append("'").append(t.getValue()).append("'");
-                    break;
-                case "null":
-                    sql.append(columnCol.get(field))
-                            .append("is null");
-                    break;
-                case "not null":
-                    sql.append(columnCol.get(field))
-                            .append("is not null");
-                    break;
-                default:
-                    break;
-            }
+            sql.append(getFieldSql(t, columnCol));
         });
+        return sql.toString();
+    }
+
+    private String getOrCondition(QueryCondition condition, TableInfo table){
+        if(condition == null){
+            return "";
+        }
+        Map<String, String> columnCol = table.getColumnCol();
+
+        StringBuffer sql = new StringBuffer();
+        Map<String, List<FieldCondition>> map = condition.getOrConditions();
+        if(map == null || map.isEmpty()){
+            return null;
+        }
+        map.forEach((k, list)->{
+            sql.append(" and (");
+            if(list == null || list.isEmpty()){
+                return;
+            }
+            list.forEach(t->{
+                String field = t.getField();
+                if(!columnCol.containsKey(field)){
+                    throw new MyException("类"+table.getClassName() + "不包含字段" + field);
+                }
+                sql.append(getFieldSql(t, columnCol));
+                sql.append(" or ");
+            });
+            sql.delete(sql.length() -3 ,sql.length()-1);
+            sql.append(")");
+        });
+        return sql.toString();
+    }
+
+    private String getFieldSql(FieldCondition t, Map<String, String> columnCol){
+        String field = t.getField();
+        StringBuilder sql = new StringBuilder();
+        switch (t.getOp()){
+            case "eq":
+                sql.append(columnCol.get(field))
+                        .append("=")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "ne":
+                sql.append(columnCol.get(field))
+                        .append("!=")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "gt":
+                sql.append(columnCol.get(field))
+                        .append(">")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "ge":
+                sql.append(columnCol.get(field))
+                        .append(">=")
+                        .append("'").append(t.getValue()).append("'");
+            case "lt":
+                sql.append(columnCol.get(field))
+                        .append("<")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "le":
+                sql.append(columnCol.get(field))
+                        .append("<=")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "lk":
+                sql.append(columnCol.get(field))
+                        .append("like")
+                        .append("'%").append(t.getValue()).append("%'");
+                break;
+            case "llk":
+                sql.append(columnCol.get(field))
+                        .append("like")
+                        .append("'%").append(t.getValue()).append("'");
+                break;
+            case "rlk":
+                sql.append(columnCol.get(field))
+                        .append("like")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "nk":
+                sql.append(columnCol.get(field))
+                        .append("not like")
+                        .append("'").append(t.getValue()).append("'");
+                break;
+            case "null":
+                sql.append(columnCol.get(field))
+                        .append("is null");
+                break;
+            case "not null":
+                sql.append(columnCol.get(field))
+                        .append("is not null");
+                break;
+            default:
+                break;
+        }
         return sql.toString();
     }
 
@@ -177,6 +216,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
         StringBuilder sql = new StringBuilder("select * from "+tableName);
         sql.append(" where sys005=1 ");
+        sql.append(getOrCondition(condition, table));
         sql.append(getCondition(condition, table));
         sql.append(getOrder(condition, table));
         Integer limit = condition.getLimit();
@@ -205,6 +245,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
         StringBuilder sql = new StringBuilder("select * from "+tableName);
         sql.append(" where sys005=1 ");
+        sql.append(getOrCondition(condition, table));
         sql.append(getCondition(condition, table));
         sql.append(getOrder(condition, table));
         sql.append(" limit ").append("1");

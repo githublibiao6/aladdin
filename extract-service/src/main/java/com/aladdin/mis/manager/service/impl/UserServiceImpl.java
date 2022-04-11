@@ -61,7 +61,6 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
     @Override
     public Result register(User entity) {
-        Result result = new Result();
         User userPhone = getByCondition(QueryCondition.newInstance().addExpression("phone", entity.getPhone()));
         if(userPhone != null){
             return Result.error(50015, "用户手机号已被占用");
@@ -70,6 +69,8 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         if(userAccount != null){
             return Result.error(50016, "用户名已存在");
         }
-        return null;
+        User data = insertSelective(entity);
+
+        return Result.success("注册成功", data);
     }
 }
