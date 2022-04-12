@@ -6,12 +6,14 @@ import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserDao;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
+import com.aladdin.mis.manager.service.UserBaseInfoService;
 import com.aladdin.mis.manager.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -28,6 +30,9 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
     @Autowired
     UserDao dao;
+
+    @Autowired
+    UserBaseInfoService userBaseInfoService;
 
 
     @Override
@@ -69,7 +74,12 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         if(userAccount != null){
             return Result.error(50016, "用户名已存在");
         }
+        entity.setLastLoginTime(LocalDateTime.now());
+        entity.setUpdatePwdTime(LocalDateTime.now());
+        entity.setErrorTimes(0);
         User data = insertSelective(entity);
+
+        userBaseInfoService.init(data.getId());
 
         return Result.success("注册成功", data);
     }

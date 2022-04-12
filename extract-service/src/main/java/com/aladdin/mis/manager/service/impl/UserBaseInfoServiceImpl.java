@@ -3,16 +3,13 @@ package com.aladdin.mis.manager.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserBaseInfoDao;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
-import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.UserBaseInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 
 /**
- * 菜单service
+ * 用户基础信息service
 * @Description
 * @MethodName  AdminService
 * @author lb
@@ -26,24 +23,14 @@ public class UserBaseInfoServiceImpl extends GlobalServiceImpl<UserBaseInfo> imp
     private UserBaseInfoDao dao;
 
     @Override
-    public List<UserBaseInfo> list(String name) {
-        UserQo qo = new UserQo();
-        qo.setName(name);
-        return dao.listUser(qo);
-    }
+    public void init(Integer id) {
+        UserBaseInfo data = detailQuery(id);
+        if(data == null){
+            UserBaseInfo baseInfo = new UserBaseInfo();
+            baseInfo.setId(id);
+            baseInfo.setUserId(id);
+            insert(baseInfo);
+        }
 
-    @Override
-    public boolean add(UserBaseInfo m) {
-        return insertSelective(m);
-    }
-
-    @Override
-    public boolean update(UserBaseInfo m) {
-        return updateSelective(m);
-    }
-
-    @Override
-    public boolean remove(Integer id) {
-        return  deleteById(id);
     }
 }

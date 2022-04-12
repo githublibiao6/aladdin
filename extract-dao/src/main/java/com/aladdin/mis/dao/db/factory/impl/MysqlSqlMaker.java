@@ -40,12 +40,13 @@ public class MysqlSqlMaker extends BaseSqlMaker {
 //                    id.set(t.getString("field_value"));
 //                }
 //            }
-            if("id".equals(t.getColumnName())){
+            if(t.getFieldValue() == null){
                 return;
             }
-            if(t.getFieldValue() != null){
-                columns.add(t);
+            if("id".equals(t.getColumnName()) && t.getFieldValue().toString().trim().isEmpty()){
+                return;
             }
+            columns.add(t);
         });
         if(columns.size() < 1){
             throw new RuntimeException("model has no value");
