@@ -31,6 +31,11 @@ public class User extends GlobalModel {
     private String password;
 
     /**
+     * 加密盐值
+     */
+    private String salt;
+
+    /**
      * 姓名
      */
     private String name;
