@@ -53,9 +53,7 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     @RequestMapping("/register")
     @ResponseBody
     public Result register(@RequestBody User entity) {
-
         result = service.register(entity);
-
         return result;
     }
 

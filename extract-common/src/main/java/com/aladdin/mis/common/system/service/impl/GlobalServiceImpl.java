@@ -96,7 +96,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         StringBuffer sql = new StringBuffer();
         Map<String, List<FieldCondition>> map = condition.getOrConditions();
         if(map == null || map.isEmpty()){
-            return null;
+            return "";
         }
         map.forEach((k, list)->{
             sql.append(" and (");
@@ -239,8 +239,8 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
     @Override
     public <T> T getByCondition(QueryCondition condition) {
-        Class<T> m = (Class<T>) getT();
-        String tableName = getTableName(m);
+        Class<T> clazz = (Class<T>) getT();
+        String tableName = getTableName(clazz);
         TableInfo table = MainDb.getTableInfo(tableName);
 
         StringBuilder sql = new StringBuilder("select * from "+tableName);
@@ -255,7 +255,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         }
         list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
 
-        return (T) list.get(0);
+        return JSONObject.parseObject(list.get(0).toJSONString(),clazz);
     }
 
     private <T> T detailQuery(Integer id, Class<T> clazz) {

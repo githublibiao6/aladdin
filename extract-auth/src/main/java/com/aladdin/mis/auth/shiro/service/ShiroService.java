@@ -57,6 +57,7 @@ public class ShiroService {
         filterChainDefinitionMap.put("/test/**","anon");
         // 开放接口
         filterChainDefinitionMap.put("/api/**","anon");
+        filterChainDefinitionMap.put("/register","anon");
         // 获取信息接口
 //        filterChainDefinitionMap.put("/user/info","anon");
 //        filterChainDefinitionMap.put("/menu/list","authc");
