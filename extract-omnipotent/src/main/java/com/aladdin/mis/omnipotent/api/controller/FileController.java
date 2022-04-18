@@ -4,7 +4,7 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.omnipotent.system.utils.FileUtil;
-import com.aladdin.mis.omnipotent.system.utils.JedisUtil;
+import com.aladdin.mis.common.redis.config.JedisUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;

@@ -58,7 +58,9 @@ public class ShiroService {
         // 开放接口
         filterChainDefinitionMap.put("/api/**","anon");
         // 注册路径
+        // 处理不用过滤的路径
         filterChainDefinitionMap.put("/**/register","anon");
+        filterChainDefinitionMap.put("/verifyCode/**","anon");
         // 获取信息接口
 //        filterChainDefinitionMap.put("/user/info","anon");
 //        filterChainDefinitionMap.put("/menu/list","authc");

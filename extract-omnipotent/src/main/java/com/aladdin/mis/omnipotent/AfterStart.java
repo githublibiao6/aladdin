@@ -7,6 +7,7 @@ import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
 import com.aladdin.mis.manager.service.impl.RoleServiceImpl;
+import com.aladdin.mis.common.redis.config.JedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -46,7 +47,7 @@ public class AfterStart implements ApplicationRunner {
             list.forEach(role->{
                 String code = role.getCode();
                 List<Menu> menuList = menuService.queryByRoleId(code);
-//            JedisUtil.setList("role"+code,menuList);
+            JedisUtil.setList("role"+code,menuList);
             });
             /* 将主数据源的表缓存 */
             MainDb.init();
