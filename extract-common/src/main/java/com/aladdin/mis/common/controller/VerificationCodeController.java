@@ -6,14 +6,14 @@ package com.aladdin.mis.common.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.lang.Console;
-import com.aladdin.mis.common.currency.Parameter;
-import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
 import com.aladdin.mis.common.system.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -24,6 +24,7 @@ import java.io.IOException;
  * @version: 1.0.0
  */
 @RequestMapping("verifyCode")
+@Controller
 public class VerificationCodeController {
 
     @Autowired
@@ -39,13 +40,23 @@ public class VerificationCodeController {
         //定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(200, 100);
         String code = lineCaptcha.getCode();
-        JedisUtil.setString(Parameter.VerifyCodePrefix + code, code);
-        result.setData(lineCaptcha);
+//        JedisUtil.setString(Parameter.VerifyCodePrefix + code, code);
+//        result.setData(lineCaptcha);
+        ServletOutputStream outputStream = null;
         try {
+            outputStream = response.getOutputStream();
             lineCaptcha.write(response.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
             result.setSuccess(false);
+        }finally {
+            try {
+                if(outputStream != null){
+                    outputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }
