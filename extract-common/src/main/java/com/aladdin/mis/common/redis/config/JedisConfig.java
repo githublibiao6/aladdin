@@ -4,7 +4,9 @@ package com.aladdin.mis.common.redis.config;
 import com.aladdin.mis.common.redis.entity.Connect;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -13,8 +15,8 @@ import redis.clients.jedis.JedisPoolConfig;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
-//@Configuration
-//@EnableAutoConfiguration
+@Configuration
+@EnableAutoConfiguration
 public class JedisConfig {
 
     @Value("${spring.redis.host}")
@@ -31,6 +33,8 @@ public class JedisConfig {
     private long maxWaitMillis;
     @Value("${spring.redis.jedis.pool.max-active}")
     private int maxActive;
+    @Value("${global.redis.enable:false}")
+    private boolean enableRedis;
 
     /**
      * 可用连接实例的最大数目，默认值为8；
@@ -76,7 +80,7 @@ public class JedisConfig {
      * @return
      */
     @Bean
-    public void getJjedisPool() {
+    public void initJedis() {
         log.info("初始化JedisPoolConfig");
         Connect connect = new Connect();
         connect.setRhost(host);
@@ -84,7 +88,11 @@ public class JedisConfig {
         connect.setRpass(password);
         connect.setType("0");
         try {
-            openJedis(connect);
+            if(enableRedis){
+                openJedis(connect);
+            }else {
+                log.info("redis未启动");
+            }
         } catch (Exception e) {
             log.info("初始化jedis错误");
             e.printStackTrace();
@@ -94,7 +102,7 @@ public class JedisConfig {
     /**
      * 从JedisPool中获取Jedis
      */
-    private static void openJedis(Connect connect){
+    public static void openJedis(Connect connect){
         log.info("正在建立新连接...");
         //销毁旧的连接池
         freeJedisPool();
@@ -145,10 +153,12 @@ public class JedisConfig {
     }
 
     public static Jedis getJedis(int index) {
+
         if(jedis == null){
             log.info("redis初始化错误");
             return new Jedis();
         }
+
         jedis.select(index);
         return jedis;
     }

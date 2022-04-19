@@ -28,6 +28,7 @@ public class Redis {
     }
 
     public Redis(){}
+
     public Redis(Jedis jedis){
         this.jedis = jedis;
     }

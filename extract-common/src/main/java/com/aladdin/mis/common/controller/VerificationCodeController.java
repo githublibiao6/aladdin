@@ -6,6 +6,8 @@ package com.aladdin.mis.common.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.lang.Console;
+import com.aladdin.mis.common.currency.Parameter;
+import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
 import com.aladdin.mis.common.system.entity.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +40,9 @@ public class VerificationCodeController {
     public Result getCode(HttpServletResponse response) {
         Result result = new Result();
         //定义图形验证码的长和宽
-        LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(200, 100);
+        LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(150, 47);
         String code = lineCaptcha.getCode();
-//        JedisUtil.setString(Parameter.VerifyCodePrefix + code, code);
+        JedisUtil.setString(Parameter.VerifyCodePrefix + code, code);
 //        result.setData(lineCaptcha);
         ServletOutputStream outputStream = null;
         try {
