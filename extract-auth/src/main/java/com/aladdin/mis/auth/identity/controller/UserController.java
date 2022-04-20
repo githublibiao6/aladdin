@@ -1,5 +1,7 @@
 package com.aladdin.mis.auth.identity.controller;
 
+import com.aladdin.mis.common.currency.Parameter;
+import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
@@ -10,6 +12,7 @@ import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.manager.service.UserService;
 import com.aladdin.mis.manager.service.impl.UserServiceImpl;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.manager.vo.UserVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
@@ -52,8 +55,30 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
      */
     @RequestMapping("/register")
     @ResponseBody
-    public Result register(@RequestBody User entity) {
-        result = service.register(entity);
+    public Result register(@RequestBody UserVo vo) {
+        String sessionId = request.getSession().getId();
+        // 将验证码放入redis缓存， 等待验证
+        String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix+":"+ sessionId);
+        if(verifyCode == null){
+            result.setSuccess(false);
+            result.setCode(50021);
+            result.setMessage("验证码超时");
+            return result;
+        }
+        String code = vo.getCode();
+        if(code == null){
+            result.setSuccess(false);
+            result.setCode(50022);
+            result.setMessage("验证码为空");
+            return result;
+        }
+        if(!code.equals(verifyCode)){
+            result.setSuccess(false);
+            result.setCode(50023);
+            result.setMessage("验证码输入错误");
+            return result;
+        }
+        result = service.register(vo);
         return result;
     }
 

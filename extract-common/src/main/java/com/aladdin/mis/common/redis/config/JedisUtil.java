@@ -27,6 +27,17 @@ public class JedisUtil {
     }
 
     /**
+     * 字符串缓存, 设置超时时间 单位s
+     * @param key
+     * @param value
+     * @return
+     */
+    public static boolean setString(String key, int seconds, String value) {
+        String res = JedisConfig.getJedis(0).setex(key, seconds, value);
+        return "OK".equals(res);
+    }
+
+    /**
      * 获取字符串
      * @param key
      * @return

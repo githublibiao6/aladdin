@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -37,12 +38,14 @@ public class VerificationCodeController {
      */
     @RequestMapping("/getCode")
     @ResponseBody
-    public Result getCode(HttpServletResponse response) {
+    public Result getCode(HttpServletRequest request, HttpServletResponse response) {
         Result result = new Result();
         //定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(150, 47);
         String code = lineCaptcha.getCode();
-        JedisUtil.setString(Parameter.VerifyCodePrefix + code, code);
+        String sessionId = request.getSession().getId();
+        // 将验证码放入redis缓存， 等待验证
+        JedisUtil.setString(Parameter.VerifyCodePrefix+":"+ sessionId , 60 * 5 , code);
 //        result.setData(lineCaptcha);
         ServletOutputStream outputStream = null;
         try {
