@@ -54,7 +54,7 @@ public class JedisConfig {
     /**
      * 超时时间
      */
-    private static final int TIME_OUT = -1;
+    private static final int TIME_OUT = 5000;
 
     /**
      * 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的；

@@ -45,7 +45,7 @@ public class VerificationCodeController {
         String code = lineCaptcha.getCode();
         String sessionId = request.getSession().getId();
         // 将验证码放入redis缓存， 等待验证
-        JedisUtil.setString(Parameter.VerifyCodePrefix+":"+ sessionId , 60 * 5 , code);
+        JedisUtil.setString(Parameter.VerifyCodePrefix+":"+ sessionId , 60 * 2 , code);
 //        result.setData(lineCaptcha);
         ServletOutputStream outputStream = null;
         try {

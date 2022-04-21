@@ -22,7 +22,9 @@ public class JedisUtil {
      * @return
      */
     public static boolean setString(String key, String value) {
-        String res = JedisConfig.getJedis(0).set(key,value);
+        Jedis jedis = JedisConfig.getJedis(0);
+        String res = jedis.set(key,value);
+        jedis.close();
         return "OK".equals(res);
     }
 
@@ -33,7 +35,9 @@ public class JedisUtil {
      * @return
      */
     public static boolean setString(String key, int seconds, String value) {
-        String res = JedisConfig.getJedis(0).setex(key, seconds, value);
+        Jedis jedis = JedisConfig.getJedis(0);
+        String res = jedis.setex(key, seconds, value);
+        jedis.close();
         return "OK".equals(res);
     }
 
@@ -43,7 +47,10 @@ public class JedisUtil {
      * @return
      */
     public static String getString(String key) {
-        return JedisConfig.jedis.get(key);
+        Jedis jedis = JedisConfig.getJedis(0);
+        String data = jedis.get(key);
+        jedis.close();
+        return data;
     }
 
 
@@ -58,8 +65,9 @@ public class JedisUtil {
         JSONArray arr = new JSONArray();
         arr.addAll(list);
         String res = JedisConfig.getJedis(0).set(key,arr.toJSONString());
-        Jedis jeids = JedisConfig.getJedis(0);
-        jeids.select(0);
+        Jedis jedis = JedisConfig.getJedis(0);
+        jedis.select(0);
+        jedis.close();
         return "OK".equals(res);
     }
 
@@ -71,11 +79,13 @@ public class JedisUtil {
      */
     public static <T> List<T> getList(String key) {
         List<T> list = new ArrayList<>();
-        String str = JedisConfig.jedis.get(key);
+        Jedis jedis = JedisConfig.getJedis(0);
+        String str = jedis.get(key);
         JSONArray arr = (JSONArray) JSONArray.parse(str);
         arr.forEach(t->{
             list.add((T)t);
         });
+        jedis.close();
         return list;
     }
 
@@ -87,7 +97,9 @@ public class JedisUtil {
     * @Date: 2020/4/15 22:28
     */
     public static <T> boolean setObject(String key, T o) {
-        String res = JedisConfig.getJedis(0).set(key,o.toString());
+        Jedis jedis = JedisConfig.getJedis(0);
+        String res = jedis.set(key,o.toString());
+        jedis.close();
         return "OK".equals(res);
     }
 
@@ -98,7 +110,9 @@ public class JedisUtil {
      * @return
      */
     public static <T> T getObject(String key) {
-        String o = JedisConfig.jedis.get(key);
+        Jedis jedis = JedisConfig.getJedis(0);
+        String o = jedis.get(key);
+        jedis.close();
         return (T)o;
     }
 
