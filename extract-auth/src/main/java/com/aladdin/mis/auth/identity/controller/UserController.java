@@ -80,9 +80,7 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     @ResponseBody
     public  Result pageList(@RequestBody UserQo entity) {
         PageInfo<User> page = service.page(entity);
-        result.setData(page);
-        result.setCode(20000);
-        return result;
+        return Result.success(page);
     }
 
     /**
@@ -108,10 +106,7 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
         List<BeUserMenuVo> permissions = userMenuService.queryMenuByUserId(userId);
         map.put("roles",roles);
         map.put("permissions",permissions);
-        result.setCode(20000);
-        result.setData(map);
-        result.setMessage("用户查询信息");
-        return result;
+        return Result.success("用户查询信息", map);
     }
 
     @RequestMapping("/resetToken")

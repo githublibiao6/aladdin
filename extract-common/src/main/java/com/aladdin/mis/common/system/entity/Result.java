@@ -37,7 +37,7 @@ public class Result {
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message);
     }
 
-    public static Result error( int code, String message){
+    public static Result error(int code, String message){
         return new Result(false, code, message);
     }
 
