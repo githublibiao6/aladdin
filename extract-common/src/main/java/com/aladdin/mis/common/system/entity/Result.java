@@ -40,4 +40,8 @@ public class Result {
     public static Result error( int code, String message){
         return new Result(false, code, message);
     }
+
+    public static Result error(){
+        return new Result(false, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg());
+    }
 }
