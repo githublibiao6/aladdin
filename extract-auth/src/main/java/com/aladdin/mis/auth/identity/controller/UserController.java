@@ -112,10 +112,7 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     @RequestMapping("/resetToken")
     @ResponseBody
     public Result resetToken(String token) {
-        result.setCode(20000);
-        result.setSuccess(true);
-        result.setMessage("用户重置");
-        return result;
+        return Result.success("用户重置", null);
     }
 
     /**
