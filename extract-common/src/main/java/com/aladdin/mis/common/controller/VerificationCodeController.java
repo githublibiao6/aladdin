@@ -10,8 +10,10 @@ import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.manager.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,12 +40,12 @@ public class VerificationCodeController {
      */
     @RequestMapping("/getCode")
     @ResponseBody
-    public Result getCode(HttpServletRequest request, HttpServletResponse response) {
+    public Result getCode(@RequestBody UserVo vo,  HttpServletRequest request, HttpServletResponse response) {
         Result result = new Result();
         //定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(150, 47);
         String code = lineCaptcha.getCode();
-        String sessionId = request.getSession().getId();
+        String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
         JedisUtil.setString(Parameter.VerifyCodePrefix+":"+ sessionId , 60 * 2 , code);
 //        result.setData(lineCaptcha);
@@ -51,6 +53,7 @@ public class VerificationCodeController {
         try {
             outputStream = response.getOutputStream();
             lineCaptcha.write(response.getOutputStream());
+            return result;
         } catch (IOException e) {
             e.printStackTrace();
             result.setSuccess(false);

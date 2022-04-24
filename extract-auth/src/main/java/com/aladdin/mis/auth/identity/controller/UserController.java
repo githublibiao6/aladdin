@@ -22,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,10 +57,11 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
      */
     @RequestMapping("/register")
     @ResponseBody
-    public Result register(@RequestBody UserVo vo) {
-        String sessionId = request.getSession().getId();
+    public Result register(@RequestBody UserVo vo, HttpSession session) {
+        String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
         String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix+":"+ sessionId);
+        Serializable s = SecurityUtils.getSubject().getSession().getId();
         if(verifyCode == null){
             return  Result.error(50021, "验证码超时");
         }
