@@ -15,11 +15,6 @@ public class UserVo extends User {
     /**
      * 验证码
      */
-    private String code;
-
-    /**
-     * 验证码
-     */
     private String verifyCode;
 
     /**

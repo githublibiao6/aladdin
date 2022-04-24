@@ -62,13 +62,15 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
         // 将验证码放入redis缓存， 等待验证
         String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix+":"+ sessionId);
         Serializable s = SecurityUtils.getSubject().getSession().getId();
-        if(verifyCode == null){
-            return  Result.error(50021, "验证码超时");
-        }
-        String code = vo.getCode();
+        String code = vo.getVerifyCode();
         if(code == null){
             return  Result.error(50022, "验证码为空");
         }
+
+        if(verifyCode == null){
+            return  Result.error(50021, "验证码超时");
+        }
+
         if(!code.equals(verifyCode)){
             return  Result.error(50023, "验证码输入错误");
         }

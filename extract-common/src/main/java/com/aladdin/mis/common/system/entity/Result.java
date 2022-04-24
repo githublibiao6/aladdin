@@ -29,12 +29,19 @@ public class Result {
         this.message = message;
     }
 
+    public Result(boolean success, int code, String message, Object data){
+        this.success = success;
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
     public static Result success(Object data){
-        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg());
+        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg(), data);
     }
 
     public static Result success(String message, Object data){
-        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message);
+        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message, data);
     }
 
     public static Result error(int code, String message){
