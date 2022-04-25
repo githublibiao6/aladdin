@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * session 很多浏览器多次请求的session不一致
- * 所以在这返回一个固定的session
+ * 所以在这返回一个固定的sessionId
  */
 @RequestMapping("shiro")
 @Controller
 public class ShiroController {
 
     /**
-     * 获取验证码
+     * 获取sessionId
      */
     @RequestMapping("/getSessionId")
     @ResponseBody

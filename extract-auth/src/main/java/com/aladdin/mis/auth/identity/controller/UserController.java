@@ -23,7 +23,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +60,6 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
         String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
         String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix+":"+ sessionId);
-        Serializable s = SecurityUtils.getSubject().getSession().getId();
         String code = vo.getVerifyCode();
         if(code == null){
             return  Result.error(50022, "验证码为空");
@@ -73,6 +71,31 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
 
         if(!code.equals(verifyCode)){
             return  Result.error(50023, "验证码输入错误");
+        }
+        result = service.register(vo);
+        return result;
+    }
+
+    /**
+     * 根据手机号码注册新用户
+     */
+    @RequestMapping("/registerByPhone")
+    @ResponseBody
+    public Result registerByPhone(@RequestBody UserVo vo, HttpSession session) {
+        String sessionId = vo.getSessionId();
+        // 将验证码放入redis缓存， 等待验证
+        String verifyCode = JedisUtil.getString(Parameter.PhoneCodePrefix+":"+ sessionId);
+        String code = vo.getVerifyCode();
+        if(code == null){
+            return  Result.error(50031, "验证码为空");
+        }
+
+        if(verifyCode == null){
+            return  Result.error(50032, "验证码超时");
+        }
+
+        if(!code.equals(verifyCode)){
+            return  Result.error(50033, "验证码输入错误");
         }
         result = service.register(vo);
         return result;

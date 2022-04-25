@@ -6,9 +6,11 @@ package com.aladdin.mis.common.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.lang.Console;
+import cn.hutool.core.util.RandomUtil;
 import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
+import com.aladdin.mis.common.sms.AliyunSms;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +69,33 @@ public class VerificationCodeController {
             }
         }
         return result;
+    }
+
+    /**
+     * 获取手机验证码
+     */
+    @RequestMapping("/getPhoneCode")
+    @ResponseBody
+    public Result getPhoneCode(@RequestBody UserVo vo,  HttpServletRequest request, HttpServletResponse response) {
+        Result result = new Result();
+
+        String sessionId = vo.getSessionId();
+        // 生成6位验证码
+        String code = RandomUtil.randomNumbers(6);
+        // 将验证码放入redis缓存， 等待验证
+        JedisUtil.setString(Parameter.PhoneCodePrefix+":"+ sessionId , 60 * 2 , code);
+        ServletOutputStream outputStream = null;
+        try {
+            boolean flag = AliyunSms.sendSms(vo.getPhone(), code);
+            if(flag){
+                return Result.success("短信发送成功", true);
+            }else {
+                return Result.error(50030, "短信发送失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error(500, "短信发送失败，发送未知错误");
+        }
     }
 
     public static void main(String[] args) {

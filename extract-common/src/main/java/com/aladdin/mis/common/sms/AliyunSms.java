@@ -40,6 +40,30 @@ public class AliyunSms {
         return new com.aliyun.dysmsapi20170525.Client(config);
     }
 
+    public static boolean sendSms(String phone, String code) throws Exception {
+        com.aliyun.dysmsapi20170525.Client client = AliyunSms.createClient(accessKeyId, accessKeySecret);
+        SendSmsRequest sendSmsRequest = new SendSmsRequest()
+                .setSignName("阿里云短信测试")
+                .setTemplateCode("SMS_154950909")
+                .setPhoneNumbers("phone")
+                .setTemplateParam("{\"code\":\""+code+"\"}");
+        // 复制代码运行请自行打印 API 的返回值
+        SendSmsResponse sendSmsResponse = client.sendSms(sendSmsRequest);
+        SendSmsResponseBody body = sendSmsResponse.getBody();
+        // OK
+        System.err.println(body.getCode());
+        // OK
+        System.err.println(body.getMessage());
+        // C9426875-E0BB-57E1-87A9-4704643A21DB
+        System.err.println(body.getRequestId());
+        // 889706047357011643^0
+        System.err.println(body.getBizId());
+        System.err.println(body.toString());
+        // todo 保存日志
+        return "OK".equals(body.getCode());
+    }
+
+
     public static void main(String[] args_) throws Exception {
         List<String> args = java.util.Arrays.asList(args_);
         com.aliyun.dysmsapi20170525.Client client = AliyunSms.createClient(accessKeyId, accessKeySecret);
