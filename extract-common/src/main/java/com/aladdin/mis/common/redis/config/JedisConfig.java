@@ -36,6 +36,9 @@ public class JedisConfig {
     @Value("${global.redis.enable:false}")
     private boolean enableRedis;
 
+    @Value("${global.redis.enable:false}")
+    private static boolean enable;
+
     /**
      * 可用连接实例的最大数目，默认值为8；
      */
@@ -88,6 +91,7 @@ public class JedisConfig {
         connect.setRpass(password);
         connect.setType("0");
         try {
+            // 是否开启redis
             if(enableRedis){
                 openJedis(connect);
             }else {
@@ -162,4 +166,12 @@ public class JedisConfig {
         jedis.select(index);
         return jedis;
     }
+
+    /**
+     * 获取redis
+     */
+    public static boolean getEnableRedis() {
+        return enable;
+    }
+
 }

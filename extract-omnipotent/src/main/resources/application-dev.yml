@@ -68,6 +68,14 @@ mybatis:
     map-underscore-to-camel-case: true
 
 global:
+  # 是否开启校验
+  verify:
+    # 全部的校验
+    enable: false
+    # 验证码的校验
+    code: false
+    # 手机短信的校验
+    sms: false
   redis:
     enable: true
   sso:

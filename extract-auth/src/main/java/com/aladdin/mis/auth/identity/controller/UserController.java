@@ -1,6 +1,8 @@
 package com.aladdin.mis.auth.identity.controller;
 
+import com.aladdin.mis.common.currency.GlobalConfig;
 import com.aladdin.mis.common.currency.Parameter;
+import com.aladdin.mis.common.redis.config.JedisConfig;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
@@ -59,18 +61,21 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     public Result register(@RequestBody UserVo vo, HttpSession session) {
         String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
-        String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix+":"+ sessionId);
-        String code = vo.getVerifyCode();
-        if(code == null){
-            return  Result.error(50022, "验证码为空");
-        }
+        // 开启redis时，才进行下面的校验
+        if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
+            String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix + ":" + sessionId);
+            String code = vo.getVerifyCode();
+            if (code == null) {
+                return Result.error(50022, "验证码为空");
+            }
 
-        if(verifyCode == null){
-            return  Result.error(50021, "验证码超时");
-        }
+            if (verifyCode == null) {
+                return Result.error(50021, "验证码超时");
+            }
 
-        if(!code.equals(verifyCode)){
-            return  Result.error(50023, "验证码输入错误");
+            if (!code.equals(verifyCode)) {
+                return Result.error(50023, "验证码输入错误");
+            }
         }
         result = service.register(vo);
         return result;
@@ -84,18 +89,21 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     public Result registerByPhone(@RequestBody UserVo vo, HttpSession session) {
         String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
-        String verifyCode = JedisUtil.getString(Parameter.PhoneCodePrefix+":"+ sessionId);
-        String code = vo.getVerifyCode();
-        if(code == null){
-            return  Result.error(50031, "验证码为空");
-        }
+        // 开启redis，并且开启检验时，才进行下面的校验
+        if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode ){
+            String verifyCode = JedisUtil.getString(Parameter.PhoneCodePrefix+":"+ sessionId);
+            String code = vo.getVerifyCode();
+            if(code == null){
+                return  Result.error(50031, "验证码为空");
+            }
 
-        if(verifyCode == null){
-            return  Result.error(50032, "验证码超时");
-        }
+            if(verifyCode == null){
+                return  Result.error(50032, "验证码超时");
+            }
 
-        if(!code.equals(verifyCode)){
-            return  Result.error(50033, "验证码输入错误");
+            if(!code.equals(verifyCode)){
+                return  Result.error(50033, "验证码输入错误");
+            }
         }
         result = service.register(vo);
         return result;
