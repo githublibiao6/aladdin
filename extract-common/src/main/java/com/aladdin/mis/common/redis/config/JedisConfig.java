@@ -2,6 +2,7 @@ package com.aladdin.mis.common.redis.config;
 
 
 import com.aladdin.mis.common.redis.entity.Connect;
+import com.aladdin.mis.common.utils.ExceptionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -119,7 +120,12 @@ public class JedisConfig {
             e.printStackTrace();
         }
         lock.unlock();
-        jedis = jedisPool.getResource();
+        try{
+            jedis = jedisPool.getResource();
+        }catch (Exception e){
+            log.error("redis 启动报错\n");
+            log.error(ExceptionUtil.getStackTrace(e));
+        }
     }
 
     /**

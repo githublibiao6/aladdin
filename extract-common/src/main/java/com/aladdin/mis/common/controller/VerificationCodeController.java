@@ -12,7 +12,7 @@ import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
 import com.aladdin.mis.common.sms.AliyunSms;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.manager.vo.UserVo;
+import com.aladdin.mis.manager.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +42,7 @@ public class VerificationCodeController {
      */
     @RequestMapping("/getCode")
     @ResponseBody
-    public Result getCode(@RequestBody UserVo vo,  HttpServletRequest request, HttpServletResponse response) {
+    public Result getCode(@RequestBody UserDto vo, HttpServletRequest request, HttpServletResponse response) {
         Result result = new Result();
         //定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(150, 47);
@@ -76,7 +76,7 @@ public class VerificationCodeController {
      */
     @RequestMapping("/getPhoneCode")
     @ResponseBody
-    public Result getPhoneCode(@RequestBody UserVo vo,  HttpServletRequest request, HttpServletResponse response) {
+    public Result getPhoneCode(@RequestBody UserDto vo,  HttpServletRequest request, HttpServletResponse response) {
         Result result = new Result();
 
         String sessionId = vo.getSessionId();

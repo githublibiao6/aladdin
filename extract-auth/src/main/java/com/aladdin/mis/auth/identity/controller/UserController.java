@@ -8,18 +8,19 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
+import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.BeUserMenuService;
 import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.manager.service.UserService;
 import com.aladdin.mis.manager.service.impl.UserServiceImpl;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
-import com.aladdin.mis.manager.vo.UserVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -58,13 +59,13 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
      */
     @RequestMapping("/register")
     @ResponseBody
-    public Result register(@RequestBody UserVo vo, HttpSession session) {
-        String sessionId = vo.getSessionId();
+    public Result register(@RequestBody UserDto dto, HttpSession session) {
+        String sessionId = dto.getSessionId();
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
             String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix + ":" + sessionId);
-            String code = vo.getVerifyCode();
+            String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");
             }
@@ -77,7 +78,9 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
                 return Result.error(50023, "验证码输入错误");
             }
         }
-        result = service.register(vo);
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
+        result = service.register(user);
         return result;
     }
 
@@ -86,13 +89,13 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
      */
     @RequestMapping("/registerByPhone")
     @ResponseBody
-    public Result registerByPhone(@RequestBody UserVo vo, HttpSession session) {
-        String sessionId = vo.getSessionId();
+    public Result registerByPhone(@RequestBody UserDto dto, HttpSession session) {
+        String sessionId = dto.getSessionId();
         // 将验证码放入redis缓存， 等待验证
         // 开启redis，并且开启检验时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode ){
             String verifyCode = JedisUtil.getString(Parameter.PhoneCodePrefix+":"+ sessionId);
-            String code = vo.getVerifyCode();
+            String code = dto.getVerifyCode();
             if(code == null){
                 return  Result.error(50031, "验证码为空");
             }
@@ -105,7 +108,9 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
                 return  Result.error(50033, "验证码输入错误");
             }
         }
-        result = service.register(vo);
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
+        result = service.register(user);
         return result;
     }
 

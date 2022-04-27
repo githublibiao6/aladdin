@@ -71,11 +71,11 @@ global:
   # 是否开启校验
   verify:
     # 全部的校验
-    enable: false
+    enable: true
     # 验证码的校验
-    code: false
+    code: true
     # 手机短信的校验
-    sms: false
+    sms: true
   redis:
     enable: true
   sso:

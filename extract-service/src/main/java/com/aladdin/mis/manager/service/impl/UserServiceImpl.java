@@ -12,8 +12,10 @@ import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.UserBaseInfoService;
 import com.aladdin.mis.manager.service.UserService;
+import com.aladdin.mis.manager.vo.UserVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,7 +96,8 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         User data = insertSelective(entity);
 
         userBaseInfoService.init(data.getId());
-
-        return Result.success("注册成功", data);
+        UserVo vo = new UserVo();
+        BeanUtils.copyProperties(data, vo);
+        return Result.success("注册成功", vo);
     }
 }
