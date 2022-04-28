@@ -5,6 +5,7 @@ import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.digest.Digester;
 import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserDao;
@@ -99,5 +100,24 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         UserVo vo = new UserVo();
         BeanUtils.copyProperties(data, vo);
         return Result.success("注册成功", vo);
+    }
+
+    @Override
+    public Result resetPass(User entity) {
+
+        String salt = RandomUtil.randomString(6);
+        entity.setSalt(salt);
+
+        // MD5 加密
+        Digester md5 = new Digester(DigestAlgorithm.MD5);
+        // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
+        String pass = md5.digestHex(Parameter.DefaultPassword + salt);
+        entity.setPassword(pass);
+
+        entity.setUpdatePwdTime(LocalDateTime.now());
+        entity.setErrorTimes(0);
+        updateSelective(entity);
+
+        return Result.success("密码更新成功", null);
     }
 }

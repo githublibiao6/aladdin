@@ -19,4 +19,9 @@ public class UserVo {
      */
     private String account;
 
+    /**
+     * 手机号码
+     */
+    private String phone;
+
 }

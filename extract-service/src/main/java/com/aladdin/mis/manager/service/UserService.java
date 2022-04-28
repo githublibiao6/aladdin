@@ -83,4 +83,11 @@ public interface UserService extends GlobalService<User> {
      * @return
      */
     Result register(User entity);
+
+    /**
+     * 用户重置密码
+     * @param entity
+     * @return
+     */
+    Result resetPass(User entity);
 }
