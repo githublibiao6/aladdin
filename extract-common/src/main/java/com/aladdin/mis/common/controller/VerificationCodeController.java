@@ -6,11 +6,9 @@ package com.aladdin.mis.common.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.lang.Console;
-import cn.hutool.core.util.RandomUtil;
 import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
-import com.aladdin.mis.common.sms.AliyunSms;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,17 +74,32 @@ public class VerificationCodeController {
      */
     @RequestMapping("/getPhoneCode")
     @ResponseBody
-    public Result getPhoneCode(@RequestBody UserDto vo,  HttpServletRequest request, HttpServletResponse response) {
-        Result result = new Result();
+    public Result getPhoneCode(@RequestBody UserDto vo) {
 
         String sessionId = vo.getSessionId();
-        // 生成6位验证码
-        String code = RandomUtil.randomNumbers(6);
-        // 将验证码放入redis缓存， 等待验证
-        JedisUtil.setString(Parameter.PhoneCodePrefix+":"+ sessionId , 60 * 2 , code);
-        ServletOutputStream outputStream = null;
         try {
-            boolean flag = AliyunSms.sendSms(vo.getPhone(), code);
+            boolean flag = verificationCodeService.sendSmsCode(vo.getPhone(), sessionId, Parameter.PhoneCodePrefix);
+            if(flag){
+                return Result.success("短信发送成功", true);
+            }else {
+                return Result.error(50030, "短信发送失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error(500, "短信发送失败，发送未知错误");
+        }
+    }
+
+    /**
+     * 重置密码获取手机验证码
+     */
+    @RequestMapping("/getResetPassCode")
+    @ResponseBody
+    public Result getResetPassCode(@RequestBody UserDto vo) {
+
+        String sessionId = vo.getSessionId();
+        try {
+            boolean flag = verificationCodeService.sendSmsCode(vo.getPhone(), sessionId, Parameter.ResetPassCodePrefix);
             if(flag){
                 return Result.success("短信发送成功", true);
             }else {

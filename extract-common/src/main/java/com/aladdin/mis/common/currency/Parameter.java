@@ -15,5 +15,6 @@ public class Parameter {
 
     public static final String PhoneCodePrefix = "PHONE_CODE";
 
-    public static final String DefaultPassword = "Abc1234567";
+    public static final String ResetPassCodePrefix = "RESET_CODE";
+
 }

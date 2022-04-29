@@ -11,4 +11,12 @@ package com.aladdin.mis.common.service;
  */
 
 public interface VerificationCodeService {
+
+    /**
+     * 发送短信验证码
+     * @param phone
+     * @param prefix
+     * @return
+     */
+    boolean sendSmsCode(String phone , String  sessionId, String prefix);
 }

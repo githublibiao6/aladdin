@@ -86,8 +86,8 @@ public interface UserService extends GlobalService<User> {
 
     /**
      * 用户重置密码
-     * @param entity
+     * @param userId
      * @return
      */
-    Result resetPass(User entity);
+    Result resetPass(Integer userId);
 }
