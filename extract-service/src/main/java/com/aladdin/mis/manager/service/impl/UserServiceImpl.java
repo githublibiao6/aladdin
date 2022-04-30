@@ -1,11 +1,11 @@
 package com.aladdin.mis.manager.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.crypto.digest.Digester;
 import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.currency.DefaultParam;
+import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserDao;
@@ -85,7 +85,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         entity.setSalt(salt);
 
         // MD5 加密
-        Digester md5 = new Digester(DigestAlgorithm.MD5);
+        Digester md5 = DefaultTools.Md5Tool;
         // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
         String pass = md5.digestHex(entity.getPassword() + salt);
         String md5Hex1 = DigestUtil.md5Hex(entity.getPassword() + salt);
@@ -111,7 +111,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         user.setSalt(salt);
 
         // MD5 加密
-        Digester md5 = new Digester(DigestAlgorithm.MD5);
+        Digester md5 = DefaultTools.Md5Tool;
         // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
         String pass = md5.digestHex(DefaultParam.DefaultPassword + salt);
         user.setPassword(pass);

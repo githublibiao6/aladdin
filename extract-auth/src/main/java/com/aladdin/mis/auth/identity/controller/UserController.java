@@ -115,6 +115,16 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     }
 
     /**
+     * 用户重置密码
+     */
+    @RequestMapping("/resetPass")
+    @ResponseBody
+    public Result resetPass(@RequestBody UserDto dto) {
+        result = service.resetPass(dto.getId());
+        return result;
+    }
+
+    /**
      * 获取分页
      */
     @RequestMapping("/page")

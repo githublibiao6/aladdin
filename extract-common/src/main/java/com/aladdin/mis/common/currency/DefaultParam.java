@@ -12,4 +12,5 @@ package com.aladdin.mis.common.currency;
 public class DefaultParam {
 
     public static final String DefaultPassword = "Abc1234567";
+
 }

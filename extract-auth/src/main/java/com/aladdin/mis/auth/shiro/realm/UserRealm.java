@@ -3,6 +3,7 @@ package com.aladdin.mis.auth.shiro.realm;
  * Created by cles on 2020/4/23 22:39
  */
 
+import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.service.*;
@@ -132,7 +133,9 @@ public class UserRealm extends AuthorizingRealm {
             throw new AccountException("重复的用户");
         }
         admin = list.get(0);
-        if(!password.equals(admin.getLoginPassword())){
+        String salt = admin.getSalt();
+        String pass = DefaultTools.Md5Tool.digestHex(password + salt);
+        if(!pass.equals(admin.getLoginPassword())){
             throw new AccountException("密码错误");
         }
 

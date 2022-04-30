@@ -41,6 +41,12 @@ public class Admin extends GlobalModel {
      */
     private String notes;
 
+
+    /**
+     * 盐值
+     */
+    private String salt;
+
     /**
      * 说明
      */
