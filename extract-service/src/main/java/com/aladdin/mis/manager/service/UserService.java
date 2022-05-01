@@ -90,4 +90,11 @@ public interface UserService extends GlobalService<User> {
      * @return
      */
     Result resetPass(Integer userId);
+
+    /**
+     * 更新密码
+     * @param user
+     * @return
+     */
+    boolean updatePass(User user);
 }

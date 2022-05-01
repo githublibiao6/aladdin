@@ -122,4 +122,17 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
         return Result.success("密码更新成功", null);
     }
+
+    @Override
+    public boolean updatePass(User user) {
+
+        String salt = RandomUtil.randomString(6);
+        user.setSalt(salt);
+        // MD5 加密
+        Digester md5 = DefaultTools.Md5Tool;
+        // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
+        String pass = md5.digestHex(user.getPassword() + salt);
+        user.setPassword(pass);
+        return update(user);
+    }
 }

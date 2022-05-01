@@ -40,6 +40,10 @@ public class Result {
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg(), data);
     }
 
+    public static Result success(){
+        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg(), null);
+    }
+
     public static Result success(String message, Object data){
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message, data);
     }
@@ -49,6 +53,14 @@ public class Result {
     }
 
     public static Result error(){
-        return new Result(false, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg());
+        return new Result(false, ResultCodeEnum.FAIL.getCode(), ResultCodeEnum.FAIL.getMsg());
+    }
+
+    public static Result error(String msg){
+        return new Result(false, ResultCodeEnum.FAIL.getCode(), msg);
+    }
+
+    public static Result error(String msg, Object data){
+        return new Result(false, ResultCodeEnum.FAIL.getCode(), msg, data);
     }
 }

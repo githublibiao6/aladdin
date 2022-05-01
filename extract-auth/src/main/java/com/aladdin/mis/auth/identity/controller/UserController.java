@@ -85,6 +85,41 @@ public class UserController extends GlobalController<User, UserServiceImpl> {
     }
 
     /**
+     * 注册新用户
+     */
+    @RequestMapping("/updatePass")
+    @ResponseBody
+    public Result updatePass(@RequestBody UserDto dto, HttpSession session) {
+        String sessionId = dto.getSessionId();
+        // 将验证码放入redis缓存， 等待验证
+        // 开启redis时，才进行下面的校验
+        if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
+            String verifyCode = JedisUtil.getString(Parameter.ResetPassCodePrefix + ":" + sessionId);
+            String code = dto.getVerifyCode();
+            if (code == null) {
+                return Result.error(50022, "验证码为空");
+            }
+
+            if (verifyCode == null) {
+                return Result.error(50021, "验证码超时");
+            }
+
+            if (!code.equals(verifyCode)) {
+                return Result.error(50023, "验证码输入错误");
+            }
+        }
+        User user = new User();
+        BeanUtils.copyProperties(dto, user);
+
+        boolean flag = service.updatePass(user);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
      * 根据手机号码注册新用户
      */
     @RequestMapping("/registerByPhone")
