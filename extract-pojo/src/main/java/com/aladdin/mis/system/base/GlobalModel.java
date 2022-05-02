@@ -46,7 +46,7 @@ public class GlobalModel extends BaseModel {
      */
     private String sys005;
     /**
-     * 状态位
+     * 状态位，根据对应的类实现状态功能,最好不要影响有效问题
      */
     private String sys006;
     /**

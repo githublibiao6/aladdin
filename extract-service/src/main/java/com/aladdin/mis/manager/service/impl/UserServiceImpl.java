@@ -109,6 +109,8 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         User user = new User();
         user.setId(userId);
         user.setSalt(salt);
+        // 希望下次登录时需要修改密码
+        user.setSys006("01");
 
         // MD5 加密
         Digester md5 = DefaultTools.Md5Tool;
@@ -128,6 +130,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
         String salt = RandomUtil.randomString(6);
         user.setSalt(salt);
+        user.setSys006("00");
         // MD5 加密
         Digester md5 = DefaultTools.Md5Tool;
         // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码

@@ -20,6 +20,10 @@ import java.time.LocalDateTime;
 @Data
 public class User extends GlobalModel {
 
+    /*
+    * sys006 00 时需要修改密码; 01 正常;
+    */
+
     /**
      * 账号
      */
