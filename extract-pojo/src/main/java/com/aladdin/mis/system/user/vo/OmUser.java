@@ -24,9 +24,9 @@ public class OmUser {
     private String userName;
 
     /**
-     * 密 码
+     * 用户类型
      */
-    private String password;
+    private String userType;
 
     /**
      * 机构id

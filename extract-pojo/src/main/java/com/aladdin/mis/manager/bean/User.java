@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 public class User extends GlobalModel {
 
     /*
-    * sys006 00 时需要修改密码; 01 正常;
+    * sys006 00 正常; 01 时需要修改密码;
     */
 
     /**
