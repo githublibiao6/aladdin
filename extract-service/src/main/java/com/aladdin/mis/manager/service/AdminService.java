@@ -60,4 +60,10 @@ public interface AdminService  extends GlobalService<Admin> {
      */
     List<Admin> findByAccount(String account);
 
+    /**
+     * 更新密码
+     * @param user
+     * @return
+     */
+    boolean updatePass(Admin user);
 }

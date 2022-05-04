@@ -1,13 +1,19 @@
 package com.aladdin.mis.auth.identity.controller;
 
+import com.aladdin.mis.common.currency.GlobalConfig;
+import com.aladdin.mis.common.currency.Parameter;
+import com.aladdin.mis.common.redis.config.JedisConfig;
+import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminService;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -169,6 +175,41 @@ public class AdminController extends GlobalController {
         }
         result.setMessage(msg);
         return result;
+    }
+
+    /**
+     * 注册新用户
+     */
+    @RequestMapping("/updatePass")
+    @ResponseBody
+    public Result updatePass(@RequestBody UserDto dto, HttpSession session) {
+        String sessionId = dto.getSessionId();
+        // 将验证码放入redis缓存， 等待验证
+        // 开启redis时，才进行下面的校验
+        if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
+            String verifyCode = JedisUtil.getString(Parameter.ResetPassCodePrefix + ":" + sessionId);
+            String code = dto.getVerifyCode();
+            if (code == null) {
+                return Result.error(50022, "验证码为空");
+            }
+
+            if (verifyCode == null) {
+                return Result.error(50021, "验证码超时");
+            }
+
+            if (!code.equals(verifyCode)) {
+                return Result.error(50023, "验证码输入错误");
+            }
+        }
+        Admin admin = new Admin();
+        BeanUtils.copyProperties(dto, admin);
+
+        boolean flag = service.updatePass(admin);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
     }
 
 }
