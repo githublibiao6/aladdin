@@ -23,7 +23,7 @@ import java.util.List;
 public class RoleMenuServiceImpl extends GlobalServiceImpl<RoleMenu> implements RoleMenuService {
 
     @Autowired
-    RoleMenuDao mapper;
+    private RoleMenuDao mapper;
 
 
     @Override

@@ -7,7 +7,6 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.service.DeptService;
-import com.aladdin.mis.manager.service.impl.DeptServiceImpl;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +28,18 @@ import java.util.Map;
  */
 @RequestMapping("dept")
 @Controller
-public class DeptController extends GlobalController {
+public class DeptController extends GlobalController<Dept, DeptService> {
 
     @Autowired
-    DeptServiceImpl service;
+    private DeptService service;
 
     @Autowired
     private DeptService deptService;
+
+    @Override
+    protected GlobalService<Dept> getBaseService() {
+        return service;
+    }
 
     /**
      *  查询字典树
@@ -107,8 +111,5 @@ public class DeptController extends GlobalController {
         return result ;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
+
 }

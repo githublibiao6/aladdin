@@ -3,6 +3,7 @@ package com.aladdin.mis.dao.manager;
 import com.aladdin.mis.manager.bean.Employee;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author lb
  *
  */
+@Repository
 public interface EmployeeDao {
 
     /**

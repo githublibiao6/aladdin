@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptService {
 
     @Autowired
-    DeptDao dao;
+    private DeptDao dao;
 
     @Override
     public PageEntity page(PageEntity entity) {

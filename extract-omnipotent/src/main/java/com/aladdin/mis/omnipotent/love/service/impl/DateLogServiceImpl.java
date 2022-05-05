@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 @Service
-public class DateLogServiceImpl extends GlobalServiceImpl implements DateLogService {
+public class DateLogServiceImpl extends GlobalServiceImpl<DateLog> implements DateLogService {
 
     @Autowired
     private DateLogMapper dateLogMapper;

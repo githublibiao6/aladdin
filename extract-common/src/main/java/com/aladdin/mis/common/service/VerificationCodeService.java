@@ -14,9 +14,9 @@ public interface VerificationCodeService {
 
     /**
      * 发送短信验证码
-     * @param phone
-     * @param prefix
-     * @return
+     * @param phone 手机号码
+     * @param prefix 用于识别的前缀
+     * @return boolean
      */
     boolean sendSmsCode(String phone , String  sessionId, String prefix);
 }

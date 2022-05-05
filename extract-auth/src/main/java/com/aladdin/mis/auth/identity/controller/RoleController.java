@@ -5,7 +5,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.manager.service.impl.RoleServiceImpl;
+import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +24,15 @@ import java.util.List;
  */
 @RequestMapping("roles")
 @Controller
-public class RoleController extends GlobalController/*<Role, RoleServiceImpl>*/ {
+public class RoleController extends GlobalController<Role, RoleService> {
 
     @Autowired
-    RoleServiceImpl service;
+    private RoleService service;
+
+    @Override
+    protected GlobalService<Role> getBaseService() {
+        return service;
+    }
 
     /**
      * 添加字典
@@ -131,10 +136,5 @@ public class RoleController extends GlobalController/*<Role, RoleServiceImpl>*/ 
         }
         result.setMessage(msg);
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }

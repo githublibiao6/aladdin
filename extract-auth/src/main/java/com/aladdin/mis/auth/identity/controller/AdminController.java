@@ -31,14 +31,14 @@ import java.util.List;
  */
 @RequestMapping("admin")
 @Controller
-public class AdminController extends GlobalController {
+public class AdminController extends GlobalController<Admin, AdminService> {
 
     @Autowired
-    AdminService service;
+    private AdminService service;
 
     @Override
-    protected GlobalService getBaseService() {
-        return null;
+    protected GlobalService<Admin> getBaseService() {
+        return service;
     }
 
     /**
@@ -162,6 +162,7 @@ public class AdminController extends GlobalController {
         result.setData(admin);
         return result;
     }
+
     @PostMapping(value="/remove")
     @ResponseBody
     public Result remove(@RequestBody Admin admin) {

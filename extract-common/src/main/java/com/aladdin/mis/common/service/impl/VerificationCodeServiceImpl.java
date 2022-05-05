@@ -8,7 +8,6 @@ import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
 import com.aladdin.mis.common.sms.AliyunSms;
-import com.aladdin.mis.common.system.entity.Result;
 import org.springframework.stereotype.Service;
 
 /**

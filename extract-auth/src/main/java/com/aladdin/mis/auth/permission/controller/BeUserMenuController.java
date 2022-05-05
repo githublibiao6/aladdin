@@ -28,10 +28,16 @@ import java.util.List;
 */
 @RequestMapping("manager/beUserMenu")
 @Controller
-public class BeUserMenuController  extends GlobalController {
+public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMenuService> {
 
     @Autowired
     private BeUserMenuService beUserMenuService;
+
+
+    @Override
+    protected GlobalService<BeUserMenu> getBaseService() {
+        return beUserMenuService;
+    }
 
     /**
      * 分页查询
@@ -119,8 +125,4 @@ public class BeUserMenuController  extends GlobalController {
         return result ;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

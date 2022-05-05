@@ -36,10 +36,10 @@ import java.util.List;
 public class UserServiceImpl extends GlobalServiceImpl<User> implements UserService {
 
     @Autowired
-    UserDao dao;
+    private UserDao dao;
 
     @Autowired
-    UserBaseInfoService userBaseInfoService;
+    private UserBaseInfoService userBaseInfoService;
 
 
     @Override

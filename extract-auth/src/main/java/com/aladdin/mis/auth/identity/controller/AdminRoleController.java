@@ -20,15 +20,15 @@ import java.util.List;
  */
 @RequestMapping("adminRole")
 @Controller
-public class AdminRoleController extends GlobalController/*<User, UserServiceImpl>*/ {
+public class AdminRoleController extends GlobalController<AdminRole, AdminRoleService> {
 
     @Autowired
     private AdminRoleService adminRoleService;
 
 
     @Override
-    protected GlobalService getBaseService() {
-        return null;
+    protected GlobalService<AdminRole> getBaseService() {
+        return adminRoleService;
     }
 
     /**
@@ -36,7 +36,7 @@ public class AdminRoleController extends GlobalController/*<User, UserServiceImp
      */
     @RequestMapping("/getRoleByAdmin")
     @ResponseBody
-    public  Result getRoleByAdmin(@RequestBody AdminRole adminRole) {
+    public Result getRoleByAdmin(@RequestBody AdminRole adminRole) {
         List<AdminRole> list = adminRoleService.getRoleByAdmin(adminRole.getAdminId());
         result.setData(list);
         result.setCode(20000);

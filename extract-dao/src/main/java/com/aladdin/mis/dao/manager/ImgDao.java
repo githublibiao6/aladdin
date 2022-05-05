@@ -1,6 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.Img;
+import org.springframework.stereotype.Repository;
 
 /**
  * 图片dao
@@ -10,6 +11,7 @@ import com.aladdin.mis.manager.bean.Img;
 * @date 2018年8月20日 下午11:14:28
 *
  */
+@Repository
 public interface ImgDao {
 
     /**

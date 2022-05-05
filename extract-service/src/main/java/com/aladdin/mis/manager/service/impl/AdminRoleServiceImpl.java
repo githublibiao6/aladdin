@@ -18,7 +18,7 @@ import java.util.List;
 public class AdminRoleServiceImpl extends GlobalServiceImpl<AdminRole> implements AdminRoleService {
 
     @Autowired
-    AdminRoleDao dao;
+    private AdminRoleDao dao;
 
 
     @Override

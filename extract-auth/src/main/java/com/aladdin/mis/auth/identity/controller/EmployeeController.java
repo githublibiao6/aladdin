@@ -2,6 +2,7 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.manager.bean.Employee;
 import com.aladdin.mis.manager.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @RequestMapping("employee")
 @Controller
-public class EmployeeController extends GlobalController/*<Employee, EmployeeService> */{
+public class EmployeeController extends GlobalController<Employee, EmployeeService>{
 
     @Autowired
-    EmployeeService service;
+    private EmployeeService service;
 
     @RequestMapping("main")
     public String test(){
@@ -27,8 +28,8 @@ public class EmployeeController extends GlobalController/*<Employee, EmployeeSer
     }
 
     @Override
-    protected GlobalService getBaseService() {
-        return null;
+    protected GlobalService<Employee> getBaseService() {
+        return service;
     }
 //
 //    /**

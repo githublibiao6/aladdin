@@ -6,7 +6,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.service.BeUserMenuService;
-import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
+import com.aladdin.mis.manager.service.MenuService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
@@ -26,15 +26,21 @@ import java.util.List;
  */
 @RequestMapping("menu")
 @Controller
-public class MenuController extends GlobalController {
+public class MenuController extends GlobalController<Menu, MenuService> {
 
     @Autowired
-    MenuServiceImpl service;
+    private MenuService service;
 
     @Autowired
-    BeUserMenuService userMenuService;
+    private BeUserMenuService userMenuService;
     //    @Autowired
     //    DubboService dubboService;
+
+
+    @Override
+    protected GlobalService<Menu> getBaseService() {
+        return service;
+    }
 
     /**
      * 获取分页
@@ -224,8 +230,4 @@ public class MenuController extends GlobalController {
         return result;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

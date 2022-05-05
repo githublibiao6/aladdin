@@ -27,10 +27,10 @@ import java.util.UUID;
 public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminService {
 
     @Autowired
-    AdminDao dao;
+    private AdminDao dao;
 
     @Autowired
-    AdminRoleService adminRoleService;
+    private AdminRoleService adminRoleService;
     /**
      * 根据用户名和密码获得 admin
      * @param admin

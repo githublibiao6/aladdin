@@ -21,10 +21,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/love/record")
-public class LoveController extends GlobalController {
+public class LoveController extends GlobalController<DateLog, DateLogService> {
 
     @Autowired
     private DateLogService service;
+
+
+    @Override
+    protected GlobalService<DateLog> getBaseService() {
+        return service;
+    }
 
     @RequestMapping("/page")
     @ResponseBody
@@ -101,8 +107,4 @@ public class LoveController extends GlobalController {
         return result;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

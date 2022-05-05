@@ -27,9 +27,10 @@ import java.util.Set;
 public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleService {
 
     @Autowired
-    RoleDao dao;
+    private RoleDao dao;
+
     @Autowired
-    RoleMenuService roleMenuService;
+    private RoleMenuService roleMenuService;
 
     @Override
     public PageEntity page(PageEntity entity) {

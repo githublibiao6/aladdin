@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class ImgServiceImpl extends GlobalServiceImpl<Img> implements ImgService {
 
     @Autowired
-    ImgDao dao;
+    private ImgDao dao;
 
     @Override
     public Img getImgUrl(String type, String id) {

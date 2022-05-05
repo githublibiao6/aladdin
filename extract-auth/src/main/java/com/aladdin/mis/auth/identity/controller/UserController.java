@@ -13,7 +13,6 @@ import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.manager.service.BeUserMenuService;
 import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.manager.service.UserService;
-import com.aladdin.mis.manager.service.impl.UserServiceImpl;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
@@ -38,7 +37,7 @@ import java.util.Set;
  */
 @RequestMapping("user")
 @Controller
-public class UserController extends GlobalController<User, UserServiceImpl> {
+public class UserController extends GlobalController<User, UserService> {
 
     @Autowired
     private UserService service;
