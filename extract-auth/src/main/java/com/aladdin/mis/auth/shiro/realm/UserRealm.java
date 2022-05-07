@@ -148,6 +148,7 @@ public class UserRealm extends AuthorizingRealm {
         user.setUserId(admin.getId());
         user.setUserName(admin.getLoginName());
         user.setDeptId(deptId);
+        user.setUserType("1");
         user.setDeptName(dept.getName());
         //单用户登录
         //处理session
