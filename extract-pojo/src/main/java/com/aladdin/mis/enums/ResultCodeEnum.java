@@ -12,7 +12,7 @@ public enum ResultCodeEnum {
     /**
      * 返回结果code
      */
-    SUCCESS(2000, "后台处理成功"),
+    SUCCESS(20000, "后台处理成功"),
     FAIL(5000, "服务器内部出错"),
     FAIL_NOT_IMPLEMENTED(5001, "服务器不支持当前请求的功能"),
     FAIL_BAD_GATEWAY(5002, "服务器接无效的响应"),
