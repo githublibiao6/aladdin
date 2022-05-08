@@ -24,4 +24,9 @@ public class UserQo extends User {
      */
     private String keyWord;
 
+    /**
+     * 用户状态
+     */
+    private String status;
+
 }
