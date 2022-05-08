@@ -259,19 +259,18 @@ public class UserController extends GlobalController<User, UserService> {
         return result;
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/remove",method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@RequestBody JSONObject json) {
-        User m = JSONObject.parseObject(json.toJSONString(),User.class);
-        boolean flag = service.remove(json.getInteger("pk"));
+        boolean flag = service.remove(json.getInteger("id"));
         String msg ;
         result.setSuccess(flag);
         if(flag){
             msg = "删除成功";
+            return Result.successMsg(msg);
         }else {
             msg = "删除失败";
+            return Result.error(msg);
         }
-        result.setMessage(msg);
-        return result;
     }
 }

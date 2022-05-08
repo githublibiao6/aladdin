@@ -40,6 +40,10 @@ public class Result {
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg(), data);
     }
 
+    public static Result successMsg(String message){
+        return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message, null);
+    }
+
     public static Result success(){
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg(), null);
     }

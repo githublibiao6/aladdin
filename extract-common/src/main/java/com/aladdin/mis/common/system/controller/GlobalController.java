@@ -47,9 +47,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result pageInfo(@RequestBody QueryCondition condition) {
         PageInfo<T> page = getBaseService().pageByCondition(condition);
-        result.setData(page);
-        result.setCode(20000);
-        return result;
+        return Result.success(page);
     }
 
     /**
@@ -63,9 +61,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         T data = getBaseService().getByCondition(condition);
         if(data == null)
             result.setMessage("查无数据");
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        return Result.success(data);
     }
 
     /**
@@ -77,9 +73,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         condition.setPage(1);
         condition.setLimit(10);
         List<T> page = getBaseService().queryByCondition(condition);
-        result.setData(page);
-        result.setCode(20000);
-        return result;
+        return Result.success(page);
     }
 
     /**
@@ -95,8 +89,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
             boolean data = getBaseService().updateSelective(entity);
             result.setData(data);
         }
-        result.setCode(20000);
-        return result;
+        return Result.success();
     }
 
     /**
@@ -112,8 +105,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
             boolean data = getBaseService().updateSelective(entity);
             result.setData(data);
         }
-        result.setCode(20000);
-        return result;
+        return Result.success();
     }
 
     /**
@@ -122,10 +114,12 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @RequestMapping("/updateInfo")
     @ResponseBody
     public Result updateInfo(@RequestBody T entity) {
-        boolean data = getBaseService().updateSelective(entity);
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        boolean flag = getBaseService().updateSelective(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
     }
 
      /**
@@ -134,10 +128,12 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @RequestMapping("/deleteInfo")
     @ResponseBody
     public Result deleteInfo(@RequestBody T entity) {
-        boolean data = getBaseService().deleteById(entity.getPrimaryKey());
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        boolean flag = getBaseService().deleteById(entity.getPrimaryKey());
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
     }
 
     /**
@@ -148,9 +144,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result deleteInfo(@PathVariable("id") Integer id) {
         boolean data = getBaseService().deleteById(id);
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        return Result.success(data);
     }
 
     /**
@@ -160,9 +154,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result detailInfo(@RequestBody T entity) {
         T data = getBaseService().detailQuery(entity.getPrimaryKey());
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        return Result.success(data);
     }
 
     /**
@@ -173,9 +165,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result detailInfo(@PathVariable("id") Integer id) {
         T data = getBaseService().detailQuery(id);
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        return Result.success(data);
     }
 
     /**
@@ -185,9 +175,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result detailQuery(@RequestBody QueryCondition condition) {
         T data = getBaseService().getByCondition(condition);
-        result.setData(data);
-        result.setCode(20000);
-        return result;
+        return Result.success(data);
     }
 
     /**

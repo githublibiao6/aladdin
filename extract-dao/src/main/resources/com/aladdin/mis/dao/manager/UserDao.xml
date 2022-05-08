@@ -17,7 +17,7 @@
             )
         </if>
         <if test="status != null and status != '' ">
-            and t.status=#{status}
+            and status = #{status}
         </if>
     </select>
 
