@@ -37,7 +37,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
      * 分页查询工程项目
      */
     @PostMapping("paginate")
-    @WebLog("分页查询 工程项目")
+    @WebLog("分页查询工程项目")
     @ResponseBody
     public Result paginate(@RequestBody ProjectQo qo){
         PageInfo<ProjectVo> page = projectService.paginate(qo);
