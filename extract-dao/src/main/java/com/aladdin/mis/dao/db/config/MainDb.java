@@ -161,6 +161,7 @@ public class MainDb {
                     }
                     break;
                 case "int":
+                case "tinyint":
                     field.setColumnType("Integer");
                     break;
                 case "date":

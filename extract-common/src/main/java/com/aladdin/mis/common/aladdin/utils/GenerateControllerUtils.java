@@ -45,7 +45,7 @@ public  class GenerateControllerUtils {
         content.append("    private "+po.getEntityName()+"Service "+ service+";\n\n");
 
         content.append("\n" +
-        "    @Override" +
+        "    @Override\n" +
         "    protected GlobalService<"+po.getEntityName()+"> getBaseService(){\n" +
         "        return "+service+" ;\n" +
         "    }\n\n");
