@@ -32,9 +32,9 @@ public class EssayController extends GlobalController {
     @Autowired
     private EssayService service;
 
-    @RequestMapping("/page1")
+    @RequestMapping("/page")
     @ResponseBody
-    public Result page1(HttpServletRequest request, PageEntity entity) {
+    public Result page(HttpServletRequest request, PageEntity entity) {
         Subject subject = SecurityUtils.getSubject();
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);

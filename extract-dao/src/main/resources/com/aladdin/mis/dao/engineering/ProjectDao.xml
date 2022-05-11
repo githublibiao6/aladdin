@@ -46,11 +46,11 @@
             and t.id = #{id}
         </if>
         <if test="keyWord  != null and keyWord != '' ">
-            and (t.project_name like concat('%', #{projectName},'%')
-               or t.project_code like concat('%', #{projectName},'%'))
+            and (t.project_name like concat('%', #{keyWord},'%')
+               or t.project_code like concat('%', #{keyWord},'%'))
         </if>
         <if test="deptId  != null and deptId != '' ">
-            and t.deptId = #{deptId}
+            and t.dept_id = #{deptId}
         </if>
         <if test="projectCode  != null and projectCode != '' ">
             and t.project_code like concat ('%',#{projectCode},'%')
