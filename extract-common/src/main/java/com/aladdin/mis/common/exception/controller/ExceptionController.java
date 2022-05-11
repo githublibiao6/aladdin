@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.UUID;
-
 /**
  * @author cles
  * @description:
@@ -28,13 +26,12 @@ public class ExceptionController{
     @ExceptionHandler(value = {Exception.class})
     @ResponseBody
     public Result error(Exception e){
-        e.printStackTrace();
         VisitExceptionLog log = new VisitExceptionLog();
         Result result = new Result();
-        result.setCode(500);
         result.setSuccess(false);
-        result.setData(UUID.randomUUID().toString());
-        result.setMessage("系统发生未知错误");
+        result.setCode(50000);
+        result.setData("系统发生未知错误");
+        result.setMessage(e.getMessage());
         log.setCode(404);
         log.setException(e.getMessage());
         log.setException(ExceptionUtil.getStackTrace(e));
