@@ -52,6 +52,9 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
        if("0".equals(oldStatus) && "1".equals(status)){
            entity.setStartDate(new Date());
        }
+       if("4".equals(status)){
+           entity.setEndDate(new Date());
+       }
        return updateSelective(entity);
     }
 

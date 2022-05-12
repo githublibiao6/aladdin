@@ -50,6 +50,18 @@ public class Menu extends GlobalModel {
      */
     @TableField("menu_type")
     private String menuType;
+
+    /**
+     * 菜单是否启用
+     */
+    @TableField("enable")
+    private String enable;
+
+    /**
+     * 菜单是否展示
+     */
+    @TableField("show")
+    private String show;
     /**
      * 是否是一级菜单
      */

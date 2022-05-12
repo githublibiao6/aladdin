@@ -19,4 +19,9 @@ public class MenuQo extends Menu {
      */
     private Integer limit;
 
+     /**
+     * 每页数量
+     */
+    private Integer enable;
+
 }

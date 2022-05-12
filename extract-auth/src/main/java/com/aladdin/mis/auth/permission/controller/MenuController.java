@@ -179,7 +179,9 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @ResponseBody
     public Result list() {
 //        String hello = dubboService.sayHello("  dubbo "); // 执行远程方法
-        List<Menu> list = service.list(null);
+        MenuQo qo = new MenuQo();
+        qo.setEnable(1);
+        List<Menu> list = service.list(qo);
         result.setData(list);
         result.setCode(20000);
         result.setMessage("菜单信息");
