@@ -55,7 +55,7 @@ public class Menu extends GlobalModel {
      * 菜单是否启用
      */
     @TableField("enable")
-    private String enable;
+    private Integer enable;
 
     /**
      * 菜单是否展示
