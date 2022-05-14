@@ -24,6 +24,11 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class MysqlSqlMaker extends BaseSqlMaker {
 
+    /**
+     * mysql 关键字
+     */
+    private String[] keyWords = {"show","enable"};
+
     @Override
     public JSONObject saveSql(String tableName, String primaryKey, List<TableFieldInfo> list) {
         // 设置默认的id
@@ -53,8 +58,11 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         }
         sql.append("(");
         columns.forEach(t->{
-
-            sql.append(t.getColName()).append(",");
+            String colName = t.getColName();
+            if(containsWorlds(colName)){
+                colName = "`"+colName+"`";
+            }
+            sql.append(colName).append(",");
         });
         sql.deleteCharAt(sql.length()-1);
         sql.append(" ) VALUES (");
@@ -128,20 +136,24 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             throw new RuntimeException("update must has primary key");
         }
         columns.forEach(t->{
+            String colName = t.getColName();
+            if(containsWorlds(colName)){
+                colName = "`"+colName+"`";
+            }
             if(t.getColumnType() == null)
                 System.err.println(t.getColumnName());
             switch (t.getColumnType()){
                 case "int":
                 case "Integer":
-                    sql.append(t.getColName()).append("=")
+                    sql.append(colName).append("=")
                             .append(t.getFieldValue()).append(",");
                     break;
                 case "String":
-                    sql.append(t.getColName()).append("=").append("'")
+                    sql.append(colName).append("=").append("'")
                             .append(t.getFieldValue()).append("'").append(",");
                     break;
                 case "Date":
-                    sql.append(t.getColName()).append("=");
+                    sql.append(colName).append("=");
                     Date date = (Date) t.getFieldValue();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String value = sdf.format(date);
@@ -157,5 +169,14 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         sql.append(" sys007=sys007+1");
         sql.append(" WHERE ").append(primaryKey).append(" = '").append(primaryValue.get()).append("'");
         return sql.toString();
+    }
+
+    private boolean containsWorlds(String colName){
+        for (String keyWord : keyWords) {
+            if (keyWord.equalsIgnoreCase(colName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
