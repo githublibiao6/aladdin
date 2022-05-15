@@ -15,7 +15,10 @@
             and (t.menu_text like concat('%',#{menuText},'%') or p.menu_text like concat('%',#{menuText},'%'))
         </if>
         <if test="enable  != null and enable != '' ">
-            and t.enable = #{enable}
+            and t.`enable` = #{enable}
+        </if>
+        <if test="show  != null and show != '' ">
+            and t.`show` = #{show}
         </if>
         order by t.level asc
     </select>

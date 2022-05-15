@@ -61,7 +61,7 @@ public class Menu extends GlobalModel {
      * 菜单是否展示
      */
     @TableField("show")
-    private String show;
+    private Integer show;
     /**
      * 是否是一级菜单
      */
