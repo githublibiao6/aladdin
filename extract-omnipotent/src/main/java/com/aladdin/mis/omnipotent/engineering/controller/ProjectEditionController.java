@@ -37,10 +37,10 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     /**
      * 保存工程项目
      */
-    @PostMapping("save")
+    @PostMapping("list")
     @WebLog("工程项目版本列表")
     @ResponseBody
-    public Result save(@RequestBody ProjectEdition entity){
+    public Result list(@RequestBody ProjectEdition entity){
         QueryCondition condition = QueryCondition.newInstance().addExpression("projectId", entity.getProjectId());
         List<ProjectEdition> list = projectEditionService.queryByCondition(condition);
         result.setData(list);
