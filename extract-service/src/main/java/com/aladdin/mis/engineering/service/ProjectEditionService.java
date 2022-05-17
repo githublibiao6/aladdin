@@ -2,9 +2,6 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectEdition;
-import com.aladdin.mis.engineering.vo.ProjectEditionVo;
-import com.aladdin.mis.engineering.qo.ProjectEditionQo;
-import com.github.pagehelper.PageInfo;
 /**
  * ProjectEditionService
  * @author cles
@@ -12,4 +9,10 @@ import com.github.pagehelper.PageInfo;
 */
 public interface ProjectEditionService extends GlobalService<ProjectEdition>  {
 
+    /**
+     * 更新数据
+     * @param entity
+     * @return
+     */
+    boolean update(ProjectEdition entity);
 }

@@ -162,6 +162,26 @@ public class MysqlSqlMaker extends BaseSqlMaker {
                             .append("'")
                             .append(",");
                     break;
+                case "LocalDateTime":
+                    sql.append(colName).append("=");
+                    LocalDateTime localDateTime = (LocalDateTime) t.getFieldValue();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String localDateTimeValue = dtf.format(localDateTime);
+                    sql.append("'")
+                            .append(localDateTimeValue)
+                            .append("'")
+                            .append(",");
+                    break;
+                case "LocalDate":
+                    sql.append(colName).append("=");
+                    LocalDate localDate = (LocalDate) t.getFieldValue();
+                    DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    String  localDateValue = dtf2.format(localDate);
+                    sql.append("'")
+                            .append(localDateValue)
+                            .append("'")
+                            .append(",");
+                    break;
                 default:
                     break;
             }

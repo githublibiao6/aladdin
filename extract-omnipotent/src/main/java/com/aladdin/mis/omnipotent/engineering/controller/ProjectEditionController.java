@@ -35,7 +35,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     }
 
     /**
-     * 保存工程项目
+     * 工程项目版本列表
      */
     @PostMapping("list")
     @WebLog("工程项目版本列表")
@@ -46,6 +46,22 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
         result.setData(list);
         return result ;
     }
+
+
+    /**
+     * 更新数据
+     */
+    @RequestMapping("/update")
+    @ResponseBody
+    public Result update(@RequestBody ProjectEdition entity) {
+        boolean flag = projectEditionService.update(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
 
 
 }

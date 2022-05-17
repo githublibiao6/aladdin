@@ -61,6 +61,6 @@ public class ProjectEdition extends GlobalModel {
      * status版本状态
      */
     @TableField("status")
-    private Integer status;
+    private String status;
 
 }

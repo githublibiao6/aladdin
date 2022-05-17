@@ -109,7 +109,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     }
 
     /**
-     * 获取分页
+     * 更新数据
      */
     @RequestMapping("/updateInfo")
     @ResponseBody
