@@ -120,7 +120,11 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private String getFieldSql(FieldCondition t, Map<String, String> columnCol){
         String field = t.getField();
         StringBuilder sql = new StringBuilder();
-        switch (t.getOp()){
+        String op = t.getOp();
+        if(op == null || op.isEmpty()){
+            op = "eq";
+        }
+        switch (op){
             case "eq":
                 sql.append(columnCol.get(field))
                         .append("=")
