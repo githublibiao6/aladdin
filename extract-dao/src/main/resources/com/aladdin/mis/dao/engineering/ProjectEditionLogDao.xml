@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.engineering.ProjectEditionLogDao">
+
+    <sql id="baseColumn">
+        id,
+        edition_id,
+        version_content,
+        comments,
+        content,
+        operation_user,
+        sys001,
+        sys002,
+        sys003,
+        sys004,
+        sys005,
+        sys006,
+        sys007
+  </sql>
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectEditionLog" id="baseResultMap"> 
+        <id property="id" column="id"/>
+        <result property="edition_id" column="editionId"/>
+        <result property="version_content" column="versionContent"/>
+        <result property="comments" column="comments"/>
+        <result property="content" column="content"/>
+        <result property="operation_user" column="operationUser"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectEditionLogVo">
+        select <include refid="baseColumn"></include>
+        from project_edition_log t where 1=1
+        <if test="editionId  != null and editionId != '' ">
+            and t.edition_id = #{editionId}
+        </if>
+        <if test="versionContent  != null and versionContent != '' ">
+            and t.version_content = #{versionContent}
+        </if>
+        <if test="comments  != null and comments != '' ">
+            and t.comments = #{comments}
+        </if>
+        <if test="content  != null and content != '' ">
+            and t.content = #{content}
+        </if>
+        <if test="operationUser  != null and operationUser != '' ">
+            and t.operation_user = #{operationUser}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}        </if>
+    </select>
+
+</mapper>
