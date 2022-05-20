@@ -29,7 +29,7 @@ public class OmUser {
     private String password;
 
     /**
-     * 用户类型
+     * 用户类型 0 nobody 1 管理员
      */
     private String userType;
 

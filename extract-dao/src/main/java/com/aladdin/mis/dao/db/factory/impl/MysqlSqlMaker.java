@@ -27,7 +27,7 @@ public class MysqlSqlMaker extends BaseSqlMaker {
     /**
      * mysql 关键字
      */
-    private String[] keyWords = {"show","enable"};
+    private String[] keyWords = {"show","enable","type"};
 
     @Override
     public JSONObject saveSql(String tableName, String primaryKey, List<TableFieldInfo> list) {

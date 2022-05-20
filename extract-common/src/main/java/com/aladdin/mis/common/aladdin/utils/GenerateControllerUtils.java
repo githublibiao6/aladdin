@@ -25,6 +25,7 @@ public  class GenerateControllerUtils {
         content.append(po.getWeoLogPath() +"\n");
         content.append("import com.aladdin.mis.common.system.entity.Result;\n");
         content.append("import com.github.pagehelper.PageInfo;\n");
+        content.append("import com.aladdin.mis.common.system.service.GlobalService;\n");
         content.append("import org.springframework.web.bind.annotation.RequestBody;\n");
         content.append("import org.springframework.web.bind.annotation.RequestMapping;\n");
         content.append("import org.springframework.web.bind.annotation.PostMapping;\n");

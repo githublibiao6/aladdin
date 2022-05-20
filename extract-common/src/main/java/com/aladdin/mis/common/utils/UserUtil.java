@@ -19,6 +19,11 @@ public  class UserUtil {
         if(subject != null){
             return (OmUser) subject.getPrincipal();
         }
-        return null;
+        OmUser om = new OmUser();
+        om.setUserType("0");
+        om.setUserId(0);
+        om.setUserName("Mr.Nobody");
+        om.setUserId(0);
+        return om;
     }
 }

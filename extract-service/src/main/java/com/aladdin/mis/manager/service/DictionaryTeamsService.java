@@ -6,6 +6,8 @@ import com.aladdin.mis.manager.qo.DictionaryQo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 
 /**
  * 字典 Service
@@ -62,5 +64,13 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @version: 1.0.0
      */
     boolean remove(Integer id);
+
+    /**
+     * 根据code获取 字典列表
+     * value - text 键值对
+     * @param code 字典code
+     * @return
+     */
+    Map<String, String> getTeamsByCode(String code);
 
 }

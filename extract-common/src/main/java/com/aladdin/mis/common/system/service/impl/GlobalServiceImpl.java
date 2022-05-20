@@ -204,7 +204,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             if(!columnCol.containsKey(field)){
                 throw new MyException("类"+table.getClassName() + "不包含字段" + field);
             }
-            sql.append(field ).append(t.getOrderType()).append(",");
+            sql.append(field).append(" ").append(t.getOrderType()).append(" ").append(",");
 
         });
         sql.deleteCharAt(sql.length()-1);

@@ -3,11 +3,6 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
@@ -41,6 +36,18 @@ public class ProjectEditionLog extends GlobalModel {
      */
     @TableField("content")
     private String content;
+
+    /**
+     * 图标
+     */
+    @TableField("icon")
+    private String icon;
+
+    /**
+     * 按钮类型
+     */
+    @TableField("type")
+    private String type;
 
     /**
      * operationUser操作人

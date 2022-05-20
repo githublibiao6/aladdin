@@ -41,6 +41,13 @@ public interface DicTeamsDao {
     List<DictionaryTeams> page();
 
     /**
+     *
+     * @param code
+     * @return
+     */
+    List<DictionaryTeams> listTeamsByDicCode(String code);
+
+    /**
      * 获取全部的字典对象
      * @return
      */

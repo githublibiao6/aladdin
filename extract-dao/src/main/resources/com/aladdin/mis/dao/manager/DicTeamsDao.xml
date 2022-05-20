@@ -5,4 +5,11 @@
 <resultMap id="DictObjResultMap" type="com.aladdin.mis.manager.bean.DictionaryTeams">
 
  </resultMap>
+
+    <!-- 根据id获取员工信息 -->
+    <select id="listTeamsByDicCode" resultType="com.aladdin.mis.manager.bean.DictionaryTeams">
+        select t.* from be_dictionary_teams t
+        left join be_dictionary m  on t.dic_id = m.id
+        where m.code = #{code} and t.sys005=1
+    </select>
 </mapper>
