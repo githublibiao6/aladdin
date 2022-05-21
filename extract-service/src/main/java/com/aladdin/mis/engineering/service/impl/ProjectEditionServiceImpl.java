@@ -56,6 +56,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         }
         Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
 
+        // 记录版本日志
         String comments = entity.getComments();
         String versionContent = entity.getVersionContent();
 
@@ -64,6 +65,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
 
         StringBuilder content = new StringBuilder();
 
+        // 判断状态的改变
         if(!oldStatus.equals(status)){
             content.append("\n修改状态为：").append(map.get(status)).append(";");
         }
@@ -77,6 +79,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         if(content.length() > 0){
             ProjectEditionLog log = new ProjectEditionLog();
 
+            // 记录日志的图标
             String statusIcon = status == null ? oldStatus : status;
             switch (statusIcon){
                 case "4":

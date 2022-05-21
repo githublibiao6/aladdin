@@ -37,14 +37,6 @@ public class MysqlSqlMaker extends BaseSqlMaker {
         List<TableFieldInfo> columns = new ArrayList<>();
         AtomicReference<String> primaryValue = new AtomicReference<>("");
         list.forEach(t->{
-//            id 默认为自增的int
-//            if(primaryKey.equals(t.getColumnName())){
-//                if(t.getFieldValue() != null){
-//                    t.put("field_value", id);
-//                }else {
-//                    id.set(t.getString("field_value"));
-//                }
-//            }
             if(t.getFieldValue() == null){
                 return;
             }

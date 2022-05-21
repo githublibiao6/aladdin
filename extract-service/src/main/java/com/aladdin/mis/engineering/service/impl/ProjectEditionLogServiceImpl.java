@@ -3,15 +3,10 @@ package com.aladdin.mis.engineering.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.engineering.service.ProjectEditionLogService;
 import com.aladdin.mis.engineering.entity.ProjectEditionLog;
-import com.aladdin.mis.engineering.vo.ProjectEditionLogVo;
-import com.aladdin.mis.engineering.qo.ProjectEditionLogQo;
 import com.aladdin.mis.dao.engineering.ProjectEditionLogDao;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.github.pagehelper.PageInfo;
 
-import java.util.List;
 /**
  * ProjectEditionLogService
  * @author cles
