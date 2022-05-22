@@ -47,9 +47,9 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         }
 
         // 状态不允许回头
-        if(Integer.parseInt(oldStatus) > Integer.parseInt(entity.getStatus())){
-            entity.setStatus(null);
-        }
+//        if(Integer.parseInt(oldStatus) > Integer.parseInt(entity.getStatus())){
+//            entity.setStatus(null);
+//        }
         // 验收后发现问题的回调
         if("4".equals(oldStatus) && "3".equals(status)){
             entity.setStatus(status);
