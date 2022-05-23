@@ -134,7 +134,12 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        log.setContent(om.getUserName() + "新建版本");
+        String content = om.getUserName() + "新建版本;";
+        if(!"0".equals(entity.getStatus())){
+            Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
+            content += "状态："+map.get(entity.getStatus());
+        }
+        log.setContent(content);
         logService.insert(log);
         return true;
     }

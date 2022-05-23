@@ -50,7 +50,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     /**
      * 更新数据
      */
-    @RequestMapping("/save")
+    @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectEdition entity) {
         boolean flag = projectEditionService.save(entity);
