@@ -47,6 +47,20 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
         return result ;
     }
 
+    /**
+     * 更新数据
+     */
+    @RequestMapping("/save")
+    @ResponseBody
+    public Result save(@RequestBody ProjectEdition entity) {
+        boolean flag = projectEditionService.save(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
 
     /**
      * 更新数据

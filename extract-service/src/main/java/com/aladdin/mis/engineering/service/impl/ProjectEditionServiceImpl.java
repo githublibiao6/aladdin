@@ -47,9 +47,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         }
 
         // 状态不允许回头
-//        if(Integer.parseInt(oldStatus) > Integer.parseInt(entity.getStatus())){
-//            entity.setStatus(null);
-//        }
+//
         // 验收后发现问题的回调
         if("4".equals(oldStatus) && "3".equals(status)){
             entity.setStatus(status);
@@ -110,7 +108,6 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
 
             log.setVersionContent(versionContent);
             log.setComments(comments);
-            log.setComments(comments);
             log.setEditionId(entity.getId());
 
             OmUser om = UserUtil.getCurrentUser();
@@ -121,6 +118,25 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
 
         // todo 记录版本日志
         return updateSelective(entity);
+    }
+
+    @Override
+    public boolean save(ProjectEdition entity) {
+        // 保存版本
+        Integer id= insert(entity);
+        ProjectEditionLog log = new ProjectEditionLog();
+
+        // 新建版本日志
+        log.setVersionContent(entity.getVersionContent());
+        log.setComments(entity.getComments());
+        log.setEditionId(id);
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        log.setContent(om.getUserName() + "新建版本");
+        logService.insert(log);
+        return true;
     }
 }
 

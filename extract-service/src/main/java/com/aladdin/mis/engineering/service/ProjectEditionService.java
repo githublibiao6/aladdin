@@ -11,8 +11,15 @@ public interface ProjectEditionService extends GlobalService<ProjectEdition>  {
 
     /**
      * 更新数据
-     * @param entity
-     * @return
+     * @param entity 版本内容
+     * @return flag
      */
     boolean update(ProjectEdition entity);
+
+    /**
+     * 新建版本
+     * @param entity 版本内容
+     * @return flag
+     */
+    boolean save(ProjectEdition entity);
 }
