@@ -76,6 +76,20 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
         }
     }
 
+    /**
+     * 作废版本
+     */
+    @RequestMapping("/cancellation")
+    @ResponseBody
+    public Result cancellation(@RequestBody ProjectEdition entity) {
+        boolean flag = projectEditionService.cancellation(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
 
 
 }

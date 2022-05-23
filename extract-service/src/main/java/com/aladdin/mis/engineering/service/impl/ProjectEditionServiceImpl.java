@@ -115,8 +115,8 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
             log.setContent(om.getUserName() + content.toString());
             logService.insert(log);
         }
-
-        // todo 记录版本日志
+        // 版本号不允许修改
+        entity.setEdition(null);
         return updateSelective(entity);
     }
 
@@ -139,6 +139,27 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
             Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
             content += "状态："+map.get(entity.getStatus());
         }
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean cancellation(ProjectEdition entity) {
+        ProjectEdition data = new ProjectEdition();
+        data.setStatus("9");
+        data.setId(entity.getId());
+        updateSelective(data);
+
+        ProjectEditionLog log = new ProjectEditionLog();
+
+        // 作废版本日志
+        log.setEditionId(entity.getId());
+        log.setType("danger");
+        log.setIcon("el-icon-delete");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "作废版本;";
         log.setContent(content);
         logService.insert(log);
         return true;

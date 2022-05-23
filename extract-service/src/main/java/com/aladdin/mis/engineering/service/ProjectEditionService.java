@@ -22,4 +22,11 @@ public interface ProjectEditionService extends GlobalService<ProjectEdition>  {
      * @return flag
      */
     boolean save(ProjectEdition entity);
+
+    /**
+     * 作废版本
+     * @param entity
+     * @return
+     */
+    boolean cancellation(ProjectEdition entity);
 }
