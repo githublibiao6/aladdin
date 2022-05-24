@@ -46,8 +46,6 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
             entity.setEndDate(LocalDateTime.now());
         }
 
-        // 状态不允许回头
-//
         // 验收后发现问题的回调
         if("4".equals(oldStatus) && "3".equals(status)){
             entity.setStatus(status);
@@ -103,7 +101,6 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
                 default:
                     log.setType("danger");
                     break;
-
             }
 
             log.setVersionContent(versionContent);
@@ -174,7 +171,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         updateSelective(data);
         ProjectEditionLog log = new ProjectEditionLog();
 
-        // 作废版本日志
+        // 回复版本日志
         log.setEditionId(entity.getId());
         log.setType("info");
         log.setIcon("el-icon-search");
