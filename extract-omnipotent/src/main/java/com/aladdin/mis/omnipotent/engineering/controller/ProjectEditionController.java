@@ -90,6 +90,20 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
         }
     }
 
+    /**
+     * 作废版本
+     */
+    @RequestMapping("/recover")
+    @ResponseBody
+    public Result recover(@RequestBody ProjectEdition entity) {
+        boolean flag = projectEditionService.recover(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
 
 
 }

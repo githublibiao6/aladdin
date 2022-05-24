@@ -140,7 +140,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
             content += "状态："+map.get(entity.getStatus());
         }
         log.setContent(content);
-        logService.insert(log);
+        logService.insert(log);/**/
         return true;
     }
 
@@ -160,6 +160,27 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "作废版本;";
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+
+    @Override
+    public boolean recover(ProjectEdition entity) {
+        ProjectEdition data = new ProjectEdition();
+        data.setStatus("1");
+        data.setId(entity.getId());
+        updateSelective(data);
+        ProjectEditionLog log = new ProjectEditionLog();
+
+        // 作废版本日志
+        log.setEditionId(entity.getId());
+        log.setType("info");
+        log.setIcon("el-icon-search");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "重启版本;";
         log.setContent(content);
         logService.insert(log);
         return true;
