@@ -3,11 +3,6 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
@@ -29,6 +24,12 @@ public class ProjectFile extends GlobalModel {
      */
     @TableField("file_name")
     private String fileName;
+
+    /**
+     * fileName文件类别
+     */
+    @TableField("file_category")
+    private String fileCategory;
 
     /**
      * fileType文件类型 1 项目文件 2 版本文件
@@ -77,5 +78,11 @@ public class ProjectFile extends GlobalModel {
      */
     @TableField("status")
     private String status;
+
+    /**
+     * 下载次数
+     */
+    @TableField("downloadCount")
+    private String downloadCount;
 
 }

@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectFileDao">
 
     <sql id="baseColumn">
         id,
         relation_id,
         file_name,
+        file_category,
         file_type,
         file_url,
         min_thumbnail,
@@ -14,6 +15,7 @@
         file_level,
         comments,
         status,
+        download_count,
         sys001,
         sys002,
         sys003,
@@ -22,10 +24,11 @@
         sys006,
         sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectFile" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectFile" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="relation_id" column="relationId"/>
         <result property="file_name" column="fileName"/>
+        <result property="file_category" column="fileCategory"/>
         <result property="file_type" column="fileType"/>
         <result property="file_url" column="fileUrl"/>
         <result property="min_thumbnail" column="minThumbnail"/>
@@ -34,6 +37,7 @@
         <result property="file_level" column="fileLevel"/>
         <result property="comments" column="comments"/>
         <result property="status" column="status"/>
+        <result property="download_count" column="downloadCount"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
         <result property="sys003" column="sys003"/>
