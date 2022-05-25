@@ -91,7 +91,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     }
 
     /**
-     * 作废版本
+     * 回复版本
      */
     @RequestMapping("/recover")
     @ResponseBody
@@ -103,7 +103,5 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
             return Result.error();
         }
     }
-
-
 
 }
