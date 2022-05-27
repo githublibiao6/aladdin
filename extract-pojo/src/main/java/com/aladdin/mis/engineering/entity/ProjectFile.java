@@ -83,6 +83,6 @@ public class ProjectFile extends GlobalModel {
      * 下载次数
      */
     @TableField("downloadCount")
-    private String downloadCount;
+    private Integer downloadCount;
 
 }

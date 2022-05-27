@@ -41,26 +41,32 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
 
         String oldStatus = old.getStatus();
 
-
-        // 验收后发现问题的回调
-        if("4".equals(oldStatus) && "3".equals(status)){
-            entity.setStatus(status);
-        }
-        Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
+        Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectFileStatus");
+        Map<String, String> levelMap = dictionaryTeamsService.getTeamsByCode("projectFileLevel");
 
         // 记录版本日志
         String comments = entity.getComments();
+        String fileName = entity.getFileName();
+        String fileLevel = entity.getFileLevel();
 
         String oldComments = old.getComments();
+        String oldFileName = old.getFileName();
+        String oldFileLevel = old.getFileLevel();
 
         StringBuilder content = new StringBuilder();
 
         // 判断状态的改变
-        if(!oldStatus.equals(status)){
+        if(status != null && !oldStatus.equals(status)){
             content.append("\n修改状态为：").append(map.get(status)).append(";");
         }
         if(comments != null && !oldComments.equals(comments)){
             content.append("\n修改描述为：").append(comments).append(";");
+        }
+        if(fileName != null && !oldFileName.equals(fileLevel)){
+            content.append("\n修改文件名称为：").append(fileName).append(";");
+        }
+        if(fileLevel != null && !oldFileLevel.equals(fileName)){
+            content.append("\n修改文件等级为：").append(levelMap.get(fileLevel)).append(";");
         }
 
         if(content.length() > 0){
@@ -69,24 +75,12 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
             // 记录日志的图标
             String statusIcon = status == null ? oldStatus : status;
             switch (statusIcon){
-                case "4":
+                case "1":
                     log.setType("success");
-                    log.setIcon("el-icon-s-promotion");
-                    break;
-                case "3":
-                    log.setType("warning");
-                    log.setIcon("el-icon-message-solid");
-                    break;
-                case "2":
-                    log.setType("primary");
                     log.setIcon("el-icon-s-flag");
                     break;
-                case "1":
-                    log.setType("info");
-                    log.setIcon("el-icon-search");
-                    break;
                 case "0":
-                    log.setType("");
+                    log.setType("warning");
                     log.setIcon("el-icon-s-opportunity");
                     break;
                 default:
@@ -107,7 +101,8 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
 
     @Override
     public boolean save(ProjectFile entity) {
-        // 保存版本
+        entity.setDownloadCount(0);
+        // 保存文件
         Integer id= insert(entity);
         ProjectFileLog log = new ProjectFileLog();
 
@@ -117,11 +112,8 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "新建版本;";
-        if(!"0".equals(entity.getStatus())){
-            Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
-            content += "状态："+map.get(entity.getStatus());
-        }
+        String content = om.getUserName() + "新上传文件;";
+
         log.setContent(content);
         logService.insert(log);/**/
         return true;
@@ -130,7 +122,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
     @Override
     public boolean cancellation(ProjectFile entity) {
         ProjectEdition data = new ProjectEdition();
-        data.setStatus("9");
+        data.setStatus("0");
         data.setId(entity.getId());
         updateSelective(data);
 
@@ -141,7 +133,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         log.setIcon("el-icon-delete");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "作废版本;";
+        String content = om.getUserName() + "作废文件;";
         log.setContent(content);
         logService.insert(log);
         return true;
@@ -161,7 +153,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         log.setIcon("el-icon-search");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "重启版本;";
+        String content = om.getUserName() + "重启文件;";
         log.setContent(content);
         logService.insert(log);
         return true;
