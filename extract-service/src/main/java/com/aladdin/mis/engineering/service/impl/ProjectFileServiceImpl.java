@@ -30,7 +30,6 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
     @Autowired
     private ProjectFileLogService logService;
 
-
     @Autowired
     private DictionaryTeamsService dictionaryTeamsService;
 

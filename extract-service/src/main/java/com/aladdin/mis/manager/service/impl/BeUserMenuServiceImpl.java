@@ -26,7 +26,7 @@ import java.util.Set;
  * @date 2022-03-01T22:38:09.336
 */
 @Service
-public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> implements BeUserMenuService{
+public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> implements BeUserMenuService {
 
     @Autowired
     private BeUserMenuDao beUserMenuDao;

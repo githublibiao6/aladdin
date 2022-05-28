@@ -27,6 +27,12 @@
 
   <dependencies>
 
+    <dependency>
+      <groupId>com.aladdin.mis</groupId>
+      <artifactId>extract-common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>
