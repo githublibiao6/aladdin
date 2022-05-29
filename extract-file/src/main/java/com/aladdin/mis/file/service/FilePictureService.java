@@ -1,4 +1,4 @@
-package com.aladdin.mis.manager.file.service;
+package com.aladdin.mis.file.service;
 
 /**
  * 上传图片

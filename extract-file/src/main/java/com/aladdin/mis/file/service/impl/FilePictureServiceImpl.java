@@ -1,7 +1,7 @@
-package com.aladdin.mis.manager.file.service.impl;
+package com.aladdin.mis.file.service.impl;
 
 
-import com.aladdin.mis.manager.file.service.FilePictureService;
+import com.aladdin.mis.file.service.FilePictureService;
 
 /**
  * 上传图片
