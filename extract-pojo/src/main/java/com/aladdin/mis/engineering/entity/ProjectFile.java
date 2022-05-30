@@ -32,6 +32,12 @@ public class ProjectFile extends GlobalModel {
     private String fileCategory;
 
     /**
+     * file大小
+     */
+    @TableField("file_size")
+    private String fileSize;
+
+    /**
      * fileType文件类型 1 项目文件 2 版本文件
      */
     @TableField("file_type")

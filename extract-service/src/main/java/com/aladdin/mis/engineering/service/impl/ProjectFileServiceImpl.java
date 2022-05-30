@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectFileDao;
 import com.aladdin.mis.engineering.entity.ProjectEdition;
-import com.aladdin.mis.engineering.entity.ProjectEditionLog;
 import com.aladdin.mis.engineering.entity.ProjectFile;
 import com.aladdin.mis.engineering.entity.ProjectFileLog;
 import com.aladdin.mis.engineering.service.ProjectFileLogService;
@@ -61,15 +60,15 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         if(comments != null && !oldComments.equals(comments)){
             content.append("\n修改描述为：").append(comments).append(";");
         }
-        if(fileName != null && !oldFileName.equals(fileLevel)){
+        if(fileName != null && !oldFileName.equals(fileName)){
             content.append("\n修改文件名称为：").append(fileName).append(";");
         }
-        if(fileLevel != null && !oldFileLevel.equals(fileName)){
+        if(fileLevel != null && !oldFileLevel.equals(fileLevel)){
             content.append("\n修改文件等级为：").append(levelMap.get(fileLevel)).append(";");
         }
 
         if(content.length() > 0){
-            ProjectEditionLog log = new ProjectEditionLog();
+            ProjectFileLog log = new ProjectFileLog();
 
             // 记录日志的图标
             String statusIcon = status == null ? oldStatus : status;
@@ -88,7 +87,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
             }
 
             log.setComments(comments);
-            log.setEditionId(entity.getId());
+            log.setFileId(entity.getId());
 
             OmUser om = UserUtil.getCurrentUser();
             log.setOperationUser(om.getUserName());

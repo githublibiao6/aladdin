@@ -7,6 +7,7 @@
         relation_id,
         file_name,
         file_category,
+        file_size,
         file_type,
         file_url,
         min_thumbnail,
@@ -29,6 +30,7 @@
         <result property="relation_id" column="relationId"/>
         <result property="file_name" column="fileName"/>
         <result property="file_category" column="fileCategory"/>
+        <result property="file_size" column="fileSize"/>
         <result property="file_type" column="fileType"/>
         <result property="file_url" column="fileUrl"/>
         <result property="min_thumbnail" column="minThumbnail"/>
