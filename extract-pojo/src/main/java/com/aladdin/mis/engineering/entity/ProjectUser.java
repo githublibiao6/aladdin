@@ -31,4 +31,10 @@ public class ProjectUser extends GlobalModel {
     @TableField("project_id")
     private Integer projectId;
 
+    /**
+    * 版本主键
+    */
+    @TableField("edition_id")
+    private Integer editionId;
+
 }
