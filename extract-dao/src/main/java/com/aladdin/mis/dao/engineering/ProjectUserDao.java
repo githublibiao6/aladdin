@@ -1,6 +1,6 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.engineering.entity.ProjectUser;
+import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.engineering.qo.ProjectUserQo;
 import com.aladdin.mis.engineering.vo.ProjectUserVo;
 import org.springframework.stereotype.Repository;
@@ -18,4 +18,12 @@ public interface ProjectUserDao {
      * @param qo
      * @return list
      */
-    List<ProjectUserVo> list(ProjectUserQo qo);}
+    List<ProjectUserVo> list(ProjectUserQo qo);
+
+    /**
+     * 获取项目人员详细信息
+     * @param condition
+     * @return
+     */
+    List<ProjectUserVo> pageVoByCondition(QueryCondition condition);
+}

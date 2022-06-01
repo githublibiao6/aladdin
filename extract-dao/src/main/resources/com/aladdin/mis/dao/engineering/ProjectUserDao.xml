@@ -31,9 +31,52 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectUserVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectUserVo">
         select <include refid="baseColumn"></include>
         from project_user t where 1=1
+        <if test="id  != null and id != '' ">
+            and t.id = #{id}
+        </if>
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="roleId  != null and roleId != '' ">
+            and t.role_id = #{roleId}
+        </if>
+        <if test="projectId  != null and projectId != '' ">
+            and t.project_id = #{projectId}
+        </if>
+        <if test="editionId  != null and editionId != '' ">
+            and t.edition_id = #{editionId}
+        </if>
+        <if test="sys001  != null and sys001 != '' ">
+            and t.sys001 = #{sys001}
+        </if>
+        <if test="sys002  != null and sys002 != '' ">
+            and t.sys002 = #{sys002}
+        </if>
+        <if test="sys003  != null and sys003 != '' ">
+            and t.sys003 = #{sys003}
+        </if>
+        <if test="sys004  != null and sys004 != '' ">
+            and t.sys004 = #{sys004}
+        </if>
+        <if test="sys005  != null and sys005 != '' ">
+            and t.sys005 = #{sys005}
+        </if>
+        <if test="sys006  != null and sys006 != '' ">
+            and t.sys006 = #{sys006}
+        </if>
+        <if test="sys007  != null and sys007 != '' ">
+            and t.sys007 = #{sys007}
+        </if>
+    </select>
+
+    <select id="pageVoByCondition" resultType="com.aladdin.mis.engineering.vo.ProjectUserVo">
+        select t.*
+        from project_user t
+        left join
+        where 1=1
         <if test="id  != null and id != '' ">
             and t.id = #{id}
         </if>
