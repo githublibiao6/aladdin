@@ -1,10 +1,10 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectUser;
+import com.aladdin.mis.engineering.qo.ProjectUserQo;
 import com.aladdin.mis.engineering.service.ProjectUserService;
 import com.aladdin.mis.engineering.vo.ProjectUserVo;
 import com.github.pagehelper.PageInfo;
@@ -38,7 +38,7 @@ public class ProjectUserController  extends GlobalController<ProjectUser, Projec
      */
     @PostMapping("/pageVoInfo")
     @ResponseBody
-    public Result pageInfo(@RequestBody QueryCondition condition) {
+    public Result pageInfo(@RequestBody ProjectUserQo condition) {
         PageInfo<ProjectUserVo> page = projectUserService.pageVoByCondition(condition);
         return Result.success(page);
     }

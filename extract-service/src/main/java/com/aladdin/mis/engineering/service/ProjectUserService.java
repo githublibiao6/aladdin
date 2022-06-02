@@ -1,8 +1,8 @@
 package com.aladdin.mis.engineering.service;
 
-import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectUser;
+import com.aladdin.mis.engineering.qo.ProjectUserQo;
 import com.aladdin.mis.engineering.vo.ProjectUserVo;
 import com.github.pagehelper.PageInfo;
 
@@ -18,6 +18,6 @@ public interface ProjectUserService extends GlobalService<ProjectUser>  {
      * @param condition
      * @return
      */
-    PageInfo<ProjectUserVo> pageVoByCondition(QueryCondition condition);
+    PageInfo<ProjectUserVo> pageVoByCondition(ProjectUserQo condition);
 
 }

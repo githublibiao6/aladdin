@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.base.qo.QueryCondition;
 import com.aladdin.mis.engineering.qo.ProjectUserQo;
 import com.aladdin.mis.engineering.vo.ProjectUserVo;
 import org.springframework.stereotype.Repository;
@@ -25,5 +24,5 @@ public interface ProjectUserDao {
      * @param condition
      * @return
      */
-    List<ProjectUserVo> pageVoByCondition(QueryCondition condition);
+    List<ProjectUserVo> listVo(ProjectUserQo condition);
 }
