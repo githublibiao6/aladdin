@@ -1,6 +1,6 @@
 package com.aladdin.mis.auth.identity.controller;
 
-import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.currency.GlobalConfig;
 import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisConfig;
@@ -175,7 +175,7 @@ public class UserController extends GlobalController<User, UserService> {
     @RequestMapping("/page2")
     @ResponseBody
     public  Result page2(@RequestBody UserQo qo) {
-        QueryCondition condition = QueryCondition.newInstance()
+        Condition condition = Condition.newInstance()
                 .setLimit(qo.getLimit())
                 .setPage(qo.getPage())
                 .addExpression("status", qo.getStatus());

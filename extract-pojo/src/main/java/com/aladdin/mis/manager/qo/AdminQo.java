@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class AdminQo extends Admin {
+
     /**
      * 当前页码
      */
@@ -18,5 +19,10 @@ public class AdminQo extends Admin {
      * 每页数量
      */
     private Integer limit;
+
+    /**
+     * 组织机构主键
+     */
+    private Integer deptId;
 
 }

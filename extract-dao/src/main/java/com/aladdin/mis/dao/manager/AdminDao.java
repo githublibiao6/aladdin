@@ -36,6 +36,10 @@ public interface AdminDao {
 
     List<Admin> listAdmin(@Param("name") QueryCondition queryCondition);
 
+    /**
+     * 获取全部admin
+     * @return list
+     */
     List<Admin> list();
 
     List<Admin> pageList(AdminQo qo);

@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
@@ -42,7 +42,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @WebLog("工程项目版本列表")
     @ResponseBody
     public Result list(@RequestBody ProjectFile entity){
-        QueryCondition condition = QueryCondition.newInstance().addExpression("relationId", entity.getRelationId());
+        Condition condition = Condition.newInstance().addExpression("relationId", entity.getRelationId());
         List<ProjectFile> list = projectFileService.queryByCondition(condition);
         result.setData(list);
         return result ;

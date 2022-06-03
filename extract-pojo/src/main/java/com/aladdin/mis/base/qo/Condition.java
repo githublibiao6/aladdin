@@ -17,7 +17,7 @@ import java.util.Map;
  * @version: 1.0.0
  */
 @Data
-public class QueryCondition {
+public class Condition {
 
     /**
      * 页码
@@ -50,32 +50,32 @@ public class QueryCondition {
     private List<OrderCondition> orderConditions = new ArrayList<>();
 
 
-    public QueryCondition addExpression(String field, Object value) {
+    public Condition addExpression(String field, Object value) {
         fieldConditions.add(FieldCondition.newInstance().addExpression(field, value));
         return this;
     }
 
-    public QueryCondition addExpression(String field, String operation, Object value) {
+    public Condition addExpression(String field, String operation, Object value) {
         fieldConditions.add(FieldCondition.newInstance().addExpression(field,operation, value));
         return this;
     }
 
-    public QueryCondition addOrderExpression(String orderField, String orderType) {
+    public Condition addOrderExpression(String orderField, String orderType) {
         orderConditions.add(OrderCondition.newInstance().addOrderExpression(orderField,orderType));
         return this;
     }
 
-    public QueryCondition addOrExpression(String type , String field, Object value) {
+    public Condition addOrExpression(String type , String field, Object value) {
         FieldCondition fieldCondition = FieldCondition.newInstance().addExpression(field, value);
         return handleOr(type, fieldCondition);
     }
 
-    public QueryCondition addOrExpression(String type ,String field, String operation, Object value) {
+    public Condition addOrExpression(String type , String field, String operation, Object value) {
         FieldCondition fieldCondition =  FieldCondition.newInstance().addExpression(field , operation, value);
         return handleOr(type, fieldCondition);
     }
 
-    private QueryCondition handleOr(String type, FieldCondition fieldCondition){
+    private Condition handleOr(String type, FieldCondition fieldCondition){
         if(orConditions.get(type) == null || orConditions.get(type).isEmpty()){
             List<FieldCondition> list = new ArrayList<>();
             list.add(fieldCondition);
@@ -86,17 +86,17 @@ public class QueryCondition {
         return this;
     }
 
-    public QueryCondition setLimit(Integer limit) {
+    public Condition setLimit(Integer limit) {
         this.limit = limit;
         return this;
     }
 
-    public QueryCondition setPage(Integer page) {
+    public Condition setPage(Integer page) {
         this.page = page;
         return this;
     }
 
-    public static QueryCondition newInstance() {
-        return new QueryCondition();
+    public static Condition newInstance() {
+        return new Condition();
     }
 }

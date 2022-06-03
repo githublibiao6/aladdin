@@ -22,6 +22,7 @@ import java.util.List;
  */
 @Component
 public class DictionaryUtils {
+
     @Autowired
     private DictionaryServiceImpl dicService;
     @Autowired

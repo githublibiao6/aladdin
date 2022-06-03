@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.system.service;
 
-import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.system.base.BaseModel;
 import com.github.pagehelper.PageInfo;
 
@@ -23,7 +23,7 @@ public interface GlobalService<T> {
      * @param condition 实体
      * @return model
      */
-    <T> PageInfo<T> pageByCondition(QueryCondition condition);
+    <T> PageInfo<T> pageByCondition(Condition condition);
 
     /**
      * 通用list
@@ -31,7 +31,7 @@ public interface GlobalService<T> {
      * @param <T>
      * @return
      */
-    <T> List<T> queryByCondition(QueryCondition condition);
+    <T> List<T> queryByCondition(Condition condition);
 
     /**
      *
@@ -47,7 +47,7 @@ public interface GlobalService<T> {
      * @param condition
      * @return
      */
-    <T> T getByCondition(QueryCondition condition);
+    <T> T getByCondition(Condition condition);
 
 
     /**

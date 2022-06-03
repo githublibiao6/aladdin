@@ -11,6 +11,7 @@ import java.util.Date;
  */
 @Data
 public class QueryCondition {
+
     private String id;
     /**
      * 关键字

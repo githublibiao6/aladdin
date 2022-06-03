@@ -1,7 +1,7 @@
 package com.aladdin.mis.common.system.controller;
 
 
-import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.base.BaseModel;
@@ -45,7 +45,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
      */
     @PostMapping("/pageInfo")
     @ResponseBody
-    public Result pageInfo(@RequestBody QueryCondition condition) {
+    public Result pageInfo(@RequestBody Condition condition) {
         PageInfo<T> page = getBaseService().pageByCondition(condition);
         return Result.success(page);
     }
@@ -55,7 +55,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
      */
     @PostMapping("/getInfo")
     @ResponseBody
-    public Result getInfo(@RequestBody QueryCondition condition) {
+    public Result getInfo(@RequestBody Condition condition) {
         condition.setPage(1);
         condition.setLimit(10);
         T data = getBaseService().getByCondition(condition);
@@ -69,7 +69,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
      */
     @PostMapping("/listInfo")
     @ResponseBody
-    public Result listInfo(@RequestBody QueryCondition condition) {
+    public Result listInfo(@RequestBody Condition condition) {
         condition.setPage(1);
         condition.setLimit(10);
         List<T> page = getBaseService().queryByCondition(condition);
@@ -173,7 +173,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
      */
     @RequestMapping("/getByCondition")
     @ResponseBody
-    public Result detailQuery(@RequestBody QueryCondition condition) {
+    public Result detailQuery(@RequestBody Condition condition) {
         T data = getBaseService().getByCondition(condition);
         return Result.success(data);
     }

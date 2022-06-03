@@ -2,7 +2,7 @@ package com.aladdin.mis.common.system.service.impl;
 
 import com.aladdin.mis.base.qo.FieldCondition;
 import com.aladdin.mis.base.qo.OrderCondition;
-import com.aladdin.mis.base.qo.QueryCondition;
+import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.exception.MyException;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.common.utils.JSONObjectUtil;
@@ -41,7 +41,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private static final String FLAG = "sys005";
 
     @Override
-    public <T> PageInfo<T> pageByCondition(QueryCondition condition) {
+    public <T> PageInfo<T> pageByCondition(Condition condition) {
         Integer page = condition.getPage();
         Integer limit = condition.getLimit();
         if (page == null)
@@ -67,7 +67,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return (PageInfo<T>) pageInfo;
     }
 
-    private String getCondition(QueryCondition condition, TableInfo table){
+    private String getCondition(Condition condition, TableInfo table){
         if(condition == null){
             return "";
         }
@@ -87,7 +87,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return sql.toString();
     }
 
-    private String getOrCondition(QueryCondition condition, TableInfo table){
+    private String getOrCondition(Condition condition, TableInfo table){
         if(condition == null){
             return "";
         }
@@ -188,7 +188,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return sql.toString();
     }
 
-    private String getOrder(QueryCondition condition, TableInfo table){
+    private String getOrder(Condition condition, TableInfo table){
         if(condition == null){
             return "";
         }
@@ -212,7 +212,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public <T> List<T> queryByCondition(QueryCondition condition) {
+    public <T> List<T> queryByCondition(Condition condition) {
 
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);
@@ -242,7 +242,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public <T> T getByCondition(QueryCondition condition) {
+    public <T> T getByCondition(Condition condition) {
         Class<T> clazz = (Class<T>) getT();
         String tableName = getTableName(clazz);
         TableInfo table = MainDb.getTableInfo(tableName);

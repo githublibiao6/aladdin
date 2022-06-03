@@ -37,7 +37,7 @@ public class ProjectUserServiceImpl extends GlobalServiceImpl<ProjectUser> imple
 
         List<ProjectUserVo> list = projectUserDao.listVo(condition);
 
-        PageInfo<ProjectUserVo> pageInfo = new PageInfo<ProjectUserVo>(list);
+        PageInfo<ProjectUserVo> pageInfo = new PageInfo<>(list);
 //        List<ProjectUserVo> pageList = pageInfo.getList();
 
         return pageInfo;

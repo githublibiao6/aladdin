@@ -6,15 +6,20 @@ import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminRoleService;
 import com.aladdin.mis.manager.service.AdminService;
+import com.aladdin.mis.manager.service.DeptService;
+import com.aladdin.mis.manager.vo.DeptAdminVo;
+import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +36,9 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
 
     @Autowired
     private AdminRoleService adminRoleService;
+
+    @Autowired
+    private DeptService deptService;
     /**
      * 根据用户名和密码获得 admin
      * @param admin
@@ -123,5 +131,44 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         String pass = md5.digestHex(user.getLoginPassword() + salt);
         user.setLoginPassword(pass);
         return update(user);
+    }
+
+    @Override
+    public List<DeptAdminVo> treeDeptAdmin(AdminQo qo) {
+        List<Admin> adminList = list();
+        List<DeptVo> deptList = deptService.list();
+        List<DeptAdminVo> data = convertDeptTree(deptList, -1, adminList);
+        return data;
+    }
+
+
+    private List<DeptAdminVo> convertDeptTree(List<DeptVo> list, Integer pid, List<Admin> adminList){
+        List<DeptAdminVo> data = new ArrayList<>();
+        list.forEach(t->{
+            List<DeptVo> children = new ArrayList<>();
+
+            if(pid.equals(t.getParent())){
+                DeptAdminVo deptAdminVo = new DeptAdminVo();
+                for (Dept record : list) {
+                    if(record.getParent().equals(t.getId())){
+                        DeptVo vo = (DeptVo) record;
+                        vo.setParentName(t.getName());
+                        children.add(vo);
+                    }
+                }
+                if(children.size() > 0){
+                    children.forEach(child->{
+                        convertDeptTree(list, t.getId(), adminList);
+                    });
+                    t.setChildren(children);
+                    t.setHasChildren(true);
+                }else {
+                    t.setHasChildren(false);
+                }
+
+                data.add(deptAdminVo);
+            }
+        });
+        return data;
     }
 }

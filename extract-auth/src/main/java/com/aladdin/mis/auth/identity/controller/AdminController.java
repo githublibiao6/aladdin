@@ -11,6 +11,7 @@ import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminService;
+import com.aladdin.mis.manager.vo.DeptAdminVo;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -211,6 +212,18 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         }else {
             return Result.error();
         }
+    }
+
+
+    /**
+     * 注册新用户
+     */
+    @RequestMapping("/treeAdmin")
+    @ResponseBody
+    public Result treeAdmin(@RequestBody AdminQo qo) {
+
+        List<DeptAdminVo> list = service.treeDeptAdmin(qo);
+        return Result.success(list);
     }
 
 }
