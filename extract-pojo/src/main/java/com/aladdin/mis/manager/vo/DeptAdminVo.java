@@ -30,6 +30,16 @@ public class DeptAdminVo {
     /**
      * 子节点
      */
-    private List<DeptAdminVo> deptId;
+    private List<DeptAdminVo> children;
+
+    /**
+     * 是否包含子节点
+     */
+    private Boolean hasChildren;
+
+    /**
+     * 是否可选
+     */
+    private Boolean disabled;
 
 }

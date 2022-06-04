@@ -6,7 +6,6 @@ import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.service.AdminRoleService;
 import com.aladdin.mis.manager.service.AdminService;
@@ -137,38 +136,62 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     public List<DeptAdminVo> treeDeptAdmin(AdminQo qo) {
         List<Admin> adminList = list();
         List<DeptVo> deptList = deptService.list();
-        List<DeptAdminVo> data = convertDeptTree(deptList, -1, adminList);
+        List<DeptAdminVo> data = new ArrayList<>();
+        convertDeptTree(data, deptList, qo.getDeptId(), adminList);
         return data;
     }
 
 
-    private List<DeptAdminVo> convertDeptTree(List<DeptVo> list, Integer pid, List<Admin> adminList){
-        List<DeptAdminVo> data = new ArrayList<>();
+    private void convertDeptTree(List<DeptAdminVo> data , List<DeptVo> list, Integer pid, List<Admin> adminList){
+
         list.forEach(t->{
-            List<DeptVo> children = new ArrayList<>();
 
             if(pid.equals(t.getParent())){
+
                 DeptAdminVo deptAdminVo = new DeptAdminVo();
-                for (Dept record : list) {
-                    if(record.getParent().equals(t.getId())){
-                        DeptVo vo = (DeptVo) record;
-                        vo.setParentName(t.getName());
-                        children.add(vo);
+                deptAdminVo.setValue(t.getId());
+                deptAdminVo.setLabel(t.getName());
+                deptAdminVo.setType("1");
+
+                List<DeptAdminVo> children = new ArrayList<>();
+                convertDeptTree(children, list, t.getId(), adminList);
+
+                // 处理当前结构下的人员
+                for (Admin admin : adminList) {
+                    if(admin.getDeptId() != null && admin.getDeptId().equals(t.getId())){
+                        DeptAdminVo child = new DeptAdminVo();
+                        child.setType("2");
+                        child.setValue(admin.getId());
+                        child.setLabel(admin.getLoginName());
+                        children.add(child);
                     }
                 }
-                if(children.size() > 0){
-                    children.forEach(child->{
-                        convertDeptTree(list, t.getId(), adminList);
-                    });
-                    t.setChildren(children);
-                    t.setHasChildren(true);
-                }else {
-                    t.setHasChildren(false);
-                }
+//                // 处理下层结构
+//                for (Dept dept : list) {
+//                    if(dept.getParent().equals(t.getId())){
+//                        DeptAdminVo child = new DeptAdminVo();
+//                        child.setType("1");
+//                        child.setValue(dept.getId());
+//                        child.setLabel(dept.getName());
+//                        children.add(child);
+//                    }
+//                }
 
+                if(children.size() > 0){
+//                    children.forEach(child->{
+//                        if("1".equals(child.getType())){
+//                            List<DeptAdminVo> voList = new ArrayList<>();
+//                            convertDeptTree(voList, list, t.getId(), adminList);
+//                        }
+//                    });
+                    deptAdminVo.setChildren(children);
+                    deptAdminVo.setHasChildren(true);
+                }else {
+                    deptAdminVo.setDisabled(true);
+                    deptAdminVo.setHasChildren(false);
+                }
                 data.add(deptAdminVo);
             }
         });
-        return data;
     }
 }

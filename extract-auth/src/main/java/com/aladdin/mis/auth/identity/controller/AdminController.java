@@ -216,7 +216,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
 
 
     /**
-     * 注册新用户
+     * 获取组织机构管理员结构
      */
     @RequestMapping("/treeAdmin")
     @ResponseBody
