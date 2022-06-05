@@ -76,7 +76,7 @@
         select t.*, u.login_name user_name, u.phone
         from project_user t
         left join be_admin u on t.user_id = u.id
-        where 1=1
+        where t.sys005='1'
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
         </if>
