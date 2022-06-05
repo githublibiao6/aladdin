@@ -17,7 +17,7 @@ public class ProjectUser extends GlobalModel {
     * 人员
     */
     @TableField("user_id")
-    private String userId;
+    private Integer userId;
 
     /**
     * 角色，多个用,隔开
