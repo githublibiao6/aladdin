@@ -3,12 +3,11 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
  * 项目缺陷管理
@@ -31,7 +30,7 @@ public class ProjectBug extends GlobalModel {
     private String bugType;
 
     /**
-     * bugName缺陷名称
+     * bugName 缺陷标题0
      */
     @TableField("bug_name")
     private String bugName;
@@ -43,7 +42,7 @@ public class ProjectBug extends GlobalModel {
     private String bugPicture;
 
     /**
-     * bugLevelbug 等级 1 轻微 2 普通 3 紧急 4 致命 
+     * bug 等级 1 轻微 2 普通 3 严重 4 紧急 5 致命
      */
     @TableField("bug_level")
     private String bugLevel;
@@ -69,13 +68,19 @@ public class ProjectBug extends GlobalModel {
     private LocalDateTime completeTime;
 
     /**
+     * 缺陷修复星级
+     */
+    @TableField("complete_star")
+    private LocalDateTime completeStar;
+
+    /**
      * status文件状态  1 打开 2 处理 3 完成 4 测试 5 复提 6 关闭
      */
     @TableField("status")
     private String status;
 
     /**
-     * bugReason问题原因 1 未发现问题 2 设计如此 3 代码缺陷 4 需求问题 
+     * bugReason问题原因 1 未发现问题 2 设计如此 3 代码缺陷 4 需求问题
      */
     @TableField("bug_reason")
     private String bugReason;

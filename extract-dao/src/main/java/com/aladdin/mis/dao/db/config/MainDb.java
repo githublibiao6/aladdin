@@ -164,6 +164,9 @@ public class MainDb {
                 case "tinyint":
                     field.setColumnType("Integer");
                     break;
+                case "double":
+                    field.setColumnType("Double");
+                    break;
                 case "date":
                     field.setColumnType("LocalDate");
                     break;
@@ -239,7 +242,11 @@ public class MainDb {
                                     }
                                     break;
                                 case "int":
+                                case "tinyint":
                                     t.setColumnType("Integer");
+                                    break;
+                                case "double":
+                                    t.setColumnType("Double");
                                     break;
                                 case "date":
                                     t.setColumnType("LocalDate");

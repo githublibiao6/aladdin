@@ -194,6 +194,9 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
             if (int.class.equals(type) || Integer.class.equals(type)) {
                 obj.setColType("int");
                 obj.setColumnType("Integer");
+            }else if(Double.class.equals(type)){
+                obj.setColType("double");
+                obj.setColumnType("Double");
             }else if(Date.class.equals(type)){
                 obj.setColType("date");
                 obj.setColumnType("Date");
