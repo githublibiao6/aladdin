@@ -2,8 +2,8 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectBug;
-import com.aladdin.mis.engineering.vo.ProjectBugVo;
 import com.aladdin.mis.engineering.qo.ProjectBugQo;
+import com.aladdin.mis.engineering.vo.ProjectBugVo;
 import com.github.pagehelper.PageInfo;
 /**
  * ProjectBugService
@@ -12,4 +12,10 @@ import com.github.pagehelper.PageInfo;
 */
 public interface ProjectBugService extends GlobalService<ProjectBug>  {
 
+    /**
+     * 获取分页数据
+     * @param qo 查询条件
+     * @return
+     */
+    PageInfo<ProjectBugVo> pageByDto(ProjectBugQo qo);
 }

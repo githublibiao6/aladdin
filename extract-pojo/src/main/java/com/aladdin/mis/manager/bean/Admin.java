@@ -18,6 +18,11 @@ public class Admin extends GlobalModel {
      * 登录名
      */
     private String loginName;
+
+    /**
+     * 真是姓名
+     */
+    private String realName;
     /**
      * 登陆密码
      */

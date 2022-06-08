@@ -32,8 +32,8 @@ public class ProjectBug extends GlobalModel {
     /**
      * bugName 缺陷标题0
      */
-    @TableField("bug_name")
-    private String bugName;
+    @TableField("bug_title")
+    private String bugTitle;
 
     /**
      * bugPicture文件类别
@@ -90,5 +90,11 @@ public class ProjectBug extends GlobalModel {
      */
     @TableField("regression_comments")
     private String regressionComments;
+
+    /**
+     * regressionComments回归描述
+     */
+    @TableField("found_user")
+    private String foundUser;
 
 }

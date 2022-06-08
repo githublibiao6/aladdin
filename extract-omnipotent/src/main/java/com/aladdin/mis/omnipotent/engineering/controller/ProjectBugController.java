@@ -1,24 +1,22 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.engineering.entity.ProjectBug;
-import com.aladdin.mis.engineering.service.ProjectBugService;
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectBugQo;
-import com.aladdin.mis.engineering.vo.ProjectBugVo;
-import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
-import com.github.pagehelper.PageInfo;
 import com.aladdin.mis.common.system.service.GlobalService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.aladdin.mis.engineering.entity.ProjectBug;
+import com.aladdin.mis.engineering.qo.ProjectBugQo;
+import com.aladdin.mis.engineering.service.ProjectBugService;
+import com.aladdin.mis.engineering.vo.ProjectBugVo;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 /**
- * 项目缺陷管理 ProjectBugService--- 
+ * 项目缺陷管理 ProjectBugService---
  * @author cles
  * @date 2022-06-07T00:17:28.418
 */
@@ -34,5 +32,17 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     protected GlobalService<ProjectBug> getBaseService(){
         return projectBugService ;
     }
+
+
+    /**
+     * 获取通用分页
+     */
+    @PostMapping("/pageVoInfo")
+    @ResponseBody
+    public Result pageVoInfo(@RequestBody ProjectBugQo qo) {
+        PageInfo<ProjectBugVo> page = projectBugService.pageByDto(qo);
+        return Result.success(page);
+    }
+
 
 }

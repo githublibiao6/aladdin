@@ -1,33 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectBugDao">
 
     <sql id="baseColumn">
-        id,
-        relation_id,
-        bug_type,
-        bug_name,
-        bug_picture,
-        bug_level,
-        bug_priority,
-        comments,
-        complete_time,
-        status,
-        bug_reason,
-        regression_comments,
-        sys001,
-        sys002,
-        sys003,
-        sys004,
-        sys005,
-        sys006,
-        sys007
+        t.id,
+        t.relation_id,
+        t.bug_type,
+        t.bug_title,
+        t.bug_picture,
+        t.bug_level,
+        t.bug_priority,
+        t.comments,
+        t.complete_time,
+        t.status,
+        t.bug_reason,
+        t.regression_comments,
+        t.found_user,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectBug" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectBug" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="relation_id" column="relationId"/>
         <result property="bug_type" column="bugType"/>
-        <result property="bug_name" column="bugName"/>
+        <result property="bug_title" column="bugTitle"/>
         <result property="bug_picture" column="bugPicture"/>
         <result property="bug_level" column="bugLevel"/>
         <result property="bug_priority" column="bugPriority"/>
@@ -36,6 +37,7 @@
         <result property="status" column="status"/>
         <result property="bug_reason" column="bugReason"/>
         <result property="regression_comments" column="regressionComments"/>
+        <result property="found_user" column="foundUser"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
         <result property="sys003" column="sys003"/>
@@ -47,15 +49,21 @@
 
 <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectBugVo">
         select <include refid="baseColumn"></include>
-        from project_bug t where 1=1
+        , a.real_name fixPerson
+        , a1.real_name foundPerson
+        from project_bug t
+        left join project_bug_user u on u.bug_id = t.id and u.user_type='1'
+        left join be_admin a on u.user_id = a.id
+        left join be_admin a1 on t.found_user = a1.id
+        where t.sys005=1
         <if test="relationId  != null and relationId != '' ">
             and t.relation_id = #{relationId}
         </if>
         <if test="bugType  != null and bugType != '' ">
             and t.bug_type = #{bugType}
         </if>
-        <if test="bugName  != null and bugName != '' ">
-            and t.bug_name = #{bugName}
+        <if test="bugTitle  != null and bugTitle != '' ">
+            and t.bug_name = #{bugTitle}
         </if>
         <if test="bugPicture  != null and bugPicture != '' ">
             and t.bug_picture = #{bugPicture}
@@ -82,7 +90,9 @@
             and t.regression_comments = #{regressionComments}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}        </if>
+           order by ${sortInfo}
+
+           </if>
     </select>
 
 </mapper>

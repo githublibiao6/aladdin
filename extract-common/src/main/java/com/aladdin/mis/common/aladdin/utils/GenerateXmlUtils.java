@@ -27,7 +27,7 @@ public  class GenerateXmlUtils {
         List<TableFieldInfo> fields = tableInfo.getFields();
 
         fields.forEach(t->{
-            content.append("        "+ t.getColName() +",\n");
+            content.append("        t."+ t.getColName() +",\n");
         });
         content.delete(content.length()-2, content.length());
         content.append("\n  </sql>\n");
@@ -46,7 +46,7 @@ public  class GenerateXmlUtils {
         content.append("    </resultMap>\n\n");
         content.append("<select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
                 "        select <include refid=\"baseColumn\"></include>\n" +
-                "        from "+tableInfo.getTableName()+" t where 1=1\n");
+                "        from "+tableInfo.getTableName()+" t where t.sys005 = 1\n");
 
         String s = "id,sys001,sys002,sys003,sys004,sys005,sys006,sys007";
         Set<String > set = new HashSet<>(Arrays.asList(s.split(",")));
@@ -61,7 +61,7 @@ public  class GenerateXmlUtils {
         });
         content.append("        <if test= \" sortInfo  != null and sortInfo != '' "+"\">\n" +
                 "           order by ${sortInfo}" +
-                "        </if>\n" );
+                "        \n</if>\n" );
         content.append("    </select>\n\n");
         content.append("</mapper>\n");
         System.err.println(content);
