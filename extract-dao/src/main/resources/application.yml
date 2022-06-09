@@ -66,3 +66,5 @@ pagehelper:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  # 处理mybatis类转换等的包
+  type-handlers-package: com.aladdin.mis.dao.handle

@@ -4,6 +4,7 @@ package com.aladdin.mis.dao.handle;
  */
 
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,8 @@ import java.util.List;
  * @version: 1.0.0
  */
 @Component
-public class ListTypehandler implements TypeHandler<List<String>> {
+@MappedTypes(List.class)
+public class ListTypeHandler implements TypeHandler<List<String>> {
     @Override
     public void setParameter(PreparedStatement preparedStatement, int i, List<String> strings, JdbcType jdbcType) throws SQLException {
         StringBuffer sb = new StringBuffer();
