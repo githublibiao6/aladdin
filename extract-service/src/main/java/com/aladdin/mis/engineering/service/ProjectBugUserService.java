@@ -2,9 +2,6 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectBugUser;
-import com.aladdin.mis.engineering.vo.ProjectBugUserVo;
-import com.aladdin.mis.engineering.qo.ProjectBugUserQo;
-import com.github.pagehelper.PageInfo;
 /**
  * ProjectBugUserService
  * @author cles
@@ -12,4 +9,17 @@ import com.github.pagehelper.PageInfo;
 */
 public interface ProjectBugUserService extends GlobalService<ProjectBugUser>  {
 
+    /**
+     * 保存缺陷管理人员
+     * @param entity
+     * @return
+     */
+    boolean save(ProjectBugUser entity);
+
+    /**
+     * 修改状态
+     * @param entity
+     * @return
+     */
+    boolean update(ProjectBugUser entity);
 }
