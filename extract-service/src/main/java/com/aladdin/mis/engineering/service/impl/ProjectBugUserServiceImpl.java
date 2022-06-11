@@ -3,9 +3,11 @@ package com.aladdin.mis.engineering.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectBugUserDao;
+import com.aladdin.mis.engineering.entity.ProjectBug;
 import com.aladdin.mis.engineering.entity.ProjectBugLog;
 import com.aladdin.mis.engineering.entity.ProjectBugUser;
 import com.aladdin.mis.engineering.service.ProjectBugLogService;
+import com.aladdin.mis.engineering.service.ProjectBugService;
 import com.aladdin.mis.engineering.service.ProjectBugUserService;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.service.AdminService;
@@ -30,6 +32,9 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
 
     @Autowired
     private ProjectBugLogService logService;
+
+    @Autowired
+    private ProjectBugService bugService;
 
     @Autowired
     private DictionaryTeamsService dictionaryTeamsService;
@@ -78,7 +83,7 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
 
         ProjectBugLog log = new ProjectBugLog();
 
-        Admin admin = adminService.detailQuery(entity.getUserId());
+//        Admin admin = adminService.detailQuery(entity.getUserId());
 
         // 新建缺陷管理日志
         log.setBugId(entity.getBugId());
@@ -99,9 +104,11 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
             log.setIcon("el-icon-folder-checked");
             entity.setEndTime(LocalDateTime.now());
             content += "完成任务";
+            // 指派人员完成任务时， 修改缺陷的状态(指派人员确定缺陷的状态)
+            ProjectBug bug = bugService.detailQuery(old.getBugId());
+            bug.setStatus("3");
+            bugService.updateSelective(bug);
         }
-        // todo 指派人员完成任务时， 修改缺陷的状态
-        // 指派人员确定缺陷的状态
         log.setContent(content);
         logService.insert(log);
         return update(entity);

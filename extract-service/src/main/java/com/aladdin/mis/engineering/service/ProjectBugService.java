@@ -18,4 +18,18 @@ public interface ProjectBugService extends GlobalService<ProjectBug>  {
      * @return
      */
     PageInfo<ProjectBugVo> pageByDto(ProjectBugQo qo);
+
+    /**
+     * 缺陷内容更新
+     * @param entity
+     * @return
+     */
+    boolean update(ProjectBug entity);
+
+    /**
+     * 新增缺陷
+     * @param entity
+     * @return
+     */
+    boolean save(ProjectBug entity);
 }
