@@ -52,25 +52,16 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
         String oldStatus = old.getStatus();
 
-        // 验收后发现问题的回调
-        if("4".equals(oldStatus) && "3".equals(status)){
-            entity.setStatus(status);
-        }
         Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectBugStatus");
 
-        // 记录版本日志
-        String comments = entity.getComments();
-
-        String oldComments = old.getComments();
+        OmUser om = UserUtil.getCurrentUser();
 
         StringBuilder content = new StringBuilder();
 
+        content.append(om.getUserName());
         // 判断状态的改变
         if(!oldStatus.equals(status)){
-            content.append("\n修改状态为：").append(map.get(status)).append(";");
-        }
-        if(comments != null && !oldComments.equals(comments)){
-            content.append("\n修改描述为：").append(comments).append(";");
+            content.append("修改状态为：").append(map.get(status)).append(";");
         }
 
         if(content.length() > 0){
@@ -104,12 +95,10 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
                     break;
             }
 
-            OmUser om = UserUtil.getCurrentUser();
             log.setOperationUser(om.getUserName());
             log.setContent(om.getUserName() + content.toString());
             logService.insert(log);
         }
-        // 版本号不允许修改
         return updateSelective(entity);
     }
 
@@ -124,13 +113,10 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "新建版本;";
-        if(!"0".equals(entity.getStatus())){
-            Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
-            content += "状态："+map.get(entity.getStatus());
-        }
+        String content = om.getUserName() + "打开缺陷;";
+
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 }
