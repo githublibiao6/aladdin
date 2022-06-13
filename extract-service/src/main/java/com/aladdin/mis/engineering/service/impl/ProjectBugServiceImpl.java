@@ -48,20 +48,31 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
     @Override
     public boolean update(ProjectBug entity) {
         String status = entity.getStatus();
+        String level = entity.getBugLevel();
+        String priority = entity.getBugPriority();
         ProjectBug old = detailQuery(entity.getId());
 
         String oldStatus = old.getStatus();
+        String oldLevel = old.getBugLevel();
+        String oldPriority = old.getBugPriority();
 
         Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectBugStatus");
+        Map<String, String> map2 = dictionaryTeamsService.getTeamsByCode("projectBugLevel");
+        Map<String, String> map3 = dictionaryTeamsService.getTeamsByCode("projectBugPriority");
 
         OmUser om = UserUtil.getCurrentUser();
 
         StringBuilder content = new StringBuilder();
 
-        content.append(om.getUserName());
         // 判断状态的改变
         if(!oldStatus.equals(status)){
             content.append("修改状态为：").append(map.get(status)).append(";");
+        }
+        if(!oldLevel.equals(level)){
+            content.append("修改等级为：").append(map2.get(level)).append(";");
+        }
+        if(!oldPriority.equals(priority)){
+            content.append("修改优先级为：").append(map3.get(priority)).append(";");
         }
 
         if(content.length() > 0){
@@ -94,7 +105,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
                     log.setType("danger");
                     break;
             }
-
+            log.setBugId(entity.getId());
             log.setOperationUser(om.getUserName());
             log.setContent(om.getUserName() + content.toString());
             logService.insert(log);
@@ -111,6 +122,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         // 新建缺陷管理日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
+        log.setBugId(entity.getId());
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "打开缺陷;";

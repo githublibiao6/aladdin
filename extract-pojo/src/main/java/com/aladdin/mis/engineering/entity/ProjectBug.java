@@ -71,7 +71,7 @@ public class ProjectBug extends GlobalModel {
      * 缺陷修复星级
      */
     @TableField("complete_star")
-    private LocalDateTime completeStar;
+    private Integer completeStar;
 
     /**
      * status文件状态  1 打开 2 处理 3 完成 4 测试 5 复提 6 关闭
