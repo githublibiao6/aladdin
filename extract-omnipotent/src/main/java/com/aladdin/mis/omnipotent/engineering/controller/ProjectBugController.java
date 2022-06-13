@@ -44,5 +44,25 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
         return Result.success(page);
     }
 
+    /**
+     * 保存
+     */
+    @PostMapping("/save")
+    @ResponseBody
+    public Result save(@RequestBody ProjectBug entity) {
+        boolean page = projectBugService.save(entity);
+        return Result.success(page);
+    }
+
+    /**
+     * 更新
+     */
+    @PostMapping("/update")
+    @ResponseBody
+    public Result update(@RequestBody ProjectBug entity) {
+        boolean page = projectBugService.update(entity);
+        return Result.success(page);
+    }
+
 
 }
