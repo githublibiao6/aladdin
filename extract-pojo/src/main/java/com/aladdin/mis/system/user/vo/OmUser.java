@@ -21,6 +21,11 @@ public class OmUser {
     /**
      * 用户名称
      */
+    private String loginName;
+
+    /**
+     * 用户名称
+     */
     private String userName;
 
     /**

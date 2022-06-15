@@ -115,6 +115,8 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
     @Override
     public boolean save(ProjectBug entity) {
+        OmUser om = UserUtil.getCurrentUser();
+        entity.setFoundUser(om.getUserName());
         // 保存版本
         Integer id= insert(entity);
         ProjectBugLog log = new ProjectBugLog();
@@ -123,7 +125,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         log.setBugId(id);
-        OmUser om = UserUtil.getCurrentUser();
+
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "打开缺陷;";
 

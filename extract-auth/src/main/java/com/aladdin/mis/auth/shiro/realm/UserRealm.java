@@ -146,7 +146,8 @@ public class UserRealm extends AuthorizingRealm {
         }
         OmUser user = new OmUser();
         user.setUserId(admin.getId());
-        user.setUserName(admin.getLoginName());
+        user.setLoginName(admin.getRealName());
+        user.setUserName(admin.getRealName() == null ? admin.getLoginName() : admin.getRealName());
         user.setDeptId(deptId);
         user.setUserType("1");
         user.setDeptName(dept.getName());
