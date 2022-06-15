@@ -122,7 +122,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         // 新建缺陷管理日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
-        log.setBugId(entity.getId());
+        log.setBugId(id);
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "打开缺陷;";
