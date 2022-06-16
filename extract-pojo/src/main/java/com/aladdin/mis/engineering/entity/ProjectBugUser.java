@@ -36,7 +36,7 @@ public class ProjectBugUser extends GlobalModel {
     private String userType;
 
     /**
-     * status文件状态  1 指派 2 处理 3 完成 4 回归
+     * status文件状态  1 指派 2 处理 3 提测 4 回归
      */
     @TableField("status")
     private String status;

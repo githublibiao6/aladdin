@@ -16,6 +16,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -81,8 +82,17 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
             // 记录日志的图标
             String statusIcon = status == null ? oldStatus : status;
             switch (statusIcon){
-                case "4":
+                case "6":
                     log.setType("success");
+                    log.setIcon("el-icon-s-promotion");
+                    entity.setCompleteTime(LocalDateTime.now());
+                    break;
+                case "5":
+                    log.setType("success");
+                    log.setIcon("el-icon-refresh-left");
+                    break;
+                case "4":
+                    log.setType("danger");
                     log.setIcon("el-icon-s-promotion");
                     break;
                 case "3":
@@ -117,7 +127,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
     public boolean save(ProjectBug entity) {
         OmUser om = UserUtil.getCurrentUser();
         entity.setFoundUser(om.getUserName());
-        // 保存版本
+        // 保存缺陷
         Integer id= insert(entity);
         ProjectBugLog log = new ProjectBugLog();
 

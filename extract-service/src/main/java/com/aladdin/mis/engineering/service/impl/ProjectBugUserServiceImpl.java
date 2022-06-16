@@ -91,6 +91,7 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() ;
+        ProjectBug bug = bugService.detailQuery(old.getBugId());
 
 //        Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectBugStatus");
 
@@ -103,12 +104,17 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
             log.setType("success");
             log.setIcon("el-icon-folder-checked");
             entity.setEndTime(LocalDateTime.now());
-            content += "完成任务";
+            content += "提测任务";
             // 指派人员完成任务时， 修改缺陷的状态(指派人员确定缺陷的状态)
-            ProjectBug bug = bugService.detailQuery(old.getBugId());
             bug.setStatus("3");
-            bugService.updateSelective(bug);
+        }else if("3".equals(old.getStatus()) && "4".equals(entity.getStatus())){
+            log.setType("success");
+            log.setIcon("el-icon-folder-checked");
+            content += "复提任务";
+            // 指派人员完成任务时， 修改缺陷的状态(指派人员确定缺陷的状态)
+            bug.setStatus("5");
         }
+        bugService.updateSelective(bug);
         log.setContent(content);
         logService.insert(log);
         return update(entity);
