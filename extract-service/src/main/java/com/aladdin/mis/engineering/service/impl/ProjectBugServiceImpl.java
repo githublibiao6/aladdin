@@ -67,7 +67,14 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
         // 判断状态的改变
         if(!oldStatus.equals(status)){
-            content.append("修改状态为：").append(map.get(status)).append(";");
+            content.append(map.get(status)).append("任务;");
+            if("6".equals(status)){
+                entity.setCompleteTime(LocalDateTime.now());
+            }else if("5".equals(status)){
+                if(entity.getRegressionComments() != null && !entity.getRegressionComments().isEmpty()){
+                    content.append("复提任务描述").append(entity.getRegressionComments()).append(";");
+                }
+            }
         }
         if(!oldLevel.equals(level)){
             content.append("修改等级为：").append(map2.get(level)).append(";");
@@ -85,7 +92,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
                 case "6":
                     log.setType("success");
                     log.setIcon("el-icon-s-promotion");
-                    entity.setCompleteTime(LocalDateTime.now());
+
                     break;
                 case "5":
                     log.setType("success");
