@@ -83,17 +83,14 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
 
         ProjectBugLog log = new ProjectBugLog();
 
-//        Admin admin = adminService.detailQuery(entity.getUserId());
-
         // 新建缺陷管理日志
         log.setBugId(entity.getBugId());
 
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
+
         String content = om.getUserName() ;
         ProjectBug bug = bugService.detailQuery(old.getBugId());
-
-//        Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectBugStatus");
 
         if("1".equals(old.getStatus()) && "2".equals(entity.getStatus())){
             log.setType("info");
@@ -117,7 +114,7 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
         bugService.updateSelective(bug);
         log.setContent(content);
         logService.insert(log);
-        return update(entity);
+        return updateSelective(entity);
     }
 }
 

@@ -72,7 +72,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
                 entity.setCompleteTime(LocalDateTime.now());
             }else if("5".equals(status)){
                 if(entity.getRegressionComments() != null && !entity.getRegressionComments().isEmpty()){
-                    content.append("复提任务描述").append(entity.getRegressionComments()).append(";");
+                    content.append("复提问题/意见：").append(entity.getRegressionComments()).append(";");
                 }
             }
         }
@@ -92,7 +92,6 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
                 case "6":
                     log.setType("success");
                     log.setIcon("el-icon-s-promotion");
-
                     break;
                 case "5":
                     log.setType("success");
