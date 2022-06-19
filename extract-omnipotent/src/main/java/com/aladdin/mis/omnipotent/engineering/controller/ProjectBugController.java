@@ -51,7 +51,10 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     @ResponseBody
     public Result save(@RequestBody ProjectBug entity) {
         boolean page = projectBugService.save(entity);
-        return Result.success(page);
+        if(page){
+            Result.success();
+        }
+        return Result.error();
     }
 
     /**
@@ -61,7 +64,10 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     @ResponseBody
     public Result update(@RequestBody ProjectBug entity) {
         boolean page = projectBugService.update(entity);
-        return Result.success(page);
+        if(page){
+            Result.success();
+        }
+        return Result.error();
     }
 
 

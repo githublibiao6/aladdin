@@ -30,11 +30,17 @@ import java.util.Map;
 public class DictionaryController extends GlobalController/*<Dictionary, DictionaryServiceImpl>*/{
 
     @Autowired
-    private DictionaryService dicService;
+    private DictionaryService dictService;
 
 
     @Autowired
     private SqlLogDao sqlLogDao;
+
+
+    @Override
+    protected GlobalService getBaseService() {
+        return dictService;
+    }
 
     /**
      * 添加字典
@@ -43,7 +49,7 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
     @ResponseBody
     public Result add(@RequestBody Dictionary model) {
         result = new Result();
-        Integer id = dicService.insert(model);
+        Integer id = dictService.insert(model);
         result.setSuccess(id != null);
         if(result.isSuccess()){
             result.setMessage("添加成功");
@@ -57,7 +63,7 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
     @ResponseBody
     public Result loadDictByKey(@RequestBody DictionaryQo qo) {
         result = new Result();
-        Map<String, JSONObject> map = dicService.queryDictByCode(qo.getCode());
+        Map<String, JSONObject> map = dictService.queryDictByCode(qo.getCode());
         result.setData(map);
         result.setMessage("查询成功");
         return result;
@@ -67,7 +73,7 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
     @RequestMapping("/loadAllDictionary")
     @ResponseBody
     public Result loadAllDictionary() {
-        Map<String, JSONObject> map = dicService.loadAllDictionary();
+        Map<String, JSONObject> map = dictService.loadAllDictionary();
         result.setData(map);
         result.setCode(20000);
         return result;
@@ -98,7 +104,7 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
         result = new Result();
         boolean flag = false;
         try{
-            flag = dicService.updateSelective(model);
+            flag = dictService.updateSelective(model);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -126,7 +132,7 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
     public Result remove(@RequestBody JSONObject json) {
         result = new Result();
         Dictionary m = JSONObject.parseObject(json.toJSONString(),Dictionary.class);
-        boolean flag = dicService.remove(json.getInteger("id"));
+        boolean flag = dictService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -155,8 +161,4 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
         return result;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

@@ -33,6 +33,10 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
     @Autowired
     DictionaryTeamsServiceImpl teamsService;
 
+    @Override
+    protected GlobalService getBaseService() {
+        return teamsService;
+    }
 
     /**
      * 添加字典
@@ -108,8 +112,4 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
         return result;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

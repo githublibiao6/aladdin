@@ -30,7 +30,6 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
         return projectBugUserService ;
     }
 
-
     /**
      * 保存
      */
@@ -38,7 +37,10 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     @ResponseBody
     public Result save(@RequestBody ProjectBugUser entity) {
         boolean page = projectBugUserService.save(entity);
-        return Result.success(page);
+        if(page){
+            Result.success();
+        }
+        return Result.error();
     }
 
     /**
@@ -48,7 +50,10 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     @ResponseBody
     public Result update(@RequestBody ProjectBugUser entity) {
         boolean page = projectBugUserService.update(entity);
-        return Result.success(page);
+        if(page){
+            Result.success();
+        }
+        return Result.error();
     }
 
 
