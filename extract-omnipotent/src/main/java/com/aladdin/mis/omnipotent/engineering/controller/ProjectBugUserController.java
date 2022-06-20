@@ -38,7 +38,7 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     public Result save(@RequestBody ProjectBugUser entity) {
         boolean page = projectBugUserService.save(entity);
         if(page){
-            Result.success();
+            return Result.success();
         }
         return Result.error();
     }
@@ -51,7 +51,7 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     public Result update(@RequestBody ProjectBugUser entity) {
         boolean page = projectBugUserService.update(entity);
         if(page){
-            Result.success();
+            return Result.success();
         }
         return Result.error();
     }

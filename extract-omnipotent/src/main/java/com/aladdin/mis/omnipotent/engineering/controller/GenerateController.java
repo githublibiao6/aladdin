@@ -25,8 +25,14 @@ import java.util.List;
 @RequestMapping("generate")
 @Controller
 public class GenerateController extends GlobalController {
+
     @Autowired
     private GenerateService generateService;
+
+    @Override
+    protected GlobalService getBaseService() {
+        return null;
+    }
 
     /**
      * 查询数据库所有的表
@@ -57,8 +63,4 @@ public class GenerateController extends GlobalController {
         return result;
     }
 
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 }

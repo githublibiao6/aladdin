@@ -35,7 +35,7 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
 
 
     /**
-     * 获取通用分页
+     * 获取分页
      */
     @PostMapping("/pageVoInfo")
     @ResponseBody
