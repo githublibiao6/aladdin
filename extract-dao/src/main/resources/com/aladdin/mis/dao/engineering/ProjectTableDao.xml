@@ -8,6 +8,7 @@
         edition_id,
         `table_name`,
         table_comment,
+        abandon_reason,
         remark,
         status,
         create_sql,
@@ -25,6 +26,7 @@
         <result property="edition_id" column="editionId"/>
         <result property="table_name" column="tableName"/>
         <result property="table_comment" column="tableComment"/>
+        <result property="abandon_reason" column="abandonReason"/>
         <result property="remark" column="remark"/>
         <result property="status" column="status"/>
         <result property="create_sql" column="createSql"/>

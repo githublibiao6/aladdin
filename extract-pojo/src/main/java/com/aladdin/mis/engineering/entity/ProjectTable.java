@@ -38,6 +38,12 @@ public class ProjectTable extends GlobalModel {
     private String tableComment;
 
     /**
+    * 废弃原因
+    */
+    @TableField("abandon_reason")
+    private String abandonReason;
+
+    /**
     * remark备注信息
     */
     @TableField("remark")
