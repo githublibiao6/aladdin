@@ -3,10 +3,6 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.util.Date;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
@@ -22,6 +18,12 @@ public class ProjectTable extends GlobalModel {
     */
     @TableField("project_id")
     private Integer projectId;
+
+    /**
+     * 版本主键
+     */
+    @TableField("edition_id")
+    private Integer editionId;
 
     /**
     * tableName
@@ -46,5 +48,11 @@ public class ProjectTable extends GlobalModel {
     */
     @TableField("status")
     private String status;
+
+    /**
+    * 建表语句
+    */
+    @TableField("create_sql")
+    private String createSql;
 
 }
