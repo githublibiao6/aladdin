@@ -10,4 +10,17 @@ import com.aladdin.mis.engineering.entity.ProjectTable;
 public interface ProjectTableService extends GlobalService<ProjectTable>  {
 
 
+    /**
+     * 更新
+     * @param entity
+     * @return
+     */
+    boolean update(ProjectTable entity);
+
+    /**
+     * 保存
+     * @param entity
+     * @return
+     */
+    boolean save(ProjectTable entity);
 }

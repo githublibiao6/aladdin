@@ -1,11 +1,19 @@
 package com.aladdin.mis.engineering.service.impl;
 
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectTableDao;
 import com.aladdin.mis.engineering.entity.ProjectTable;
+import com.aladdin.mis.engineering.entity.ProjectTableLog;
+import com.aladdin.mis.engineering.service.ProjectTableLogService;
 import com.aladdin.mis.engineering.service.ProjectTableService;
+import com.aladdin.mis.manager.service.DictionaryTeamsService;
+import com.aladdin.mis.system.user.vo.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
+
 /**
  * ProjectTableService
  * @author cles
@@ -17,6 +25,93 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
     @Autowired
     private ProjectTableDao projectTableDao;
 
+    @Autowired
+    private DictionaryTeamsService dictionaryTeamsService;
+
+    @Autowired
+    private ProjectTableLogService logService;
+
+
+    @Override
+    public boolean update(ProjectTable entity) {
+        String status = entity.getStatus();
+        ProjectTable old = detailQuery(entity.getId());
+
+        String oldStatus = old.getStatus();
+
+        // 验收后发现问题的回调
+        if("4".equals(oldStatus) && "3".equals(status)){
+            entity.setStatus(status);
+        }
+        Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectTableStatus");
+
+        // 记录日志
+        String comments = entity.getTableComment();
+        String abandonReason = entity.getAbandonReason();
+
+        String oldComments = old.getTableComment();
+
+        StringBuilder content = new StringBuilder();
+
+        // 判断状态的改变
+        if(!oldStatus.equals(status)){
+            content.append("\n修改表状态为：").append(map.get(status)).append(";");
+            if("0".equals(status)){
+                content.append("表废弃原因：").append(abandonReason).append(";");
+            }
+        }
+        if(comments != null && !oldComments.equals(comments)){
+            content.append("\n修改表描述为：").append(comments).append(";");
+        }
+
+        if(content.length() > 0){
+            ProjectTableLog log = new ProjectTableLog();
+
+            // 记录日志的图标
+            String statusIcon = status == null ? oldStatus : status;
+            switch (statusIcon){
+                case "1":
+                    log.setType("info");
+                    log.setIcon("el-icon-search");
+                    break;
+                case "0":
+                    log.setType("");
+                    log.setIcon("el-icon-s-opportunity");
+                    break;
+                default:
+                    log.setType("danger");
+                    break;
+            }
+
+
+            OmUser om = UserUtil.getCurrentUser();
+            log.setOperationUser(om.getUserName());
+            log.setContent(om.getUserName() + content.toString());
+            logService.insert(log);
+        }
+        return updateSelective(entity);
+    }
+
+    @Override
+    public boolean save(ProjectTable entity) {
+        if(entity.getId() != null){
+            return update(entity);
+        }
+        // 保存版本
+        Integer id = insert(entity);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 新建版本日志
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "新建项目表"+entity.getTableName()+";";
+        content += "表描述为" +entity.getTableComment()+ ";";
+        log.setContent(content);
+        logService.insert(log);/**/
+        return true;
+    }
 
 }
 
