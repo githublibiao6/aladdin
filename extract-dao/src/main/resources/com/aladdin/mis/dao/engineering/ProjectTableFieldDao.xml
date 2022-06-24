@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectTableFieldDao">
 
     <sql id="baseColumn">
         id,
         project_id,
         table_id,
-        column_name,
+        `column_name`,
         column_type,
+        column_length,
         column_comment,
         remark,
         status,
+        abandon_reason,
         sys001,
         sys002,
         sys003,
@@ -19,15 +21,17 @@
         sys006,
         sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectTableField" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectTableField" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
         <result property="table_id" column="tableId"/>
         <result property="column_name" column="columnName"/>
         <result property="column_type" column="columnType"/>
-        <result property="column_comment" column="columnComment"/>
+        <result property="column_type" column="columnLength"/>
+        <result property="column_length" column="columnComment"/>
         <result property="remark" column="remark"/>
         <result property="status" column="status"/>
+        <result property="abandon_reason" column="abandonReason"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
         <result property="sys003" column="sys003"/>

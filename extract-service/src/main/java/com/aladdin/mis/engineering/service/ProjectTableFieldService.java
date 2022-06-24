@@ -9,4 +9,7 @@ import com.aladdin.mis.engineering.entity.ProjectTableField;
 */
 public interface ProjectTableFieldService extends GlobalService<ProjectTableField>  {
 
+    boolean update(ProjectTableField entity);
+
+    boolean save(ProjectTableField entity);
 }

@@ -38,6 +38,12 @@ public class ProjectTableField extends GlobalModel {
     private String columnType;
 
     /**
+    * columnType字段类型
+    */
+    @TableField("column_length")
+    private Integer columnLength;
+
+    /**
     * columnComment字段描述
     */
     @TableField("column_comment")
@@ -50,9 +56,15 @@ public class ProjectTableField extends GlobalModel {
     private String remark;
 
     /**
-    * status表状态
+    * status字段状态
     */
     @TableField("status")
     private String status;
+
+    /**
+     * 废弃原因
+     */
+    @TableField("abandon_reason")
+    private String abandonReason;
 
 }

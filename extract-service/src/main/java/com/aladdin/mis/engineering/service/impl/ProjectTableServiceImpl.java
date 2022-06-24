@@ -39,10 +39,6 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
 
         String oldStatus = old.getStatus();
 
-        // 验收后发现问题的回调
-        if("4".equals(oldStatus) && "3".equals(status)){
-            entity.setStatus(status);
-        }
         Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectTableStatus");
 
         // 记录日志
