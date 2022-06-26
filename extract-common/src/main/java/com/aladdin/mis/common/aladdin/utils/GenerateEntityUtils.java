@@ -1,11 +1,12 @@
 package com.aladdin.mis.common.aladdin.utils;
 
-import com.aladdin.mis.common.utils.CommonFileUtil;
 import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.common.utils.CommonFileUtil;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -20,11 +21,14 @@ public  class GenerateEntityUtils {
     public static void writeEntityToFile(GeneratePo po){
 
         TableInfo tableInfo = po.getTableInfo();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String nowStr = dtf.format(now);
 
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
-        content.append(po.getTablePath()+"\n");
-        content.append(po.getTableFieldPath()+"\n");
-        content.append(po.getBaseModelPath() +"\n");
+        content.append(po.getTablePath()).append("\n");
+        content.append(po.getTableFieldPath()).append("\n");
+        content.append(po.getBaseModelPath()).append("\n");
         content.append("import java.time.LocalDateTime;\n");
         content.append("import java.time.LocalDate;\n");
         content.append("import java.util.List;\n");
@@ -33,13 +37,14 @@ public  class GenerateEntityUtils {
 
         content.append("import lombok.Data;\n\n");
         content.append("/**\n");
-        content.append(" * "+ tableInfo.getTableComment() +"\n");
+        content.append(" * ").append(tableInfo.getTableComment()).append("\n");
         content.append(" * @author cles\n");
-        content.append(" * @date "+ LocalDateTime.now() +"\n");
+        content.append(" * @date ").append(nowStr).append("\n");
         content.append("*/\n");
-        content.append("@Table(\""+ tableInfo.getTableName()+"\")\n");
+        content.append("@Table(\"").append(tableInfo.getTableName()).append("\")\n");
         content.append("@Data\n");
-        content.append("public class "+StringUtil.toCamelCase(tableInfo.getTableName())+" extends GlobalModel {\n");
+        content.append("public class ").append(StringUtil.toCamelCase(tableInfo.getTableName()))
+                .append(" extends GlobalModel {\n");
 
         List<TableFieldInfo> fields = tableInfo.getFields();
 

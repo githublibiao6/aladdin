@@ -1,10 +1,11 @@
 package com.aladdin.mis.common.aladdin.utils;
 
-import com.aladdin.mis.common.utils.CommonFileUtil;
 import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.common.utils.CommonFileUtil;
 import com.aladdin.mis.system.db.entity.TableInfo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 常用的文件工具类
@@ -15,21 +16,24 @@ public  class GenerateEntityQoUtils {
     public static void writeEntityToFile(GeneratePo po){
 
         TableInfo tableInfo = po.getTableInfo();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String nowStr = dtf.format(now);
 
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
-        content.append(po.getImportEntityClass()+"\n");
+        content.append(po.getImportEntityClass()).append("\n");
         content.append("import java.util.Date;\n");
         content.append("import com.fasterxml.jackson.annotation.JsonFormat;\n");
         content.append("import org.springframework.format.annotation.DateTimeFormat;\n");
 
         content.append("import lombok.Data;\n\n");
         content.append("/**\n");
-        content.append(" * "+ tableInfo.getTableComment() +"查询实体 \n");
+        content.append(" * ").append(tableInfo.getTableComment()).append("查询实体 \n");
         content.append(" * @author cles\n");
-        content.append(" * @date "+ LocalDateTime.now() +"\n");
+        content.append(" * @date ").append(nowStr).append("\n");
         content.append("*/\n");
         content.append("@Data\n");
-        content.append("public class "+StringUtil.toCamelCase(tableInfo.getTableName())+"Qo extends "+po.getEntityName()+" {\n\n");
+        content.append("public class ").append(StringUtil.toCamelCase(tableInfo.getTableName())).append("Qo extends ").append(po.getEntityName()).append(" {\n\n");
         content.append("    private Integer page;\n\n");
         content.append("    private Integer limit;\n\n");
         content.append("    /**\n");

@@ -16,18 +16,18 @@ public  class GenerateDaoUtils {
 
 
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
-        content.append(po.getImportEntityClass() +"\n");
-        content.append(po.getImportEntityQoClass() +"\n");
-        content.append(po.getImportEntityVoClass() +"\n");
+        content.append(po.getImportEntityClass()).append("\n");
+        content.append(po.getImportEntityQoClass()).append("\n");
+        content.append(po.getImportEntityVoClass()).append("\n");
         content.append("import org.springframework.stereotype.Repository;\n\n");
         content.append("import java.util.List;\n");
         content.append("/**\n");
-        content.append(" * "+ po.getEntityName() +"Dao\n");
+        content.append(" * ").append(po.getEntityName()).append("Dao\n");
         content.append(" * @author cles\n");
-        content.append(" * @date "+ LocalDateTime.now() +"\n");
+        content.append(" * @date ").append(LocalDateTime.now()).append("\n");
         content.append("*/\n");
         content.append("@Repository\n");
-        content.append("public interface "+ po.getEntityName() +"Dao {\n");
+        content.append("public interface ").append(po.getEntityName()).append("Dao {\n");
 
         content.append("    /**\n" +
                 "     * 列表\n" +

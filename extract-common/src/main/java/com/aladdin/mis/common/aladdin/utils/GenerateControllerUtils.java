@@ -5,6 +5,7 @@ import com.aladdin.mis.common.string.utils.StringUtil;
 import com.aladdin.mis.system.db.entity.TableInfo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 常用的文件工具类
@@ -16,13 +17,16 @@ public  class GenerateControllerUtils {
         TableInfo tableInfo = po.getTableInfo();
         String tableComment = tableInfo.getTableComment();
         tableComment = tableComment == null?"":tableComment;
-        StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
-        content.append(po.getImportEntityClass() +"\n");
-        content.append(po.getImportServiceClass() +"\n");
-        content.append(po.getBaseControllerPath() +"\n");
-        content.append(po.getImportEntityQoClass() +"\n");
-        content.append(po.getImportEntityVoClass() +"\n");
-        content.append(po.getWeoLogPath() +"\n");
+        StringBuilder content = new StringBuilder("package "+ po.getPackagePath() +";\n\n");
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String nowStr = dtf.format(now);
+        content.append(po.getImportEntityClass()).append("\n");
+        content.append(po.getImportServiceClass()).append("\n");
+        content.append(po.getBaseControllerPath()).append("\n");
+        content.append(po.getImportEntityQoClass()).append("\n");
+        content.append(po.getImportEntityVoClass()).append("\n");
+        content.append(po.getWeoLogPath()).append("\n");
         content.append("import com.aladdin.mis.common.system.entity.Result;\n");
         content.append("import com.github.pagehelper.PageInfo;\n");
         content.append("import com.aladdin.mis.common.system.service.GlobalService;\n");
@@ -34,9 +38,9 @@ public  class GenerateControllerUtils {
         content.append("import org.springframework.stereotype.Controller;\n\n");
         content.append("import java.util.List;\n");
         content.append("/**\n");
-        content.append(" * "+tableComment +" "+ po.getEntityName() +"Service--- \n");
+        content.append(" * ").append(tableComment).append(" ").append(po.getEntityName()).append("Service--- \n");
         content.append(" * @author cles\n");
-        content.append(" * @date "+ LocalDateTime.now() +"\n");
+        content.append(" * @date ").append(nowStr).append("\n");
         content.append("*/\n");
         content.append("@RequestMapping(\""+po.getModule()+"/"+ StringUtil.firstCharLower(po.getEntityName()) +"\")\n");
         content.append("@Controller\n");

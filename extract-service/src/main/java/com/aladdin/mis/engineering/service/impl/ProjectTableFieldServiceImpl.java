@@ -114,7 +114,7 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
         Integer id = insert(entity);
         ProjectTableLog log = new ProjectTableLog();
 
-        // 新建版本日志
+        // 新建表字段日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
