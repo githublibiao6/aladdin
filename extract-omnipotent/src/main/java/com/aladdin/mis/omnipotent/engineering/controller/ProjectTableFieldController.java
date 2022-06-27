@@ -57,4 +57,19 @@ public class ProjectTableFieldController  extends GlobalController<ProjectTableF
             return Result.error();
         }
     }
+
+
+    /**
+     * 删除
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public Result delete(@RequestBody ProjectTableField entity) {
+        boolean flag = projectTableFieldService.deleteField(entity.getId());
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
 }

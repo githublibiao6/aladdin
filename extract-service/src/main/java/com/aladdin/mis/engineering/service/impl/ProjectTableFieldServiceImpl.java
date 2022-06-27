@@ -126,5 +126,27 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
         return true;
     }
 
+    @Override
+    public boolean deleteField(Integer id) {
+        ProjectTableField entity = detailQuery(id);
+        if(id == null){
+            return false;
+        }
+        // 保存字段
+       deleteById(id);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 新建表字段日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除表字段"+entity.getColumnName()+";";
+        content += "字段描述为" +entity.getColumnComment()+ ";";
+        log.setContent(content);
+        logService.insert(log);/**/
+        return true;
+    }
+
 }
 
