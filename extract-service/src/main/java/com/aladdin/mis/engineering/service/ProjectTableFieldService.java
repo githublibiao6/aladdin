@@ -25,8 +25,8 @@ public interface ProjectTableFieldService extends GlobalService<ProjectTableFiel
 
     /**
      * 删除实体字段
-     * @param id
+     * @param data
      * @return
      */
-    boolean deleteField(Integer id);
+    boolean deleteField(ProjectTableField data);
 }

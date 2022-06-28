@@ -65,7 +65,7 @@ public class ProjectTableFieldController  extends GlobalController<ProjectTableF
     @RequestMapping("/delete")
     @ResponseBody
     public Result delete(@RequestBody ProjectTableField entity) {
-        boolean flag = projectTableFieldService.deleteField(entity.getId());
+        boolean flag = projectTableFieldService.deleteField(entity);
         if(flag){
             return Result.success();
         }else {

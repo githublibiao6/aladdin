@@ -127,7 +127,9 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
     }
 
     @Override
-    public boolean deleteField(Integer id) {
+    public boolean deleteField(ProjectTableField data) {
+        Integer id = data.getId();
+        String abandonReason = data.getAbandonReason();
         ProjectTableField entity = detailQuery(id);
         if(id == null){
             return false;
@@ -136,13 +138,21 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
        deleteById(id);
         ProjectTableLog log = new ProjectTableLog();
 
-        // 新建表字段日志
+        // 删除表字段日志
         log.setType("warning");
         log.setIcon("el-icon-message-solid");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "删除表字段"+entity.getColumnName()+";";
+        String content = om.getUserName() + "删除表字段"+entity.getColumnName();
+        String comment = entity.getColumnComment();
         content += "字段描述为" +entity.getColumnComment()+ ";";
+        if(comment != null && !comment.isEmpty()){
+            content += "（"+entity.getColumnComment()+"";
+        }
+        content += ";";
+        if(abandonReason != null && !abandonReason.isEmpty()){
+            content += "删除原因："+ abandonReason +";";
+        }
         log.setContent(content);
         logService.insert(log);/**/
         return true;
