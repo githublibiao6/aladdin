@@ -145,9 +145,8 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "删除表字段"+entity.getColumnName();
         String comment = entity.getColumnComment();
-        content += "字段描述为" +entity.getColumnComment()+ ";";
         if(comment != null && !comment.isEmpty()){
-            content += "（"+entity.getColumnComment()+"";
+            content += "（"+comment+")";
         }
         content += ";";
         if(abandonReason != null && !abandonReason.isEmpty()){

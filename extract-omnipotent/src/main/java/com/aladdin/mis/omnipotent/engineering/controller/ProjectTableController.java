@@ -57,4 +57,18 @@ public class ProjectTableController  extends GlobalController<ProjectTable, Proj
             return Result.error();
         }
     }
+
+    /**
+     * 更新数据
+     */
+    @RequestMapping("/deleteTable")
+    @ResponseBody
+    public Result deleteTable(@RequestBody ProjectTable entity) {
+        boolean flag = projectTableService.deleteTable(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
 }

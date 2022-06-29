@@ -109,5 +109,38 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
         return true;
     }
 
+
+    @Override
+    public boolean deleteTable(ProjectTable data) {
+        Integer id = data.getId();
+        String abandonReason = data.getAbandonReason();
+        ProjectTable entity = detailQuery(id);
+        if(id == null){
+            return false;
+        }
+        // 保存字段
+        deleteById(id);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 删除表字段日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除表"+entity.getTableName();
+        String comment = entity.getTableComment();
+        if(comment != null && !comment.isEmpty()){
+            content += "（"+comment+")";
+        }
+        content += ";";
+        if(abandonReason != null && !abandonReason.isEmpty()){
+            content += "删除原因："+ abandonReason +";";
+        }
+        log.setContent(content);
+        logService.insert(log);/**/
+        return true;
+    }
+
+
 }
 

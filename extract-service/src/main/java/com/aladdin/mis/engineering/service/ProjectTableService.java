@@ -23,4 +23,11 @@ public interface ProjectTableService extends GlobalService<ProjectTable>  {
      * @return
      */
     boolean save(ProjectTable entity);
+
+    /**
+     * 删除表
+     * @param data
+     * @return
+     */
+    boolean deleteTable(ProjectTable data);
 }
