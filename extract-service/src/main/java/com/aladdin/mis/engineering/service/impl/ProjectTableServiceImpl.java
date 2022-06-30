@@ -79,7 +79,6 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
                     break;
             }
 
-
             OmUser om = UserUtil.getCurrentUser();
             log.setOperationUser(om.getUserName());
             log.setContent(om.getUserName() + content.toString());
@@ -118,7 +117,7 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
         if(id == null){
             return false;
         }
-        // 保存字段
+        // 删除字段
         deleteById(id);
         ProjectTableLog log = new ProjectTableLog();
 

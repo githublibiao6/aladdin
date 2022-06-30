@@ -3,7 +3,6 @@ package com.aladdin.mis.engineering.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectFileDao;
-import com.aladdin.mis.engineering.entity.ProjectEdition;
 import com.aladdin.mis.engineering.entity.ProjectFile;
 import com.aladdin.mis.engineering.entity.ProjectFileLog;
 import com.aladdin.mis.engineering.service.ProjectFileLogService;
@@ -119,7 +118,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
 
     @Override
     public boolean cancellation(ProjectFile entity) {
-        ProjectEdition data = new ProjectEdition();
+        ProjectFile data = new ProjectFile();
         data.setStatus("0");
         data.setId(entity.getId());
         updateSelective(data);
@@ -140,7 +139,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
 
     @Override
     public boolean recover(ProjectFile entity) {
-        ProjectEdition data = new ProjectEdition();
+        ProjectFile data = new ProjectFile();
         data.setStatus("1");
         data.setId(entity.getId());
         updateSelective(data);
@@ -152,6 +151,24 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "重启文件;";
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean deleteFile(ProjectFile entity) {
+        String comments = entity.getComments();
+        deleteById(entity.getId());
+        ProjectFileLog log = new ProjectFileLog();
+
+        // 回复文件日志
+        log.setType("danger");
+        log.setIcon("el-icon-search");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除文件;";
+        content += "删除原因：" + comments;
         log.setContent(content);
         logService.insert(log);
         return true;

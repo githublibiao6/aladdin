@@ -59,7 +59,7 @@ public class ProjectTableController  extends GlobalController<ProjectTable, Proj
     }
 
     /**
-     * 更新数据
+     * 删除数据
      */
     @RequestMapping("/deleteTable")
     @ResponseBody

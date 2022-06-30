@@ -78,6 +78,20 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     }
 
     /**
+     * 更新数据
+     */
+    @RequestMapping("/deleteFile")
+    @ResponseBody
+    public Result deleteFile(@RequestBody ProjectFile entity) {
+        boolean flag = projectFileService.deleteFile(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
      * 作废文件
      */
     @RequestMapping("/cancellation")
