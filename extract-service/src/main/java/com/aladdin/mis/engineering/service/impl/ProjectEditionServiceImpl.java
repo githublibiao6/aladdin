@@ -142,6 +142,27 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
     }
 
     @Override
+    public boolean deleteEdition(ProjectEdition entity) {
+        // 保存日志
+        ProjectEditionLog log = new ProjectEditionLog();
+
+        // 删除版本日志
+        log.setVersionContent(entity.getVersionContent());
+        log.setComments(entity.getComments());
+        log.setEditionId(entity.getId());
+        log.setType("danger");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除版本;";
+        content += "说明：" + entity.getComments();
+        log.setContent(content);
+        logService.insert(log);
+        deleteById(entity.getId());
+        return true;
+    }
+
+    @Override
     public boolean cancellation(ProjectEdition entity) {
         ProjectEdition data = new ProjectEdition();
         data.setStatus("9");

@@ -63,5 +63,11 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
         return insertSelective(entity);
     }
 
+    @Override
+    public boolean deleteProject(Project entity) {
+        updateSelective(entity);
+        return deleteById(entity.getId());
+    }
+
 }
 

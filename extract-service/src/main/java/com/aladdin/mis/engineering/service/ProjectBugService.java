@@ -32,4 +32,11 @@ public interface ProjectBugService extends GlobalService<ProjectBug>  {
      * @return
      */
     boolean save(ProjectBug entity);
+
+    /**
+     * 删除缺陷
+     * @param entity
+     * @return
+     */
+    boolean deleteBug(ProjectBug entity);
 }

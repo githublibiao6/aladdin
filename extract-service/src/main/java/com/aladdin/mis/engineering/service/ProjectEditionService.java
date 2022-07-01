@@ -23,6 +23,8 @@ public interface ProjectEditionService extends GlobalService<ProjectEdition>  {
      */
     boolean save(ProjectEdition entity);
 
+    boolean deleteEdition(ProjectEdition entity);
+
     /**
      * 作废版本
      * @param entity

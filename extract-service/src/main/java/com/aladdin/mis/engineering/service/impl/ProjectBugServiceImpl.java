@@ -149,5 +149,26 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         logService.insert(log);
         return true;
     }
+
+    @Override
+    public boolean deleteBug(ProjectBug entity) {
+        OmUser om = UserUtil.getCurrentUser();
+        entity.setFoundUser(om.getUserName());
+        // 保存缺陷
+        ProjectBugLog log = new ProjectBugLog();
+
+        // 新建缺陷管理日志
+        log.setType("danger");
+        log.setIcon("el-icon-sunrise");
+        log.setBugId(entity.getId());
+
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除缺陷;";
+        content += "原因：" + entity.getCompleteStar();
+        log.setContent(content);
+        logService.insert(log);
+        deleteById(entity.getId());
+        return true;
+    }
 }
 

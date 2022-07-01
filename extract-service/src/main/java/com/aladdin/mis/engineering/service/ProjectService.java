@@ -41,4 +41,11 @@ public interface ProjectService extends GlobalService<Project>  {
      */
     Project save(Project entity);
 
+    /**
+     * 删除工程项目
+     * @param entity
+     * @return m
+     */
+    boolean deleteProject(Project entity);
+
 }

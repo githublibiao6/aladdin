@@ -62,7 +62,7 @@ public class ProjectTableFieldController  extends GlobalController<ProjectTableF
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteField")
     @ResponseBody
     public Result delete(@RequestBody ProjectTableField entity) {
         boolean flag = projectTableFieldService.deleteField(entity);

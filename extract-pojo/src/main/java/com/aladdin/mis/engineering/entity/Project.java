@@ -24,19 +24,19 @@ public class Project extends GlobalModel {
     private String projectCode;
 
     /**
-项目名称
+    *项目名称
     */
     @TableField("project_name")
     private String projectName;
 
     /**
-项目介绍
+    *项目介绍
     */
     @TableField("introduce")
     private String introduce;
 
     /**
-开始时间
+    *开始时间
     */
     @TableField("start_date")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
@@ -44,7 +44,7 @@ public class Project extends GlobalModel {
     private Date startDate;
 
     /**
-        结束时间
+      *  结束时间
     */
     @TableField("end_date")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
