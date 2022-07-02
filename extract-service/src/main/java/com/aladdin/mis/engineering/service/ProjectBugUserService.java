@@ -22,4 +22,11 @@ public interface ProjectBugUserService extends GlobalService<ProjectBugUser>  {
      * @return
      */
     boolean update(ProjectBugUser entity);
+
+    /**
+     * 删除项目开发人员
+     * @param entity
+     * @return
+     */
+    boolean deleteUser(ProjectBugUser entity);
 }

@@ -116,5 +116,29 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
         logService.insert(log);
         return updateSelective(entity);
     }
+
+    @Override
+    public boolean deleteUser(ProjectBugUser entity) {
+        ProjectBugLog log = new ProjectBugLog();
+
+        Admin admin = adminService.detailQuery(entity.getUserId());
+
+        // 新建缺陷管理日志
+        log.setBugId(entity.getBugId());
+
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() ;
+
+        content += " 删除人员：" + admin.getRealName()+";";
+        String comments = entity.getComments();
+        if(comments != null && !comments.isEmpty()){
+            content += " 原因：" + entity.getComments() +";";
+        }
+        log.setContent(content);
+        deleteById(entity.getId());
+        logService.insert(log);
+        return true;
+    }
 }
 

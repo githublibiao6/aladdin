@@ -154,7 +154,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
     public boolean deleteBug(ProjectBug entity) {
         OmUser om = UserUtil.getCurrentUser();
         entity.setFoundUser(om.getUserName());
-        // 保存缺陷
+
         ProjectBugLog log = new ProjectBugLog();
 
         // 新建缺陷管理日志
@@ -167,6 +167,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         content += "原因：" + entity.getCompleteStar();
         log.setContent(content);
         logService.insert(log);
+        // 删除缺陷
         deleteById(entity.getId());
         return true;
     }

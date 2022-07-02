@@ -56,5 +56,18 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
         return Result.error();
     }
 
+    /**
+     * 删除
+     */
+    @PostMapping("/deleteUser")
+    @ResponseBody
+    public Result deleteUser(@RequestBody ProjectBugUser entity) {
+        boolean page = projectBugUserService.deleteUser(entity);
+        if(page){
+            return Result.success();
+        }
+        return Result.error();
+    }
+
 
 }
