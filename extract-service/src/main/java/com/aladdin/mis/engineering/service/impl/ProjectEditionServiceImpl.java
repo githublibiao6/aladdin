@@ -137,7 +137,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
             content += "状态："+map.get(entity.getStatus());
         }
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 

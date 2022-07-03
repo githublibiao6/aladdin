@@ -122,7 +122,7 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
         String content = om.getUserName() + "新建表字段"+entity.getTableName()+";";
         content += "字段描述为" +entity.getColumnComment()+ ";";
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 
@@ -134,8 +134,8 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
         if(id == null){
             return false;
         }
-        // 保存字段
-       deleteById(id);
+        // 删除字段
+        deleteById(id);
         ProjectTableLog log = new ProjectTableLog();
 
         // 删除表字段日志
@@ -153,7 +153,7 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
             content += "删除原因："+ abandonReason +";";
         }
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 

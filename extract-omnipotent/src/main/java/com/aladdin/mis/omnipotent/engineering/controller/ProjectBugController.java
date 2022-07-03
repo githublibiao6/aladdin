@@ -71,4 +71,18 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     }
 
 
+    /**
+     * 删除
+     */
+    @PostMapping("/deleteBug")
+    @ResponseBody
+    public Result deleteBug(@RequestBody ProjectBug entity) {
+        boolean page = projectBugService.deleteBug(entity);
+        if(page){
+            Result.success();
+        }
+        return Result.error();
+    }
+
+
 }

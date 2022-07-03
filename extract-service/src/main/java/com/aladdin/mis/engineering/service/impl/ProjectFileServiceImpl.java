@@ -112,7 +112,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         String content = om.getUserName() + "新上传文件;";
 
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 
@@ -145,7 +145,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         updateSelective(data);
         ProjectFileLog log = new ProjectFileLog();
 
-        // 回复文件日志
+        // 恢复文件日志
         log.setType("info");
         log.setIcon("el-icon-search");
         OmUser om = UserUtil.getCurrentUser();
@@ -170,6 +170,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         String content = om.getUserName() + "删除文件;";
         content += "删除原因：" + comments;
         log.setContent(content);
+        deleteById(entity.getId());
         logService.insert(log);
         return true;
     }

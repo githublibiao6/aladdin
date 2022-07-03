@@ -104,7 +104,7 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
         String content = om.getUserName() + "新建项目表"+entity.getTableName()+";";
         content += "表描述为" +entity.getTableComment()+ ";";
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 
@@ -117,11 +117,11 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
         if(id == null){
             return false;
         }
-        // 删除字段
+        // 删除表
         deleteById(id);
         ProjectTableLog log = new ProjectTableLog();
 
-        // 删除表字段日志
+        // 删除表日志
         log.setType("warning");
         log.setIcon("el-icon-message-solid");
         OmUser om = UserUtil.getCurrentUser();
@@ -136,7 +136,7 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
             content += "删除原因："+ abandonReason +";";
         }
         log.setContent(content);
-        logService.insert(log);/**/
+        logService.insert(log);
         return true;
     }
 
