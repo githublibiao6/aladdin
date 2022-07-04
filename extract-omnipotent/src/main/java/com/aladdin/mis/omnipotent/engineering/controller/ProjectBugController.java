@@ -50,8 +50,8 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     @PostMapping("/save")
     @ResponseBody
     public Result save(@RequestBody ProjectBug entity) {
-        boolean page = projectBugService.save(entity);
-        if(page){
+        boolean flag = projectBugService.save(entity);
+        if(flag){
             Result.success();
         }
         return Result.error();
@@ -63,8 +63,8 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     @PostMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectBug entity) {
-        boolean page = projectBugService.update(entity);
-        if(page){
+        boolean flag = projectBugService.update(entity);
+        if(flag){
             Result.success();
         }
         return Result.error();
@@ -77,8 +77,8 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     @PostMapping("/deleteBug")
     @ResponseBody
     public Result deleteBug(@RequestBody ProjectBug entity) {
-        boolean page = projectBugService.deleteBug(entity);
-        if(page){
+        boolean flag = projectBugService.deleteBug(entity);
+        if(flag){
             Result.success();
         }
         return Result.error();

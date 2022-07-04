@@ -1,38 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectPlanDao">
 
     <sql id="baseColumn">
-        id,
-        project_id,
-        start_date,
-        end_date,
-        start_time,
-        end_time,
-        target,
-        result_pic,
-        status,
-        user_id,
-        parent_id,
-        remark,
-        evaluate,
-        sys001,
-        sys002,
-        sys003,
-        sys004,
-        sys005,
-        sys006,
-        sys007
+        t.id,
+        t.project_id,
+        t.plan_name,
+        t.start_date,
+        t.end_date,
+        t.start_time,
+        t.end_time,
+        t.target,
+        t.result_pic,
+        t.problem,
+        t.solved,
+        t.status,
+        t.user_id,
+        t.parent_id,
+        t.remark,
+        t.evaluate,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectPlan" id="baseResultMap">
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectPlan" id="baseResultMap"> 
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
+        <result property="plan_name" column="planName"/>
         <result property="start_date" column="startDate"/>
         <result property="end_date" column="endDate"/>
         <result property="start_time" column="startTime"/>
         <result property="end_time" column="endTime"/>
         <result property="target" column="target"/>
-        <result property="result_pic" column="resultPic"  typeHandler="com.aladdin.mis.dao.handle.ListTypeHandler" />
+        <result property="result_pic" column="resultPic"  typeHandler="com.aladdin.mis.dao.handle.ListTypehandler" />
+        <result property="problem" column="problem"/>
+        <result property="solved" column="solved"/>
         <result property="status" column="status"/>
         <result property="user_id" column="userId"/>
         <result property="parent_id" column="parentId"/>
@@ -47,14 +53,14 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="paginate" resultType="com.aladdin.mis.engineering.vo.ProjectPlanVo">
+<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanVo">
         select <include refid="baseColumn"></include>
-        from project_plan t where 1=1
-        <if test="id  != null and id != '' ">
-            and t.id = #{id}
-        </if>
+        from project_plan t where t.sys005 = 1
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
+        </if>
+        <if test="planName  != null and planName != '' ">
+            and t.plan_name = #{planName}
         </if>
         <if test="startDate  != null and startDate != '' ">
             and t.start_date = #{startDate}
@@ -74,6 +80,12 @@
         <if test="resultPic  != null and resultPic != '' ">
             and t.result_pic = #{resultPic}
         </if>
+        <if test="problem  != null and problem != '' ">
+            and t.problem = #{problem}
+        </if>
+        <if test="solved  != null and solved != '' ">
+            and t.solved = #{solved}
+        </if>
         <if test="status  != null and status != '' ">
             and t.status = #{status}
         </if>
@@ -89,4 +101,9 @@
         <if test="evaluate  != null and evaluate != '' ">
             and t.evaluate = #{evaluate}
         </if>
-    </select></mapper>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}        
+</if>
+    </select>
+
+</mapper>

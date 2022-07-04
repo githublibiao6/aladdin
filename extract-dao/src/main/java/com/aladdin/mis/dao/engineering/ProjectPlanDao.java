@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 /**
- * ProjectPlanService
+ * ProjectPlanDao
  * @author cles
- * @date 2021-08-31T22:26:17.066
+ * @date 2022-07-04T21:42:33.372
 */
 @Repository
 public interface ProjectPlanDao {
@@ -17,4 +17,5 @@ public interface ProjectPlanDao {
      * @param qo
      * @return list
      */
-    List<ProjectPlanVo> paginate(ProjectPlanQo qo);}
+    List<ProjectPlanVo> list(ProjectPlanQo qo);
+}

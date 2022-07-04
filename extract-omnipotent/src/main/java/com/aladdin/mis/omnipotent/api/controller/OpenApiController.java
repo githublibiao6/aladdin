@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/api")
-public class OpenApiController extends GlobalController {
+public class OpenApiController {
     @Autowired
     MenuServiceImpl service;
 
     @RequestMapping("/index")
     @ResponseBody
     public Result say() {
+        Result result = new Result();
         result.setSuccess(true);
         return result;
     }
@@ -32,6 +33,7 @@ public class OpenApiController extends GlobalController {
     @RequestMapping("/create")
     @ResponseBody
     public Result create(@RequestBody JSONObject obj) {
+        Result result = new Result();
         try{
             GenerateUtils.create(obj.getString("tableName"), obj.getString("module"));
         }catch (Exception e){
@@ -42,10 +44,5 @@ public class OpenApiController extends GlobalController {
         }
         result.setSuccess(true);
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }
