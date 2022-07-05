@@ -1,10 +1,10 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.engineering.entity.ProjectPlanUser;
-import com.aladdin.mis.engineering.service.ProjectPlanUserService;
+import com.aladdin.mis.engineering.entity.ProjectTaskUser;
+import com.aladdin.mis.engineering.service.ProjectTaskUserService;
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectPlanUserQo;
-import com.aladdin.mis.engineering.vo.ProjectPlanUserVo;
+import com.aladdin.mis.engineering.qo.ProjectTaskUserQo;
+import com.aladdin.mis.engineering.vo.ProjectTaskUserVo;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.github.pagehelper.PageInfo;
@@ -18,21 +18,21 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 /**
- * 项目计划参与人员 ProjectPlanUserService--- 
+ * 任务人员设置 ProjectTaskUserService--- 
  * @author cles
- * @date 2022-07-05 21:57:37
+ * @date 2022-07-05 21:57:55
 */
-@RequestMapping("engineering/projectPlanUser")
+@RequestMapping("engineering/projectTaskUser")
 @Controller
-public class ProjectPlanUserController  extends GlobalController<ProjectPlanUser, ProjectPlanUserService> {
+public class ProjectTaskUserController  extends GlobalController<ProjectTaskUser, ProjectTaskUserService> {
 
     @Autowired
-    private ProjectPlanUserService projectPlanUserService;
+    private ProjectTaskUserService projectTaskUserService;
 
 
     @Override
-    protected GlobalService<ProjectPlanUser> getBaseService(){
-        return projectPlanUserService ;
+    protected GlobalService<ProjectTaskUser> getBaseService(){
+        return projectTaskUserService ;
     }
 
 }

@@ -1,18 +1,18 @@
 package com.aladdin.mis.engineering.qo;
 
-import com.aladdin.mis.engineering.entity.ProjectPlanUser;
+import com.aladdin.mis.engineering.entity.ProjectTaskUser;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
- * 项目计划参与人员查询实体 
+ * 任务人员设置查询实体 
  * @author cles
- * @date 2022-07-05 21:57:37
+ * @date 2022-07-05 21:57:55
 */
 @Data
-public class ProjectPlanUserQo extends ProjectPlanUser {
+public class ProjectTaskUserQo extends ProjectTaskUser {
 
     private Integer page;
 

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="com.aladdin.mis.dao.engineering.ProjectPlanUserDao">
+<mapper namespace="com.aladdin.mis.dao.engineering.ProjectTaskUserDao">
 
     <sql id="baseColumn">
         t.id,
+        t.task_id,
         t.user_id,
-        t.plan_id,
+        t.user_type,
         t.status,
-        t.role_id,
         t.start_time,
-        t.complete_time,
+        t.end_time,
+        t.work_hour,
+        t.comments,
+        t.complete_comments,
         t.grade,
         t.evaluate,
         t.sys001,
@@ -20,14 +23,17 @@
         t.sys006,
         t.sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectPlanUser" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectTaskUser" id="baseResultMap"> 
         <id property="id" column="id"/>
+        <result property="task_id" column="taskId"/>
         <result property="user_id" column="userId"/>
-        <result property="plan_id" column="planId"/>
+        <result property="user_type" column="userType"/>
         <result property="status" column="status"/>
-        <result property="role_id" column="roleId"/>
         <result property="start_time" column="startTime"/>
-        <result property="complete_time" column="completeTime"/>
+        <result property="end_time" column="endTime"/>
+        <result property="work_hour" column="workHour"/>
+        <result property="comments" column="comments"/>
+        <result property="complete_comments" column="completeComments"/>
         <result property="grade" column="grade"/>
         <result property="evaluate" column="evaluate"/>
         <result property="sys001" column="sys001"/>
@@ -39,26 +45,35 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanUserVo">
+<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTaskUserVo">
         select <include refid="baseColumn"></include>
-        from project_plan_user t where t.sys005 = 1
+        from project_task_user t where t.sys005 = 1
+        <if test="taskId  != null and taskId != '' ">
+            and t.task_id = #{taskId}
+        </if>
         <if test="userId  != null and userId != '' ">
             and t.user_id = #{userId}
         </if>
-        <if test="planId  != null and planId != '' ">
-            and t.plan_id = #{planId}
+        <if test="userType  != null and userType != '' ">
+            and t.user_type = #{userType}
         </if>
         <if test="status  != null and status != '' ">
             and t.status = #{status}
         </if>
-        <if test="roleId  != null and roleId != '' ">
-            and t.role_id = #{roleId}
-        </if>
         <if test="startTime  != null and startTime != '' ">
             and t.start_time = #{startTime}
         </if>
-        <if test="completeTime  != null and completeTime != '' ">
-            and t.complete_time = #{completeTime}
+        <if test="endTime  != null and endTime != '' ">
+            and t.end_time = #{endTime}
+        </if>
+        <if test="workHour  != null and workHour != '' ">
+            and t.work_hour = #{workHour}
+        </if>
+        <if test="comments  != null and comments != '' ">
+            and t.comments = #{comments}
+        </if>
+        <if test="completeComments  != null and completeComments != '' ">
+            and t.complete_comments = #{completeComments}
         </if>
         <if test="grade  != null and grade != '' ">
             and t.grade = #{grade}

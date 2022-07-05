@@ -37,7 +37,7 @@ public  class GenerateXmlUtils {
             if("id".equals(t.getColumnName())){
                 content.append("        <id property=\"id\" column=\"id\"/>\n");
             }else if(t.getColumnType().startsWith("List")){
-                content.append("        <result property=\""+t.getColName()+"\" column=\""+t.getColumnName()+"\"  typeHandler=\"com.aladdin.mis.dao.handle.ListTypehandler\" />\n");
+                content.append("        <result property=\""+t.getColName()+"\" column=\""+t.getColumnName()+"\"  typeHandler=\"com.aladdin.mis.dao.handle.ListTypeHandler\" />\n");
             }else {
                 content.append("        <result property=\""+t.getColName()+"\" column=\""+t.getColumnName()+"\"/>\n");
             }

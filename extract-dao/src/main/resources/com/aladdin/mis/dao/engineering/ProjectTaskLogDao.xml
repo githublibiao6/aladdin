@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.engineering.ProjectTaskLogDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.bug_id,
+        t.bug_picture,
+        t.content,
+        t.icon,
+        t.type,
+        t.operation_user,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+  </sql>
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectTaskLog" id="baseResultMap"> 
+        <id property="id" column="id"/>
+        <result property="bug_id" column="bugId"/>
+        <result property="bug_picture" column="bugPicture"/>
+        <result property="content" column="content"/>
+        <result property="icon" column="icon"/>
+        <result property="type" column="type"/>
+        <result property="operation_user" column="operationUser"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTaskLogVo">
+        select <include refid="baseColumn"></include>
+        from project_task_log t where t.sys005 = 1
+        <if test="bugId  != null and bugId != '' ">
+            and t.bug_id = #{bugId}
+        </if>
+        <if test="bugPicture  != null and bugPicture != '' ">
+            and t.bug_picture = #{bugPicture}
+        </if>
+        <if test="content  != null and content != '' ">
+            and t.content = #{content}
+        </if>
+        <if test="icon  != null and icon != '' ">
+            and t.icon = #{icon}
+        </if>
+        <if test="type  != null and type != '' ">
+            and t.type = #{type}
+        </if>
+        <if test="operationUser  != null and operationUser != '' ">
+            and t.operation_user = #{operationUser}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}        
+</if>
+    </select>
+
+</mapper>
