@@ -3,27 +3,32 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
  * 项目计划日志
  * @author cles
- * @date 2022-07-05 21:58:10
+ * @date 2022-07-06 23:03:24
 */
-@Table("project_task_log")
+@Table("project_plan_log")
 @Data
-public class ProjectTaskLog extends GlobalModel {
+public class ProjectPlanLog extends GlobalModel {
     /**
-     * bugId缺陷主键
+     * planId缺陷主键
      */
-    @TableField("bug_id")
-    private Integer bugId;
+    @TableField("plan_id")
+    private Integer planId;
 
     /**
-     * bugPicture
+     * planPicture
      */
-    @TableField("bug_picture")
-    private String bugPicture;
+    @TableField("plan_picture")
+    private String planPicture;
 
     /**
      * content日志内容
