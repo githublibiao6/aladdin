@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectTaskLogDao">
 
     <sql id="baseColumn">
         t.id,
-        t.bug_id,
-        t.bug_picture,
+        t.task_id,
+        t.task_picture,
         t.content,
         t.icon,
         t.type,
@@ -18,10 +18,10 @@
         t.sys006,
         t.sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectTaskLog" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectTaskLog" id="baseResultMap">
         <id property="id" column="id"/>
-        <result property="bug_id" column="bugId"/>
-        <result property="bug_picture" column="bugPicture"/>
+        <result property="task_id" column="taskId"/>
+        <result property="task_picture" column="taskPicture"/>
         <result property="content" column="content"/>
         <result property="icon" column="icon"/>
         <result property="type" column="type"/>
@@ -38,11 +38,11 @@
 <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTaskLogVo">
         select <include refid="baseColumn"></include>
         from project_task_log t where t.sys005 = 1
-        <if test="bugId  != null and bugId != '' ">
-            and t.bug_id = #{bugId}
+        <if test="taskId  != null and taskId != '' ">
+            and t.task_id = #{taskId}
         </if>
-        <if test="bugPicture  != null and bugPicture != '' ">
-            and t.bug_picture = #{bugPicture}
+        <if test="taskPicture  != null and taskPicture != '' ">
+            and t.task_picture = #{taskPicture}
         </if>
         <if test="content  != null and content != '' ">
             and t.content = #{content}
@@ -57,7 +57,7 @@
             and t.operation_user = #{operationUser}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}        
+           order by ${sortInfo}
 </if>
     </select>
 

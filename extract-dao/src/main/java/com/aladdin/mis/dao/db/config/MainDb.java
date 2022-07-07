@@ -154,6 +154,7 @@ public class MainDb {
                     field.setColumnType("String");
                     break;
                 case "varchar":
+                    // 处理string list
                     if(field.getColumnComment() != null && field.getColumnComment().endsWith("list")){
                         field.setColumnType("List<String>");
                     }else {

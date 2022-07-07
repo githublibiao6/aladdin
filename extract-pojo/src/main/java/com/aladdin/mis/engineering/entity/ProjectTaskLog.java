@@ -14,16 +14,16 @@ import lombok.Data;
 @Data
 public class ProjectTaskLog extends GlobalModel {
     /**
-     * bugId缺陷主键
+     * 任务主键
      */
-    @TableField("bug_id")
-    private Integer bugId;
+    @TableField("task_id")
+    private Integer taskId;
 
     /**
-     * bugPicture
+     * taskPicture
      */
-    @TableField("bug_picture")
-    private String bugPicture;
+    @TableField("task_picture")
+    private String taskPicture;
 
     /**
      * content日志内容
