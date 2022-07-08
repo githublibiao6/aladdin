@@ -1,14 +1,7 @@
 package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.engineering.entity.ProjectTask;
-import com.aladdin.mis.engineering.entity.ProjectTaskLog;
-import com.aladdin.mis.manager.service.DictionaryTeamsService;
-import com.aladdin.mis.system.user.vo.OmUser;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Map;
 
 /**
  * ProjectTaskService
@@ -18,5 +11,17 @@ import java.util.Map;
 public interface ProjectTaskService extends GlobalService<ProjectTask>  {
 
 
+    /**
+     * 保存任务
+     * @param entity
+     * @return
+     */
     boolean save(ProjectTask entity);
+
+    /**
+     * 删除任务
+     * @param data
+     * @return
+     */
+    boolean deleteTask(ProjectTask data);
 }
