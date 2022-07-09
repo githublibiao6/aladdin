@@ -59,11 +59,11 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
         if("1".equals(entity.getUserType())){
             log.setType("success");
             log.setIcon("el-icon-document");
-            content += " 指派任务至" + admin.getRealName()+";";
+            content += " 指派缺陷至" + admin.getRealName()+";";
         }else {
             log.setType("info");
             log.setIcon("el-icon-phone");
-            content += " 邀请" + admin.getRealName()+"协助任务;";
+            content += " 邀请" + admin.getRealName()+"协助修复;";
         }
         entity.setStatus("1");
         if(!"0".equals(entity.getStatus())){

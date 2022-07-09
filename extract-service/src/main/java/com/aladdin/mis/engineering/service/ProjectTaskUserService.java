@@ -2,9 +2,6 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectTaskUser;
-import com.aladdin.mis.engineering.vo.ProjectTaskUserVo;
-import com.aladdin.mis.engineering.qo.ProjectTaskUserQo;
-import com.github.pagehelper.PageInfo;
 /**
  * ProjectTaskUserService
  * @author cles
@@ -12,4 +9,10 @@ import com.github.pagehelper.PageInfo;
 */
 public interface ProjectTaskUserService extends GlobalService<ProjectTaskUser>  {
 
+    /**
+     * 保存
+     * @param entity
+     * @return
+     */
+    boolean save(ProjectTaskUser entity);
 }

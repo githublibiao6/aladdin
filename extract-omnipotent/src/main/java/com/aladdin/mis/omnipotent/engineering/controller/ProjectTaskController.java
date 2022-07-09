@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
  * 项目任务表 ProjectTaskService---
  * @author cles
@@ -61,9 +62,9 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     /**
      * 删除数据
      */
-    @RequestMapping("/deleteTable")
+    @RequestMapping("/deleteTask")
     @ResponseBody
-    public Result deleteTable(@RequestBody ProjectTask entity) {
+    public Result deleteTask(@RequestBody ProjectTask entity) {
         boolean flag = projectTaskService.deleteTask(entity);
         if(flag){
             return Result.success();
