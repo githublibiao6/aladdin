@@ -10,6 +10,12 @@ import com.aladdin.mis.engineering.entity.ProjectTask;
 */
 public interface ProjectTaskService extends GlobalService<ProjectTask>  {
 
+    /**
+     * 更新任务
+     * @param entity
+     * @return
+     */
+    boolean update(ProjectTask entity);
 
     /**
      * 保存任务
