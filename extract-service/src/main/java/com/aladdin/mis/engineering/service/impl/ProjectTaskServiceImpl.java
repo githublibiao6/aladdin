@@ -31,8 +31,6 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
     @Autowired
     private ProjectTaskLogService logService;
 
-
-
     @Override
     public boolean update(ProjectTask entity) {
         String status = entity.getStatus();
@@ -135,9 +133,55 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "新建任务;";
         if(!"0".equals(entity.getStatus())){
-            Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
+            Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectTaskStatus");
             content += "状态："+map.get(entity.getStatus());
         }
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean hangTask(Integer id) {
+        ProjectTask task = new ProjectTask();
+        task.setId(id);
+        // 挂起状态
+        task.setStatus("");
+        updateSelective(task);
+        // 保存日志
+        ProjectTaskLog log = new ProjectTaskLog();
+
+        // 保存日志记录
+        log.setTaskId(id);
+        log.setType("info");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "挂起任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean continueTask(Integer id) {
+        ProjectTask task = new ProjectTask();
+        task.setId(id);
+        // 挂起状态
+        task.setStatus("");
+        updateSelective(task);
+        // 保存日志
+        ProjectTaskLog log = new ProjectTaskLog();
+
+        // 保存日志记录
+        log.setTaskId(id);
+        log.setType("info");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "继续任务;";
+
         log.setContent(content);
         logService.insert(log);
         return true;

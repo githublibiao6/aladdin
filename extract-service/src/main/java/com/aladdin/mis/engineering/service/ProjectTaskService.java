@@ -25,6 +25,21 @@ public interface ProjectTaskService extends GlobalService<ProjectTask>  {
     boolean save(ProjectTask entity);
 
     /**
+     * 挂起任务4
+     *
+     * @param id
+     * @return
+     */
+    boolean hangTask(Integer id);
+
+    /**
+     * 继续任务
+     * @param id
+     * @return
+     */
+    boolean continueTask(Integer id);
+
+    /**
      * 删除任务
      * @param data
      * @return
