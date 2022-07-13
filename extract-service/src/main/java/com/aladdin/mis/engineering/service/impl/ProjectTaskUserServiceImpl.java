@@ -68,5 +68,56 @@ public class ProjectTaskUserServiceImpl extends GlobalServiceImpl<ProjectTaskUse
         logService.insert(log);
         return true;
     }
+
+
+    @Override
+    public boolean hangTask(Integer id) {
+        OmUser om = UserUtil.getCurrentUser();
+        ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
+
+        // 挂起状态
+        taskUser.setStatus("");
+        updateSelective(taskUser);
+        // 保存日志
+        ProjectTaskLog log = new ProjectTaskLog();
+
+        // 保存日志记录
+        log.setTaskId(id);
+        log.setType("info");
+        log.setIcon("el-icon-sunrise");
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "挂起任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean continueTask(Integer id) {
+        OmUser om = UserUtil.getCurrentUser();
+
+        ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
+
+        // 挂起状态
+        taskUser.setStatus("");
+        updateSelective(taskUser);
+        // 保存日志
+        ProjectTaskLog log = new ProjectTaskLog();
+
+        // 保存日志记录
+        log.setTaskId(id);
+        log.setType("info");
+        log.setIcon("el-icon-sunrise");
+
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "继续任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+
 }
 

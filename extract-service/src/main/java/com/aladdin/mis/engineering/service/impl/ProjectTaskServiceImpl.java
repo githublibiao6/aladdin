@@ -142,53 +142,6 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
     }
 
     @Override
-    public boolean hangTask(Integer id) {
-        ProjectTask task = new ProjectTask();
-        task.setId(id);
-        // 挂起状态
-        task.setStatus("");
-        updateSelective(task);
-        // 保存日志
-        ProjectTaskLog log = new ProjectTaskLog();
-
-        // 保存日志记录
-        log.setTaskId(id);
-        log.setType("info");
-        log.setIcon("el-icon-sunrise");
-        OmUser om = UserUtil.getCurrentUser();
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "挂起任务;";
-
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
-    @Override
-    public boolean continueTask(Integer id) {
-        ProjectTask task = new ProjectTask();
-        task.setId(id);
-        // 挂起状态
-        task.setStatus("");
-        updateSelective(task);
-        // 保存日志
-        ProjectTaskLog log = new ProjectTaskLog();
-
-        // 保存日志记录
-        log.setTaskId(id);
-        log.setType("info");
-        log.setIcon("el-icon-sunrise");
-        OmUser om = UserUtil.getCurrentUser();
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "继续任务;";
-
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
-
-    @Override
     public boolean deleteTask(ProjectTask data) {
         Integer id = data.getId();
         String abandonReason = data.getTaskComments();

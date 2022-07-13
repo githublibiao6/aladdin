@@ -60,34 +60,6 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     }
 
     /**
-     * 挂起任务
-     */
-    @RequestMapping("/hangTask")
-    @ResponseBody
-    public Result hangTask(@RequestBody ProjectTask task) {
-        boolean flag = projectTaskService.hangTask(task.getId());
-        if(flag){
-            return Result.success();
-        }else {
-            return Result.error();
-        }
-    }
-
-    /**
-     * 继续任务任务
-     */
-    @RequestMapping("/continueTask")
-    @ResponseBody
-    public Result continueTask(@RequestBody ProjectTask task) {
-        boolean flag = projectTaskService.continueTask(task.getId());
-        if(flag){
-            return Result.success();
-        }else {
-            return Result.error();
-        }
-    }
-
-    /**
      * 删除数据
      */
     @RequestMapping("/deleteTask")

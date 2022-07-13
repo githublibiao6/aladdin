@@ -19,4 +19,12 @@ public interface ProjectTaskUserDao {
      * @return list
      */
     List<ProjectTaskUserVo> list(ProjectTaskUserQo qo);
+
+    /**
+     * 根据任务和人员查询
+     * @param id
+     * @param userId
+     * @return
+     */
+    ProjectTaskUser getByTaskAndUserId(Integer id, Integer userId);
 }

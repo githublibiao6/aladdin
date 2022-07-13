@@ -15,4 +15,20 @@ public interface ProjectTaskUserService extends GlobalService<ProjectTaskUser>  
      * @return
      */
     boolean save(ProjectTaskUser entity);
+
+    /**
+     * 挂起任务
+     *
+     * @param id
+     * @return
+     */
+    boolean hangTask(Integer id);
+
+    /**
+     * 继续任务
+     * @param id
+     * @return
+     */
+    boolean continueTask(Integer id);
+
 }
