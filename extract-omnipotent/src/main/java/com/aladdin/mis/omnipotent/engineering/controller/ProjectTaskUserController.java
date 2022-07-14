@@ -3,7 +3,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.engineering.entity.ProjectTask;
 import com.aladdin.mis.engineering.entity.ProjectTaskUser;
 import com.aladdin.mis.engineering.service.ProjectTaskUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +65,20 @@ public class ProjectTaskUserController  extends GlobalController<ProjectTaskUser
     @ResponseBody
     public Result continueTask(@RequestBody ProjectTaskUser task) {
         boolean flag = entityService.continueTask(task.getId());
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
+     * 继续任务任务
+     */
+    @RequestMapping("/completeTask")
+    @ResponseBody
+    public Result completeTask(@RequestBody ProjectTaskUser task) {
+        boolean flag = entityService.completeTask(task.getId());
         if(flag){
             return Result.success();
         }else {
