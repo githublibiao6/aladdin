@@ -143,6 +143,31 @@ public class ProjectTaskUserServiceImpl extends GlobalServiceImpl<ProjectTaskUse
         return true;
     }
 
+    @Override
+    public boolean startTask(Integer id) {
+        OmUser om = UserUtil.getCurrentUser();
+
+        ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
+
+        // 开始状态
+        taskUser.setStatus("");
+        updateSelective(taskUser);
+        // 保存日志
+        ProjectTaskLog log = new ProjectTaskLog();
+
+        // 保存日志记录
+        log.setTaskId(id);
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "开始任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
 
 }
 

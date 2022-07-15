@@ -38,4 +38,11 @@ public interface ProjectTaskUserService extends GlobalService<ProjectTaskUser>  
      */
     boolean completeTask(Integer id);
 
+    /**
+     * 开始任务
+     * @param id
+     * @return
+     */
+    boolean startTask(Integer id);
+
 }
