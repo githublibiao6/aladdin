@@ -3,12 +3,12 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 项目任务表
@@ -93,7 +93,7 @@ public class ProjectTask extends GlobalModel {
     private Integer taskLevel;
 
     /**
-     * status阶段状态
+     * status项目任务阶段状态
      */
     @TableField("status")
     private String status;
