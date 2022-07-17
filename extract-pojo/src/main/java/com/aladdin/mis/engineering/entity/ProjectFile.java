@@ -32,7 +32,7 @@ public class ProjectFile extends GlobalModel {
     private String fileCategory;
 
     /**
-     * file大小
+     * file文件大小
      */
     @TableField("file_size")
     private String fileSize;
@@ -56,13 +56,13 @@ public class ProjectFile extends GlobalModel {
     private String minThumbnail;
 
     /**
-     * midThumbnail
+     * midThumbnail 中缩略图
      */
     @TableField("mid_thumbnail")
     private String midThumbnail;
 
     /**
-     * maxThumbnail
+     * maxThumbnail 大缩略图
      */
     @TableField("max_thumbnail")
     private String maxThumbnail;

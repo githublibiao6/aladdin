@@ -82,7 +82,7 @@ public class ProjectTaskUser extends GlobalModel {
     private Integer grade;
 
     /**
-     * evaluate
+     * 评价
      */
     @TableField("evaluate")
     private String evaluate;
