@@ -89,7 +89,8 @@
     <select id="getByTaskAndUserId" resultType="com.aladdin.mis.engineering.entity.ProjectTaskUser">
         select
         <include refid="baseColumn"></include>
-        from project_task_user t where t.sys005 = 1
+        from project_task_user t
+        where t.sys005 = 1
         and t.task_id = #{taskId}
         and t.user_id = #{userId}
         limit 1

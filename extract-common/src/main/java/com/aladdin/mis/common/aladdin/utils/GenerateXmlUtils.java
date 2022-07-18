@@ -31,7 +31,7 @@ public  class GenerateXmlUtils {
         });
         content.delete(content.length()-2, content.length());
         content.append("\n  </sql>\n");
-        content.append("    <resultMap type=\""+po.getImportEntityClass().substring(7,po.getImportEntityClass().length() -1)+"\" id=\"baseResultMap\"> \n");
+        content.append("    <resultMap id=\"baseResultMap\" type=\""+po.getImportEntityClass().substring(7,po.getImportEntityClass().length() -1)+"\" > \n");
 
         fields.forEach(t->{
             if("id".equals(t.getColumnName())){

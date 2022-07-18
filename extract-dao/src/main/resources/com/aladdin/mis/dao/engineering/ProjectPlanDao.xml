@@ -2,32 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectPlanDao">
 
-    <sql id="baseColumn">
-        t.id,
-        t.project_id,
-        t.plan_name,
-        t.start_date,
-        t.end_date,
-        t.start_time,
-        t.end_time,
-        t.target,
-        t.result_pic,
-        t.problem,
-        t.solved,
-        t.status,
-        t.user_id,
-        t.parent_id,
-        t.remark,
-        t.evaluate,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
-  </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectPlan" id="baseResultMap">
+    <resultMap id="baseResultMap"  type="com.aladdin.mis.engineering.entity.ProjectPlan" >
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
         <result property="plan_name" column="planName"/>
@@ -53,7 +28,34 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanVo">
+
+    <sql id="baseColumn">
+        t.id,
+        t.project_id,
+        t.plan_name,
+        t.start_date,
+        t.end_date,
+        t.start_time,
+        t.end_time,
+        t.target,
+        t.result_pic,
+        t.problem,
+        t.solved,
+        t.status,
+        t.user_id,
+        t.parent_id,
+        t.remark,
+        t.evaluate,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanVo">
         select <include refid="baseColumn"></include>
         from project_plan t where t.sys005 = 1
         <if test="projectId  != null and projectId != '' ">
