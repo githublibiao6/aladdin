@@ -61,7 +61,7 @@ public  class GenerateXmlUtils {
         });
         content.append("        <if test= \" sortInfo  != null and sortInfo != '' "+"\">\n" +
                 "           order by ${sortInfo}" +
-                "        \n</if>\n" );
+                "        </if>\n" );
         content.append("    </select>\n\n");
         content.append("</mapper>\n");
         System.err.println(content);

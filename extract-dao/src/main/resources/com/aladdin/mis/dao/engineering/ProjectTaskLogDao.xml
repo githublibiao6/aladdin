@@ -58,7 +58,7 @@
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}
-</if>
+        </if>
     </select>
 
 </mapper>
