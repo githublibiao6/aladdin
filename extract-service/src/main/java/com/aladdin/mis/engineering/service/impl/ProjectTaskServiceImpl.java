@@ -158,11 +158,40 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
         log.setIcon("el-icon-message-solid");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "删除任务"+entity.getTaskName();
+        String content = om.getUserName() + "删除任务;";
 
         content += ";";
         if(abandonReason != null && !abandonReason.isEmpty()){
             content += "删除原因："+ abandonReason +";";
+        }
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+
+    @Override
+    public boolean closeTask(ProjectTask data) {
+        Integer id = data.getId();
+        String evaluate = data.getEvaluate();
+        ProjectTask entity = detailQuery(id);
+        if(id == null){
+            return false;
+        }
+        // 关闭任务
+        deleteById(id);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 关闭任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "关闭任务;";
+
+        content += ";";
+        if(evaluate != null && !evaluate.isEmpty()){
+            content += "完成评价;";
         }
         log.setContent(content);
         logService.insert(log);

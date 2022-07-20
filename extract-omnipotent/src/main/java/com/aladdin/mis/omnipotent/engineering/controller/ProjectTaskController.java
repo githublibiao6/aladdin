@@ -72,4 +72,18 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
             return Result.error();
         }
     }
+
+    /**
+     * 关闭任务呀
+     */
+    @RequestMapping("/closeTask")
+    @ResponseBody
+    public Result closeTask(@RequestBody ProjectTask entity) {
+        boolean flag = projectTaskService.closeTask(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
 }

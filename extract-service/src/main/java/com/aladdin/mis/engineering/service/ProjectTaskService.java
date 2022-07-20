@@ -30,4 +30,11 @@ public interface ProjectTaskService extends GlobalService<ProjectTask>  {
      * @return
      */
     boolean deleteTask(ProjectTask data);
+
+    /**
+     * 评价任务
+     * @param data
+     * @return
+     */
+    boolean closeTask(ProjectTask data);
 }
