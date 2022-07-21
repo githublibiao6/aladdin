@@ -74,7 +74,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     }
 
     /**
-     * 关闭任务呀
+     * 关闭任务
      */
     @RequestMapping("/closeTask")
     @ResponseBody
