@@ -51,8 +51,21 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     }
 
     @Override
-    public boolean deletePlan(ProjectPlan data) {
-        return false;
+    public boolean deletePlan(ProjectPlan entity) {
+
+        // 删除计划
+        deleteById(entity.getId());
+        ProjectPlanLog log = new ProjectPlanLog();
+
+        // 删除计划日志
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除计划"+entity.getPlanName()+";";
+        log.setContent(content);
+        logService.insert(log);
+        return true;
     }
 }
 
