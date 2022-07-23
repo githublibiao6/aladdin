@@ -1,24 +1,18 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
+import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.service.ProjectPlanService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.engineering.qo.ProjectPlanQo;
-import com.aladdin.mis.engineering.vo.ProjectPlanVo;
-import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.common.system.entity.Result;
-import com.github.pagehelper.PageInfo;
-import com.aladdin.mis.common.system.service.GlobalService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 /**
- * 项目计划清单 ProjectPlanService--- 
+ * 项目计划清单 ProjectPlanService---
  * @author cles
  * @date 2022-07-04 21:42:33
 */
@@ -35,4 +29,32 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
         return projectPlanService ;
     }
 
+
+    /**
+     * 更新数据
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public Result save(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.save(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
+     * 删除数据
+     */
+    @RequestMapping("deletePlan")
+    @ResponseBody
+    public Result deletePlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.deletePlan(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
 }
