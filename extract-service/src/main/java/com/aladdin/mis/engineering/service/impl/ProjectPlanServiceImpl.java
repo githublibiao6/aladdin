@@ -38,12 +38,10 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     public boolean update(ProjectPlan entity) {
         String status = entity.getStatus();
         String target = entity.getTarget();
-        ProjectTask old = detailQuery(entity.getId());
+        ProjectPlan old = detailQuery(entity.getId());
 
         String oldStatus = old.getStatus();
-        Integer oldLevel = old.getTaskLevel();
         String oldTarget = old.getTarget();
-        String oldComments = old.getTaskComments();
 
         Map<String, String> map = dictionaryTeamsService.getTeamsByCode("projectTaskStatus");
         Map<String, String> map2 = dictionaryTeamsService.getTeamsByCode("projectTaskLevel");
