@@ -31,12 +31,26 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
 
 
     /**
-     * 更新数据
+     * 保存数据
      */
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectPlan entity) {
         boolean flag = projectPlanService.save(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
+     * 更新数据
+     */
+    @RequestMapping("update")
+    @ResponseBody
+    public Result update(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.update(entity);
         if(flag){
             return Result.success();
         }else {
