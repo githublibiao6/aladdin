@@ -5,7 +5,6 @@ import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectPlanDao;
 import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.entity.ProjectPlanLog;
-import com.aladdin.mis.engineering.entity.ProjectTask;
 import com.aladdin.mis.engineering.service.ProjectPlanLogService;
 import com.aladdin.mis.engineering.service.ProjectPlanService;
 import com.aladdin.mis.manager.service.DictionaryTeamsService;
@@ -122,6 +121,29 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "新建项目计划"+entity.getPlanName()+";";
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+
+    @Override
+    public boolean completePlan(ProjectPlan entity) {
+
+        // 删除计划
+        update(entity);
+        ProjectPlanLog log = new ProjectPlanLog();
+
+        // 删除计划日志
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "完成计划"+entity.getPlanName()+";";
+        String evaluate = entity.getEvaluate();
+        if(evaluate != null && !evaluate.isEmpty()){
+            content += "\n完成评价！";
+        }
         log.setContent(content);
         logService.insert(log);
         return true;

@@ -25,6 +25,13 @@ public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
     boolean save(ProjectPlan entity);
 
     /**
+     * 完成计划
+     * @param entity
+     * @return
+     */
+    boolean completePlan(ProjectPlan entity);
+
+    /**
      * 删除表
      * @param data
      * @return
