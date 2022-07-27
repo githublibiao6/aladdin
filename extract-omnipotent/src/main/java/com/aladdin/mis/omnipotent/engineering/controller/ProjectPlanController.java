@@ -59,6 +59,20 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     }
 
     /**
+     * 完成任务
+     */
+    @RequestMapping("completePlan")
+    @ResponseBody
+    public Result completePlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.completePlan(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
      * 删除数据
      */
     @RequestMapping("deletePlan")
