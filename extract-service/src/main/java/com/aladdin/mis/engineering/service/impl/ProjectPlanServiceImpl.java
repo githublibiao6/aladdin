@@ -51,13 +51,13 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
 
         // 判断状态的改变
         if(!oldStatus.equals(status)){
-            content.append(map.get(status)).append("任务;");
+            content.append(map.get(status)).append("计划;");
             if("6".equals(status)){
                 entity.setEndTime(LocalDateTime.now());
             }
         }
         if(!oldTarget.equals(target)){
-            content.append("修改任务目标为：").append(target).append(";");
+            content.append("修改项目计划目标为：").append(target).append(";");
         }
 
         if(content.length() > 0){
@@ -130,7 +130,8 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     @Override
     public boolean completePlan(ProjectPlan entity) {
 
-        // 删除计划
+        // 完成计划
+        entity.setStatus("");
         update(entity);
         ProjectPlanLog log = new ProjectPlanLog();
 
