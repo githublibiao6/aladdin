@@ -126,6 +126,26 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         return true;
     }
 
+    @Override
+    public boolean startPlan(ProjectPlan entity) {
+
+        // 开始计划
+        entity.setStatus("");
+        update(entity);
+        ProjectPlanLog log = new ProjectPlanLog();
+
+        // 开始计划日志
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "开始计划"+entity.getPlanName()+";";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
 
     @Override
     public boolean completePlan(ProjectPlan entity) {
