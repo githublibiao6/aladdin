@@ -69,5 +69,11 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
         return deleteById(entity.getId());
     }
 
+    @Override
+    public boolean hang(Project entity) {
+        updateSelective(entity);
+        return true;
+    }
+
 }
 

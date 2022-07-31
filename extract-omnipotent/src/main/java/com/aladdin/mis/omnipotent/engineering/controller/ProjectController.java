@@ -90,4 +90,38 @@ public class ProjectController  extends GlobalController<Project, ProjectService
         }
         return result ;
     }
+
+    /**
+     * 挂起工程
+     */
+    @PostMapping("deleteById")
+    @WebLog("工程项目更新")
+    @ResponseBody
+    public Result deleteById(@RequestBody Project entity){
+        boolean flag = projectService.deleteProject(entity);
+        if(flag){
+            result.setData(entity);
+            result.setMessage("更新成功");
+        }else {
+            result.setMessage("更新失败");
+        }
+        return result ;
+    }
+
+    /**
+     * 挂起工程
+     */
+    @PostMapping("hang")
+    @WebLog("工程项目更新")
+    @ResponseBody
+    public Result hang(@RequestBody Project entity){
+        boolean flag = projectService.hang(entity);
+        if(flag){
+            result.setData(entity);
+            result.setMessage("更新成功");
+        }else {
+            result.setMessage("更新失败");
+        }
+        return result ;
+    }
 }

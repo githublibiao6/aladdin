@@ -48,4 +48,10 @@ public interface ProjectService extends GlobalService<Project>  {
      */
     boolean deleteProject(Project entity);
 
+    /**
+     * 挂起工程
+     * @param entity
+     * @return
+     */
+    boolean hang(Project entity);
 }
