@@ -75,5 +75,11 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
         return true;
     }
 
+    @Override
+    public boolean continueProject(Project entity) {
+        updateSelective(entity);
+        return true;
+    }
+
 }
 

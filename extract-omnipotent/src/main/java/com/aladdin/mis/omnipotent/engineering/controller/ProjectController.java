@@ -124,4 +124,21 @@ public class ProjectController  extends GlobalController<Project, ProjectService
         }
         return result ;
     }
+
+    /**
+     * 继续工程
+     */
+    @PostMapping("continue")
+    @WebLog("工程项目更新")
+    @ResponseBody
+    public Result continueProject(@RequestBody Project entity){
+        boolean flag = projectService.continueProject(entity);
+        if(flag){
+            result.setData(entity);
+            result.setMessage("更新成功");
+        }else {
+            result.setMessage("更新失败");
+        }
+        return result ;
+    }
 }
