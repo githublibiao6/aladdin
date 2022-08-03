@@ -59,6 +59,20 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     }
 
     /**
+     * 挂起（暂缓）计划
+     */
+    @RequestMapping("hangPlan")
+    @ResponseBody
+    public Result hangPlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.hangPlan(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
      * 完成任务
      */
     @RequestMapping("completePlan")
