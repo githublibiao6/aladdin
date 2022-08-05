@@ -33,10 +33,12 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
     public PageInfo<ProjectVo> paginate(ProjectQo qo){
        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
        List<ProjectVo> list = projectDao.list(qo);
+       // todo 日志记录
        return new PageInfo<>(list);
 }
     @Override
     public boolean remove(Project entity) {
+        // todo 日志记录
         return delete(entity);
     }
 
@@ -55,6 +57,7 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
        if("4".equals(status)){
            entity.setEndDate(new Date());
        }
+        // todo 日志记录
        return updateSelective(entity);
     }
 
@@ -66,18 +69,21 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
     @Override
     public boolean deleteProject(Project entity) {
         updateSelective(entity);
+        // todo 日志记录
         return deleteById(entity.getId());
     }
 
     @Override
     public boolean hang(Project entity) {
         updateSelective(entity);
+        // todo 日志记录
         return true;
     }
 
     @Override
     public boolean continueProject(Project entity) {
         updateSelective(entity);
+        // todo 日志记录
         return true;
     }
 
