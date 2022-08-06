@@ -3,12 +3,12 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 项目计划清单
@@ -23,6 +23,12 @@ public class ProjectPlan extends GlobalModel {
      */
     @TableField("project_id")
     private Integer projectId;
+
+    /**
+     * 项目阶段
+     */
+    @TableField("project_stage")
+    private Integer projectStage;
 
     /**
      * planName计划名称
