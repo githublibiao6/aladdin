@@ -155,7 +155,7 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         update(entity);
         ProjectPlanLog log = new ProjectPlanLog();
 
-        // 删除计划日志
+        // 完成计划日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
