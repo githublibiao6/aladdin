@@ -24,8 +24,4 @@ public class ProjectTaskQo extends ProjectTask {
      */
     private String  sortInfo;
 
-    /**
-     * 当前用户查询
-     */
-    private Integer  userId;
 }

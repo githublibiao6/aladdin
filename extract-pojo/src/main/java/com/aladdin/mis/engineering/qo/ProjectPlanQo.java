@@ -24,8 +24,4 @@ public class ProjectPlanQo extends ProjectPlan {
      */
     private String  sortInfo;
 
-    /**
-     * 当前用户查询
-     */
-    private Integer  userId;
 }
