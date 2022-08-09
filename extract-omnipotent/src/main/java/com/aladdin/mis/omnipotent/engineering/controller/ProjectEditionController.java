@@ -91,6 +91,20 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     }
 
     /**
+     * 删除版本
+     */
+    @RequestMapping("/deleteEdition")
+    @ResponseBody
+    public Result deleteEdition(@RequestBody ProjectEdition entity) {
+        boolean flag = projectEditionService.deleteEdition(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
      * 回复版本
      */
     @RequestMapping("/recover")

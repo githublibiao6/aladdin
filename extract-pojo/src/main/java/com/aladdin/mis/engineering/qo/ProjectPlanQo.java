@@ -19,6 +19,7 @@ public class ProjectPlanQo extends ProjectPlan {
      * 关键字条件过滤
      */
     private String  keyWord;
+
     /**
      * 排序条件
      */
