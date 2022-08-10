@@ -197,5 +197,30 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
         logService.insert(log);
         return true;
     }
+
+    @Override
+    public boolean hangTask(ProjectTask data) {
+        Integer id = data.getId();
+        String evaluate = data.getEvaluate();
+        ProjectTask entity = detailQuery(id);
+        if(id == null){
+            return false;
+        }
+        // 挂起任务
+        data.setStatus("");
+        updateSelective(data);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 关闭任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "挂起任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
 }
 
