@@ -44,4 +44,18 @@ public interface ProjectTaskService extends GlobalService<ProjectTask>  {
      * @return
      */
     boolean hangTask(ProjectTask data);
+
+    /**
+     * 继续任务
+     * @param data
+     * @return
+     */
+    boolean continueTask(ProjectTask data);
+
+    /**
+     * 完成任务
+     * @param data
+     * @return
+     */
+    boolean completeTask(ProjectTask data);
 }

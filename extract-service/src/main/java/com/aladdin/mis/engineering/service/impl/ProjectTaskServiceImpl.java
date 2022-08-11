@@ -174,7 +174,6 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
     public boolean closeTask(ProjectTask data) {
         Integer id = data.getId();
         String evaluate = data.getEvaluate();
-        ProjectTask entity = detailQuery(id);
         if(id == null){
             return false;
         }
@@ -201,8 +200,6 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
     @Override
     public boolean hangTask(ProjectTask data) {
         Integer id = data.getId();
-        String evaluate = data.getEvaluate();
-        ProjectTask entity = detailQuery(id);
         if(id == null){
             return false;
         }
@@ -211,7 +208,54 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
         updateSelective(data);
         ProjectTableLog log = new ProjectTableLog();
 
-        // 关闭任务日志
+        // 挂起任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "挂起任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+
+    @Override
+    public boolean continueTask(ProjectTask data) {
+        Integer id = data.getId();
+        if(id == null){
+            return false;
+        }
+        // 继续任务
+        data.setStatus("");
+        updateSelective(data);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 继续任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "继续任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean completeTask(ProjectTask data) {
+        Integer id = data.getId();
+        if(id == null){
+            return false;
+        }
+        // 完成任务
+        data.setStatus("");
+        updateSelective(data);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 完成任务日志
         log.setType("warning");
         log.setIcon("el-icon-message-solid");
         OmUser om = UserUtil.getCurrentUser();
