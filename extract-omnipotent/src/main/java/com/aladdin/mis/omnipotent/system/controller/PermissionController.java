@@ -28,12 +28,12 @@ public class PermissionController {
     public Result say(@RequestParam(value = "s",defaultValue = "1") String s) {
         Result result = new Result();
         System.err.println(2000);
-        /*HashMap map = new HashMap();
-        map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-        map.put("introduction","I am a super administrator");
-        map.put("name","Super Admin");
-        String[] roles= {"admin"};
-        map.put("roles",roles);*/
+//        HashMap map = new HashMap();
+//        map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+//        map.put("introduction","I am a super administrator");
+//        map.put("name","Super Admin");
+//        String[] roles= {"admin"};
+//        map.put("roles",roles);
         List<Menu> list = service.list();
         result.setCode(20000);
         result.setData(list);
