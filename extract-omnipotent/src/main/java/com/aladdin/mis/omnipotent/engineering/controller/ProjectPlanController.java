@@ -73,7 +73,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     }
 
     /**
-     * 完成任务
+     * 完成计划
      */
     @RequestMapping("completePlan")
     @ResponseBody
@@ -87,12 +87,12 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     }
 
     /**
-     * 开始任务
+     * 开始计划
      */
     @RequestMapping("startPlan")
     @ResponseBody
     public Result startPlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.completePlan(entity);
+        boolean flag = projectPlanService.startPlan(entity);
         if(flag){
             return Result.success();
         }else {
@@ -101,7 +101,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     }
 
     /**
-     * 删除数据
+     * 删除计划
      */
     @RequestMapping("deletePlan")
     @ResponseBody

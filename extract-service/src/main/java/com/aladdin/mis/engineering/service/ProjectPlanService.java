@@ -46,7 +46,7 @@ public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
     boolean hangPlan(ProjectPlan entity);
 
     /**
-     * 删除表
+     * 删除计划
      * @param data
      * @return
      */
