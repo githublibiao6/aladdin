@@ -61,4 +61,11 @@ public interface ProjectService extends GlobalService<Project>  {
      * @return
      */
     boolean continueProject(Project entity);
+
+    /**
+     * 完成工程
+     * @param entity
+     * @return
+     */
+    boolean complete(Project entity);
 }

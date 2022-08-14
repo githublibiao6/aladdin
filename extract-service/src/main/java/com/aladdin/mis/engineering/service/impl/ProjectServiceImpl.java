@@ -87,5 +87,12 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
         return true;
     }
 
+    @Override
+    public boolean complete(Project entity) {
+        updateSelective(entity);
+        // todo 日志记录
+        return true;
+    }
+
 }
 

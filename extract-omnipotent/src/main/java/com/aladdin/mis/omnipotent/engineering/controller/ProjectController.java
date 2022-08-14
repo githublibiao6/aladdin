@@ -92,7 +92,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     }
 
     /**
-     * 挂起工程
+     * 删除工程
      */
     @PostMapping("deleteById")
     @WebLog("工程项目更新")
@@ -141,4 +141,20 @@ public class ProjectController  extends GlobalController<Project, ProjectService
         }
         return result ;
     }
+
+
+    /**
+     * 完成计划
+     */
+    @RequestMapping("complete")
+    @ResponseBody
+    public Result complete(@RequestBody Project entity) {
+        boolean flag = projectService.complete(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
 }
