@@ -64,7 +64,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("删除工程项目")
     @ResponseBody
     public Result delete(@RequestBody Project entity){
-        boolean flag = projectService.remove(entity);
+        boolean flag = projectService.deleteProject(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("刪除成功");
