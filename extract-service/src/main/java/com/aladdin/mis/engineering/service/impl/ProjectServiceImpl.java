@@ -35,12 +35,8 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
        List<ProjectVo> list = projectDao.list(qo);
        // todo 日志记录
        return new PageInfo<>(list);
-}
-    @Override
-    public boolean remove(Project entity) {
-        // todo 日志记录
-        return delete(entity);
     }
+
 
     @Override
     public boolean update(Project entity) {
@@ -63,11 +59,19 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
 
     @Override
     public Project save(Project entity) {
+        // todo 日志记录
         return insertSelective(entity);
     }
 
     @Override
     public boolean deleteProject(Project entity) {
+        updateSelective(entity);
+        // todo 日志记录
+        return deleteById(entity.getId());
+    }
+
+    @Override
+    public boolean startProject(Project entity) {
         updateSelective(entity);
         // todo 日志记录
         return deleteById(entity.getId());

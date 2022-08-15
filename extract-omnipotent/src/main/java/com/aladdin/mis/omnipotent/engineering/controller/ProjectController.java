@@ -144,7 +144,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
 
 
     /**
-     * 完成计划
+     * 完成工程
      */
     @RequestMapping("complete")
     @ResponseBody

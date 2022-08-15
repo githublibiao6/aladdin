@@ -21,13 +21,6 @@ public interface ProjectService extends GlobalService<Project>  {
     PageInfo<ProjectVo> paginate(ProjectQo qo);
 
     /**
-     * 删除工程项目
-     * @param entity
-     * @return flag
-     */
-    boolean remove(Project entity);
-
-    /**
      * 更新工程项目
      * @param entity
      * @return flag
@@ -47,6 +40,13 @@ public interface ProjectService extends GlobalService<Project>  {
      * @return m
      */
     boolean deleteProject(Project entity);
+
+    /**
+     * 开始工程
+     * @param entity
+     * @return
+     */
+    boolean startProject(Project entity);
 
     /**
      * 挂起工程
