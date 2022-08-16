@@ -109,6 +109,23 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     }
 
     /**
+     * 开始工程
+     */
+    @PostMapping("deleteById")
+    @WebLog("工程项目开始")
+    @ResponseBody
+    public Result startProject(@RequestBody Project entity){
+        boolean flag = projectService.startProject(entity);
+        if(flag){
+            result.setData(entity);
+            result.setMessage("更新成功");
+        }else {
+            result.setMessage("更新失败");
+        }
+        return result ;
+    }
+
+    /**
      * 挂起工程
      */
     @PostMapping("hang")
