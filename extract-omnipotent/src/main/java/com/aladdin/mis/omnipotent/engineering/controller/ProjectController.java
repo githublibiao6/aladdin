@@ -111,7 +111,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     /**
      * 开始工程
      */
-    @PostMapping("deleteById")
+    @PostMapping("startProject")
     @WebLog("工程项目开始")
     @ResponseBody
     public Result startProject(@RequestBody Project entity){
@@ -124,6 +124,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
         }
         return result ;
     }
+
 
     /**
      * 挂起工程

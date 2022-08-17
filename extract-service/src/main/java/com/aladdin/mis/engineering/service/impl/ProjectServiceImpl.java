@@ -33,7 +33,6 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
     public PageInfo<ProjectVo> paginate(ProjectQo qo){
        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
        List<ProjectVo> list = projectDao.list(qo);
-       // todo 日志记录
        return new PageInfo<>(list);
     }
 
@@ -74,7 +73,7 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
     public boolean startProject(Project entity) {
         updateSelective(entity);
         // todo 日志记录
-        return deleteById(entity.getId());
+        return true;
     }
 
     @Override
