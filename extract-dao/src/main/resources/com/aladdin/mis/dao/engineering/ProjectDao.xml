@@ -4,6 +4,7 @@
 
     <sql id="baseColumn">
         id,
+        business_line,
         project_code,
         project_name,
         introduce,
@@ -22,6 +23,7 @@
     </sql>
     <resultMap type="com.aladdin.mis.engineering.entity.Project" id="baseResultMap">
         <id property="id" column="id"/>
+        <result property="business_line" column="businessLine"/>
         <result property="project_code" column="projectCode"/>
         <result property="project_name" column="projectName"/>
         <result property="introduce" column="introduce"/>

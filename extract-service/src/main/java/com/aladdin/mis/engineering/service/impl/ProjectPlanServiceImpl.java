@@ -5,14 +5,19 @@ import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectPlanDao;
 import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.entity.ProjectPlanLog;
+import com.aladdin.mis.engineering.qo.ProjectPlanQo;
 import com.aladdin.mis.engineering.service.ProjectPlanLogService;
 import com.aladdin.mis.engineering.service.ProjectPlanService;
+import com.aladdin.mis.engineering.vo.ProjectPlanVo;
 import com.aladdin.mis.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,9 +34,15 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     @Autowired
     private DictionaryTeamsService dictionaryTeamsService;
 
-
     @Autowired
     private ProjectPlanLogService logService;
+
+    @Override
+    public PageInfo<ProjectPlanVo> pageByDto(ProjectPlanQo qo) {
+        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
+        List<ProjectPlanVo> list = projectPlanDao.list(qo);
+        return new PageInfo<>(list);
+    }
 
     @Override
     public boolean update(ProjectPlan entity) {

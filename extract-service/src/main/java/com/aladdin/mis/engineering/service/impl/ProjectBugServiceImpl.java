@@ -186,6 +186,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "完成缺陷;";
+
         log.setContent(content);
         logService.insert(log);
         // 删除缺陷

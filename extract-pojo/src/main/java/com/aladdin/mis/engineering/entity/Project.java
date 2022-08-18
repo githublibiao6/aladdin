@@ -17,6 +17,13 @@ import java.util.Date;
 @Table("project")
 @Data
 public class Project extends GlobalModel {
+
+    /**
+     * 项目业务线
+     */
+    @TableField("business_line")
+    private Integer businessLine ;
+
     /**
      * 项目代码
     */

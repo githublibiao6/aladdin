@@ -24,11 +24,6 @@ public class ProjectPlan extends GlobalModel {
     @TableField("project_id")
     private Integer projectId;
 
-    /**
-     * 项目业务线
-     */
-    @TableField("business_line")
-    private Integer businessLine ;
 
     /**
      * 项目阶段
