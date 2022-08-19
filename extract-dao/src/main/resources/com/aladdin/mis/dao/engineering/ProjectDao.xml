@@ -51,6 +51,9 @@
             and (t.project_name like concat('%', #{keyWord},'%')
                or t.project_code like concat('%', #{keyWord},'%'))
         </if>
+        <if test="businessLine  != null and businessLine != '' ">
+            and t.business_line = #{businessLine}
+        </if>
         <if test="deptId  != null and deptId != '' ">
             and t.dept_id = #{deptId}
         </if>

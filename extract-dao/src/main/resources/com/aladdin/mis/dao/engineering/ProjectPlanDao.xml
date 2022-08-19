@@ -63,6 +63,9 @@
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
         </if>
+        <if test="projectStage  != null and projectStage != '' ">
+            and t.project_stage = #{projectStage}
+        </if>
         <if test="planName  != null and planName != '' ">
             and t.plan_name = #{planName}
         </if>
