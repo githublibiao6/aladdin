@@ -72,6 +72,21 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
         }
     }
 
+
+    /**
+     * 开始计划
+     */
+    @RequestMapping("startPlan")
+    @ResponseBody
+    public Result startPlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.startPlan(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
     /**
      * 挂起（暂缓）计划
      */
@@ -101,12 +116,12 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     }
 
     /**
-     * 开始计划
+     * 完成计划
      */
-    @RequestMapping("startPlan")
+    @RequestMapping("continuePlan")
     @ResponseBody
-    public Result startPlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.startPlan(entity);
+    public Result continuePlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.continuePlan(entity);
         if(flag){
             return Result.success();
         }else {

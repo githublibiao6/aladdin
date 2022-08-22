@@ -159,6 +159,46 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
 
 
     @Override
+    public boolean hangPlan(ProjectPlan entity) {
+
+        // 完成计划
+        entity.setStatus("");
+        update(entity);
+        ProjectPlanLog log = new ProjectPlanLog();
+
+        // 删除计划日志
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "暂停计划;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
+    public boolean continuePlan(ProjectPlan entity) {
+
+        // 继续计划
+        entity.setStatus("");
+        update(entity);
+        ProjectPlanLog log = new ProjectPlanLog();
+
+        // 继续计划日志
+        log.setType("success");
+        log.setIcon("el-icon-sunrise");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "继续计划;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
     public boolean completePlan(ProjectPlan entity) {
 
         // 完成计划
@@ -176,26 +216,6 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         if(evaluate != null && !evaluate.isEmpty()){
             content += "\n完成评价！";
         }
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
-    @Override
-    public boolean hangPlan(ProjectPlan entity) {
-
-        // 完成计划
-        entity.setStatus("");
-        update(entity);
-        ProjectPlanLog log = new ProjectPlanLog();
-
-        // 删除计划日志
-        log.setType("success");
-        log.setIcon("el-icon-sunrise");
-        OmUser om = UserUtil.getCurrentUser();
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "暂停计划;";
-
         log.setContent(content);
         logService.insert(log);
         return true;
