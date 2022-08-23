@@ -20,4 +20,11 @@ public interface ProjectUserService extends GlobalService<ProjectUser>  {
      */
     PageInfo<ProjectUserVo> pageVoByCondition(ProjectUserQo condition);
 
+    /**
+     * 获取分页信息
+     * @param entity
+     * @return
+     */
+    Boolean addUser(ProjectUser entity);
+
 }

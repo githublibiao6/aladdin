@@ -84,5 +84,18 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
         return Result.error();
     }
 
+    /**
+     * 完成缺陷
+     */
+    @PostMapping("/complete")
+    @ResponseBody
+    public Result completeBug(@RequestBody ProjectBug entity) {
+        boolean flag = projectBugService.completeBug(entity);
+        if(flag){
+            Result.success();
+        }
+        return Result.error();
+    }
+
 
 }

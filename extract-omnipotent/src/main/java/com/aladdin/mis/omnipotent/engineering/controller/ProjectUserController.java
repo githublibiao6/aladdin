@@ -42,4 +42,18 @@ public class ProjectUserController  extends GlobalController<ProjectUser, Projec
         PageInfo<ProjectUserVo> page = projectUserService.pageVoByCondition(condition);
         return Result.success(page);
     }
+
+    /**
+     * 新增项目用户
+     */
+    @PostMapping("/addUser")
+    @ResponseBody
+    public Result addUser(@RequestBody ProjectUser entity) {
+        boolean flag = projectUserService.addUser(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
 }

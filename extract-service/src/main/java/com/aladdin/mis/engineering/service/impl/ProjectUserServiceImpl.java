@@ -42,5 +42,11 @@ public class ProjectUserServiceImpl extends GlobalServiceImpl<ProjectUser> imple
 
         return pageInfo;
     }
+
+    @Override
+    public Boolean addUser(ProjectUser entity) {
+        // todo 添加用户日志
+        return null;
+    }
 }
 
