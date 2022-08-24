@@ -45,8 +45,14 @@ public class ProjectUserServiceImpl extends GlobalServiceImpl<ProjectUser> imple
 
     @Override
     public Boolean addUser(ProjectUser entity) {
-        // todo 添加用户日志
+        // todo 添加开发用户日志
         return null;
+    }
+
+    @Override
+    public boolean removeUser(ProjectUser entity) {
+        // todo 添加开发用户日志
+        return true;
     }
 }
 

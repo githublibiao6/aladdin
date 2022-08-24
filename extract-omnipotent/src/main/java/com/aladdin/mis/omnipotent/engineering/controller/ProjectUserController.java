@@ -56,4 +56,18 @@ public class ProjectUserController  extends GlobalController<ProjectUser, Projec
             return Result.error();
         }
     }
+
+    /**
+     * 移除项目用户
+     */
+    @PostMapping("/removeUser")
+    @ResponseBody
+    public Result removeUser(@RequestBody ProjectUser entity) {
+        boolean flag = projectUserService.removeUser(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
 }
