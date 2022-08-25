@@ -39,6 +39,13 @@ public interface ProjectTaskService extends GlobalService<ProjectTask>  {
     boolean closeTask(ProjectTask data);
 
     /**
+     * 开始任务
+     * @param entity
+     * @return
+     */
+    boolean startTask(ProjectTask entity);
+
+    /**
      * 挂起任务
      * @param data
      * @return

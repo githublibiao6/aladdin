@@ -60,6 +60,21 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     }
 
     /**
+     * 开始任务
+     */
+    @RequestMapping("/startTask")
+    @ResponseBody
+    public Result startTask(@RequestBody ProjectTask entity) {
+        boolean flag = projectTaskService.startTask(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+
+    /**
      * 删除数据
      */
     @RequestMapping("/deleteTask")

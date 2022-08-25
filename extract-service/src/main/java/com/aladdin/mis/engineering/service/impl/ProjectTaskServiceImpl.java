@@ -198,6 +198,29 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
     }
 
     @Override
+    public boolean startTask(ProjectTask entity) {
+        Integer id = entity.getId();
+        if(id == null){
+            return false;
+        }
+        // 开始任务
+        entity.setStatus("");
+        updateSelective(entity);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 挂起任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "开始任务;";
+
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
     public boolean hangTask(ProjectTask data) {
         Integer id = data.getId();
         if(id == null){
