@@ -73,6 +73,34 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
         }
     }
 
+    /**
+     * 挂起任务
+     */
+    @RequestMapping("/hangTask")
+    @ResponseBody
+    public Result hangTask(@RequestBody ProjectTask entity) {
+        boolean flag = projectTaskService.hangTask(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
+     * 继续任务
+     */
+    @RequestMapping("/continueTask")
+    @ResponseBody
+    public Result continueTask(@RequestBody ProjectTask entity) {
+        boolean flag = projectTaskService.continueTask(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
 
     /**
      * 删除数据
@@ -81,6 +109,20 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @ResponseBody
     public Result deleteTask(@RequestBody ProjectTask entity) {
         boolean flag = projectTaskService.deleteTask(entity);
+        if(flag){
+            return Result.success();
+        }else {
+            return Result.error();
+        }
+    }
+
+    /**
+     * 完成任务
+     */
+    @RequestMapping("/completeTask")
+    @ResponseBody
+    public Result completeTask(@RequestBody ProjectTask entity) {
+        boolean flag = projectTaskService.completeTask(entity);
         if(flag){
             return Result.success();
         }else {
