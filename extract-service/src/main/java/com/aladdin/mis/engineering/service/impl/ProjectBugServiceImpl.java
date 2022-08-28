@@ -137,7 +137,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         Integer id= insert(entity);
         ProjectBugLog log = new ProjectBugLog();
 
-        // 新建缺陷管理日志
+        // 打开缺陷管理日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         log.setBugId(id);
@@ -157,14 +157,14 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
         ProjectBugLog log = new ProjectBugLog();
 
-        // 新建缺陷管理日志
+        // 删除缺陷管理日志
         log.setType("danger");
         log.setIcon("el-icon-sunrise");
         log.setBugId(entity.getId());
 
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "删除缺陷;";
-        content += "原因：" + entity.getCompleteStar();
+        content += "原因：" + entity.getCompleteStar()+";";
         log.setContent(content);
         logService.insert(log);
         // 删除缺陷
@@ -179,7 +179,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
         ProjectBugLog log = new ProjectBugLog();
 
-        // 新建缺陷管理日志
+        // 完成缺陷管理日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         log.setBugId(entity.getId());

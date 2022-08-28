@@ -234,6 +234,8 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
         String content = om.getUserName() + "删除计划"+entity.getPlanName()+";";
+        String remark = entity.getRemark();
+        content += "原因：" + remark+";";
         log.setContent(content);
         logService.insert(log);
         return true;
