@@ -150,7 +150,7 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         log.setIcon("el-icon-search");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "重启文件;";
+        String content = om.getUserName() + "恢复文件;";
         log.setContent(content);
         logService.insert(log);
         return true;

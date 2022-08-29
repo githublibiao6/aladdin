@@ -198,7 +198,7 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
         log.setIcon("el-icon-search");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "重启版本;";
+        String content = om.getUserName() + "恢复版本;";
         log.setContent(content);
         logService.insert(log);
         return true;

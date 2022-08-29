@@ -189,7 +189,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
         log.setContent(content);
         logService.insert(log);
-        // 删除缺陷
+        // 完成缺陷
         deleteById(entity.getId());
         return true;
     }

@@ -161,17 +161,17 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     @Override
     public boolean hangPlan(ProjectPlan entity) {
 
-        // 完成计划
+        // 挂起计划
         entity.setStatus("");
         update(entity);
         ProjectPlanLog log = new ProjectPlanLog();
 
-        // 删除计划日志
+        // 挂起计划日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "暂停计划;";
+        String content = om.getUserName() + "挂起计划;";
 
         log.setContent(content);
         logService.insert(log);

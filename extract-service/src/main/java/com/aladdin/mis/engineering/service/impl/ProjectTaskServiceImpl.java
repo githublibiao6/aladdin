@@ -141,61 +141,7 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
         return true;
     }
 
-    @Override
-    public boolean deleteTask(ProjectTask data) {
-        Integer id = data.getId();
-        String abandonReason = data.getTaskComments();
-        ProjectTask entity = detailQuery(id);
-        if(id == null){
-            return false;
-        }
-        // 删除任务
-        deleteById(id);
-        ProjectTableLog log = new ProjectTableLog();
 
-        // 删除任务日志
-        log.setType("warning");
-        log.setIcon("el-icon-message-solid");
-        OmUser om = UserUtil.getCurrentUser();
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "删除任务;";
-
-        content += ";";
-        if(abandonReason != null && !abandonReason.isEmpty()){
-            content += "删除原因："+ abandonReason +";";
-        }
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
-
-    @Override
-    public boolean closeTask(ProjectTask data) {
-        Integer id = data.getId();
-        String evaluate = data.getEvaluate();
-        if(id == null){
-            return false;
-        }
-        // 关闭任务
-        deleteById(id);
-        ProjectTableLog log = new ProjectTableLog();
-
-        // 关闭任务日志
-        log.setType("warning");
-        log.setIcon("el-icon-message-solid");
-        OmUser om = UserUtil.getCurrentUser();
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "关闭任务;";
-
-        content += ";";
-        if(evaluate != null && !evaluate.isEmpty()){
-            content += "完成评价;";
-        }
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
 
     @Override
     public boolean startTask(ProjectTask entity) {
@@ -268,6 +214,62 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
     }
 
     @Override
+    public boolean deleteTask(ProjectTask data) {
+        Integer id = data.getId();
+        String abandonReason = data.getTaskComments();
+        ProjectTask entity = detailQuery(id);
+        if(id == null){
+            return false;
+        }
+        // 删除任务
+        deleteById(id);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 删除任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "删除任务;";
+
+        content += ";";
+        if(abandonReason != null && !abandonReason.isEmpty()){
+            content += "删除原因："+ abandonReason +";";
+        }
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+
+    @Override
+    public boolean closeTask(ProjectTask data) {
+        Integer id = data.getId();
+        String evaluate = data.getEvaluate();
+        if(id == null){
+            return false;
+        }
+        // 关闭任务
+        deleteById(id);
+        ProjectTableLog log = new ProjectTableLog();
+
+        // 关闭任务日志
+        log.setType("warning");
+        log.setIcon("el-icon-message-solid");
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() + "关闭任务;";
+
+        content += ";";
+        if(evaluate != null && !evaluate.isEmpty()){
+            content += "完成评价;";
+        }
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
+
+    @Override
     public boolean completeTask(ProjectTask data) {
         Integer id = data.getId();
         if(id == null){
@@ -283,7 +285,7 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
         log.setIcon("el-icon-message-solid");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "挂起任务;";
+        String content = om.getUserName() + "完成任务;";
 
         log.setContent(content);
         logService.insert(log);
