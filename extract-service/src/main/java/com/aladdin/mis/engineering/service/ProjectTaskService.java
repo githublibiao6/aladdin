@@ -2,6 +2,9 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectTask;
+import com.aladdin.mis.engineering.qo.ProjectTaskQo;
+import com.aladdin.mis.engineering.vo.ProjectTaskVo;
+import com.github.pagehelper.PageInfo;
 
 /**
  * ProjectTaskService
@@ -9,6 +12,13 @@ import com.aladdin.mis.engineering.entity.ProjectTask;
  * @date 2022-07-05 21:58:00
 */
 public interface ProjectTaskService extends GlobalService<ProjectTask>  {
+
+    /**
+     * 分页获取任务，会根据人员和角色来获取
+     * @param qo
+     * @return
+     */
+    PageInfo<ProjectTaskVo> paginate(ProjectTaskQo qo);
 
     /**
      * 更新任务

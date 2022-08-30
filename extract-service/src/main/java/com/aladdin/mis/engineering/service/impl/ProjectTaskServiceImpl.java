@@ -3,15 +3,23 @@ package com.aladdin.mis.engineering.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectTaskDao;
-import com.aladdin.mis.engineering.entity.*;
+import com.aladdin.mis.engineering.entity.ProjectBugLog;
+import com.aladdin.mis.engineering.entity.ProjectTableLog;
+import com.aladdin.mis.engineering.entity.ProjectTask;
+import com.aladdin.mis.engineering.entity.ProjectTaskLog;
+import com.aladdin.mis.engineering.qo.ProjectTaskQo;
 import com.aladdin.mis.engineering.service.ProjectTaskLogService;
 import com.aladdin.mis.engineering.service.ProjectTaskService;
+import com.aladdin.mis.engineering.vo.ProjectTaskVo;
 import com.aladdin.mis.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +38,19 @@ public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> imple
 
     @Autowired
     private ProjectTaskLogService logService;
+
+    /**
+     * 分页查询
+     * @param qo
+     * @return
+     */
+    @Override
+    public PageInfo<ProjectTaskVo> paginate(ProjectTaskQo qo){
+        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
+        // todo 根据人员和角色来查询任务
+        List<ProjectTaskVo> list = projectTaskDao.list(qo);
+        return new PageInfo<>(list);
+    }
 
     @Override
     public boolean update(ProjectTask entity) {
