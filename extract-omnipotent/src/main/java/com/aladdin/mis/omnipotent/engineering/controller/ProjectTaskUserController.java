@@ -45,40 +45,12 @@ public class ProjectTaskUserController  extends GlobalController<ProjectTaskUser
 
 
     /**
-     * 挂起任务
+     * 删除任务人员
      */
-    @RequestMapping("/hangTask")
+    @RequestMapping("/deleteUser")
     @ResponseBody
-    public Result hangTask(@RequestBody ProjectTaskUser task) {
-        boolean flag = entityService.hangTask(task.getId());
-        if(flag){
-            return Result.success();
-        }else {
-            return Result.error();
-        }
-    }
-
-    /**
-     * 继续任务任务
-     */
-    @RequestMapping("/continueTask")
-    @ResponseBody
-    public Result continueTask(@RequestBody ProjectTaskUser task) {
-        boolean flag = entityService.continueTask(task.getId());
-        if(flag){
-            return Result.success();
-        }else {
-            return Result.error();
-        }
-    }
-
-    /**
-     * 继续任务任务
-     */
-    @RequestMapping("/completeTask")
-    @ResponseBody
-    public Result completeTask(@RequestBody ProjectTaskUser task) {
-        boolean flag = entityService.completeTask(task.getId());
+    public Result completeTask(@RequestBody ProjectTaskUser taskUser) {
+        boolean flag = entityService.deleteUser(taskUser.getId());
         if(flag){
             return Result.success();
         }else {

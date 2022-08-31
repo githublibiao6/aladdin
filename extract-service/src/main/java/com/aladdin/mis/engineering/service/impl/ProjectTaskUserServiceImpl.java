@@ -69,13 +69,16 @@ public class ProjectTaskUserServiceImpl extends GlobalServiceImpl<ProjectTaskUse
         return true;
     }
 
-
     @Override
-    public boolean hangTask(Integer id) {
+    public boolean deleteUser(Integer id) {
+
         OmUser om = UserUtil.getCurrentUser();
         ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
 
-        // 挂起状态
+        int userId = taskUser.getUserId();
+        Admin admin = adminService.detailQuery(userId);
+
+        // 删除人员
         taskUser.setStatus("");
         updateSelective(taskUser);
         // 保存日志
@@ -86,88 +89,13 @@ public class ProjectTaskUserServiceImpl extends GlobalServiceImpl<ProjectTaskUse
         log.setType("info");
         log.setIcon("el-icon-sunrise");
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "挂起任务;";
+        String content = om.getUserName() + "删除人员"+admin.getRealName()+";";
 
         log.setContent(content);
         logService.insert(log);
         return true;
+
     }
-
-    @Override
-    public boolean continueTask(Integer id) {
-        OmUser om = UserUtil.getCurrentUser();
-
-        ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
-
-        // 挂起状态
-        taskUser.setStatus("");
-        updateSelective(taskUser);
-        // 保存日志
-        ProjectTaskLog log = new ProjectTaskLog();
-
-        // 保存日志记录
-        log.setTaskId(id);
-        log.setType("info");
-        log.setIcon("el-icon-sunrise");
-
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "继续任务;";
-
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
-    @Override
-    public boolean completeTask(Integer id) {
-        OmUser om = UserUtil.getCurrentUser();
-
-        ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
-
-        // 完成状态
-        taskUser.setStatus("");
-        updateSelective(taskUser);
-        // 保存日志
-        ProjectTaskLog log = new ProjectTaskLog();
-
-        // 保存日志记录
-        log.setTaskId(id);
-        log.setType("success");
-        log.setIcon("el-icon-sunrise");
-
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "完成任务;";
-
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
-    @Override
-    public boolean startTask(Integer id) {
-        OmUser om = UserUtil.getCurrentUser();
-
-        ProjectTaskUser taskUser = projectTaskUserDao.getByTaskAndUserId(id, om.getUserId());
-
-        // 开始状态
-        taskUser.setStatus("");
-        updateSelective(taskUser);
-        // 保存日志
-        ProjectTaskLog log = new ProjectTaskLog();
-
-        // 保存日志记录
-        log.setTaskId(id);
-        log.setType("success");
-        log.setIcon("el-icon-sunrise");
-
-        log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "开始任务;";
-
-        log.setContent(content);
-        logService.insert(log);
-        return true;
-    }
-
 
 }
 
