@@ -2,9 +2,6 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectPlanUser;
-import com.aladdin.mis.engineering.vo.ProjectPlanUserVo;
-import com.aladdin.mis.engineering.qo.ProjectPlanUserQo;
-import com.github.pagehelper.PageInfo;
 /**
  * ProjectPlanUserService
  * @author cles
@@ -12,4 +9,10 @@ import com.github.pagehelper.PageInfo;
 */
 public interface ProjectPlanUserService extends GlobalService<ProjectPlanUser>  {
 
+    /**
+     * 删除人员
+     * @param entity
+     * @return
+     */
+    boolean deleteUser(ProjectPlanUser entity);
 }

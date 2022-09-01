@@ -77,13 +77,13 @@ public class ProjectBugUserServiceImpl extends GlobalServiceImpl<ProjectBugUser>
 
     @Override
     public boolean update(ProjectBugUser entity) {
-        // 保存缺陷管理人员
+        // 更新缺陷管理人员
 
         ProjectBugUser old = detailQuery(entity.getId());
 
         ProjectBugLog log = new ProjectBugLog();
 
-        // 新建缺陷管理日志
+        // 更新缺陷管理人员日志
         log.setBugId(entity.getBugId());
 
         OmUser om = UserUtil.getCurrentUser();

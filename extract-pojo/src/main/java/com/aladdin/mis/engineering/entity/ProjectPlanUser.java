@@ -3,12 +3,11 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
  * 项目计划参与人员
@@ -22,13 +21,13 @@ public class ProjectPlanUser extends GlobalModel {
      * userId
      */
     @TableField("user_id")
-    private String userId;
+    private Integer userId;
 
     /**
      * planId
      */
     @TableField("plan_id")
-    private String planId;
+    private Integer planId;
 
     /**
      * status人员状态
@@ -69,5 +68,11 @@ public class ProjectPlanUser extends GlobalModel {
      */
     @TableField("evaluate")
     private String evaluate;
+
+    /**
+     * 描述
+     */
+    @TableField("comments")
+    private String comments;
 
 }

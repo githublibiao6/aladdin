@@ -46,7 +46,6 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         return new PageInfo<>(list);
     }
 
-
     @Override
     public boolean update(ProjectBug entity) {
         String status = entity.getStatus();
@@ -186,7 +185,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
         log.setBugId(entity.getId());
 
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "完成缺陷;";
+        String content = om.getUserName() + "完成缺陷修复;";
 
         log.setContent(content);
         logService.insert(log);
