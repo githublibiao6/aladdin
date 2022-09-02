@@ -10,6 +10,14 @@ import com.aladdin.mis.engineering.entity.ProjectPlanUser;
 public interface ProjectPlanUserService extends GlobalService<ProjectPlanUser>  {
 
     /**
+     * 保存缺陷管理人员
+     * @param entity
+     * @return
+     */
+    boolean save(ProjectPlanUser entity);
+
+
+    /**
      * 删除人员
      * @param entity
      * @return

@@ -3,15 +3,20 @@ package com.aladdin.mis.engineering.service.impl;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectPlanUserDao;
+import com.aladdin.mis.engineering.entity.ProjectBugLog;
 import com.aladdin.mis.engineering.entity.ProjectPlanLog;
 import com.aladdin.mis.engineering.entity.ProjectPlanUser;
 import com.aladdin.mis.engineering.service.ProjectPlanLogService;
 import com.aladdin.mis.engineering.service.ProjectPlanUserService;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.service.AdminService;
+import com.aladdin.mis.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
+
 /**
  * ProjectPlanUserService
  * @author cles
@@ -29,6 +34,34 @@ public class ProjectPlanUserServiceImpl extends GlobalServiceImpl<ProjectPlanUse
     @Autowired
     private ProjectPlanLogService logService;
 
+    @Autowired
+    private DictionaryTeamsService dictionaryTeamsService;
+
+
+    @Override
+    public boolean save(ProjectPlanUser entity) {
+        // 保存缺陷管理人员
+        Integer id = insert(entity);
+        ProjectBugLog log = new ProjectBugLog();
+
+        Admin admin = adminService.detailQuery(entity.getUserId());
+
+        // 新建缺陷管理日志
+        log.setBugId(entity.getPlanId());
+
+        OmUser om = UserUtil.getCurrentUser();
+        log.setOperationUser(om.getUserName());
+        String content = om.getUserName() ;
+
+        entity.setStatus("1");
+        if(!"0".equals(entity.getStatus())){
+            Map<String, String> map = dictionaryTeamsService.getTeamsByCode("editionStatus");
+            content += "状态："+map.get(entity.getStatus());
+        }
+        log.setContent(content);
+        logService.insert(log);
+        return true;
+    }
 
     @Override
     public boolean deleteUser(ProjectPlanUser entity) {
