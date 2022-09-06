@@ -18,18 +18,12 @@ import java.util.List;
 @Table("project_plan")
 @Data
 public class ProjectPlan extends GlobalModel {
+
     /**
      * projectId
      */
     @TableField("project_id")
     private Integer projectId;
-
-
-    /**
-     * 项目阶段
-     */
-    @TableField("project_stage")
-    private Integer projectStage;
 
     /**
      * planName计划名称
@@ -94,7 +88,7 @@ public class ProjectPlan extends GlobalModel {
     private String solved;
 
     /**
-     * status阶段状态
+     * status计划状态
      */
     @TableField("status")
     private String status;

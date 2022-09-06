@@ -5,7 +5,6 @@
     <resultMap id="baseResultMap"  type="com.aladdin.mis.engineering.entity.ProjectPlan" >
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
-        <result property="project_stage" column="projectStage"/>
         <result property="plan_name" column="planName"/>
         <result property="start_date" column="startDate"/>
         <result property="end_date" column="endDate"/>
@@ -33,7 +32,6 @@
     <sql id="baseColumn">
         t.id,
         t.project_id,
-        t.project_stage,
         t.plan_name,
         t.start_date,
         t.end_date,
@@ -62,9 +60,6 @@
         from project_plan t where t.sys005 = 1
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
-        </if>
-        <if test="projectStage  != null and projectStage != '' ">
-            and t.project_stage = #{projectStage}
         </if>
         <if test="planName  != null and planName != '' ">
             and t.plan_name = #{planName}
