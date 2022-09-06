@@ -26,6 +26,8 @@
         <result property="sys005" column="sys005"/>
         <result property="sys006" column="sys006"/>
         <result property="sys007" column="sys007"/>
+
+        <result property="user_name" column="userName"/>
     </resultMap>
 
 
@@ -57,7 +59,10 @@
 
     <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanVo">
         select <include refid="baseColumn"></include>
-        from project_plan t where t.sys005 = 1
+        , a.real_name user_name
+        from project_plan t
+        left join be_admin a on t.user_id = a.id
+        where t.sys005 = 1
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
         </if>

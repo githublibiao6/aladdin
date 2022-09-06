@@ -11,4 +11,5 @@ import lombok.Data;
 @Data
 public class ProjectPlanVo extends ProjectPlan {
 
+    private String userName;
 }
