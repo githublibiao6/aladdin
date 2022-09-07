@@ -12,6 +12,7 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class ListTypeHandler implements TypeHandler<List<String>> {
 
     @Override
     public List<String> getResult(ResultSet resultSet, String s) throws SQLException {
+        if(resultSet.getString(s) == null){
+            return new ArrayList<>();
+        }
         String[] arr = resultSet.getString(s).split(",");
         return Arrays.asList(arr);
     }
