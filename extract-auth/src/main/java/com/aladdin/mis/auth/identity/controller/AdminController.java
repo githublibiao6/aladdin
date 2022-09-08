@@ -75,7 +75,6 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     public Result pageList(@RequestBody AdminQo qo) {
         PageInfo<Admin> page = service.pageList(qo);
         result.setData(page);
-//        result=page(list,page,limit);
         return result;
     }
 
@@ -180,7 +179,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     }
 
     /**
-     * 注册新用户
+     * 更新密码
      */
     @RequestMapping("/updatePass")
     @ResponseBody
