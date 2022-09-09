@@ -143,6 +143,7 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
 
         // 开始计划
         entity.setStatus("");
+        entity.setStartTime(LocalDateTime.now());
         update(entity);
         ProjectPlanLog log = new ProjectPlanLog();
 
@@ -204,6 +205,7 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
 
         // 完成计划
         entity.setStatus("");
+        entity.setEndTime(LocalDateTime.now());
         update(entity);
         ProjectPlanLog log = new ProjectPlanLog();
 
