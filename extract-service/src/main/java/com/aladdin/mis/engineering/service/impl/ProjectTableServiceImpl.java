@@ -43,6 +43,7 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
 
         // 记录日志
         String comments = entity.getTableComment();
+        String remark = entity.getRemark();
         String abandonReason = entity.getAbandonReason();
 
         String oldComments = old.getTableComment();
@@ -78,6 +79,9 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
                     log.setType("danger");
                     break;
             }
+            if(remark != null && !remark.isEmpty()){
+                content.append("\n修改表原因：").append(remark);
+            }
 
             OmUser om = UserUtil.getCurrentUser();
             log.setOperationUser(om.getUserName());
@@ -92,11 +96,11 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
         if(entity.getId() != null){
             return update(entity);
         }
-        // 保存版本
+        // 保存项目表
         Integer id = insert(entity);
         ProjectTableLog log = new ProjectTableLog();
 
-        // 新建版本日志
+        // 新建项目表日志
         log.setType("success");
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();

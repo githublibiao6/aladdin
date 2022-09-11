@@ -103,10 +103,10 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     /**
      * 完成计划
      */
-    @RequestMapping("completePlan")
+    @RequestMapping("continuePlan")
     @ResponseBody
-    public Result completePlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.completePlan(entity);
+    public Result continuePlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.continuePlan(entity);
         if(flag){
             return Result.success();
         }else {
@@ -117,10 +117,10 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     /**
      * 完成计划
      */
-    @RequestMapping("continuePlan")
+    @RequestMapping("completePlan")
     @ResponseBody
-    public Result continuePlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.continuePlan(entity);
+    public Result completePlan(@RequestBody ProjectPlan entity) {
+        boolean flag = projectPlanService.completePlan(entity);
         if(flag){
             return Result.success();
         }else {
