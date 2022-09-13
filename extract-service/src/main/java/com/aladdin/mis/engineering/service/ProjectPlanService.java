@@ -33,7 +33,7 @@ public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
      * @param entity
      * @return
      */
-    boolean save(ProjectPlan entity);
+    Integer save(ProjectPlan entity);
 
     /**
      * 开始计划

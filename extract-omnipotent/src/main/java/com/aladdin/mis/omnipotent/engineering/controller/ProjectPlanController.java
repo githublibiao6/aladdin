@@ -50,8 +50,8 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.save(entity);
-        if(flag){
+        Integer id = projectPlanService.save(entity);
+        if(id != null){
             return Result.success();
         }else {
             return Result.error();

@@ -119,9 +119,10 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     }
 
     @Override
-    public boolean save(ProjectPlan entity) {
+    public Integer save(ProjectPlan entity) {
         if(entity.getId() != null){
-            return update(entity);
+            update(entity);
+            return entity.getId();
         }
         // 保存计划
         Integer id = insert(entity);
@@ -135,7 +136,7 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         String content = om.getUserName() + "新建项目计划"+entity.getPlanName()+";";
         log.setContent(content);
         logService.insert(log);
-        return true;
+        return id;
     }
 
     @Override
