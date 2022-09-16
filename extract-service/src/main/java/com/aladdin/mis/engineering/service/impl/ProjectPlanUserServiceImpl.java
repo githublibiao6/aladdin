@@ -40,13 +40,13 @@ public class ProjectPlanUserServiceImpl extends GlobalServiceImpl<ProjectPlanUse
 
     @Override
     public boolean save(ProjectPlanUser entity) {
-        // 保存缺陷管理人员
+        // 保存项目计划管理人员
         Integer id = insert(entity);
         ProjectBugLog log = new ProjectBugLog();
 
         Admin admin = adminService.detailQuery(entity.getUserId());
 
-        // 新建缺陷管理日志
+        // 新建项目计划日志
         log.setBugId(entity.getPlanId());
 
         OmUser om = UserUtil.getCurrentUser();

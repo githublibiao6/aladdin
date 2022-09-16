@@ -174,5 +174,14 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
         logService.insert(log);
         return true;
     }
+
+    @Override
+    public boolean downloadFile(ProjectFile entity) {
+        int count = entity.getDownloadCount();
+        count ++;
+        entity.setDownloadCount(count);
+        update(entity);
+        return true;
+    }
 }
 

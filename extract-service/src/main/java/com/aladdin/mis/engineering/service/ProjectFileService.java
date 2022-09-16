@@ -44,4 +44,11 @@ public interface ProjectFileService extends GlobalService<ProjectFile>  {
      * @return
      */
     boolean deleteFile(ProjectFile entity);
+
+    /**
+     * 下载文件
+     * @param entity
+     * @return
+     */
+    boolean downloadFile(ProjectFile entity);
 }
