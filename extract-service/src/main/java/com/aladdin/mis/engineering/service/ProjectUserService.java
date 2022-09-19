@@ -25,7 +25,7 @@ public interface ProjectUserService extends GlobalService<ProjectUser>  {
      * @param entity
      * @return
      */
-    Boolean addUser(ProjectUser entity);
+    boolean addUser(ProjectUser entity);
 
     /**
      * 移除项目开饭人员

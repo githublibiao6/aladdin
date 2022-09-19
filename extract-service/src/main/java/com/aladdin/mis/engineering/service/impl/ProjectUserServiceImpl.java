@@ -38,15 +38,14 @@ public class ProjectUserServiceImpl extends GlobalServiceImpl<ProjectUser> imple
         List<ProjectUserVo> list = projectUserDao.listVo(condition);
 
         PageInfo<ProjectUserVo> pageInfo = new PageInfo<>(list);
-//        List<ProjectUserVo> pageList = pageInfo.getList();
 
         return pageInfo;
     }
 
     @Override
-    public Boolean addUser(ProjectUser entity) {
+    public boolean addUser(ProjectUser entity) {
         // todo 添加开发用户日志
-        return null;
+        return true;
     }
 
     @Override
