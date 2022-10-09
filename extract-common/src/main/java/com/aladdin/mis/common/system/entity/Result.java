@@ -16,7 +16,7 @@ public class Result {
     private  String requestId = UUID.randomUUID().toString();
     private  String message="successful";
     private  boolean success=true;
-    private  int code=20000;
+    private  int code = 20000;
     private Object data;
 
     public Result(){

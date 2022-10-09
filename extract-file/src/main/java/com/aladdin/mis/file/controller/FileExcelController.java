@@ -34,18 +34,5 @@ public class FileExcelController {
         return result;
     }
 
-    /**
-     * 普通上传base64文件
-     * @param request
-     * @param json
-     * @return
-     */
-    @RequestMapping("/uploadBase64")
-    @ResponseBody
-    public Result uploadBase64(HttpServletRequest request, @RequestBody JSONObject json) {
-        Result result = new Result();
-        // 处理上传图片
-        return result;
-    }
 
 }
