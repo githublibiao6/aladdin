@@ -67,9 +67,10 @@ public class DbConfig {
             //是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
             druidDataSource.setPoolPreparedStatements(true);
             druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(50);
-//                int sqlQueryTimeout = ADIPropUtil.sqlQueryTimeOut();
+/**         int sqlQueryTimeout = ADIPropUtil.sqlQueryTimeOut();
             //对于耗时长的查询sql，会受限于ReadTimeout的控制，单位毫秒
-//                druidDataSource.setConnectionProperties("oracle.net.CONNECT_TIMEOUT=6000;oracle.jdbc.ReadTimeout="+sqlQueryTimeout);
+//          druidDataSource.setConnectionProperties("oracle.net.CONNECT_TIMEOUT=6000;oracle.jdbc.ReadTimeout="+sqlQueryTimeout);
+ **/
         }
         try {
             try { // 排除连接不上的错误

@@ -14,6 +14,6 @@ import cn.hutool.crypto.digest.Digester;
  */
 public class DefaultTools {
 
-    public static final Digester MD5_TOOL = new Digester(DigestAlgorithm.MD5);
+    public static final Digester Md5Tool = new Digester(DigestAlgorithm.MD5);
 
 }
