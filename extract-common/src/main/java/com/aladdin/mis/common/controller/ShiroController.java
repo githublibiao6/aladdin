@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * session 很多浏览器多次请求的session不一致
  * 所以在这返回一个固定的sessionId
+ * @author libia
  */
 @RequestMapping("shiro")
 @Controller
 public class ShiroController {
 
     /**
+     * todo 测试下这个方法
      * 获取sessionId
      */
     @RequestMapping("/getSessionId")

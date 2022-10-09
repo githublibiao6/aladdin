@@ -42,13 +42,15 @@ public class VerificationCodeController {
     @ResponseBody
     public Result getCode(@RequestBody UserDto vo, HttpServletRequest request, HttpServletResponse response) {
         Result result = new Result();
-        //定义图形验证码的长和宽
+        // 定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(150, 47);
         String code = lineCaptcha.getCode();
         String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
         JedisUtil.setString(Parameter.VerifyCodePrefix+":"+ sessionId , 60 * 2 , code);
-//        result.setData(lineCaptcha);
+        /**
+         *  result.setData(lineCaptcha);
+         **/
         ServletOutputStream outputStream = null;
         try {
             outputStream = response.getOutputStream();
@@ -111,6 +113,10 @@ public class VerificationCodeController {
         }
     }
 
+    /**
+     * 测试生成验证码
+     * @param args
+     */
     public static void main(String[] args) {
         //定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(200, 100);

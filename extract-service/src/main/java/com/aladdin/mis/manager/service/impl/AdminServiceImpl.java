@@ -125,7 +125,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         user.setSalt(salt);
         user.setSys006("00");
         // MD5 加密
-        Digester md5 = DefaultTools.Md5Tool;
+        Digester md5 = DefaultTools.MD5_TOOL;
         // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
         String pass = md5.digestHex(user.getLoginPassword() + salt);
         user.setLoginPassword(pass);
