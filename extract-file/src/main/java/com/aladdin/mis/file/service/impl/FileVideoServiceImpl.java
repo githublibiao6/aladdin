@@ -18,7 +18,7 @@ public class FileVideoServiceImpl implements FileVideoService {
 
     @Override
     public String uploadBase64(HttpServletRequest request, String base64) {
-        //上传文件工具
-        return FileUtil.saveBase64Video(request,base64, "2");
+        // todo 上传文件工具
+        return FileUtil.saveBase64Video(request, base64, "2");
     }
 }

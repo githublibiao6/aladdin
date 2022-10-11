@@ -18,6 +18,6 @@ public class FilePictureServiceImpl implements FilePictureService {
     @Override
     public String uploadBase64(HttpServletRequest request, String base64) {
         //上传文件工具
-        return FileUtil.saveBase64File(request,base64, "1");
+        return FileUtil.saveBase64File(request, base64, "1");
     }
 }
