@@ -27,12 +27,17 @@ public class DbSourceHolder {
         log.info("已切换到数据源:{}",dataSource);
     }
 
-    // 获取数据源
+    /**
+     * 获取数据源
+     * @return s
+     */
     public static String getDataSource() {
         return contextHolder.get();
     }
 
-    // 删除数据源
+    /**
+     * 删除数据源
+     */
     public static void clearDataSource() {
         contextHolder.remove();
         log.info("已切换到主数据源");

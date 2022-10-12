@@ -1,5 +1,7 @@
 package com.aladdin.mis.file.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 上传图片
  * FilePicService
@@ -9,4 +11,11 @@ package com.aladdin.mis.file.service;
 public interface FileExcelService {
 
 
+    /**
+     * 上传excel文件
+     * @param request
+     * @param base64
+     * @return
+     */
+    String uploadBase64(HttpServletRequest request, String base64);
 }

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 项目启动主类
- * @author 李标
+ * @author cleslb
  */
 @SpringBootApplication
 public class DemoApplication {

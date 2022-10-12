@@ -135,7 +135,7 @@ public class WebLogAspect {
     /**
      * 获取参数Map集合
      * @param joinPoint
-     * @return
+     * @return map
      */
     private Map<String, Object> getNameAndValue(JoinPoint joinPoint) {
         Map<String, Object> param = new HashMap<>();

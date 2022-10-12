@@ -134,7 +134,7 @@ public class UserRealm extends AuthorizingRealm {
         }
         admin = list.get(0);
         String salt = admin.getSalt();
-        String pass = DefaultTools.Md5Tool.digestHex(password + salt);
+        String pass = DefaultTools.MD5_TOOL.digestHex(password + salt);
         if(!pass.equals(admin.getLoginPassword())){
             throw new AccountException("密码错误");
         }

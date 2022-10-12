@@ -14,8 +14,8 @@ import java.util.Map;
 public interface DbTableInfo {
 
     /**
-    * @Description: 获取所有的表
-    * @Author: cles
+     * 获取所有的表
+     * @Author: cles
      * @Date: 2020/6/4 23:05
      * @return: java.util.List<java.util.Map>
      */

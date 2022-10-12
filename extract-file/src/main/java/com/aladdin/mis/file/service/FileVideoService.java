@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2022-05-25T00:29:11.438
 */
 @Service
-public interface FilePictureService {
+public interface FileVideoService {
 
     /**
-     * 处理上传图片
+     * 处理上传视频
      * @param request
      * @param base64
      * @return
