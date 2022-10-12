@@ -30,6 +30,10 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @Autowired
     public HttpServletResponse response;
 
+    @Autowired
+    protected M baseService;
+
+    // todo 后续删掉？
     protected abstract GlobalService<T> getBaseService();
 
     protected Result result = new Result();

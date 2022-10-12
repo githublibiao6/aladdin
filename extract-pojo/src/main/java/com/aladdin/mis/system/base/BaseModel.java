@@ -28,8 +28,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * @author cles
  * @Date 2020/5/31 12:12
  */
-
-public abstract class BaseModel<T extends BaseModel> implements Serializable {
+//public abstract class BaseModel<T extends BaseModel> implements Serializable {
+public abstract class BaseModel implements Serializable {
 
     /**
      * 功能描述：
@@ -147,7 +147,7 @@ public abstract class BaseModel<T extends BaseModel> implements Serializable {
         return info;
     }
 
-    public T findById(String id){
+    public BaseModel findById(String id){
         String tableName = getTableName();
         return null;
     }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @ControllerAdvice
 public class ExceptionController{
+
     @Autowired
     private VisitExceptionLogService visitExceptionLogService;
 

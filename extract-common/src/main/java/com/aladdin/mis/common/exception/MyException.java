@@ -9,6 +9,7 @@ package com.aladdin.mis.common.exception;
  * @Date 2020/5/31 16:42
  */
 public class MyException extends RuntimeException {
+
     private static final long serialVersionUID = 1L;
 
     public MyException(String message) {

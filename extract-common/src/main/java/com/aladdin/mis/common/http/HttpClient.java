@@ -5,7 +5,6 @@ package com.aladdin.mis.common.http;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -47,8 +46,6 @@ public class HttpClient {
                 }
                 result = sbf.toString();
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -121,8 +118,6 @@ public class HttpClient {
                 }
                 result = sbf.toString();
             }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

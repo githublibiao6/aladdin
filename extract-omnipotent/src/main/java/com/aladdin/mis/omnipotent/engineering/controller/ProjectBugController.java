@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 */
 @RequestMapping("engineering/projectBug")
 @Controller
-public class ProjectBugController  extends GlobalController<ProjectBug, ProjectBugService> {
+public class ProjectBugController extends GlobalController<ProjectBug, ProjectBugService> {
 
     @Autowired
     private ProjectBugService projectBugService;
@@ -42,6 +42,24 @@ public class ProjectBugController  extends GlobalController<ProjectBug, ProjectB
     public Result pageVoInfo(@RequestBody ProjectBugQo qo) {
         PageInfo<ProjectBugVo> page = projectBugService.pageByDto(qo);
         return Result.success(page);
+    }
+
+    /**
+     * 获取通用保存
+     * 因为阿里规范检查，必须要加注解
+     */
+    @Override
+    @RequestMapping("/saveInfo")
+    @ResponseBody
+    public Result saveInfo(@RequestBody ProjectBug entity) {
+        if(entity.getPrimaryKey() == null){
+            ProjectBug data = baseService.insertSelective(entity);
+            result.setData(data);
+        }else {
+            boolean data = getBaseService().updateSelective(entity);
+            result.setData(data);
+        }
+        return Result.success();
     }
 
     /**
