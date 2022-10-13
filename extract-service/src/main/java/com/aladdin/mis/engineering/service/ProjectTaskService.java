@@ -5,12 +5,14 @@ import com.aladdin.mis.engineering.entity.ProjectTask;
 import com.aladdin.mis.engineering.qo.ProjectTaskQo;
 import com.aladdin.mis.engineering.vo.ProjectTaskVo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 /**
  * ProjectTaskService
  * @author cles
  * @date 2022-07-05 21:58:00
 */
+@Service
 public interface ProjectTaskService extends GlobalService<ProjectTask>  {
 
     /**

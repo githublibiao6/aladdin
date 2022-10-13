@@ -2,11 +2,14 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectFile;
+import org.springframework.stereotype.Service;
+
 /**
  * ProjectFileService
  * @author cles
  * @date 2022-05-25T00:29:11.438
 */
+@Service
 public interface ProjectFileService extends GlobalService<ProjectFile>  {
 
 

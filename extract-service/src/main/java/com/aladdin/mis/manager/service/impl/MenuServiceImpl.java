@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuService {
 
     @Autowired
-    MenuDao dao;
+    private MenuDao dao;
 
     /**
      * 获取菜单

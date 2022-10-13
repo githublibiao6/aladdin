@@ -17,7 +17,6 @@ import java.util.List;
  * @author cles
  * @date 2022-05-25T00:28:57.920
 */
-@Service
 public class ProjectFileLogServiceImpl extends GlobalServiceImpl<ProjectFileLog> implements ProjectFileLogService{
 
     @Autowired

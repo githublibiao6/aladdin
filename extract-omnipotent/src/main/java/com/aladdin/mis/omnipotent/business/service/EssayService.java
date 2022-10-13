@@ -4,6 +4,7 @@ import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @author lb
  *
  */
+@Service
 public interface EssayService extends GlobalService<Essay> {
 
     PageInfo<Essay> page(PageEntity entity) ;

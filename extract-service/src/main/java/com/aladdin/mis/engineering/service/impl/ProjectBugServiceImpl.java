@@ -25,7 +25,6 @@ import java.util.Map;
  * @author cles
  * @date 2022-06-07T00:17:28.398
 */
-@Service
 public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> implements ProjectBugService{
 
     @Autowired

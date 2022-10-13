@@ -18,7 +18,6 @@ import java.util.List;
  * @author lb
  *
  */
-@Service
 public class EssayServiceImpl extends GlobalServiceImpl<Essay> implements EssayService {
 
     @Autowired

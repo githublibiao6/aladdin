@@ -3,6 +3,7 @@ package com.aladdin.mis.manager.service;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @author lb
  *
  */
+@Service
 public interface DictionaryService extends GlobalService<Dictionary> {
     /**
      * 功能描述：

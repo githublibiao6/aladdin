@@ -5,12 +5,14 @@ import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.qo.ProjectPlanQo;
 import com.aladdin.mis.engineering.vo.ProjectPlanVo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 /**
  * ProjectPlanService
  * @author cles
  * @date 2022-07-04 21:42:33
 */
+@Service
 public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
 
     /**

@@ -2,11 +2,14 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectBugUser;
+import org.springframework.stereotype.Service;
+
 /**
  * ProjectBugUserService
  * @author cles
  * @date 2022-06-07T00:17:46.097
 */
+@Service
 public interface ProjectBugUserService extends GlobalService<ProjectBugUser>  {
 
     /**

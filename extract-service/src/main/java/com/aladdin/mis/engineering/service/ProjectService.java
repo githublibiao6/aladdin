@@ -2,15 +2,17 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.Project;
-import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.aladdin.mis.engineering.qo.ProjectQo;
+import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 /**
  * ProjectService
  * @author cles
  * @date 2021-08-26T23:02:39.366
 */
+@Service
 public interface ProjectService extends GlobalService<Project>  {
 
     /**

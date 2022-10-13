@@ -13,7 +13,6 @@ import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
@@ -22,7 +21,6 @@ import java.util.Map;
  * @author cles
  * @date 2022-07-05 21:57:37
 */
-@Service
 public class ProjectPlanUserServiceImpl extends GlobalServiceImpl<ProjectPlanUser> implements ProjectPlanUserService{
 
     @Autowired

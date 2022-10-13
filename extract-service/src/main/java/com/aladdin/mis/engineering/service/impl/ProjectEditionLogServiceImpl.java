@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
  * @author cles
  * @date 2022-05-19T22:18:45.894
 */
-@Service
 public class ProjectEditionLogServiceImpl extends GlobalServiceImpl<ProjectEditionLog> implements ProjectEditionLogService{
 
     @Autowired

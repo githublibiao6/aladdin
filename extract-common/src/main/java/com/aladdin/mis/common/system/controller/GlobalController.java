@@ -38,6 +38,10 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
 
     protected Result result = new Result();
 
+    public GlobalController(){
+
+    }
+
 //    PageHandle layui = new LayuiPageHandle();
 
 //    public <T> Result page(List<T> list,Integer page,Integer limit){

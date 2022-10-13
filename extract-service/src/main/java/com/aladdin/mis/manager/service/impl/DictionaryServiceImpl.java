@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
  * @author lb
  *
  */
-@Service
 public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> implements DictionaryService {
 
     @Autowired

@@ -20,7 +20,6 @@ import java.util.Map;
  * @author lb
  *
  */
-@Service
 public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeams> implements DictionaryTeamsService {
 
     @Autowired

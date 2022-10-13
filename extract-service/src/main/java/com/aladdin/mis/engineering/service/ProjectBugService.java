@@ -5,11 +5,14 @@ import com.aladdin.mis.engineering.entity.ProjectBug;
 import com.aladdin.mis.engineering.qo.ProjectBugQo;
 import com.aladdin.mis.engineering.vo.ProjectBugVo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
+
 /**
  * ProjectBugService
  * @author cles
  * @date 2022-06-07T00:17:28.362
 */
+@Service
 public interface ProjectBugService extends GlobalService<ProjectBug>  {
 
     /**

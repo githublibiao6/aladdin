@@ -27,7 +27,6 @@ import java.util.Map;
  * @author cles
  * @date 2022-07-05 21:58:00
 */
-@Service
 public class ProjectTaskServiceImpl extends GlobalServiceImpl<ProjectTask> implements ProjectTaskService{
 
     @Autowired

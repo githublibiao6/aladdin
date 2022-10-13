@@ -17,7 +17,6 @@ import java.util.List;
  * @author cles
  * @date 2021-09-01T00:35:30.811
 */
-@Service
 public class SysWebLogServiceImpl extends GlobalServiceImpl<SysWebLog> implements SysWebLogService{
 
     @Autowired

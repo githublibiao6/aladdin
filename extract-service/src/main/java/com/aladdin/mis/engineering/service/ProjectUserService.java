@@ -5,12 +5,14 @@ import com.aladdin.mis.engineering.entity.ProjectUser;
 import com.aladdin.mis.engineering.qo.ProjectUserQo;
 import com.aladdin.mis.engineering.vo.ProjectUserVo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 /**
  * ProjectUserService
  * @author cles
  * @date 2021-10-12T00:48:58.903
 */
+@Service
 public interface ProjectUserService extends GlobalService<ProjectUser>  {
 
     /**

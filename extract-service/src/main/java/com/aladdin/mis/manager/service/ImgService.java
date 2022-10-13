@@ -2,12 +2,14 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Img;
+import org.springframework.stereotype.Service;
 
 /**
 * @Description: 图片service
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
+@Service
 public interface ImgService extends GlobalService<Img> {
     /**
      * 功能描述：

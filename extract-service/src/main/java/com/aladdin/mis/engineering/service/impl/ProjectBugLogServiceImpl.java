@@ -17,7 +17,6 @@ import java.util.List;
  * @author cles
  * @date 2022-06-07T00:17:39.546
 */
-@Service
 public class ProjectBugLogServiceImpl extends GlobalServiceImpl<ProjectBugLog> implements ProjectBugLogService{
 
     @Autowired
