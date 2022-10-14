@@ -2,6 +2,7 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
+import org.springframework.stereotype.Service;
 
 
 /**
@@ -9,6 +10,7 @@ import com.aladdin.mis.manager.bean.UserBaseInfo;
  * @author lb
  *
  */
+@Service
 public interface UserBaseInfoService extends GlobalService<UserBaseInfo> {
 
 

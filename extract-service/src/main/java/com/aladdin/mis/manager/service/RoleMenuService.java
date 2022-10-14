@@ -3,6 +3,7 @@ package com.aladdin.mis.manager.service;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.manager.vo.RoleMenuVo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
+@Service
 public interface RoleMenuService extends GlobalService<RoleMenu> {
 
     /**

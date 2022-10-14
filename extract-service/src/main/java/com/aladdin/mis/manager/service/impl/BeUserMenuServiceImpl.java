@@ -2,18 +2,17 @@ package com.aladdin.mis.manager.service.impl;
 
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.BeUserMenuDao;
-import com.aladdin.mis.manager.service.AdminRoleService;
-import com.aladdin.mis.manager.service.BeUserMenuService;
-import com.aladdin.mis.manager.service.RoleMenuService;
 import com.aladdin.mis.manager.bean.AdminRole;
 import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
+import com.aladdin.mis.manager.service.AdminRoleService;
+import com.aladdin.mis.manager.service.BeUserMenuService;
+import com.aladdin.mis.manager.service.RoleMenuService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.manager.vo.RoleMenuVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,7 +24,7 @@ import java.util.Set;
  * @author cles
  * @date 2022-03-01T22:38:09.336
 */
-@Service
+
 public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> implements BeUserMenuService {
 
     @Autowired

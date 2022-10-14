@@ -4,6 +4,7 @@ package com.aladdin.mis.auth.shiro.realm;
  */
 
 import com.aladdin.mis.common.currency.DefaultTools;
+import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.service.*;
@@ -19,7 +20,6 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -33,19 +33,11 @@ import java.util.Set;
  */
 public class UserRealm extends AuthorizingRealm {
 
-    @Autowired
-    private AdminService adminService;
+    /**自定义realm的认证阶段属于filter，当时的spring bean还没有读取进来。*/
+    private AdminService adminService ;
 
-    @Autowired
-    private RoleService roleService;
-
-    @Autowired
     private BeUserMenuService userMenuService;
 
-    @Autowired
-    private MenuService menuService;
-
-    @Autowired
     private DeptService deptService;
 
 
@@ -67,6 +59,7 @@ public class UserRealm extends AuthorizingRealm {
     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        setService();
         //null usernames are invalid
         if (principals == null) {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
@@ -112,6 +105,9 @@ public class UserRealm extends AuthorizingRealm {
     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+
+        setService();
+
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         String username = upToken.getUsername();
         char[] passwordChar = upToken.getPassword();
@@ -179,5 +175,18 @@ public class UserRealm extends AuthorizingRealm {
         // 和 admin.getLoginPassword() 比较
         SimpleAuthenticationInfo  info = new SimpleAuthenticationInfo(user, upToken.getPassword(), getName());
         return info;
+    }
+
+    private void setService(){
+        if(adminService == null){
+            adminService = SpringBeanFactoryUtils.getBean(AdminService.class);
+        }
+        if(userMenuService == null){
+            userMenuService = SpringBeanFactoryUtils.getBean(BeUserMenuService.class);
+        }
+        if(deptService == null){
+            deptService = SpringBeanFactoryUtils.getBean(DeptService.class);
+        }
+
     }
 }

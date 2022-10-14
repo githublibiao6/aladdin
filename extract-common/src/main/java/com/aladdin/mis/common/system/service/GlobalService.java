@@ -3,6 +3,7 @@ package com.aladdin.mis.common.system.service;
 import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.system.base.BaseModel;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @return:
  * @version: 1.0.0
  */
+@Service
 public interface GlobalService<T> {
 
     /**

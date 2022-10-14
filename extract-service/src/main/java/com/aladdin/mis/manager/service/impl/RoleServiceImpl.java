@@ -8,7 +8,6 @@ import com.aladdin.mis.manager.service.RoleMenuService;
 import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +22,6 @@ import java.util.Set;
 * @date 2018年8月20日 下午11:12:29
 *
  */
-@Service
 public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleService {
 
     @Autowired

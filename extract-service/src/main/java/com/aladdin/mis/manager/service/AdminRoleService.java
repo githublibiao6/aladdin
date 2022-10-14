@@ -2,6 +2,7 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.AdminRole;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/28 23:13
 */
+@Service
 public interface AdminRoleService extends GlobalService<AdminRole> {
 
     List<AdminRole> getRoleByAdmin(Integer adminId);

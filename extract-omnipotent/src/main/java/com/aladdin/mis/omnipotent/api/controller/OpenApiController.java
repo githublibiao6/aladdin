@@ -1,10 +1,8 @@
 package com.aladdin.mis.omnipotent.api.controller;
 
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
-import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
+import com.aladdin.mis.manager.service.MenuService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/api")
 public class OpenApiController {
-    @Autowired
-    MenuServiceImpl service;
 
     @RequestMapping("/index")
     @ResponseBody

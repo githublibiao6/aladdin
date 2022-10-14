@@ -33,7 +33,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 // 移除自动配置mongodb
 // 需要手动配置com.apps.omnipotent.system.mongodb.config.MongoConfig
 //@SpringBootApplication(exclude = MongoAutoConfiguration.class)
-@SpringBootApplication()
+@SpringBootApplication(scanBasePackages = {"com.aladdin.mis.*.*"} )
 //  开启异步调用
 @EnableAsync
 @MapperScan("com.aladdin.mis.dao")

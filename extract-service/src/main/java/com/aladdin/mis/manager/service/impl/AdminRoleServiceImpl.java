@@ -5,7 +5,6 @@ import com.aladdin.mis.dao.manager.AdminRoleDao;
 import com.aladdin.mis.manager.bean.AdminRole;
 import com.aladdin.mis.manager.service.AdminRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,7 +13,6 @@ import java.util.List;
  * @author lb
  * @date 2018年6月5日 下午8:55:47
  */
-@Service
 public class AdminRoleServiceImpl extends GlobalServiceImpl<AdminRole> implements AdminRoleService {
 
     @Autowired

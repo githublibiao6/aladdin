@@ -2,39 +2,33 @@ package com.aladdin.mis.omnipotent.business.controller;
 
 import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
-import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 字典 Controller
  * @author lb
  *
  */
-@Controller
+@RestController
 @RequestMapping(value = "/business/essay")
-public class EssayController extends GlobalController {
+public class EssayController extends GlobalController<Essay, EssayService> {
 
     @Autowired
     private EssayService service;
 
+    @Override
+    protected GlobalService<Essay> getBaseService() {
+        return service;
+    }
+/*
     @RequestMapping("/page")
     @ResponseBody
     public Result page(HttpServletRequest request, PageEntity entity) {
+        Result result = new Result();
         Subject subject = SecurityUtils.getSubject();
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);
@@ -43,12 +37,13 @@ public class EssayController extends GlobalController {
         result.setCode(20000);
         return result;
     }
-    /**
+    *//**
      * 添加文章
-     */
+     *//*
     @RequestMapping("/add")
     @ResponseBody
     public Result add(@RequestBody Essay m) {
+        Result result = new Result();
         result = new Result();
         boolean flag = service.add(m);
         result.setSuccess(flag);
@@ -63,6 +58,7 @@ public class EssayController extends GlobalController {
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody Essay m) {
+        Result result = new Result();
         result = new Result();
         boolean flag = service.update(m);
         result.setSuccess(flag);
@@ -74,7 +70,7 @@ public class EssayController extends GlobalController {
         return result;
     }
 
-    /**
+    *//**
      * 功能描述：
      *  < 删除 >
      * @Description: remove
@@ -83,10 +79,11 @@ public class EssayController extends GlobalController {
      * @param json 参数1
      * @return: com.apps.omnipotent.system.global.entity.Result
      * @version: 1.0.0
-     */
+     *//*
     @RequestMapping("/remove")
     @ResponseBody
     public Result remove(@RequestBody JSONObject json) {
+        Result result = new Result();
         result = new Result();
         boolean flag = service.remove(json.getInteger("id"));
         result.setSuccess(flag);
@@ -101,14 +98,10 @@ public class EssayController extends GlobalController {
     @RequestMapping("/detail")
     @ResponseBody
     public Result detail(@RequestParam(value = "id",defaultValue = "") Integer id) {
+        Result result = new Result();
         result = new Result();
         Essay essay = service.detail(id);
         result.setData(essay);
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
+    }*/
 }

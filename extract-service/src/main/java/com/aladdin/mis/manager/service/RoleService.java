@@ -4,6 +4,7 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.Set;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
+@Service
 public interface RoleService extends GlobalService<Role> {
     /**
      * 功能描述：

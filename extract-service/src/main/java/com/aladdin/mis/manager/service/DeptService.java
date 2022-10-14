@@ -6,6 +6,7 @@ import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,7 @@ import java.util.Set;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
+@Service
 public interface DeptService extends GlobalService<Dept> {
     /**
      * 功能描述：

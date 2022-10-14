@@ -11,6 +11,7 @@ import java.util.List;
  * @date 2021-08-31T22:26:17.068
 */
 public interface GenerateService  {
+
     /**
      * 分页查询
      * @param qo

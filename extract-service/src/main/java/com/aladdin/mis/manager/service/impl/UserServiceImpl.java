@@ -32,7 +32,6 @@ import java.util.List;
 * @date 2018年8月20日 下午11:12:29
 *
  */
-@Service
 public class UserServiceImpl extends GlobalServiceImpl<User> implements UserService {
 
     @Autowired

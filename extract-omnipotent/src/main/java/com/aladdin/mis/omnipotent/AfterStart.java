@@ -1,12 +1,12 @@
 package com.aladdin.mis.omnipotent;
 
+import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.system.SqlLogDao;
 import com.aladdin.mis.dao.utils.DbPro;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.bean.Role;
-import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
-import com.aladdin.mis.manager.service.impl.RoleServiceImpl;
+import com.aladdin.mis.manager.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -26,17 +26,18 @@ import java.util.List;
 @Order(value = 1)
 public class AfterStart implements ApplicationRunner {
 
-    @Autowired
-    RoleServiceImpl roleService;
+    private RoleService roleService;
 
-    @Autowired
-    MenuServiceImpl menuService;
+    private MenuService menuService;
 
     @Autowired
     private SqlLogDao sqlLogDao;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        setService();
+
         try{
             // 临时处理sqlDao为空的问题
             DbPro.setSqlLogDao(sqlLogDao);
@@ -58,5 +59,15 @@ public class AfterStart implements ApplicationRunner {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void setService(){
+        if(roleService == null){
+            roleService = SpringBeanFactoryUtils.getBean(RoleService.class);
+        }
+        if(menuService == null){
+            menuService = SpringBeanFactoryUtils.getBean(MenuService.class);
+        }
+
     }
 }

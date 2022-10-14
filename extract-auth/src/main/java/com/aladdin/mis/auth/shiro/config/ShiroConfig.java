@@ -93,6 +93,13 @@ public class ShiroConfig {
         return new CustomRolesAuthorizationFilter();
     }*/
 
+    //    @Bean(name = "myRealm")
+    @Bean
+    public UserRealm shiroRealm(){
+        UserRealm myRealm =  new UserRealm();
+        return myRealm;
+    }
+
 
     /**  SecurityManager安全管理器需要到realm中去验证认证信息，所以给SecurityManager设置Realm
     * @Description:
@@ -105,7 +112,7 @@ public class ShiroConfig {
     public DefaultWebSecurityManager securityManager(){
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
 
-        manager.setRealm(myRealm());
+        manager.setRealm(shiroRealm());
 //        manager.setRealm(realm);
 //        多个 realms？
 /*        List<Realm> list = new ArrayList<>();
@@ -181,12 +188,6 @@ public class ShiroConfig {
         // 是否删除无效的，默认也是开启
         sessionManager.setDeleteInvalidSessions(true);
         return sessionManager;
-    }
-
-    @Bean(name = "myRealm")
-    public UserRealm myRealm(){
-        UserRealm myRealm =  new UserRealm();
-        return myRealm;
     }
 
     @Bean(name = "lifecycleBeanPostProcessor")

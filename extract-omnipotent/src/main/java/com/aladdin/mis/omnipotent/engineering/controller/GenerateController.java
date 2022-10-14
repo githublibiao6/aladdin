@@ -1,9 +1,7 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
-import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.qo.GenerateQo;
 import com.aladdin.mis.engineering.service.GenerateService;
 import com.aladdin.mis.engineering.vo.GenerateVo;
@@ -24,15 +22,10 @@ import java.util.List;
 */
 @RequestMapping("generate")
 @Controller
-public class GenerateController extends GlobalController {
+public class GenerateController  {
 
     @Autowired
     private GenerateService generateService;
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
 
     /**
      * 查询数据库所有的表
@@ -40,6 +33,7 @@ public class GenerateController extends GlobalController {
     @PostMapping("paginate")
     @ResponseBody
     public Result paginate(@RequestBody GenerateQo qo){
+        Result result = new Result();
         List<GenerateVo> tables = generateService.paginate(qo);
         result.setData(tables);
         return result ;
@@ -51,6 +45,7 @@ public class GenerateController extends GlobalController {
     @RequestMapping("/create")
     @ResponseBody
     public Result create(@RequestBody JSONObject obj) {
+        Result result = new Result();
         try{
             GenerateUtils.create(obj.getString("tableName"), obj.getString("module"));
         }catch (Exception e){

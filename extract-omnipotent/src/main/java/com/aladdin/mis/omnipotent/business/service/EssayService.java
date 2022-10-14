@@ -17,7 +17,13 @@ import java.util.List;
 @Service
 public interface EssayService extends GlobalService<Essay> {
 
+    /**
+     * 分页
+     * @param entity
+     * @return
+     */
     PageInfo<Essay> page(PageEntity entity) ;
+
     /**
      * 功能描述：
      *  <获取全部字典>

@@ -5,6 +5,7 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import java.util.Set;
  * @return:
  * @version: 1.0.0
  */
+@Service
 public interface MenuService  extends GlobalService<Menu> {
     /**
      * 功能描述：

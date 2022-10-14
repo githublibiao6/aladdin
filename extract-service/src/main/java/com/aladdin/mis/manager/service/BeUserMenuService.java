@@ -2,9 +2,10 @@ package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.entity.BeUserMenu;
-import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
+import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @author cles
  * @date 2022-03-01T22:38:09.314
 */
+@Service
 public interface BeUserMenuService extends GlobalService<BeUserMenu>  {
     /**
      * 分页查询
