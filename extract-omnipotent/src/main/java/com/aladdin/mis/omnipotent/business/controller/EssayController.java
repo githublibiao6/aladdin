@@ -2,11 +2,19 @@ package com.aladdin.mis.omnipotent.business.controller;
 
 import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
+import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 字典 Controller
@@ -24,7 +32,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     protected GlobalService<Essay> getBaseService() {
         return service;
     }
-/*
+
     @RequestMapping("/page")
     @ResponseBody
     public Result page(HttpServletRequest request, PageEntity entity) {
@@ -37,9 +45,9 @@ public class EssayController extends GlobalController<Essay, EssayService> {
         result.setCode(20000);
         return result;
     }
-    *//**
+    /**
      * 添加文章
-     *//*
+     */
     @RequestMapping("/add")
     @ResponseBody
     public Result add(@RequestBody Essay m) {
@@ -70,7 +78,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
         return result;
     }
 
-    *//**
+    /**
      * 功能描述：
      *  < 删除 >
      * @Description: remove
@@ -79,7 +87,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
      * @param json 参数1
      * @return: com.apps.omnipotent.system.global.entity.Result
      * @version: 1.0.0
-     *//*
+     */
     @RequestMapping("/remove")
     @ResponseBody
     public Result remove(@RequestBody JSONObject json) {
@@ -103,5 +111,5 @@ public class EssayController extends GlobalController<Essay, EssayService> {
         Essay essay = service.detail(id);
         result.setData(essay);
         return result;
-    }*/
+    }
 }
