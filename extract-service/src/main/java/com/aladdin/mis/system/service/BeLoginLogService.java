@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public interface BeLoginLogService extends GlobalService<BeLoginLog>  {
+
     /**
      * 分页查询
      * @param qo
