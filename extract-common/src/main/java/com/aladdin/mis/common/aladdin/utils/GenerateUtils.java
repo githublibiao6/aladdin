@@ -24,7 +24,7 @@ public  class GenerateUtils {
         po.setBaseServicePath("import com.aladdin.mis.common.system.service.GlobalService;");
         po.setBaseServiceImplPath("import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;");
         po.setBaseControllerPath("import com.aladdin.mis.common.system.controller.GlobalController;");
-        po.setWeoLogPath("import com.aladdin.mis.common.annotation.WebLog;");
+        po.setWebLogPath("import com.aladdin.mis.common.annotation.WebLog;");
         String className = StringUtil.toCamelCase(po.getTableInfo().getTableName());
         po.setEntityName(className);
         String packagePath = "com.aladdin.mis";

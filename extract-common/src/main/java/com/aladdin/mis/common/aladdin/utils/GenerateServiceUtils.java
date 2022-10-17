@@ -36,7 +36,7 @@ public  class GenerateServiceUtils {
         content.append("@Service\n");
         content.append("public interface "+ po.getEntityName() +"Service extends GlobalService<"+po.getEntityName()+">  {\n\n");
 
-//        content.append("    /**\n" +
+//        content.append("\n    /**\n" +
 //                "     * 分页查询\n" +
 //                "     * @param qo\n" +
 //                "     * @return\n" +

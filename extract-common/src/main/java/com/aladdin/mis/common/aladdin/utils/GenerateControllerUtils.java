@@ -26,7 +26,7 @@ public  class GenerateControllerUtils {
         content.append(po.getBaseControllerPath()).append("\n");
         content.append(po.getImportEntityQoClass()).append("\n");
         content.append(po.getImportEntityVoClass()).append("\n");
-        content.append(po.getWeoLogPath()).append("\n");
+        content.append(po.getWebLogPath()).append("\n");
         content.append("import com.aladdin.mis.common.system.entity.Result;\n");
         content.append("import com.github.pagehelper.PageInfo;\n");
         content.append("import com.aladdin.mis.common.system.service.GlobalService;\n");
