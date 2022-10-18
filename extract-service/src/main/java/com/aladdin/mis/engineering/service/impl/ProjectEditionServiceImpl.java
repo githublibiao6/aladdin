@@ -20,6 +20,7 @@ import java.util.Map;
  * @author cles
  * @date 2022-05-11T01:37:39.288
 */
+@Service
 public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition> implements ProjectEditionService{
 
     @Autowired

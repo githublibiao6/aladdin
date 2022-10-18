@@ -17,6 +17,7 @@ import java.util.List;
  * @author lb
  *
  */
+@Service
 public class DateLogServiceImpl extends GlobalServiceImpl<DateLog> implements DateLogService {
 
     @Autowired

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
  * @author cles
  * @date 2022-05-11T01:37:39.287
 */
-@Service
 public interface ProjectEditionService extends GlobalService<ProjectEdition>  {
 
     /**

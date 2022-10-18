@@ -30,12 +30,15 @@ public  class GenerateServiceImplUtils {
         content.append("import org.springframework.beans.factory.annotation.Autowired;\n");
         content.append("import com.github.pagehelper.PageInfo;\n\n");
         content.append("import java.util.List;\n");
+        content.append("import org.springframework.stereotype.Service;\n");
+
         content.append("/**\n");
         content.append(" * "+ po.getEntityName() +"Service\n");
         content.append(" * @author cles\n");
         content.append(" * @date ").append(nowStr).append("\n");
         content.append("*/\n");
 
+        content.append("@Service\n");
         content.append("public class "+ po.getEntityName() +"ServiceImpl extends GlobalServiceImpl<"+po.getEntityName()+"> implements "+ po.getEntityName() +"Service{\n\n");
         content.append("    @Autowired\n");
         String dao = StringUtil.firstCharLower(po.getEntityName())+"Dao";

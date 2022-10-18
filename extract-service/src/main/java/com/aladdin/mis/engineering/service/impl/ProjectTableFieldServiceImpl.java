@@ -19,6 +19,7 @@ import java.util.Map;
  * @author cles
  * @date 2021-08-31T22:05:10.402
 */
+@Service
 public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTableField> implements ProjectTableFieldService{
 
     @Autowired

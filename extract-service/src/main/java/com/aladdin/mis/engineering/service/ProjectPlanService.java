@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
  * @author cles
  * @date 2022-07-04 21:42:33
 */
-@Service
 public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
 
     /**

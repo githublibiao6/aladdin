@@ -19,6 +19,7 @@ import java.util.Map;
  * @author cles
  * @date 2022-05-25T00:29:11.439
 */
+@Service
 public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> implements ProjectFileService{
 
     @Autowired

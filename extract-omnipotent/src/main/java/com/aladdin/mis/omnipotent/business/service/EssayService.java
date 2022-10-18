@@ -14,7 +14,6 @@ import java.util.List;
  * @author lb
  *
  */
-@Service
 public interface EssayService extends GlobalService<Essay> {
 
     /**

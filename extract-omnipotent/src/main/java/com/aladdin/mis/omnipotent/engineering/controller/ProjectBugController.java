@@ -53,7 +53,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @ResponseBody
     public Result saveInfo(@RequestBody ProjectBug entity) {
         if(entity.getPrimaryKey() == null){
-            ProjectBug data = baseService.insertSelective(entity);
+            ProjectBug data = getBaseService().insertSelective(entity);
             result.setData(data);
         }else {
             boolean data = getBaseService().updateSelective(entity);

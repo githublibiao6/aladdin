@@ -26,14 +26,14 @@ public  class GenerateServiceUtils {
         content.append(po.getImportEntityVoClass() +"\n");
         content.append(po.getImportEntityQoClass() +"\n");
         content.append("import com.github.pagehelper.PageInfo;\n");
-        content.append("import org.springframework.stereotype.Service;\n");
+
 
         content.append("/**\n");
         content.append(" * "+ po.getEntityName() +"Service\n");
         content.append(" * @author cles\n");
         content.append(" * @date ").append(nowStr).append("\n");
         content.append("*/\n");
-        content.append("@Service\n");
+
         content.append("public interface "+ po.getEntityName() +"Service extends GlobalService<"+po.getEntityName()+">  {\n\n");
 
 //        content.append("\n    /**\n" +

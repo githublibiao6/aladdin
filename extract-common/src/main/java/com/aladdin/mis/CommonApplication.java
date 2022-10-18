@@ -10,7 +10,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 
 @EnableDiscoveryClient
-@SpringBootApplication(scanBasePackages = {"com.aladdin.mis.*.*"} )
+@SpringBootApplication()
+/*@SpringBootApplication(scanBasePackages = {"com.aladdin.mis.*.*"} )*/
 public class CommonApplication {
 
     public static void main(String[] args) {

@@ -26,11 +26,11 @@ import javax.servlet.http.HttpServletRequest;
 public class EssayController extends GlobalController<Essay, EssayService> {
 
     @Autowired
-    private EssayService service;
+    private EssayService essayService;
 
     @Override
     protected GlobalService<Essay> getBaseService() {
-        return service;
+        return essayService;
     }
 
     @RequestMapping("/page")
@@ -40,7 +40,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
         Subject subject = SecurityUtils.getSubject();
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);
-        PageInfo<Essay> page = service.page(entity);
+        PageInfo<Essay> page = essayService.page(entity);
         result.setData(page);
         result.setCode(20000);
         return result;
@@ -53,7 +53,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result add(@RequestBody Essay m) {
         Result result = new Result();
         result = new Result();
-        boolean flag = service.add(m);
+        boolean flag = essayService.add(m);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
@@ -68,7 +68,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result update(@RequestBody Essay m) {
         Result result = new Result();
         result = new Result();
-        boolean flag = service.update(m);
+        boolean flag = essayService.update(m);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("更新成功");
@@ -93,7 +93,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result remove(@RequestBody JSONObject json) {
         Result result = new Result();
         result = new Result();
-        boolean flag = service.remove(json.getInteger("id"));
+        boolean flag = essayService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -108,7 +108,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result detail(@RequestParam(value = "id",defaultValue = "") Integer id) {
         Result result = new Result();
         result = new Result();
-        Essay essay = service.detail(id);
+        Essay essay = essayService.detail(id);
         result.setData(essay);
         return result;
     }

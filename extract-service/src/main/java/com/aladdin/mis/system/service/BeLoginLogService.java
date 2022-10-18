@@ -5,14 +5,12 @@ import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.qo.BeLoginLogQo;
 import com.aladdin.mis.system.vo.BeLoginLogVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 /**
  * BeLoginLogService
  * @author cles
  * @date 2022-02-24T22:09:10.287
 */
-@Service
 public interface BeLoginLogService extends GlobalService<BeLoginLog>  {
 
     /**

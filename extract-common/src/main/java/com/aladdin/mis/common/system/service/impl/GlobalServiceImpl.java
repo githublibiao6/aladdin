@@ -1,8 +1,8 @@
 package com.aladdin.mis.common.system.service.impl;
 
+import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.base.qo.FieldCondition;
 import com.aladdin.mis.base.qo.OrderCondition;
-import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.exception.MyException;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.common.utils.JSONObjectUtil;
@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.stereotype.Service;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -31,6 +32,7 @@ import java.util.*;
  * @Date: 2020/6/23 23:23
  * @version: 1.0.0
  */
+@Service
 public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T> {
 
 

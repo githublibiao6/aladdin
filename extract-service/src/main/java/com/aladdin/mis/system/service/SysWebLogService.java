@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
  * @author cles
  * @date 2021-09-01T00:35:30.807
 */
-@Service
 public interface SysWebLogService extends GlobalService<SysWebLog>  {
     /**
      * 分页查询

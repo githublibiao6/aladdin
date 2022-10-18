@@ -14,7 +14,6 @@ import java.util.Map;
  * @author lb
  *
  */
-@Service
 public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> {
 
 

@@ -14,7 +14,6 @@ import java.util.Set;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
-@Service
 public interface RoleService extends GlobalService<Role> {
     /**
      * 功能描述：

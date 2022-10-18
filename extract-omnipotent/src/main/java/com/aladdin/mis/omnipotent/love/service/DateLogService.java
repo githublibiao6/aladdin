@@ -13,7 +13,6 @@ import java.util.List;
  * @author lb
  *
  */
-@Service
 public interface DateLogService extends GlobalService<DateLog> {
 
     PageEntity page(PageEntity entity) ;

@@ -16,7 +16,6 @@ import java.util.List;
  * @return:
  * @version: 1.0.0
  */
-@Service
 public interface GlobalService<T> {
 
     /**

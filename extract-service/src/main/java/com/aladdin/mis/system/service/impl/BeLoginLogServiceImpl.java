@@ -20,6 +20,7 @@ import java.util.List;
  * @author cles
  * @date 2022-02-24T22:09:10.288
 */
+@Service
 public class BeLoginLogServiceImpl extends GlobalServiceImpl<BeLoginLog> implements BeLoginLogService{
 
     @Autowired
