@@ -35,6 +35,16 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
 
 
     /**
+     * 根据主键删除数据
+     */
+    @RequestMapping("/detail")
+    @ResponseBody
+    public Result detail(@RequestBody ProjectPlanVo entity) {
+        ProjectPlanVo data = projectPlanService.detail(entity.getId());
+        return Result.success(data);
+    }
+
+    /**
      * 获取分页
      */
     @PostMapping("/pageVoInfo")

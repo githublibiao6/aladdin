@@ -5,7 +5,6 @@ import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.qo.ProjectPlanQo;
 import com.aladdin.mis.engineering.vo.ProjectPlanVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 /**
  * ProjectPlanService
@@ -13,6 +12,13 @@ import org.springframework.stereotype.Service;
  * @date 2022-07-04 21:42:33
 */
 public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
+
+    /**
+     * 获取分页数据
+     * @param id
+     * @return
+     */
+    ProjectPlanVo detail(Integer id);
 
     /**
      * 获取分页数据

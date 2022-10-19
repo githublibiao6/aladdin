@@ -46,6 +46,17 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
     }
 
     @Override
+    public ProjectPlanVo detail(Integer id) {
+        ProjectPlanQo qo = new ProjectPlanQo();
+        qo.setId(id);
+        List<ProjectPlanVo> list = projectPlanDao.list(qo);
+        if(list != null && !list.isEmpty()){
+            return list.get(0);
+        }
+        return null;
+    }
+
+    @Override
     public boolean update(ProjectPlan entity) {
         String status = entity.getStatus();
         String target = entity.getTarget();
