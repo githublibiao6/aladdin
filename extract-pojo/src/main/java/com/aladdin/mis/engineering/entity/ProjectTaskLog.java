@@ -13,6 +13,7 @@ import lombok.Data;
 @Table("project_task_log")
 @Data
 public class ProjectTaskLog extends GlobalModel {
+
     /**
      * 任务主键
      */

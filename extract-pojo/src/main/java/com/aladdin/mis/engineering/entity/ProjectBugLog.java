@@ -3,11 +3,6 @@ package com.aladdin.mis.engineering.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
@@ -18,6 +13,7 @@ import lombok.Data;
 @Table("project_bug_log")
 @Data
 public class ProjectBugLog extends GlobalModel {
+
     /**
      * bugId缺陷主键
      */

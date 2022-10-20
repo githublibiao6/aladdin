@@ -13,6 +13,7 @@ import lombok.Data;
 @Table("project_table")
 @Data
 public class ProjectTable extends GlobalModel {
+
     /**
     * projectId
     */

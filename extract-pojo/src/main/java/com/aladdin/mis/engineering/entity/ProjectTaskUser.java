@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table("project_task_user")
 @Data
 public class ProjectTaskUser extends GlobalModel {
+
     /**
      * taskId任务主键
      */

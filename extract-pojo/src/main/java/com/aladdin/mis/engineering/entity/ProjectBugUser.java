@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table("project_bug_user")
 @Data
 public class ProjectBugUser extends GlobalModel {
+
     /**
      * bugId缺陷主键
      */

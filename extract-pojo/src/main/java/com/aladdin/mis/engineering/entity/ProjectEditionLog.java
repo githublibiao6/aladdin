@@ -13,6 +13,7 @@ import lombok.Data;
 @Table("project_edition_log")
 @Data
 public class ProjectEditionLog extends GlobalModel {
+
     /**
      * editionId版本主键
      */

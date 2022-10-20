@@ -13,6 +13,7 @@ import lombok.Data;
 @Table("project_file")
 @Data
 public class ProjectFile extends GlobalModel {
+
     /**
      * relationId关联主键（项目主键或版本主键）
      */

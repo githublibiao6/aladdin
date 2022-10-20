@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table("project_plan_user")
 @Data
 public class ProjectPlanUser extends GlobalModel {
+
     /**
      * userId
      */

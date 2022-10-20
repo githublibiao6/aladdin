@@ -44,7 +44,7 @@ public  class GenerateEntityUtils {
         content.append("@Table(\"").append(tableInfo.getTableName()).append("\")\n");
         content.append("@Data\n");
         content.append("public class ").append(StringUtil.toCamelCase(tableInfo.getTableName()))
-                .append(" extends GlobalModel {\n");
+                .append(" extends GlobalModel {\n\n");
 
         List<TableFieldInfo> fields = tableInfo.getFields();
 

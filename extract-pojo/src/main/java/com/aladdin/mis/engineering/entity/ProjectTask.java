@@ -18,6 +18,7 @@ import java.util.List;
 @Table("project_task")
 @Data
 public class ProjectTask extends GlobalModel {
+
     /**
      * relationId关联id
      */

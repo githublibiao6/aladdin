@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table("project_edition")
 @Data
 public class ProjectEdition extends GlobalModel {
+
     /**
      * projectId项目主键
      */

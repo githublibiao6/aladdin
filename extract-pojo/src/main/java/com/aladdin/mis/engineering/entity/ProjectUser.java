@@ -13,6 +13,7 @@ import lombok.Data;
 @Table("project_user")
 @Data
 public class ProjectUser extends GlobalModel {
+
     /**
     * 人员
     */

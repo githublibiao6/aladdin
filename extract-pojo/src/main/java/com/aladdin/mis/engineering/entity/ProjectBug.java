@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table("project_bug")
 @Data
 public class ProjectBug extends GlobalModel {
+
     /**
      * relationId关联主键（项目主键或版本主键）
      */
