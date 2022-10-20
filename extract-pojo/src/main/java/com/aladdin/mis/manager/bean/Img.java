@@ -18,11 +18,13 @@ public class Img extends GlobalModel {
      * 类别
      */
     private String code;
+
     /**
      * 唯一标识
      */
     @TableField("unique_key")
     private String uniqueKey;
+
     /**
      * 图片地址
      */

@@ -48,10 +48,12 @@ public class User extends GlobalModel {
      * 手机
      */
     private String phone;
+
     /**
      * 邮箱地址
      */
     private String email;
+
     /**
      * 身份证号
      */
@@ -78,6 +80,7 @@ public class User extends GlobalModel {
      * 住址
      */
     private String address;
+
     /**
      * 说明
      */

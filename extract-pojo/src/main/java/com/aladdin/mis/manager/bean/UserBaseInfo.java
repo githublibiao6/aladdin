@@ -53,7 +53,6 @@ public class UserBaseInfo extends GlobalModel {
      */
     private String degree;
 
-
     /**
      * 备注
      */

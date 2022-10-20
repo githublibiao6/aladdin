@@ -12,18 +12,22 @@ import lombok.Data;
 @Table("be_dept")
 @Data
 public class Dept extends GlobalModel {
+
     /**
      * 编号
      */
     private Integer parent;
+
     /**
      * 编号
      */
     private String code;
+
     /**
     * 部门名称
      */
     private String name;
+
     /**
      * 说明
      */

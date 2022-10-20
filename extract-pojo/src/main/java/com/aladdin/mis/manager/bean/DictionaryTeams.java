@@ -19,20 +19,24 @@ public class DictionaryTeams extends GlobalModel {
      */
     @TableField("dic_id")
     private String dicId;
+
     /**
      *  字典值
      */
     @TableField("dic_value")
     private String dicValue;
+
     /**
      *  字典项
      */
     @TableField("dic_text")
     private String dicText;
+
     /**
      *  说明
      */
     private String comments;
+
     /**
      *  排序
      */

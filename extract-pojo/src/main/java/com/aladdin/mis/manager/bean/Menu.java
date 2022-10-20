@@ -24,27 +24,33 @@ public class Menu extends GlobalModel {
      图标
      */
     private String icon;
+
     /**
      * 菜单名称
      */
     @TableField("menu_text")
     private String menuText;
+
     /**
      *  地址
      */
     private String url;
+
     /**
      * 父级菜单
      */
     private Integer parent;
+
     /**
      * 级别
      */
     private String level;
+
     /**
      * 说明
      */
     private String notes;
+
     /**
      * 菜单类型
      */
@@ -62,10 +68,12 @@ public class Menu extends GlobalModel {
      */
     @TableField("show")
     private Integer show;
+
     /**
      * 是否是一级菜单
      */
     private String main;
+
     /**
      * 是否有子节点
      */

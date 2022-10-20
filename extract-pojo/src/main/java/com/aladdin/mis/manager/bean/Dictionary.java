@@ -17,10 +17,12 @@ public class Dictionary extends GlobalModel {
     * 编码
      */
     private String code;
+
     /**
      *  名称
      */
     private String name;
+
     /**
      *  说明
      */
