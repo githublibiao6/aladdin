@@ -5,7 +5,6 @@ import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +14,7 @@ import java.util.List;
  * @date 2022-03-01T22:38:09.314
 */
 public interface BeUserMenuService extends GlobalService<BeUserMenu>  {
+
     /**
      * 分页查询
      * @param qo

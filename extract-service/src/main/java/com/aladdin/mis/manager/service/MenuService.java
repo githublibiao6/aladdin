@@ -5,7 +5,6 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +20,7 @@ import java.util.Set;
  * @version: 1.0.0
  */
 public interface MenuService  extends GlobalService<Menu> {
+
     /**
      * 功能描述：
      *  < 获取所有 >
@@ -33,6 +33,10 @@ public interface MenuService  extends GlobalService<Menu> {
      */
     List<Menu> list(MenuQo qo);
 
+    /**
+     * 获取列表数据
+     * @return
+     */
     List<Menu> list();
 
     /**
@@ -45,6 +49,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @version: 1.0.0
      */
     List<Map> listMap();
+
     /**
      * 功能描述：
      *  < 分页 >
@@ -56,6 +61,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @version: 1.0.0
      */
     PageInfo<Menu> page(MenuQo qo);
+
     /**
      * 功能描述：
      *  < 分页 >
@@ -67,6 +73,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @version: 1.0.0
      */
     List<Menu> tree(MenuQo qo);
+
     /**
      * 功能描述：
      *  < 新增菜单 >
@@ -78,6 +85,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @version: 1.0.0
      */
     boolean add(Menu menu);
+
     /**
      * 功能描述：
      *  < 更新 >
@@ -89,6 +97,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @version: 1.0.0
      */
     boolean update(Menu menu);
+
     /**
      * 功能描述：
      *  < 删除 >
@@ -100,6 +109,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @version: 1.0.0
      */
     boolean remove(String id);
+
     /**
      * 功能描述：
      *  < 根据主键查询 >
@@ -119,5 +129,10 @@ public interface MenuService  extends GlobalService<Menu> {
      */
     Set<String> queryByRoles(Set<String> roles);
 
+    /**
+     * 根据角色获取菜单
+     * @param code
+     * @return
+     */
     List<Menu> queryByRoleId(String code);
 }

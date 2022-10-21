@@ -5,7 +5,6 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import java.util.List;
  *
  */
 public interface UserService extends GlobalService<User> {
-
 
     /**
      * 功能描述：

@@ -12,7 +12,6 @@ import java.util.Map;
  */
 public interface Project1Service {
 
-
     /**
      * 获得全部的project（分页查询）
      * @param draw

@@ -11,7 +11,6 @@ import com.aladdin.mis.manager.bean.UserBaseInfo;
  */
 public interface UserBaseInfoService extends GlobalService<UserBaseInfo> {
 
-
     /**
      *
      * @param id

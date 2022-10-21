@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.manager.qo.DictionaryQo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import java.util.Map;
  *
  */
 public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> {
-
 
     /**
      * 功能描述：
@@ -28,6 +26,7 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @version: 1.0.0
      */
     PageInfo page(DictionaryQo qo);
+
     /**
      * 功能描述：
      *  <添加字典>

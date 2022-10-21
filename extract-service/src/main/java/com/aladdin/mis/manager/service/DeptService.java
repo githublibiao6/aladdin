@@ -6,7 +6,6 @@ import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
@@ -17,6 +16,7 @@ import java.util.Set;
 * @Date: 2020/4/15 23:48
 */
 public interface DeptService extends GlobalService<Dept> {
+
     /**
      * 功能描述：
      *  < 分页获取 >
@@ -28,6 +28,7 @@ public interface DeptService extends GlobalService<Dept> {
      * @version: 1.0.0
      */
     PageEntity page(PageEntity entity);
+
     /**
      * 功能描述：
      *  < 获取全部>
@@ -39,8 +40,12 @@ public interface DeptService extends GlobalService<Dept> {
      */
     List<DeptVo> list();
 
-
+    /**
+     * 树形结构
+     * @return
+     */
     List<DeptVo> treeList();
+
     /**
      * 功能描述：
      *  < 新增>
@@ -52,6 +57,7 @@ public interface DeptService extends GlobalService<Dept> {
      * @version: 1.0.0
      */
     boolean add(Dept m);
+
     /**
      * 功能描述：
      *  < 更新 >
@@ -63,6 +69,7 @@ public interface DeptService extends GlobalService<Dept> {
      * @version: 1.0.0
      */
     boolean update(Dept m);
+
     /**
      * 功能描述：
      *  < 删除 >
@@ -74,6 +81,7 @@ public interface DeptService extends GlobalService<Dept> {
      * @version: 1.0.0
      */
     boolean remove(Integer id);
+
     /**
      * 功能描述：
      *  < 根据人员获取角色 >

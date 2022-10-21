@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
@@ -15,6 +14,7 @@ import java.util.Set;
 * @Date: 2020/4/15 23:48
 */
 public interface RoleService extends GlobalService<Role> {
+
     /**
      * 功能描述：
      *  < 分页获取 >
@@ -26,6 +26,7 @@ public interface RoleService extends GlobalService<Role> {
      * @version: 1.0.0
      */
     PageEntity page(PageEntity entity);
+
     /**
      * 功能描述：
      *  < 获取全部>
@@ -48,6 +49,7 @@ public interface RoleService extends GlobalService<Role> {
      * @version: 1.0.0
      */
     List<RoleMenu> findByRoleId(Integer roleId);
+
     /**
      * 功能描述：
      *  < 新增>
@@ -60,6 +62,7 @@ public interface RoleService extends GlobalService<Role> {
      * @version: 1.0.0
      */
     boolean add(Role role, String menus);
+
     /**
      * 功能描述：
      *  < 更新 >
@@ -72,6 +75,7 @@ public interface RoleService extends GlobalService<Role> {
      * @version: 1.0.0
      */
     boolean update(Role role, String menus);
+
     /**
      * 功能描述：
      *  < 删除 >
@@ -83,6 +87,7 @@ public interface RoleService extends GlobalService<Role> {
      * @version: 1.0.0
      */
     boolean remove(Integer id);
+
     /**
      * 功能描述：
      *  < 根据人员获取角色 >

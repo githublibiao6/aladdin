@@ -37,6 +37,7 @@ import java.util.Map;
 @Aspect
 @Component
 public class WebLogAspect {
+
     @Autowired
     VisitLogService visitLogService;
 

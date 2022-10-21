@@ -5,7 +5,6 @@ import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.vo.DeptAdminVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 /**
@@ -14,6 +13,7 @@ import java.util.List;
 * @Date: 2020/4/28 23:13
 */
 public interface AdminService  extends GlobalService<Admin> {
+
     /**
      * 列表
      * @return
