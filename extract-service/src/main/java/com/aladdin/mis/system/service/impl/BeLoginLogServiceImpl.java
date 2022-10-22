@@ -42,7 +42,7 @@ public class BeLoginLogServiceImpl extends GlobalServiceImpl<BeLoginLog> impleme
      * @param qo
      * @return
      */
-   @Override
+    @Override
     public BeLoginLog detail(BeLoginLog qo){
        return detailQuery(qo.getId());
 }

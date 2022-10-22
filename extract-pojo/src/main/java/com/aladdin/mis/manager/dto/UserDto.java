@@ -11,7 +11,6 @@ import lombok.Data;
 @Data
 public class UserDto extends User {
 
-
     /**
      * 验证码
      */

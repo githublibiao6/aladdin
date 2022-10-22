@@ -69,7 +69,6 @@ public interface DictionaryService extends GlobalService<Dictionary> {
      */
     Map<String, JSONObject> queryDictByCode(String dictKey);
 
-
     /**
      * 获取所有的字典
      * @return

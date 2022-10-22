@@ -5,7 +5,6 @@ import com.aladdin.mis.system.entity.SysWebLog;
 import com.aladdin.mis.system.qo.SysWebLogQo;
 import com.aladdin.mis.system.vo.SysWebLogVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 /**
  * SysWebLogService
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
  * @date 2021-09-01T00:35:30.807
 */
 public interface SysWebLogService extends GlobalService<SysWebLog>  {
+
     /**
      * 分页查询
      * @param qo

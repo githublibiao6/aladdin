@@ -38,6 +38,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
 
     @Autowired
     private DeptService deptService;
+
     /**
      * 根据用户名和密码获得 admin
      * @param admin
@@ -53,6 +54,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         }
 
     }
+
     /**
      * 根据用户名获得 admin
      * @param username

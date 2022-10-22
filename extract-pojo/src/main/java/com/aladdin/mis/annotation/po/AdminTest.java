@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class AdminTest implements Serializable {
+
     /**
     * 编码
      */
@@ -20,15 +21,16 @@ public class AdminTest implements Serializable {
      * 登录名
      */
     private String loginName;
+
     /**
      * 登陆密码
      */
     private String loginPassword;
+
     /**
      * 部门
      */
     private String deptId;
-
 
     /**
      * 说明

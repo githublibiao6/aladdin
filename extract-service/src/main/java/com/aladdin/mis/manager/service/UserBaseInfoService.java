@@ -12,7 +12,7 @@ import com.aladdin.mis.manager.bean.UserBaseInfo;
 public interface UserBaseInfoService extends GlobalService<UserBaseInfo> {
 
     /**
-     *
+     * 初始化用户信息
      * @param id
      */
     void init(Integer id);

@@ -9,6 +9,7 @@ package com.aladdin.mis.enums;
  */
 
 public enum ResultCodeEnum {
+
     /**
      * 返回结果code
      * 已使用

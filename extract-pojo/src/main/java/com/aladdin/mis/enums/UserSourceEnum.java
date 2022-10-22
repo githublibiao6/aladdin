@@ -5,6 +5,7 @@ package com.aladdin.mis.enums;
  * @author libia
  */
 public enum UserSourceEnum {
+
     /**
      * 常见http响应代码整理
      */
