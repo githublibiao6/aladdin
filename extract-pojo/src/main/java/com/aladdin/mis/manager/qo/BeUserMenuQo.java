@@ -12,5 +12,6 @@ import lombok.Data;
 public class BeUserMenuQo extends BeUserMenu {
 
     private Integer page;
+
     private Integer limit;
 }

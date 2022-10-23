@@ -31,19 +31,16 @@ public class SqlLog {
     /**
      * 执行语句
      */
-
     private String executeSql;
 
     /**
      * 表名
      */
-
     private String tableName;
 
     /**
      * 表主键
      */
-
     private int tableId;
 
     /**

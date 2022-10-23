@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table("be_login_log")
 @Data
 public class BeLoginLog extends GlobalModel {
+
     /**
     * userId
     */

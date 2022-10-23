@@ -11,6 +11,5 @@ import lombok.Data;
 @Data
 public class DictVo extends DictionaryTeams {
 
-
     private String code;
 }

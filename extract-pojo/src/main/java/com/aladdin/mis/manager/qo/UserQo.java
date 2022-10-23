@@ -10,10 +10,12 @@ import lombok.Data;
  */
 @Data
 public class UserQo extends User {
+
     /**
      * 当前页码
      */
     private Integer page;
+
     /**
      * 每页数量
      */

@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @Data
 public class SysWebLog extends GlobalModel {
 
-
     /**
      * 请求人session
      */

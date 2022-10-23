@@ -13,22 +13,27 @@ import java.util.Date;
 public class QueryCondition {
 
     private String id;
+
     /**
      * 关键字
      */
     private String keyWord;
+
     /**
      * 性别
      */
     private String sex;
+
     /**
      * 开始时间
      */
     private Date startTime;
+
     /**
      * 结束时间
      */
     private Date endTime;
+
     /**
      * 标志
      */

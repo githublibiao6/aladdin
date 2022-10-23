@@ -10,10 +10,12 @@ import lombok.Data;
  */
 @Data
 public class MenuQo extends Menu {
+
     /**
      * 当前页码
      */
     private Integer page;
+
     /**
      * 每页数量
      */

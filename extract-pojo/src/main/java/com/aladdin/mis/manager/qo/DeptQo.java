@@ -10,10 +10,12 @@ import lombok.Data;
  */
 @Data
 public class DeptQo  extends Dept {
+
     /**
      * 当前页码
      */
     private Integer page;
+
     /**
      * 每页数量
      */

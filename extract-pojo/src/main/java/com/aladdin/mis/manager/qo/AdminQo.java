@@ -15,6 +15,7 @@ public class AdminQo extends Admin {
      * 当前页码
      */
     private Integer page;
+
     /**
      * 每页数量
      */

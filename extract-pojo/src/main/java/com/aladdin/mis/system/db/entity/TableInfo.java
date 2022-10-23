@@ -15,22 +15,27 @@ import java.util.Map;
  */
 @Data
 public class TableInfo {
+
     /**
      * 主键值
      */
     private Integer idValue;
+
     /**
      * 类名
      */
     private String className;
+
     /**
      * 表名
      */
     private String tableName;
+
     /**
      * 表注释
      */
     private String tableComment;
+
     /**
      * 字段
      */
@@ -45,6 +50,7 @@ public class TableInfo {
      * 字段集合映射(col -> column)
      */
     private Map<String,String> colColumn;
+
     /**
      * 主键字段
      */

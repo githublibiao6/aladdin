@@ -13,6 +13,7 @@ import lombok.Data;
 @Table("be_user_menu")
 @Data
 public class BeUserMenu extends GlobalModel {
+
     /**
     * userId
     */

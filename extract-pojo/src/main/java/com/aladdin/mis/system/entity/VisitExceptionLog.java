@@ -27,6 +27,7 @@ public class VisitExceptionLog {
      * 异常内容
      */
     private String exception;
+
     /**
      * 异常详情
      */
