@@ -12,6 +12,10 @@ import com.aladdin.mis.system.entity.VisitLog;
  */
 public interface VisitLogService {
 
+    /**
+     * 保存访问日志
+     * @param log
+     */
     void saveVisitLog(VisitLog log);
 
 }

@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class AliyunSms {
 
-    private final static String accessKeyId="";
-    private final static String accessKeySecret="";
+    private final static String ACCESS_KEY_ID ="";
+    private final static String ACCESS_KEY_SECRET ="";
 
 
     /**
@@ -41,7 +41,7 @@ public class AliyunSms {
     }
 
     public static boolean sendSms(String phone, String code) throws Exception {
-        com.aliyun.dysmsapi20170525.Client client = AliyunSms.createClient(accessKeyId, accessKeySecret);
+        com.aliyun.dysmsapi20170525.Client client = AliyunSms.createClient(ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         SendSmsRequest sendSmsRequest = new SendSmsRequest()
                 .setSignName("阿里云短信测试")
                 .setTemplateCode("SMS_154950909")
@@ -66,7 +66,7 @@ public class AliyunSms {
 
     public static void main(String[] args_) throws Exception {
         List<String> args = java.util.Arrays.asList(args_);
-        com.aliyun.dysmsapi20170525.Client client = AliyunSms.createClient(accessKeyId, accessKeySecret);
+        com.aliyun.dysmsapi20170525.Client client = AliyunSms.createClient(ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         SendSmsRequest sendSmsRequest = new SendSmsRequest()
                 .setSignName("阿里云短信测试")
                 .setTemplateCode("SMS_154950909")

@@ -11,9 +11,9 @@ package com.aladdin.mis.common.currency;
  */
 public class Parameter {
 
-    public static final String VerifyCodePrefix = "VERIFY_CODE";
+    public static final String VERIFY_CODE_PREFIX = "VERIFY_CODE";
 
-    public static final String PhoneCodePrefix = "PHONE_CODE";
+    public static final String PHONE_CODE_PREFIX = "PHONE_CODE";
 
     public static final String ResetPassCodePrefix = "RESET_CODE";
 

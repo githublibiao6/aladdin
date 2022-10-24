@@ -47,7 +47,7 @@ public class VerificationCodeController {
         String code = lineCaptcha.getCode();
         String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
-        JedisUtil.setString(Parameter.VerifyCodePrefix+":"+ sessionId , 60 * 2 , code);
+        JedisUtil.setString(Parameter.VERIFY_CODE_PREFIX+":"+ sessionId , 60 * 2 , code);
         /**
          *  result.setData(lineCaptcha);
          **/
@@ -80,7 +80,7 @@ public class VerificationCodeController {
 
         String sessionId = vo.getSessionId();
         try {
-            boolean flag = verificationCodeService.sendSmsCode(vo.getPhone(), sessionId, Parameter.PhoneCodePrefix);
+            boolean flag = verificationCodeService.sendSmsCode(vo.getPhone(), sessionId, Parameter.PHONE_CODE_PREFIX);
             if(flag){
                 return Result.success("短信发送成功", true);
             }else {
@@ -101,7 +101,7 @@ public class VerificationCodeController {
 
         String sessionId = vo.getSessionId();
         try {
-            boolean flag = verificationCodeService.sendSmsCode(vo.getPhone(), sessionId, Parameter.ResetPassCodePrefix);
+            boolean flag = verificationCodeService.sendSmsCode(vo.getPhone(), sessionId, Parameter.RESET_PASS_CODE_PREFIX);
             if(flag){
                 return Result.success("短信发送成功", true);
             }else {

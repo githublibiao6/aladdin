@@ -5,6 +5,10 @@ import org.springframework.util.StringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 字符串工具类
+ * @author cles
+ */
 public class StringUtil {
 
     public static final String FLAG_COLON = ":";

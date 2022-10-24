@@ -1,5 +1,9 @@
 package com.aladdin.mis.common.redis.service;
 
+/**
+ * redis service
+ * @author 李标
+ */
 public interface RedisService {
 
     /**

@@ -15,6 +15,7 @@ public interface VerificationCodeService {
     /**
      * 发送短信验证码
      * @param phone 手机号码
+     * @param sessionId sessionId
      * @param prefix 用于识别的前缀
      * @return boolean
      */

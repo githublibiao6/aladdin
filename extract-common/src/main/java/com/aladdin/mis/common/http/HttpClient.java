@@ -6,6 +6,7 @@ package com.aladdin.mis.common.http;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author cles
@@ -14,11 +15,13 @@ import java.net.URL;
  * @version: 1.0.0
  */
 public class HttpClient {
+
     public static String doGet(String httpurl) {
         HttpURLConnection connection = null;
         InputStream is = null;
         BufferedReader br = null;
-        String result = null;// 返回结果字符串
+        // 返回结果字符串
+        String result = null;
         try {
             // 创建远程url连接对象
             URL url = new URL(httpurl);
@@ -107,7 +110,7 @@ public class HttpClient {
 
                 is = connection.getInputStream();
                 // 对输入流对象进行包装:charset根据工作项目组的要求来设置
-                br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 
                 StringBuffer sbf = new StringBuffer();
                 String temp = null;

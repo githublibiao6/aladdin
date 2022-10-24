@@ -1,8 +1,6 @@
 package com.aladdin.mis.common.utils;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -13,8 +11,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalAdjusters;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 日期工具类
@@ -60,6 +56,7 @@ public class DateUtils {
         DateTimeFormatter df = DateTimeFormatter.ofPattern(DATE_PATTERN);
         return df.format(date);
     }
+
     /**
      * 解析日期
      *
@@ -72,6 +69,7 @@ public class DateUtils {
         }
         return LocalDate.parse(dateStr, DateTimeFormatter.ofPattern(DateUtils.DATE_PATTERN));
     }
+
     /**
      * 解析日期
      *
@@ -84,6 +82,7 @@ public class DateUtils {
         }
         return LocalDateTime.parse(dateStr, DateTimeFormatter.ofPattern(DateUtils.DATE_TIME_PATTERN));
     }
+
     /**
      * 获取系统时间的当月的第一天
      *
@@ -126,6 +125,7 @@ public class DateUtils {
         Period next = Period.between(now, lastDay);
         return next.getDays();
     }
+
     /**
      * 获取跟年底的时间差 天数
      * @return

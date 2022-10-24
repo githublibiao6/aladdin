@@ -64,7 +64,7 @@ public class UserController extends GlobalController<User, UserService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
-            String verifyCode = JedisUtil.getString(Parameter.VerifyCodePrefix + ":" + sessionId);
+            String verifyCode = JedisUtil.getString(Parameter.VERIFY_CODE_PREFIX + ":" + sessionId);
             String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");
@@ -94,7 +94,7 @@ public class UserController extends GlobalController<User, UserService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
-            String verifyCode = JedisUtil.getString(Parameter.ResetPassCodePrefix + ":" + sessionId);
+            String verifyCode = JedisUtil.getString(Parameter.RESET_PASS_CODE_PREFIX + ":" + sessionId);
             String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");
@@ -129,7 +129,7 @@ public class UserController extends GlobalController<User, UserService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis，并且开启检验时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode ){
-            String verifyCode = JedisUtil.getString(Parameter.PhoneCodePrefix+":"+ sessionId);
+            String verifyCode = JedisUtil.getString(Parameter.PHONE_CODE_PREFIX+":"+ sessionId);
             String code = dto.getVerifyCode();
             if(code == null){
                 return  Result.error(50031, "验证码为空");

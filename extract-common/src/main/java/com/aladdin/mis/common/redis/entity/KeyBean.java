@@ -2,6 +2,9 @@ package com.aladdin.mis.common.redis.entity;
 
 import lombok.Data;
 
+/**
+ * @author cles
+ */
 @Data
 public class KeyBean {
 

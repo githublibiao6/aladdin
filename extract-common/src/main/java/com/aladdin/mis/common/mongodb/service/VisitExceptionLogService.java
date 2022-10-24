@@ -12,6 +12,10 @@ import com.aladdin.mis.system.entity.VisitExceptionLog;
  */
 public interface VisitExceptionLogService {
 
+    /**
+     * 保存访问错误日志
+     * @param log
+     */
     void saveVisitExceptionLog(VisitExceptionLog log);
 
 }

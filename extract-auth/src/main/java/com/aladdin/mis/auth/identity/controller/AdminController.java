@@ -188,7 +188,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
-            String verifyCode = JedisUtil.getString(Parameter.ResetPassCodePrefix + ":" + sessionId);
+            String verifyCode = JedisUtil.getString(Parameter.RESET_PASS_CODE_PREFIX + ":" + sessionId);
             String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");

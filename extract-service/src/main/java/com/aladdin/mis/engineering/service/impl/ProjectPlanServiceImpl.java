@@ -171,7 +171,6 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
         return true;
     }
 
-
     @Override
     public boolean hangPlan(ProjectPlan entity) {
 

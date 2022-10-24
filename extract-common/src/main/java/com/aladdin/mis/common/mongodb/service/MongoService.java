@@ -98,6 +98,6 @@ public interface MongoService<T>{
      * @param query
      * @param update
      */
-    void updateInser(Class<T> cls,Query query, Update update);
+    void updateInsert(Class<T> cls,Query query, Update update);
 
 }

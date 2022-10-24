@@ -1,11 +1,10 @@
 package com.aladdin.mis;
 
 /**
- * Hello world!
- *
+ * Hello world! parent
+ * @author 李标
  */
-public class App_interface
-{
+public class AppInterface{
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );

@@ -20,10 +20,11 @@ public enum RedisDatabase {
      * 缓存数据
      */
     ,DATA(1);
+
     private int index;
 
 
-    public int getiIdex() {
+    public int getIndex() {
         return index;
     }
 

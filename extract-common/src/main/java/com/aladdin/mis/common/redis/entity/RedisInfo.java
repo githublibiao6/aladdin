@@ -5,28 +5,61 @@ import lombok.Data;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * redis 信息
+ * @author cles
+ */
 @Data
 public class RedisInfo {
 
-    //服务端
+    /**
+     * 服务端
+     */
     private String server = "";
-    //客户端
+
+    /**
+     * 客户端
+     */
     private String client = "";
-    //内存
+
+    /**
+     * 内存
+     */
     private String memory = "";
-    //持久化
+
+    /**
+     * 持久化
+     */
     private String persistence = "";
-    //状态
+
+    /**
+     * 状态
+     */
     private String stats = "";
-    //关系
+
+    /**
+     * 关系
+     */
     private String replication = "";
-    //处理器
+
+    /**
+     * 处理器
+     */
     private String cpu = "";
-    //集群
+
+    /**
+     * 集群
+     */
     private String cluster = "";
-    //值空间
+
+    /**
+     * 值空间
+     */
     private String keyspace = "";
-    //用户
+
+    /**
+     * 用户
+     */
     private List<ClientInfo> users = Collections.emptyList();
 
 }

@@ -25,7 +25,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         // 生成6位验证码
         String code = RandomUtil.randomNumbers(6);
         // 将验证码放入redis缓存， 等待验证
-        JedisUtil.setString(Parameter.ResetPassCodePrefix+":"+ sessionId , 60 * 2 , code);
+        JedisUtil.setString(Parameter.RESET_PASS_CODE_PREFIX+":"+ sessionId , 60 * 2 , code);
         try {
             boolean flag = AliyunSms.sendSms(phone, code);
             return flag;

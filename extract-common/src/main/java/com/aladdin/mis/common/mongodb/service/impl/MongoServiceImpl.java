@@ -109,7 +109,7 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
     }
 
     @Override
-    public void updateInser(Class<T> cls, Query query, Update update) {
+    public void updateInsert(Class<T> cls, Query query, Update update) {
         log.info(cls+"[Mongo]updateInser:query(" + query + "),update(" + update + ")");
         mongoTemplate.upsert(query, update, cls);
     }
