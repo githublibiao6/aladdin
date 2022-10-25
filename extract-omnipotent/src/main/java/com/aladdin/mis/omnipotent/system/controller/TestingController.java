@@ -100,7 +100,7 @@ public class TestingController  extends GlobalController {
                     "jdbc:mysql://127.0.0.1:3306/company?serverTimezone=UTC&characterEncoding=utf-8","root",
                     "mysql","mysql");
             System.err.println(flag);
-            List<Map> list = Db.use("test").find("select * from be_admin");
+            List<Map<String, Object>> list = Db.use("test").find("select * from be_admin");
             System.err.println(list.size());
             System.err.println(list.get(0));
         }catch (Exception e){

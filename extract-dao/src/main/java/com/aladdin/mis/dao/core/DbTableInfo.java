@@ -19,17 +19,19 @@ public interface DbTableInfo {
      * @Date: 2020/6/4 23:05
      * @return: java.util.List<java.util.Map>
      */
-    List<Map> listTable();
+    List<Map<String, Object>> listTable();
 
     /**
-     * 获取表字段
-     * @Description: 获取所有的字段
-     * @return: java.util.List<java.util.Map>
-     * @Author: cles
-     * @Date: 2020/6/10 21:22
+     * 获取所有的字段
+     * @param tableName 表名
      * @return
      */
-    List<Map> listTableColumns(String tableName);
+    List<Map<String, Object>> listTableColumns(String tableName);
 
-    Map listTableInfo(String tableName);
+    /**
+     * 获取表信息
+     * @param tableName 表名
+     * @return
+     */
+    Map<String, Object> listTableInfo(String tableName);
 }

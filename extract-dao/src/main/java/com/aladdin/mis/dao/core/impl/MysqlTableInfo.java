@@ -15,14 +15,15 @@ import java.util.Map;
  * @Date 2020/6/4 23:14
  */
 public class MysqlTableInfo implements DbTableInfo {
+
     @Override
-    public List<Map> listTable() {
+    public List<Map<String, Object>> listTable() {
         String tableSchema = Db.use().getTableSchema();
         return Db.use().baseFind("select table_name, create_time, table_comment, table_rows from information_schema.tables where table_schema='"+tableSchema+"'");
     }
 
     @Override
-    public List<Map> listTableColumns(String tableName) {
+    public List<Map<String, Object>> listTableColumns(String tableName) {
         String tableSchema = Db.use().getTableSchema();
         String sql = "SELECT " +
                 "table_name," +
@@ -40,7 +41,7 @@ public class MysqlTableInfo implements DbTableInfo {
     }
 
     @Override
-    public Map listTableInfo(String tableName) {
+    public Map<String, Object> listTableInfo(String tableName) {
         String tableSchema = Db.use().getTableSchema();
         String sql = "SELECT " +
                 " table_name," +

@@ -126,13 +126,13 @@ public class DbHelper {
     * @Author: cles
     * @Date: 2020/5/11 0:15
     */
-    public static List<Map> find(DruidDataSource dataSource, String sql) {
+    public static List<Map<String, Object>> find(DruidDataSource dataSource, String sql) {
         //2. 获得数据库连接
         DruidPooledConnection conn = DbHelper.getInstance().getConnection(dataSource);
         //3.操作数据库，实现增删改查
         Statement stmt = null;
         ResultSet rs = null;
-        List<Map> list = new ArrayList<>();
+        List<Map<String, Object>> list = new ArrayList<>();
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);

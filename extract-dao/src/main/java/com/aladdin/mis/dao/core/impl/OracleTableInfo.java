@@ -14,18 +14,19 @@ import java.util.Map;
  * @Date 2020/6/4 23:14
  */
 public class OracleTableInfo  implements DbTableInfo {
+
     @Override
-    public List<Map> listTable() {
+    public List<Map<String, Object>> listTable() {
         return null;
     }
 
     @Override
-    public List<Map> listTableColumns(String tableName) {
+    public List<Map<String, Object>> listTableColumns(String tableName) {
         return null;
     }
 
     @Override
-    public Map listTableInfo(String tableName) {
+    public Map<String, Object> listTableInfo(String tableName) {
         return null;
     }
 }

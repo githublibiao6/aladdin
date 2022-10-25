@@ -68,8 +68,8 @@ public class MainDb {
      */
     public static void init(){
         DbTableInfo dbTableInfo = DbMaker.getDbTableInfo(Db.use().getDbType());
-        List<Map> tables = dbTableInfo.listTable();
-        List<Map> fields = dbTableInfo.listTableColumns(null);
+        List<Map<String, Object>> tables = dbTableInfo.listTable();
+        List<Map<String, Object>> fields = dbTableInfo.listTableColumns(null);
         tables.forEach(t->{
             String tableName = t.get("table_name").toString();
             TableInfo tableInfo = new TableInfo();
@@ -104,11 +104,11 @@ public class MainDb {
         tableInfo.setTableName(tableName);
 
         DbTableInfo dbTableInfo = DbMaker.getDbTableInfo(Db.use().getDbType());
-        Map tableMap = dbTableInfo.listTableInfo(tableName);
+        Map<String, Object> tableMap = dbTableInfo.listTableInfo(tableName);
         if(tableMap.get("table_comment") != null){
             tableInfo.setTableComment(tableMap.get("table_comment").toString());
         }
-        List<Map> fields = dbTableInfo.listTableColumns(tableName);
+        List<Map<String, Object>> fields = dbTableInfo.listTableColumns(tableName);
         List<TableFieldInfo> list = new ArrayList<>();
         List<String> pks = new ArrayList<>();
         fields.forEach(f->{

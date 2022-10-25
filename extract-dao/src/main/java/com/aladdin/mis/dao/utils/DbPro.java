@@ -65,7 +65,7 @@ public class DbPro {
         if("oracle".equals(getDbType())){
             return getUserName();
         }else if("mysql".equals(getDbType())){
-            Map  m =  findFirst("select database() table_schema");
+            Map<String, Object>  m =  findFirst("select database() table_schema");
             if(m != null && m.get("table_schema") != null && StringUtils.isNotBlank(m.get("table_schema").toString())){
                 return m.get("table_schema").toString();
             }else {
@@ -79,17 +79,17 @@ public class DbPro {
         DbPro.dataSource = dataSource;
     }
 
-    public List<Map> baseFind(String sql){
+    public List<Map<String, Object>> baseFind(String sql){
         return DbHelper.find(dataSource,sql);
     }
 
-    public List<Map> find(String sql){
+    public List<Map<String, Object>> find(String sql){
         SqlLog log = new SqlLog();
         log.setExecuteSql(sql);
         log.setCode(0);
         LocalDateTime start = LocalDateTime.now();
         log.setStartTime(start);
-        List<Map> list = null;
+        List<Map<String, Object>> list = null;
         try{
             list = DbHelper.find(dataSource,sql);
         }catch (Exception e){
@@ -143,8 +143,8 @@ public class DbPro {
         return result;
     }
 
-    public Map findFirst(String sql){
-        List<Map> list = DbHelper.find(dataSource,sql);
+    public Map<String, Object> findFirst(String sql){
+        List<Map<String, Object>> list = DbHelper.find(dataSource,sql);
         if (list != null && list.size() > 0){
             return list.get(0);
         }
