@@ -17,18 +17,22 @@ public class DateLog extends GlobalModel {
      * 文本
      */
     private String article;
+
     /**
      * 标题
      */
     private String title;
+
     /**
      * 重要性
      */
     private Integer importance;
+
     /**
      * 状态
      */
     private String status;
+
 //    /**
 //     * 发布时间
 //     */
