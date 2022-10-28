@@ -15,8 +15,17 @@ import java.util.List;
 @Component
 public interface DeptDao {
 
+    /**
+     * 获取列表
+     * @return
+     */
     List<DeptVo> list();
 
+    /**
+     * 根据主键获取
+     * @param id
+     * @return
+     */
     Dept findById(Integer id);
 
 }

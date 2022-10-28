@@ -145,7 +145,7 @@ public class DbPro {
 
     public Map<String, Object> findFirst(String sql){
         List<Map<String, Object>> list = DbHelper.find(dataSource,sql);
-        if (list != null && list.size() > 0){
+        if (list.size() > 0){
             return list.get(0);
         }
         return null;

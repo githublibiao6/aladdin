@@ -11,6 +11,7 @@ import com.aladdin.mis.dao.core.DbTableInfo;
  * @Date 2020/5/31 20:54
  */
 public interface DbFactory {
+
     /**
      * 获取sql创建方法
      * @return

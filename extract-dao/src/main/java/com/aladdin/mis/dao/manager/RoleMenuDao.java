@@ -30,7 +30,6 @@ public interface RoleMenuDao {
      */
     int removeByRoleId(@Param("roleId") Integer roleId);
 
-
     /**
      * 功能描述：
      *  < 根据菜单和角色查询菜单角色关联 >

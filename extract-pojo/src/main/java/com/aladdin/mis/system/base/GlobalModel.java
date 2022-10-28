@@ -21,6 +21,7 @@ public class GlobalModel extends BaseModel {
      * 主键
      */
     private Integer id;
+
     /**
      * 创建时间
      */

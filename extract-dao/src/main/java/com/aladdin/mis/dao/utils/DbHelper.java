@@ -23,6 +23,7 @@ import java.util.Map;
  */
 @Slf4j
 public class DbHelper {
+
     private static DbHelper instance = null;
 
     private DbHelper() {

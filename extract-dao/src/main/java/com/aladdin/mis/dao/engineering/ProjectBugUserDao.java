@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.engineering.entity.ProjectBugUser;
 import com.aladdin.mis.engineering.qo.ProjectBugUserQo;
 import com.aladdin.mis.engineering.vo.ProjectBugUserVo;
 import org.springframework.stereotype.Repository;
@@ -13,6 +12,7 @@ import java.util.List;
 */
 @Repository
 public interface ProjectBugUserDao {
+
     /**
      * 列表
      * @param qo

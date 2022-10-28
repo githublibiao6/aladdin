@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.engineering.entity.ProjectTask;
 import com.aladdin.mis.engineering.qo.ProjectTaskQo;
 import com.aladdin.mis.engineering.vo.ProjectTaskVo;
 import org.springframework.stereotype.Repository;
@@ -13,6 +12,7 @@ import java.util.List;
 */
 @Repository
 public interface ProjectTaskDao {
+
     /**
      * 列表
      * @param qo

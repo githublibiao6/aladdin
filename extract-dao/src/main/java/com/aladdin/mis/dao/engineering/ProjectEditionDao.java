@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.engineering.entity.ProjectEdition;
 import com.aladdin.mis.engineering.qo.ProjectEditionQo;
 import com.aladdin.mis.engineering.vo.ProjectEditionVo;
 import org.springframework.stereotype.Repository;
@@ -13,6 +12,7 @@ import java.util.List;
 */
 @Repository
 public interface ProjectEditionDao {
+
     /**
      * 列表
      * @param qo

@@ -51,13 +51,11 @@ public class VisitLog {
     /**
      * 请求参数
      */
-
     private String requestParam;
 
     /**
      * 返回数据
      */
-
     private String responseData;
 
     /**

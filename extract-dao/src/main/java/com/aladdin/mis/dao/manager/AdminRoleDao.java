@@ -13,7 +13,16 @@ import java.util.List;
 @Mapper
 public interface AdminRoleDao {
 
+    /**
+     * 获取管理员角色
+     * @param adminId
+     * @return
+     */
     List<AdminRole> getRoleByAdmin(Integer adminId);
 
+    /**
+     * 删除管理员角色
+     * @param adminId
+     */
     void removeByAdmin(Integer adminId);
 }

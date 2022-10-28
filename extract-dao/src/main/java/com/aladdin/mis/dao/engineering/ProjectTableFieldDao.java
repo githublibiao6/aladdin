@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.engineering;
 
-import com.aladdin.mis.engineering.entity.ProjectTableField;
 import com.aladdin.mis.engineering.qo.ProjectTableFieldQo;
 import com.aladdin.mis.engineering.vo.ProjectTableFieldVo;
 import org.springframework.stereotype.Repository;
@@ -13,6 +12,7 @@ import java.util.List;
 */
 @Repository
 public interface ProjectTableFieldDao {
+
     /**
      * 列表
      * @param qo

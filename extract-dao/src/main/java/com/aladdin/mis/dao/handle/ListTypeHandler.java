@@ -25,6 +25,7 @@ import java.util.List;
 @Component
 @MappedTypes(List.class)
 public class ListTypeHandler implements TypeHandler<List<String>> {
+
     @Override
     public void setParameter(PreparedStatement preparedStatement, int i, List<String> strings, JdbcType jdbcType) throws SQLException {
         StringBuffer sb = new StringBuffer();

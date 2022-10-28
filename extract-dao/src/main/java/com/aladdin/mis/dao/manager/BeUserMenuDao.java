@@ -12,6 +12,7 @@ import java.util.List;
 */
 @Repository
 public interface BeUserMenuDao {
+
     /**
      * 列表
      * @param qo

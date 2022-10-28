@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Repository
 public interface AdminDao {
+
     /**
      * 功能描述：
      *  < 查看传入的admin是否存在 >
@@ -30,10 +31,16 @@ public interface AdminDao {
     /**
      * 根据登录名获得admin
      * @param name
+     * @param pass
      * @return
      */
     Admin getByName(@Param("name") String name, @Param("pass") String pass);
 
+    /**
+     * 获取管理员
+     * @param queryCondition
+     * @return
+     */
     List<Admin> listAdmin(@Param("name") QueryCondition queryCondition);
 
     /**
@@ -42,14 +49,39 @@ public interface AdminDao {
      */
     List<Admin> list();
 
+    /**
+     * 分页获取
+     * @param qo
+     * @return
+     */
     List<Admin> pageList(AdminQo qo);
 
+    /**
+     * 添加
+     * @param menu
+     * @return
+     */
     int  add(Admin menu);
 
+    /**
+     * 更新
+     * @param menu
+     * @return
+     */
     int  update(Admin menu);
 
+    /**
+     * 根据主键获取
+     * @param id
+     * @return
+     */
     Admin  findById(int id);
 
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
     int  remove(String id);
 
     /**

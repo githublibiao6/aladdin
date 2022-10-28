@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 */
 @Repository
 public interface SqlLogDao {
+
     /**
      * 列表
      * @param m

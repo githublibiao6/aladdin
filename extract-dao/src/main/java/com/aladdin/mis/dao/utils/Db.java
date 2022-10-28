@@ -18,6 +18,7 @@ import java.util.HashMap;
 @Slf4j
 @Component
 public class Db {
+
     private static HashMap<String , DruidDataSource> map = new HashMap<>();
     private static DruidDataSource main = null ;
 

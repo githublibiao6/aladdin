@@ -33,6 +33,7 @@ public interface MenuDao {
      * @version: 1.0.0
      */
     int  add(Menu menu);
+
     /**
      * 功能描述：获取所有菜单
      *  < >
@@ -128,7 +129,6 @@ public interface MenuDao {
     List<Menu> queryByRoles(@Param("roles") Set<String> roles);
 
     class MenuProvider {
-
 
         public String queryByRoles(Set<String> roles) {
             StringBuilder param1 = new StringBuilder();

@@ -12,6 +12,7 @@ import java.lang.annotation.Target;
 
 /**
  * 注解生命周期作用范围
+ * @author cles
  */
 @Retention(RetentionPolicy.RUNTIME)
 /**

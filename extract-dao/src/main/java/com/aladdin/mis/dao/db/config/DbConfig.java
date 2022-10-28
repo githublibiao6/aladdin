@@ -49,6 +49,7 @@ public class DbConfig {
         Db.setDbSource(key,druidDataSource);
         return true;
     }
+
     public DruidDataSource buildDataSource(String url, String username, String password, String dbType){
         @SuppressWarnings("resource")
         DruidDataSource druidDataSource = new DruidDataSource();
@@ -131,6 +132,7 @@ public class DbConfig {
             return null;
         }
     }
+
     /**
     * @Description: 删除数据源
     * @Param: [datasourceid]

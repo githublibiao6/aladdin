@@ -132,8 +132,9 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             if(containsWorlds(colName)){
                 colName = "`"+colName+"`";
             }
-            if(t.getColumnType() == null)
+            if(t.getColumnType() == null) {
                 System.err.println(t.getColumnName());
+            }
             switch (t.getColumnType()){
                 case "int":
                 case "Integer":

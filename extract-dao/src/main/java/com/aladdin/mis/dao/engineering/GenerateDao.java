@@ -13,6 +13,7 @@ import java.util.List;
 */
 @Repository
 public interface GenerateDao {
+
     /**
      * 列表
      * @param qo
