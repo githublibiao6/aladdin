@@ -25,5 +25,4 @@ public class UserBaseInfoController extends GlobalController<UserBaseInfo, UserB
         return service;
     }
 
-
 }

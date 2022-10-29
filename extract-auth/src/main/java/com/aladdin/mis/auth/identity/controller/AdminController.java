@@ -78,7 +78,6 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         return result;
     }
 
-
     /**
      * 获取菜单
      *

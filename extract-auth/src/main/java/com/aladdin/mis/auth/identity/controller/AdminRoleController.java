@@ -25,7 +25,6 @@ public class AdminRoleController extends GlobalController<AdminRole, AdminRoleSe
     @Autowired
     private AdminRoleService adminRoleService;
 
-
     @Override
     protected GlobalService<AdminRole> getBaseService() {
         return adminRoleService;

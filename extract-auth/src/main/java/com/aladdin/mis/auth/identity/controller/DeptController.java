@@ -70,7 +70,9 @@ public class DeptController extends GlobalController<Dept, DeptService> {
         PageInfo<DeptVo> page = deptService.paginate(qo);
         result.setData(page);
         return result ;
-    }    /**
+    }
+
+    /**
      * 保存组织机构
      */
     @PostMapping("save")
@@ -80,7 +82,9 @@ public class DeptController extends GlobalController<Dept, DeptService> {
         Dept data = deptService.save(entity);
         result.setData(data);
         return result ;
-    }    /**
+    }
+
+    /**
      * 删除组织机构
      */
     @PostMapping("remove")
@@ -94,7 +98,9 @@ public class DeptController extends GlobalController<Dept, DeptService> {
             result.setMessage("刪除失败");
         }
         return result ;
-    }    /**
+    }
+
+    /**
      * 更新组织机构
      */
     @PostMapping("update")

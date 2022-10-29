@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * 通用下拉选择格式
+ * @author cles
  */
 @Data
 public class CommonSelectFormat {

@@ -63,7 +63,6 @@ public class RoleController extends GlobalController<Role, RoleService> {
         return "system/role/index";
     }
 
-
     /**
      * 获取分页
      */
