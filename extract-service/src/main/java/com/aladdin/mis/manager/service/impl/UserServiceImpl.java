@@ -41,7 +41,6 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
     @Autowired
     private UserBaseInfoService userBaseInfoService;
 
-
     @Override
     public PageInfo<User> page(UserQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());

@@ -39,10 +39,11 @@ public class SysWebLogServiceImpl extends GlobalServiceImpl<SysWebLog> implement
      * @param qo
      * @return
      */
-   @Override
+    @Override
     public SysWebLog detail(SysWebLog qo){
        return detailQuery(qo.getId());
 }
+
     @Override
     public boolean remove(SysWebLog entity) {
         return delete(entity);

@@ -46,6 +46,7 @@ public class BeLoginLogServiceImpl extends GlobalServiceImpl<BeLoginLog> impleme
     public BeLoginLog detail(BeLoginLog qo){
        return detailQuery(qo.getId());
 }
+
     @Override
     public boolean remove(BeLoginLog entity) {
        return delete(entity);

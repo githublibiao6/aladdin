@@ -50,6 +50,7 @@ public interface BeLoginLogService extends GlobalService<BeLoginLog>  {
 
     /**
      * 保存登录日志
+     * @param entity
      */
     void saveLoginLog(BeLoginLog entity);
 }

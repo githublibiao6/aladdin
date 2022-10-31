@@ -9,7 +9,6 @@ import com.aladdin.mis.system.entity.SqlLog;
 */
 public interface SqlLogService   {
 
-
     /**
      * 保存请求日志
      * @param entity

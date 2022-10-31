@@ -31,6 +31,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.aladdin.mis.dao")
 //  开启异步调用
 public class AuthApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class, args);
     }

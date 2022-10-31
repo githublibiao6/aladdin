@@ -53,7 +53,7 @@ public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> impleme
      * @param qo
      * @return
      */
-   @Override
+    @Override
     public BeUserMenu detail(BeUserMenu qo){
        return detailQuery(qo.getId());
 }

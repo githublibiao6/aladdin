@@ -2,7 +2,6 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectPlanUser;
-import org.springframework.stereotype.Service;
 
 /**
  * ProjectPlanUserService
@@ -17,7 +16,6 @@ public interface ProjectPlanUserService extends GlobalService<ProjectPlanUser>  
      * @return
      */
     boolean save(ProjectPlanUser entity);
-
 
     /**
      * 删除人员

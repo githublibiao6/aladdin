@@ -17,7 +17,6 @@ public class SqlLogServiceImpl  implements SqlLogService {
     @Autowired
     private SqlLogDao sqlLogDao;
 
-
     @Override
     public void save(SqlLog entity) {
         sqlLogDao.save(entity);

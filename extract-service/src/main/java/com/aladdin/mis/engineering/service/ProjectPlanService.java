@@ -27,7 +27,6 @@ public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
      */
     PageInfo<ProjectPlanVo> pageByDto(ProjectPlanQo qo);
 
-
     /**
      * 更新
      * @param entity
@@ -69,7 +68,6 @@ public interface ProjectPlanService extends GlobalService<ProjectPlan>  {
      * @return
      */
     boolean completePlan(ProjectPlan entity);
-
 
     /**
      * 删除计划

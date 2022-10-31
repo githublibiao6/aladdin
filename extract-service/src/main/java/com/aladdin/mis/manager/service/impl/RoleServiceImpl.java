@@ -85,6 +85,7 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
         deleteById(id);
         return  true;
     }
+
     @Override
     public boolean update(Role role, String menus){
         if(updateSelective(role)){

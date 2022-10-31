@@ -47,11 +47,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
     public boolean verification(Admin admin) {
         admin.setLoginPassword("");
         Admin a =  dao.verification(admin);
-        if(a != null){
-            return true;
-        }else{
-            return false;
-        }
+        return a != null;
 
     }
 
@@ -119,7 +115,6 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         return dao.listAdmin(queryCondition);
     }
 
-
     @Override
     public boolean updatePass(Admin user) {
 
@@ -142,7 +137,6 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         convertDeptTree(data, deptList, qo.getDeptId(), adminList);
         return data;
     }
-
 
     private void convertDeptTree(List<DeptAdminVo> data , List<DeptVo> list, Integer pid, List<Admin> adminList){
 
