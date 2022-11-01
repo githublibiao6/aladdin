@@ -30,8 +30,8 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @Autowired
     public HttpServletResponse response;
 
-//    @Autowired
-//    protected M baseService;
+    @Autowired
+    protected M baseService;
 
     // todo 后续删掉？
     protected abstract GlobalService<T> getBaseService();
@@ -41,12 +41,6 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     public GlobalController(){
 
     }
-
-//    PageHandle layui = new LayuiPageHandle();
-
-//    public <T> Result page(List<T> list,Integer page,Integer limit){
-//        return layui.turnPage(result,list,page,limit);
-//    }
 
     /**
      * 获取通用分页

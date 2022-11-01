@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class VerificationCodeServiceImpl implements VerificationCodeService {
 
-
     @Override
     public boolean sendSmsCode(String phone, String  sessionId, String prefix) {
         // 生成6位验证码

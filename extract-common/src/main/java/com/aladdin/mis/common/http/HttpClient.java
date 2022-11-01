@@ -69,6 +69,7 @@ public class HttpClient {
                 }
             }
 
+            assert connection != null;
             connection.disconnect();// 关闭远程连接
         }
 
@@ -112,7 +113,7 @@ public class HttpClient {
                 // 对输入流对象进行包装:charset根据工作项目组的要求来设置
                 br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
 
-                StringBuffer sbf = new StringBuffer();
+                StringBuilder sbf = new StringBuilder();
                 String temp = null;
                 // 循环遍历一行一行读取数据
                 while ((temp = br.readLine()) != null) {
@@ -147,6 +148,7 @@ public class HttpClient {
                 }
             }
             // 断开与远程地址url的连接
+            assert connection != null;
             connection.disconnect();
         }
         return result;
