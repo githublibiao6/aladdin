@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.beans.IntrospectionException;
@@ -33,6 +34,7 @@ import java.util.*;
  * @version: 1.0.0
  */
 @Service
+@Primary
 public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T> {
 
 
