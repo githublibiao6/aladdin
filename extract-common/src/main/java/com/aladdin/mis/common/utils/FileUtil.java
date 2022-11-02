@@ -1,8 +1,8 @@
 package com.aladdin.mis.common.utils;
 
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -65,7 +65,7 @@ public class FileUtil {
         String newFileName = UUID.randomUUID().toString() + "." + ext;
         try {
             File newLocalFile = new File(absolutePath, newFileName);
-            FileUtils.copyInputStreamToFile(file.getInputStream(), newLocalFile);
+            FileCopyUtils.copy((File) file, newLocalFile);
         } catch (IOException e1) {
             LOGGER.error("-----image file save local exceprion:{}-----", e1.getMessage());
         }
@@ -115,7 +115,7 @@ public class FileUtil {
         String newFileName = UUID.randomUUID().toString() + "." + ext;
         try {
             File newLocalFile = new File(absolutePath, newFileName);
-            FileUtils.copyInputStreamToFile(file.getInputStream(), newLocalFile);
+            FileCopyUtils.copy((File) file, newLocalFile);
         } catch (IOException e1) {
             LOGGER.error("-----image file save local exceprion:{}-----", e1.getMessage());
         }

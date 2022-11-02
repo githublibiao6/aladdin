@@ -30,13 +30,13 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
     @Override
     public void save(T o) {
         log.info("[Mongo]save:" + o.toString());
-        mongoTemplate.save(o);
+//        mongoTemplate.save(o);
     }
 
     @Override
     public void saveList(List<T> list) {
         log.info("[Mongo]save:" + list.toString());
-        list.forEach(this::save);
+//        list.forEach(this::save);
     }
 
     @Override
@@ -45,20 +45,23 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
         Criteria criteria = Criteria.where("_id").is(id);
         query.addCriteria(criteria);
         log.info(cls+"[Mongo]queryById:" + query);
-        return mongoTemplate.findOne(query, cls);
+//        return mongoTemplate.findOne(query, cls);
+        return null;
     }
 
     @Override
     public List queryList(Class<T> cls, Query query) {
         log.info(cls+"[Mongo]queryList:" + query);
-        return mongoTemplate.find(query, cls);
+//        return mongoTemplate.find(query, cls);
+        return null;
 
     }
 
     @Override
     public T queryOne(Class<T> cls, Query query) {
         log.info(cls+"[Mongo] queryOne:" + query);
-        return mongoTemplate.findOne(query, cls);
+//        return mongoTemplate.findOne(query, cls);
+        return null;
     }
 
     @Override
@@ -67,13 +70,15 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
         query.limit(size);
         List<T> lists = mongoTemplate.find(query, cls);
         log.info(cls+"[Mongo] queryPage:" + query + "(" + start +"," + size +")");
-        return lists;
+//        return lists;
+        return null;
     }
 
     @Override
     public Long getPageCount(Class<T> cls, Query query) {
         log.info(cls+"[Mongo]queryPageCount:" + query);
-        return mongoTemplate.count(query, cls);
+//        return mongoTemplate.count(query, cls);
+        return null;
     }
 
     @Override
@@ -82,7 +87,7 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
         if(null!=criteria){
             Query query = new Query(criteria);
             if(null!=query && this.queryOne(cls,query)!=null){
-                mongoTemplate.remove(this.queryOne(cls,query));
+//                mongoTemplate.remove(this.queryOne(cls,query));
                 log.info(cls+"[Mongo]deleteById:" + query);
             }
         }
@@ -90,7 +95,7 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
 
     @Override
     public void delete(T t) {
-        mongoTemplate.remove(t);
+//        mongoTemplate.remove(t);
         log.info("[Mongo]delete:" + t);
     }
 
@@ -102,7 +107,7 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
             if(null!= query && this.queryOne(cls,query)!=null){
                 Update update=new Update();
                 update.set(objName,objValue);
-                mongoTemplate.updateFirst(query,update,cls);
+//                mongoTemplate.updateFirst(query,update,cls);
                 log.info(cls+"[Mongo]updateFirst:query(" + query + "),update(" + update + ")");
             }
         }
@@ -111,6 +116,6 @@ public class MongoServiceImpl<T>  implements MongoService<T> {
     @Override
     public void updateInsert(Class<T> cls, Query query, Update update) {
         log.info(cls+"[Mongo]updateInser:query(" + query + "),update(" + update + ")");
-        mongoTemplate.upsert(query, update, cls);
+//        mongoTemplate.upsert(query, update, cls);
     }
 }

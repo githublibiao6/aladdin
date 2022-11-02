@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.utils;
 
-import org.apache.commons.lang.StringUtils;
+import org.springframework.util.StringUtils;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 

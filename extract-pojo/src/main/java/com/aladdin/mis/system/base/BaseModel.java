@@ -7,7 +7,8 @@ import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
 import com.aladdin.mis.util.BaseModelUtil;
-import org.apache.commons.lang.StringUtils;
+import org.springframework.util.StringUtils;
+//import org.apache.commons.lang.StringUtils;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -112,7 +113,7 @@ public abstract class BaseModel implements Serializable {
      * @version: 1.0.0
      */
     public boolean deleteById(String id){
-        if(StringUtils.isBlank(id)){
+        if(StringUtils.isEmpty(id)){
             throw new RuntimeException("primary key can not be null");
         }
         String tableName = getTableName();

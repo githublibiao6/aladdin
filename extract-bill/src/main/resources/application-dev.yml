@@ -5,14 +5,14 @@ server:
 spring:
   cloud:
     config:
-      enabled: true
+      enabled: false
     nacos:
-      discovery:
-        server-addr: 121.199.72.15:8848
-        namespace: dev
-      config:
-        server-addr: 121.199.72.15:8848
-        namespace: dev
+#      discovery:
+#        server-addr: 121.199.72.15:8848
+#        namespace: dev
+#      config:
+#        server-addr: 121.199.72.15:8848
+#        namespace: dev
 #        extension-configs:
 #          - data-id: application-base.yml
 #            group: common_group

@@ -5,14 +5,14 @@ server:
 spring:
   cloud:
     config:
-      enabled: true
-    nacos:
-      discovery:
-        server-addr: 121.199.72.15:8848
-        namespace: dev
-      config:
-        server-addr: 121.199.72.15:8848
-        namespace: dev
+      enabled: false
+#    nacos:
+#      discovery:
+#        server-addr: 121.199.72.15:8848
+#        namespace: dev
+#      config:
+#        server-addr: 121.199.72.15:8848
+#        namespace: dev
   datasource:
     username: root
     password: mysql
@@ -27,10 +27,10 @@ spring:
     password: guest
   main:
     allow-bean-definition-overriding: true
-  data:
-    mongodb:
-      uri:  mongodb://121.199.72.15:27017/company
-      database: company
+#  data:
+#    mongodb:
+#      uri:  mongodb://121.199.72.15:27017/company
+#      database: company
   mvc:
     view:
       prefix: /

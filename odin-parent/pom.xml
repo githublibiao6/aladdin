@@ -66,11 +66,12 @@
 <!--    </dependency>-->
 
     <!--服务注册到nacos-->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-      <version>2.2.5.RELEASE</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.alibaba.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+<!--      <version>2.2.5.RELEASE</version>-->
+<!--    </dependency>-->
+
 <!--    <dependency>-->
 <!--      <groupId>com.alibaba.nacos</groupId>-->
 <!--      <artifactId>nacos-client</artifactId>-->

@@ -3,8 +3,6 @@ package com.aladdin.mis;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * 将进酒
@@ -35,9 +33,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //@SpringBootApplication(exclude = MongoAutoConfiguration.class)
 @SpringBootApplication()
 //  开启异步调用
-@EnableAsync
+//@EnableAsync
 @MapperScan("com.aladdin.mis.dao")
-@EnableMongoRepositories
+//@EnableMongoRepositories
 public class OmApplication {
     public static void main(String[] args) {
         SpringApplication.run(OmApplication.class, args);

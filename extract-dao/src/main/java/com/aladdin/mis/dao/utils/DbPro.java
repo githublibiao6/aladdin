@@ -11,8 +11,9 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+//import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -66,7 +67,7 @@ public class DbPro {
             return getUserName();
         }else if("mysql".equals(getDbType())){
             Map<String, Object>  m =  findFirst("select database() table_schema");
-            if(m != null && m.get("table_schema") != null && StringUtils.isNotBlank(m.get("table_schema").toString())){
+            if(m != null && m.get("table_schema") != null && !StringUtils.isEmpty(m.get("table_schema"))){
                 return m.get("table_schema").toString();
             }else {
                 return null;
