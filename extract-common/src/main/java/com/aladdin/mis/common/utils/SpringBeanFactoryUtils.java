@@ -43,7 +43,6 @@ public class SpringBeanFactoryUtils implements ApplicationContextAware {
     /**
      * 根据名称（@Resource注解）
      */
-
     public static Object getBean(String name) {
         return getApplicationContext().getBean(name);
     }

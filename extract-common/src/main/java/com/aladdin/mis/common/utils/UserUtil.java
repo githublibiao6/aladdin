@@ -12,7 +12,7 @@ public  class UserUtil {
 
     /**
      * 获取当前用户
-     * @return
+     * @return user
      */
     public static OmUser getCurrentUser() {
         Subject subject = SecurityUtils.getSubject();

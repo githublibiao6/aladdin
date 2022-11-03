@@ -36,7 +36,7 @@ public class ExceptionController{
         log.setCode(404);
         log.setException(e.getMessage());
         log.setException(ExceptionUtil.getStackTrace(e));
-        log.setTitle("未知错误");
+        log.setTitle("未知错误" + e.getMessage());
         visitExceptionLogService.saveVisitExceptionLog(log);
         return result;
 

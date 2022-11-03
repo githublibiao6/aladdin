@@ -37,7 +37,6 @@ public class FileUtil {
         String url = contextPath + uploadPath + typePath + "/";
 
         LOGGER.debug("url : {}",url);
-
         File path = null;
 
         try {
