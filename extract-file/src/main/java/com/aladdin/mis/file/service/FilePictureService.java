@@ -1,7 +1,5 @@
 package com.aladdin.mis.file.service;
 
-import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -10,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author cles
  * @date 2022-05-25T00:29:11.438
 */
-@Service
 public interface FilePictureService {
 
     /**
