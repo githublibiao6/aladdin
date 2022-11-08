@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 项目启动主类
  * @author cles
  */
-
 //@EnableDiscoveryClient
 @SpringBootApplication()
 /*@SpringBootApplication(scanBasePackages = {"com.aladdin.mis.*.*"} )*/

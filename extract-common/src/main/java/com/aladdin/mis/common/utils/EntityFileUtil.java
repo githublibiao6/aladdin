@@ -8,7 +8,7 @@ import java.io.IOException;
  * 常用的文件工具类
  * @author cles
  */
-public  class EntityFileUtil {
+public class EntityFileUtil {
 
     public static boolean writeContentToFile(String content, String filePath, String fileName){
         String path = filePath+"/"+fileName;

@@ -15,7 +15,6 @@ public class Base64Utils {
     /**
      * 图片转化成base64字符串
      * 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
-     *
      * @param imgPath
      * @return
      */
@@ -97,18 +96,18 @@ public class Base64Utils {
                 }
             }
             out.write(b);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                out.flush();
-                out.close();
+                if(out != null){
+                    out.flush();
+                    out.close();
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            return true;
         }
+        return true;
     }
 }

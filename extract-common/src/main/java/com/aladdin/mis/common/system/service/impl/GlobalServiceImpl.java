@@ -48,10 +48,12 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     public <T> PageInfo<T> pageByCondition(Condition condition) {
         Integer page = condition.getPage();
         Integer limit = condition.getLimit();
-        if (page == null)
+        if (page == null) {
             page = 1;
-        if(limit == null)
+        }
+        if(limit == null) {
             limit = 10;
+        }
         PageHelper.offsetPage(page, limit);
         Class<T> m = (Class<T>) getT();
         String tableName = getTableName(m);

@@ -16,11 +16,13 @@ public  class JSONObjectUtil {
      * @return
      */
     public static void getCamelCaseJSONObject(JSONObject object) {
-        if (object == null)
-            return ;
+        if (object == null) {
+            return;
+        }
         Set<String> set = object.keySet();
-        if(set.isEmpty())
-            return ;
+        if(set.isEmpty()) {
+            return;
+        }
         JSONObject data = new JSONObject();
         set.forEach(s->{
             Object value = object.get(s);
