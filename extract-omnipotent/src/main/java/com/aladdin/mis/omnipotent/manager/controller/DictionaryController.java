@@ -8,6 +8,7 @@ import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.qo.DictionaryQo;
 import com.aladdin.mis.manager.service.DictionaryService;
+import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/dictionary")
-public class DictionaryController extends GlobalController/*<Dictionary, DictionaryServiceImpl>*/{
+public class DictionaryController extends GlobalController<Dictionary, DictionaryServiceImpl>{
 
     @Autowired
     private DictionaryService dictService;
@@ -38,7 +39,7 @@ public class DictionaryController extends GlobalController/*<Dictionary, Diction
 
 
     @Override
-    protected GlobalService getBaseService() {
+    protected GlobalService<Dictionary> getBaseService() {
         return dictService;
     }
 

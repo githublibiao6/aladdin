@@ -5,7 +5,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
 /**
- * d登录的用户
+ * 登录的用户
  * @author cles
  */
 public  class UserUtil {

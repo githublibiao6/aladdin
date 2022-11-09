@@ -14,8 +14,8 @@ public enum ResultCodeEnum {
      * 返回结果code
      * 已使用
      */
-    SUCCESS(20000, "后台处理成功"),
-    FAIL(500, "服务器内部出错"),;
+    SUCCESS(20000, "请求成功"),
+    FAIL(500, "请求错误"),;
 
 
     private String msg;
