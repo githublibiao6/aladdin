@@ -26,7 +26,6 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
     @Autowired
     private DateLogService service;
 
-
     @Override
     protected GlobalService<DateLog> getBaseService() {
         return service;
@@ -40,6 +39,7 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
         result.setCode(20000);
         return result;
     }
+
     /**
      * 添加文章
      */

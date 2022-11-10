@@ -20,7 +20,6 @@ public class ProjectBugLogController  extends GlobalController<ProjectBugLog, Pr
     @Autowired
     private ProjectBugLogService projectBugLogService;
 
-
     @Override
     protected GlobalService<ProjectBugLog> getBaseService(){
         return projectBugLogService ;

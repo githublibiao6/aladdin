@@ -25,10 +25,13 @@ public class DictionaryUtils {
 
     @Autowired
     private DictionaryServiceImpl dicService;
+
     @Autowired
     private static DictionaryServiceImpl staticDicService;
+
     @Autowired
     private DictionaryTeamsServiceImpl dicTeamsService;
+
     @Autowired
     private static DictionaryTeamsServiceImpl staticDicTeamsService;
 
@@ -58,6 +61,7 @@ public class DictionaryUtils {
     public void setDictionary(String key, LinkedHashMap<String,String > teams){
         map.put(key,teams);
     }
+
     public LinkedHashMap<String,String>  getDictionary(String key){
         return map.get(key);
     }

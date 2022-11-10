@@ -45,6 +45,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
         result.setCode(20000);
         return result;
     }
+
     /**
      * 添加文章
      */

@@ -28,12 +28,10 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @Autowired
     private ProjectFileService projectFileService;
 
-
     @Override
     protected GlobalService<ProjectFile> getBaseService(){
         return projectFileService ;
     }
-
 
     /**
      * 工程项目版本列表
@@ -61,7 +59,6 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
             return Result.error();
         }
     }
-
 
     /**
      * 更新数据

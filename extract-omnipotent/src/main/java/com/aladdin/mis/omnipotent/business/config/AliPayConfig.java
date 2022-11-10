@@ -18,6 +18,7 @@ import java.io.IOException;
 @Configuration
 @ConfigurationProperties(prefix = "alibaba.alipay")
 public class AliPayConfig {
+
     /**
      * 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号 按照我文章图上的信息填写
      */

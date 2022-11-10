@@ -30,6 +30,7 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class AlipayServiceImpl2 implements AlipayService {
+
     /**
      * 功能描述：
      *  < 测试service >

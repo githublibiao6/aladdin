@@ -8,6 +8,9 @@ import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * @author cles
+ */
 public class SpringBootStartApplication  extends SpringBootServletInitializer implements WebMvcConfigurer {
 
     @Override

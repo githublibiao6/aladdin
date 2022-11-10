@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "dictionaryteams")
-public class DictionaryTeamsController extends GlobalController/*<DictionaryTeams, DictionaryTeamsServiceImpl>*/ {
+public class DictionaryTeamsController extends GlobalController<DictionaryTeams, DictionaryTeamsServiceImpl> {
 
     @Autowired
     DictionaryServiceImpl dicService;
@@ -34,7 +34,7 @@ public class DictionaryTeamsController extends GlobalController/*<DictionaryTeam
     DictionaryTeamsServiceImpl teamsService;
 
     @Override
-    protected GlobalService getBaseService() {
+    protected GlobalService<DictionaryTeams> getBaseService() {
         return teamsService;
     }
 

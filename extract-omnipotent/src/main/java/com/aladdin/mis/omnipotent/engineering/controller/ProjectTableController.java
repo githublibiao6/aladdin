@@ -28,7 +28,6 @@ public class ProjectTableController  extends GlobalController<ProjectTable, Proj
         return projectTableService;
     }
 
-
     /**
      * 更新数据
      */
@@ -42,7 +41,6 @@ public class ProjectTableController  extends GlobalController<ProjectTable, Proj
             return Result.error();
         }
     }
-
 
     /**
      * 更新数据

@@ -11,6 +11,7 @@ package com.aladdin.mis.omnipotent.business.service;
  */
 
 public interface AlipayService {
+    
     /**
      * 功能描述：
      *  < 测试service >

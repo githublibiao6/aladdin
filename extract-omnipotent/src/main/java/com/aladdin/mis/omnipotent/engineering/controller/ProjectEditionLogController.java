@@ -19,7 +19,6 @@ public class ProjectEditionLogController  extends GlobalController<ProjectEditio
     @Autowired
     private ProjectEditionLogService projectEditionLogService;
 
-
     @Override
     protected GlobalService<ProjectEditionLog> getBaseService(){
         return projectEditionLogService ;

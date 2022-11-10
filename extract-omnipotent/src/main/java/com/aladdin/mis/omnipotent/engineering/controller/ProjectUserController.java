@@ -32,7 +32,6 @@ public class ProjectUserController  extends GlobalController<ProjectUser, Projec
         return projectUserService;
     }
 
-
     /**
      * 获取通用分页
      */

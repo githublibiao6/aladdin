@@ -27,12 +27,10 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @Autowired
     private ProjectBugService projectBugService;
 
-
     @Override
     protected GlobalService<ProjectBug> getBaseService(){
         return projectBugService ;
     }
-
 
     /**
      * 获取分页

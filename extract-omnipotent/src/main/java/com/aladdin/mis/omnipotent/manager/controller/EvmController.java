@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/evm")
 public class EvmController {
 
-
     /** 测试异步执行
      * @Author cles
      * @Description
@@ -31,7 +30,6 @@ public class EvmController {
     public void productcode() {
         EVMUtils.zxingCodeCreate("http://www.baidu.com", "D:/voice/picture/2018/",500,"D:/voice/picture/2018/5.jpg");
     }
-
 
     /**
      * 解析二维码

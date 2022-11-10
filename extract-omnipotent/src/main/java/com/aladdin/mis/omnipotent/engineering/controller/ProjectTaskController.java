@@ -23,12 +23,10 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @Autowired
     private ProjectTaskService projectTaskService;
 
-
     @Override
     protected GlobalService<ProjectTask> getBaseService(){
         return projectTaskService ;
     }
-
 
     /**
      * 更新数据
@@ -43,7 +41,6 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
             return Result.error();
         }
     }
-
 
     /**
      * 更新数据
@@ -100,7 +97,6 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
             return Result.error();
         }
     }
-
 
     /**
      * 删除数据

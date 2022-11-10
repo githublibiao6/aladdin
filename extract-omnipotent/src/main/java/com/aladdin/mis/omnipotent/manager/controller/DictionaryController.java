@@ -33,10 +33,8 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
     @Autowired
     private DictionaryService dictService;
 
-
     @Autowired
     private SqlLogDao sqlLogDao;
-
 
     @Override
     protected GlobalService<Dictionary> getBaseService() {
@@ -79,7 +77,6 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
         result.setCode(20000);
         return result;
     }
-
 
     /**
      *  查询字典树

@@ -4,6 +4,7 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Img;
+import com.aladdin.mis.manager.service.ImgService;
 import com.aladdin.mis.manager.service.impl.ImgServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -24,10 +25,11 @@ import java.io.IOException;
  */
 @RequestMapping("img")
 @Controller
-public class ImgController extends GlobalController/*<Img, ImgServiceImpl>*/ {
+public class ImgController extends GlobalController<Img, ImgServiceImpl> {
 
     @Autowired
-    ImgServiceImpl service;
+    private ImgService service;
+
     /**
      * 功能描述：
      *  < 返回图片 >

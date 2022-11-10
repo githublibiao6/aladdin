@@ -3,7 +3,6 @@ package com.aladdin.mis.omnipotent.love.service;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,7 +14,13 @@ import java.util.List;
  */
 public interface DateLogService extends GlobalService<DateLog> {
 
-    PageEntity page(PageEntity entity) ;
+    /**
+     * 分页数据
+     * @param entity
+     * @return
+     */
+    PageEntity page(PageEntity entity);
+
     /**
      * 功能描述：
      *  <获取全部字典>

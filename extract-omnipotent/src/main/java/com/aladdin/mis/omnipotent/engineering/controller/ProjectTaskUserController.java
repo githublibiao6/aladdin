@@ -22,12 +22,10 @@ public class ProjectTaskUserController  extends GlobalController<ProjectTaskUser
     @Autowired
     private ProjectTaskUserService entityService;
 
-
     @Override
     protected GlobalService<ProjectTaskUser> getBaseService(){
         return entityService ;
     }
-
 
     /**
      * 更新数据
@@ -42,7 +40,6 @@ public class ProjectTaskUserController  extends GlobalController<ProjectTaskUser
             return Result.error();
         }
     }
-
 
     /**
      * 删除任务人员

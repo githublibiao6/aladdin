@@ -1,6 +1,5 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
-import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.omnipotent.business.service.impl.AlipayServiceImpl;
 import com.alipay.api.AlipayApiException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ public class AlipayController {
 
     @Autowired
     AlipayServiceImpl service;
+
     /** 测试异步执行
      * @Author cles
      * @Description

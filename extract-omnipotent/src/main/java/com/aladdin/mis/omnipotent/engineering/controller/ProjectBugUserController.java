@@ -24,7 +24,6 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     @Autowired
     private ProjectBugUserService projectBugUserService;
 
-
     @Override
     protected GlobalService<ProjectBugUser> getBaseService(){
         return projectBugUserService ;

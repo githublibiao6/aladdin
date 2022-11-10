@@ -27,12 +27,10 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @Autowired
     private ProjectPlanService projectPlanService;
 
-
     @Override
     protected GlobalService<ProjectPlan> getBaseService(){
         return projectPlanService ;
     }
-
 
     /**
      * 根据主键删除数据

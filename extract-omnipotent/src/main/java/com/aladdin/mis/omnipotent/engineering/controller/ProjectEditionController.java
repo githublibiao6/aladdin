@@ -28,7 +28,6 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @Autowired
     private ProjectEditionService projectEditionService;
 
-
     @Override
     protected GlobalService<ProjectEdition> getBaseService(){
         return projectEditionService ;

@@ -23,12 +23,10 @@ public class ProjectPlanUserController  extends GlobalController<ProjectPlanUser
     @Autowired
     private ProjectPlanUserService projectPlanUserService;
 
-
     @Override
     protected GlobalService<ProjectPlanUser> getBaseService(){
         return projectPlanUserService ;
     }
-
 
     /**
      * 保存数据
