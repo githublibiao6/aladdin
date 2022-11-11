@@ -71,8 +71,8 @@ public class Project extends GlobalModel {
     private Integer deptId;
 
     /**
-备注
-    */
+     *
+     */
     @TableField("remark")
     private String remark;
 

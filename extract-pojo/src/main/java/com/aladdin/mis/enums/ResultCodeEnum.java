@@ -15,6 +15,7 @@ public enum ResultCodeEnum {
      * 已使用
      */
     SUCCESS(20000, "请求成功"),
+
     FAIL(500, "请求错误"),;
 
 

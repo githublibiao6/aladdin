@@ -20,6 +20,7 @@ public class AdminRole extends GlobalModel {
      */
     @TableField("admin_id")
     private Integer adminId;
+
     /**
      * 角色
      */

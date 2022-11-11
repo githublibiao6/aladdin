@@ -24,7 +24,6 @@ public class OrderCondition {
      */
     private String orderType;
 
-
     public OrderCondition addOrderExpression(String orderField, String orderType) {
         this.orderField = orderField;
         this.orderType = orderType;

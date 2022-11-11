@@ -18,13 +18,16 @@ public class Employee extends GlobalModel {
      * 姓名
      */
     private String name;
+
     /**
      * 登录密码ID
      */
     private String password;
+
     private String citizenNo;
     private String sex;
     private String photoUri;
+
     /**
      * 职位
      */
@@ -32,10 +35,12 @@ public class Employee extends GlobalModel {
     @JsonFormat(locale="zh",timezone="GMT+8",pattern="yy-MM-dd")
     private Date birth;
     private String nation;
+
     /**
      * 政治面貌
      */
     private String polity;
+
     /**
      * 婚姻状态
      */
@@ -43,18 +48,22 @@ public class Employee extends GlobalModel {
     private String phone;
     private String officeNo;
     private String email;
+
     /**
      * 学历
      */
     private String education;
+
     /**
      * 学位
      */
     private String degree;
+
     /**
      * 合同起始时间
      */
     private Date contractStart;
+
     /**
      * 合同结束时间
      */
@@ -64,6 +73,7 @@ public class Employee extends GlobalModel {
      * 在职状态
      */
     private String state;
+
     /**
      * 说明
      */

@@ -30,7 +30,6 @@ public class FieldCondition {
      */
     private Object value;
 
-
     public FieldCondition addExpression(String field, Object value) {
         this.op = FieldOperationEnumCode.EQ.getOperation();
         setField(field);
