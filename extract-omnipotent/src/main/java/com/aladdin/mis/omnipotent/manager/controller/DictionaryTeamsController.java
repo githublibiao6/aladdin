@@ -98,7 +98,7 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
     public Result page(@RequestBody  DictionaryQo qo) {
         result = new Result();
         result.setCode(20000);
-        PageInfo page = teamsService.page(qo);
+        PageInfo<DictionaryTeams> page = teamsService.page(qo);
         result.setData(page);
         return result;
     }

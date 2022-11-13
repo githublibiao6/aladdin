@@ -25,7 +25,7 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageInfo page(DictionaryQo qo);
+    PageInfo<DictionaryTeams> page(DictionaryQo qo);
 
     /**
      * 功能描述：

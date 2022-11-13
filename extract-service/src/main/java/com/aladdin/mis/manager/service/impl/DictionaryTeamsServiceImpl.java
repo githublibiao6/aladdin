@@ -27,7 +27,7 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeam
     private DicTeamsDao dao;
 
     @Override
-    public PageInfo page(DictionaryQo qo) {
+    public PageInfo<DictionaryTeams> page(DictionaryQo qo) {
         Integer page = qo.getPage();
         Integer limit = qo.getLimit();
         page = page == null ? 0 : page;

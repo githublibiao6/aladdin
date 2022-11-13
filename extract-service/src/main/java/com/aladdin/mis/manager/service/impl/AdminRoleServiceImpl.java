@@ -20,7 +20,6 @@ public class AdminRoleServiceImpl extends GlobalServiceImpl<AdminRole> implement
     @Autowired
     private AdminRoleDao dao;
 
-
     @Override
     public List<AdminRole> getRoleByAdmin(Integer adminId) {
         return dao.getRoleByAdmin(adminId);

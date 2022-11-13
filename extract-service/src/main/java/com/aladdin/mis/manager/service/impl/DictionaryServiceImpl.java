@@ -93,7 +93,6 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
         return handleDict(list);
     }
 
-
     @Override
     public  Map<String, JSONObject> loadAllDictionary() {
 

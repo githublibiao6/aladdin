@@ -42,12 +42,13 @@ public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> impleme
      * @param qo
      * @return
      */
-   @Override
+    @Override
     public PageInfo<BeUserMenuVo> paginate(BeUserMenuQo qo){
        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
        List<BeUserMenuVo> list = beUserMenuDao.list(qo);
        return new PageInfo<>(list);
-}
+    }
+
     /**
      * 查询详情
      * @param qo

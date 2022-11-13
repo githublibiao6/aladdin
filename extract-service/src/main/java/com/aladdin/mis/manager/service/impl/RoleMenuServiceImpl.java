@@ -25,7 +25,6 @@ public class RoleMenuServiceImpl extends GlobalServiceImpl<RoleMenu> implements 
     @Autowired
     private RoleMenuDao mapper;
 
-
     @Override
     public boolean removeByRoleId(Integer roleId) {
         mapper.removeByRoleId(roleId);
