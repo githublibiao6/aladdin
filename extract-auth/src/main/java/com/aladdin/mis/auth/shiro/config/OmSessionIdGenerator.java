@@ -18,7 +18,6 @@ import java.util.UUID;
  */
 public class OmSessionIdGenerator implements SessionIdGenerator {
 
-
     @Override
     public Serializable generateId(Session session) {
         String sessionId = UUID.randomUUID().toString().replace("-","");

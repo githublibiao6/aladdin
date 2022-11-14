@@ -212,7 +212,6 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         }
     }
 
-
     /**
      * 获取组织机构管理员结构
      */

@@ -1,9 +1,7 @@
 package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
-import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.user.vo.OmUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
 * @Description: 系统
@@ -22,23 +21,17 @@ import java.util.HashMap;
 @Slf4j
 @Controller
 @RequestMapping("/auth")
-public class AuthLoginController extends GlobalController {
+public class AuthLoginController {
 
     @Autowired
     private AuthLoginService authLoginService;
 
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
-    }
-
     @RequestMapping("/login")
     @ResponseBody
     public Result login(@RequestBody OmUser user) {
-        result = new Result();
+        Result result = new Result();
         result.setCode(20000);
-        HashMap map = new HashMap();
+        Map<String, String> map = new HashMap<>(16);
         map.put("token","admin-token");
         result.setData(map);
         result = authLoginService.signIn(user);
@@ -49,6 +42,7 @@ public class AuthLoginController extends GlobalController {
     @RequestMapping("/interceptLogin")
     @ResponseBody
     public Result login() {
+        Result result = new Result();
         result.setMessage("请求被拦截了");
         result.setCode(50014);
         result.setSuccess(false);
@@ -58,6 +52,7 @@ public class AuthLoginController extends GlobalController {
     @RequestMapping("/unauthorizedUrl")
     @ResponseBody
     public Result unauthorizedUrl() {
+        Result result = new Result();
         result.setMessage("没有权限");
         result.setCode(403);
         result.setSuccess(false);
@@ -67,6 +62,7 @@ public class AuthLoginController extends GlobalController {
     @RequestMapping("/welcome")
     @ResponseBody
     public Result welcome() {
+        Result result = new Result();
         result.setMessage("登陆成功");
         log.info("登录成功了");
         result.setSuccess(false);
@@ -76,6 +72,7 @@ public class AuthLoginController extends GlobalController {
     @RequestMapping("/logout")
     @ResponseBody
     public Result out(String token) {
+        Result result = new Result();
         result.setCode(20000);
         result.setMessage("用户退出");
         return result;

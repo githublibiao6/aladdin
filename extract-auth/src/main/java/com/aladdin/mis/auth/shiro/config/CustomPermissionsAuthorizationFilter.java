@@ -20,6 +20,7 @@ import java.io.IOException;
  * @date 2019-8-279:47
  */
 public class CustomPermissionsAuthorizationFilter extends PermissionsAuthorizationFilter {
+
     /**
      * 根据请求接口路径进行验证
      * @param request

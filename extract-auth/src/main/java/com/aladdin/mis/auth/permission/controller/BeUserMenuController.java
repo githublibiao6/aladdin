@@ -33,7 +33,6 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
     @Autowired
     private BeUserMenuService beUserMenuService;
 
-
     @Override
     protected GlobalService<BeUserMenu> getBaseService() {
         return beUserMenuService;

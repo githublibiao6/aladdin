@@ -19,6 +19,7 @@ import java.io.IOException;
  * @Date 2020/5/18 23:08
  */
 public class CustomRolesAuthorizationFilter extends RolesAuthorizationFilter {
+
     @Override
     public boolean isAccessAllowed(ServletRequest req, ServletResponse resp, Object mappedValue) {
         Subject subject = getSubject(req, resp);
@@ -33,7 +34,6 @@ public class CustomRolesAuthorizationFilter extends RolesAuthorizationFilter {
                 return true;
             }
         }
-
         return false;
     }
 

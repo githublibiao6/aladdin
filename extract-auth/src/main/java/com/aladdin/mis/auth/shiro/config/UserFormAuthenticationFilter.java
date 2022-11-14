@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author cles
  * @Date 2020/5/18 23:08
  */
-public class UserFormAuthenticationFilter extends FormAuthenticationFilter
-{
+public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
+
     public UserFormAuthenticationFilter()
     {
         super();

@@ -36,7 +36,6 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     //    @Autowired
     //    DubboService dubboService;
 
-
     @Override
     protected GlobalService<Menu> getBaseService() {
         return service;
@@ -217,6 +216,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
         result.setData(menu);
         return result;
     }
+
     @RequestMapping("/remove.do")
     @ResponseBody
     public Result remove(String menuId) {

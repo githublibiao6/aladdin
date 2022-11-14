@@ -33,7 +33,6 @@ import java.util.*;
 @Configuration
 public class ShiroConfig {
 
-
     /**
      * @Description:  开启注解
      * @return: org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor
@@ -146,7 +145,6 @@ public class ShiroConfig {
 
         return sessionManager;
     }*/
-
 
     /**
      * @Description: 自定义的 shiro session 缓存管理器

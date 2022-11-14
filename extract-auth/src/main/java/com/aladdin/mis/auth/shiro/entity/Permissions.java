@@ -17,6 +17,7 @@ public class Permissions {
         this.id = id;
         this.permissionsName = permissionsName;
     }
+
     private String id;
     private String permissionsName;
 
