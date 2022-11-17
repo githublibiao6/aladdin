@@ -2,6 +2,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.AdminDao">
+
     <!-- 查看传入的admin是否存在 -->
      <select id="verification" resultType="com.aladdin.mis.manager.bean.Admin">
         select *

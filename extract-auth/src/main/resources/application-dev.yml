@@ -66,3 +66,4 @@ pagehelper:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/**/*.xml

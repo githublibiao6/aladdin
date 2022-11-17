@@ -6,3 +6,8 @@ spring:
       - dev
     include:
       - alipaydev
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    #设置mapper文件位置
+  mapper-locations: classpath*:/mybatis-mapper/**/*.xml
