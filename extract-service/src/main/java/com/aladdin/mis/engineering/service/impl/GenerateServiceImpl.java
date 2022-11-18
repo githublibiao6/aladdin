@@ -22,7 +22,7 @@ public class GenerateServiceImpl  implements GenerateService {
     private GenerateDao generateDao;
 
     @Override
-    public List<GenerateVo> paginate(GenerateQo qo) {
+    public List<GenerateVo> listInfo(GenerateQo qo) {
         String tableSchema = Db.use().getTableSchema();
         qo.setTableSchema(tableSchema);
         return generateDao.listTable(qo);

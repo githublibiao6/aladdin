@@ -19,7 +19,6 @@ import java.util.List;
 public interface GlobalService<T> {
 
     /**
-     *
      * 通用分页
      * @param condition 实体
      * @return model

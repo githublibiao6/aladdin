@@ -43,7 +43,7 @@ public class StringUtil {
      * 获取指定字符串出现的次数
      */
     public static int appearStringNumber(String srcText, String findText) {
-        Integer count = 0;
+        int count = 0;
         Pattern pattern = Pattern.compile(findText);
         Matcher matcher = pattern.matcher(srcText);
         while (matcher.find()) {
@@ -111,7 +111,7 @@ public class StringUtil {
             return firstCharUp(str);
         }
         // 用下划线将原始字符串分割
-        String camel[] = str.split("_");
+        String[] camel = str.split("_");
         for (String s :  camel) {
             // 跳过空字符串
             if (s.isEmpty()) {

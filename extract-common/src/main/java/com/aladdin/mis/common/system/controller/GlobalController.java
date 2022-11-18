@@ -60,8 +60,9 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         condition.setPage(1);
         condition.setLimit(10);
         T data = getBaseService().getByCondition(condition);
-        if(data == null)
+        if(data == null) {
             result.setMessage("查无数据");
+        }
         return Result.success(data);
     }
 
@@ -205,6 +206,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+        assert address != null;
         return "http://"+address.getHostAddress() +":"+request.getServerPort()+"/"+request.getContextPath();
     }
 

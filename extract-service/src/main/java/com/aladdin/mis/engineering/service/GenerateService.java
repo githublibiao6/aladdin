@@ -15,7 +15,8 @@ public interface GenerateService  {
     /**
      * 分页查询
      * @param qo
+     * @return
      */
-    List<GenerateVo> paginate(GenerateQo qo);
+    List<GenerateVo> listInfo(GenerateQo qo);
 
 }

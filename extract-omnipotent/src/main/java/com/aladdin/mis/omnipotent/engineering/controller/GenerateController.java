@@ -34,7 +34,7 @@ public class GenerateController  {
     @ResponseBody
     public Result paginate(@RequestBody GenerateQo qo){
         Result result = new Result();
-        List<GenerateVo> tables = generateService.paginate(qo);
+        List<GenerateVo> tables = generateService.listInfo(qo);
         result.setData(tables);
         return result ;
     }
