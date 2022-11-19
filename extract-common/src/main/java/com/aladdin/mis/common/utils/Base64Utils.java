@@ -18,7 +18,7 @@ public class Base64Utils {
      * @param imgPath
      * @return
      */
-    public static String GetImageStr(String imgPath) {
+    public static String getImageStr(String imgPath) {
         // 待处理的图片
         String imgFile = imgPath;
         InputStream in = null;
@@ -37,6 +37,7 @@ public class Base64Utils {
             e.printStackTrace();
         } finally {
             try {
+                assert in != null;
                 in.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -75,7 +76,7 @@ public class Base64Utils {
      * @throws IOException
      */
     @SuppressWarnings("finally")
-    public static boolean GenerateImage(String imgData, String imgFilePath) {
+    public static boolean generateImage(String imgData, String imgFilePath) {
         // 图像数据为空
         if (StringUtils.isEmpty(imgData)) {
             return false;

@@ -159,7 +159,7 @@ public class FileUtil {
         String newFileName = UUID.randomUUID().toString() + "." + extArr[1];
         try {
             File newLocalFile = new File(absolutePath, newFileName);
-            Base64Utils.GenerateImage(base64 , newLocalFile.getAbsolutePath());
+            Base64Utils.generateImage(base64 , newLocalFile.getAbsolutePath());
         } catch (Exception e1) {
             LOGGER.error("-----image file save local exceprion:{}-----", e1.getMessage());
         }

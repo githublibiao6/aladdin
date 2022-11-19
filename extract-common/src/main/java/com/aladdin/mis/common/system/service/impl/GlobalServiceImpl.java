@@ -37,7 +37,6 @@ import java.util.*;
 @Primary
 public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T> {
 
-
     private static final String CREATE_TIME_FIELD = "sys001";
     private static final String UPDATE_TIME_FIELD = "sys002";
     private static final String CREATE_USER_FIELD = "sys003";

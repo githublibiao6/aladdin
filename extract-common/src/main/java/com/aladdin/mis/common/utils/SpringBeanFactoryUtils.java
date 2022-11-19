@@ -33,7 +33,6 @@ public class SpringBeanFactoryUtils implements ApplicationContextAware {
         if (SpringBeanFactoryUtils.applicationContext == null) {
             SpringBeanFactoryUtils.applicationContext = applicationContext;
         }
-
     }
 
     public static ApplicationContext getApplicationContext() {

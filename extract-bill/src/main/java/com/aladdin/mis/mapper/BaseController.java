@@ -3,7 +3,9 @@ package com.aladdin.mis.mapper;
  *  Created by cles on 2021/7/13 14:08
  */
 
+import com.aladdin.mis.common.system.entity.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,6 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("base")
 public class BaseController {
+
+    @RequestMapping("healthy")
+    @ResponseBody
+    public Result healthy(){
+        Result result = new Result();
+        result.setMessage("健康地址请求成功");
+        return result;
+    }
 
     @RequestMapping("index")
     public void index(){
