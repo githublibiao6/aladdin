@@ -31,28 +31,33 @@ public class LoginController extends GlobalController {
     @Autowired
     private BeLoginLogService beLoginLogService;
 
-
     @RequestMapping("/login")
     @ResponseBody
     public Result login(@RequestBody JSONObject json) {
-        result = new Result();
-        result.setCode(20000);
+        try{
+            result = new Result();
+            result.setCode(20000);
 //        Enumeration<String> set = request.getParameterNames();
 //        while (set.hasMoreElements()){
 //            System.err.println(set.nextElement());
 //        }
-        // shiro 调用
-        OmUser user = new OmUser();
-        user.setUserName(json.getString("username"));
-        user.setPassword(json.getString("password"));
-        result = authLoginService.signIn(user);
+            // shiro 调用
+            OmUser user = new OmUser();
+            user.setUserName(json.getString("username"));
+            user.setPassword(json.getString("password"));
+            result = authLoginService.signIn(user);
 
-        BeLoginLog loginLog = new BeLoginLog();
+            BeLoginLog loginLog = new BeLoginLog();
 
-        loginLog.setLoginIp(getIp());
-        loginLog.setLoginType("10");
-
-        beLoginLogService.saveLoginLog(loginLog);
+            loginLog.setLoginIp(getIp());
+            loginLog.setLoginType("10");
+            beLoginLogService.saveLoginLog(loginLog);
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setSuccess(false);
+            result.setMessage("登录出错");
+            result.setCode(5000);
+        }
         return result;
     }
 
