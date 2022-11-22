@@ -4,6 +4,7 @@ package com.aladdin.mis.util;
  */
 
 
+import com.aladdin.mis.annotation.entity.Database;
 import com.aladdin.mis.annotation.entity.Table;
 
 /**
@@ -34,6 +35,27 @@ public class BaseModelUtil {
             return null;
         }
         return tableName;
+    }
+
+    /**
+     * 功能描述：
+     *  < 根据实体类的注解获取表模块 >
+     * @Description: getTableName
+     * @Author: cles
+     * @Date: 2020/6/19 0:17
+     * @return: java.lang.String
+     * @version: 1.0.0
+     */
+    public static String getModuleName(Class clazz){
+        String databaseName = "";
+        boolean tableAnnExits = clazz.isAnnotationPresent(Database.class);
+        if(tableAnnExits){
+            Database database = (Database) clazz.getAnnotation(Database.class);
+            databaseName = database.value();
+        }else {
+            return null;
+        }
+        return databaseName;
     }
 
     /**

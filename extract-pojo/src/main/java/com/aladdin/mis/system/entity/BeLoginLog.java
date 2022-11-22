@@ -1,5 +1,6 @@
 package com.aladdin.mis.system.entity;
 
+import com.aladdin.mis.annotation.entity.Database;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @author cles
  * @date 2022-02-24T23:38:47.804
 */
+@Database("bird")
 @Table("be_login_log")
 @Data
 public class BeLoginLog extends GlobalModel {

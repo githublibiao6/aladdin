@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.controller;
+package com.aladdin.mis.auth.sso;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.controller.GlobalController;
@@ -16,14 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
-* @Description: 系统
+ * sso 登录
+* @Description:
 * @Author: cles
 * @Date: 2020/4/16 22:17
 */
 @Slf4j
 @Controller
-@RequestMapping("/system")
-public class LoginController extends GlobalController {
+@RequestMapping("/sso")
+public class SsoController extends GlobalController {
 
     @Autowired
     private AuthLoginService authLoginService;

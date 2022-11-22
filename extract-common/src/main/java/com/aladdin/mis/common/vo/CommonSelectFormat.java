@@ -1,4 +1,4 @@
-package com.aladdin.mis.auth.bean.vo;
+package com.aladdin.mis.common.vo;
 
 import lombok.Data;
 

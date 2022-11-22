@@ -270,6 +270,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     private <T> T detailQuery(Integer id, Class<T> clazz) {
 
         String tableName = BaseModelUtil.getTableName(clazz);
+        String moduleName = BaseModelUtil.getModuleName(clazz);
         String primaryKey = BaseModelUtil.getPrimaryKey(tableName);
         TableInfo table = MainDb.getTableInfo(tableName);
 
