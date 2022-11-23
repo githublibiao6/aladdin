@@ -39,7 +39,7 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
 
     @Override
     public PageInfo<ProjectPlanVo> pageByDto(ProjectPlanQo qo) {
-        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
+        PageHelper.startPage(qo.getPage(), qo.getLimit());
         // todo 根据人员来获取
         List<ProjectPlanVo> list = projectPlanDao.list(qo);
         return new PageInfo<>(list);

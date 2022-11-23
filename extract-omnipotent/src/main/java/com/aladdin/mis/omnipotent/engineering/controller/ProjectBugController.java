@@ -57,7 +57,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
             boolean data = getBaseService().updateSelective(entity);
             result.setData(data);
         }
-        return Result.success();
+        return result;
     }
 
     /**
@@ -68,7 +68,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     public Result save(@RequestBody ProjectBug entity) {
         boolean flag = projectBugService.save(entity);
         if(flag){
-            Result.success();
+            return Result.success();
         }
         return Result.error();
     }
@@ -81,7 +81,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     public Result update(@RequestBody ProjectBug entity) {
         boolean flag = projectBugService.update(entity);
         if(flag){
-            Result.success();
+            return Result.success();
         }
         return Result.error();
     }
@@ -95,7 +95,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     public Result deleteBug(@RequestBody ProjectBug entity) {
         boolean flag = projectBugService.deleteBug(entity);
         if(flag){
-            Result.success();
+            return Result.success();
         }
         return Result.error();
     }
@@ -108,7 +108,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     public Result completeBug(@RequestBody ProjectBug entity) {
         boolean flag = projectBugService.completeBug(entity);
         if(flag){
-            Result.success();
+            return Result.success();
         }
         return Result.error();
     }
