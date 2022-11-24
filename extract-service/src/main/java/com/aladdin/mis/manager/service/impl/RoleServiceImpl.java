@@ -7,6 +7,8 @@ import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.manager.service.RoleMenuService;
 import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,9 +35,11 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
     private RoleMenuService roleMenuService;
 
     @Override
-    public PageEntity page(PageEntity entity) {
-        List<Role> page = dao.list();
-        return null;
+    public PageInfo<Role> page(PageEntity entity) {
+
+        PageHelper.startPage(entity.getPage(), entity.getLimit());
+        List<Role> list = dao.list();
+        return new PageInfo<Role>(list);
     }
 
     /**

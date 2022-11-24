@@ -4,6 +4,7 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 import java.util.Set;
@@ -25,7 +26,7 @@ public interface RoleService extends GlobalService<Role> {
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageEntity page(PageEntity entity);
+    PageInfo<Role> page(PageEntity entity);
 
     /**
      * 功能描述：
