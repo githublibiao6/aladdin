@@ -79,7 +79,7 @@ public class ProjectPlanServiceImpl extends GlobalServiceImpl<ProjectPlan> imple
                 entity.setEndTime(LocalDateTime.now());
             }
         }
-        if(!oldTarget.equals(target)){
+        if(oldTarget != null && !oldTarget.equals(target)){
             content.append("修改项目计划目标为：").append(target).append(";");
         }
 

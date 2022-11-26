@@ -16,6 +16,10 @@ public enum ResultCodeEnum {
      */
     SUCCESS(20000, "请求成功"),
 
+    SAVE(20000, "保存成功"),
+
+    UPDATE(20000, "更新成功"),
+
     FAIL(500, "请求错误"),;
 
 

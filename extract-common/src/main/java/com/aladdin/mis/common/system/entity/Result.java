@@ -40,6 +40,14 @@ public class Result {
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMsg(), data);
     }
 
+    public static Result save(){
+        return new Result(true, ResultCodeEnum.SAVE.getCode(), ResultCodeEnum.SAVE.getMsg());
+    }
+
+    public static Result update(){
+        return new Result(true, ResultCodeEnum.UPDATE.getCode(), ResultCodeEnum.UPDATE.getMsg());
+    }
+
     public static Result successMsg(String message){
         return new Result(true, ResultCodeEnum.SUCCESS.getCode(), message, null);
     }

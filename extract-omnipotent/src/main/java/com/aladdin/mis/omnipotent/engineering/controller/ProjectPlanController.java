@@ -74,7 +74,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     public Result update(@RequestBody ProjectPlan entity) {
         boolean flag = projectPlanService.update(entity);
         if(flag){
-            return Result.success();
+            return Result.save();
         }else {
             return Result.error();
         }
