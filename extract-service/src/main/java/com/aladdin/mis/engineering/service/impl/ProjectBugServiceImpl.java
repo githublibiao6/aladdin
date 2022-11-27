@@ -40,7 +40,7 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
 
     @Override
     public PageInfo<ProjectBugVo> pageByDto(ProjectBugQo qo) {
-        PageHelper.offsetPage(qo.getPage(), qo.getLimit());
+        PageHelper.startPage(qo.getPage(), qo.getLimit());
         // todo 根据人员来获取
         List<ProjectBugVo> list = projectBugDao.list(qo);
         return new PageInfo<>(list);

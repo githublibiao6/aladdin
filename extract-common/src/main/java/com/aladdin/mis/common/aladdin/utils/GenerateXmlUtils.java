@@ -44,7 +44,7 @@ public  class GenerateXmlUtils {
         });
 
         content.append("    </resultMap>\n\n");
-        content.append("<select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
+        content.append("    <select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
                 "        select <include refid=\"baseColumn\"></include>\n" +
                 "        from "+tableInfo.getTableName()+" t where t.sys005 = 1\n");
 

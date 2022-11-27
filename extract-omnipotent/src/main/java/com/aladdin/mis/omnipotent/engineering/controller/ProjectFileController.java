@@ -6,7 +6,10 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectFile;
+import com.aladdin.mis.engineering.qo.ProjectFileQo;
 import com.aladdin.mis.engineering.service.ProjectFileService;
+import com.aladdin.mis.engineering.vo.ProjectFileVo;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +36,15 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
         return projectFileService ;
     }
 
+    /**
+     * 获取分页
+     */
+    @PostMapping("/pageVoInfo")
+    @ResponseBody
+    public Result pageVoInfo(@RequestBody ProjectFileQo qo) {
+        PageInfo<ProjectFileVo> page = projectFileService.pageByDto(qo);
+        return Result.success(page);
+    }
     /**
      * 工程项目版本列表
      */

@@ -2,7 +2,9 @@ package com.aladdin.mis.engineering.service;
 
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectFile;
-import org.springframework.stereotype.Service;
+import com.aladdin.mis.engineering.qo.ProjectFileQo;
+import com.aladdin.mis.engineering.vo.ProjectFileVo;
+import com.github.pagehelper.PageInfo;
 
 /**
  * ProjectFileService
@@ -11,6 +13,12 @@ import org.springframework.stereotype.Service;
 */
 public interface ProjectFileService extends GlobalService<ProjectFile>  {
 
+    /**
+     * 分页获取数据
+     * @param qo
+     * @return
+     */
+    PageInfo<ProjectFileVo> pageByDto(ProjectFileQo qo);
 
     /**
      * 更新数据
@@ -53,4 +61,5 @@ public interface ProjectFileService extends GlobalService<ProjectFile>  {
      * @return
      */
     boolean downloadFile(ProjectFile entity);
+
 }

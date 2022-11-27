@@ -5,14 +5,19 @@ import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectEditionDao;
 import com.aladdin.mis.engineering.entity.ProjectEdition;
 import com.aladdin.mis.engineering.entity.ProjectEditionLog;
+import com.aladdin.mis.engineering.qo.ProjectEditionQo;
 import com.aladdin.mis.engineering.service.ProjectEditionLogService;
 import com.aladdin.mis.engineering.service.ProjectEditionService;
+import com.aladdin.mis.engineering.vo.ProjectEditionVo;
 import com.aladdin.mis.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +36,13 @@ public class ProjectEditionServiceImpl extends GlobalServiceImpl<ProjectEdition>
 
     @Autowired
     private DictionaryTeamsService dictionaryTeamsService;
+
+    @Override
+    public PageInfo<ProjectEditionVo> pageByDto(ProjectEditionQo qo) {
+        PageHelper.startPage(qo.getPage(), qo.getLimit());
+        List<ProjectEditionVo> list = projectEditionDao.list(qo);
+        return new PageInfo<>(list);
+    }
 
     @Override
     public boolean update(ProjectEdition entity) {

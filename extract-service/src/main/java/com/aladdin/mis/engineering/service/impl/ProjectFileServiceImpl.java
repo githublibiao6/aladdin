@@ -5,13 +5,18 @@ import com.aladdin.mis.common.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectFileDao;
 import com.aladdin.mis.engineering.entity.ProjectFile;
 import com.aladdin.mis.engineering.entity.ProjectFileLog;
+import com.aladdin.mis.engineering.qo.ProjectFileQo;
 import com.aladdin.mis.engineering.service.ProjectFileLogService;
 import com.aladdin.mis.engineering.service.ProjectFileService;
+import com.aladdin.mis.engineering.vo.ProjectFileVo;
 import com.aladdin.mis.manager.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +35,13 @@ public class ProjectFileServiceImpl extends GlobalServiceImpl<ProjectFile> imple
 
     @Autowired
     private DictionaryTeamsService dictionaryTeamsService;
+
+    @Override
+    public PageInfo<ProjectFileVo> pageByDto(ProjectFileQo qo) {
+        PageHelper.startPage(qo.getPage(), qo.getLimit());
+        List<ProjectFileVo> list = projectFileDao.list(qo);
+        return new PageInfo<>(list);
+    }
 
     @Override
     public boolean update(ProjectFile entity) {

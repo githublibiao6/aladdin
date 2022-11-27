@@ -49,14 +49,17 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectFileVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectFileVo">
         select <include refid="baseColumn"></include>
         from project_file t where 1=1
         <if test="relationId  != null and relationId != '' ">
             and t.relation_id = #{relationId}
         </if>
+        <if test="keyWord  != null and keyWord != '' ">
+            and t.file_name like concat('%', #{keyWord},'%')
+        </if>
         <if test="fileName  != null and fileName != '' ">
-            and t.file_name = #{fileName}
+            and t.file_name like concat('%', #{fileName},'%')
         </if>
         <if test="fileType  != null and fileType != '' ">
             and t.file_type = #{fileType}

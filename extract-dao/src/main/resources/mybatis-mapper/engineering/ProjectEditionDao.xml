@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectEditionDao">
 
     <sql id="baseColumn">
@@ -19,7 +19,7 @@
         sys006,
         sys007
   </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectEdition" id="baseResultMap"> 
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectEdition" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
         <result property="edition" column="edition"/>
@@ -37,7 +37,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectEditionVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectEditionVo">
         select <include refid="baseColumn"></include>
         from project_edition t where 1=1
         <if test="projectId  != null and projectId != '' ">
