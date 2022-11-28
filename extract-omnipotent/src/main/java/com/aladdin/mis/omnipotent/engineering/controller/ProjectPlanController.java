@@ -48,7 +48,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @PostMapping("/pageVoInfo")
     @ResponseBody
     public Result pageVoInfo(@RequestBody ProjectPlanQo qo) {
-        PageInfo<ProjectPlanVo> page = projectPlanService.pageByDto(qo);
+        PageInfo<ProjectPlanVo> page = baseService.pageByDto(qo);
         return Result.success(page);
     }
 

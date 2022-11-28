@@ -63,14 +63,17 @@
         from project_plan t
         left join be_admin a on t.user_id = a.id
         where t.sys005 = 1
+        <if test="keyWord  != null and keyWord != '' ">
+            and t.plan_name like concat('%', #{keyWord} ,'%')
+        </if>
+        <if test="planName  != null and planName != '' ">
+            and t.plan_name like concat('%', #{planName} ,'%')
+        </if>
         <if test="projectId  != null and projectId != '' ">
             and t.project_id = #{projectId}
         </if>
         <if test="id  != null and id != '' ">
             and t.id = #{id}
-        </if>
-        <if test="planName  != null and planName != '' ">
-            and t.plan_name = #{planName}
         </if>
         <if test="startDate  != null and startDate != '' ">
             and t.start_date = #{startDate}

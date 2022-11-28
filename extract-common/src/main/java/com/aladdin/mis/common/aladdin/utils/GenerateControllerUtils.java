@@ -46,7 +46,8 @@ public  class GenerateControllerUtils {
         content.append("@Controller\n");
         content.append("public class "+ po.getEntityName() +"Controller  extends GlobalController<"+ po.getEntityName() +", "+ po.getEntityName() +"Service> {\n\n");
         content.append("    @Autowired\n");
-        String service = StringUtil.firstCharLower(po.getEntityName())+"Service";
+//        String service = StringUtil.firstCharLower(po.getEntityName())+"Service";
+        String service = "baseService";
         content.append("    private "+po.getEntityName()+"Service "+ service+";\n");
 
         content.append("\n" +
