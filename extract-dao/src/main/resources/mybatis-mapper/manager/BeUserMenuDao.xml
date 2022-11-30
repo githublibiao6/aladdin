@@ -13,7 +13,8 @@
         t.sys005,
         t.sys006,
         t.sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.manager.entity.BeUserMenu" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
@@ -42,10 +43,8 @@
         </if>
     </select>
 
-
     <update id="removeByUserId" >
         update be_user_menu set sys005=0 where user_id = #{userId}
     </update>
-
 
 </mapper>

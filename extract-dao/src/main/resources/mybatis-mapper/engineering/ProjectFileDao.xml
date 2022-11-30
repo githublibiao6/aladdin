@@ -24,7 +24,8 @@
         sys005,
         sys006,
         sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectFile" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="relation_id" column="relationId"/>
@@ -86,7 +87,8 @@
             and t.status = #{status}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}        </if>
+           order by ${sortInfo}
+        </if>
     </select>
 
 </mapper>

@@ -37,7 +37,6 @@ public class ProjectBugServiceImpl extends GlobalServiceImpl<ProjectBug> impleme
     @Autowired
     private DictionaryTeamsService dictionaryTeamsService;
 
-
     @Override
     public PageInfo<ProjectBugVo> pageByDto(ProjectBugQo qo) {
         PageHelper.startPage(qo.getPage(), qo.getLimit());

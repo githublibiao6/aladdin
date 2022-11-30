@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.engineering.ProjectBugUserDao">
 
     <sql id="baseColumn">
@@ -19,8 +19,9 @@
         sys005,
         sys006,
         sys007
-  </sql>
-    <resultMap type="com.aladdin.mis.engineering.entity.ProjectBugUser" id="baseResultMap"> 
+    </sql>
+
+    <resultMap type="com.aladdin.mis.engineering.entity.ProjectBugUser" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="bug_id" column="bugId"/>
         <result property="user_id" column="userId"/>
@@ -39,7 +40,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectBugUserVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectBugUserVo">
         select <include refid="baseColumn"></include>
         from project_bug_user t where 1=1
         <if test="bugId  != null and bugId != '' ">
@@ -67,7 +68,8 @@
             and t.complete_comments = #{completeComments}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}        </if>
+           order by ${sortInfo}
+        </if>
     </select>
 
 </mapper>

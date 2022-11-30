@@ -23,7 +23,8 @@
         t.sys005,
         t.sys006,
         t.sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectBug" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="relation_id" column="relationId"/>
@@ -47,7 +48,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectBugVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectBugVo">
         select <include refid="baseColumn"></include>
         , a.real_name fixPerson
         , a1.real_name foundPerson
@@ -91,8 +92,7 @@
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}
-
-           </if>
+        </if>
     </select>
 
 </mapper>

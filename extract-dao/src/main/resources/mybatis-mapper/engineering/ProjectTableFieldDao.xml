@@ -20,7 +20,8 @@
         sys005,
         sys006,
         sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectTableField" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="project_id" column="projectId"/>
@@ -41,7 +42,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="paginate" resultType="com.aladdin.mis.engineering.vo.ProjectTableFieldVo">
+    <select id="paginate" resultType="com.aladdin.mis.engineering.vo.ProjectTableFieldVo">
         select <include refid="baseColumn"></include>
         from project_table_field t where 1=1
         <if test="id  != null and id != '' ">
@@ -89,4 +90,5 @@
         <if test="sys007  != null and sys007 != '' ">
             and t.sys007 = #{sys007}
         </if>
-    </select></mapper>
+    </select>
+</mapper>

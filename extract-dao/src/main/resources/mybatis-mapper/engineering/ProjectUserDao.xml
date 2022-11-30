@@ -15,7 +15,8 @@
         sys005,
         sys006,
         sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectUser" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="user_id" column="userId"/>

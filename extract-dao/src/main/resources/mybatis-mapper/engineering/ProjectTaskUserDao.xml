@@ -22,7 +22,8 @@
         t.sys005,
         t.sys006,
         t.sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectTaskUser" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="task_id" column="taskId"/>

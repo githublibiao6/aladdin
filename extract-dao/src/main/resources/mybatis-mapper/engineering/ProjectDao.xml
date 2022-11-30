@@ -21,6 +21,7 @@
         sys006,
         sys007
     </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.Project" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="business_line" column="businessLine"/>
@@ -41,7 +42,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectVo">
         select <include refid="baseColumn"></include>
         from project t where 1=1
         <if test="id  != null and id != '' ">
@@ -75,7 +76,6 @@
         <if test="status  != null and status != '' ">
             and t.status = #{status}
         </if>
-
     </select>
 
 </mapper>

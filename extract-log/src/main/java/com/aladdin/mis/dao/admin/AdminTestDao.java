@@ -7,5 +7,4 @@ package com.aladdin.mis.dao.admin;
  */
 public interface AdminTestDao {
 
-//    List<AdminTest> list();
 }

@@ -17,7 +17,8 @@
         t.sys005,
         t.sys006,
         t.sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectTableLog" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="table_id" column="tableId"/>
@@ -35,7 +36,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTableLogVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTableLogVo">
         select <include refid="baseColumn"></include>
         from project_table_log t where t.sys005 = 1
         <if test="tableId  != null and tableId != '' ">
@@ -55,7 +56,6 @@
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}
-</if>
+        </if>
     </select>
-
 </mapper>

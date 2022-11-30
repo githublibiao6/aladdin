@@ -17,7 +17,8 @@
         t.sys005,
         t.sys006,
         t.sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectTaskLog" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="task_id" column="taskId"/>
@@ -35,7 +36,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTaskLogVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectTaskLogVo">
         select <include refid="baseColumn"></include>
         from project_task_log t where t.sys005 = 1
         <if test="taskId  != null and taskId != '' ">

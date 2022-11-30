@@ -20,7 +20,8 @@
         t.sys005,
         t.sys006,
         t.sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectPlanUser" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
@@ -41,7 +42,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanUserVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectPlanUserVo">
         select <include refid="baseColumn"></include>
         from project_plan_user t where t.sys005 = 1
         <if test="userId  != null and userId != '' ">
@@ -73,7 +74,7 @@
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}
-</if>
+        </if>
     </select>
 
 </mapper>

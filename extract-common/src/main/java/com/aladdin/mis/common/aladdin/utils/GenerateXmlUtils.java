@@ -30,7 +30,7 @@ public  class GenerateXmlUtils {
             content.append("        t."+ t.getColName() +",\n");
         });
         content.delete(content.length()-2, content.length());
-        content.append("\n  </sql>\n");
+        content.append("\n    </sql>\n\n");
         content.append("    <resultMap id=\"baseResultMap\" type=\""+po.getImportEntityClass().substring(7,po.getImportEntityClass().length() -1)+"\" > \n");
 
         fields.forEach(t->{
@@ -60,7 +60,7 @@ public  class GenerateXmlUtils {
                     "        </if>\n" );
         });
         content.append("        <if test= \" sortInfo  != null and sortInfo != '' "+"\">\n" +
-                "           order by ${sortInfo}" +
+                "           order by ${sortInfo}\n" +
                 "        </if>\n" );
         content.append("    </select>\n\n");
         content.append("</mapper>\n");

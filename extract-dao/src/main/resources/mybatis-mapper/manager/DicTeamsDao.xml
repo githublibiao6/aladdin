@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.DicTeamsDao">
 
-<resultMap id="DictObjResultMap" type="com.aladdin.mis.manager.bean.DictionaryTeams">
+    <resultMap id="DictObjResultMap" type="com.aladdin.mis.manager.bean.DictionaryTeams">
 
- </resultMap>
+    </resultMap>
 
     <!-- 根据id获取员工信息 -->
     <select id="listTeamsByDicCode" resultType="com.aladdin.mis.manager.bean.DictionaryTeams">

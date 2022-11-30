@@ -97,7 +97,8 @@
             and t.icon = #{icon}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}        </if>
+           order by ${sortInfo}
+        </if>
     </select>
 
 </mapper>

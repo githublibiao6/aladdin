@@ -18,7 +18,8 @@
         sys005,
         sys006,
         sys007
-  </sql>
+    </sql>
+
     <resultMap type="com.aladdin.mis.engineering.entity.ProjectEditionLog" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="edition_id" column="editionId"/>
@@ -37,7 +38,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-<select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectEditionLogVo">
+    <select id="list" resultType="com.aladdin.mis.engineering.vo.ProjectEditionLogVo">
         select <include refid="baseColumn"></include>
         from project_edition_log t where 1=1
         <if test="editionId  != null and editionId != '' ">
@@ -56,7 +57,8 @@
             and t.operation_user = #{operationUser}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}        </if>
+           order by ${sortInfo}
+        </if>
     </select>
 
 </mapper>
