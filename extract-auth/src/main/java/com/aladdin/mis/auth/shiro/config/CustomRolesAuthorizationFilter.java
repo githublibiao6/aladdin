@@ -28,9 +28,9 @@ public class CustomRolesAuthorizationFilter extends RolesAuthorizationFilter {
         if (rolesArray == null || rolesArray.length == 0) {
             return true;
         }
-        for (int i = 0; i < rolesArray.length; i++) {
+        for (String s : rolesArray) {
             //若当前用户是rolesArray中的任何一个，则有权限访问
-            if (subject.hasRole(rolesArray[i])) {
+            if (subject.hasRole(s)) {
                 return true;
             }
         }

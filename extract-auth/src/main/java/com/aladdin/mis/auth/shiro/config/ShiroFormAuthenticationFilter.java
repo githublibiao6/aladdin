@@ -45,7 +45,6 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
                 resp.setStatus(HttpStatus.OK.value());
                 return true;
             }
-
 //            if (logger.isTraceEnabled()) {
 //                logger.trace("Attempting to access a path which requires authentication.  Forwarding to the " +
 //                        "Authentication url [" + getLoginUrl() + "]");

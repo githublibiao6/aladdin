@@ -27,7 +27,6 @@ public class MySessionManager extends DefaultWebSessionManager {
     private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
 
     public MySessionManager() {
-
         super();
     }
 
@@ -46,6 +45,4 @@ public class MySessionManager extends DefaultWebSessionManager {
             return m;
         }
     }
-
-
 }

@@ -6,6 +6,7 @@ package com.aladdin.mis.auth.shiro.entity;
 import lombok.Data;
 
 /**
+ * @author cles
  * @description: 权限信息
  * @Auther cles
  * @Date 2020/4/17 23:56

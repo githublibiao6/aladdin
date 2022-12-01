@@ -51,6 +51,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     public String index() {
         return "system/admin/index";
     }
+
     /**
      *
      * @return
@@ -63,7 +64,6 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @RequestMapping("login")
     public String login(Mode m, Admin admin, HttpSession httpSession){
         //**********************shiro验证******************************//
-
         return "/WEB-INF/login.jsp";
     }
 
@@ -152,7 +152,6 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         result.setMessage(msg);
         return result;
     }
-
 
     @RequestMapping("/findById.do")
     @ResponseBody

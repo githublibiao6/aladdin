@@ -116,6 +116,4 @@ public class DeptController extends GlobalController<Dept, DeptService> {
         }
         return result ;
     }
-
-
 }

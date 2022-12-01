@@ -40,7 +40,6 @@ public class UserRealm extends AuthorizingRealm {
 
     private DeptService deptService;
 
-
     /* 判断密码？ */
     /*{
         //设置用于匹配密码的CredentialsMatcher

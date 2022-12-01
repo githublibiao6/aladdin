@@ -23,7 +23,6 @@ public class EmployeeController extends GlobalController<Employee, EmployeeServi
 
     @RequestMapping("main")
     public String test(){
-
         return "employee/index";
     }
 
