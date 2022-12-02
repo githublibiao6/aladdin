@@ -54,7 +54,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @PostMapping("/pageInfo")
     @ResponseBody
     public Result pageInfo(@RequestBody Condition condition) {
-        PageInfo<T> page = getBaseService().pageByCondition(condition);
+        PageInfo<T> page = baseService.pageByCondition(condition);
         return Result.success(page);
     }
 
@@ -66,7 +66,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     public Result getInfo(@RequestBody Condition condition) {
         condition.setPage(1);
         condition.setLimit(10);
-        T data = getBaseService().getByCondition(condition);
+        T data = baseService.getByCondition(condition);
         if(data == null) {
             result.setMessage("查无数据");
         }
@@ -81,7 +81,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     public Result listInfo(@RequestBody Condition condition) {
         condition.setPage(1);
         condition.setLimit(10);
-        List<T> page = getBaseService().queryByCondition(condition);
+        List<T> page = baseService.queryByCondition(condition);
         return Result.success(page);
     }
 
@@ -92,10 +92,10 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result saveInfo(@RequestBody T entity) {
         if(entity.getPrimaryKey() == null){
-            T data = getBaseService().insertSelective(entity);
+            T data = baseService.insertSelective(entity);
             result.setData(data);
         }else {
-            boolean data = getBaseService().updateSelective(entity);
+            boolean data = baseService.updateSelective(entity);
             result.setData(data);
         }
         return Result.success();
@@ -108,10 +108,10 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @ResponseBody
     public Result saveOrUpdate(@RequestBody T entity) {
         if(entity.getPrimaryKey() == null){
-            T data = getBaseService().insertSelective(entity);
+            T data = baseService.insertSelective(entity);
             result.setData(data);
         }else {
-            boolean data = getBaseService().updateSelective(entity);
+            boolean data = baseService.updateSelective(entity);
             result.setData(data);
         }
         return Result.success();
@@ -123,7 +123,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @RequestMapping("/updateInfo")
     @ResponseBody
     public Result updateInfo(@RequestBody T entity) {
-        boolean flag = getBaseService().updateSelective(entity);
+        boolean flag = baseService.updateSelective(entity);
         if(flag){
             return Result.success();
         }else {
@@ -137,7 +137,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @RequestMapping("/deleteInfo")
     @ResponseBody
     public Result deleteInfo(@RequestBody T entity) {
-        boolean flag = getBaseService().deleteById(entity.getPrimaryKey());
+        boolean flag = baseService.deleteById(entity.getPrimaryKey());
         if(flag){
             return Result.success();
         }else {
@@ -152,7 +152,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @DeleteMapping("/{id}")
     @ResponseBody
     public Result deleteInfo(@PathVariable("id") Integer id) {
-        boolean data = getBaseService().deleteById(id);
+        boolean data = baseService.deleteById(id);
         return Result.success(data);
     }
 
@@ -162,7 +162,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @RequestMapping("/detailInfo")
     @ResponseBody
     public Result detailInfo(@RequestBody T entity) {
-        T data = getBaseService().detailQuery(entity.getPrimaryKey());
+        T data = baseService.detailQuery(entity.getPrimaryKey());
         return Result.success(data);
     }
 
@@ -173,7 +173,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @GetMapping("/{id}")
     @ResponseBody
     public Result detailInfo(@PathVariable("id") Integer id) {
-        T data = getBaseService().detailQuery(id);
+        T data = baseService.detailQuery(id);
         return Result.success(data);
     }
 
@@ -183,7 +183,7 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
     @RequestMapping("/getByCondition")
     @ResponseBody
     public Result detailQuery(@RequestBody Condition condition) {
-        T data = getBaseService().getByCondition(condition);
+        T data = baseService.getByCondition(condition);
         return Result.success(data);
     }
 

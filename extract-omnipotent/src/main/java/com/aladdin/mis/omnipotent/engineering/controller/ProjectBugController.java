@@ -51,10 +51,10 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @ResponseBody
     public Result saveInfo(@RequestBody ProjectBug entity) {
         if(entity.getPrimaryKey() == null){
-            ProjectBug data = getBaseService().insertSelective(entity);
+            ProjectBug data = baseService.insertSelective(entity);
             result.setData(data);
         }else {
-            boolean data = getBaseService().updateSelective(entity);
+            boolean data = baseService.updateSelective(entity);
             result.setData(data);
         }
         return result;
@@ -66,7 +66,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @PostMapping("/save")
     @ResponseBody
     public Result save(@RequestBody ProjectBug entity) {
-        boolean flag = projectBugService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }
@@ -79,7 +79,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @PostMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectBug entity) {
-        boolean flag = projectBugService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.success();
         }
@@ -93,7 +93,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @PostMapping("/deleteBug")
     @ResponseBody
     public Result deleteBug(@RequestBody ProjectBug entity) {
-        boolean flag = projectBugService.deleteBug(entity);
+        boolean flag = baseService.deleteBug(entity);
         if(flag){
             return Result.success();
         }
@@ -106,7 +106,7 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @PostMapping("/complete")
     @ResponseBody
     public Result completeBug(@RequestBody ProjectBug entity) {
-        boolean flag = projectBugService.completeBug(entity);
+        boolean flag = baseService.completeBug(entity);
         if(flag){
             return Result.success();
         }

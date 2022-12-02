@@ -45,7 +45,7 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
     @WebLog("分页查询 ")
     @ResponseBody
     public Result paginate(@RequestBody BeUserMenuQo qo){
-        PageInfo<BeUserMenuVo> page = beUserMenuService.paginate(qo);
+        PageInfo<BeUserMenuVo> page = baseService.paginate(qo);
         result.setData(page);
         return result ;
     }
@@ -57,7 +57,7 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
     @WebLog("查询 详情")
     @ResponseBody
     public Result detail(@RequestBody BeUserMenu qo){
-        BeUserMenu entity = beUserMenuService.detail(qo);
+        BeUserMenu entity = baseService.detail(qo);
         result.setData(entity);
         return result ;
     }
@@ -69,7 +69,7 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
     @WebLog("保存")
     @ResponseBody
     public Result save(@RequestBody BeUserMenu entity){
-        BeUserMenu data = beUserMenuService.save(entity);
+        BeUserMenu data = baseService.save(entity);
         result.setData(data);
         return result ;
     }
@@ -81,7 +81,7 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
     @WebLog("删除")
     @ResponseBody
     public Result delete(@RequestBody BeUserMenu entity){
-        boolean flag = beUserMenuService.remove(entity);
+        boolean flag = baseService.remove(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("刪除成功");
@@ -98,7 +98,7 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
     @WebLog("更新")
     @ResponseBody
     public Result update(@RequestBody BeUserMenu entity){
-        boolean flag = beUserMenuService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");
