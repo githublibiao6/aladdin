@@ -47,14 +47,14 @@ public  class GenerateControllerUtils {
         content.append("public class "+ po.getEntityName() +"Controller  extends GlobalController<"+ po.getEntityName() +", "+ po.getEntityName() +"Service> {\n\n");
         content.append("    @Autowired\n");
 //        String service = StringUtil.firstCharLower(po.getEntityName())+"Service";
-        String service = "baseService";
-        content.append("    private "+po.getEntityName()+"Service "+ service+";\n");
+//        String service = "baseService";
+//        content.append("    private "+po.getEntityName()+"Service "+ service+";\n");
 
-        content.append("\n" +
-        "    @Override\n" +
-        "    protected GlobalService<"+po.getEntityName()+"> getBaseService(){\n" +
-        "        return "+service+" ;\n" +
-        "    }\n");
+//        content.append("\n" +
+//        "    @Override\n" +
+//        "    protected GlobalService<"+po.getEntityName()+"> getBaseService(){\n" +
+//        "        return "+service+" ;\n" +
+//        "    }\n");
 
 //        content.append("    /**\n" +
 //                "     * 分页查询"+tableComment+"\n" +

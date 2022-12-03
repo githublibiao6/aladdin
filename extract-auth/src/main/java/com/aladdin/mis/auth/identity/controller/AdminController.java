@@ -15,7 +15,6 @@ import com.aladdin.mis.manager.vo.DeptAdminVo;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,12 +33,9 @@ import java.util.List;
 @Controller
 public class AdminController extends GlobalController<Admin, AdminService> {
 
-    @Autowired
-    private AdminService service;
-
     @Override
     protected GlobalService<Admin> getBaseService() {
-        return service;
+        return null;
     }
 
     /**
@@ -73,7 +69,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @PostMapping("/page")
     @ResponseBody
     public Result pageList(@RequestBody AdminQo qo) {
-        PageInfo<Admin> page = service.pageList(qo);
+        PageInfo<Admin> page = baseService.pageList(qo);
         result.setData(page);
         return result;
     }
@@ -90,8 +86,8 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @RequestMapping("/treelist.do")
     @ResponseBody
     public List<Admin> treeList() {
-        List<Admin> list = service.list();
-        service.insertSelective(new Admin());
+        List<Admin> list = baseService.list();
+        baseService.insertSelective(new Admin());
         return list;
     }
 
@@ -107,7 +103,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @RequestMapping("/list")
     @ResponseBody
     public Result list() {
-        List<Admin> list = service.list();
+        List<Admin> list = baseService.list();
         result.setData(list);
         return result;
     }
@@ -125,7 +121,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @RequestMapping("/save")
     @ResponseBody
     public Result add(@RequestBody Admin admin) {
-        boolean flag = service.add(admin);
+        boolean flag = baseService.add(admin);
         String msg ;
         result.setSuccess(flag);
         if(flag){
@@ -141,7 +137,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @ResponseBody
     public Result update(@RequestBody Admin admin) {
         result = new Result();
-        boolean flag = service.update(admin);
+        boolean flag = baseService.update(admin);
         String msg ;
         result.setSuccess(flag);
         if(flag){
@@ -156,7 +152,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @RequestMapping("/findById.do")
     @ResponseBody
     public Result findById(int id) {
-        Admin admin = service.findById(id);
+        Admin admin = baseService.findById(id);
         result.setData(admin);
         return result;
     }
@@ -164,7 +160,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @PostMapping(value="/remove")
     @ResponseBody
     public Result remove(@RequestBody Admin admin) {
-        boolean flag = service.remove(admin.getId());
+        boolean flag = baseService.remove(admin.getId());
         String msg ;
         result.setSuccess(flag);
         if(flag){
@@ -203,7 +199,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         Admin admin = new Admin();
         BeanUtils.copyProperties(dto, admin);
 
-        boolean flag = service.updatePass(admin);
+        boolean flag = baseService.updatePass(admin);
         if(flag){
             return Result.success();
         }else {
@@ -218,7 +214,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @ResponseBody
     public Result treeAdmin(@RequestBody AdminQo qo) {
 
-        List<DeptAdminVo> list = service.treeDeptAdmin(qo);
+        List<DeptAdminVo> list = baseService.treeDeptAdmin(qo);
         return Result.success(list);
     }
 

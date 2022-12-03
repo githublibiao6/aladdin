@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Employee;
 import com.aladdin.mis.manager.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import com.ieslab.misp.excel.util.ExcelUtil;
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EmployeeController extends GlobalController<Employee, EmployeeService>{
 
-    @Autowired
-    private EmployeeService service;
-
     @RequestMapping("main")
     public String test(){
         return "employee/index";
@@ -28,7 +24,7 @@ public class EmployeeController extends GlobalController<Employee, EmployeeServi
 
     @Override
     protected GlobalService<Employee> getBaseService() {
-        return service;
+        return null;
     }
 //
 //    /**
