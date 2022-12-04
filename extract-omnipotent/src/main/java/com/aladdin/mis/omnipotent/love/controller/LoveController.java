@@ -1,10 +1,9 @@
 package com.aladdin.mis.omnipotent.love.controller;
 
-import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.love.entity.DateLog;
-import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.love.entity.DateLog;
+import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +24,6 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
 
     @Autowired
     private DateLogService service;
-
-    @Override
-    protected GlobalService<DateLog> getBaseService() {
-        return service;
-    }
 
     @RequestMapping("/page")
     @ResponseBody

@@ -3,7 +3,6 @@ package com.aladdin.mis.auth.sso;
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.service.BeLoginLogService;
 import com.aladdin.mis.system.user.vo.OmUser;
@@ -99,10 +98,5 @@ public class SsoController extends GlobalController {
         result.setCode(20000);
         result.setMessage("用户退出");
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }

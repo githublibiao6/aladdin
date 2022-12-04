@@ -3,7 +3,6 @@ package com.aladdin.mis.omnipotent.system.controller;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.system.entity.SysWebLog;
 import com.aladdin.mis.system.qo.SysWebLogQo;
 import com.aladdin.mis.system.service.SysWebLogService;
@@ -26,11 +25,6 @@ public class SysWebLogController  extends GlobalController<SysWebLog, SysWebLogS
 
     @Autowired
     private SysWebLogService sysWebLogService;
-
-    @Override
-    protected GlobalService<SysWebLog> getBaseService() {
-        return sysWebLogService;
-    }
 
     /**
      * 分页查询请求日志

@@ -3,7 +3,6 @@ package com.aladdin.mis.auth.identity.controller;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.service.DeptService;
@@ -35,11 +34,6 @@ public class DeptController extends GlobalController<Dept, DeptService> {
 
     @Autowired
     private DeptService deptService;
-
-    @Override
-    protected GlobalService<Dept> getBaseService() {
-        return service;
-    }
 
     /**
      *  查询字典树

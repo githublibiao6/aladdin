@@ -1,7 +1,6 @@
 package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
 import com.aladdin.mis.manager.service.UserBaseInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +18,5 @@ public class UserBaseInfoController extends GlobalController<UserBaseInfo, UserB
 
     @Autowired
     private UserBaseInfoService service;
-
-    @Override
-    protected GlobalService<UserBaseInfo> getBaseService() {
-        return service;
-    }
 
 }

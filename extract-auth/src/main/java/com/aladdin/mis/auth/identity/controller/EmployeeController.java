@@ -1,7 +1,6 @@
 package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Employee;
 import com.aladdin.mis.manager.service.EmployeeService;
 import org.springframework.stereotype.Controller;
@@ -22,10 +21,6 @@ public class EmployeeController extends GlobalController<Employee, EmployeeServi
         return "employee/index";
     }
 
-    @Override
-    protected GlobalService<Employee> getBaseService() {
-        return null;
-    }
 //
 //    /**
 //     * 导出基础信息（实例）

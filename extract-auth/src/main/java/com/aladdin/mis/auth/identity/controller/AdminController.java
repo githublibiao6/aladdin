@@ -6,7 +6,6 @@ import com.aladdin.mis.common.redis.config.JedisConfig;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.AdminQo;
@@ -32,11 +31,6 @@ import java.util.List;
 @RequestMapping("admin")
 @Controller
 public class AdminController extends GlobalController<Admin, AdminService> {
-
-    @Override
-    protected GlobalService<Admin> getBaseService() {
-        return null;
-    }
 
     /**
      * 菜单跳转
@@ -214,7 +208,8 @@ public class AdminController extends GlobalController<Admin, AdminService> {
     @ResponseBody
     public Result treeAdmin(@RequestBody AdminQo qo) {
 
-        List<DeptAdminVo> list = baseService.treeDeptAdmin(qo);
+        List<DeptAdminVo> list = baseService
+                .treeDeptAdmin(qo);
         return Result.success(list);
     }
 

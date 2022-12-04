@@ -35,13 +35,6 @@ public abstract class  GlobalController<T extends BaseModel, M extends GlobalSer
 
     // todo 后续删掉？
 
-    /**
-     * 可以删掉
-     * @return
-     */
-    @Deprecated
-    protected abstract GlobalService<T> getBaseService();
-
     protected Result result = new Result();
 
     public GlobalController(){

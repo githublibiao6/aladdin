@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectTable;
 import com.aladdin.mis.engineering.service.ProjectTableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,6 @@ public class ProjectTableController  extends GlobalController<ProjectTable, Proj
 
     @Autowired
     private ProjectTableService projectTableService;
-
-    @Override
-    protected GlobalService<ProjectTable> getBaseService() {
-        return projectTableService;
-    }
 
     /**
      * 更新数据

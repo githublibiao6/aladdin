@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.manager.qo.DictionaryQo;
@@ -32,11 +31,6 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
 
     @Autowired
     DictionaryTeamsServiceImpl teamsService;
-
-    @Override
-    protected GlobalService<DictionaryTeams> getBaseService() {
-        return teamsService;
-    }
 
     /**
      * 添加字典

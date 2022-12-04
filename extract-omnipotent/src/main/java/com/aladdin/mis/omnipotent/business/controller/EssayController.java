@@ -28,11 +28,6 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     @Autowired
     private EssayService essayService;
 
-    @Override
-    protected GlobalService<Essay> getBaseService() {
-        return essayService;
-    }
-
     @RequestMapping("/page")
     @ResponseBody
     public Result page(HttpServletRequest request, PageEntity entity) {

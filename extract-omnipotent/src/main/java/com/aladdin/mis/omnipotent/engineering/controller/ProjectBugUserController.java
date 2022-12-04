@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectBugUser;
 import com.aladdin.mis.engineering.service.ProjectBugUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +22,6 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
 
     @Autowired
     private ProjectBugUserService projectBugUserService;
-
-    @Override
-    protected GlobalService<ProjectBugUser> getBaseService(){
-        return projectBugUserService ;
-    }
 
     /**
      * 保存

@@ -7,7 +7,6 @@ import com.aladdin.mis.common.redis.config.JedisConfig;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.UserQo;
@@ -48,11 +47,6 @@ public class UserController extends GlobalController<User, UserService> {
 
     @Autowired
     private RoleService roleService;
-
-    @Override
-    protected GlobalService<User> getBaseService() {
-        return service;
-    }
 
     /**
      * 注册新用户

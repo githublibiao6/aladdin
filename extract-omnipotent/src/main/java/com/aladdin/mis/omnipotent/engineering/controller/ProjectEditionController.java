@@ -4,7 +4,6 @@ import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectEdition;
 import com.aladdin.mis.engineering.qo.ProjectEditionQo;
 import com.aladdin.mis.engineering.service.ProjectEditionService;
@@ -30,11 +29,6 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
 
     @Autowired
     private ProjectEditionService projectEditionService;
-
-    @Override
-    protected GlobalService<ProjectEdition> getBaseService(){
-        return projectEditionService ;
-    }
 
     /**
      * 获取分页

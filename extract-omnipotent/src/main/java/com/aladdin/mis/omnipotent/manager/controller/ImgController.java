@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Img;
 import com.aladdin.mis.manager.service.ImgService;
 import com.aladdin.mis.manager.service.impl.ImgServiceImpl;
@@ -77,10 +76,5 @@ public class ImgController extends GlobalController<Img, ImgServiceImpl> {
         String url = getProjectUrl()+"/img/get?code=01&id="+id;
         result.setData(url);
         return result;
-    }
-
-    @Override
-    protected GlobalService getBaseService() {
-        return null;
     }
 }

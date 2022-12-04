@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.qo.ProjectPlanQo;
 import com.aladdin.mis.engineering.service.ProjectPlanService;
@@ -26,11 +25,6 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
 
     @Autowired
     private ProjectPlanService projectPlanService;
-
-    @Override
-    protected GlobalService<ProjectPlan> getBaseService(){
-        return projectPlanService ;
-    }
 
     /**
      * 根据主键删除数据

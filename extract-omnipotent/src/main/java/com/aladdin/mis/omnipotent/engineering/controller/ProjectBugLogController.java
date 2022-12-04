@@ -1,12 +1,11 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
+import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.engineering.entity.ProjectBugLog;
 import com.aladdin.mis.engineering.service.ProjectBugLogService;
-import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.common.system.service.GlobalService;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 项目权限日志 ProjectBugLogService---
@@ -19,10 +18,5 @@ public class ProjectBugLogController  extends GlobalController<ProjectBugLog, Pr
 
     @Autowired
     private ProjectBugLogService projectBugLogService;
-
-    @Override
-    protected GlobalService<ProjectBugLog> getBaseService(){
-        return projectBugLogService ;
-    }
 
 }

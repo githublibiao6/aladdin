@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectTask;
 import com.aladdin.mis.engineering.service.ProjectTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,6 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
 
     @Autowired
     private ProjectTaskService projectTaskService;
-
-    @Override
-    protected GlobalService<ProjectTask> getBaseService(){
-        return projectTaskService ;
-    }
 
     /**
      * 更新数据

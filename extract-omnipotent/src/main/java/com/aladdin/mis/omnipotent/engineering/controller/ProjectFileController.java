@@ -4,7 +4,6 @@ import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectFile;
 import com.aladdin.mis.engineering.qo.ProjectFileQo;
 import com.aladdin.mis.engineering.service.ProjectFileService;
@@ -30,11 +29,6 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
 
     @Autowired
     private ProjectFileService projectFileService;
-
-    @Override
-    protected GlobalService<ProjectFile> getBaseService(){
-        return projectFileService ;
-    }
 
     /**
      * 获取分页

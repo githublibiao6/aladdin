@@ -1,7 +1,6 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectTableLog;
 import com.aladdin.mis.engineering.service.ProjectTableLogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,5 @@ public class ProjectTableLogController  extends GlobalController<ProjectTableLog
 
     @Autowired
     private ProjectTableLogService projectTableLogService;
-
-    @Override
-    protected GlobalService<ProjectTableLog> getBaseService(){
-        return projectTableLogService ;
-    }
 
 }

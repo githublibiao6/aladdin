@@ -3,7 +3,6 @@ package com.aladdin.mis.auth.permission.controller;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.service.BeUserMenuService;
 import com.aladdin.mis.manager.service.MenuService;
@@ -35,11 +34,6 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     private BeUserMenuService userMenuService;
     //    @Autowired
     //    DubboService dubboService;
-
-    @Override
-    protected GlobalService<Menu> getBaseService() {
-        return service;
-    }
 
     /**
      * 获取分页

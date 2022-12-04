@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.dao.system.SqlLogDao;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
@@ -35,11 +34,6 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
 
     @Autowired
     private SqlLogDao sqlLogDao;
-
-    @Override
-    protected GlobalService<Dictionary> getBaseService() {
-        return dictService;
-    }
 
     /**
      * 添加字典
