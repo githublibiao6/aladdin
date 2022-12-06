@@ -8,7 +8,6 @@ import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.service.DeptService;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,20 +27,13 @@ import java.util.Map;
 @RequestMapping("dept")
 @Controller
 public class DeptController extends GlobalController<Dept, DeptService> {
-
-    @Autowired
-    private DeptService service;
-
-    @Autowired
-    private DeptService deptService;
-
     /**
      *  查询字典树
      */
     @PostMapping("/list")
     @ResponseBody
     public Result list() {
-        List<DeptVo> records = deptService.treeList();
+        List<DeptVo> records = baseService.treeList();
         Map<String , Object> root = new HashMap<>(3);
         root.put("id",0);
         root.put("label","组织机构");
@@ -61,7 +53,7 @@ public class DeptController extends GlobalController<Dept, DeptService> {
     @WebLog("分页查询 组织机构")
     @ResponseBody
     public Result paginate(@RequestBody DeptQo qo){
-        PageInfo<DeptVo> page = deptService.paginate(qo);
+        PageInfo<DeptVo> page = baseService.paginate(qo);
         result.setData(page);
         return result ;
     }
@@ -73,7 +65,7 @@ public class DeptController extends GlobalController<Dept, DeptService> {
     @WebLog("组织机构保存")
     @ResponseBody
     public Result save(@RequestBody Dept entity){
-        Dept data = deptService.save(entity);
+        Dept data = baseService.save(entity);
         result.setData(data);
         return result ;
     }
@@ -85,7 +77,7 @@ public class DeptController extends GlobalController<Dept, DeptService> {
     @WebLog("删除组织机构")
     @ResponseBody
     public Result delete(@RequestBody Dept entity){
-        boolean flag = deptService.remove(entity.getId());
+        boolean flag = baseService.remove(entity.getId());
         if(flag){
             result.setMessage("刪除成功");
         }else {
@@ -101,7 +93,7 @@ public class DeptController extends GlobalController<Dept, DeptService> {
     @WebLog("组织机构更新")
     @ResponseBody
     public Result update(@RequestBody Dept entity){
-        boolean flag = deptService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");

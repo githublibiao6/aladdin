@@ -3,7 +3,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.engineering.entity.ProjectTaskLog;
 import com.aladdin.mis.engineering.service.ProjectTaskLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
@@ -14,8 +13,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("engineering/projectTaskLog")
 @Controller
 public class ProjectTaskLogController  extends GlobalController<ProjectTaskLog, ProjectTaskLogService> {
-
-    @Autowired
-    private ProjectTaskLogService projectTaskLogService;
 
 }

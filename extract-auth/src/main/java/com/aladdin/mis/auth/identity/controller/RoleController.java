@@ -8,7 +8,6 @@ import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +25,6 @@ import java.util.List;
 @Controller
 public class RoleController extends GlobalController<Role, RoleService> {
 
-    @Autowired
-    private RoleService service;
-
     /**
      * 添加字典
      */
@@ -37,7 +33,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
     public Result add(@RequestBody JSONObject json) {
         result = new Result();
         Role m = JSONObject.parseObject(json.toJSONString(),Role.class);
-        boolean flag = service.add(m, json.getString("menus"));
+        boolean flag = baseService.add(m, json.getString("menus"));
         if(flag){
             result.setMessage("添加成功");
         }else {
@@ -64,7 +60,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
     @RequestMapping("/list")
     @ResponseBody
     public  Result list() {
-        List<Role> list = service.list();
+        List<Role> list = baseService.list();
         list.forEach(t->{
             t.setHasChildren(false);
             t.setRoleId(t.getId());
@@ -80,7 +76,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
     @RequestMapping("/page")
     @ResponseBody
     public  Result pageList(PageEntity entity) {
-        PageInfo<Role> page = service.page(entity);
+        PageInfo<Role> page = baseService.page(entity);
         result.setData(page);
         result.setCode(20000);
         return result;
@@ -93,7 +89,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
     @ResponseBody
     public  Result listMenusByRoleId(@RequestParam(value = "role_id", defaultValue = "") Integer roleId) {
         result = new Result();
-        List<RoleMenu> list = service.findByRoleId(roleId);
+        List<RoleMenu> list = baseService.findByRoleId(roleId);
         list.forEach(t->{
             t.setDisabled(true);
         });
@@ -107,7 +103,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
     public Result update(@RequestBody JSONObject json) {
         result = new Result();
         Role m = JSONObject.parseObject(json.toJSONString(),Role.class);
-        boolean flag = service.update(m, json.getString("menus"));
+        boolean flag = baseService.update(m, json.getString("menus"));
         String msg = "更新成功" ;
         if(!flag){
             msg = "更新失败";
@@ -120,7 +116,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
     public Result deleteOne(@RequestParam(value = "id", defaultValue = "") Integer id) {
-        boolean flag = service.remove(id);
+        boolean flag = baseService.remove(id);
         String msg = "";
         result.setSuccess(flag);
         if(flag){

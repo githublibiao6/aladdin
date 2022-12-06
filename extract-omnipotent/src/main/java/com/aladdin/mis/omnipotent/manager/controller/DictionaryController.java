@@ -2,14 +2,11 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.dao.system.SqlLogDao;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.qo.DictionaryQo;
-import com.aladdin.mis.manager.service.DictionaryService;
 import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +26,6 @@ import java.util.Map;
 @RequestMapping(value = "/dictionary")
 public class DictionaryController extends GlobalController<Dictionary, DictionaryServiceImpl>{
 
-    @Autowired
-    private DictionaryService dictService;
-
-    @Autowired
-    private SqlLogDao sqlLogDao;
-
     /**
      * 添加字典
      */
@@ -42,7 +33,7 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
     @ResponseBody
     public Result add(@RequestBody Dictionary model) {
         result = new Result();
-        Integer id = dictService.insert(model);
+        Integer id = baseService.insert(model);
         result.setSuccess(id != null);
         if(result.isSuccess()){
             result.setMessage("添加成功");
@@ -56,7 +47,7 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
     @ResponseBody
     public Result loadDictByKey(@RequestBody DictionaryQo qo) {
         result = new Result();
-        Map<String, JSONObject> map = dictService.queryDictByCode(qo.getCode());
+        Map<String, JSONObject> map = baseService.queryDictByCode(qo.getCode());
         result.setData(map);
         result.setMessage("查询成功");
         return result;
@@ -66,7 +57,7 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
     @RequestMapping("/loadAllDictionary")
     @ResponseBody
     public Result loadAllDictionary() {
-        Map<String, JSONObject> map = dictService.loadAllDictionary();
+        Map<String, JSONObject> map = baseService.loadAllDictionary();
         result.setData(map);
         result.setCode(20000);
         return result;
@@ -96,7 +87,7 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
         result = new Result();
         boolean flag = false;
         try{
-            flag = dictService.updateSelective(model);
+            flag = baseService.updateSelective(model);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -124,7 +115,7 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
     public Result remove(@RequestBody JSONObject json) {
         result = new Result();
         Dictionary m = JSONObject.parseObject(json.toJSONString(),Dictionary.class);
-        boolean flag = dictService.remove(json.getInteger("id"));
+        boolean flag = baseService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");

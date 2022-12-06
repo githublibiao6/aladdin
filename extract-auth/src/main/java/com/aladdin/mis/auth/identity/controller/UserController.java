@@ -40,9 +40,6 @@ import java.util.Set;
 public class UserController extends GlobalController<User, UserService> {
 
     @Autowired
-    private UserService service;
-
-    @Autowired
     private BeUserMenuService userMenuService;
 
     @Autowired
@@ -74,7 +71,7 @@ public class UserController extends GlobalController<User, UserService> {
         }
         User user = new User();
         BeanUtils.copyProperties(dto, user);
-        result = service.register(user);
+        result = baseService.register(user);
         return result;
     }
 
@@ -105,7 +102,7 @@ public class UserController extends GlobalController<User, UserService> {
         User user = new User();
         BeanUtils.copyProperties(dto, user);
 
-        boolean flag = service.updatePass(user);
+        boolean flag = baseService.updatePass(user);
         if(flag){
             return Result.success();
         }else {
@@ -139,7 +136,7 @@ public class UserController extends GlobalController<User, UserService> {
         }
         User user = new User();
         BeanUtils.copyProperties(dto, user);
-        result = service.register(user);
+        result = baseService.register(user);
         return result;
     }
 
@@ -149,7 +146,7 @@ public class UserController extends GlobalController<User, UserService> {
     @RequestMapping("/resetPass")
     @ResponseBody
     public Result resetPass(@RequestBody UserDto dto) {
-        result = service.resetPass(dto.getId());
+        result = baseService.resetPass(dto.getId());
         return result;
     }
 
@@ -159,7 +156,7 @@ public class UserController extends GlobalController<User, UserService> {
     @RequestMapping("/page")
     @ResponseBody
     public  Result pageList(@RequestBody UserQo entity) {
-        PageInfo<User> page = service.page(entity);
+        PageInfo<User> page = baseService.page(entity);
         return Result.success(page);
     }
 
@@ -173,7 +170,7 @@ public class UserController extends GlobalController<User, UserService> {
                 .setLimit(qo.getLimit())
                 .setPage(qo.getPage())
                 .addExpression("status", qo.getStatus());
-        PageInfo<User> page = service.pageByCondition(condition);
+        PageInfo<User> page = baseService.pageByCondition(condition);
         return Result.success(page);
     }
 
@@ -215,7 +212,7 @@ public class UserController extends GlobalController<User, UserService> {
     @RequestMapping("/list")
     @ResponseBody
     public  Result list(@RequestParam(value = "name",defaultValue = "") String name) {
-        List<User> list = service.list(name);
+        List<User> list = baseService.list(name);
         result.setData(list);
         result.setCode(20000);
         return result;
@@ -228,7 +225,7 @@ public class UserController extends GlobalController<User, UserService> {
     @ResponseBody
     public Result add(@RequestBody User user) {
         result = new Result();
-        boolean flag = service.add(user);
+        boolean flag = baseService.add(user);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
@@ -242,7 +239,7 @@ public class UserController extends GlobalController<User, UserService> {
     @ResponseBody
     public Result update(@RequestBody User user) {
         result = new Result();
-        boolean flag = service.update(user);
+        boolean flag = baseService.update(user);
         result.setSuccess(flag);
         String msg = "更新成功" ;
         if(!flag){
@@ -256,7 +253,7 @@ public class UserController extends GlobalController<User, UserService> {
     @RequestMapping(value = "/remove",method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@RequestBody JSONObject json) {
-        boolean flag = service.remove(json.getInteger("id"));
+        boolean flag = baseService.remove(json.getInteger("id"));
         String msg ;
         result.setSuccess(flag);
         if(flag){

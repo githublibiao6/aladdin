@@ -8,7 +8,6 @@ import com.aladdin.mis.engineering.qo.ProjectQo;
 import com.aladdin.mis.engineering.service.ProjectService;
 import com.aladdin.mis.engineering.vo.ProjectVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectController  extends GlobalController<Project, ProjectService> {
 
-    @Autowired
-    private ProjectService projectService;
-
     /**
      * 分页查询工程项目
      */
@@ -34,7 +30,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("分页查询工程项目")
     @ResponseBody
     public Result paginate(@RequestBody ProjectQo qo){
-        PageInfo<ProjectVo> page = projectService.paginate(qo);
+        PageInfo<ProjectVo> page = baseService.paginate(qo);
         result.setData(page);
         return result ;
     }
@@ -46,7 +42,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("工程项目保存")
     @ResponseBody
     public Result save(@RequestBody Project entity){
-        Project data = projectService.save(entity);
+        Project data = baseService.save(entity);
         result.setData(data);
         return result ;
     }
@@ -58,7 +54,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("删除工程项目")
     @ResponseBody
     public Result delete(@RequestBody Project entity){
-        boolean flag = projectService.deleteProject(entity);
+        boolean flag = baseService.deleteProject(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("刪除成功");
@@ -75,7 +71,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("工程项目更新")
     @ResponseBody
     public Result update(@RequestBody Project entity){
-        boolean flag = projectService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");
@@ -92,7 +88,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("工程项目更新")
     @ResponseBody
     public Result deleteById(@RequestBody Project entity){
-        boolean flag = projectService.deleteProject(entity);
+        boolean flag = baseService.deleteProject(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");
@@ -109,7 +105,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("工程项目开始")
     @ResponseBody
     public Result startProject(@RequestBody Project entity){
-        boolean flag = projectService.startProject(entity);
+        boolean flag = baseService.startProject(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");
@@ -126,7 +122,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("工程项目更新")
     @ResponseBody
     public Result hang(@RequestBody Project entity){
-        boolean flag = projectService.hang(entity);
+        boolean flag = baseService.hang(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");
@@ -143,7 +139,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @WebLog("工程项目更新")
     @ResponseBody
     public Result continueProject(@RequestBody Project entity){
-        boolean flag = projectService.continueProject(entity);
+        boolean flag = baseService.continueProject(entity);
         if(flag){
             result.setData(entity);
             result.setMessage("更新成功");
@@ -159,7 +155,7 @@ public class ProjectController  extends GlobalController<Project, ProjectService
     @RequestMapping("complete")
     @ResponseBody
     public Result complete(@RequestBody Project entity) {
-        boolean flag = projectService.complete(entity);
+        boolean flag = baseService.complete(entity);
         if(flag){
             return Result.success();
         }else {

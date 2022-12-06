@@ -7,7 +7,6 @@ import com.aladdin.mis.engineering.qo.ProjectUserQo;
 import com.aladdin.mis.engineering.service.ProjectUserService;
 import com.aladdin.mis.engineering.vo.ProjectUserVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,16 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectUserController  extends GlobalController<ProjectUser, ProjectUserService> {
 
-    @Autowired
-    private ProjectUserService projectUserService;
-
     /**
      * 获取通用分页
      */
     @PostMapping("/pageVoInfo")
     @ResponseBody
     public Result pageInfo(@RequestBody ProjectUserQo condition) {
-        PageInfo<ProjectUserVo> page = projectUserService.pageVoByCondition(condition);
+            PageInfo<ProjectUserVo> page = baseService.pageVoByCondition(condition);
         return Result.success(page);
     }
 
@@ -42,7 +38,7 @@ public class ProjectUserController  extends GlobalController<ProjectUser, Projec
     @PostMapping("/addUser")
     @ResponseBody
     public Result addUser(@RequestBody ProjectUser entity) {
-        boolean flag = projectUserService.addUser(entity);
+        boolean flag = baseService.addUser(entity);
         if(flag){
             return Result.success();
         }else {
@@ -56,7 +52,7 @@ public class ProjectUserController  extends GlobalController<ProjectUser, Projec
     @PostMapping("/removeUser")
     @ResponseBody
     public Result removeUser(@RequestBody ProjectUser entity) {
-        boolean flag = projectUserService.removeUser(entity);
+        boolean flag = baseService.removeUser(entity);
         if(flag){
             return Result.success();
         }else {

@@ -3,7 +3,6 @@ package com.aladdin.mis.omnipotent.engineering.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.engineering.entity.ProjectPlanLog;
 import com.aladdin.mis.engineering.service.ProjectPlanLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
@@ -14,8 +13,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("engineering/projectPlanLog")
 @Controller
 public class ProjectPlanLogController  extends GlobalController<ProjectPlanLog, ProjectPlanLogService> {
-
-    @Autowired
-    private ProjectPlanLogService projectPlanLogService;
 
 }

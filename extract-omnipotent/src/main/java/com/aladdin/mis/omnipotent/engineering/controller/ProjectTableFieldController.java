@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.engineering.entity.ProjectTableField;
 import com.aladdin.mis.engineering.service.ProjectTableFieldService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectTableFieldController  extends GlobalController<ProjectTableField,ProjectTableFieldService> {
 
-    @Autowired
-    private ProjectTableFieldService projectTableFieldService;
-
     /**
      * 更新数据
      */
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectTableField entity) {
-        boolean flag = projectTableFieldService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }else {
@@ -43,7 +39,7 @@ public class ProjectTableFieldController  extends GlobalController<ProjectTableF
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectTableField entity) {
-        boolean flag = projectTableFieldService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.success();
         }else {
@@ -58,7 +54,7 @@ public class ProjectTableFieldController  extends GlobalController<ProjectTableF
     @RequestMapping("/deleteField")
     @ResponseBody
     public Result delete(@RequestBody ProjectTableField entity) {
-        boolean flag = projectTableFieldService.deleteField(entity);
+        boolean flag = baseService.deleteField(entity);
         if(flag){
             return Result.success();
         }else {

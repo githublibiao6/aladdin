@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.engineering.entity.ProjectTask;
 import com.aladdin.mis.engineering.service.ProjectTaskService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectTaskController  extends GlobalController<ProjectTask, ProjectTaskService> {
 
-    @Autowired
-    private ProjectTaskService projectTaskService;
-
     /**
      * 更新数据
      */
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }else {
@@ -42,7 +38,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.success();
         }else {
@@ -56,7 +52,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/startTask")
     @ResponseBody
     public Result startTask(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.startTask(entity);
+        boolean flag = baseService.startTask(entity);
         if(flag){
             return Result.success();
         }else {
@@ -70,7 +66,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/hangTask")
     @ResponseBody
     public Result hangTask(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.hangTask(entity);
+        boolean flag = baseService.hangTask(entity);
         if(flag){
             return Result.success();
         }else {
@@ -84,7 +80,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/continueTask")
     @ResponseBody
     public Result continueTask(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.continueTask(entity);
+        boolean flag = baseService.continueTask(entity);
         if(flag){
             return Result.success();
         }else {
@@ -98,7 +94,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/deleteTask")
     @ResponseBody
     public Result deleteTask(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.deleteTask(entity);
+        boolean flag = baseService.deleteTask(entity);
         if(flag){
             return Result.success();
         }else {
@@ -112,7 +108,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/completeTask")
     @ResponseBody
     public Result completeTask(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.completeTask(entity);
+        boolean flag = baseService.completeTask(entity);
         if(flag){
             return Result.success();
         }else {
@@ -126,7 +122,7 @@ public class ProjectTaskController  extends GlobalController<ProjectTask, Projec
     @RequestMapping("/closeTask")
     @ResponseBody
     public Result closeTask(@RequestBody ProjectTask entity) {
-        boolean flag = projectTaskService.closeTask(entity);
+        boolean flag = baseService.closeTask(entity);
         if(flag){
             return Result.success();
         }else {

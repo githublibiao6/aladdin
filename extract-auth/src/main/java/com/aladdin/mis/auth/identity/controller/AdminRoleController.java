@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.AdminRole;
 import com.aladdin.mis.manager.service.AdminRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,16 +20,13 @@ import java.util.List;
 @Controller
 public class AdminRoleController extends GlobalController<AdminRole, AdminRoleService> {
 
-    @Autowired
-    private AdminRoleService adminRoleService;
-
     /**
      * 获取分页
      */
     @RequestMapping("/getRoleByAdmin")
     @ResponseBody
     public Result getRoleByAdmin(@RequestBody AdminRole adminRole) {
-        List<AdminRole> list = adminRoleService.getRoleByAdmin(adminRole.getAdminId());
+        List<AdminRole> list = baseService.getRoleByAdmin(adminRole.getAdminId());
         result.setData(list);
         result.setCode(20000);
         return result;

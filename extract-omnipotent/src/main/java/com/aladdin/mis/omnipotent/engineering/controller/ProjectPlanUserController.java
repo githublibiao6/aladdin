@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.engineering.entity.ProjectPlanUser;
 import com.aladdin.mis.engineering.service.ProjectPlanUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectPlanUserController  extends GlobalController<ProjectPlanUser, ProjectPlanUserService> {
 
-    @Autowired
-    private ProjectPlanUserService projectPlanUserService;
-
     /**
      * 保存数据
      */
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectPlanUser entity) {
-        boolean flag = projectPlanUserService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }else {
@@ -42,7 +38,7 @@ public class ProjectPlanUserController  extends GlobalController<ProjectPlanUser
     @RequestMapping("deleteUser")
     @ResponseBody
     public Result deleteUser(@RequestBody ProjectPlanUser entity) {
-        boolean flag = projectPlanUserService.deleteUser(entity);
+        boolean flag = baseService.deleteUser(entity);
         if(flag){
             return Result.success();
         }else {

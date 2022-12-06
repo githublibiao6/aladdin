@@ -29,9 +29,6 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
     @Autowired
     DictionaryServiceImpl dicService;
 
-    @Autowired
-    DictionaryTeamsServiceImpl teamsService;
-
     /**
      * 添加字典
      */
@@ -39,7 +36,7 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
     @ResponseBody
     public Result add(@RequestBody DictionaryTeams teams) {
         result = new Result();
-        boolean flag = teamsService.insert(teams) != null;
+        boolean flag = baseService.insert(teams) != null;
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
@@ -53,7 +50,7 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
     @ResponseBody
     public Result update(@RequestBody DictionaryTeams model) {
         result = new Result();
-        boolean flag = teamsService.updateSelective(model);
+        boolean flag = baseService.updateSelective(model);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("更新成功");
@@ -77,7 +74,7 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
     @ResponseBody
     public Result delete(@RequestBody DictionaryTeams model) {
         result = new Result();
-        boolean flag = teamsService.deleteById(model.getId());
+        boolean flag = baseService.deleteById(model.getId());
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -92,7 +89,7 @@ public class DictionaryTeamsController extends GlobalController<DictionaryTeams,
     public Result page(@RequestBody  DictionaryQo qo) {
         result = new Result();
         result.setCode(20000);
-        PageInfo<DictionaryTeams> page = teamsService.page(qo);
+        PageInfo<DictionaryTeams> page = baseService.page(qo);
         result.setData(page);
         return result;
     }

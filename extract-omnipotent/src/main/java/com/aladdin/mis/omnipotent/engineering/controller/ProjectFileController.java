@@ -9,7 +9,6 @@ import com.aladdin.mis.engineering.qo.ProjectFileQo;
 import com.aladdin.mis.engineering.service.ProjectFileService;
 import com.aladdin.mis.engineering.vo.ProjectFileVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,16 +26,13 @@ import java.util.List;
 @Controller
 public class ProjectFileController  extends GlobalController<ProjectFile, ProjectFileService> {
 
-    @Autowired
-    private ProjectFileService projectFileService;
-
     /**
      * 获取分页
      */
     @PostMapping("/pageVoInfo")
     @ResponseBody
     public Result pageVoInfo(@RequestBody ProjectFileQo qo) {
-        PageInfo<ProjectFileVo> page = projectFileService.pageByDto(qo);
+        PageInfo<ProjectFileVo> page = baseService.pageByDto(qo);
         return Result.success(page);
     }
     /**
@@ -47,7 +43,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @ResponseBody
     public Result list(@RequestBody ProjectFile entity){
         Condition condition = Condition.newInstance().addExpression("relationId", entity.getRelationId());
-        List<ProjectFile> list = projectFileService.queryByCondition(condition);
+        List<ProjectFile> list = baseService.queryByCondition(condition);
         result.setData(list);
         return result ;
     }
@@ -58,7 +54,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectFile entity) {
-        boolean flag = projectFileService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }else {
@@ -72,7 +68,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectFile entity) {
-        boolean flag = projectFileService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.success();
         }else {
@@ -86,7 +82,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @RequestMapping("/deleteFile")
     @ResponseBody
     public Result deleteFile(@RequestBody ProjectFile entity) {
-        boolean flag = projectFileService.deleteFile(entity);
+        boolean flag = baseService.deleteFile(entity);
         if(flag){
             return Result.success();
         }else {
@@ -100,7 +96,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @RequestMapping("/downloadFile")
     @ResponseBody
     public Result downloadFile(@RequestBody ProjectFile entity) {
-        boolean flag = projectFileService.downloadFile(entity);
+        boolean flag = baseService.downloadFile(entity);
         if(flag){
             return Result.success();
         }else {
@@ -114,7 +110,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @RequestMapping("/cancellation")
     @ResponseBody
     public Result cancellation(@RequestBody ProjectFile entity) {
-        boolean flag = projectFileService.cancellation(entity);
+        boolean flag = baseService.cancellation(entity);
         if(flag){
             return Result.success();
         }else {
@@ -128,7 +124,7 @@ public class ProjectFileController  extends GlobalController<ProjectFile, Projec
     @RequestMapping("/recover")
     @ResponseBody
     public Result recover(@RequestBody ProjectFile entity) {
-        boolean flag = projectFileService.recover(entity);
+        boolean flag = baseService.recover(entity);
         if(flag){
             return Result.success();
         }else {

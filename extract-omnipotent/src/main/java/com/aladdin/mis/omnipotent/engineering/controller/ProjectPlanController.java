@@ -7,7 +7,6 @@ import com.aladdin.mis.engineering.qo.ProjectPlanQo;
 import com.aladdin.mis.engineering.service.ProjectPlanService;
 import com.aladdin.mis.engineering.vo.ProjectPlanVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,16 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectPlanController  extends GlobalController<ProjectPlan, ProjectPlanService> {
 
-    @Autowired
-    private ProjectPlanService projectPlanService;
-
     /**
      * 根据主键删除数据
      */
     @RequestMapping("/detail")
     @ResponseBody
     public Result detail(@RequestBody ProjectPlanVo entity) {
-        ProjectPlanVo data = projectPlanService.detail(entity.getId());
+        ProjectPlanVo data = baseService.detail(entity.getId());
         return Result.success(data);
     }
 
@@ -52,7 +48,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectPlan entity) {
-        Integer id = projectPlanService.save(entity);
+        Integer id = baseService.save(entity);
         if(id != null){
             return Result.success();
         }else {
@@ -66,7 +62,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("update")
     @ResponseBody
     public Result update(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.save();
         }else {
@@ -80,7 +76,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("startPlan")
     @ResponseBody
     public Result startPlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.startPlan(entity);
+        boolean flag = baseService.startPlan(entity);
         if(flag){
             return Result.success();
         }else {
@@ -94,7 +90,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("hangPlan")
     @ResponseBody
     public Result hangPlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.hangPlan(entity);
+        boolean flag = baseService.hangPlan(entity);
         if(flag){
             return Result.success();
         }else {
@@ -108,7 +104,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("continuePlan")
     @ResponseBody
     public Result continuePlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.continuePlan(entity);
+        boolean flag = baseService.continuePlan(entity);
         if(flag){
             return Result.success();
         }else {
@@ -122,7 +118,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("completePlan")
     @ResponseBody
     public Result completePlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.completePlan(entity);
+        boolean flag = baseService.completePlan(entity);
         if(flag){
             return Result.success();
         }else {
@@ -136,7 +132,7 @@ public class ProjectPlanController  extends GlobalController<ProjectPlan, Projec
     @RequestMapping("deletePlan")
     @ResponseBody
     public Result deletePlan(@RequestBody ProjectPlan entity) {
-        boolean flag = projectPlanService.deletePlan(entity);
+        boolean flag = baseService.deletePlan(entity);
         if(flag){
             return Result.success();
         }else {

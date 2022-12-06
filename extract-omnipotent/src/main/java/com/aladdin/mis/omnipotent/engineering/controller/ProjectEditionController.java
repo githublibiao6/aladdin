@@ -9,7 +9,6 @@ import com.aladdin.mis.engineering.qo.ProjectEditionQo;
 import com.aladdin.mis.engineering.service.ProjectEditionService;
 import com.aladdin.mis.engineering.vo.ProjectEditionVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,16 +26,13 @@ import java.util.List;
 @Controller
 public class ProjectEditionController  extends GlobalController<ProjectEdition, ProjectEditionService> {
 
-    @Autowired
-    private ProjectEditionService projectEditionService;
-
     /**
      * 获取分页
      */
     @PostMapping("/pageVoInfo")
     @ResponseBody
     public Result pageVoInfo(@RequestBody ProjectEditionQo qo) {
-        PageInfo<ProjectEditionVo> page = projectEditionService.pageByDto(qo);
+        PageInfo<ProjectEditionVo> page = baseService.pageByDto(qo);
         return Result.success(page);
     }
 
@@ -48,7 +44,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @ResponseBody
     public Result list(@RequestBody ProjectEdition entity){
         Condition condition = Condition.newInstance().addExpression("projectId", entity.getProjectId());
-        List<ProjectEdition> list = projectEditionService.queryByCondition(condition);
+        List<ProjectEdition> list = baseService.queryByCondition(condition);
         result.setData(list);
         return result ;
     }
@@ -59,7 +55,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @RequestMapping("save")
     @ResponseBody
     public Result save(@RequestBody ProjectEdition entity) {
-        boolean flag = projectEditionService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }else {
@@ -74,7 +70,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @RequestMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectEdition entity) {
-        boolean flag = projectEditionService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.success();
         }else {
@@ -88,7 +84,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @RequestMapping("/cancellation")
     @ResponseBody
     public Result cancellation(@RequestBody ProjectEdition entity) {
-        boolean flag = projectEditionService.cancellation(entity);
+        boolean flag = baseService.cancellation(entity);
         if(flag){
             return Result.success();
         }else {
@@ -102,7 +98,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @RequestMapping("/deleteEdition")
     @ResponseBody
     public Result deleteEdition(@RequestBody ProjectEdition entity) {
-        boolean flag = projectEditionService.deleteEdition(entity);
+        boolean flag = baseService.deleteEdition(entity);
         if(flag){
             return Result.success();
         }else {
@@ -116,7 +112,7 @@ public class ProjectEditionController  extends GlobalController<ProjectEdition, 
     @RequestMapping("/recover")
     @ResponseBody
     public Result recover(@RequestBody ProjectEdition entity) {
-        boolean flag = projectEditionService.recover(entity);
+        boolean flag = baseService.recover(entity);
         if(flag){
             return Result.success();
         }else {

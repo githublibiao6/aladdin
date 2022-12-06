@@ -4,7 +4,6 @@ import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.engineering.entity.ProjectBugUser;
 import com.aladdin.mis.engineering.service.ProjectBugUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,16 +19,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ProjectBugUserController  extends GlobalController<ProjectBugUser, ProjectBugUserService> {
 
-    @Autowired
-    private ProjectBugUserService projectBugUserService;
-
     /**
      * 保存
      */
     @PostMapping("/save")
     @ResponseBody
     public Result save(@RequestBody ProjectBugUser entity) {
-        boolean flag = projectBugUserService.save(entity);
+        boolean flag = baseService.save(entity);
         if(flag){
             return Result.success();
         }
@@ -42,7 +38,7 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     @PostMapping("/update")
     @ResponseBody
     public Result update(@RequestBody ProjectBugUser entity) {
-        boolean flag = projectBugUserService.update(entity);
+        boolean flag = baseService.update(entity);
         if(flag){
             return Result.success();
         }
@@ -55,7 +51,7 @@ public class ProjectBugUserController  extends GlobalController<ProjectBugUser, 
     @PostMapping("/deleteUser")
     @ResponseBody
     public Result deleteUser(@RequestBody ProjectBugUser entity) {
-        boolean flag = projectBugUserService.deleteUser(entity);
+        boolean flag = baseService.deleteUser(entity);
         if(flag){
             return Result.success();
         }
