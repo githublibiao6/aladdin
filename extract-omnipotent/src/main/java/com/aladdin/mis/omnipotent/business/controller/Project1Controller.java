@@ -1,10 +1,7 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
-import com.aladdin.mis.manager.service.Project1Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.annotation.Resource;
 
 /**
  * 业务项目 controller
@@ -14,8 +11,5 @@ import javax.annotation.Resource;
 @RequestMapping("project1")
 @Controller
 public class Project1Controller {
-
-    @Resource
-    Project1Service service;
 
 }

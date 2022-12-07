@@ -3,14 +3,12 @@ package com.aladdin.mis.omnipotent.business.controller;
 import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -25,9 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(value = "/business/essay")
 public class EssayController extends GlobalController<Essay, EssayService> {
 
-    @Autowired
-    private EssayService essayService;
-
     @RequestMapping("/page")
     @ResponseBody
     public Result page(HttpServletRequest request, PageEntity entity) {
@@ -35,7 +30,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
         Subject subject = SecurityUtils.getSubject();
         Cookie[] cookies = request.getCookies();
         System.err.println("cookies:" + cookies);
-        PageInfo<Essay> page = essayService.page(entity);
+        PageInfo<Essay> page = baseService.page(entity);
         result.setData(page);
         result.setCode(20000);
         return result;
@@ -49,7 +44,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result add(@RequestBody Essay m) {
         Result result = new Result();
         result = new Result();
-        boolean flag = essayService.add(m);
+        boolean flag = baseService.add(m);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
@@ -64,7 +59,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result update(@RequestBody Essay m) {
         Result result = new Result();
         result = new Result();
-        boolean flag = essayService.update(m);
+        boolean flag = baseService.update(m);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("更新成功");
@@ -89,7 +84,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result remove(@RequestBody JSONObject json) {
         Result result = new Result();
         result = new Result();
-        boolean flag = essayService.remove(json.getInteger("id"));
+        boolean flag = baseService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -104,7 +99,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
     public Result detail(@RequestParam(value = "id",defaultValue = "") Integer id) {
         Result result = new Result();
         result = new Result();
-        Essay essay = essayService.detail(id);
+        Essay essay = baseService.detail(id);
         result.setData(essay);
         return result;
     }

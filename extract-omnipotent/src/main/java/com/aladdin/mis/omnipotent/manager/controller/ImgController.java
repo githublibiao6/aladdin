@@ -3,9 +3,7 @@ package com.aladdin.mis.omnipotent.manager.controller;
 import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Img;
-import com.aladdin.mis.manager.service.ImgService;
 import com.aladdin.mis.manager.service.impl.ImgServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +24,6 @@ import java.io.IOException;
 @Controller
 public class ImgController extends GlobalController<Img, ImgServiceImpl> {
 
-    @Autowired
-    private ImgService service;
-
     /**
      * 功能描述：
      *  < 返回图片 >
@@ -42,10 +37,10 @@ public class ImgController extends GlobalController<Img, ImgServiceImpl> {
     @ResponseBody
     public byte[] getImage(@RequestParam(value = "code",defaultValue = "")String code,
                            @RequestParam(value = "id",defaultValue = "")String id) throws IOException {
-        Img img = service.getImgUrl(code, id);
+        Img img = baseService.getImgUrl(code, id);
         File file;
         if(img == null){
-            img= service.createImg(code, id);
+            img= baseService.createImg(code, id);
         }
         try{
             file = new File(img.getUrl());

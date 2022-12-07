@@ -6,7 +6,6 @@ import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/love/record")
 public class LoveController extends GlobalController<DateLog, DateLogService> {
 
-    @Autowired
-    private DateLogService service;
-
     @RequestMapping("/page")
     @ResponseBody
     public  Result pageList(PageEntity entity) {
-        PageEntity page = service.page(entity);
+        PageEntity page = baseService.page(entity);
         result.setData(page);
         result.setCode(20000);
         return result;
@@ -42,7 +38,7 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
     public Result add(@RequestBody JSONObject json) {
         result = new Result();
         DateLog m = JSONObject.parseObject(json.toJSONString(), DateLog.class);
-        boolean flag = service.add(m);
+        boolean flag = baseService.add(m);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("添加成功");
@@ -57,7 +53,7 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
     public Result update(@RequestBody JSONObject json) {
         result = new Result();
         DateLog m = JSONObject.parseObject(json.toJSONString(), DateLog.class);
-        boolean flag = service.update(m);
+        boolean flag = baseService.update(m);
         result.setSuccess(flag);
         if(flag){
             result.setMessage("更新成功");
@@ -81,7 +77,7 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
     @ResponseBody
     public Result remove(@RequestBody JSONObject json) {
         result = new Result();
-        boolean flag = service.remove(json.getInteger("id"));
+        boolean flag = baseService.remove(json.getInteger("id"));
         result.setSuccess(flag);
         if(flag){
             result.setMessage("删除成功");
@@ -95,9 +91,8 @@ public class LoveController extends GlobalController<DateLog, DateLogService> {
     @ResponseBody
     public Result detail(@RequestParam(value = "id",defaultValue = "") Integer id) {
         result = new Result();
-        DateLog dateLog = service.detail(id);
+        DateLog dateLog = baseService.detail(id);
         result.setData(dateLog);
-
         return result;
     }
 
