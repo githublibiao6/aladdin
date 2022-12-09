@@ -28,9 +28,6 @@ import java.util.List;
 public class MenuController extends GlobalController<Menu, MenuService> {
 
     @Autowired
-    private MenuService service;
-
-    @Autowired
     private BeUserMenuService userMenuService;
     //    @Autowired
     //    DubboService dubboService;
@@ -86,7 +83,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @RequestMapping("/page")
     @ResponseBody
     public  Result pageList(@RequestBody MenuQo qo) {
-        PageInfo<Menu> page = service.page(qo);
+        PageInfo<Menu> page = baseService.page(qo);
         result.setData(page);
         result.setCode(20000);
         return result;
@@ -96,7 +93,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @ResponseBody
     @WebLog("新增菜单")
     public Result add(@RequestBody Menu menu) {
-        boolean flag = service.add(menu);
+        boolean flag = baseService.add(menu);
         String msg ;
         result.setSuccess(flag);
         if(flag){
@@ -113,7 +110,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @WebLog("编辑菜单")
     public Result update(@RequestBody Menu menu) {
         result = new Result();
-        boolean flag = service.update(menu);
+        boolean flag = baseService.update(menu);
         String msg = "更新成功" ;
         result.setSuccess(flag);
         if(!flag){
@@ -127,7 +124,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@RequestBody Menu menu) {
-        boolean flag = service.deleteById(menu.getId());
+        boolean flag = baseService.deleteById(menu.getId());
         String msg ;
         result.setSuccess(flag);
         if(flag){
@@ -152,7 +149,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @ResponseBody
     @WebLog("树形菜单查询")
     public Result treeList(@RequestBody  MenuQo qo) {
-        List<Menu> list = service.tree(qo);
+        List<Menu> list = baseService.tree(qo);
         result.setData(list);
         result.setCode(20000);
         result.setMessage("菜单信息");
@@ -174,7 +171,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 //        String hello = dubboService.sayHello("  dubbo "); // 执行远程方法
         MenuQo qo = new MenuQo();
         qo.setEnable(1);
-        List<Menu> list = service.list(qo);
+        List<Menu> list = baseService.list(qo);
         result.setData(list);
         result.setCode(20000);
         result.setMessage("菜单信息");
@@ -187,7 +184,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @RequestMapping("/listMap")
     @ResponseBody
     public Result listMap() {
-        List<Menu> data = service.tree(null);
+        List<Menu> data = baseService.tree(null);
         result.setData(data);
         result.setCode(20000);
         return result;
@@ -206,7 +203,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @RequestMapping("/findById")
     @ResponseBody
     public Result findById(Integer menuId) {
-        Menu menu = service.findById(menuId);
+        Menu menu = baseService.findById(menuId);
         result.setData(menu);
         return result;
     }
@@ -214,7 +211,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     @RequestMapping("/remove.do")
     @ResponseBody
     public Result remove(String menuId) {
-        boolean flag = service.remove(menuId);
+        boolean flag = baseService.remove(menuId);
         String msg ;
         result.setSuccess(flag);
         if(flag){

@@ -22,7 +22,7 @@ public class BaseController {
     @ResponseBody
     public Result healthy(){
         Result result = new Result();
-        result.setMessage("健康地址请求成功");
+        result.setMessage("请求成功");
         return result;
     }
 

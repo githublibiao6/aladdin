@@ -11,7 +11,6 @@ import com.aladdin.mis.system.user.vo.OmUser;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,9 +27,6 @@ import java.util.List;
 @RequestMapping("manager/beUserMenu")
 @Controller
 public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMenuService> {
-
-    @Autowired
-    private BeUserMenuService beUserMenuService;
 
     /**
      * 分页查询
@@ -112,7 +108,7 @@ public class BeUserMenuController  extends GlobalController<BeUserMenu, BeUserMe
         result = new Result();
         Subject subject = SecurityUtils.getSubject();
         OmUser omUser = (OmUser) subject.getPrincipal();
-        List<BeUserMenuVo> list = beUserMenuService.queryMenuByUserId(omUser.getUserId());
+        List<BeUserMenuVo> list = baseService.queryMenuByUserId(omUser.getUserId());
         result.setData(list);
         result.setMessage("获取用户权限成功");
         return result ;
