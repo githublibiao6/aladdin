@@ -57,6 +57,4 @@ public class UserBaseInfo extends GlobalModel {
      * 备注
      */
     private String remark;
-
-
 }

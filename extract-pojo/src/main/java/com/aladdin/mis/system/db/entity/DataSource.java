@@ -14,9 +14,14 @@ import lombok.Data;
 public class DataSource {
 
     String id;
+
     String url;
+
     String username;
+
     String password;
+
     String code;
+
     String dbType;
 }

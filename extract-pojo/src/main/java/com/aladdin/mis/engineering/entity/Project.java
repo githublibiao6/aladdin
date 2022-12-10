@@ -59,7 +59,7 @@ public class Project extends GlobalModel {
     private Date endDate;
 
     /**
-        项目状态
+     *  项目状态
     */
     @TableField("status")
     private String status;

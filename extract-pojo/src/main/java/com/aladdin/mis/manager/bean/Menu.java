@@ -21,7 +21,7 @@ import java.util.List;
 public class Menu extends GlobalModel {
 
     /**
-     图标
+     * 图标
      */
     private String icon;
 

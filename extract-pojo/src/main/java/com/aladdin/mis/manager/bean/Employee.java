@@ -25,15 +25,19 @@ public class Employee extends GlobalModel {
     private String password;
 
     private String citizenNo;
+
     private String sex;
+
     private String photoUri;
 
     /**
      * 职位
      */
     private String position;
+
     @JsonFormat(locale="zh",timezone="GMT+8",pattern="yy-MM-dd")
     private Date birth;
+
     private String nation;
 
     /**
@@ -45,8 +49,11 @@ public class Employee extends GlobalModel {
      * 婚姻状态
      */
     private String marriage;
+
     private String phone;
+
     private String officeNo;
+
     private String email;
 
     /**

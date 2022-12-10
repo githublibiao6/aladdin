@@ -35,16 +35,19 @@ public class Essay extends GlobalModel {
      */
     @TableField("article")
     private String article;
+
     /**
      * 标题
      */
     @TableField("title")
     private String title;
+
     /**
      * 重要性
      */
     @TableField("importance")
     private Integer importance;
+
     /**
      * 状态
      */

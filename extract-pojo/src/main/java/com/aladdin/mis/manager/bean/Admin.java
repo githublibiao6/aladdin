@@ -23,14 +23,17 @@ public class Admin extends GlobalModel {
      * 真是姓名
      */
     private String realName;
+
     /**
      * 登陆密码
      */
     private String loginPassword;
+
     /**
      * 联系方式
      */
     private String phone;
+
     /**
      * 部门
      */
@@ -45,7 +48,6 @@ public class Admin extends GlobalModel {
      * 说明
      */
     private String notes;
-
 
     /**
      * 盐值
