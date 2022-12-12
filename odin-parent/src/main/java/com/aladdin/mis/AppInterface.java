@@ -5,8 +5,8 @@ package com.aladdin.mis;
  * @author 李标
  */
 public class AppInterface{
-    public static void main( String[] args )
-    {
+
+    public static void main( String[] args ){
         System.out.println( "Hello World!" );
     }
 }

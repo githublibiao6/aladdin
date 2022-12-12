@@ -36,7 +36,6 @@ public class ProjectServiceImpl extends GlobalServiceImpl<Project> implements Pr
        return new PageInfo<>(list);
     }
 
-
     @Override
     public boolean update(Project entity) {
        Project m = detailQuery(entity.getId());

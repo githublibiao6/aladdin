@@ -31,7 +31,6 @@ public class ProjectTableServiceImpl extends GlobalServiceImpl<ProjectTable> imp
     @Autowired
     private ProjectTableLogService logService;
 
-
     @Override
     public boolean update(ProjectTable entity) {
         String status = entity.getStatus();
