@@ -58,11 +58,10 @@ public interface RoleService extends GlobalService<Role> {
      * @Author: cles
      * @Date: 2020/7/6 0:07
      * @param role 参数1
-     * @param menus 参数1
      * @return: boolean
      * @version: 1.0.0
      */
-    boolean add(Role role, String menus);
+    boolean add(Role role);
 
     /**
      * 功能描述：

@@ -34,7 +34,7 @@ public class DeptController extends GlobalController<Dept, DeptService> {
     @ResponseBody
     public Result list() {
         List<DeptVo> records = baseService.treeList();
-        Map<String , Object> root = new HashMap<>(3);
+        Map<String , Object> root = new HashMap<>(16);
         root.put("id",0);
         root.put("label","组织机构");
         root.put("children", records);

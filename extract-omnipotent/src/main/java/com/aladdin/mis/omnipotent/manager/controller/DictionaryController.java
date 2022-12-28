@@ -132,7 +132,7 @@ public class DictionaryController extends GlobalController<Dictionary, Dictionar
     @ResponseBody
     public Result list() {
         List<JSONObject> records = Db.use().findList("select t.*, t.name label  from be_dictionary t ");
-        Map<String , Object> root = new HashMap<>(3);
+        Map<String , Object> root = new HashMap<>(16);
         root.put("id",0);
         root.put("label","数据字典");
         root.put("children", records);

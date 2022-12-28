@@ -63,12 +63,11 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
 
 
     @Override
-    public boolean add(Role role, String menus) {
+    public boolean add(Role role) {
         role = insertSelective(role);
-        System.err.println(role);
         Integer id = 0;
         if(role.getId() != null){
-            saveRoleMenu(id, menus);
+            saveRoleMenu(id, role.getMenus());
         }
         return false;
     }

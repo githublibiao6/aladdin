@@ -26,14 +26,13 @@ import java.util.List;
 public class RoleController extends GlobalController<Role, RoleService> {
 
     /**
-     * 添加字典
+     * 添加角色
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(@RequestBody JSONObject json) {
+    public Result add(@RequestBody Role m) {
         result = new Result();
-        Role m = JSONObject.parseObject(json.toJSONString(),Role.class);
-        boolean flag = baseService.add(m, json.getString("menus"));
+        boolean flag = baseService.add(m);
         if(flag){
             result.setMessage("添加成功");
         }else {
@@ -46,7 +45,6 @@ public class RoleController extends GlobalController<Role, RoleService> {
 
     /**
      * 菜单跳转
-     *
      * @return
      */
     @RequestMapping("/index.do")
@@ -75,7 +73,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
      */
     @RequestMapping("/page")
     @ResponseBody
-    public  Result pageList(PageEntity entity) {
+    public Result pageList(PageEntity entity) {
         PageInfo<Role> page = baseService.page(entity);
         result.setData(page);
         result.setCode(20000);
@@ -87,7 +85,7 @@ public class RoleController extends GlobalController<Role, RoleService> {
      */
     @RequestMapping("/listMenusByRoleId")
     @ResponseBody
-    public  Result listMenusByRoleId(@RequestParam(value = "role_id", defaultValue = "") Integer roleId) {
+    public Result listMenusByRoleId(@RequestParam(value = "role_id", defaultValue = "") Integer roleId) {
         result = new Result();
         List<RoleMenu> list = baseService.findByRoleId(roleId);
         list.forEach(t->{
@@ -113,6 +111,11 @@ public class RoleController extends GlobalController<Role, RoleService> {
         return result;
     }
 
+    /**
+     * 删除角色
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ResponseBody
     public Result deleteOne(@RequestParam(value = "id", defaultValue = "") Integer id) {

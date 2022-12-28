@@ -37,4 +37,7 @@ public class Role extends GlobalModel {
     @TableField(exist = false)
     private boolean hasChildren;
 
+    @TableField(exist = false)
+    private String menus;
+
 }
