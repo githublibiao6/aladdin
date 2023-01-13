@@ -45,7 +45,7 @@ public  class GenerateControllerUtils {
         content.append("@RequestMapping(\""+po.getModule()+"/"+ StringUtil.firstCharLower(po.getEntityName()) +"\")\n");
         content.append("@Controller\n");
         content.append("public class "+ po.getEntityName() +"Controller  extends GlobalController<"+ po.getEntityName() +", "+ po.getEntityName() +"Service> {\n\n");
-        content.append("    @Autowired\n");
+//        content.append("    @Autowired\n");
 //        String service = StringUtil.firstCharLower(po.getEntityName())+"Service";
 //        String service = "baseService";
 //        content.append("    private "+po.getEntityName()+"Service "+ service+";\n");
