@@ -45,7 +45,6 @@ public class AuthLoginController {
         Result result = new Result();
         result.setMessage("请求被拦截了");
         result.setCode(50014);
-        result.setSuccess(false);
         return result;
     }
 
@@ -55,7 +54,6 @@ public class AuthLoginController {
         Result result = new Result();
         result.setMessage("没有权限");
         result.setCode(403);
-        result.setSuccess(false);
         return result;
     }
 
@@ -63,9 +61,8 @@ public class AuthLoginController {
     @ResponseBody
     public Result welcome() {
         Result result = new Result();
-        result.setMessage("登陆成功");
+        result.setMessage("请求成功");
         log.info("登录成功了");
-        result.setSuccess(false);
         return result;
     }
 
@@ -74,7 +71,7 @@ public class AuthLoginController {
     public Result out(String token) {
         Result result = new Result();
         result.setCode(20000);
-        result.setMessage("用户退出");
+        result.setMessage("登出成功！");
         return result;
     }
 

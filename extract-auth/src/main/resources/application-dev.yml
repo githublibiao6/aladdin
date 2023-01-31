@@ -1,7 +1,7 @@
 server:
-  port: 80
+  port: 8110
   servlet:
-    context-path: /om
+    context-path: /auth
 spring:
   cloud:
     config:
@@ -66,4 +66,4 @@ pagehelper:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations: classpath*:/**/*.xml
+  mapper-locations: classpath*:/mybatis-mapper/**/*.xml

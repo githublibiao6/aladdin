@@ -5,7 +5,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.utils.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.qo.DictionaryQo;
-import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
+import com.aladdin.mis.manager.service.DictionaryService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/dictionary")
-public class DictionaryController extends GlobalController<Dictionary, DictionaryServiceImpl>{
+public class DictionaryController extends GlobalController<Dictionary, DictionaryService>{
 
     /**
      * 添加字典

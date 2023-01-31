@@ -1,4 +1,4 @@
-package com.aladdin.mis.auth;
+package com.aladdin.mis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
