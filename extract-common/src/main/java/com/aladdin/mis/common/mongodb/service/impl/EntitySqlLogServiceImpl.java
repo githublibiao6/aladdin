@@ -4,9 +4,6 @@ package com.aladdin.mis.common.mongodb.service.impl;
  */
 
 import com.aladdin.mis.common.mongodb.service.EntitySqlLogService;
-import com.aladdin.mis.common.mongodb.service.MongoService;
-import com.aladdin.mis.system.entity.SqlLog;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,11 +15,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EntitySqlLogServiceImpl implements EntitySqlLogService {
 
-    @Autowired
-    private MongoService<SqlLog> mongoService;
+//    @Autowired
+//    private MongoService<SqlLog> mongoService;
 
-    @Override
-    public void saveEntitySqlLog(SqlLog log) {
-        mongoService.save(log);
-    }
+//    @Override
+//    public void saveEntitySqlLog(SqlLog log) {
+//        mongoService.save(log);
+//    }
 }

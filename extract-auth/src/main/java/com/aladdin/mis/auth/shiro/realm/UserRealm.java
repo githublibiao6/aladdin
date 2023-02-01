@@ -168,7 +168,7 @@ public class UserRealm extends AuthorizingRealm {
 //        }
 
         Collection<Session> sessions2 = sessionManager.getSessionDAO().getActiveSessions();
-        System.err.println(sessions2.size());
+        System.err.println("SessionSize" + sessions2.size());
 
         // todo upToken.getPassword() 前台传的密码
         // 和 admin.getLoginPassword() 比较

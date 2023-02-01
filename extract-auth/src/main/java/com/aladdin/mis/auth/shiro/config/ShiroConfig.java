@@ -59,7 +59,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
         //设置拦截默认访问，如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-        shiroFilterFactoryBean.setLoginUrl("/system/interceptLogin");
+        shiroFilterFactoryBean.setLoginUrl("/auth/interceptLogin");
         //设置登录成功后需要跳转的页面
         shiroFilterFactoryBean.setSuccessUrl("/system/welcome");
         // 没有权限的设置

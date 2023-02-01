@@ -39,6 +39,11 @@ public class AuthLoginController {
         return result;
     }
 
+    /**
+     * 请求被拦截的处理
+     * 查询配置 ShiroConfig: auth/interceptLogin
+     * @return
+     */
     @RequestMapping("/interceptLogin")
     @ResponseBody
     public Result login() {

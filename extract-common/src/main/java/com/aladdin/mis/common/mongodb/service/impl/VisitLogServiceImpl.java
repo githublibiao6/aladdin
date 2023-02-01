@@ -3,12 +3,10 @@ package com.aladdin.mis.common.mongodb.service.impl;
  *  Created by cles on 2022/2/22 22:47
  */
 
-import com.aladdin.mis.common.mongodb.service.MongoService;
 import com.aladdin.mis.common.mongodb.service.VisitLogService;
 import com.aladdin.mis.system.entity.VisitLog;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,8 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class VisitLogServiceImpl  implements VisitLogService {
 
-    @Autowired
-    private MongoService<VisitLog> mongoService;
+//    @Autowired
+//    private MongoService<VisitLog> mongoService;
 
     @Override
     public void saveVisitLog(VisitLog log) {
@@ -30,6 +28,6 @@ public class VisitLogServiceImpl  implements VisitLogService {
             String sessionId = (String) subject.getSession().getId();
             log.setSessionId(sessionId);
         }
-        mongoService.save(log);
+//        mongoService.save(log);
     }
 }
