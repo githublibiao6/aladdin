@@ -1,7 +1,6 @@
 package com.aladdin.mis.auth.sso;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
-import com.aladdin.mis.common.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.service.BeLoginLogService;
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 @Controller
 @RequestMapping("/sso")
-public class SsoController extends GlobalController {
+public class SsoController {
 
     @Autowired
     private AuthLoginService authLoginService;
@@ -34,6 +33,7 @@ public class SsoController extends GlobalController {
     @RequestMapping("/login")
     @ResponseBody
     public Result login(@RequestBody JSONObject json) {
+        Result result = new Result();
         try{
             result = new Result();
             result.setCode(20000);
@@ -49,7 +49,7 @@ public class SsoController extends GlobalController {
 
             BeLoginLog loginLog = new BeLoginLog();
 
-            loginLog.setLoginIp(getIp());
+//            loginLog.setLoginIp(getIp());
             loginLog.setLoginType("10");
             beLoginLogService.saveLoginLog(loginLog);
         }catch (Exception e){
@@ -68,6 +68,7 @@ public class SsoController extends GlobalController {
     @RequestMapping("/interceptLogin")
     @ResponseBody
     public Result login() {
+        Result result = new Result();
         result.setMessage("用户未登录");
         result.setCode(50014);
         result.setSuccess(false);
@@ -77,6 +78,7 @@ public class SsoController extends GlobalController {
     @RequestMapping("/unauthorizedUrl")
     @ResponseBody
     public Result unauthorizedUrl() {
+        Result result = new Result();
         result.setMessage("没有权限");
         result.setCode(403);
         result.setSuccess(false);
@@ -86,8 +88,13 @@ public class SsoController extends GlobalController {
     @RequestMapping("/welcome")
     @ResponseBody
     public Result welcome() {
-        result.setMessage("登陆成功");
-        log.info("登录成功了");
+        Result result = new Result();
+        result.setMessage("请求成功");
+        log.error("登录成功了error");
+        log.warn("登录成功了warn");
+        log.debug("登录成功了debug");
+        log.info("登录成功了info");
+        log.info("登录成功了info,{}",result.getCode());
         result.setSuccess(false);
         return result;
     }
@@ -95,6 +102,7 @@ public class SsoController extends GlobalController {
     @RequestMapping("/logout")
     @ResponseBody
     public Result out(String token) {
+        Result result = new Result();
         result.setCode(20000);
         result.setMessage("用户退出");
         return result;
