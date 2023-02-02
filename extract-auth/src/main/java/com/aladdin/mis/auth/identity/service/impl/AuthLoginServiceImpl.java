@@ -2,6 +2,7 @@ package com.aladdin.mis.auth.identity.service.impl;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.system.user.vo.LoginUser;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class AuthLoginServiceImpl implements AuthLoginService {
 
     @Override
-    public Result signIn(OmUser user) {
+    public Result signIn(LoginUser user) {
         Result result = new Result();
 //        Enumeration<String> set = request.getParameterNames();
 //        while (set.hasMoreElements()){

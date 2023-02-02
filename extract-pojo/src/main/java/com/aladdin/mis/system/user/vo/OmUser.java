@@ -29,11 +29,6 @@ public class OmUser {
     private String userName;
 
     /**
-     * 用户密码
-     */
-    private String password;
-
-    /**
      * 用户类型 0 nobody 1 管理员
      */
     private String userType;

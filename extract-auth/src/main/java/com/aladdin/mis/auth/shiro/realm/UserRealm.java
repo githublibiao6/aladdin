@@ -139,6 +139,7 @@ public class UserRealm extends AuthorizingRealm {
         if(deptId == null || dept == null){
             throw new AccountException("用户无权限");
         }
+        // login 登入组装用户信息塞入
         OmUser user = new OmUser();
         user.setUserId(admin.getId());
         user.setLoginName(admin.getRealName());

@@ -1,6 +1,7 @@
 package com.aladdin.mis.auth.identity.service;
 
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.system.user.vo.LoginUser;
 import com.aladdin.mis.system.user.vo.OmUser;
 
 
@@ -16,7 +17,7 @@ public interface AuthLoginService {
      * @param user
      * @return
      */
-    Result signIn(OmUser user);
+    Result signIn(LoginUser user);
 
     /**
      * 用户登出

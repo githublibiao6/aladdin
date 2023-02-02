@@ -2,7 +2,7 @@ package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.system.user.vo.LoginUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class AuthLoginController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Result login(@RequestBody OmUser user) {
+    public Result login(@RequestBody LoginUser user) {
         Result result = new Result();
         result.setCode(20000);
         Map<String, String> map = new HashMap<>(16);

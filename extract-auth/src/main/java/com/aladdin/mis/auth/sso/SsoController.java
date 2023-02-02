@@ -1,12 +1,16 @@
 package com.aladdin.mis.auth.sso;
 
 import com.aladdin.mis.auth.identity.service.AuthLoginService;
+import com.aladdin.mis.auth.shiro.OmClient;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.service.BeLoginLogService;
+import com.aladdin.mis.system.user.vo.LoginUser;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +46,7 @@ public class SsoController {
 //            System.err.println(set.nextElement());
 //        }
             // shiro 调用
-            OmUser user = new OmUser();
+            LoginUser user = new LoginUser();
             user.setUserName(json.getString("username"));
             user.setPassword(json.getString("password"));
             result = authLoginService.signIn(user);
@@ -60,6 +64,40 @@ public class SsoController {
         }
         return result;
     }
+
+    /**
+     * 获取登录token
+     * @return
+     */
+    @RequestMapping("/getToken")
+    @ResponseBody
+    public Result getToken() {
+        Result result = new Result();
+        result.setCode(20000);
+
+        Subject subject = SecurityUtils.getSubject();
+        // 生成的sessionId 返回给前端
+        subject.getSession().setTimeout(1000 * 60 * 30);
+        String sessionId = (String)subject.getSession().getId();
+        result.setData(sessionId);
+        return result;
+    }
+
+    /**
+     * 获取登录token
+     * @return
+     */
+    @RequestMapping("/getUserInfo")
+    @ResponseBody
+    public Result getUserInfo() {
+        Result result = new Result();
+        result.setCode(20000);
+
+        OmUser user = OmClient.getCurrentUser();
+        result.setData(user);
+        return result;
+    }
+
 
     /**
      * 未登录的路径 可在ShiroConfig 中设置
