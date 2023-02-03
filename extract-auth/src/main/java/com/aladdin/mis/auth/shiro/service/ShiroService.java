@@ -3,13 +3,18 @@ package com.aladdin.mis.auth.shiro.service;
  * Created by cles on 2020/5/18 22:57
  */
 
+import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.shiro.service.BeAuthUrlService;
+import com.aladdin.mis.shiro.vo.BeAuthUrlVo;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,29 +25,30 @@ import java.util.Map;
 @Service("shiroService")
 public class ShiroService {
 
+    @Autowired
+    private BeAuthUrlService beAuthUrlService;
+
     /**
      * 初始化权限
      */
     public Map<String, String> loadFilterChainDefinitions() {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        /*List<Authority> authorities = authorityMapper.findAuthorities();
+        List<BeAuthUrlVo> authorities = beAuthUrlService.list();
         // 权限控制map.从数据库获取角色
 
         if (authorities.size() > 0) {
-            String uris;
-            String[] uriArr;
-            for (Authority authority : authorities) {
-                if (StringUtils.isEmpty(authority.getPermission())) {
+            for (BeAuthUrlVo authUrl : authorities) {
+                if(StringUtil.isBlank(authUrl.getUrl())){
                     continue;
                 }
-                uris = authority.getUri();
-                uriArr = uris.split(",");
-                for (String uri : uriArr) {
-                    filterChainDefinitionMap.put(uri, authority.getPermission());
+                if(StringUtil.isBlank(authUrl.getPermission())){
+                    continue;
                 }
+                filterChainDefinitionMap.put(authUrl.getUrl(), authUrl.getPermission());
             }
-        }*/
+        }
         //配置匿名可访问页面和静态文件
+        filterChainDefinitionMap.put("/generate/create","anon");
         filterChainDefinitionMap.put("/css/**","anon");
         filterChainDefinitionMap.put("/js/**","anon");
         filterChainDefinitionMap.put("/img/**","anon");

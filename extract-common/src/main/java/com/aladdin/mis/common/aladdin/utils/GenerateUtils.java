@@ -1,5 +1,7 @@
 package com.aladdin.mis.common.aladdin.utils;
 
+import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.mis.dao.db.config.MainDb;
 import org.springframework.util.ResourceUtils;
 
 import java.io.FileNotFoundException;
@@ -20,10 +22,10 @@ public  class GenerateUtils {
         GeneratePo po = initGeneratePo();
         po.setOverWrite(false);
         po.setModule(module);
-//        po.setTableInfo(MainDb.initTableInfo(tableName));
+        po.setTableInfo(MainDb.initTableInfo(tableName));
 
-//        String className = StringUtil.toCamelCase(po.getTableInfo().getTableName());
-//        po.setEntityName(className);
+        String className = StringUtil.toCamelCase(po.getTableInfo().getTableName());
+        po.setEntityName(className);
         String packagePath = "com.aladdin.mis";
         String entityPath = packagePath +"." +module +".entity";
         po.setPackagePath(entityPath);

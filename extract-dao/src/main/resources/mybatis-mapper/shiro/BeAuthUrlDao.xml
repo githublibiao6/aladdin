@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.dao.shiro.BeAuthUrlDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.url,
+        t.permission,
+        t.sort,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.shiro.entity.BeAuthUrl" >
+        <id property="id" column="id"/>
+        <result property="url" column="url"/>
+        <result property="permission" column="permission"/>
+        <result property="sort" column="sort"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.shiro.vo.BeAuthUrlVo">
+        select <include refid="baseColumn"></include>
+        from be_auth_url t where t.sys005 = 1
+        <if test="url  != null and url != '' ">
+            and t.url = #{url}
+        </if>
+        <if test="permission  != null and permission != '' ">
+            and t.permission = #{permission}
+        </if>
+        <if test="sort  != null and sort != '' ">
+            and t.sort = #{sort}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+</mapper>
