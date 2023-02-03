@@ -29,6 +29,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 
     @Autowired
     private BeUserMenuService userMenuService;
+
     //    @Autowired
     //    DubboService dubboService;
 

@@ -2,7 +2,7 @@ package com.aladdin.mis.omnipotent.api.controller;
 
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.omnipotent.api.entity.vo.CreateTableVo;
+import com.aladdin.mis.common.vo.CreateTableVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +35,7 @@ public class OpenApiController {
     public Result create(@RequestBody CreateTableVo vo) {
         Result result = new Result();
         try{
-            GenerateUtils.create(vo.getTableName(), vo.getModule());
+            GenerateUtils.create(vo.getTableName(), vo.getModule(), vo.getPath());
         }catch (Exception e){
             e.printStackTrace();
             result.setMessage("生成失败");

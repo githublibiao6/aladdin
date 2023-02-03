@@ -16,4 +16,6 @@ public class GenerateQo {
 
     private String tableComment;
 
+    private String module;
+
 }

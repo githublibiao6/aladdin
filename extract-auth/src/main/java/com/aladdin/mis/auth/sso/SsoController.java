@@ -105,7 +105,7 @@ public class SsoController {
      */
     @RequestMapping("/interceptLogin")
     @ResponseBody
-    public Result login() {
+    public Result interceptLogin() {
         Result result = new Result();
         result.setMessage("用户未登录");
         result.setCode(50014);
@@ -140,6 +140,8 @@ public class SsoController {
     @RequestMapping("/logout")
     @ResponseBody
     public Result out(String token) {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
         Result result = new Result();
         result.setCode(20000);
         result.setMessage("用户退出");

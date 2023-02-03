@@ -1,11 +1,11 @@
-package com.aladdin.mis.omnipotent.engineering.controller;
+package com.aladdin.mis.auth.generate;
 
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.vo.CreateTableVo;
 import com.aladdin.mis.engineering.qo.GenerateQo;
 import com.aladdin.mis.engineering.service.GenerateService;
 import com.aladdin.mis.engineering.vo.GenerateVo;
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,10 +44,10 @@ public class GenerateController  {
      */
     @RequestMapping("/create")
     @ResponseBody
-    public Result create(@RequestBody JSONObject obj) {
+    public Result create(@RequestBody CreateTableVo vo) {
         Result result = new Result();
         try{
-            GenerateUtils.create(obj.getString("tableName"), obj.getString("module"));
+            GenerateUtils.create(vo.getTableName(), vo.getModule(), vo.getPath());
         }catch (Exception e){
             e.printStackTrace();
             result.setMessage("生成失败");

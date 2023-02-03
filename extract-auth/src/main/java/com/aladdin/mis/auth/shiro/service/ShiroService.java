@@ -57,6 +57,7 @@ public class ShiroService {
         filterChainDefinitionMap.put("/test/**","anon");
         // 开放接口
         filterChainDefinitionMap.put("/api/**","anon");
+        filterChainDefinitionMap.put("/openApi/**","anon");
         filterChainDefinitionMap.put("/sso/welcome","anon");
         // 注册路径
         // 处理不用过滤的路径

@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.api.entity.vo;
+package com.aladdin.mis.common.vo;
 
 import lombok.Data;
 
@@ -18,4 +18,9 @@ public class CreateTableVo {
      * 模块名
      */
     private String module;
+
+    /**
+     * 模块名
+     */
+    private String path;
 }
