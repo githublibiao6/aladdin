@@ -34,7 +34,6 @@ public class ShiroService {
     public Map<String, String> loadFilterChainDefinitions() {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         List<BeAuthUrlVo> authorities = beAuthUrlService.list();
-        // 权限控制map.从数据库获取角色
 
         if (authorities.size() > 0) {
             for (BeAuthUrlVo authUrl : authorities) {

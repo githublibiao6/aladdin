@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.build.BuildModularDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.gooup_id,
+        t.label,
+        t.field_col,
+        t.label_width,
+        t.show_label,
+        t.placeholder,
+        t.change_tag,
+        t.tag,
+        t.tag_icon,
+        t.width,
+        t.span,
+        t.gutter,
+        t.type,
+        t.justify,
+        t.align,
+        t.default_value,
+        t.min,
+        t.max,
+        t.disabled,
+        t.prepend,
+        t.append,
+        t.prefix_icon,
+        t.suffix_icon,
+        t.icon,
+        t.separator,
+        t.min_rows,
+        t.max_rows,
+        t.height,
+        t.step,
+        t.precision,
+        t.controls_position,
+        t.max_length,
+        t.active_text,
+        t.inactive_text,
+        t.active_value,
+        t.inactive_value,
+        t.name,
+        t.accept,
+        t.file_size,
+        t.size_unit,
+        t.action,
+        t.list_type,
+        t.button_text,
+        t.range_separator,
+        t.format,
+        t.data_type,
+        t.url,
+        t.data_path,
+        t.value,
+        t.option_type,
+        t.active_color,
+        t.inactive_color,
+        t.branding,
+        t.allow_half,
+        t.show_text,
+        t.show_score,
+        t.show_stops,
+        t.range,
+        t.border,
+        t.color_format,
+        t.size,
+        t.show_word_limit,
+        t.step_strictly,
+        t.checkStrictly,
+        t.prop_multiple,
+        t.show_all_levels,
+        t.filterable,
+        t.clearable,
+        t.showTip,
+        t.multiple,
+        t.auto_upload,
+        t.readonly,
+        t.required,
+        t.layoutTree,
+        t.regList,
+        t.pattern,
+        t.message,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.build.entity.BuildModular" > 
+        <id property="id" column="id"/>
+        <result property="gooup_id" column="gooupId"/>
+        <result property="label" column="label"/>
+        <result property="field_col" column="fieldCol"/>
+        <result property="label_width" column="labelWidth"/>
+        <result property="show_label" column="showLabel"/>
+        <result property="placeholder" column="placeholder"/>
+        <result property="change_tag" column="changeTag"/>
+        <result property="tag" column="tag"/>
+        <result property="tag_icon" column="tagIcon"/>
+        <result property="width" column="width"/>
+        <result property="span" column="span"/>
+        <result property="gutter" column="gutter"/>
+        <result property="type" column="type"/>
+        <result property="justify" column="justify"/>
+        <result property="align" column="align"/>
+        <result property="default_value" column="defaultValue"/>
+        <result property="min" column="min"/>
+        <result property="max" column="max"/>
+        <result property="disabled" column="disabled"/>
+        <result property="prepend" column="prepend"/>
+        <result property="append" column="append"/>
+        <result property="prefix_icon" column="prefixIcon"/>
+        <result property="suffix_icon" column="suffixIcon"/>
+        <result property="icon" column="icon"/>
+        <result property="separator" column="separator"/>
+        <result property="min_rows" column="minRows"/>
+        <result property="max_rows" column="maxRows"/>
+        <result property="height" column="height"/>
+        <result property="step" column="step"/>
+        <result property="precision" column="precision"/>
+        <result property="controls_position" column="controlsPosition"/>
+        <result property="max_length" column="maxLength"/>
+        <result property="active_text" column="activeText"/>
+        <result property="inactive_text" column="inactiveText"/>
+        <result property="active_value" column="activeValue"/>
+        <result property="inactive_value" column="inactiveValue"/>
+        <result property="name" column="name"/>
+        <result property="accept" column="accept"/>
+        <result property="file_size" column="fileSize"/>
+        <result property="size_unit" column="sizeUnit"/>
+        <result property="action" column="action"/>
+        <result property="list_type" column="listType"/>
+        <result property="button_text" column="buttonText"/>
+        <result property="range_separator" column="rangeSeparator"/>
+        <result property="format" column="format"/>
+        <result property="data_type" column="dataType"/>
+        <result property="url" column="url"/>
+        <result property="data_path" column="dataPath"/>
+        <result property="value" column="value"/>
+        <result property="option_type" column="optionType"/>
+        <result property="active_color" column="activeColor"/>
+        <result property="inactive_color" column="inactiveColor"/>
+        <result property="branding" column="branding"/>
+        <result property="allow_half" column="allowHalf"/>
+        <result property="show_text" column="showText"/>
+        <result property="show_score" column="showScore"/>
+        <result property="show_stops" column="showStops"/>
+        <result property="range" column="range"/>
+        <result property="border" column="border"/>
+        <result property="color_format" column="colorFormat"/>
+        <result property="size" column="size"/>
+        <result property="show_word_limit" column="showWordLimit"/>
+        <result property="step_strictly" column="stepStrictly"/>
+        <result property="checkStrictly" column="checkStrictly"/>
+        <result property="prop_multiple" column="propMultiple"/>
+        <result property="show_all_levels" column="showAllLevels"/>
+        <result property="filterable" column="filterable"/>
+        <result property="clearable" column="clearable"/>
+        <result property="showTip" column="showTip"/>
+        <result property="multiple" column="multiple"/>
+        <result property="auto_upload" column="autoUpload"/>
+        <result property="readonly" column="readonly"/>
+        <result property="required" column="required"/>
+        <result property="layoutTree" column="layoutTree"/>
+        <result property="regList" column="regList"/>
+        <result property="pattern" column="pattern"/>
+        <result property="message" column="message"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.build.vo.BuildModularVo">
+        select <include refid="baseColumn"></include>
+        from build_modular t where t.sys005 = 1
+        <if test="gooupId  != null and gooupId != '' ">
+            and t.gooup_id = #{gooupId}
+        </if>
+        <if test="label  != null and label != '' ">
+            and t.label = #{label}
+        </if>
+        <if test="fieldCol  != null and fieldCol != '' ">
+            and t.field_col = #{fieldCol}
+        </if>
+        <if test="labelWidth  != null and labelWidth != '' ">
+            and t.label_width = #{labelWidth}
+        </if>
+        <if test="showLabel  != null and showLabel != '' ">
+            and t.show_label = #{showLabel}
+        </if>
+        <if test="placeholder  != null and placeholder != '' ">
+            and t.placeholder = #{placeholder}
+        </if>
+        <if test="changeTag  != null and changeTag != '' ">
+            and t.change_tag = #{changeTag}
+        </if>
+        <if test="tag  != null and tag != '' ">
+            and t.tag = #{tag}
+        </if>
+        <if test="tagIcon  != null and tagIcon != '' ">
+            and t.tag_icon = #{tagIcon}
+        </if>
+        <if test="width  != null and width != '' ">
+            and t.width = #{width}
+        </if>
+        <if test="span  != null and span != '' ">
+            and t.span = #{span}
+        </if>
+        <if test="gutter  != null and gutter != '' ">
+            and t.gutter = #{gutter}
+        </if>
+        <if test="type  != null and type != '' ">
+            and t.type = #{type}
+        </if>
+        <if test="justify  != null and justify != '' ">
+            and t.justify = #{justify}
+        </if>
+        <if test="align  != null and align != '' ">
+            and t.align = #{align}
+        </if>
+        <if test="defaultValue  != null and defaultValue != '' ">
+            and t.default_value = #{defaultValue}
+        </if>
+        <if test="min  != null and min != '' ">
+            and t.min = #{min}
+        </if>
+        <if test="max  != null and max != '' ">
+            and t.max = #{max}
+        </if>
+        <if test="disabled  != null and disabled != '' ">
+            and t.disabled = #{disabled}
+        </if>
+        <if test="prepend  != null and prepend != '' ">
+            and t.prepend = #{prepend}
+        </if>
+        <if test="append  != null and append != '' ">
+            and t.append = #{append}
+        </if>
+        <if test="prefixIcon  != null and prefixIcon != '' ">
+            and t.prefix_icon = #{prefixIcon}
+        </if>
+        <if test="suffixIcon  != null and suffixIcon != '' ">
+            and t.suffix_icon = #{suffixIcon}
+        </if>
+        <if test="icon  != null and icon != '' ">
+            and t.icon = #{icon}
+        </if>
+        <if test="separator  != null and separator != '' ">
+            and t.separator = #{separator}
+        </if>
+        <if test="minRows  != null and minRows != '' ">
+            and t.min_rows = #{minRows}
+        </if>
+        <if test="maxRows  != null and maxRows != '' ">
+            and t.max_rows = #{maxRows}
+        </if>
+        <if test="height  != null and height != '' ">
+            and t.height = #{height}
+        </if>
+        <if test="step  != null and step != '' ">
+            and t.step = #{step}
+        </if>
+        <if test="precision  != null and precision != '' ">
+            and t.precision = #{precision}
+        </if>
+        <if test="controlsPosition  != null and controlsPosition != '' ">
+            and t.controls_position = #{controlsPosition}
+        </if>
+        <if test="maxLength  != null and maxLength != '' ">
+            and t.max_length = #{maxLength}
+        </if>
+        <if test="activeText  != null and activeText != '' ">
+            and t.active_text = #{activeText}
+        </if>
+        <if test="inactiveText  != null and inactiveText != '' ">
+            and t.inactive_text = #{inactiveText}
+        </if>
+        <if test="activeValue  != null and activeValue != '' ">
+            and t.active_value = #{activeValue}
+        </if>
+        <if test="inactiveValue  != null and inactiveValue != '' ">
+            and t.inactive_value = #{inactiveValue}
+        </if>
+        <if test="name  != null and name != '' ">
+            and t.name = #{name}
+        </if>
+        <if test="accept  != null and accept != '' ">
+            and t.accept = #{accept}
+        </if>
+        <if test="fileSize  != null and fileSize != '' ">
+            and t.file_size = #{fileSize}
+        </if>
+        <if test="sizeUnit  != null and sizeUnit != '' ">
+            and t.size_unit = #{sizeUnit}
+        </if>
+        <if test="action  != null and action != '' ">
+            and t.action = #{action}
+        </if>
+        <if test="listType  != null and listType != '' ">
+            and t.list_type = #{listType}
+        </if>
+        <if test="buttonText  != null and buttonText != '' ">
+            and t.button_text = #{buttonText}
+        </if>
+        <if test="rangeSeparator  != null and rangeSeparator != '' ">
+            and t.range_separator = #{rangeSeparator}
+        </if>
+        <if test="format  != null and format != '' ">
+            and t.format = #{format}
+        </if>
+        <if test="dataType  != null and dataType != '' ">
+            and t.data_type = #{dataType}
+        </if>
+        <if test="url  != null and url != '' ">
+            and t.url = #{url}
+        </if>
+        <if test="dataPath  != null and dataPath != '' ">
+            and t.data_path = #{dataPath}
+        </if>
+        <if test="value  != null and value != '' ">
+            and t.value = #{value}
+        </if>
+        <if test="optionType  != null and optionType != '' ">
+            and t.option_type = #{optionType}
+        </if>
+        <if test="activeColor  != null and activeColor != '' ">
+            and t.active_color = #{activeColor}
+        </if>
+        <if test="inactiveColor  != null and inactiveColor != '' ">
+            and t.inactive_color = #{inactiveColor}
+        </if>
+        <if test="branding  != null and branding != '' ">
+            and t.branding = #{branding}
+        </if>
+        <if test="allowHalf  != null and allowHalf != '' ">
+            and t.allow_half = #{allowHalf}
+        </if>
+        <if test="showText  != null and showText != '' ">
+            and t.show_text = #{showText}
+        </if>
+        <if test="showScore  != null and showScore != '' ">
+            and t.show_score = #{showScore}
+        </if>
+        <if test="showStops  != null and showStops != '' ">
+            and t.show_stops = #{showStops}
+        </if>
+        <if test="range  != null and range != '' ">
+            and t.range = #{range}
+        </if>
+        <if test="border  != null and border != '' ">
+            and t.border = #{border}
+        </if>
+        <if test="colorFormat  != null and colorFormat != '' ">
+            and t.color_format = #{colorFormat}
+        </if>
+        <if test="size  != null and size != '' ">
+            and t.size = #{size}
+        </if>
+        <if test="showWordLimit  != null and showWordLimit != '' ">
+            and t.show_word_limit = #{showWordLimit}
+        </if>
+        <if test="stepStrictly  != null and stepStrictly != '' ">
+            and t.step_strictly = #{stepStrictly}
+        </if>
+        <if test="checkStrictly  != null and checkStrictly != '' ">
+            and t.checkStrictly = #{checkStrictly}
+        </if>
+        <if test="propMultiple  != null and propMultiple != '' ">
+            and t.prop_multiple = #{propMultiple}
+        </if>
+        <if test="showAllLevels  != null and showAllLevels != '' ">
+            and t.show_all_levels = #{showAllLevels}
+        </if>
+        <if test="filterable  != null and filterable != '' ">
+            and t.filterable = #{filterable}
+        </if>
+        <if test="clearable  != null and clearable != '' ">
+            and t.clearable = #{clearable}
+        </if>
+        <if test="showTip  != null and showTip != '' ">
+            and t.showTip = #{showTip}
+        </if>
+        <if test="multiple  != null and multiple != '' ">
+            and t.multiple = #{multiple}
+        </if>
+        <if test="autoUpload  != null and autoUpload != '' ">
+            and t.auto_upload = #{autoUpload}
+        </if>
+        <if test="readonly  != null and readonly != '' ">
+            and t.readonly = #{readonly}
+        </if>
+        <if test="required  != null and required != '' ">
+            and t.required = #{required}
+        </if>
+        <if test="layoutTree  != null and layoutTree != '' ">
+            and t.layoutTree = #{layoutTree}
+        </if>
+        <if test="regList  != null and regList != '' ">
+            and t.regList = #{regList}
+        </if>
+        <if test="pattern  != null and pattern != '' ">
+            and t.pattern = #{pattern}
+        </if>
+        <if test="message  != null and message != '' ">
+            and t.message = #{message}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+</mapper>
