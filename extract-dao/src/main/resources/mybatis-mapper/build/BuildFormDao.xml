@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.build.BuildFormDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.formRef,
+        t.formModel,
+        t.formRules,
+        t.size,
+        t.labelPosition,
+        t.labelWidth,
+        t.gutter,
+        t.disabled,
+        t.formBtns,
+        t.unFocusedComponentBorder,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.build.entity.BuildForm" > 
+        <id property="id" column="id"/>
+        <result property="formRef" column="formRef"/>
+        <result property="formModel" column="formModel"/>
+        <result property="formRules" column="formRules"/>
+        <result property="size" column="size"/>
+        <result property="labelPosition" column="labelPosition"/>
+        <result property="labelWidth" column="labelWidth"/>
+        <result property="gutter" column="gutter"/>
+        <result property="disabled" column="disabled"/>
+        <result property="formBtns" column="formBtns"/>
+        <result property="unFocusedComponentBorder" column="unFocusedComponentBorder"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.build.vo.BuildFormVo">
+        select <include refid="baseColumn"></include>
+        from build_form t where t.sys005 = 1
+        <if test="formRef  != null and formRef != '' ">
+            and t.formRef = #{formRef}
+        </if>
+        <if test="formModel  != null and formModel != '' ">
+            and t.formModel = #{formModel}
+        </if>
+        <if test="formRules  != null and formRules != '' ">
+            and t.formRules = #{formRules}
+        </if>
+        <if test="size  != null and size != '' ">
+            and t.size = #{size}
+        </if>
+        <if test="labelPosition  != null and labelPosition != '' ">
+            and t.labelPosition = #{labelPosition}
+        </if>
+        <if test="labelWidth  != null and labelWidth != '' ">
+            and t.labelWidth = #{labelWidth}
+        </if>
+        <if test="gutter  != null and gutter != '' ">
+            and t.gutter = #{gutter}
+        </if>
+        <if test="disabled  != null and disabled != '' ">
+            and t.disabled = #{disabled}
+        </if>
+        <if test="formBtns  != null and formBtns != '' ">
+            and t.formBtns = #{formBtns}
+        </if>
+        <if test="unFocusedComponentBorder  != null and unFocusedComponentBorder != '' ">
+            and t.unFocusedComponentBorder = #{unFocusedComponentBorder}
+        </if>
+        <if test="sys000  != null and sys000 != '' ">
+            and t.sys000 = #{sys000}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+</mapper>

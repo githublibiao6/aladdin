@@ -7,6 +7,7 @@
         t.group_icon,
         t.group_name,
         t.state,
+        t.parent_id,
         t.sys001,
         t.sys002,
         t.sys003,
@@ -21,6 +22,7 @@
         <result property="group_icon" column="groupIcon"/>
         <result property="group_name" column="groupName"/>
         <result property="state" column="state"/>
+        <result property="parent_id" column="parentId"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
         <result property="sys003" column="sys003"/>
@@ -41,6 +43,9 @@
         </if>
         <if test="state  != null and state != '' ">
             and t.state = #{state}
+        </if>
+        <if test="parentId  != null and parentId != '' ">
+            and t.parent_id = #{parentId}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}

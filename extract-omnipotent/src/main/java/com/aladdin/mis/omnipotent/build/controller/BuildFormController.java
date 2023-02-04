@@ -1,10 +1,10 @@
 package com.aladdin.mis.omnipotent.build.controller;
 
-import com.aladdin.mis.build.entity.BuildGroup;
-import com.aladdin.mis.build.service.BuildGroupService;
+import com.aladdin.mis.build.entity.BuildForm;
+import com.aladdin.mis.build.service.BuildFormService;
 import com.aladdin.mis.common.system.controller.GlobalController;
-import com.aladdin.mis.build.qo.BuildGroupQo;
-import com.aladdin.mis.build.vo.BuildGroupVo;
+import com.aladdin.mis.build.qo.BuildFormQo;
+import com.aladdin.mis.build.vo.BuildFormVo;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.github.pagehelper.PageInfo;
@@ -18,12 +18,12 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 /**
- * 建设大类 BuildGroupService--- 
+ *  BuildFormService--- 
  * @author cles
- * @date 2023-02-04 23:27:32
+ * @date 2023-02-04 23:26:19
 */
-@RequestMapping("build/buildGroup")
+@RequestMapping("build/buildForm")
 @Controller
-public class BuildGroupController  extends GlobalController<BuildGroup, BuildGroupService> {
+public class BuildFormController  extends GlobalController<BuildForm, BuildFormService> {
 
 }

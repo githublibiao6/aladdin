@@ -8,7 +8,7 @@ import com.github.pagehelper.PageInfo;
 /**
  * BuildGroupService
  * @author cles
- * @date 2023-01-12 23:01:40
+ * @date 2023-02-04 23:27:32
 */
 public interface BuildGroupService extends GlobalService<BuildGroup>  {
 

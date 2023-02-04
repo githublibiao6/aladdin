@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 搭建组件应用层实体 
  * @author cles
- * @date 2023-02-04 22:50:09
+ * @date 2023-02-04 23:28:02
 */
 @Data
 public class BuildModularVo extends BuildModular {

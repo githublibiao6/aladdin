@@ -4,7 +4,7 @@
 
     <sql id="baseColumn">
         t.id,
-        t.gooup_id,
+        t.form_id,
         t.label,
         t.field_col,
         t.label_width,
@@ -81,6 +81,7 @@
         t.regList,
         t.pattern,
         t.message,
+        t.sys000,
         t.sys001,
         t.sys002,
         t.sys003,
@@ -92,7 +93,7 @@
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.build.entity.BuildModular" > 
         <id property="id" column="id"/>
-        <result property="gooup_id" column="gooupId"/>
+        <result property="form_id" column="formId"/>
         <result property="label" column="label"/>
         <result property="field_col" column="fieldCol"/>
         <result property="label_width" column="labelWidth"/>
@@ -169,6 +170,7 @@
         <result property="regList" column="regList"/>
         <result property="pattern" column="pattern"/>
         <result property="message" column="message"/>
+        <result property="sys000" column="sys000"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
         <result property="sys003" column="sys003"/>
@@ -181,8 +183,8 @@
     <select id="list" resultType="com.aladdin.mis.build.vo.BuildModularVo">
         select <include refid="baseColumn"></include>
         from build_modular t where t.sys005 = 1
-        <if test="gooupId  != null and gooupId != '' ">
-            and t.gooup_id = #{gooupId}
+        <if test="formId  != null and formId != '' ">
+            and t.form_id = #{formId}
         </if>
         <if test="label  != null and label != '' ">
             and t.label = #{label}
@@ -411,6 +413,9 @@
         </if>
         <if test="message  != null and message != '' ">
             and t.message = #{message}
+        </if>
+        <if test="sys000  != null and sys000 != '' ">
+            and t.sys000 = #{sys000}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}

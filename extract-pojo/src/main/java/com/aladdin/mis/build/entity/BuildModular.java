@@ -3,27 +3,22 @@ package com.aladdin.mis.build.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
  * 搭建组件
  * @author cles
- * @date 2023-02-04 22:50:09
+ * @date 2023-02-04 23:28:02
 */
 @Table("build_modular")
 @Data
 public class BuildModular extends GlobalModel {
 
     /**
-     * gooupId组群主键
+     * formId组群主键
      */
-    @TableField("gooup_id")
-    private Integer gooupId;
+    @TableField("form_id")
+    private Integer formId;
 
     /**
      * label标签
@@ -480,5 +475,11 @@ public class BuildModular extends GlobalModel {
      */
     @TableField("message")
     private String message;
+
+    /**
+     * sys000导出值
+     */
+    @TableField("sys000")
+    private Integer sys000;
 
 }
