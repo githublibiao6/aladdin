@@ -36,13 +36,13 @@ public  class GenerateControllerUtils {
         content.append("import org.springframework.web.bind.annotation.ResponseBody;\n");
         content.append("import org.springframework.beans.factory.annotation.Autowired;\n");
         content.append("import org.springframework.stereotype.Controller;\n\n");
-        content.append("import java.util.List;\n");
+        content.append("import java.util.List;\n\n");
         content.append("/**\n");
         content.append(" * ").append(tableComment).append(" ").append(po.getEntityName()).append("Service--- \n");
         content.append(" * @author cles\n");
         content.append(" * @date ").append(nowStr).append("\n");
         content.append("*/\n");
-        content.append("@RequestMapping(\""+po.getModule()+"/"+ StringUtil.firstCharLower(po.getEntityName()) +"\")\n");
+        content.append("@RequestMapping(\"/"+ StringUtil.firstCharLower(po.getEntityName()) +"\")\n");
         content.append("@Controller\n");
         content.append("public class "+ po.getEntityName() +"Controller  extends GlobalController<"+ po.getEntityName() +", "+ po.getEntityName() +"Service> {\n\n");
 //        content.append("    @Autowired\n");

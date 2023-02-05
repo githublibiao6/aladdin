@@ -46,8 +46,11 @@ public class ShiroService {
                 filterChainDefinitionMap.put(authUrl.getUrl(), authUrl.getPermission());
             }
         }
-        //配置匿名可访问页面和静态文件
         filterChainDefinitionMap.put("/generate/create","anon");
+        filterChainDefinitionMap.put("/buildForm/**","anon");
+        filterChainDefinitionMap.put("/buildModular/**","anon");
+
+        //配置匿名可访问页面和静态文件
         filterChainDefinitionMap.put("/css/**","anon");
         filterChainDefinitionMap.put("/js/**","anon");
         filterChainDefinitionMap.put("/img/**","anon");
