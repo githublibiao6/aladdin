@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 建设大类应用层实体 
  * @author cles
- * @date 2023-02-04 23:27:32
+ * @date 2023-02-05 16:40:09
 */
 @Data
 public class BuildGroupVo extends BuildGroup {

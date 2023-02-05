@@ -46,6 +46,6 @@ public  class GenerateEntityQoUtils {
         content.append("    private String  sortInfo;\n");
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName() +"Qo.java", true);
+                po.getFilePath(), po.getEntityName() +"Qo.java", po.isOverWrite());
     }
 }

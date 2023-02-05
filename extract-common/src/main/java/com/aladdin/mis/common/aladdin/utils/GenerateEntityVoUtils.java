@@ -37,6 +37,6 @@ public  class GenerateEntityVoUtils {
 
         content.append("}\n");
         boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName() +"Vo.java", true);
+                po.getFilePath(), po.getEntityName() +"Vo.java", po.isOverWrite());
     }
 }

@@ -52,4 +52,9 @@
         </if>
     </select>
 
+    <!-- *************GenerateXmlUtils************** -->
+
+    <update id="">
+        datetime_interval_precision
+    </update>
 </mapper>

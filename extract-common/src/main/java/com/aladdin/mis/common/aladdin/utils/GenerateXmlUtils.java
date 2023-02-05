@@ -19,7 +19,8 @@ public  class GenerateXmlUtils {
         TableInfo tableInfo = po.getTableInfo();
 
 
-        StringBuffer content = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n");
+        StringBuffer content = new StringBuffer();
+        content.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n");
         content.append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\"> \n");
         content.append("<mapper namespace=\""+po.getImportDaoClass().substring(7,po.getImportDaoClass().length()-1 )+"\">\n\n");
         content.append("    <sql id=\"baseColumn\">\n");
@@ -63,9 +64,19 @@ public  class GenerateXmlUtils {
                 "           order by ${sortInfo}\n" +
                 "        </if>\n" );
         content.append("    </select>\n\n");
-        content.append("</mapper>\n");
+
+
         System.err.println(content);
-        boolean result = CommonFileUtil.writeContentToFile(content.toString(),
-                po.getFilePath(), po.getEntityName()+"Dao.xml", po.isOverWrite());
+        String oldContent = CommonFileUtil.readContentToFile(po.getFilePath(), po.getEntityName()+"Dao.xml");
+        if(oldContent != null){
+            oldContent = oldContent.substring(oldContent.indexOf("<!-- *************GenerateXmlUtils************** -->"));
+            boolean result = CommonFileUtil.writeContentToFile(content.toString() + "    " + oldContent,
+                    po.getFilePath(), po.getEntityName()+"Dao.xml", true);
+        }else {
+            content.append("    <!-- *************GenerateXmlUtils************** -->\n");
+            content.append("</mapper>\n");
+            boolean result = CommonFileUtil.writeContentToFile(content.toString(),
+                    po.getFilePath(), po.getEntityName()+"Dao.xml", true);
+        }
     }
 }
