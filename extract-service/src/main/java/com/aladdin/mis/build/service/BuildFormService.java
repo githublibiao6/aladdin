@@ -1,10 +1,9 @@
 package com.aladdin.mis.build.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.build.entity.BuildForm;
 import com.aladdin.mis.build.vo.BuildFormVo;
-import com.aladdin.mis.build.qo.BuildFormQo;
-import com.github.pagehelper.PageInfo;
+import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.common.system.service.GlobalService;
 /**
  * BuildFormService
  * @author cles
@@ -12,4 +11,10 @@ import com.github.pagehelper.PageInfo;
 */
 public interface BuildFormService extends GlobalService<BuildForm>  {
 
+    /**
+     * 保存配置
+     * @param buildFormVo
+     * @return
+     */
+    Result saveConfig(BuildFormVo buildFormVo);
 }
