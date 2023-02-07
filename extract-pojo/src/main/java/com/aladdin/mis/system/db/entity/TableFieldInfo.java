@@ -36,7 +36,7 @@ public class TableFieldInfo {
     /**
      * 数据库列长度
      */
-    private String colLength;
+    private Integer colLength;
 
     /**
      * java字段名称

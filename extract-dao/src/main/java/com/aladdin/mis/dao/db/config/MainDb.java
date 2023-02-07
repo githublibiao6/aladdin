@@ -162,8 +162,13 @@ public class MainDb {
                     }
                     break;
                 case "int":
+                    field.setColumnType("Integer");
+                    break;
                 case "tinyint":
                     field.setColumnType("Integer");
+                    if("1".equals(map.get("col_length"))){
+                        field.setColumnType("Boolean");
+                    }
                     break;
                 case "double":
                     field.setColumnType("Double");
@@ -180,7 +185,7 @@ public class MainDb {
             }
         }
         if(map.get("col_length") != null){
-            field.setColLength(map.get("col_length").toString());
+            field.setColLength((Integer) map.get("col_length"));
         }
         field.setPk(false);
         if(map.get("pk") != null && StringUtils.isEmpty(map.get("pk"))){
@@ -243,9 +248,13 @@ public class MainDb {
                                     }
                                     break;
                                 case "int":
-                                case "tinyint":
                                     t.setColumnType("Integer");
                                     break;
+                                case "tinyint":
+                                    t.setColumnType("Integer");
+                                    if(1 == t.getColLength()){
+                                        t.setColumnType("Boolean");
+                                    }
                                 case "double":
                                     t.setColumnType("Double");
                                     break;
@@ -316,7 +325,7 @@ public class MainDb {
             return firstCharUp(str);
         }
         // 用下划线将原始字符串分割
-        String camel[] = str.split("_");
+        String[] camel = str.split("_");
         for (String s :  camel) {
             // 跳过空字符串
             if (s.isEmpty()) {
