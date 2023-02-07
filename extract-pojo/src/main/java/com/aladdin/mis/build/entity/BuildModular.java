@@ -126,7 +126,7 @@ public class BuildModular extends GlobalModel {
      * disabled是否禁选
      */
     @TableField("disabled")
-    private Integer disabled;
+    private Boolean disabled;
 
     /**
      * prepend前缀
@@ -420,7 +420,7 @@ public class BuildModular extends GlobalModel {
      * clearable能否清空
      */
     @TableField("clearable")
-    private Integer clearable;
+    private Boolean clearable;
 
     /**
      * showTip显示提示
@@ -444,7 +444,7 @@ public class BuildModular extends GlobalModel {
      * readonly是否只读
      */
     @TableField("readonly")
-    private Integer readonly;
+    private Boolean readonly;
 
     /**
      * required是否必填

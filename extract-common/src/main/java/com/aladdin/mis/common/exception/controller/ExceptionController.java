@@ -7,6 +7,7 @@ import com.aladdin.mis.common.mongodb.service.VisitExceptionLogService;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.utils.ExceptionUtil;
 import com.aladdin.mis.system.entity.VisitExceptionLog;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @version: 1.0.0
  */
 @ControllerAdvice
+@Slf4j
 public class ExceptionController{
 
     @Autowired
@@ -27,17 +29,19 @@ public class ExceptionController{
     @ExceptionHandler(value = {Exception.class})
     @ResponseBody
     public Result error(Exception e){
-        VisitExceptionLog log = new VisitExceptionLog();
+        VisitExceptionLog exceptionLog = new VisitExceptionLog();
         Result result = new Result();
         result.setSuccess(false);
         result.setCode(50000);
         result.setData("系统发生未知错误");
         result.setMessage(e.getMessage());
-        log.setCode(404);
-        log.setException(e.getMessage());
-        log.setException(ExceptionUtil.getStackTrace(e));
-        log.setTitle("未知错误" + e.getMessage());
-        visitExceptionLogService.saveVisitExceptionLog(log);
+        exceptionLog.setCode(404);
+        exceptionLog.setException(e.getMessage());
+        exceptionLog.setException(ExceptionUtil.getStackTrace(e));
+        exceptionLog.setTitle("未知错误" + e.getMessage());
+        visitExceptionLogService.saveVisitExceptionLog(exceptionLog);
+        log.error("系统发生未知错误");
+        e.printStackTrace();
         return result;
 
     }

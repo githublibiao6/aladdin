@@ -60,7 +60,7 @@ public class BuildForm extends GlobalModel {
      * disabled禁用表单
      */
     @TableField("disabled")
-    private Integer disabled;
+    private Boolean disabled;
 
     /**
      * formBtns表单按钮
@@ -72,7 +72,7 @@ public class BuildForm extends GlobalModel {
      * unFocusedComponentBorder显示未选中组件边框
      */
     @TableField("unFocusedComponentBorder")
-    private Integer unFocusedComponentBorder;
+    private Boolean unFocusedComponentBorder;
 
     /**
      * sys000导出值
