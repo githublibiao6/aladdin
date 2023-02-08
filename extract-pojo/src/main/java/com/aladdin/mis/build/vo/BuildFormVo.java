@@ -1,7 +1,6 @@
 package com.aladdin.mis.build.vo;
 
 import com.aladdin.mis.build.entity.BuildForm;
-import com.aladdin.mis.build.entity.BuildModular;
 import lombok.Data;
 
 import java.util.List;
@@ -17,5 +16,5 @@ public class BuildFormVo extends BuildForm {
     /**
      * 组件配置列表
      */
-    private List<BuildModular> fields;
+    private List<BuildModularVo> fields;
 }

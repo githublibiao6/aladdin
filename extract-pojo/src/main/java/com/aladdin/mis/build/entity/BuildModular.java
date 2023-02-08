@@ -477,6 +477,12 @@ public class BuildModular extends GlobalModel {
     private String message;
 
     /**
+     * message文档路径
+     */
+    @TableField("document")
+    private String document;
+
+    /**
      * sys000导出值
      */
     @TableField("sys000")

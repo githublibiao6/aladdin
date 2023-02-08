@@ -185,7 +185,7 @@ public class MainDb {
             }
         }
         if(map.get("col_length") != null){
-            field.setColLength((Integer) map.get("col_length"));
+            field.setColLength(Integer.parseInt((String) map.get("col_length")));
         }
         field.setPk(false);
         if(map.get("pk") != null && StringUtils.isEmpty(map.get("pk"))){
@@ -252,7 +252,7 @@ public class MainDb {
                                     break;
                                 case "tinyint":
                                     t.setColumnType("Integer");
-                                    if(1 == t.getColLength()){
+                                    if(t.getColLength() != null && 1 == t.getColLength()){
                                         t.setColumnType("Boolean");
                                     }
                                 case "double":
