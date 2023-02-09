@@ -3,7 +3,6 @@ package com.aladdin.mis.common.system.service;
 import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.system.base.BaseModel;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -40,6 +39,15 @@ public interface GlobalService<T> {
      * @return model
      */
     <T> T detailQuery(Integer id);
+
+    /**
+     *
+     * 通用详情
+     * @param id 实体
+     * @param clazz
+     * @return model
+     */
+    Object detailQueryVo(Integer id, Class clazz);
 
 
     /**

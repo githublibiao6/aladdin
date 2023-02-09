@@ -26,6 +26,11 @@ public class BuildFormController  extends GlobalController<BuildForm, BuildFormS
     @RequestMapping("/saveConfig")
     @ResponseBody
     public Result saveConfig(@RequestBody BuildFormVo buildFormVo) {
-        return baseService.saveConfig(buildFormVo);
+        Integer formId = baseService.saveConfig(buildFormVo);
+        if(formId != null){
+            BuildFormVo vo = baseService.getConfigByForm(formId);
+            return Result.success(vo);
+        }
+        return Result.error();
     }
 }

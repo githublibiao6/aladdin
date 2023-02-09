@@ -2,7 +2,6 @@ package com.aladdin.mis.build.service;
 
 import com.aladdin.mis.build.entity.BuildForm;
 import com.aladdin.mis.build.vo.BuildFormVo;
-import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
 /**
  * BuildFormService
@@ -16,5 +15,12 @@ public interface BuildFormService extends GlobalService<BuildForm>  {
      * @param buildFormVo
      * @return
      */
-    Result saveConfig(BuildFormVo buildFormVo);
+    Integer saveConfig(BuildFormVo buildFormVo);
+
+    /**
+     * 获取配置中心
+     * @param formId
+     * @return
+     */
+    BuildFormVo getConfigByForm(Integer formId);
 }

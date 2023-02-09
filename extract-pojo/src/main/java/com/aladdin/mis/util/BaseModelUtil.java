@@ -6,13 +6,14 @@ package com.aladdin.mis.util;
 
 import com.aladdin.mis.annotation.entity.Database;
 import com.aladdin.mis.annotation.entity.Table;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @description: 尝试
  * @author cles
  * @Date 2020/5/31 12:12
  */
-
+@Slf4j
 public class BaseModelUtil {
 
     /**
@@ -31,8 +32,15 @@ public class BaseModelUtil {
             Table table = (Table) clazz.getAnnotation(Table.class);
             tableName = table.value();
         }else {
-//            throw new RuntimeException(clazz +" has not bind table");
-            return null;
+            Class parent = clazz.getSuperclass();
+            boolean parentAnnExits = parent.isAnnotationPresent(Table.class);
+            if(parentAnnExits){
+                Table table = (Table) parent.getAnnotation(Table.class);
+                tableName = table.value();
+            }else {
+                log.error(clazz +" has not bind table");
+            }
+            return tableName;
         }
         return tableName;
     }

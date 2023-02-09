@@ -1,10 +1,11 @@
 package com.aladdin.mis.build.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.build.entity.BuildModular;
 import com.aladdin.mis.build.vo.BuildModularVo;
-import com.aladdin.mis.build.qo.BuildModularQo;
-import com.github.pagehelper.PageInfo;
+import com.aladdin.mis.common.system.service.GlobalService;
+
+import java.util.List;
+
 /**
  * BuildModularService
  * @author cles
@@ -12,4 +13,10 @@ import com.github.pagehelper.PageInfo;
 */
 public interface BuildModularService extends GlobalService<BuildModular>  {
 
+    /**
+     * 根据formId获取配置组件
+     * @param formId
+     * @return
+     */
+    List<BuildModularVo> listByFormId(Integer formId);
 }

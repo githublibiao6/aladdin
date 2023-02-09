@@ -62,6 +62,8 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             switch (t.getColumnType()){
                 case "int":
                 case "Integer":
+                case "Boolean":
+                case "boolean":
                     sql.append(t.getFieldValue()).append(",");
                     break;
                 case "String":
@@ -138,6 +140,8 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             switch (t.getColumnType()){
                 case "int":
                 case "Integer":
+                case "Boolean":
+                case "boolean":
                     sql.append(colName).append("=")
                             .append(t.getFieldValue()).append(",");
                     break;

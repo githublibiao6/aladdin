@@ -255,6 +255,7 @@ public class MainDb {
                                     if(t.getColLength() != null && 1 == t.getColLength()){
                                         t.setColumnType("Boolean");
                                     }
+                                    break;
                                 case "double":
                                     t.setColumnType("Double");
                                     break;

@@ -3,7 +3,10 @@ package com.aladdin.mis.build.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * 搭建组件
@@ -42,7 +45,7 @@ public class BuildModular extends GlobalModel {
      * showLabel是否显示标签
      */
     @TableField("show_label")
-    private Integer showLabel;
+    private Boolean showLabel;
 
     /**
      * placeholder占位提示
@@ -54,7 +57,7 @@ public class BuildModular extends GlobalModel {
      * changeTag组件类型
      */
     @TableField("change_tag")
-    private Integer changeTag;
+    private Boolean changeTag;
 
     /**
      * tag使changeRenderKey在目标组件改变时可用?
@@ -450,7 +453,7 @@ public class BuildModular extends GlobalModel {
      * required是否必填
      */
     @TableField("required")
-    private Integer required;
+    private Boolean required;
 
     /**
      * layoutTree布局结构树
@@ -462,7 +465,7 @@ public class BuildModular extends GlobalModel {
      * regList正则校验
      */
     @TableField("regList")
-    private String regList;
+    private List<JSONObject> regList;
 
     /**
      * pattern正则表达式

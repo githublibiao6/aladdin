@@ -1,5 +1,6 @@
 package com.aladdin.mis.common.system.service.impl;
 
+import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.base.qo.FieldCondition;
 import com.aladdin.mis.base.qo.OrderCondition;
@@ -247,6 +248,13 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
+    public Object detailQueryVo(Integer id, Class sonClazz) {
+        Class<T> clazz = getT();
+        JSONObject json = detailVo(id, clazz);
+        return JSONObject.parseObject(json.toJSONString(), sonClazz);
+    }
+
+    @Override
     public <T> T getByCondition(Condition condition) {
         Class<T> clazz = (Class<T>) getT();
         String tableName = getTableName(clazz);
@@ -268,18 +276,23 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     private <T> T detailQuery(Integer id, Class<T> clazz) {
+        JSONObject json = detailVo( id, clazz);
+        return JSONObject.parseObject(json.toJSONString(),clazz);
+    }
 
+    private JSONObject detailVo(Integer id, Class clazz) {
         String tableName = BaseModelUtil.getTableName(clazz);
         String moduleName = BaseModelUtil.getModuleName(clazz);
         String primaryKey = BaseModelUtil.getPrimaryKey(tableName);
         TableInfo table = MainDb.getTableInfo(tableName);
 
         Map map = Db.use().findByPrimaryKey(tableName, primaryKey, id );
+        JSONObject json = new JSONObject();
         if(map == null){
-            return null;
+            return json;
         }
         List<TableFieldInfo> list = table.getFields();
-        JSONObject json = new JSONObject();
+
         list.forEach(t->{
             if("List<String>".equals(t.getColumnType()) && map.get(t.getColName()) != null){
                 String value = map.get(t.getColName()).toString();
@@ -293,17 +306,17 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
                 json.put(t.getColumnName(), map.get(t.getColName()));
             }
         });
-        return JSONObject.parseObject(json.toJSONString(),clazz);
+        return json;
     }
 
     @Override
     public <T> T insertSelective(BaseModel baseModel) {
-        return  (T)detailQuery(insert(baseModel), baseModel.getClass());
+        return  (T)detailQuery(insert(baseModel), getClazz(baseModel));
     }
 
     @Override
     public Integer insert(BaseModel baseModel) {
-        TableInfo table = MainDb.getTableInfo(getTableName(baseModel.getClass()));
+        TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
@@ -336,7 +349,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
 
     @Override
     public  boolean updateSelective(BaseModel baseModel) {
-        TableInfo table = MainDb.getTableInfo(getTableName(baseModel.getClass()));
+        TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
@@ -360,12 +373,28 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return count > 0;
     }
 
+    private Class getClazz (BaseModel baseModel){
+        Class clazz = baseModel.getClass();
+        boolean tableAnnExits = clazz.isAnnotationPresent(Table.class);
+        if(tableAnnExits){
+            return clazz;
+        }else {
+            Class parent = clazz.getSuperclass();
+            boolean parentAnnExits = parent.isAnnotationPresent(Table.class);
+            if(parentAnnExits){
+                return parent;
+            }
+        }
+        return clazz;
+    }
+
     private List<TableFieldInfo> setTableField(List<TableFieldInfo> list , BaseModel baseModel)  {
-        Field[] fields = baseModel.getClass().getDeclaredFields();
+        Class clazz = getClazz(baseModel);
+        Field[] fields = clazz.getDeclaredFields();
         Map<String, Object> map = new HashMap<>(16);
         for (Field field : fields){
             try {
-                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), baseModel.getClass());
+                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
                 Method getMethod = pd.getReadMethod();
                 Object value = getMethod.invoke(baseModel);
                 String column = field.getName();
@@ -376,7 +405,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         }
         // 单独获取主键
         try {
-            PropertyDescriptor pd = new PropertyDescriptor("id", baseModel.getClass());
+            PropertyDescriptor pd = new PropertyDescriptor("id", clazz);
             Method getMethod = pd.getReadMethod();
             Object value = getMethod.invoke(baseModel);
             map.put("id",value);
