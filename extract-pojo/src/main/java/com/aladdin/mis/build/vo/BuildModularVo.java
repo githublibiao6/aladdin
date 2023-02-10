@@ -14,5 +14,5 @@ public class BuildModularVo extends BuildModular {
     /**
      * 对应前端的_config_
      */
-    private ModularConfig config;
+    private ModularConfig _config_;
 }

@@ -1,10 +1,12 @@
 package com.aladdin.mis.build.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.aladdin.mis.build.entity.BuildForm;
 import com.aladdin.mis.build.service.BuildFormService;
 import com.aladdin.mis.build.service.BuildModularService;
 import com.aladdin.mis.build.vo.BuildFormVo;
 import com.aladdin.mis.build.vo.BuildModularVo;
+import com.aladdin.mis.build.vo.ModularConfig;
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.build.BuildFormDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,12 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
     public BuildFormVo getConfigByForm(Integer formId) {
         BuildFormVo vo = (BuildFormVo) detailQueryVo(formId, BuildFormVo.class);
         List<BuildModularVo> fields = buildModularService.listByFormId(formId);
+        if(fields != null){
+            fields.forEach(t->{
+                ModularConfig config = BeanUtil.copyProperties(t, ModularConfig.class);
+                t.set_config_(config);
+            });
+        }
         vo.setFields(fields);
         return vo;
     }
