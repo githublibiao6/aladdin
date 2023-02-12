@@ -31,12 +31,21 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
     @Override
     public Integer saveConfig(BuildFormVo buildFormVo) {
         List<BuildModularVo> list = buildFormVo.getFields();
-        int formId = insert(buildFormVo);
+        Integer formId = buildFormVo.getId();
+        if(formId == null){
+            formId = insert(buildFormVo);
+        }else {
+            updateSelective(buildFormVo);
+        }
         if(list != null){
-            list.forEach(t->{
-                t.setFormId(formId);
-                buildModularService.insert(t);
-            });
+            for (BuildModularVo t : list){
+                if(t.getId() == null){
+                    t.setFormId(formId);
+                    buildModularService.insert(t);
+                }else {
+                    buildModularService.updateSelective(t);
+                }
+            }
         }
         return formId;
     }

@@ -81,6 +81,13 @@ public interface GlobalService<T> {
     boolean updateSelective(BaseModel model);
 
     /**
+     * 通用更新实体
+     * @param model 实体
+     * @return model
+     */
+    <T> T saveOrUpdate(BaseModel model);
+
+    /**
      * 通用删除
      * @param primaryKey) 实体
      * @return model

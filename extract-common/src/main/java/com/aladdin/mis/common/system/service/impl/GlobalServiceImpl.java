@@ -343,8 +343,8 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             return id;
         }catch (Exception e){
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     @Override
@@ -371,6 +371,16 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         });
         int count = Db.use().update(tableName, "id", list);
         return count > 0;
+    }
+
+    @Override
+    public  <T> T  saveOrUpdate(BaseModel model) {
+        if(model.getPrimaryKey() == null){
+            return insertSelective(model);
+        }else {
+            updateSelective(model);
+            return detailQuery(model.getPrimaryKey());
+        }
     }
 
     private Class getClazz (BaseModel baseModel){
