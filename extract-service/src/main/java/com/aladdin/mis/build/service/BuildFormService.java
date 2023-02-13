@@ -23,4 +23,11 @@ public interface BuildFormService extends GlobalService<BuildForm>  {
      * @return
      */
     BuildFormVo getConfigByForm(Integer formId);
+
+    /**
+     * 复制配置中心
+     * @param buildFormVo
+     * @return
+     */
+    BuildFormVo copyConfigByForm(BuildFormVo buildFormVo);
 }

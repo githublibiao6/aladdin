@@ -63,5 +63,22 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
         vo.setFields(fields);
         return vo;
     }
+
+    @Override
+    public BuildFormVo copyConfigByForm(BuildFormVo buildFormVo) {
+        Integer formId = buildFormVo.getId();
+        BuildFormVo vo = (BuildFormVo) detailQueryVo(formId, BuildFormVo.class);
+        BeanUtil.copyProperties(buildFormVo, vo);
+        vo.setId(null);
+        List<BuildModularVo> fields = buildModularService.listByFormId(formId);
+        if(fields != null){
+            fields.forEach(t->{
+                t.setId(null);
+            });
+        }
+        vo.setFields(fields);
+        int form = saveConfig(vo);
+        return getConfigByForm(form);
+    }
 }
 
