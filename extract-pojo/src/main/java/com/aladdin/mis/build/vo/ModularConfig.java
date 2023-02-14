@@ -18,7 +18,7 @@ public class ModularConfig {
     /**
      * showLabel是否显示标签
      */
-    private Integer showLabel;
+    private Boolean showLabel;
 
     /**
      * labelWidth标签宽度（px）
@@ -28,7 +28,7 @@ public class ModularConfig {
     /**
      * changeTag组件类型
      */
-    private Integer changeTag;
+    private Boolean changeTag;
 
     /**
      * tag使changeRenderKey在目标组件改变时可用?

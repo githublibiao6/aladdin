@@ -12,7 +12,7 @@ import lombok.Data;
 public class BuildModularVo extends BuildModular {
 
     /**
-     * 对应前端的_config_
+     * 对应前端的__config__
      */
-    private ModularConfig _config_;
+    private ModularConfig __config__;
 }

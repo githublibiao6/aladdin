@@ -234,11 +234,15 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
             sql.append(" limit ").append(limit);
         }
         List<JSONObject> list = Db.use().findList(sql.toString());
+        List<T> data = new ArrayList<>();
         if(list == null){
             return new ArrayList<>();
         }
-        list.forEach(JSONObjectUtil::getCamelCaseJSONObject);
-        return (List<T>) list;
+        list.forEach(t->{
+            T o = JSONObject.parseObject(t.toJSONString(), (Type) getT());
+            data.add(o);
+        });
+        return data;
     }
 
     @Override

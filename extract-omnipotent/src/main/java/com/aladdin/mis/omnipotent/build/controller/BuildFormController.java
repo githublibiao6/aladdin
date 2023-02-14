@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class BuildFormController  extends GlobalController<BuildForm, BuildFormService> {
 
     /**
-     * 保存配置
+     * 保存表单配置
+     * @param buildFormVo
      * @return
      */
     @RequestMapping("/saveConfig")
@@ -29,6 +30,21 @@ public class BuildFormController  extends GlobalController<BuildForm, BuildFormS
         Integer formId = baseService.saveConfig(buildFormVo);
         if(formId != null){
             BuildFormVo vo = baseService.getConfigByForm(formId);
+            return Result.success(vo);
+        }
+        return Result.error();
+    }
+
+    /**
+     * 复制表单配置
+     * @param buildFormVo
+     * @return
+     */
+    @RequestMapping("/copyConfig")
+    @ResponseBody
+    public Result copyConfigByForm(@RequestBody BuildFormVo buildFormVo) {
+        if(buildFormVo.getId() != null){
+            BuildFormVo vo = baseService.copyConfigByForm(buildFormVo);
             return Result.success(vo);
         }
         return Result.error();

@@ -2,6 +2,7 @@ package com.aladdin.mis.build.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.aladdin.mis.build.entity.BuildForm;
+import com.aladdin.mis.build.entity.BuildModular;
 import com.aladdin.mis.build.service.BuildFormService;
 import com.aladdin.mis.build.service.BuildModularService;
 import com.aladdin.mis.build.vo.BuildFormVo;
@@ -12,6 +13,7 @@ import com.aladdin.mis.dao.build.BuildFormDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +42,10 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
         if(list != null){
             for (BuildModularVo t : list){
                 if(t.getId() == null){
+                    ModularConfig modularConfig = t.get__config__();
+                    if(modularConfig != null){
+                        BeanUtil.copyProperties(modularConfig, t);
+                    }
                     t.setFormId(formId);
                     buildModularService.insert(t);
                 }else {
@@ -53,14 +59,17 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
     @Override
     public BuildFormVo getConfigByForm(Integer formId) {
         BuildFormVo vo = (BuildFormVo) detailQueryVo(formId, BuildFormVo.class);
-        List<BuildModularVo> fields = buildModularService.listByFormId(formId);
+        List<BuildModular> fields = buildModularService.listByFormId(formId);
+        List<BuildModularVo> fieldVos = new ArrayList<>();
         if(fields != null){
             fields.forEach(t->{
+                BuildModularVo buildModularVo = BeanUtil.copyProperties(t, BuildModularVo.class);
                 ModularConfig config = BeanUtil.copyProperties(t, ModularConfig.class);
-                t.set_config_(config);
+                buildModularVo.set__config__(config);
+                fieldVos.add(buildModularVo);
             });
         }
-        vo.setFields(fields);
+        vo.setFields(fieldVos);
         return vo;
     }
 
@@ -70,15 +79,17 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
         BuildFormVo vo = (BuildFormVo) detailQueryVo(formId, BuildFormVo.class);
         BeanUtil.copyProperties(buildFormVo, vo);
         vo.setId(null);
-        List<BuildModularVo> fields = buildModularService.listByFormId(formId);
+        int newFormId = insert(vo);
+        List<BuildModular> fields = buildModularService.listByFormId(formId);
         if(fields != null){
             fields.forEach(t->{
                 t.setId(null);
+                t.setFormId(newFormId);
+//                t.saveInfo();
+                buildModularService.insert(t);
             });
         }
-        vo.setFields(fields);
-        int form = saveConfig(vo);
-        return getConfigByForm(form);
+        return getConfigByForm(newFormId);
     }
 }
 
