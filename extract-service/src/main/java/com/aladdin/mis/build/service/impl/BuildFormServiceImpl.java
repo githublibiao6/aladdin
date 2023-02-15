@@ -47,6 +47,7 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
                         BeanUtil.copyProperties(modularConfig, t);
                     }
                     t.setFormId(formId);
+//                    t.saveInfo();
                     buildModularService.insert(t);
                 }else {
                     buildModularService.updateSelective(t);
@@ -85,7 +86,7 @@ public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implement
             fields.forEach(t->{
                 t.setId(null);
                 t.setFormId(newFormId);
-//                t.saveInfo();
+
                 buildModularService.insert(t);
             });
         }
