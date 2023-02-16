@@ -9,7 +9,7 @@ import com.aladdin.mis.common.system.service.GlobalService;
 import com.aladdin.mis.common.utils.JSONObjectUtil;
 import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.dao.utils.Db;
-import com.aladdin.mis.system.base.BaseModel;
+import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.db.entity.TableFieldInfo;
 import com.aladdin.mis.system.db.entity.TableInfo;
 import com.aladdin.mis.system.user.vo.OmUser;
@@ -36,7 +36,7 @@ import java.util.*;
  */
 @Service
 @Primary
-public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T> {
+public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService<T> {
 
     private static final String CREATE_TIME_FIELD = "sys001";
     private static final String UPDATE_TIME_FIELD = "sys002";
@@ -314,12 +314,12 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public <T> T insertSelective(BaseModel baseModel) {
+    public <T> T insertSelective(GlobalModel baseModel) {
         return  (T)detailQuery(insert(baseModel), getClazz(baseModel));
     }
 
     @Override
-    public Integer insert(BaseModel baseModel) {
+    public Integer insert(GlobalModel baseModel) {
         TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
@@ -352,7 +352,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public  boolean updateSelective(BaseModel baseModel) {
+    public  boolean updateSelective(GlobalModel baseModel) {
         TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
@@ -378,7 +378,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public  <T> T  saveOrUpdate(BaseModel model) {
+    public  <T> T  saveOrUpdate(GlobalModel model) {
         if(model.getPrimaryKey() == null){
             return insertSelective(model);
         }else {
@@ -387,7 +387,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         }
     }
 
-    private Class getClazz (BaseModel baseModel){
+    private Class getClazz (GlobalModel baseModel){
         Class clazz = baseModel.getClass();
         boolean tableAnnExits = clazz.isAnnotationPresent(Table.class);
         if(tableAnnExits){
@@ -402,7 +402,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
         return clazz;
     }
 
-    private List<TableFieldInfo> setTableField(List<TableFieldInfo> list , BaseModel baseModel)  {
+    private List<TableFieldInfo> setTableField(List<TableFieldInfo> list , GlobalModel baseModel)  {
         Class clazz = getClazz(baseModel);
         Field[] fields = clazz.getDeclaredFields();
         Map<String, Object> map = new HashMap<>(16);
@@ -443,7 +443,7 @@ public class  GlobalServiceImpl<T extends BaseModel>  implements GlobalService<T
     }
 
     @Override
-    public boolean delete(BaseModel baseModel) {
+    public boolean delete(GlobalModel baseModel) {
         try{
             TableInfo table = baseModel.deleteInfo();
             return Db.use().deleteById(table.getTableName(), "id",  table.getIdValue()) > 0;

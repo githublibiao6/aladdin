@@ -4,7 +4,7 @@ package com.aladdin.mis.common.system.controller;
 import com.aladdin.mis.base.qo.Condition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.service.GlobalService;
-import com.aladdin.mis.system.base.BaseModel;
+import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @author cles
  */
-public abstract class  GlobalController<T extends BaseModel, M extends GlobalService<T>> {
+public abstract class  GlobalController<T extends GlobalModel, M extends GlobalService<T>> {
 
     @Autowired
     public HttpServletRequest request;

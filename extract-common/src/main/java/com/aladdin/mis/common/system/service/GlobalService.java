@@ -1,7 +1,7 @@
 package com.aladdin.mis.common.system.service;
 
 import com.aladdin.mis.base.qo.Condition;
-import com.aladdin.mis.system.base.BaseModel;
+import com.aladdin.mis.system.base.GlobalModel;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -63,14 +63,14 @@ public interface GlobalService<T> {
      * @param baseModel model
      * @return int
      */
-    Integer insert(BaseModel baseModel);
+    Integer insert(GlobalModel baseModel);
 
     /**
      * 插入实体。返回当前实体
      * @param model 实体
      * @return model
      */
-    <T> T insertSelective(BaseModel model);
+    <T> T insertSelective(GlobalModel model);
 
 
     /**
@@ -78,14 +78,14 @@ public interface GlobalService<T> {
      * @param model 实体
      * @return model
      */
-    boolean updateSelective(BaseModel model);
+    boolean updateSelective(GlobalModel model);
 
     /**
      * 通用更新实体
      * @param model 实体
      * @return model
      */
-    <T> T saveOrUpdate(BaseModel model);
+    <T> T saveOrUpdate(GlobalModel model);
 
     /**
      * 通用删除
@@ -99,6 +99,6 @@ public interface GlobalService<T> {
      * @param model) 实体
      * @return
      */
-    boolean delete(BaseModel model);
+    boolean delete(GlobalModel model);
 
 }
