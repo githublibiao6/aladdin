@@ -1,7 +1,7 @@
 package com.aladdin.mis.engineering.service.impl;
 
 import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.common.utils.UserUtil;
+import com.aladdin.mis.utils.UserUtil;
 import com.aladdin.mis.dao.engineering.ProjectPlanDao;
 import com.aladdin.mis.engineering.entity.ProjectPlan;
 import com.aladdin.mis.engineering.entity.ProjectPlanLog;

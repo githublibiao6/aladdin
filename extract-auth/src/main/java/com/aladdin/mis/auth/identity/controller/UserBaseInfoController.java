@@ -1,6 +1,6 @@
 package com.aladdin.mis.auth.identity.controller;
 
-import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
 import com.aladdin.mis.manager.service.UserBaseInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

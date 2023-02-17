@@ -26,6 +26,13 @@
   </properties>
 
   <dependencies>
+
+<!--    <dependency>-->
+<!--      <groupId>com.aladdin.mis</groupId>-->
+<!--      <artifactId>extract-dao</artifactId>-->
+<!--      <version>${project.version}</version>-->
+<!--    </dependency>-->
+
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-spring-boot-starter</artifactId>
@@ -36,12 +43,6 @@
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper-spring-boot-starter</artifactId>
       <version>1.2.3</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.aladdin.mis</groupId>
-      <artifactId>extract-dao</artifactId>
-      <version>${project.version}</version>
     </dependency>
 
     <!-- aop

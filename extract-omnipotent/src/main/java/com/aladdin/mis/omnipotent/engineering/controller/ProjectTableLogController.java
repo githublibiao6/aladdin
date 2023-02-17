@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.engineering.entity.ProjectTableLog;
 import com.aladdin.mis.engineering.service.ProjectTableLogService;
 import org.springframework.stereotype.Controller;

@@ -2,7 +2,7 @@ package com.aladdin.mis.omnipotent.build.controller;
 
 import com.aladdin.mis.build.entity.BuildGroup;
 import com.aladdin.mis.build.service.BuildGroupService;
-import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.system.controller.GlobalController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

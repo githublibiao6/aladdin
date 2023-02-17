@@ -4,7 +4,7 @@ package com.aladdin.mis.dao.db.factory.impl;
  */
 
 import com.aladdin.mis.dao.db.factory.BaseSqlMaker;
-import com.aladdin.mis.system.db.entity.TableFieldInfo;
+import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
 
 import java.text.SimpleDateFormat;

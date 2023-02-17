@@ -1,8 +1,8 @@
 package com.aladdin.mis.common.aladdin.utils;
 
+import com.aladdin.mis.common.db.bean.TableFieldInfo;
+import com.aladdin.mis.common.db.bean.TableInfo;
 import com.aladdin.mis.common.utils.CommonFileUtil;
-import com.aladdin.mis.system.db.entity.TableFieldInfo;
-import com.aladdin.mis.system.db.entity.TableInfo;
 
 import java.util.Arrays;
 import java.util.HashSet;

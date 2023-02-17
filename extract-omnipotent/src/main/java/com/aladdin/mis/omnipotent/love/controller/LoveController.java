@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.love.controller;
 
-import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;

@@ -5,7 +5,7 @@ import com.aladdin.mis.common.currency.GlobalConfig;
 import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisConfig;
 import com.aladdin.mis.common.redis.config.JedisUtil;
-import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.dto.UserDto;

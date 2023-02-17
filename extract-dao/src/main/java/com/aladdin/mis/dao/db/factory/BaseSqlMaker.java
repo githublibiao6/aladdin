@@ -3,7 +3,7 @@ package com.aladdin.mis.dao.db.factory;
   Created by cles on 2020/5/31 21:41
  */
 
-import com.aladdin.mis.system.db.entity.TableFieldInfo;
+import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;

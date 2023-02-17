@@ -5,7 +5,7 @@ package com.aladdin.mis.dao.utils;
 
 import com.aladdin.mis.dao.db.factory.DbMaker;
 import com.aladdin.mis.dao.system.SqlLogDao;
-import com.aladdin.mis.system.db.entity.TableFieldInfo;
+import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.aladdin.mis.system.entity.SqlLog;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSONObject;

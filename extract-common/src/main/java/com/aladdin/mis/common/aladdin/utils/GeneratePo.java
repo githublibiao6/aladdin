@@ -1,8 +1,6 @@
 package com.aladdin.mis.common.aladdin.utils;
 
-
-
-import com.aladdin.mis.system.db.entity.TableInfo;
+import com.aladdin.mis.common.db.bean.TableInfo;
 import lombok.Data;
 
 /**

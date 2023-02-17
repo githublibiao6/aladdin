@@ -4,8 +4,8 @@ package com.aladdin.mis.system.base;
  */
 
 import com.aladdin.mis.annotation.entity.TableField;
-import com.aladdin.mis.system.db.entity.TableFieldInfo;
-import com.aladdin.mis.system.db.entity.TableInfo;
+import com.aladdin.mis.common.db.bean.TableFieldInfo;
+import com.aladdin.mis.common.db.bean.TableInfo;
 import com.aladdin.mis.util.BaseModelUtil;
 import org.springframework.util.StringUtils;
 //import org.apache.commons.lang.StringUtils;

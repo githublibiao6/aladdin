@@ -1,7 +1,7 @@
 package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.common.system.controller.GlobalController;
+import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;

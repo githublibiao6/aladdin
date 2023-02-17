@@ -3,7 +3,7 @@ package com.aladdin.mis.annotation.entity;
  * Created by cles on 2020/5/31 15:10
  */
 
-import com.aladdin.mis.system.db.entity.TableInfo;
+import com.aladdin.mis.common.db.bean.TableInfo;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
