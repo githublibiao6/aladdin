@@ -1,6 +1,6 @@
 package com.aladdin.mis.engineering.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectFile;
 import com.aladdin.mis.engineering.qo.ProjectFileQo;
 import com.aladdin.mis.engineering.vo.ProjectFileVo;

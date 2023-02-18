@@ -1,7 +1,7 @@
 package com.aladdin.mis.build.service;
 
 import com.aladdin.mis.build.entity.BuildModular;
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 
 import java.util.List;
 

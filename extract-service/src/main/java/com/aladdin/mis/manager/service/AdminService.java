@@ -1,6 +1,6 @@
 package com.aladdin.mis.manager.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.vo.DeptAdminVo;

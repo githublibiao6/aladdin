@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.love.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 

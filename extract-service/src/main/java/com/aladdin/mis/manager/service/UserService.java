@@ -1,7 +1,7 @@
 package com.aladdin.mis.manager.service;
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.github.pagehelper.PageInfo;

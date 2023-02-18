@@ -116,7 +116,7 @@ public  class GenerateUtils {
         po.setTablePath("import com.aladdin.mis.annotation.entity.Table;");
         po.setTableFieldPath("import com.aladdin.mis.annotation.entity.TableField;");
         po.setBaseModelPath("import com.aladdin.mis.system.base.GlobalModel;");
-        po.setBaseServicePath("import com.aladdin.mis.common.system.service.GlobalService;");
+        po.setBaseServicePath("import com.aladdin.mis.base.service.GlobalService;");
         po.setBaseServiceImplPath("import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;");
         po.setBaseControllerPath("import com.aladdin.mis.system.controller.GlobalController;");
         po.setWebLogPath("import com.aladdin.mis.common.annotation.WebLog;");

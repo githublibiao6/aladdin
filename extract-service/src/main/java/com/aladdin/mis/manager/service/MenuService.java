@@ -1,7 +1,7 @@
 package com.aladdin.mis.manager.service;
 
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;

@@ -1,12 +1,11 @@
 package com.aladdin.mis.manager.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;
 import java.util.Map;
-
 
 /**
  * 字典 Service

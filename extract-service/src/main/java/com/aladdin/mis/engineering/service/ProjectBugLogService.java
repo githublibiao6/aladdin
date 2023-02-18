@@ -1,6 +1,6 @@
 package com.aladdin.mis.engineering.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.engineering.entity.ProjectBugLog;
 import org.springframework.stereotype.Service;
 

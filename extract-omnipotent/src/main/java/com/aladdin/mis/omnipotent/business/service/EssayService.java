@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.business.service;
 
 import com.aladdin.mis.blog.entity.Essay;
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;

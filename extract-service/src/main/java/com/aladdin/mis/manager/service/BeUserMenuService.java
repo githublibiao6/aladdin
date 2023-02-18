@@ -1,6 +1,6 @@
 package com.aladdin.mis.manager.service;
 
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;

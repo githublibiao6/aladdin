@@ -2,7 +2,7 @@ package com.aladdin.mis.build.service;
 
 import com.aladdin.mis.build.entity.BuildForm;
 import com.aladdin.mis.build.vo.BuildFormVo;
-import com.aladdin.mis.common.system.service.GlobalService;
+import com.aladdin.mis.base.service.GlobalService;
 /**
  * BuildFormService
  * @author cles
