@@ -1,11 +1,10 @@
 package com.aladdin.mis.auth.identity.controller;
 
-import com.aladdin.mis.base.qo.Condition;
+import com.aladdin.mis.common.base.qo.Condition;
 import com.aladdin.mis.common.currency.GlobalConfig;
 import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisConfig;
 import com.aladdin.mis.common.redis.config.JedisUtil;
-import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.dto.UserDto;
@@ -14,6 +13,7 @@ import com.aladdin.mis.manager.service.BeUserMenuService;
 import com.aladdin.mis.manager.service.RoleService;
 import com.aladdin.mis.manager.service.UserService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;

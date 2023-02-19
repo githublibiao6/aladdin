@@ -1,9 +1,9 @@
 package com.aladdin.mis.build.service.impl;
 
-import com.aladdin.mis.base.qo.Condition;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.build.entity.BuildModular;
 import com.aladdin.mis.build.service.BuildModularService;
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.common.base.qo.Condition;
 import com.aladdin.mis.dao.build.BuildModularDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

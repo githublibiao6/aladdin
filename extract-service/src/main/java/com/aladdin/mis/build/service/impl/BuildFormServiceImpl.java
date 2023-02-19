@@ -1,6 +1,7 @@
 package com.aladdin.mis.build.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.build.entity.BuildForm;
 import com.aladdin.mis.build.entity.BuildModular;
 import com.aladdin.mis.build.service.BuildFormService;
@@ -8,7 +9,6 @@ import com.aladdin.mis.build.service.BuildModularService;
 import com.aladdin.mis.build.vo.BuildFormVo;
 import com.aladdin.mis.build.vo.BuildModularVo;
 import com.aladdin.mis.build.vo.ModularConfig;
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.build.BuildFormDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

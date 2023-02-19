@@ -1,6 +1,6 @@
 package com.aladdin.mis.engineering.service.impl;
 
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.engineering.ProjectTableLogDao;
 import com.aladdin.mis.engineering.entity.ProjectTableLog;
 import com.aladdin.mis.engineering.service.ProjectTableLogService;

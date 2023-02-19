@@ -1,6 +1,6 @@
 package com.aladdin.mis.system.service.impl;
 
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.utils.UserUtil;
 import com.aladdin.mis.dao.system.BeLoginLogDao;
 import com.aladdin.mis.system.entity.BeLoginLog;

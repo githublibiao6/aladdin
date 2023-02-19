@@ -1,6 +1,6 @@
 package com.aladdin.mis.manager.service.impl;
 
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminRoleDao;
 import com.aladdin.mis.manager.bean.AdminRole;
 import com.aladdin.mis.manager.service.AdminRoleService;

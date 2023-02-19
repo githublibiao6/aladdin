@@ -5,7 +5,7 @@ import com.aladdin.mis.dao.love.DateLogMapper;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

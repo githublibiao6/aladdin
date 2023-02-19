@@ -1,6 +1,6 @@
 package com.aladdin.mis.system.service.impl;
 
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.system.service.SysWebLogService;
 import com.aladdin.mis.system.entity.SysWebLog;
 import com.aladdin.mis.system.vo.SysWebLogVo;

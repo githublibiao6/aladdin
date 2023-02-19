@@ -3,7 +3,7 @@ package com.aladdin.mis.manager.service.impl;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.Digester;
 import com.aladdin.mis.common.currency.DefaultTools;
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.qo.AdminQo;

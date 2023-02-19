@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.service.impl;
 
-import com.aladdin.mis.common.system.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.shiro.BeAuthUrlDao;
 import com.aladdin.mis.shiro.entity.BeAuthUrl;
 import com.aladdin.mis.shiro.qo.BeAuthUrlQo;
