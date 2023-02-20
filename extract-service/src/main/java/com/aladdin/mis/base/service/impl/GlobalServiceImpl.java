@@ -9,7 +9,7 @@ import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.aladdin.mis.common.db.bean.TableInfo;
 import com.aladdin.mis.common.utils.JSONObjectUtil;
 import com.aladdin.mis.dao.db.config.MainDb;
-import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.exception.MyException;
 import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;

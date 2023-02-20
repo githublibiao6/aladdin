@@ -1,4 +1,4 @@
-package com.aladdin.mis.dao.utils;
+package com.aladdin.mis.common.db.config;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

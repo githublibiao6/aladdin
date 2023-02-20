@@ -1,9 +1,9 @@
-package com.aladdin.mis.dao.core.impl;
+package com.aladdin.mis.common.db.core.impl;
 /**
  * Created by cles on 2020/6/4 23:14
  */
 
-import com.aladdin.mis.dao.core.DbTableInfo;
+import com.aladdin.mis.common.db.core.DbTableInfo;
 
 import java.util.List;
 import java.util.Map;

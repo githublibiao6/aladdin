@@ -1,4 +1,4 @@
-package com.aladdin.mis.dao.db.factory;
+package com.aladdin.mis.common.db.factory;
 /*
   Created by cles on 2020/5/31 21:41
  */

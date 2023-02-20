@@ -1,11 +1,11 @@
-package com.aladdin.mis.dao.db.factory;
+package com.aladdin.mis.common.db.factory;
 /**
  * Created by cles on 2020/5/31 21:52
  */
 
-import com.aladdin.mis.dao.db.factory.impl.MysqlFactory;
-import com.aladdin.mis.dao.db.factory.impl.OracleFactory;
-import com.aladdin.mis.dao.core.DbTableInfo;
+import com.aladdin.mis.common.db.core.DbTableInfo;
+import com.aladdin.mis.common.db.factory.impl.MysqlFactory;
+import com.aladdin.mis.common.db.factory.impl.OracleFactory;
 
 /**
  * @description: 数据库的制造机

@@ -1,9 +1,9 @@
-package com.aladdin.mis.dao.db.factory;
+package com.aladdin.mis.common.db.factory;
 /**
  * Created by cles on 2020/5/31 20:54
  */
 
-import com.aladdin.mis.dao.core.DbTableInfo;
+import com.aladdin.mis.common.db.core.DbTableInfo;
 
 /**
  * @description: 数据库工厂

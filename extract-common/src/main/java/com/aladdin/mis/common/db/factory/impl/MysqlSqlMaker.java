@@ -1,9 +1,9 @@
-package com.aladdin.mis.dao.db.factory.impl;
+package com.aladdin.mis.common.db.factory.impl;
 /*
  * Created by cles on 2020/5/31 21:42
  */
 
-import com.aladdin.mis.dao.db.factory.BaseSqlMaker;
+import com.aladdin.mis.common.db.factory.BaseSqlMaker;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.alibaba.fastjson.JSONObject;
 

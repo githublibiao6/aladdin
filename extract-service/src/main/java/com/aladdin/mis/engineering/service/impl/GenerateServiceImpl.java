@@ -1,7 +1,7 @@
 package com.aladdin.mis.engineering.service.impl;
 
 import com.aladdin.mis.dao.engineering.GenerateDao;
-import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.engineering.qo.GenerateQo;
 import com.aladdin.mis.engineering.service.GenerateService;
 import com.aladdin.mis.engineering.vo.GenerateVo;

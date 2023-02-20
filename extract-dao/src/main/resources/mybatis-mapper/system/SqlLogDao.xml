@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.dao.system.SqlLogDao">
+<mapper namespace="com.aladdin.mis.common.db.dao.SqlLogDao">
 
     <insert id="save" >
         insert into sql_log (

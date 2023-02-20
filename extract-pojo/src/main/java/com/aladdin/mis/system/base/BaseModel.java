@@ -6,9 +6,9 @@ package com.aladdin.mis.system.base;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.aladdin.mis.common.db.bean.TableInfo;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.util.BaseModelUtil;
 import org.springframework.util.StringUtils;
-//import org.apache.commons.lang.StringUtils;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+
+//import org.apache.commons.lang.StringUtils;
 
 /**
  * @description: 尝试
@@ -120,9 +122,8 @@ public abstract class BaseModel implements Serializable {
         /*
          * 根据类获取注解信息
          */
-//        int delete = Db.use().deleteById(tableName, getPrimaryKey(tableName), id);
-//        return delete > 0;
-        return false;
+        int delete = Db.use().deleteById(tableName, getPrimaryKey(tableName), Integer.parseInt(id));
+        return delete > 0;
     }
 
     /**

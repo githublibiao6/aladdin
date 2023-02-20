@@ -1,4 +1,4 @@
-package com.aladdin.mis.dao.system;
+package com.aladdin.mis.common.db.dao;
 
 import com.aladdin.mis.system.qo.BeLoginLogQo;
 import com.aladdin.mis.system.vo.BeLoginLogVo;

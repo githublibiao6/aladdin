@@ -2,8 +2,8 @@ package com.aladdin.mis.system.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.system.entity.SysWebLog;
-import com.aladdin.mis.system.qo.SysWebLogQo;
-import com.aladdin.mis.system.vo.SysWebLogVo;
+import com.aladdin.mis.common.db.qo.SysWebLogQo;
+import com.aladdin.mis.common.db.vo.SysWebLogVo;
 import com.github.pagehelper.PageInfo;
 
 /**

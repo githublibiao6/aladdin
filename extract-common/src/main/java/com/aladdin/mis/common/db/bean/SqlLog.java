@@ -1,4 +1,4 @@
-package com.aladdin.mis.system.entity;
+package com.aladdin.mis.common.db.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

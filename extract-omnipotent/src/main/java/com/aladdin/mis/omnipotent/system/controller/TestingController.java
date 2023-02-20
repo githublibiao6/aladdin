@@ -4,7 +4,7 @@ import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.db.config.DbConfig;
-import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.service.AdminService;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;

@@ -2,7 +2,7 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.qo.DictionaryQo;
 import com.aladdin.mis.manager.service.DictionaryService;

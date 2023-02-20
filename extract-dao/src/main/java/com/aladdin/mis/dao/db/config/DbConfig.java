@@ -3,7 +3,7 @@ package com.aladdin.mis.dao.db.config;
  * Created by cles on 2020/5/6 23:24
  */
 
-import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.system.db.entity.DataSource;
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;

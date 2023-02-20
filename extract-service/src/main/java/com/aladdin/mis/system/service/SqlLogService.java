@@ -1,6 +1,6 @@
 package com.aladdin.mis.system.service;
 
-import com.aladdin.mis.system.entity.SqlLog;
+import com.aladdin.mis.common.db.bean.SqlLog;
 
 /**
  * SqlLogService

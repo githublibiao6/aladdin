@@ -5,9 +5,9 @@ package com.aladdin.mis.dao.db.config;
 
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
-import com.aladdin.mis.dao.core.DbTableInfo;
-import com.aladdin.mis.dao.db.factory.DbMaker;
-import com.aladdin.mis.dao.utils.Db;
+import com.aladdin.mis.common.db.core.DbTableInfo;
+import com.aladdin.mis.common.db.factory.DbMaker;
+import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.aladdin.mis.common.db.bean.TableInfo;
 import com.alibaba.druid.pool.DruidDataSource;

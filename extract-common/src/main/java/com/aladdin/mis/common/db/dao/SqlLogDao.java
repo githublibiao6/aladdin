@@ -1,6 +1,6 @@
-package com.aladdin.mis.dao.system;
+package com.aladdin.mis.common.db.dao;
 
-import com.aladdin.mis.system.entity.SqlLog;
+import com.aladdin.mis.common.db.bean.SqlLog;
 import org.springframework.stereotype.Repository;
 
 /**

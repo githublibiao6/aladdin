@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.dao.system.SysWebLogDao">
+<mapper namespace="com.aladdin.mis.common.db.dao.SysWebLogDao">
 
     <sql id="baseColumn">
         id,
@@ -44,7 +44,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-    <select id="paginate" resultType="com.aladdin.mis.system.vo.SysWebLogVo">
+    <select id="paginate" resultType="com.aladdin.mis.common.db.vo.SysWebLogVo">
         select <include refid="baseColumn"></include>
         from sys_web_log t where 1=1
         <if test="id  != null and id != '' ">

@@ -1,4 +1,4 @@
-package com.aladdin.mis.dao.utils;
+package com.aladdin.mis.common.db.config;
 /**
  * Created by cles on 2020/5/10 22:44
  */

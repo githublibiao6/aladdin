@@ -1,17 +1,16 @@
-package com.aladdin.mis.dao.utils;
+package com.aladdin.mis.common.db.config;
 /**
  * Created by cles on 2020/5/10 22:53
  */
 
-import com.aladdin.mis.dao.db.factory.DbMaker;
-import com.aladdin.mis.dao.system.SqlLogDao;
+import com.aladdin.mis.common.db.bean.SqlLog;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
-import com.aladdin.mis.system.entity.SqlLog;
+import com.aladdin.mis.common.db.dao.SqlLogDao;
+import com.aladdin.mis.common.db.factory.DbMaker;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-//import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -20,6 +19,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+//import org.apache.commons.lang.StringUtils;
 
 /**
  * @description: 数据库操作实体
