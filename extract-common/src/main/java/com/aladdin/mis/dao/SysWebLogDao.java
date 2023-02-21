@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.db.dao;
+package com.aladdin.mis.dao;
 
 import com.aladdin.mis.common.db.qo.SysWebLogQo;
 import com.aladdin.mis.common.db.vo.SysWebLogVo;

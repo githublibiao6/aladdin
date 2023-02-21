@@ -5,7 +5,7 @@ import com.aladdin.mis.system.service.SysWebLogService;
 import com.aladdin.mis.system.entity.SysWebLog;
 import com.aladdin.mis.common.db.vo.SysWebLogVo;
 import com.aladdin.mis.common.db.qo.SysWebLogQo;
-import com.aladdin.mis.common.db.dao.SysWebLogDao;
+import com.aladdin.mis.dao.SysWebLogDao;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

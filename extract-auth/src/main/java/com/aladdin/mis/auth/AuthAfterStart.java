@@ -1,7 +1,7 @@
 package com.aladdin.mis.auth;
 
 import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
-import com.aladdin.mis.common.db.dao.SqlLogDao;
+import com.aladdin.mis.dao.SqlLogDao;
 import com.aladdin.mis.common.db.config.DbPro;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.manager.bean.Role;

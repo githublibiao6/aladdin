@@ -3,7 +3,7 @@ package com.aladdin.mis.common.db.config;
  * Created by cles on 2020/5/10 23:22
  */
 
-import com.aladdin.mis.system.bean.Record;
+import com.aladdin.mis.common.system.entity.Record;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.fastjson.JSONObject;

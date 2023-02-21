@@ -1,6 +1,6 @@
 package com.aladdin.mis.system.service.impl;
 
-import com.aladdin.mis.common.db.dao.SqlLogDao;
+import com.aladdin.mis.dao.SqlLogDao;
 import com.aladdin.mis.common.db.bean.SqlLog;
 import com.aladdin.mis.system.service.SqlLogService;
 import org.springframework.beans.factory.annotation.Autowired;

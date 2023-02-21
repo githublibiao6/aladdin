@@ -1,7 +1,6 @@
 package com.aladdin.mis.dao;
 
 import com.aladdin.mis.dao.db.config.MainDb;
-import com.aladdin.mis.common.db.dao.SqlLogDao;
 import com.aladdin.mis.common.db.config.DbPro;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

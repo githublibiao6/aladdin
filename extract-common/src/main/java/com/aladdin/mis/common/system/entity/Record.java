@@ -1,4 +1,4 @@
-package com.aladdin.mis.system.bean;
+package com.aladdin.mis.common.system.entity;
 /**
  * Created by cles on 2020/5/10 23:24
  */
