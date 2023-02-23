@@ -1,8 +1,10 @@
 package com.aladdin.mis.auth.generate;
 
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
+import com.aladdin.mis.common.db.bean.TableInfo;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.vo.CreateTableVo;
+import com.aladdin.mis.dao.db.config.MainDb;
 import com.aladdin.mis.engineering.qo.GenerateQo;
 import com.aladdin.mis.engineering.service.GenerateService;
 import com.aladdin.mis.engineering.vo.GenerateVo;
@@ -47,7 +49,8 @@ public class GenerateController  {
     public Result create(@RequestBody CreateTableVo vo) {
         Result result = new Result();
         try{
-            GenerateUtils.create(vo.getTableName(), vo.getModule(), vo.getPath());
+            TableInfo info = MainDb.initTableInfo(vo.getTableName());
+            GenerateUtils.create(info, vo.getModule(), vo.getPath());
         }catch (Exception e){
             e.printStackTrace();
             result.setMessage("生成失败");

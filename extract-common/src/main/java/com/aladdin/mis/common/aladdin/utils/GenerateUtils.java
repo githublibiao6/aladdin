@@ -1,5 +1,6 @@
 package com.aladdin.mis.common.aladdin.utils;
 
+import com.aladdin.mis.common.db.bean.TableInfo;
 import com.aladdin.mis.common.string.utils.StringUtil;
 import org.springframework.util.ResourceUtils;
 
@@ -14,15 +15,15 @@ public  class GenerateUtils {
 
     /**
      * 生成简单的类
-     * @param tableName
+     * @param tableInfo
      * @param module
      */
-    public static void create(String tableName, String module, String pathName) {
+    public static void create(TableInfo tableInfo, String module, String pathName) {
         GeneratePo po = initGeneratePo();
         po.setOverWrite(false);
         po.setModule(module);
 //        todo
-//        po.setTableInfo(MainDb.initTableInfo(tableName));
+        po.setTableInfo(tableInfo);
 
         String className = StringUtil.toCamelCase(po.getTableInfo().getTableName());
         po.setEntityName(className);
