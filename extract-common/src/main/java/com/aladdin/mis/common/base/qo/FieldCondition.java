@@ -47,5 +47,4 @@ public class FieldCondition {
         return new FieldCondition();
     }
 
-
 }

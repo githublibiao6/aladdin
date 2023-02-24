@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.controller;
+package com.aladdin.mis.auth.shiro.controller;
 /*
  *  Created by cles on 2022/4/18 20:12
  */
