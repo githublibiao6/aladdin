@@ -73,6 +73,8 @@ public abstract class BaseModel implements Serializable {
 
         list.remove(0);
         info.setFields(list);
+        String tableName = getTableName();
+        Db.use().save(tableName, getPrimaryKey(tableName), list);
         return info;
     }
 
@@ -146,6 +148,8 @@ public abstract class BaseModel implements Serializable {
         }
         info.setIdValue(primaryKey);
         info.setFields(list);
+        String tableName = getTableName();
+        Db.use().update(tableName, getPrimaryKey(tableName), list);
         return info;
     }
 
