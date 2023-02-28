@@ -2,8 +2,8 @@ package com.aladdin.mis.system.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.system.entity.BeLoginLog;
-import com.aladdin.mis.common.system.qo.BeLoginLogQo;
-import com.aladdin.mis.common.system.vo.BeLoginLogVo;
+import com.aladdin.mis.system.qo.BeLoginLogQo;
+import com.aladdin.mis.system.vo.BeLoginLogVo;
 import com.github.pagehelper.PageInfo;
 
 /**

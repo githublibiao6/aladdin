@@ -21,7 +21,7 @@ import java.util.List;
 public class HelloSpringboot {
 
     @Autowired
-    MenuServiceImpl service;
+    private MenuServiceImpl service;
 
     /**
      * @Author cles

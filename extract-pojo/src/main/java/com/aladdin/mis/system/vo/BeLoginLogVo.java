@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.system.vo;
+package com.aladdin.mis.system.vo;
 
 import lombok.Data;
 
@@ -9,6 +9,5 @@ import lombok.Data;
 */
 @Data
 public class BeLoginLogVo  {
-    // todo extends BeLoginLog
 
 }
