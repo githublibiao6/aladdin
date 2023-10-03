@@ -39,7 +39,19 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
      */
     @Override
     public List<Menu> list(MenuQo qo) {
-        return dao.list(qo);
+        List<Menu> list = dao.list(qo);
+        if(!list.isEmpty()){
+            list.forEach(t->{
+                t.setHasChildren(false);
+                for (Menu m : list) {
+                    if (t.getId().equals(m.getParent())) {
+                        t.setHasChildren(true);
+                        return;
+                    }
+                }
+            });
+        }
+        return list;
     }
 
     @Override
