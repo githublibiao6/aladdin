@@ -4,12 +4,12 @@
 <mapper namespace="com.aladdin.mis.dao.manager.EmployeeDao">
 
     <!-- 获取所有的员工信息 -->
-    <select id="listEmployee" resultType="com.aladdin.mis.manager.bean.Dept">
+    <select id="listEmployee" resultType="com.aladdin.mis.chat.manager.bean.Dept">
         select * from employee
     </select>
 
     <!-- 根据id获取员工信息 -->
-    <select id="getEmployee" resultType="com.aladdin.mis.manager.bean.Dept">
+    <select id="getEmployee" resultType="com.aladdin.mis.chat.manager.bean.Dept">
         select * from employee where id = #{id}
     </select>
 </mapper>

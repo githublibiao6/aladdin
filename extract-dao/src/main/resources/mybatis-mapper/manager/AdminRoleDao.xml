@@ -4,7 +4,7 @@
 <mapper namespace="com.aladdin.mis.dao.manager.AdminRoleDao">
 
     <!-- 根据id获取部门详细信息 -->
-    <select id="getRoleByAdmin" resultType="com.aladdin.mis.manager.bean.AdminRole">
+    <select id="getRoleByAdmin" resultType="com.aladdin.mis.chat.manager.bean.AdminRole">
         select * from be_admin_role where admin_id = #{adminId} and sys005=1
     </select>
 

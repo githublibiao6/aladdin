@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.chat.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -39,7 +39,7 @@ public interface MenuDao {
      *  < >
      * @Description: list
      * @Author: cles
-     * @param qo
+     * @param qo 条件
      * @Date: 2020/8/26 23:31
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0

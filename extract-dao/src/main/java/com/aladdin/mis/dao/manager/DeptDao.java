@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.manager.bean.Dept;
-import com.aladdin.mis.manager.vo.DeptVo;
+import com.aladdin.mis.chat.manager.bean.Dept;
+import com.aladdin.mis.chat.manager.vo.DeptVo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -22,4 +22,8 @@ public class FilePictureServiceImpl implements FilePictureService {
         //上传文件工具
         return FileUtil.saveBase64File(request, base64, "1");
     }
+
+    public static void main(String[] args) {
+
+    }
 }

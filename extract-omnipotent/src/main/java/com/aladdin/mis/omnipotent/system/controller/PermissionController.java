@@ -1,8 +1,8 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.manager.bean.Menu;
-import com.aladdin.mis.manager.service.impl.MenuServiceImpl;
+import com.aladdin.mis.chat.manager.bean.Menu;
+import com.aladdin.mis.chat.service.impl.MenuServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

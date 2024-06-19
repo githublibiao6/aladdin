@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.UserBaseInfoDao">
 
-    <select id="listUser" resultType="com.aladdin.mis.manager.bean.UserBaseInfo">
+    <select id="listUser" resultType="com.aladdin.mis.chat.manager.bean.UserBaseInfo">
         select * from user_base_info m where m.sys005='1'
 
         <if test="keyWord != null and keyWord != '' ">
@@ -15,7 +15,7 @@
         </if>
     </select>
 
-    <select id="getUserInfoByUserId " resultType="com.aladdin.mis.manager.bean.UserBaseInfo">
+    <select id="getUserInfoByUserId " resultType="com.aladdin.mis.chat.manager.bean.UserBaseInfo">
         select * from user_base_info m where m.sys005='1'
 
         and m.user_id = #{userId}

@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.manager.bean.Dictionary;
-import com.aladdin.mis.manager.vo.DictVo;
+import com.aladdin.mis.chat.manager.bean.Dictionary;
+import com.aladdin.mis.chat.manager.vo.DictVo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,6 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.manager.bean.Img;
+import com.aladdin.mis.chat.manager.bean.Img;
 import org.springframework.stereotype.Repository;
 
 /**

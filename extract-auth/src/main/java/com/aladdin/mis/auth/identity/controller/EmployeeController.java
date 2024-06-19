@@ -1,8 +1,8 @@
 package com.aladdin.mis.auth.identity.controller;
 
 import com.aladdin.mis.system.controller.GlobalController;
-import com.aladdin.mis.manager.bean.Employee;
-import com.aladdin.mis.manager.service.EmployeeService;
+import com.aladdin.mis.chat.manager.bean.Employee;
+import com.aladdin.mis.chat.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import com.ieslab.misp.excel.util.ExcelUtil;

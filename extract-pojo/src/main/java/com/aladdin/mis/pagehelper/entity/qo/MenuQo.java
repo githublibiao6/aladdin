@@ -1,6 +1,6 @@
 package com.aladdin.mis.pagehelper.entity.qo;
 
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.chat.manager.bean.Menu;
 import lombok.Data;
 
 /**

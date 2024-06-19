@@ -3,10 +3,10 @@ package com.aladdin.mis.omnipotent.manager.utils;
  * Created by cles on 2020/5/13 23:38
  */
 
-import com.aladdin.mis.manager.bean.Dictionary;
-import com.aladdin.mis.manager.bean.DictionaryTeams;
-import com.aladdin.mis.manager.service.impl.DictionaryServiceImpl;
-import com.aladdin.mis.manager.service.impl.DictionaryTeamsServiceImpl;
+import com.aladdin.mis.chat.manager.bean.Dictionary;
+import com.aladdin.mis.chat.manager.bean.DictionaryTeams;
+import com.aladdin.mis.chat.service.impl.DictionaryServiceImpl;
+import com.aladdin.mis.chat.service.impl.DictionaryTeamsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

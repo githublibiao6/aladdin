@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.RoleDao">
 
-    <select id="findById" resultType="com.aladdin.mis.manager.bean.Role">
+    <select id="findById" resultType="com.aladdin.mis.chat.manager.bean.Role">
         select * from be_role where id=#{id}
     </select>
 
