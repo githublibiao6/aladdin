@@ -30,13 +30,7 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
-      <version>1.5.3.RELEASE</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-logging</artifactId>
-        </exclusion>
-      </exclusions>
+      <version>2.2.5.RELEASE</version>
     </dependency>
 
   </dependencies>

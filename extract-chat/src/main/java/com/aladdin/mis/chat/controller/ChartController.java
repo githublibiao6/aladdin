@@ -1,5 +1,6 @@
 package com.aladdin.mis.chat.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("chart")
 @RestController
 public class ChartController {
+
+    /**
+     * 菜单跳转
+     *
+     * @return
+     */
+    @RequestMapping("/welcome")
+    public JSONObject welcome() {
+        JSONObject o = new JSONObject();
+        o.put("success", true);
+        o.put("code", 20000);
+        return o;
+    }
 
     /**
      * 菜单跳转

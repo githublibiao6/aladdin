@@ -41,8 +41,9 @@ public class SocketController {
     @OnOpen
     public void onOpen(Session session, @PathParam("id") long id, @PathParam("name") String name) throws Exception {
         this.session = session;
-        System.out.println(this.session.getId());
-        webSocketSet.put(id,this);
+        System.err.println(this.session.getId());
+        // 测试
+        webSocketSet.put(id, this);
         LOGGER.info("Open a websocket. id={}, name={}", id, name);
         this.sendMessage("服务器发送");
     }
@@ -57,9 +58,9 @@ public class SocketController {
     public void onMessage(String message, Session session) throws Exception {
         LOGGER.info("Receive a message from client: " + message);
         if("1".equals(session.getId())){
-            webSocketSet.get(1l).sendMessage(message);
+            webSocketSet.get(1L).sendMessage(message);
         }else {
-            webSocketSet.get(2l).sendMessage(message);
+            webSocketSet.get(2L).sendMessage(message);
         }
     }
 
