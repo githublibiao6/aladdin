@@ -2,11 +2,11 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.chat.manager.bean.Dictionary;
-import com.aladdin.mis.chat.manager.bean.DictionaryTeams;
-import com.aladdin.mis.chat.manager.qo.DictionaryQo;
-import com.aladdin.mis.chat.service.impl.DictionaryServiceImpl;
-import com.aladdin.mis.chat.service.impl.DictionaryTeamsServiceImpl;
+import com.aladdin.mis.manager.bean.Dictionary;
+import com.aladdin.mis.manager.bean.DictionaryTeams;
+import com.aladdin.mis.manager.qo.DictionaryQo;
+import com.aladdin.mis.bill.service.impl.DictionaryServiceImpl;
+import com.aladdin.mis.bill.service.impl.DictionaryTeamsServiceImpl;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

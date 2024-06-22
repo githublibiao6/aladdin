@@ -1,6 +1,6 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.chat.manager.bean.AdminRole;
+import com.aladdin.mis.manager.bean.AdminRole;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

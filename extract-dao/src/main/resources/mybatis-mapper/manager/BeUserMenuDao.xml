@@ -15,7 +15,7 @@
         t.sys007
     </sql>
 
-    <resultMap type="com.aladdin.mis.chat.manager.entity.BeUserMenu" id="baseResultMap">
+    <resultMap type="com.aladdin.mis.manager.entity.BeUserMenu" id="baseResultMap">
         <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
         <result property="menu_id" column="menuId"/>
@@ -28,7 +28,7 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-    <select id="list" resultType="com.aladdin.mis.chat.manager.vo.BeUserMenuVo">
+    <select id="list" resultType="com.aladdin.mis.manager.vo.BeUserMenuVo">
         select <include refid="baseColumn"></include>
         ,m.url menuPermissions
         ,m.menu_type menuType

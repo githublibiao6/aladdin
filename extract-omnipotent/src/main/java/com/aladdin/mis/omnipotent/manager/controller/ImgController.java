@@ -2,8 +2,8 @@ package com.aladdin.mis.omnipotent.manager.controller;
 
 import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.chat.manager.bean.Img;
-import com.aladdin.mis.chat.service.impl.ImgServiceImpl;
+import com.aladdin.mis.manager.bean.Img;
+import com.aladdin.mis.bill.service.impl.ImgServiceImpl;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

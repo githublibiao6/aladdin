@@ -6,7 +6,7 @@ package com.aladdin.mis.aop;
 import com.aladdin.mis.common.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.system.entity.VisitLog;
-import com.aladdin.mis.chat.manager.bean.User;
+import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.mongdb.service.VisitLogService;
 import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.system.user.vo.OmUser;

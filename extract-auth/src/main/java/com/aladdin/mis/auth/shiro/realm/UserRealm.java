@@ -3,15 +3,14 @@ package com.aladdin.mis.auth.shiro.realm;
  * Created by cles on 2020/4/23 22:39
  */
 
-import com.aladdin.mis.chat.service.AdminService;
-import com.aladdin.mis.chat.service.BeUserMenuService;
-import com.aladdin.mis.chat.service.DeptService;
+import com.aladdin.mis.bill.service.AdminService;
+import com.aladdin.mis.bill.service.BeUserMenuService;
+import com.aladdin.mis.bill.service.DeptService;
 import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
-import com.aladdin.mis.chat.manager.bean.Admin;
-import com.aladdin.mis.chat.manager.bean.Dept;
-import com.aladdin.mis.chat.manager.service.*;
-import com.aladdin.mis.chat.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.manager.bean.Dept;
+import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;

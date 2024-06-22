@@ -10,7 +10,7 @@ import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.service.VerificationCodeService;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.chat.manager.dto.UserDto;
+import com.aladdin.mis.manager.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
