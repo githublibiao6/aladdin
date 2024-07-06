@@ -14,7 +14,6 @@ import java.util.List;
  * @author cles
  * @date 2023-02-04 23:28:02
 */
-@Service
 public class BuildModularServiceImpl extends GlobalServiceImpl<BuildModular> implements BuildModularService{
 
     @Autowired

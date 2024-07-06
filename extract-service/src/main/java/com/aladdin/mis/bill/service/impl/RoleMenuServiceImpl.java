@@ -6,6 +6,7 @@ import com.aladdin.mis.manager.bean.RoleMenu;
 import com.aladdin.mis.bill.service.RoleMenuService;
 import com.aladdin.mis.manager.vo.RoleMenuVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
 * @date 2018年8月20日 下午11:12:29
 *
  */
-
+@Service
 public class RoleMenuServiceImpl extends GlobalServiceImpl<RoleMenu> implements RoleMenuService {
 
     @Autowired

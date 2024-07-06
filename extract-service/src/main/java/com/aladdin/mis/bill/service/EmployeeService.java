@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
  * @author lb
  *
  */
-@Service
 public interface EmployeeService  extends GlobalService<Employee> {
 
 //    @Autowired

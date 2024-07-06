@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
  * @date: 20190619
  * @history:
  */
-@Service
 public interface IndexService   {
 
 }

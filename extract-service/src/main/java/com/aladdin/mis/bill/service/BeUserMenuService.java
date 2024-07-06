@@ -14,7 +14,6 @@ import java.util.List;
  * @author cles
  * @date 2022-03-01T22:38:09.314
 */
-@Service
 public interface BeUserMenuService extends GlobalService<BeUserMenu>  {
 
     /**

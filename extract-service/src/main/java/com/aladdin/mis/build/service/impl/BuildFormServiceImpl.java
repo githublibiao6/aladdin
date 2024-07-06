@@ -21,7 +21,6 @@ import java.util.List;
  * @author cles
  * @date 2023-02-04 23:26:19
 */
-@Service
 public class BuildFormServiceImpl extends GlobalServiceImpl<BuildForm> implements BuildFormService{
 
     @Autowired

@@ -1,14 +1,13 @@
 package com.aladdin.mis.omnipotent.business.service.impl;
 
-import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.blog.entity.Essay;
 import com.aladdin.mis.dao.business.EssayDao;
 import com.aladdin.mis.omnipotent.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,7 +17,6 @@ import java.util.List;
  * @author lb
  *
  */
-@Service
 public class EssayServiceImpl extends GlobalServiceImpl<Essay> implements EssayService {
 
     @Autowired

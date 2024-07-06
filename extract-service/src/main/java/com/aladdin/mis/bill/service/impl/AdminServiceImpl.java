@@ -16,6 +16,7 @@ import com.aladdin.mis.bill.service.DeptService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.UUID;
  * @author lb
  * @date 2018年6月5日 下午8:55:47
  */
+@Service
 public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminService {
 
     @Autowired

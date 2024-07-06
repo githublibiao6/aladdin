@@ -20,7 +20,6 @@ import java.util.Set;
  * @return:
  * @version: 1.0.0
  */
-@Service
 public interface MenuService  extends GlobalService<Menu> {
 
     /**

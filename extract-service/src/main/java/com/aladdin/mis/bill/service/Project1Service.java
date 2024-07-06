@@ -11,7 +11,6 @@ import java.util.Map;
  * @author lb
  * @date 2018年6月24日 下午7:01:35
  */
-@Service
 public interface Project1Service {
 
     /**

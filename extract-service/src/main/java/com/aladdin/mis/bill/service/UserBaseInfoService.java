@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
  * @author lb
  *
  */
-@Service
 public interface UserBaseInfoService extends GlobalService<UserBaseInfo> {
 
     /**

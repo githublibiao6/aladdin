@@ -22,7 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 /**
- * @author 李标
+ * @author cles
  * @Description:  springboot 启动
  * @Author: cles
  * @Date: 2020/4/29 23:17
@@ -35,15 +35,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //  开启异步调用
 //@EnableAsync
 @MapperScan("com.aladdin.mis.dao")
+// 1. 多模块项目需要扫描的包
+//@ComponentScan({"com.aladdin.mis.**.service.impl.**"})
+//@EntityScan("***.***.***") // 3. Entity 所在的包
 //@EnableMongoRepositories
 public class OmApplication {
     public static void main(String[] args) {
         SpringApplication.run(OmApplication.class, args);
     }
 
-    /**
-     * 过滤器
-     */
+//    /**
+//     * 过滤器
+//     */
 //    @Bean
 //    public FilterRegistrationBean setFilter(){
 //        FilterRegistrationBean filterBean = new FilterRegistrationBean();

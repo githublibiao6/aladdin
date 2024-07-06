@@ -12,7 +12,6 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
-@Service
 public interface RoleMenuService extends GlobalService<RoleMenu> {
 
     /**

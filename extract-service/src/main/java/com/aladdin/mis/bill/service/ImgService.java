@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 * @Author: cles
 * @Date: 2020/4/15 23:48
 */
-@Service
 public interface ImgService extends GlobalService<Img> {
 
     /**

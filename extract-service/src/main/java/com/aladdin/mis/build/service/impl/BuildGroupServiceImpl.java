@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
  * @author cles
  * @date 2023-02-05 16:40:09
 */
-@Service
 public class BuildGroupServiceImpl extends GlobalServiceImpl<BuildGroup> implements BuildGroupService{
 
     @Autowired

@@ -5,6 +5,7 @@ import com.aladdin.mis.manager.bean.Project;
 import com.aladdin.mis.bill.service.Project1Service;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
  * @author lb
  * @date 2018年6月24日 下午7:01:35
  */
-
+@Service
 public class Project1ServiceImpl  implements Project1Service {
 
     @Autowired

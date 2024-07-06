@@ -13,6 +13,7 @@ import com.aladdin.mis.manager.vo.RoleMenuVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,6 +25,7 @@ import java.util.Set;
  * @author cles
  * @date 2022-03-01T22:38:09.336
 */
+@Service
 public class BeUserMenuServiceImpl extends GlobalServiceImpl<BeUserMenu> implements BeUserMenuService {
 
     @Autowired

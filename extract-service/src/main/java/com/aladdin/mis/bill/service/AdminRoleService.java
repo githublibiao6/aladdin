@@ -2,7 +2,6 @@ package com.aladdin.mis.bill.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.AdminRole;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/28 23:13
 */
-@Service
 public interface AdminRoleService extends GlobalService<AdminRole> {
 
     /**

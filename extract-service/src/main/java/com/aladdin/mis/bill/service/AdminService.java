@@ -13,7 +13,6 @@ import java.util.List;
 * @Author: cles
 * @Date: 2020/4/28 23:13
 */
-@Service
 public interface AdminService  extends GlobalService<Admin> {
 
     /**

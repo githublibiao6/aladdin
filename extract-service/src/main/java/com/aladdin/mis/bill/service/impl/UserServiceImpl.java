@@ -18,6 +18,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,7 +32,7 @@ import java.util.List;
 * @date 2018年8月20日 下午11:12:29
 *
  */
-
+@Service
 public class UserServiceImpl extends GlobalServiceImpl<User> implements UserService {
 
     @Autowired

@@ -13,7 +13,6 @@ import java.util.Map;
  * @author lb
  *
  */
-@Service
 public interface DictionaryService extends GlobalService<Dictionary> {
 
     /**

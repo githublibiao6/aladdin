@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 项目启动主类
- * @author 李标
+ * @author cles
  */
 @SpringBootApplication
 @MapperScan(basePackages = {"com.aladdin.mis.dao","com.aladdin.mis.dao"})
