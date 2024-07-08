@@ -34,11 +34,15 @@ public  class GenerateUtils {
         String path = "";
         try {
             path = ResourceUtils.getURL("classpath:").getPath();
+            if(path.startsWith("/")){
+                path = path.substring(1);
+            }
             System.err.println(path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        String entityFilePath = path.replaceAll(pathName + "/target/classes","extract-pojo");
+        String replacePathName = "extract-omnipotent";
+        String entityFilePath = path.replaceAll(replacePathName + "/target/classes","extract-pojo");
         entityFilePath += "src/main/java/" + entityPath;
         po.setFilePath(entityFilePath);
         GenerateEntityUtils.writeEntityToFile(po);
@@ -48,7 +52,7 @@ public  class GenerateUtils {
         String entityQoPath = packagePath +"." +module +".qo";
         po.setPackagePath(entityQoPath);
         entityQoPath = entityQoPath.replaceAll("\\.", "\\/");
-        String entityQoFilePath = path.replaceAll(pathName + "/target/classes","extract-pojo");
+        String entityQoFilePath = path.replaceAll(replacePathName + "/target/classes","extract-pojo");
         entityQoFilePath += "src/main/java/" +  entityQoPath;
         po.setFilePath(entityQoFilePath);
         GenerateEntityQoUtils.writeEntityToFile(po);
@@ -58,7 +62,7 @@ public  class GenerateUtils {
         String entityVoPath = packagePath +"." +module +".vo";
         po.setPackagePath(entityVoPath);
         entityVoPath = entityVoPath.replaceAll("\\.", "\\/");
-        String entityVoFilePath = path.replaceAll(pathName + "/target/classes","extract-pojo");
+        String entityVoFilePath = path.replaceAll(replacePathName + "/target/classes","extract-pojo");
         entityVoFilePath += "src/main/java/" + entityVoPath;
         po.setFilePath(entityVoFilePath);
         GenerateEntityVoUtils.writeEntityToFile(po);
@@ -68,7 +72,7 @@ public  class GenerateUtils {
         String daoPath = packagePath +".dao." +module ;
         po.setPackagePath(daoPath);
         daoPath = daoPath.replaceAll("\\.", "\\/");
-        String daoFilePath = path.replaceAll(pathName + "/target/classes","extract-dao");
+        String daoFilePath = path.replaceAll(replacePathName + "/target/classes","extract-dao");
         daoFilePath += "src/main/java/" + daoPath;
         po.setFilePath(daoFilePath);
         GenerateDaoUtils.writeDaoToFile(po);
@@ -78,7 +82,7 @@ public  class GenerateUtils {
         String servicePath = packagePath +"." +module +".service";
         po.setPackagePath(servicePath);
         servicePath = servicePath.replaceAll("\\.", "\\/");
-        String serviceFilePath = path.replaceAll(pathName + "/target/classes","extract-service");
+        String serviceFilePath = path.replaceAll(replacePathName + "/target/classes","extract-service");
         serviceFilePath += "src/main/java/" + servicePath;
         po.setFilePath(serviceFilePath);
         GenerateServiceUtils.writeServiceToFile(po);
@@ -88,22 +92,22 @@ public  class GenerateUtils {
         String serviceImplPath = packagePath +"." +module +".service.impl";
         po.setPackagePath(serviceImplPath);
         serviceImplPath = serviceImplPath.replaceAll("\\.", "\\/");
-        String serviceImplFilePath = path.replaceAll(pathName + "/target/classes","extract-service");
+        String serviceImplFilePath = path.replaceAll(replacePathName + "/target/classes","extract-service");
         serviceImplFilePath += "src/main/java/" + serviceImplPath;
         po.setFilePath(serviceImplFilePath);
         GenerateServiceImplUtils.writeServiceImplToFile(po);
 
         po.setImportServiceImplClass("import "+ packagePath +"." +module +".service.impl."+po.getEntityName()+"ServiceImpl;");
 
-        String controllerPath = packagePath +".omnipotent." +module +".controller";
+        String controllerPath = packagePath +"." +module +".controller";
         po.setPackagePath(controllerPath);
         controllerPath = controllerPath.replaceAll("\\.", "\\/");
-        String controllerFilePath = path.replaceAll(pathName + "/target/classes", pathName);
+        String controllerFilePath = path.replaceAll(replacePathName + "/target/classes", pathName);
         controllerFilePath += "src/main/java/" + controllerPath;
         po.setFilePath(controllerFilePath);
         GenerateControllerUtils.writeControllerToFile(po);
 
-        String xmlPath = path.replaceAll(pathName + "/target/classes","extract-dao");
+        String xmlPath = path.replaceAll(replacePathName + "/target/classes","extract-dao");
         xmlPath += "src/main/resources/mybatis-mapper/" + module+"/";
         po.setFilePath(xmlPath);
         GenerateXmlUtils.writeXmlToFile(po);

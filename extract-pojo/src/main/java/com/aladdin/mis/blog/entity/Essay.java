@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * @author lb
  * @date 2018年5月14日 下午10:33:42
  */
-@Table("essay")
+@Table("art_essay")
 @Data
 public class Essay extends GlobalModel {
 

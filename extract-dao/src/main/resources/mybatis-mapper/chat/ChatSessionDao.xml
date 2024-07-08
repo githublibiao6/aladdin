@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.chat.ChatSessionDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.session_name,
+        t.session_kind,
+        t.create_time,
+        t.create_user,
+        t.receive_user,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatSession" > 
+        <id property="id" column="id"/>
+        <result property="session_name" column="sessionName"/>
+        <result property="session_kind" column="sessionKind"/>
+        <result property="create_time" column="createTime"/>
+        <result property="create_user" column="createUser"/>
+        <result property="receive_user" column="receiveUser"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatSessionVo">
+        select <include refid="baseColumn"></include>
+        from chat_session t where t.sys005 = 1
+        <if test="sessionName  != null and sessionName != '' ">
+            and t.session_name = #{sessionName}
+        </if>
+        <if test="sessionKind  != null and sessionKind != '' ">
+            and t.session_kind = #{sessionKind}
+        </if>
+        <if test="createTime  != null and createTime != '' ">
+            and t.create_time = #{createTime}
+        </if>
+        <if test="createUser  != null and createUser != '' ">
+            and t.create_user = #{createUser}
+        </if>
+        <if test="receiveUser  != null and receiveUser != '' ">
+            and t.receive_user = #{receiveUser}
+        </if>
+        <if test="sys000  != null and sys000 != '' ">
+            and t.sys000 = #{sys000}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>
