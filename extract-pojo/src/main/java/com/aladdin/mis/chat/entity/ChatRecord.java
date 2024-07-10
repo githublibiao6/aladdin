@@ -81,9 +81,9 @@ public class ChatRecord extends GlobalModel {
     private Integer chatSessionId;
 
     /**
-     * sys000导出值
+     * 消息状态
      */
-    @TableField("sys000")
-    private Integer sys000;
+    @TableField("status")
+    private Integer status;
 
 }

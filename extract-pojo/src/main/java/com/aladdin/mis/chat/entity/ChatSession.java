@@ -3,12 +3,11 @@ package com.aladdin.mis.chat.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
  * 聊天记录
@@ -50,11 +49,5 @@ public class ChatSession extends GlobalModel {
      */
     @TableField("receive_user")
     private Integer receiveUser;
-
-    /**
-     * sys000导出值
-     */
-    @TableField("sys000")
-    private Integer sys000;
 
 }
