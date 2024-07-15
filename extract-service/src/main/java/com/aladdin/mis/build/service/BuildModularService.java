@@ -1,7 +1,8 @@
 package com.aladdin.mis.build.service;
 
-import com.aladdin.mis.build.entity.BuildModular;
 import com.aladdin.mis.base.service.GlobalService;
+import com.aladdin.mis.build.entity.BuildModular;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author cles
  * @date 2023-02-04 23:28:02
 */
+@Service
 public interface BuildModularService extends GlobalService<BuildModular>  {
 
     /**

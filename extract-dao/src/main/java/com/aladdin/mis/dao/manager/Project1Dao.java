@@ -1,6 +1,6 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.chat.manager.bean.Project;
+import com.aladdin.mis.manager.bean.Project;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.apache.ibatis.annotations.Param;
 

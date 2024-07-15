@@ -2,7 +2,7 @@ package com.aladdin.mis;
 
 /**
  * Hello world! parent
- * @author 李标
+ * @author cles
  */
 public class AppInterface{
 

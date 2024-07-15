@@ -3,8 +3,7 @@ package com.aladdin.mis;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
-import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 将进酒
@@ -24,7 +23,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
  */
 
 /**
- * @author 李标
+ * @author cles
  * @Description:  springboot 启动
  * @Author: cles
  * @Date: 2020/4/29 23:17

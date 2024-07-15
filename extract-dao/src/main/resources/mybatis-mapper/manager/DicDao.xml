@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.DicDao">
 
-    <select id="queryDictByCode" resultType="com.aladdin.mis.chat.manager.vo.DictVo">
+    <select id="queryDictByCode" resultType="com.aladdin.mis.manager.vo.DictVo">
         select m.*, t.code from be_dictionary_teams m
         left join be_dictionary t on t.id = m.dic_id
         where m.sys005 = '1' and t.code in
@@ -12,7 +12,7 @@
         </foreach>
     </select>
 
-    <select id="queryAllDictionary" resultType="com.aladdin.mis.chat.manager.vo.DictVo">
+    <select id="queryAllDictionary" resultType="com.aladdin.mis.manager.vo.DictVo">
         select m.*, t.code from be_dictionary_teams m
         left join be_dictionary t on t.id = m.dic_id
         where m.sys005 = '1'

@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 
-import com.aladdin.mis.chat.manager.bean.Menu;
+import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

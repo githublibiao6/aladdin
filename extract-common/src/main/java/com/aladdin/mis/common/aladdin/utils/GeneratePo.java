@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * 生成辅助类
- * @author 李标
+ * @author cles
  */
 @Data
 public class GeneratePo {

@@ -3,6 +3,7 @@ package com.aladdin.mis.omnipotent.love.service;
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @author lb
  *
  */
+@Service
 public interface DateLogService extends GlobalService<DateLog> {
 
     /**

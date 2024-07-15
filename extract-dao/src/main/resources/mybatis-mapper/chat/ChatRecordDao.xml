@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.chat.ChatRecordDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.send_user,
+        t.receive_user,
+        t.info_kind,
+        t.message,
+        t.picture_url,
+        t.voice_url,
+        t.emoji,
+        t.file_url,
+        t.send_time,
+        t.chart_session_id,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatRecord" > 
+        <id property="id" column="id"/>
+        <result property="send_user" column="sendUser"/>
+        <result property="receive_user" column="receiveUser"/>
+        <result property="info_kind" column="infoKind"/>
+        <result property="message" column="message"/>
+        <result property="picture_url" column="pictureUrl"/>
+        <result property="voice_url" column="voiceUrl"/>
+        <result property="emoji" column="emoji"/>
+        <result property="file_url" column="fileUrl"/>
+        <result property="send_time" column="sendTime"/>
+        <result property="chart_session_id" column="chartSessionId"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatRecordVo">
+        select <include refid="baseColumn"></include>
+        from chat_record t where t.sys005 = 1
+        <if test="sendUser  != null and sendUser != '' ">
+            and t.send_user = #{sendUser}
+        </if>
+        <if test="receiveUser  != null and receiveUser != '' ">
+            and t.receive_user = #{receiveUser}
+        </if>
+        <if test="infoKind  != null and infoKind != '' ">
+            and t.info_kind = #{infoKind}
+        </if>
+        <if test="message  != null and message != '' ">
+            and t.message = #{message}
+        </if>
+        <if test="pictureUrl  != null and pictureUrl != '' ">
+            and t.picture_url = #{pictureUrl}
+        </if>
+        <if test="voiceUrl  != null and voiceUrl != '' ">
+            and t.voice_url = #{voiceUrl}
+        </if>
+        <if test="emoji  != null and emoji != '' ">
+            and t.emoji = #{emoji}
+        </if>
+        <if test="fileUrl  != null and fileUrl != '' ">
+            and t.file_url = #{fileUrl}
+        </if>
+        <if test="sendTime  != null and sendTime != '' ">
+            and t.send_time = #{sendTime}
+        </if>
+        <if test="chartSessionId  != null and chartSessionId != '' ">
+            and t.chart_session_id = #{chartSessionId}
+        </if>
+        <if test="sys000  != null and sys000 != '' ">
+            and t.sys000 = #{sys000}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>

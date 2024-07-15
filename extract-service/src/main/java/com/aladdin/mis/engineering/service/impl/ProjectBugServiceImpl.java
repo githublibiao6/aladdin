@@ -9,7 +9,7 @@ import com.aladdin.mis.engineering.qo.ProjectBugQo;
 import com.aladdin.mis.engineering.service.ProjectBugLogService;
 import com.aladdin.mis.engineering.service.ProjectBugService;
 import com.aladdin.mis.engineering.vo.ProjectBugVo;
-import com.aladdin.mis.chat.service.DictionaryTeamsService;
+import com.aladdin.mis.bill.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

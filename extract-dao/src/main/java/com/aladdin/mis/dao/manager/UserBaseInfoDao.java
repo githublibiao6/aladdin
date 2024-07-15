@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.chat.manager.bean.UserBaseInfo;
-import com.aladdin.mis.chat.manager.qo.UserQo;
+import com.aladdin.mis.manager.bean.UserBaseInfo;
+import com.aladdin.mis.manager.qo.UserQo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
