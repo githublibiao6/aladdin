@@ -31,8 +31,8 @@ public class Dp {
                 if (w <= c) {
                     // 不选和选物品 i 这两种方案的较大值
                     int planA = dp[c];
-                    int plaB = dp[c - w] + v;
-                    dp[c] = Math.max(planA, plaB);
+                    int planB = dp[c - w] + v;
+                    dp[c] = Math.max(planA, planB);
                 }
             }
         }
