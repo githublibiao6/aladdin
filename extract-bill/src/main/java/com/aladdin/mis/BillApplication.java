@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 项目启动主类
+ *
+ * 接单
+ * https://zhuanlan.zhihu.com/p/86067021
+ *
  * @author cles
  */
 //@EnableDiscoveryClient
