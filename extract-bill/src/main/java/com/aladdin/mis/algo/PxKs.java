@@ -5,7 +5,7 @@ package com.aladdin.mis.algo;
  */
 public class PxKs {
     public static void main(String[] args) {
-        int[] array = new int[]{101,88,1,3,12,4,5,188,6,45,7,8,18,20,22,39,49,100,999};
+        int[] array = new int[]{1010,88,1,3,12,4,5,188,6,45,7,8,18,20,22,39,49,100,999};
         ks2(array, 0, array.length-1);
         for (int i : array){
             System.err.print(i + ",");
@@ -52,18 +52,22 @@ public class PxKs {
         while (start < end){
             while (start < end && array[end] >= num){
                 end --;
+            }
+            if(array[end] <= num){
                 array[start] = array[end];
                 index = end;
             }
             while (start < end && array[start] <= num){
                 start ++;
+            }
+            if(array[start] >= num){
                 array[end] = array[start];
                 index = start;
             }
             array[index] = num;
         }
-        ks(array, begin, index - 1);
+        ks2(array, begin, index - 1);
         // 快速右侧
-        ks(array, index + 1, over);
+        ks2(array, index + 1, over);
     }
 }
