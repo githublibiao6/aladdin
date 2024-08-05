@@ -1,7 +1,7 @@
 package com.aladdin.mis.Leetcode;
 
 /**
- * 有效括号
+ * 删除链表重复数据
  */
 public class Solution83 {
 
@@ -24,7 +24,11 @@ public class Solution83 {
 
     }
 
-
+    /**
+     * 删除链表，主要是for生成链表
+     * @param head 原链表
+     * @return 目前链表
+     */
     private static ListNode deleteDuplicates(ListNode head) {
         ListNode data = new ListNode(0);
         ListNode result = data;

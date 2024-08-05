@@ -23,7 +23,11 @@ public class PxCr {
             }
         }
     }
-    //
+
+    /**
+     * 本质也是
+     * @param array array
+     */
     private static void cr2(int[] array) {
         for (int i = 1; i < array.length; i++) {
             int num = array[i];
