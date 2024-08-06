@@ -9,17 +9,20 @@ import java.util.Map;
 public class Solution6 {
 
     public static void main(String[] args) {
-        String s = "PAYPALISHIRING";
-        int value = 4;
+        String s = "AB";
+        int value = 2;
         String s1 = convert(s, value);
         System.out.println(s1);
     }
 
     private static String convert(String s, int numRows) {
+        if(numRows == 1){
+            return s;
+        }
         Map<Integer, StringBuilder> map = new HashMap<>(16);
         int j = 0;
         boolean flag = true;
-        for (int i = 0; i < s.length() - 1 ; i++) {
+        for (int i = 0; i < s.length() ; i++) {
             String c = s.substring(i, i+1);
             if(map.containsKey(j)){
                 map.put(j, map.get(j).append(c));
@@ -32,7 +35,7 @@ public class Solution6 {
                 j --;
             }
             if(j == numRows){
-                j --;
+                j = numRows - 2;
                 flag = false;
             }
             if(j < 0){
@@ -42,7 +45,7 @@ public class Solution6 {
         }
         StringBuilder data = new StringBuilder();
         for (int i = 0; i < numRows; i++) {
-            data.append(map.get(i));
+            data.append(map.get(i) == null ? "" : map.get(i));
         }
         return data.toString();
     }
