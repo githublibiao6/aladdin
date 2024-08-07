@@ -1,7 +1,7 @@
 package com.aladdin.mis.algo;
 
 /**
- * 快速排序
+ * 选择排序
  */
 public class PxXz {
     public static void main(String[] args) {
