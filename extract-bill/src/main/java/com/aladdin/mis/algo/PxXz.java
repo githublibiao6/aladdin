@@ -11,6 +11,7 @@ public class PxXz {
             System.err.print(i + ",");
         }
     }
+
     // 自己实现
     private static void xz(int[] array) {
         for (int i = array.length -1 ; i >= 0; i--) {

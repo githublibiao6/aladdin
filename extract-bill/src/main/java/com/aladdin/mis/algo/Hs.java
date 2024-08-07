@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 选择排序
+ * 回溯排序
  */
-public class hs {
+public class Hs {
     // 每个数字到字母的映射
     static String[] mapping = new String[] {
             "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
