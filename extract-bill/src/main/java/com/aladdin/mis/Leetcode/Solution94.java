@@ -3,7 +3,7 @@ package com.aladdin.mis.Leetcode;
 import java.util.*;
 
 /**
- * 有效括号
+ * 二叉树的中序遍历
  */
 public class Solution94 {
 
