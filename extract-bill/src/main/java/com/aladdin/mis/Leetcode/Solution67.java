@@ -3,7 +3,7 @@ package com.aladdin.mis.Leetcode;
 import java.util.Stack;
 
 /**
- * 有效括号
+ * 二进制求和
  */
 public class Solution67 {
 

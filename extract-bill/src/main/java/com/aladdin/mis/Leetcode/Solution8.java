@@ -1,7 +1,7 @@
 package com.aladdin.mis.Leetcode;
 
 /**
- * 有效括号
+ * 字符串转整数
  */
 public class Solution8 {
 

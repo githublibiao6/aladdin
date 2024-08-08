@@ -3,7 +3,11 @@ package com.aladdin.mis.Leetcode;
 import java.util.*;
 
 /**
- * 有效括号
+ * 三数之和
+ * 双指针
+ * 1, 2, 3
+ * 1确定，2++ 3--
+ *        符合时 2 如果和下一个数字相等，跳过， 3如果和上一个数字相等，跳过
  */
 public class Solution15 {
 

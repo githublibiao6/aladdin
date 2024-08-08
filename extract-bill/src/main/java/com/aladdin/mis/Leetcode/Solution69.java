@@ -1,7 +1,7 @@
 package com.aladdin.mis.Leetcode;
 
 /**
- * 有效括号
+ * x的平方根
  */
 public class Solution69 {
 

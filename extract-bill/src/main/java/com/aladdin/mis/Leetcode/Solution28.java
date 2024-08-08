@@ -1,7 +1,7 @@
 package com.aladdin.mis.Leetcode;
 
 /**
- * 有效括号
+ * 找出字符串第一个匹配的下标
  */
 public class Solution28 {
 
