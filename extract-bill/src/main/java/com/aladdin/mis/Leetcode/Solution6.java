@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 有效括号
+ * z字形变换
  */
 public class Solution6 {
 

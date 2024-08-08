@@ -3,7 +3,7 @@ package com.aladdin.mis.Leetcode;
 import java.util.Stack;
 
 /**
- * 有效括号
+ * 整数反转
  */
 public class Solution7 {
 

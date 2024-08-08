@@ -16,7 +16,7 @@ public class Hs {
     static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        letterCombinations("12");
+        letterCombinations("2");
     }
 
     private static List<String> letterCombinations(String digits) {
@@ -25,6 +25,7 @@ public class Hs {
         }
 
         backtrack(digits, 0);
+        System.err.println(result);
         return result;
     }
 

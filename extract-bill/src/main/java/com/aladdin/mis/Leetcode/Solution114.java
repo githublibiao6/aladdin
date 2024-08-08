@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * 有效括号
+ * 二叉树的左序遍历
  */
 public class Solution114 {
 

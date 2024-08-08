@@ -1,7 +1,9 @@
 package com.aladdin.mis.Leetcode;
 
 /**
- * 有效括号
+ * 盛水最多的容器
+ *
+ * 双指针
  */
 public class Solution11 {
 
