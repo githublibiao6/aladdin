@@ -28,7 +28,7 @@ public class Solution22 {
     }
 
     private static void getGroup(int start, int n, boolean flag, Stack<Integer> stack, List<String> result, StringBuilder str) {
-        if(start > n){
+        if(start > n || stack.size() > n){
             return;
         }
         if (start == n && stack.isEmpty()) {
