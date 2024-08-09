@@ -1,9 +1,7 @@
 package com.aladdin.mis.Leetcode;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * 有效括号
@@ -11,40 +9,65 @@ import java.util.Stack;
 public class Solution22 {
 
     public static void main(String[] args) {
-        int n = 2;
+        int n = 3;
         List<String> s1 = generateParenthesis(n);
         System.out.println(s1);
+
+
     }
-    static List<String> result = new LinkedList<>();;
-    static StringBuilder str = new StringBuilder();
-    static Stack<String> stack = new Stack<>();
-    static String[] map = new String[]{"(", ")"};
 
     private static List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
-        Stack<Integer> stack = new Stack<>();
-        getGroup(0, n , true,  stack, result, new StringBuilder());
+        getGroup( 0, 0,  n , true, result, "");
         return result;
+
+        // 最优解
+//        List<String> res = new ArrayList<>();
+//        dfs(0,0,n,new StringBuilder(),res);
+//        return res;
     }
 
-    private static void getGroup(int start, int n, boolean flag, Stack<Integer> stack, List<String> result, StringBuilder str) {
-        if(start > n){
+    private static void getGroup(int left, int right ,int n, boolean flag, List<String> result, String str) {
+        if(str.length() > n*2){
             return;
         }
-        if (start == n && stack.isEmpty()) {
-            result.add(str.toString());
+        if (right == n && left < n) {
             return;
         }
         if(flag){
-            str.append("(");
-            stack.push(1);
-        }else if(!stack.isEmpty()){
-            str.append(")");
-            stack.pop();
+            str += "(";
+            left ++;
+        }else if(right < n){
+            str +=  ")";
+            right ++;
         }
-        start ++;
-        getGroup(start, n , true,  stack, result, str);
-        getGroup(start, n , false,  stack, result, str);
+        if (str.length() == n*2 && left == n && right == n) {
+            result.add(str);
+            return;
+        }
+        if (left > n || right > left) {
+            return;
+        }
+        getGroup(left, right , n , true,  result, str);
+        getGroup(left, right , n , false,  result, str);
+    }
+
+
+
+    private void dfs(int left, int right,int n ,StringBuilder path,List<String> res){
+        if(path.length() == 2*n) {
+            res.add(path.toString());
+        }
+        if(left < n){
+            path.append('(');
+            dfs(left+1,right,n,path,res);
+            path.deleteCharAt(path.length()-1);
+        }
+        if(right<left){
+            path.append(')');
+            dfs(left,right+1,n,path,res);
+            path.deleteCharAt(path.length()-1);
+        }
     }
 
 }
