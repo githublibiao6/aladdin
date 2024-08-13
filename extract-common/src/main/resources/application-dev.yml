@@ -1,11 +1,4 @@
-server:
-  port: 808
-  servlet:
-    context-path: /bill
 spring:
-  cloud:
-    config:
-      enabled: false
   redis:
     host: 127.0.0.1
     port: 6379
@@ -24,9 +17,3 @@ spring:
         max-wait: -1
         # 最大活跃连接数，负数为不限制
         max-active: -1
-  datasource:
-    username: root
-    password: mysql
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/company?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
