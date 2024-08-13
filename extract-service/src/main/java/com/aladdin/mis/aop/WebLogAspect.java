@@ -9,10 +9,7 @@ import com.aladdin.mis.common.system.entity.VisitLog;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.mongdb.service.VisitLogService;
 import com.aladdin.mis.system.controller.GlobalController;
-import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -78,16 +75,17 @@ public class WebLogAspect {
 
         String ip = baseController.getIp();
         log.setRequestIp(ip);
-        Subject subject = SecurityUtils.getSubject();
 
-        OmUser m = (OmUser)subject.getPrincipal();
-        if(m != null){
-            log.setRequestUserName(m.getUserName());
-        }
+//        Subject subject = SecurityUtils.getSubject();
+//        OmUser m = (OmUser)subject.getPrincipal();
+//        if(m != null){
+//            log.setRequestUserName(m.getUserName());
+//        }
+//
+//        // 通过webLog控制的都需要加校验控制
+//        boolean permitted = subject.isPermitted("menu/treeList");
+
         Object resultData = null;
-
-        // 通过webLog控制的都需要加校验控制
-        boolean permitted = subject.isPermitted("menu/treeList");
 //        if(!permitted){
 //            Result result = new Result();
 //            result.setRequestId(result.getRequestId());

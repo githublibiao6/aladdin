@@ -17,7 +17,6 @@ import com.aladdin.mis.util.BaseModelUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -324,7 +323,8 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
+        // todo
+        OmUser user = new OmUser();
         if(user == null){
             user = new OmUser();
             user.setDeptId(0);
@@ -357,7 +357,8 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
+        // todo
+        OmUser user = new OmUser();
         if(user == null){
             user = new OmUser();
             user.setDeptId(0);
