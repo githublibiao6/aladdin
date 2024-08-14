@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.session.utils;
+package com.aladdin.mis.utils;
 /*
  *  Created by cles on 2020/6/20 21:57
  */

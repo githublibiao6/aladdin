@@ -1,7 +1,7 @@
 package com.aladdin.mis.algo;
 
 /**
- * 快速排序
+ * 希尔排序
  */
 public class PxXe {
     public static void main(String[] args) {

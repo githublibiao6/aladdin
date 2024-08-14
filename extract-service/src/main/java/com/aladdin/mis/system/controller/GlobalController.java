@@ -8,7 +8,6 @@ import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -215,7 +214,8 @@ public abstract class  GlobalController<T extends GlobalModel, M extends GlobalS
      * @return
      */
     public OmUser getCurrentUser(){
-        return (OmUser) SecurityUtils.getSubject().getPrincipal();
+        // todo
+        return new OmUser();
     }
 
     public HttpServletRequest getRequest() {

@@ -12,7 +12,6 @@ import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.response.AlipayTradePagePayResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 /**
  * @author cles
@@ -21,7 +20,7 @@ import org.springframework.stereotype.Service;
  * @version: 1.0.0
  */
 @Slf4j
-@Service
+//@Service
 public class AlipayServiceImpl implements AlipayService {
 
     /**

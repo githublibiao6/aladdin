@@ -14,10 +14,10 @@ import com.aladdin.mis.exception.MyException;
 import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.util.BaseModelUtil;
+import com.aladdin.mis.utils.UserUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -324,13 +324,7 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
-        if(user == null){
-            user = new OmUser();
-            user.setDeptId(0);
-            user.setUserId(0);
-        }
-        OmUser finalUser = user;
+        OmUser finalUser = UserUtil.getCurrentUser();
         list.forEach(t->{
             if(CREATE_USER_FIELD.equals(t.getColumnName())){
                 t.setFieldValue(finalUser.getUserId());
@@ -357,14 +351,7 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
         table.setFields(setTableField(table.getFields(), baseModel));
         String tableName = table.getTableName();
         List<TableFieldInfo> list = table.getFields();
-        OmUser user = (OmUser) SecurityUtils.getSubject().getPrincipal();
-        if(user == null){
-            user = new OmUser();
-            user.setDeptId(0);
-            user.setUserId(0);
-        }
-//        TableFieldInfo user = new TableFieldInfo();
-        OmUser finalUser = user;
+        OmUser finalUser = UserUtil.getCurrentUser();
         list.forEach(t->{
             if(UPDATE_USER_FIELD.equals(t.getColumnName())){
                 t.setFieldValue(finalUser.getUserId());
