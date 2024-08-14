@@ -1,12 +1,12 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.db.config.DbConfig;
 import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.bill.service.AdminService;
+import com.aladdin.mis.system.service.AdminService;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;

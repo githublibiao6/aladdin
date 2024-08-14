@@ -3,7 +3,7 @@ package com.aladdin.mis.bill.service.impl;
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.ImgDao;
 import com.aladdin.mis.manager.bean.Img;
-import com.aladdin.mis.bill.service.ImgService;
+import com.aladdin.mis.system.service.ImgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.bill.service.DictionaryService;
+import com.aladdin.mis.system.service.DictionaryService;
 import com.aladdin.mis.dao.manager.DicDao;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.vo.DictVo;

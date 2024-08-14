@@ -1,11 +1,11 @@
 package com.aladdin.mis.permission.controller;
 
 import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Menu;
-import com.aladdin.mis.bill.service.BeUserMenuService;
-import com.aladdin.mis.bill.service.MenuService;
+import com.aladdin.mis.system.service.BeUserMenuService;
+import com.aladdin.mis.system.service.MenuService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;

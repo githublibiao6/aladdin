@@ -1,9 +1,9 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
 import com.aladdin.mis.blog.entity.Essay;
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.omnipotent.business.service.EssayService;
+import com.aladdin.mis.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;

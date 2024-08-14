@@ -2,7 +2,7 @@ package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.dao.manager.Project1Dao;
 import com.aladdin.mis.manager.bean.Project;
-import com.aladdin.mis.bill.service.Project1Service;
+import com.aladdin.mis.system.service.Project1Service;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

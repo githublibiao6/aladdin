@@ -1,11 +1,11 @@
 package com.aladdin.mis.identity.controller;
 
 import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
-import com.aladdin.mis.bill.service.DeptService;
+import com.aladdin.mis.system.service.DeptService;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;

@@ -7,7 +7,7 @@ import com.aladdin.mis.engineering.entity.ProjectEdition;
 import com.aladdin.mis.engineering.qo.ProjectEditionQo;
 import com.aladdin.mis.engineering.service.ProjectEditionService;
 import com.aladdin.mis.engineering.vo.ProjectEditionVo;
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
