@@ -1,7 +1,7 @@
 package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.bill.service.AdminRoleService;
+import com.aladdin.mis.system.service.AdminRoleService;
 import com.aladdin.mis.dao.manager.AdminRoleDao;
 import com.aladdin.mis.manager.bean.AdminRole;
 import org.springframework.beans.factory.annotation.Autowired;

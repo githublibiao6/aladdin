@@ -2,7 +2,7 @@ package com.aladdin.mis.chat.controller;
 
 import com.aladdin.mis.chat.entity.ChatRecord;
 import com.aladdin.mis.chat.service.ChatRecordService;
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

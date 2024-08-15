@@ -2,7 +2,7 @@ package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.UserBaseInfoDao;
-import com.aladdin.mis.bill.service.UserBaseInfoService;
+import com.aladdin.mis.system.service.UserBaseInfoService;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

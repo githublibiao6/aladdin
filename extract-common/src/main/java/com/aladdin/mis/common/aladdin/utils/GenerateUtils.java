@@ -123,7 +123,7 @@ public  class GenerateUtils {
         po.setBaseModelPath("import com.aladdin.mis.system.base.GlobalModel;");
         po.setBaseServicePath("import com.aladdin.mis.base.service.GlobalService;");
         po.setBaseServiceImplPath("import com.aladdin.mis.base.service.impl.GlobalServiceImpl;");
-        po.setBaseControllerPath("import com.aladdin.mis.system.controller.GlobalController;");
+        po.setBaseControllerPath("import com.aladdin.mis.base.controller.GlobalController;");
         po.setWebLogPath("import com.aladdin.mis.common.annotation.WebLog;");
         return po;
     }
