@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * @author cles
@@ -48,7 +47,7 @@ public class AlipayServiceImpl2 implements AlipayService {
         //买家支付宝用户ID。 支付宝预授权和新当面资金授权场景下必填，其它场景不需要传入。
 //        data.put("buyer_id", "2088102181423530");
         //商户订单号,64个字符以内、可包含字母、数字、下划线；需保证在商户端不重复      //此处模拟订单号为时间
-        data.put("out_trade_no", UUID.randomUUID().toString());
+        data.put("out_trade_no", "20150320010101001");
         // 订单标题。 注意：不可使用特殊字符，如 /，=，& 等。
         data.put("subject", "nelson-test-title");
         // 支付授权码。 当面付场景传买家的付款码（25~30开头的长度为16~24位的数字，实际字符串长度以开发者获取的付款码长度为准）或者刷脸标识串（fp开头的35位字符串）； 周期扣款或代扣场景无需传入，协议号通过agreement_params参数传递； 支付宝预授权和新当面资金授权场景无需传入，授权订单号通过 auth_no字段传入。 注：交易的买家与卖家不能相同。
@@ -60,7 +59,7 @@ public class AlipayServiceImpl2 implements AlipayService {
         // 周期扣款或代扣场景无需传入，协议号通过agreement_params参数传递； 支付宝预授权和新当面资金授权场景无需传入，授权订单号通过 auth_no字段传入。 默认值为bar_code。
 //        data.put("scene", "bar_code");
         //该笔订单允许的最晚付款时间
-        data.put("timeout_express", "30m");
+        data.put("time_expire", "2024-08-16 05:05:01");
         //订单总金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000]
         data.put("total_amount","10.01");
         //销售产品码，商家和支付宝签约的产品码，为固定值QUICK_MSECURITY_PAY
@@ -112,6 +111,8 @@ public class AlipayServiceImpl2 implements AlipayService {
         // 面对面支付？
 //        AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest ();
         // 网页支付
+
+        // https://open.alipay.com/api?appId=2021001177611448 开通需要营业执照，网址等
         AlipayTradePagePayRequest  request = new AlipayTradePagePayRequest ();
         request.setNeedEncrypt(false);
 // APP支付
@@ -125,7 +126,7 @@ public class AlipayServiceImpl2 implements AlipayService {
 //        request.setReturnUrl(AliPayConfig.returnUrl);
 //        AlipaySignature.rsaCertCheckV2()
         request.setBizModel(model);
-//        request.setBizContent(JSON.toJSONString(data));
+        request.setBizContent(JSON.toJSONString(data));
 
         System.err.println(JSON.toJSONString(data));
         log.info(JSON.toJSONString(data));
