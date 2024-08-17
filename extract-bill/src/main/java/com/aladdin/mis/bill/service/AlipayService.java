@@ -3,6 +3,8 @@ package com.aladdin.mis.bill.service;
  *  Created by cles on 2020/7/14 23:24
  */
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author cles
  * @description:
@@ -22,4 +24,11 @@ public interface AlipayService {
      * @version: 1.0.0
      */
     String index();
+
+    /**
+     * 支付回调地址
+     * @param request
+     * @return
+     */
+    String notifyUrl(HttpServletRequest request);
 }

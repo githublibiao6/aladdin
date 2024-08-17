@@ -4,8 +4,11 @@ import com.aladdin.mis.bill.service.AlipayService;
 import com.alipay.api.AlipayApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 支付 controller
@@ -44,8 +47,9 @@ public class AlipayController {
      *  聊天测试
      * @return
      */
-    @RequestMapping("/notify")
-    public String index2() {
+    @PostMapping("/notify")
+    public String index2(HttpServletRequest request) {
+        String result = service.notifyUrl(request);
         return "alipay/notify";
     }
 
