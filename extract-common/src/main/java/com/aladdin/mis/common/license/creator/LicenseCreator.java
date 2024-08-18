@@ -27,16 +27,16 @@ public class LicenseCreator {
         // 密钥别称
         param.setPrivateAlias("privateKey");
         // 私钥密码
-        param.setKeyPass("private_password1234");
+        param.setKeyPass("private_password12345");
         // 私钥库的密码
-        param.setStorePass("public_password1234");
+        param.setStorePass("public_password12345");
         // 证书生成路径
-        param.setLicensePath("E:\\lb\\1\\Lic\\license.lic");
+        param.setLicensePath("D:\\GAME\\lic\\license.lic");
         // 私钥存储路径
-        param.setPrivateKeysStorePath("E:\\lb\\1\\Lic\\privateKeys.keystore");
+        param.setPrivateKeysStorePath("D:\\GAME\\lic\\privateKeys.keystore");
         // 证书生成时间-当前时间
         param.setIssuedTime(new Date());
-        LocalDateTime localDateTime = LocalDateTime.of(2024, 12, 31, 23, 59, 59);
+        LocalDateTime localDateTime = LocalDateTime.of(2024, 9, 18, 18, 10, 59);
         Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         // 证书过期时间-2024年12月31日23:59:59
         param.setExpiryTime(date);
