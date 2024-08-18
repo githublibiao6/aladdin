@@ -4,10 +4,13 @@ spring:
   profiles:
     active:
       - dev
-    include:
-      - alipaydev
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
     #设置mapper文件位置
   mapper-locations: classpath*:/mybatis-mapper/**/*.xml
+
+license:
+  subject: license
+  publicAlias: publicCert
+  storePass: public_password12345

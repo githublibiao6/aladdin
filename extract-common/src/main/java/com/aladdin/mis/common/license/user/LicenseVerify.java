@@ -15,7 +15,12 @@ import java.util.prefs.Preferences;
  */
 @Slf4j
 public class LicenseVerify {
-    // 安装License证书
+
+    /**
+     * 安装License证书
+     * @param param
+     * @return
+     */
     public synchronized LicenseContent install(LicenseVerifyParam param) {
         LicenseContent result = null;
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -35,7 +40,7 @@ public class LicenseVerify {
 
     /**
      * 校验License证书
-     * @return
+     * @return boolean
      */
     public boolean verify() {
         LicenseManager licenseManager = LicenseManagerHolder.getInstance(null);
@@ -43,10 +48,11 @@ public class LicenseVerify {
         // 2. 校验证书
         try {
             LicenseContent licenseContent = licenseManager.verify();
-            log.info(MessageFormat.format("证书校验通过，证书有效期：{0} - {1}",
-                    format.format(licenseContent.getNotBefore()), format.format(licenseContent.getNotAfter())));
+//            log.info(MessageFormat.format("证书校验通过，证书有效期：{0} - {1}",
+//                    format.format(licenseContent.getNotBefore()), format.format(licenseContent.getNotAfter())));
             return true;
         } catch (Exception e) {
+
             log.error("证书校验失败: {}", e.getMessage());
             return false;
         }

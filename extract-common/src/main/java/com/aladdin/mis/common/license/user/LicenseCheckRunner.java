@@ -41,7 +41,6 @@ public class LicenseCheckRunner implements ApplicationRunner {
         param.setStorePass(storePass);
         Resource resource = new ClassPathResource("application.yml");
         String filePath = resource.getFile().getAbsolutePath();
-        System.out.println("文件路径：" + filePath);
         // 相对路径resources资源目录
         String resourcePath = filePath.replaceAll("\\\\target\\\\classes\\\\application.yml", "");
         resourcePath += "/src/main/resources/";
