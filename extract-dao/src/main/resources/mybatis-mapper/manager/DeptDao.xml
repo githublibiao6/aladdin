@@ -7,8 +7,13 @@
         select * from be_dept where sys005=1
     </select>
 
+    <!-- 获取所有的部门信息 -->
+    <select id="listData" resultType="com.aladdin.mis.manager.bean.Dept">
+        select * from be_dept where sys005=1
+    </select>
+
     <!-- 根据id获取部门详细信息 -->
-    <select id="findById" resultType="com.aladdin.mis.manager.bean.Dept">
+    <select id="getById" resultType="com.aladdin.mis.manager.bean.Dept">
         select * from be_dept where id = #{id}
     </select>
 </mapper>

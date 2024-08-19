@@ -6,7 +6,6 @@ import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
@@ -105,7 +104,7 @@ public interface DeptService extends GlobalService<Dept> {
      * @return: com.apps.omnipotent.manager.bean.Role
      * @version: 1.0.0
      */
-    Dept findById(Integer id);
+    Dept getById(Integer id);
 
     /**
      * 分页查询组织机构
@@ -121,4 +120,9 @@ public interface DeptService extends GlobalService<Dept> {
      */
     Dept save(Dept entity);
 
+    /**
+     * 获取机构父子列表
+     * @return
+     */
+    List<Dept> listData(DeptQo qo);
 }

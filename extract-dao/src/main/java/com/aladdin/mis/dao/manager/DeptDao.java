@@ -1,6 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
 import com.aladdin.mis.manager.bean.Dept;
+import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,13 @@ public interface DeptDao {
      * @param id
      * @return
      */
-    Dept findById(Integer id);
+    Dept getById(Integer id);
+
+    /**
+     * 获取列表
+     * @param qo
+     * @return
+     */
+    List<Dept> listData(DeptQo qo);
 
 }

@@ -137,7 +137,7 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         Integer deptId = admin.getDeptId();
-        Dept dept = deptService.findById(deptId);
+        Dept dept = deptService.getById(deptId);
         if(deptId == null || dept == null){
             throw new AccountException("用户无权限");
         }
