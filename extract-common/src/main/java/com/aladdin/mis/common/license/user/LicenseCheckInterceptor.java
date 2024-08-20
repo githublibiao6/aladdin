@@ -14,12 +14,13 @@ import java.util.Map;
 
 /**
  * @author cles
- * @description:
+ * @description: 拦截器
  * @Date 2024/8/18 17:34
  * @version: 1.0.0
  */
 @Slf4j
 public class LicenseCheckInterceptor implements HandlerInterceptor {
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         LicenseVerify licenseVerify = new LicenseVerify();

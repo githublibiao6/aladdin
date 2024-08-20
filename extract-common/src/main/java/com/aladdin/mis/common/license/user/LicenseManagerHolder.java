@@ -8,7 +8,9 @@ import de.schlichtherle.license.LicenseParam;
  * @author cles
  */
 public class LicenseManagerHolder {
+
     private static volatile LicenseManager LICENSE_MANAGER;
+
     public static LicenseManager getInstance(LicenseParam param){
         if(LICENSE_MANAGER == null){
             synchronized (LicenseManagerHolder.class){
