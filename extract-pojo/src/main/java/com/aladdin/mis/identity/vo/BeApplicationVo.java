@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 应用表应用层实体 
  * @author cles
- * @date 2024-08-21 03:18:00
+ * @date 2024-08-21 03:21:11
 */
 @Data
 public class BeApplicationVo extends BeApplication {

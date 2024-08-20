@@ -10,6 +10,7 @@
         t.app_secret,
         t.contract_man,
         t.contract_phone,
+        t.contract_email,
         t.sys000,
         t.sys001,
         t.sys002,
@@ -28,6 +29,7 @@
         <result property="app_secret" column="appSecret"/>
         <result property="contract_man" column="contractMan"/>
         <result property="contract_phone" column="contractPhone"/>
+        <result property="contract_email" column="contractEmail"/>
         <result property="sys000" column="sys000"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
@@ -58,6 +60,9 @@
         </if>
         <if test="contractPhone  != null and contractPhone != '' ">
             and t.contract_phone = #{contractPhone}
+        </if>
+        <if test="contractEmail  != null and contractEmail != '' ">
+            and t.contract_email = #{contractEmail}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}

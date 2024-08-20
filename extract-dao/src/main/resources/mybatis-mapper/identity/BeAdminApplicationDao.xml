@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.identity.BeAdminApplicationDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.admin_id,
+        t.app_id,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.BeAdminApplication" > 
+        <id property="id" column="id"/>
+        <result property="admin_id" column="adminId"/>
+        <result property="app_id" column="appId"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.identity.vo.BeAdminApplicationVo">
+        select <include refid="baseColumn"></include>
+        from be_admin_application t where t.sys005 = 1
+        <if test="adminId  != null and adminId != '' ">
+            and t.admin_id = #{adminId}
+        </if>
+        <if test="appId  != null and appId != '' ">
+            and t.app_id = #{appId}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>

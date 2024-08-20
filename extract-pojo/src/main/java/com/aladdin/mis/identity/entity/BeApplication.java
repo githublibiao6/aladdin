@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * 应用表
  * @author cles
- * @date 2024-08-21 03:18:00
+ * @date 2024-08-21 03:26:38
 */
 @Table("be_application")
 @Data
@@ -49,5 +49,11 @@ public class BeApplication extends GlobalModel {
      */
     @TableField("contract_phone")
     private String contractPhone;
+
+    /**
+     * contractEmail
+     */
+    @TableField("contract_email")
+    private String contractEmail;
 
 }

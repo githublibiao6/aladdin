@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * BeApplicationService
  * @author cles
- * @date 2024-08-21 03:18:00
+ * @date 2024-08-21 03:21:11
 */
 @Service
 public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> implements BeApplicationService{
