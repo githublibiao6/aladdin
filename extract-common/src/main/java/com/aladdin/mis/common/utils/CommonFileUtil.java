@@ -18,6 +18,7 @@ public  class CommonFileUtil {
      * @return
      */
     public static boolean writeContentToFile(String content, String filePath, String fileName, boolean cover){
+
         File parentFile = new File(filePath);
         if(!parentFile.exists()){
             try {
@@ -37,7 +38,9 @@ public  class CommonFileUtil {
                 e.printStackTrace();
                 return false;
             }
-        }else if(cover) {
+        }else if(!cover){
+            return true;
+        }else  {
             try {
                 file.delete();
                 file.createNewFile();

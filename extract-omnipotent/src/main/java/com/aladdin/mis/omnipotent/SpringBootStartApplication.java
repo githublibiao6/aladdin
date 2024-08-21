@@ -9,8 +9,11 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
+ * 总的来说，SpringBootServletInitializer 的作用是让 Spring Boot 应用程序可以以 WAR 包的形式部署到外部的 Servlet 容器（如 Tomcat、Jetty 等），
+ * 并提供一种简单的方式来配置外部 Servlet 容器。
  * @author cles
  */
+@Deprecated
 public class SpringBootStartApplication  extends SpringBootServletInitializer implements WebMvcConfigurer {
 
     @Override

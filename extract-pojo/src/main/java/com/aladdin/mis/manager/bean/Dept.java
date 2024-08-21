@@ -1,8 +1,11 @@
 package com.aladdin.mis.manager.bean;
 
 import com.aladdin.mis.annotation.entity.Table;
+import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * 部门 类
@@ -32,5 +35,20 @@ public class Dept extends GlobalModel {
      * 说明
      */
     private String comments;
+
+    @TableField(exist = false)
+    private Integer deptId;
+
+    @TableField(exist = false)
+    private String parentName;
+
+    @TableField(exist = false)
+    private List<Dept> children;
+
+    @TableField(exist = false)
+    private boolean hasChildren;
+
+    @TableField(exist = false)
+    private String menus;
 
 }

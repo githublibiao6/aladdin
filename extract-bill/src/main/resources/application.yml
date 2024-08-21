@@ -1,6 +1,13 @@
 spring:
   profiles:
     active:
-      - dev
+    - dev
+    - alipay
   application:
     name: extract-bill
+
+
+license:
+  subject: license
+  publicAlias: publicCert
+  storePass: public_password12345

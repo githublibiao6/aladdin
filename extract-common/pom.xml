@@ -33,11 +33,12 @@
 <!--      <version>${project.version}</version>-->
 <!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.apache.shiro</groupId>
-      <artifactId>shiro-spring-boot-starter</artifactId>
-      <version>1.5.2</version>
-    </dependency>
+      <!-- license 证书 -->
+      <dependency>
+          <groupId>de.schlichtherle.truelicense</groupId>
+          <artifactId>truelicense-core</artifactId>
+          <version>1.33</version>
+      </dependency>
 
       <!--二维码 -->
       <dependency>

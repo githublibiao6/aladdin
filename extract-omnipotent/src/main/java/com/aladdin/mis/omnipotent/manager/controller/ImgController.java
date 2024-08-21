@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Img;
 import com.aladdin.mis.bill.service.impl.ImgServiceImpl;

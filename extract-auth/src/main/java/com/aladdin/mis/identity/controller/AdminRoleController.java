@@ -1,9 +1,9 @@
 package com.aladdin.mis.identity.controller;
 
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.AdminRole;
-import com.aladdin.mis.bill.service.AdminRoleService;
+import com.aladdin.mis.system.service.AdminRoleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

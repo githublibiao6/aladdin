@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.engineering.entity.ProjectBugLog;
 import com.aladdin.mis.engineering.service.ProjectBugLogService;
 import org.springframework.stereotype.Controller;

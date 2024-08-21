@@ -4,9 +4,9 @@ import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DeptDao;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
-import com.aladdin.mis.bill.service.DeptService;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
+import com.aladdin.mis.system.service.DeptService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,7 +63,7 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
         list.forEach(t->{
             List<DeptVo> children = new ArrayList<>();
             if(pid.equals(t.getParent())){
-                for (Dept record : list) {
+                for (DeptVo record : list) {
                     if(record.getParent().equals(t.getId())){
                         DeptVo vo = (DeptVo) record;
                         vo.setParentName(t.getName());
@@ -105,8 +105,8 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
     }
 
     @Override
-    public Dept findById(Integer menuId){
-        return dao.findById(menuId);
+    public Dept getById(Integer menuId){
+        return dao.getById(menuId);
     }
 
     @Override
@@ -117,5 +117,35 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
     @Override
     public Dept save(Dept entity) {
         return insertSelective(entity);
+    }
+
+    @Override
+    public List<Dept> listData(DeptQo qo) {
+        List<Dept> list = dao.listData(qo);
+        convertMenuTree(list, -1);
+        return list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
+    }
+
+    private void convertMenuTree(List<Dept> list,  Integer pid){
+        list.forEach(t->{
+            List<Dept> children = new ArrayList<>();
+            if(pid.equals(t.getParent())){
+                for (Dept record : list) {
+                    if(record.getParent().equals(t.getId())){
+                        record.setParentName(t.getName());
+                        children.add(record);
+                    }
+                }
+                if(children.size() > 0){
+                    children.forEach(child->{
+                        convertMenuTree(list, t.getId());
+                    });
+                    t.setChildren(children);
+                    t.setHasChildren(true);
+                }else {
+                    t.setHasChildren(false);
+                }
+            }
+        });
     }
 }

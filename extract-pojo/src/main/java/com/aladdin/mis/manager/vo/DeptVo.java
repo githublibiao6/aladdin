@@ -1,6 +1,5 @@
 package com.aladdin.mis.manager.vo;
 
-import com.aladdin.mis.manager.bean.Dept;
 import lombok.Data;
 
 import java.util.List;
@@ -11,11 +10,31 @@ import java.util.List;
  * @date 2018年6月5日 下午9:03:15
  */
 @Data
-public class DeptVo extends Dept {
+public class DeptVo {
+
+    /**
+     * 主键
+     */
+    private Integer id;
+
+    /**
+     * 编号
+     */
+    private Integer parent;
+
+    /**
+     * 编号
+     */
+    private String code;
+
+    /**
+     * 部门名称
+     */
+    private String name;
 
     private List<DeptVo> children;
 
-    private Boolean hasChildren;
+   private Boolean hasChildren;
 
     private String label;
 

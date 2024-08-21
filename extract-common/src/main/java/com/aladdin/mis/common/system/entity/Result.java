@@ -10,6 +10,7 @@ import java.util.UUID;
  */
 @Data
 public class Result {
+
     /**
      * 请求唯一主键，方便查询日志，及服务之间的调用排查
      */

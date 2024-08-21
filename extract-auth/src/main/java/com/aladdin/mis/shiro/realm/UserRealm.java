@@ -3,9 +3,9 @@ package com.aladdin.mis.shiro.realm;
  * Created by cles on 2020/4/23 22:39
  */
 
-import com.aladdin.mis.bill.service.AdminService;
-import com.aladdin.mis.bill.service.BeUserMenuService;
-import com.aladdin.mis.bill.service.DeptService;
+import com.aladdin.mis.system.service.AdminService;
+import com.aladdin.mis.system.service.BeUserMenuService;
+import com.aladdin.mis.system.service.DeptService;
 import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
 import com.aladdin.mis.manager.bean.Admin;
@@ -137,7 +137,7 @@ public class UserRealm extends AuthorizingRealm {
         }
 
         Integer deptId = admin.getDeptId();
-        Dept dept = deptService.findById(deptId);
+        Dept dept = deptService.getById(deptId);
         if(deptId == null || dept == null){
             throw new AccountException("用户无权限");
         }

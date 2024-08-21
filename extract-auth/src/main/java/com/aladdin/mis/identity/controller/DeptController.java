@@ -1,18 +1,15 @@
 package com.aladdin.mis.identity.controller;
 
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.system.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
-import com.aladdin.mis.bill.service.DeptService;
 import com.aladdin.mis.manager.vo.DeptVo;
+import com.aladdin.mis.system.service.DeptService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +24,19 @@ import java.util.Map;
 @RequestMapping("dept")
 @Controller
 public class DeptController extends GlobalController<Dept, DeptService> {
+
+    /**
+     * 获取分页
+     */
+    @RequestMapping("/listData")
+    @ResponseBody
+    public  Result listData(@RequestBody DeptQo qo) {
+        List<Dept> list = baseService.listData(qo);
+        result.setData(list);
+        result.setCode(20000);
+        return result;
+    }
+
     /**
      *  查询字典树
      */
@@ -100,6 +110,19 @@ public class DeptController extends GlobalController<Dept, DeptService> {
         }else {
             result.setMessage("更新失败");
         }
+        return result ;
+    }
+
+    /**
+     * 更新组织机构
+     */
+    @PostMapping("getById")
+    @WebLog("根据id获取部门")
+    @ResponseBody
+    public Result getById(@RequestParam Integer id){
+        Dept dept = baseService.getById(id);
+        result.setData(dept);
+        result.setMessage("查询成功");
         return result ;
     }
 }

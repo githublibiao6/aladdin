@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.controller;
 
-import com.aladdin.mis.system.controller.GlobalController;
+import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.shiro.entity.BeAuthUrl;
 import com.aladdin.mis.shiro.service.BeAuthUrlService;
 import org.springframework.stereotype.Controller;

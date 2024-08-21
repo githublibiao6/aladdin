@@ -4,7 +4,7 @@ import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
-import com.aladdin.mis.bill.service.MenuService;
+import com.aladdin.mis.system.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
