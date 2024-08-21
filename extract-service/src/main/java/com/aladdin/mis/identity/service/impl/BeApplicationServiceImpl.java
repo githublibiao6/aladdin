@@ -40,6 +40,24 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     public boolean add(BeApplication m) {
         boolean flag = insertSelective(m);
         Menu menu = menuService.getByAppId(m.getId());
+        if(menu != null && !menu.getMenuText().equals(m.getAppName())){
+            menu.setMenuText(m.getAppName());
+            menuService.update(menu);
+        }else {
+            int max = menuService.getMaxSortNumByApp();
+            menu = new Menu();
+            menu.setIcon("dashboard");
+            menu.setMenuText(m.getAppName());
+            menu.setUrl("/");
+            menu.setParent(m.getId());
+            menu.setAppId(m.getId());
+            menu.setMenuText("0");
+            menu.setLevel("0");
+            menu.setEnable(1);
+            menu.setShow(1);
+            menu.setSortNum(max + 1);
+            menuService.add(menu);
+        }
         return flag;
     }
 

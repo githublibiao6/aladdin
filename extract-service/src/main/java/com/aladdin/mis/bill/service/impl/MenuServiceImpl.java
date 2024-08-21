@@ -92,7 +92,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     /**
      * 功能描述：
-     *  < 分页获取菜单 >
+     *  < 获取菜单树形列表 >
      * @Description: pageList
      * @Author: cles
      * @Date: 2020/6/23 23:00
@@ -103,7 +103,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public List<Menu> tree(MenuQo qo) {
         List<Menu> list = dao.list(qo);
-        convertMenuTree(list, -1 );
+        convertMenuTree(list, -1);
         List<Menu> result = list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
         List<Menu> data = dao.getAppList();
         data.forEach(t->{
@@ -197,5 +197,10 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public Menu getByAppId(Integer id) {
         return null;
+    }
+
+    @Override
+    public int getMaxSortNumByApp() {
+        return 0;
     }
 }

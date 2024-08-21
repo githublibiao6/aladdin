@@ -142,4 +142,10 @@ public interface MenuService  extends GlobalService<Menu> {
      * @return
      */
     Menu getByAppId(Integer id);
+
+    /**
+     * 获取应用最大的排序数字
+     * @return
+     */
+    int getMaxSortNumByApp();
 }

@@ -32,6 +32,7 @@
     <select id="getAppList" resultType="com.aladdin.mis.manager.bean.Menu">
         select t.* from be_menu t
         where t.sys005='1' and level = '0'
+        order by sort_num asc
     </select>
 
     <update  id="remove" parameterType="com.aladdin.mis.manager.bean.Menu">
