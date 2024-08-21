@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.utils;
+package com.aladdin.mis.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.aladdin.mis.common.redis.entity.KeyBean;

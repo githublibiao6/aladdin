@@ -5,6 +5,10 @@ import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * 拦截器
+ * @author cles
+ */
 @Configuration
 public class DefaultView implements WebMvcConfigurer {
 

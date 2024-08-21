@@ -1,8 +1,8 @@
-package com.aladdin.mis.omnipotent.api.controller;
+package com.aladdin.mis.api;
 
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.omnipotent.system.utils.FileUtil;
+import com.aladdin.mis.common.utils.FileUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;

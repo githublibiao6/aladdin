@@ -11,6 +11,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+/**
+ * 启动时运行
+ * @author libia
+ */
 @Slf4j
 @Component
 public class LicenseCheckRunner implements ApplicationRunner {

@@ -1,7 +1,10 @@
-package com.aladdin.mis.omnipotent.system.utils;
+package com.aladdin.mis.common.utils;
 
 import java.util.UUID;
 
+/**
+ * 获取key方法
+ */
 public class KeyUtil {
 
     /**
