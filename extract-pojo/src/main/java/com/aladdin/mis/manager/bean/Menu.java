@@ -75,6 +75,18 @@ public class Menu extends GlobalModel {
     private String main;
 
     /**
+     * 应用主键
+     */
+    @TableField("app_id")
+    private Integer appId;
+
+    /**
+     * 应用主键
+     */
+    @TableField("sort_num")
+    private Integer sortNum;
+
+    /**
      * 是否有子节点
      */
     @TableField(exist = false)

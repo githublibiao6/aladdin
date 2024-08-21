@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.identity.BeApplicationDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.app_code,
+        t.app_name,
+        t.app_key,
+        t.app_secret,
+        t.contract_man,
+        t.contract_phone,
+        t.contract_email,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.BeApplication" > 
+        <id property="id" column="id"/>
+        <result property="app_code" column="appCode"/>
+        <result property="app_name" column="appName"/>
+        <result property="app_key" column="appKey"/>
+        <result property="app_secret" column="appSecret"/>
+        <result property="contract_man" column="contractMan"/>
+        <result property="contract_phone" column="contractPhone"/>
+        <result property="contract_email" column="contractEmail"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.identity.vo.BeApplicationVo">
+        select <include refid="baseColumn"></include>
+        from be_application t where t.sys005 = 1
+        <if test="appCode  != null and appCode != '' ">
+            and t.app_code = #{appCode}
+        </if>
+        <if test="appName  != null and appName != '' ">
+            and t.app_name = #{appName}
+        </if>
+        <if test="appKey  != null and appKey != '' ">
+            and t.app_key = #{appKey}
+        </if>
+        <if test="appSecret  != null and appSecret != '' ">
+            and t.app_secret = #{appSecret}
+        </if>
+        <if test="contractMan  != null and contractMan != '' ">
+            and t.contract_man = #{contractMan}
+        </if>
+        <if test="contractPhone  != null and contractPhone != '' ">
+            and t.contract_phone = #{contractPhone}
+        </if>
+        <if test="contractEmail  != null and contractEmail != '' ">
+            and t.contract_email = #{contractEmail}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>
