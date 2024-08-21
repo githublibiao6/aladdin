@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.system.utils;
+package com.aladdin.mis.common.utils;
 /**
  * Created by cles on 2020/5/30 0:33
  */

@@ -1,4 +1,4 @@
-package com.aladdin.mis.mapper.system;
+package com.aladdin.mis.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

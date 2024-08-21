@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.controller;
 
-import com.aladdin.mis.omnipotent.system.utils.EVMUtils;
+import com.aladdin.mis.common.utils.EVMUtils;
 import com.google.zxing.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.aladdin.mis.omnipotent.api.controller;
+package com.aladdin.mis.api;
 
 import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
 import com.aladdin.mis.common.db.bean.TableInfo;
