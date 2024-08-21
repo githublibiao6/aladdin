@@ -128,6 +128,12 @@ public interface MenuDao {
     @Select("select t.* from be_menu t")
     List<Menu> queryByRoles(@Param("roles") Set<String> roles);
 
+    /**
+     * 获取应用列表
+     * @return
+     */
+    List<Menu> getAppList();
+
     class MenuProvider {
 
         public String queryByRoles(Set<String> roles) {

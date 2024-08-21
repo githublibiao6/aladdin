@@ -61,7 +61,6 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 
     /**
      * 菜单跳转
-     *
      * @return
      */
     @RequestMapping("/index.do")
@@ -139,7 +138,6 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 
     /**
      * 获取菜单
-     *
      * @return List<Role>
      * @Description
      * @MethodName index
@@ -159,7 +157,6 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 
     /**
      * 获取菜单
-     *
      * @return List<Role>
      * @Description
      * @MethodName index
@@ -172,10 +169,19 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 //        String hello = dubboService.sayHello("  dubbo "); // 执行远程方法
         MenuQo qo = new MenuQo();
         qo.setEnable(1);
+        qo.setShow(1);
+        qo.setMenuType("1");
         List<Menu> list = baseService.list(qo);
-        result.setData(list);
-        result.setCode(20000);
-        result.setMessage("菜单信息");
+        if(list.isEmpty()){
+            result.setSuccess(false);
+            result.setData(list);
+            result.setCode(50000);
+            result.setMessage("暂无权限");
+        }else {
+            result.setData(list);
+            result.setCode(20000);
+            result.setMessage("菜单信息");
+        }
         return result;
     }
 

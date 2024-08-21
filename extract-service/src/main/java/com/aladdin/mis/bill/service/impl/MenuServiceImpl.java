@@ -2,12 +2,15 @@ package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.MenuDao;
+import com.aladdin.mis.identity.entity.BeApplication;
+import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.aladdin.mis.system.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -28,8 +31,17 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Autowired
     private MenuDao dao;
 
+    @Autowired
+    private BeApplicationService applicationService;
+
+    @Value("${global.appKey:0}")
+    private String appKey;
+
+    @Value("${global.appSecret:0}")
+    private String appSecret;
+
     /**
-     * 获取菜单
+     * 获取菜单（用户权限）
     * @Description
     * @MethodName listMenu
     * @return List<Role>
@@ -39,7 +51,13 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
      */
     @Override
     public List<Menu> list(MenuQo qo) {
+        BeApplication app = applicationService.getByKeyAndSecret(appKey, appSecret);
+        if(app == null){
+            return new ArrayList<>();
+        }
+        qo.setAppId(app.getId());
         List<Menu> list = dao.list(qo);
+        // todo 根据用户权限获取菜单
         if(!list.isEmpty()){
             list.forEach(t->{
                 t.setHasChildren(false);
@@ -84,9 +102,25 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
      */
     @Override
     public List<Menu> tree(MenuQo qo) {
-        List<Menu> list = list(qo);
+        List<Menu> list = dao.list(qo);
         convertMenuTree(list, -1 );
-        return list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
+        List<Menu> result = list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
+        List<Menu> data = dao.getAppList();
+        data.forEach(t->{
+            List<Menu> children = new ArrayList<>();
+            result.forEach(m->{
+                if(m.getAppId().equals(t.getAppId())){
+                    children.add(m);
+                }
+            });
+            if(children.size() > 0){
+                t.setChildren(children);
+                t.setHasChildren(true);
+            }else {
+                t.setHasChildren(false);
+            }
+        });
+        return data;
     }
 
     private void convertMenuTree(List<Menu> list,  Integer pid){
@@ -158,5 +192,10 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public List<Menu> queryByRoleId(String code) {
         return dao.queryByRoleId(code);
+    }
+
+    @Override
+    public Menu getByAppId(Integer id) {
+        return null;
     }
 }

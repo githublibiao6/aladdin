@@ -5,7 +5,6 @@ import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -136,4 +135,11 @@ public interface MenuService  extends GlobalService<Menu> {
      * @return
      */
     List<Menu> queryByRoleId(String code);
+
+    /**
+     * 根据appId获取菜单项
+     * @param id
+     * @return
+     */
+    Menu getByAppId(Integer id);
 }

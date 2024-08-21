@@ -81,4 +81,6 @@ global:
   sso:
     enable: true
     url: http://localhost:8081/sso
+  appKey: 10001
+  appSecret: 10001
 

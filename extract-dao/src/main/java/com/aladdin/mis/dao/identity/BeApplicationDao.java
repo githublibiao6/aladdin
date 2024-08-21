@@ -1,7 +1,9 @@
 package com.aladdin.mis.dao.identity;
 
+import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.qo.BeApplicationQo;
 import com.aladdin.mis.identity.vo.BeApplicationVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +20,12 @@ public interface BeApplicationDao {
      * @return list
      */
     List<BeApplicationVo> list(BeApplicationQo qo);
+
+    /**
+     * 获取应用
+     * @param appKey appKey
+     * @param appSecret appSecret
+     * @return entity
+     */
+    BeApplication getByKeyAndSecret(@Param("appKey") String appKey, @Param("appSecret") String appSecret);
 }

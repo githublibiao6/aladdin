@@ -3,12 +3,16 @@ package com.aladdin.mis.identity.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
  * 应用表
  * @author cles
- * @date 2024-08-21 03:26:38
+ * @date 2024-08-21 23:06:56
 */
 @Table("be_application")
 @Data
@@ -55,5 +59,19 @@ public class BeApplication extends GlobalModel {
      */
     @TableField("contract_email")
     private String contractEmail;
+
+    /**
+     * appStatus应用状态
+     */
+    @TableField("app_status")
+    private Integer appStatus;
+
+    /**
+     * endDate结束日期
+     */
+    @TableField("end_date")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime endDate;
 
 }

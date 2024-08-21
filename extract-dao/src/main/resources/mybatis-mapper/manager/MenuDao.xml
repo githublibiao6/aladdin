@@ -20,7 +20,18 @@
         <if test="show  != null and show != '' ">
             and t.`show` = #{show}
         </if>
+        <if test="menuType  != null and menuType != '' ">
+            and t.`menu_type` = #{menuType}
+        </if>
+        <if test="appId  != null and appId != '' ">
+            and t.`app_id` = #{appId} and level > '0'
+        </if>
         order by t.level asc
+    </select>
+
+    <select id="getAppList" resultType="com.aladdin.mis.manager.bean.Menu">
+        select t.* from be_menu t
+        where t.sys005='1' and level = '0'
     </select>
 
     <update  id="remove" parameterType="com.aladdin.mis.manager.bean.Menu">
