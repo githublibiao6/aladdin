@@ -124,7 +124,6 @@ public interface MenuDao {
      * @param roles 角色集合
      * @return list
      */
-//    @SelectProvider(type = MenuDao.MenuProvider.class,method = "queryByRoles")
     @Select("select t.* from be_menu t")
     List<Menu> queryByRoles(@Param("roles") Set<String> roles);
 
@@ -133,6 +132,29 @@ public interface MenuDao {
      * @return
      */
     List<Menu> getAppList();
+
+    /**
+     * 根据appid获取菜单
+     * @param appId
+     * @return
+     */
+    Menu getByAppId(@Param("appId") Integer appId);
+
+    /**
+     * 获取上一个menu
+     * @param parent
+     * @param sortNum
+     * @return
+     */
+    Menu getUpMenu(@Param("parent")Integer parent,@Param("sortNum") int sortNum);
+
+    /**
+     * 获取下一个menu
+     * @param parent
+     * @param sortNum
+     * @return
+     */
+    Menu getDownMenu(@Param("parent")Integer parent,@Param("sortNum") int sortNum);
 
     class MenuProvider {
 

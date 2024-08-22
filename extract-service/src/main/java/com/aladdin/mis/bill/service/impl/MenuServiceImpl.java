@@ -114,6 +114,8 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
                 }
             });
             if(children.size() > 0){
+                children.get(0).setSortIndex(0);
+                children.get(children.size()-1).setSortIndex(1);
                 t.setChildren(children);
                 t.setHasChildren(true);
             }else {
@@ -147,7 +149,8 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public boolean add(Menu menu) {
-        return insertSelective(menu);
+        insertSelective(menu);
+        return true;
     }
 
     @Override
@@ -195,12 +198,61 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     }
 
     @Override
-    public Menu getByAppId(Integer id) {
-        return null;
+    public Menu getByAppId(Integer appId) {
+        return dao.getByAppId(appId);
     }
 
     @Override
     public int getMaxSortNumByApp() {
         return 0;
+    }
+
+    @Override
+    public boolean moveUp(Integer id) {
+        Menu menu = detailQuery(id);
+        int sortNum = menu.getSortNum();
+        if(sortNum == 1){
+            return true;
+        }
+        menu.setSortNum(sortNum - 1);
+        Menu upMenu  = dao.getUpMenu(menu.getParent() , sortNum);
+        upMenu.setSortNum(sortNum);
+        update(upMenu);
+        update(menu);
+        return true;
+    }
+
+    @Override
+    public boolean moveDown(Integer id) {
+        Menu menu = detailQuery(id);
+        int sortNum = menu.getSortNum();
+        menu.setSortNum(sortNum + 1);
+        Menu downMenu  = dao.getDownMenu(menu.getParent() , sortNum);
+        if(downMenu == null){
+            return true;
+        }
+        downMenu.setSortNum(sortNum);
+        update(downMenu);
+        update(menu);
+        return true;
+    }
+
+    @Override
+    public List<Menu> getByParentId(Integer parentId) {
+        MenuQo qo = new MenuQo();
+        qo.setShow(1);
+//        Menu menu = detailQuery(parentId);
+//        if(menu.getMenuType() == 0 ){
+//            qo.setParent(-1);
+//            qo.setAppId(menu.getAppId());
+//        }else {
+            qo.setParent(parentId);
+//        }
+        List<Menu> list = dao.list(qo);
+        if(list != null && !list.isEmpty()){
+            list.get(0).setSortIndex(0);
+            list.get(list.size()-1).setSortIndex(1);
+        }
+        return list;
     }
 }

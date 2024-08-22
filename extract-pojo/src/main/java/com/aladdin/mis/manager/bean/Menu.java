@@ -55,7 +55,7 @@ public class Menu extends GlobalModel {
      * 菜单类型
      */
     @TableField("menu_type")
-    private String menuType;
+    private Integer menuType;
 
     /**
      * 菜单是否启用
@@ -97,5 +97,8 @@ public class Menu extends GlobalModel {
 
     @TableField(exist = false)
     private List<Menu> children;
+
+    @TableField(exist = false)
+    private Integer sortIndex;
 
 }

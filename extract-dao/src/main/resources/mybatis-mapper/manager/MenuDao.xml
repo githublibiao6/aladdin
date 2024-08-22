@@ -24,15 +24,40 @@
             and t.`menu_type` = #{menuType}
         </if>
         <if test="appId  != null and appId != '' ">
-            and t.`app_id` = #{appId} and level > '0'
+            and t.`app_id` = #{appId} and t.menu_type > '0'
         </if>
-        order by t.level asc
+        <if test="parent  != null and parent != '' ">
+            and t.`parent` = #{parent}
+        </if>
+        order by t.menu_type asc, t.sort_num asc
     </select>
 
     <select id="getAppList" resultType="com.aladdin.mis.manager.bean.Menu">
         select t.* from be_menu t
         where t.sys005='1' and level = '0'
         order by sort_num asc
+    </select>
+
+    <select id="getByAppId" resultType="com.aladdin.mis.manager.bean.Menu">
+        select t.* from be_menu t
+        where t.sys005='1' and level = '0'
+        and app_id = #{appId}
+    </select>
+
+    <select id="getUpMenu" resultType="com.aladdin.mis.manager.bean.Menu">
+        select t.* from be_menu t
+        where t.sys005='1' and parent = #{parent}
+        and sort_num &lt; #{sortNum}
+        order by sort_num desc
+        limit 1
+    </select>
+
+    <select id="getDownMenu" resultType="com.aladdin.mis.manager.bean.Menu">
+        select t.* from be_menu t
+        where t.sys005='1' and parent = #{parent}
+        and sort_num > #{sortNum}
+        order by sort_num asc
+        limit 1
     </select>
 
     <update  id="remove" parameterType="com.aladdin.mis.manager.bean.Menu">

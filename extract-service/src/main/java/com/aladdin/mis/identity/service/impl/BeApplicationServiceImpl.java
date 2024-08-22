@@ -52,6 +52,7 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
             menu.setParent(m.getId());
             menu.setAppId(m.getId());
             menu.setMenuText("0");
+            menu.setMenuType(0);
             menu.setLevel("0");
             menu.setEnable(1);
             menu.setShow(1);

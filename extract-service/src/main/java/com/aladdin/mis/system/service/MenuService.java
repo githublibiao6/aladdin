@@ -138,14 +138,35 @@ public interface MenuService  extends GlobalService<Menu> {
 
     /**
      * 根据appId获取菜单项
-     * @param id
+     * @param appId
      * @return
      */
-    Menu getByAppId(Integer id);
+    Menu getByAppId(Integer appId);
 
     /**
      * 获取应用最大的排序数字
      * @return
      */
     int getMaxSortNumByApp();
+
+    /**
+     * 上移
+     * @param id
+     * @return
+     */
+    boolean moveUp(Integer id);
+
+    /**
+     * 下移
+     * @param id
+     * @return
+     */
+    boolean moveDown(Integer id);
+
+    /**
+     * 获取子列表
+     * @param parentId
+     * @return
+     */
+    List<Menu> getByParentId(Integer parentId);
 }

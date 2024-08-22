@@ -13,7 +13,6 @@ import com.github.pagehelper.PageInfo;
 */
 public interface BeApplicationService extends GlobalService<BeApplication>  {
 
-
     /**
      * 功能描述：
      *  < 分页 >
@@ -25,7 +24,6 @@ public interface BeApplicationService extends GlobalService<BeApplication>  {
      * @version: 1.0.0
      */
     PageInfo<BeApplicationVo> page(BeApplicationQo qo);
-
 
     /**
      * 功能描述：
@@ -50,7 +48,6 @@ public interface BeApplicationService extends GlobalService<BeApplication>  {
      * @version: 1.0.0
      */
     boolean update(BeApplication m);
-
 
     /**
      * 功能描述：

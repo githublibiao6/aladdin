@@ -34,7 +34,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     //    DubboService dubboService;
 
     /**
-     * 获取分页
+     * 根据用户获取菜单
      */
     @RequestMapping("/listMenusByUserId")
     @ResponseBody
@@ -63,18 +63,36 @@ public class MenuController extends GlobalController<Menu, MenuService> {
      * 菜单跳转
      * @return
      */
-    @RequestMapping("/index.do")
-    public String index() {
-        return "system/menu/index";
+    @RequestMapping("/moveUp")
+    @ResponseBody
+    public Result moveUp(@RequestParam Integer id) {
+        boolean flag = baseService.moveUp(id);
+        result.setMessage("移动成功");
+        return result;
     }
 
     /**
      * icon显示
      * @return
      */
-    @RequestMapping("/selecticon.do")
-    public String selectIcon() {
-        return "system/menu/iconshow";
+    @RequestMapping("/moveDown")
+    @ResponseBody
+    public Result moveDown(@RequestParam Integer id) {
+        boolean flag = baseService.moveDown(id);
+        result.setMessage("移动成功");
+        return result;
+    }
+
+    /**
+     * icon显示
+     * @return
+     */
+    @RequestMapping("/getByParentId")
+    @ResponseBody
+    public Result getByParentId(@RequestParam Integer parentId) {
+        List<Menu> data = baseService.getByParentId(parentId);
+        result.setData(data);
+        return result;
     }
 
     /**
@@ -170,7 +188,7 @@ public class MenuController extends GlobalController<Menu, MenuService> {
         MenuQo qo = new MenuQo();
         qo.setEnable(1);
         qo.setShow(1);
-        qo.setMenuType("1");
+        qo.setMenuType(1);
         List<Menu> list = baseService.list(qo);
         if(list.isEmpty()){
             result.setSuccess(false);
