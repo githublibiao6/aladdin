@@ -40,37 +40,6 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Value("${global.appSecret:0}")
     private String appSecret;
 
-    /**
-     * 获取菜单（用户权限）
-    * @Description
-    * @MethodName listMenu
-    * @return List<Role>
-    * @author lb
-    * @date 2018年8月21日 下午9:55:31
-    *
-     */
-    @Override
-    public List<Menu> list(MenuQo qo) {
-        BeApplication app = applicationService.getByKeyAndSecret(appKey, appSecret);
-        if(app == null){
-            return new ArrayList<>();
-        }
-        qo.setAppId(app.getId());
-        List<Menu> list = dao.list(qo);
-        // todo 根据用户权限获取菜单
-        if(!list.isEmpty()){
-            list.forEach(t->{
-                t.setHasChildren(false);
-                for (Menu m : list) {
-                    if (t.getId().equals(m.getParent())) {
-                        t.setHasChildren(true);
-                        return;
-                    }
-                }
-            });
-        }
-        return list;
-    }
 
     @Override
     public List<Menu> list() {
@@ -237,6 +206,42 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
         return true;
     }
 
+    /**
+     * 获取菜单（用户权限）
+     * @Description
+     * @MethodName listMenu
+     * @return List<Role>
+     * @author lb
+     * @date 2018年8月21日 下午9:55:31
+     *
+     */
+    @Override
+    public List<Menu> list(MenuQo qo) {
+        BeApplication app = applicationService.getByKeyAndSecret(appKey, appSecret);
+        if(app == null){
+            return new ArrayList<>();
+        }
+        qo.setAppId(app.getId());
+        List<Menu> list = dao.list(qo);
+        // todo 根据用户权限获取菜单
+        if(!list.isEmpty()){
+            handleList(list);
+        }
+        return list;
+    }
+
+    private void handleList(List<Menu> list){
+        list.forEach(t->{
+            t.setHasChildren(false);
+            for (Menu m : list) {
+                if (t.getId().equals(m.getParent())) {
+                    t.setHasChildren(true);
+                    return;
+                }
+            }
+        });
+    }
+
     @Override
     public List<Menu> getByParentId(Integer parentId) {
         MenuQo qo = new MenuQo();
@@ -252,6 +257,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
         if(list != null && !list.isEmpty()){
             list.get(0).setSortIndex(0);
             list.get(list.size()-1).setSortIndex(1);
+            handleList(list);
         }
         return list;
     }
