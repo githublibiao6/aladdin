@@ -1,6 +1,7 @@
 package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.common.config.ApplicationConfig;
 import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.service.BeApplicationService;
@@ -34,23 +35,9 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Autowired
     private BeApplicationService applicationService;
 
-    @Value("${global.appKey:0}")
-    private String appKey;
-
-    @Value("${global.appSecret:0}")
-    private String appSecret;
-
-
     @Override
     public List<Menu> list() {
         return dao.list2();
-    }
-
-    @Override
-    public List<Map> listMap() {
-        List<Map> list = dao.listMap();
-//        ConvertUtils.convertTree(list,"menu_id","parent","children","-1",true);
-        return list;
     }
 
     @Override
@@ -224,7 +211,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
      */
     @Override
     public List<Menu> list(MenuQo qo) {
-        BeApplication app = applicationService.getByKeyAndSecret(appKey, appSecret);
+        BeApplication app = applicationService.getByKeyAndSecret();
         if(app == null){
             return new ArrayList<>();
         }

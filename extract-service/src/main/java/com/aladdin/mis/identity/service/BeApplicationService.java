@@ -63,9 +63,7 @@ public interface BeApplicationService extends GlobalService<BeApplication>  {
 
     /**
      * 根据key和secret获取应用
-     * @param appKey key
-     * @param appSecret secret
      * @return
      */
-    BeApplication getByKeyAndSecret(String appKey, String appSecret);
+    BeApplication getByKeyAndSecret();
 }

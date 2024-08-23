@@ -61,10 +61,8 @@ public class BeLoginLog extends GlobalModel {
     /**
     * lastLoginTime
     */
-    @TableField("last_login_time")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime lastLoginTime;
+    @TableField("application_id")
+    private Integer applicationId;
 
     /**
     * departId

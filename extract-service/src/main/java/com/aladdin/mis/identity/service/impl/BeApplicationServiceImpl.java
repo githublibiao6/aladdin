@@ -1,6 +1,7 @@
 package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.common.config.ApplicationConfig;
 import com.aladdin.mis.dao.identity.BeApplicationDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.qo.BeApplicationQo;
@@ -73,8 +74,8 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     }
 
     @Override
-    public BeApplication getByKeyAndSecret(String appKey, String appSecret) {
-        return beApplicationDao.getByKeyAndSecret(appKey, appSecret);
+    public BeApplication getByKeyAndSecret() {
+        return beApplicationDao.getByKeyAndSecret(ApplicationConfig.appKey, ApplicationConfig.appSecret);
     }
 }
 

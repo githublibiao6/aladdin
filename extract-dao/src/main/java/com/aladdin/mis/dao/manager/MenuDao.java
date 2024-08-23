@@ -59,18 +59,6 @@ public interface MenuDao {
     List<Menu> list2();
 
     /**
-     * 功能描述：获取所有有效菜单
-     *  < >
-     * @Description: listMap
-     * @Author: cles
-     * @Date: 2020/8/26 23:31
-     * @return: java.util.List<java.util.Map>
-     * @version: 1.0.0
-     */
-    @Select("select t.* from be_menu t where sys005 = 1")
-    List<Map> listMap();
-
-    /**
      * 功能描述：
      *  < >
      * @Description: update

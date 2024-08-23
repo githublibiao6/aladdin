@@ -41,17 +41,6 @@ public interface MenuService  extends GlobalService<Menu> {
 
     /**
      * 功能描述：
-     *  < 获取所有 >
-     * @Description: list
-     * @Author: cles
-     * @Date: 2020/6/23 22:54
-     * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
-     * @version: 1.0.0
-     */
-    List<Map> listMap();
-
-    /**
-     * 功能描述：
      *  < 分页 >
      * @Description: pagelist
      * @Author: cles

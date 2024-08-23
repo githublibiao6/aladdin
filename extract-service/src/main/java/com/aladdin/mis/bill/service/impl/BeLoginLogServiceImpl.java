@@ -1,6 +1,7 @@
 package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.utils.UserUtil;
 import com.aladdin.mis.dao.system.BeLoginLogDao;
 import com.aladdin.mis.system.entity.BeLoginLog;
@@ -25,6 +26,9 @@ public class BeLoginLogServiceImpl extends GlobalServiceImpl<BeLoginLog> impleme
 
     @Autowired
     private BeLoginLogDao beLoginLogDao;
+
+    @Autowired
+    private BeApplicationService applicationService;
 
     /**
      * 分页查询
@@ -71,6 +75,7 @@ public class BeLoginLogServiceImpl extends GlobalServiceImpl<BeLoginLog> impleme
             loginLog.setUserType("1");
         }
         loginLog.setLoginTime(LocalDateTime.now());
+        loginLog.setApplicationId(applicationService.getByKeyAndSecret().getId());
         insert(loginLog);
     }
 
