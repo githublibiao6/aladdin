@@ -71,7 +71,7 @@ public class VisitLog {
     private LocalDateTime endTime;
 
     /**
-     * 结束时间
+     * 耗时
      */
     private Long cost;
 

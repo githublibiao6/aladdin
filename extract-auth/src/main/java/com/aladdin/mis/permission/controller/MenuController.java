@@ -47,7 +47,9 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     }
 
     /**
-     * 获取分页
+     * 保存用户菜单关联
+     * @param vo vo
+     * @return result
      */
     @PostMapping("/saveUserMenu")
     @ResponseBody
@@ -61,7 +63,8 @@ public class MenuController extends GlobalController<Menu, MenuService> {
 
     /**
      * 菜单跳转
-     * @return
+     * @param id 主键
+     * @return result
      */
     @RequestMapping("/moveUp")
     @ResponseBody
@@ -72,8 +75,8 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     }
 
     /**
-     * icon显示
-     * @return
+     * menu 下移
+     * @return result
      */
     @RequestMapping("/moveDown")
     @ResponseBody
@@ -84,13 +87,14 @@ public class MenuController extends GlobalController<Menu, MenuService> {
     }
 
     /**
-     * icon显示
-     * @return
+     * 获取子节点
+     * @return result
      */
     @RequestMapping("/getByParentId")
     @ResponseBody
-    public Result getByParentId(@RequestParam Integer parentId) {
-        List<Menu> data = baseService.getByParentId(parentId);
+    public Result getByParentId(@RequestParam Integer parentId,
+                                @RequestParam Integer appId) {
+        List<Menu> data = baseService.getByParentId(parentId, appId);
         result.setData(data);
         return result;
     }
@@ -213,16 +217,6 @@ public class MenuController extends GlobalController<Menu, MenuService> {
         result.setData(data);
         result.setCode(20000);
         return result;
-    }
-
-    /**
-     * 菜单跳转新增编辑页面
-     *
-     * @return
-     */
-    @RequestMapping("/addoreditrender.do")
-    public String addOrEditRender() {
-        return "system/menu/addoredit";
     }
 
     @RequestMapping("/findById")

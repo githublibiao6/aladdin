@@ -56,7 +56,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public PageInfo<Menu> page(MenuQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());
-        return new PageInfo(dao.list(qo));
+        return new PageInfo<>(dao.list(qo));
     }
 
     /**
@@ -75,6 +75,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
         convertMenuTree(list, -1);
         List<Menu> result = list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
         List<Menu> data = dao.getAppList();
+        // 应用列表
         data.forEach(t->{
             List<Menu> children = new ArrayList<>();
             result.forEach(m->{
@@ -107,6 +108,8 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
                     children.forEach(child->{
                         convertMenuTree(list, t.getId());
                     });
+                    children.get(0).setSortIndex(0);
+                    children.get(children.size()-1).setSortIndex(1);
                     t.setChildren(children);
                     t.setHasChildren(true);
                 }else {
@@ -118,6 +121,11 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public boolean add(Menu menu) {
+        menu.setSortNum(1);
+        Integer sortNum = dao.getMaxSortNumByParent(menu.getParent());
+        if(sortNum != null){
+            menu.setSortNum(sortNum + 1);
+        }
         insertSelective(menu);
         return true;
     }
@@ -173,7 +181,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public int getMaxSortNumByApp() {
-        return 0;
+        return dao.getMaxSortNumByApp();
     }
 
     @Override
@@ -207,8 +215,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     }
 
     /**
-     * 获取菜单（用户权限）
-     * @Description
+     * @Description 获取菜单（用户权限）
      * @MethodName listMenu
      * @return List<Role>
      * @author lb
@@ -243,22 +250,16 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     }
 
     @Override
-    public List<Menu> getByParentId(Integer parentId) {
+    public List<Menu> getByParentId(Integer parentId, Integer appId) {
         MenuQo qo = new MenuQo();
         qo.setShow(1);
-//        Menu menu = detailQuery(parentId);
-//        if(menu.getMenuType() == 0 ){
-//            qo.setParent(-1);
-//            qo.setAppId(menu.getAppId());
-//        }else {
-            qo.setParent(parentId);
-//        }
         List<Menu> list = dao.list(qo);
-        if(list != null && !list.isEmpty()){
-            list.get(0).setSortIndex(0);
-            list.get(list.size()-1).setSortIndex(1);
-            handleList(list);
+        if(appId == null){
+            parentId = -1;
         }
-        return list;
+        convertMenuTree(list, parentId);
+        Integer finalParentId = parentId;
+        return list.stream().filter(s-> finalParentId.equals(s.getParent())).collect(Collectors.toList());
+
     }
 }

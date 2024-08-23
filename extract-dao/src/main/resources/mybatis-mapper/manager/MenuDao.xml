@@ -75,4 +75,15 @@
         <if test="parent != null and parent != ''">,parent=#{parent}</if>
          where menu_id=#{menuId}
     </update >
+
+    <select id="getMaxSortNumByApp" resultType="java.lang.Integer">
+        select max(sort_num) from be_menu
+        where sys005='1' and menu_type = '0'
+    </select>
+
+    <select id="getMaxSortNumByParent" resultType="java.lang.Integer">
+        select max(sort_num) from be_menu
+        where sys005='1' and parent = #{parent}
+    </select>
+
 </mapper>

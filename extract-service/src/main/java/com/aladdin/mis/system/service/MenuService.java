@@ -145,7 +145,7 @@ public interface MenuService  extends GlobalService<Menu> {
 
     /**
      * 获取应用最大的排序数字
-     * @return
+     * @return int
      */
     int getMaxSortNumByApp();
 
@@ -165,8 +165,9 @@ public interface MenuService  extends GlobalService<Menu> {
 
     /**
      * 获取子列表
-     * @param parentId
-     * @return
+     * @param parentId parentId
+     * @param appId appId
+     * @return list
      */
-    List<Menu> getByParentId(Integer parentId);
+    List<Menu> getByParentId(Integer parentId, Integer appId);
 }

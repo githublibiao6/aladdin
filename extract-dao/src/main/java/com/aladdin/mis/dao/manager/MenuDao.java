@@ -129,32 +129,45 @@ public interface MenuDao {
 
     /**
      * 获取应用列表
-     * @return
+     * @return list
      */
     List<Menu> getAppList();
 
     /**
      * 根据appid获取菜单
-     * @param appId
-     * @return
+     * @param appId 应用id
+     * @return menu
      */
     Menu getByAppId(@Param("appId") Integer appId);
 
     /**
      * 获取上一个menu
-     * @param parent
-     * @param sortNum
-     * @return
+     * @param parent 父节点
+     * @param sortNum 排序数字
+     * @return menu
      */
     Menu getUpMenu(@Param("parent")Integer parent,@Param("sortNum") int sortNum);
 
     /**
      * 获取下一个menu
-     * @param parent
-     * @param sortNum
-     * @return
+     * @param parent 父节点
+     * @param sortNum 排序数字
+     * @return menu
      */
     Menu getDownMenu(@Param("parent")Integer parent,@Param("sortNum") int sortNum);
+
+    /**
+     * 获取应用最大的数字
+     * @return 0
+     */
+    int getMaxSortNumByApp();
+
+    /**
+     * 获取子菜单最大的数字
+     * @param parent 父节点
+     * @return int
+     */
+    Integer getMaxSortNumByParent(@Param("parent") Integer parent);
 
     class MenuProvider {
 
