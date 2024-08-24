@@ -41,10 +41,7 @@ public class SsoController {
         try{
             result = new Result();
             result.setCode(20000);
-//        Enumeration<String> set = request.getParameterNames();
-//        while (set.hasMoreElements()){
-//            System.err.println(set.nextElement());
-//        }
+
             // shiro 调用
             LoginUser user = new LoginUser();
             user.setUserName(json.getString("username"));
@@ -52,8 +49,6 @@ public class SsoController {
             result = authLoginService.signIn(user);
 
             BeLoginLog loginLog = new BeLoginLog();
-
-//            loginLog.setLoginIp(getIp());
             loginLog.setLoginType("10");
             beLoginLogService.saveLoginLog(loginLog);
         }catch (Exception e){

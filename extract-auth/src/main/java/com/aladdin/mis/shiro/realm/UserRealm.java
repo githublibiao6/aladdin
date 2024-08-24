@@ -61,13 +61,11 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         setService();
-        //null usernames are invalid
         if (principals == null) {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
 
         OmUser user = (OmUser) getAvailablePrincipal(principals);
-
         //查询用户的角色和权限存到SimpleAuthenticationInfo中，这样在其它地方
         //SecurityUtils.getSubject().getPrincipal()就能拿出用户的所有信息，包括角色和权限
         // Object a = SecurityUtils.getSubject().getPrincipal();
@@ -106,9 +104,7 @@ public class UserRealm extends AuthorizingRealm {
     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-
         setService();
-
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         String username = upToken.getUsername();
         char[] passwordChar = upToken.getPassword();

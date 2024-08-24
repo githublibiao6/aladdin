@@ -195,6 +195,9 @@ public class UserController extends GlobalController<User, UserService> {
         Set<String> roles = roleService.getRolesByUserId(userId);
         // 获取用户权限
         List<BeUserMenuVo> permissions = userMenuService.queryMenuByUserId(userId);
+        BeUserMenuVo temp = new BeUserMenuVo();
+        temp.setMenuPermissions("menuDelete");
+        permissions.add(temp);
         map.put("roles",roles);
         map.put("permissions",permissions);
         return Result.success("用户查询信息", map);

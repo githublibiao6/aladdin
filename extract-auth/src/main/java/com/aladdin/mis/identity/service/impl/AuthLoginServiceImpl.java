@@ -23,10 +23,6 @@ public class AuthLoginServiceImpl implements AuthLoginService {
     @Override
     public Result signIn(LoginUser user) {
         Result result = new Result();
-//        Enumeration<String> set = request.getParameterNames();
-//        while (set.hasMoreElements()){
-//            System.err.println(set.nextElement());
-//        }
         Subject subject = SecurityUtils.getSubject();
         // shiro 调用
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
@@ -39,7 +35,6 @@ public class AuthLoginServiceImpl implements AuthLoginService {
             //getAuthenticationInfo 执行时机
             // 会触发 Realm的doGetAuthenticationInfo方法
             subject.login(token);
-
         }catch (AccountException accountException){
             result.setMessage(accountException.getMessage());
             result.setSuccess(false);
@@ -55,10 +50,8 @@ public class AuthLoginServiceImpl implements AuthLoginService {
         //getAuthorizationInfo  执行时机 -- subject.hasRole()
         if (subject.hasRole("admin")) {
             System.err.println("admin");
-//            return "redirect:/admin/showComputerProblems";
         } else if (!subject.hasRole("user")) {
             System.err.println("user");
-//            return "redirect:/normal/showComputerProblems";
         }
         // 生成的sessionId 返回给前端
         // session 超时时间
