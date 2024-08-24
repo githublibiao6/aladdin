@@ -1,7 +1,6 @@
 package com.aladdin.mis.bill.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.common.config.ApplicationConfig;
 import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.service.BeApplicationService;
@@ -11,10 +10,12 @@ import com.aladdin.mis.system.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -75,6 +76,9 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
                 children.get(children.size()-1).setSortIndex(1);
                 t.setChildren(children);
                 t.setHasChildren(true);
+                children.forEach(c->{
+                    c.setParentId(t.getId());
+                });
             }else {
                 t.setHasChildren(false);
             }
@@ -108,10 +112,12 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
 
     @Override
     public boolean add(Menu menu) {
-        menu.setSortNum(1);
-        Integer sortNum = dao.getMaxSortNumByParent(menu.getParent());
-        if(sortNum != null){
-            menu.setSortNum(sortNum + 1);
+        if(menu.getSortNum() == null){
+            menu.setSortNum(1);
+            Integer sortNum = dao.getMaxSortNumByParent(menu.getParent());
+            if(sortNum != null){
+                menu.setSortNum(sortNum + 1);
+            }
         }
         insertSelective(menu);
         return true;
@@ -174,7 +180,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public boolean moveUp(Integer id) {
         Menu menu = detailQuery(id);
-        int sortNum = menu.getSortNum();
+        Integer sortNum = menu.getSortNum();
         if(sortNum == 1){
             return true;
         }
@@ -237,16 +243,28 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     }
 
     @Override
-    public List<Menu> getByParentId(Integer parentId, Integer appId) {
+    public List<Menu> getByParentId(Integer parentId) {
         MenuQo qo = new MenuQo();
         qo.setShow(1);
         List<Menu> list = dao.list(qo);
-        if(appId == null){
+        Menu parent = detailQuery(parentId);
+        if(0 == parent.getMenuType()){
+            qo.setAppId(parent.getAppId());
             parentId = -1;
         }
         convertMenuTree(list, parentId);
         Integer finalParentId = parentId;
-        return list.stream().filter(s-> finalParentId.equals(s.getParent())).collect(Collectors.toList());
+        List<Menu> data = list.stream().filter(s-> finalParentId.equals(s.getParent())).collect(Collectors.toList());
+        if(!data.isEmpty()){
+            data.get(0).setSortIndex(0);
+            data.get(data.size()-1).setSortIndex(1);
+            if(0 == parent.getMenuType()){
+                data.forEach(m->{
+                    m.setParentId(parent.getId());
+                });
+            }
+        }
+        return data;
 
     }
 }

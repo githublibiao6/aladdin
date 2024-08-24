@@ -1,7 +1,6 @@
 package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.common.config.ApplicationConfig;
 import com.aladdin.mis.dao.identity.BeApplicationDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.qo.BeApplicationQo;
@@ -12,6 +11,7 @@ import com.aladdin.mis.system.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +30,12 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     @Autowired
     private MenuService menuService;
 
+    @Value("${global.appKey:0}")
+    private  String appKey;
+
+    @Value("${global.appSecret:0}")
+    private String appSecret;
+
     @Override
     public PageInfo<BeApplicationVo> page(BeApplicationQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());
@@ -39,7 +45,7 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
 
     @Override
     public boolean add(BeApplication m) {
-        boolean flag = insertSelective(m);
+        BeApplication application = insertSelective(m);
         Menu menu = menuService.getByAppId(m.getId());
         if(menu != null && !menu.getMenuText().equals(m.getAppName())){
             menu.setMenuText(m.getAppName());
@@ -50,9 +56,9 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
             menu.setIcon("dashboard");
             menu.setMenuText(m.getAppName());
             menu.setUrl("/");
-            menu.setParent(m.getId());
-            menu.setAppId(m.getId());
-            menu.setMenuText("0");
+            menu.setParent(0);
+            menu.setAppId(application.getId());
+            menu.setMenuText(m.getAppName());
             menu.setMenuType(0);
             menu.setLevel("0");
             menu.setEnable(1);
@@ -60,7 +66,7 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
             menu.setSortNum(max + 1);
             menuService.add(menu);
         }
-        return flag;
+        return application != null;
     }
 
     @Override
@@ -75,7 +81,7 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
 
     @Override
     public BeApplication getByKeyAndSecret() {
-        return beApplicationDao.getByKeyAndSecret(ApplicationConfig.appKey, ApplicationConfig.appSecret);
+        return beApplicationDao.getByKeyAndSecret(appKey, appSecret);
     }
 }
 

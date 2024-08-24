@@ -7,7 +7,6 @@ import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -155,8 +154,7 @@ public interface MenuService  extends GlobalService<Menu> {
     /**
      * 获取子列表
      * @param parentId parentId
-     * @param appId appId
      * @return list
      */
-    List<Menu> getByParentId(Integer parentId, Integer appId);
+    List<Menu> getByParentId(Integer parentId);
 }

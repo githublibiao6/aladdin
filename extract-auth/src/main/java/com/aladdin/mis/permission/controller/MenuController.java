@@ -92,9 +92,8 @@ public class MenuController extends GlobalController<Menu, MenuService> {
      */
     @RequestMapping("/getByParentId")
     @ResponseBody
-    public Result getByParentId(@RequestParam Integer parentId,
-                                @RequestParam Integer appId) {
-        List<Menu> data = baseService.getByParentId(parentId, appId);
+    public Result getByParentId(@RequestParam Integer parentId) {
+        List<Menu> data = baseService.getByParentId(parentId);
         result.setData(data);
         return result;
     }

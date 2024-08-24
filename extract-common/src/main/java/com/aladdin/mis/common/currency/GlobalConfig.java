@@ -3,9 +3,9 @@ package com.aladdin.mis.common.currency;
  *  Created by cles on 2022/4/18 20:27
  */
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * 全局配置信息
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2022/4/18 20:27
  * @version: 1.0.0
  */
-@Configuration
-@EnableAutoConfiguration
+@Component
+@Data
 public class GlobalConfig {
 
     /**
@@ -23,6 +23,13 @@ public class GlobalConfig {
      */
     @Value("${global.verify.enable:false}")
     public static boolean verifyEnable;
+
+    /**
+     * 是否开启全局校验
+     */
+    @Value("${global.verify.enable:false}")
+    public boolean verifyEnable1;
+
 
     /**
      * 是否开启验证码的校验

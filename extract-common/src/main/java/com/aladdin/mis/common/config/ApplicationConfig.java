@@ -1,17 +1,15 @@
 package com.aladdin.mis.common.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 应用配置
  * @author libia
  */
+@Configuration
+@EnableAutoConfiguration
 public class ApplicationConfig {
 
 
-    @Value("${global.appKey:0}")
-    public static String appKey;
-
-    @Value("${global.appSecret:0}")
-    public static String appSecret;
 }

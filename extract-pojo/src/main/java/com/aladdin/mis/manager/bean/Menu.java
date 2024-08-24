@@ -101,4 +101,7 @@ public class Menu extends GlobalModel {
     @TableField(exist = false)
     private Integer sortIndex;
 
+    @TableField(exist = false)
+    private Integer parentId;
+
 }
