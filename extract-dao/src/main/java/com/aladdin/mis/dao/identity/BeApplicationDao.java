@@ -28,4 +28,11 @@ public interface BeApplicationDao {
      * @return entity
      */
     BeApplication getByKeyAndSecret(@Param("appKey") String appKey, @Param("appSecret") String appSecret);
+
+    /**
+     * 根据adminId获取appList
+     * @param adminId
+     * @return
+     */
+    List<BeApplicationVo> getByAdminId(@Param("adminId")Integer adminId);
 }

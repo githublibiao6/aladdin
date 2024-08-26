@@ -91,4 +91,13 @@
         and t.app_key = #{appKey}
         and t.app_secret = #{appSecret}
     </select>
+
+    <select id="getByAdminId" resultType="com.aladdin.mis.identity.vo.BeApplicationVo">
+        select <include refid="baseColumn"></include>
+        from be_application t
+        left join be_admin_application a
+        on t.id = a.app_id
+        where t.sys005 = 1
+        and a.admin_id = #{adminId}
+    </select>
 </mapper>

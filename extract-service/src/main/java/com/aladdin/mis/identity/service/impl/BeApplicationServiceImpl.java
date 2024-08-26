@@ -9,6 +9,8 @@ import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.identity.vo.BeApplicationVo;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.identity.service.MenuService;
+import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.utils.UserUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,12 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     @Override
     public BeApplication getByKeyAndSecret() {
         return beApplicationDao.getByKeyAndSecret(ApplicationConfig.appKey, ApplicationConfig.appSecret);
+    }
+
+    @Override
+    public List<BeApplicationVo> getByAdminId() {
+        OmUser omUser = UserUtil.getCurrentUser();
+        return beApplicationDao.getByAdminId(omUser.getDeptId());
     }
 }
 
