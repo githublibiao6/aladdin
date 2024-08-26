@@ -4,7 +4,7 @@ import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.system.service.RoleService;
+import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;

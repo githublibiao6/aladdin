@@ -8,7 +8,7 @@ import com.aladdin.mis.identity.qo.BeApplicationQo;
 import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.identity.vo.BeApplicationVo;
 import com.aladdin.mis.manager.bean.Menu;
-import com.aladdin.mis.system.service.MenuService;
+import com.aladdin.mis.identity.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

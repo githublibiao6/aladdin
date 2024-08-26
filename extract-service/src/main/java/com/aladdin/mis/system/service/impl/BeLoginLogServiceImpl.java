@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.system.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.identity.service.BeApplicationService;

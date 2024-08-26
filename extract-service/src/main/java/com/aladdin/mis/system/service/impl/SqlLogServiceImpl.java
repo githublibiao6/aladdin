@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.system.service.impl;
 
 import com.aladdin.mis.dao.SqlLogDao;
 import com.aladdin.mis.common.db.bean.SqlLog;

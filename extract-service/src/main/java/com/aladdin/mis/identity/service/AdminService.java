@@ -1,4 +1,4 @@
-package com.aladdin.mis.system.service;
+package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.Admin;

@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.Digester;
@@ -10,9 +10,9 @@ import com.aladdin.mis.manager.qo.AdminQo;
 import com.aladdin.mis.manager.vo.DeptAdminVo;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
-import com.aladdin.mis.system.service.AdminRoleService;
-import com.aladdin.mis.system.service.AdminService;
-import com.aladdin.mis.system.service.DeptService;
+import com.aladdin.mis.identity.service.AdminRoleService;
+import com.aladdin.mis.identity.service.AdminService;
+import com.aladdin.mis.identity.service.DeptService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

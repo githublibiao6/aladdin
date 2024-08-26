@@ -1,13 +1,13 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.BeUserMenuDao;
 import com.aladdin.mis.manager.bean.AdminRole;
 import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
-import com.aladdin.mis.system.service.AdminRoleService;
-import com.aladdin.mis.system.service.BeUserMenuService;
-import com.aladdin.mis.system.service.RoleMenuService;
+import com.aladdin.mis.identity.service.AdminRoleService;
+import com.aladdin.mis.identity.service.BeUserMenuService;
+import com.aladdin.mis.identity.service.RoleMenuService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.manager.vo.RoleMenuVo;
 import com.github.pagehelper.PageHelper;
