@@ -28,6 +28,13 @@ public interface BeApplicationService extends GlobalService<BeApplication>  {
     PageInfo<BeApplicationVo> page(BeApplicationQo qo);
 
     /**
+     * 获取应用列表
+     * @param qo
+     * @return
+     */
+    List<BeApplicationVo> listInfo(BeApplicationQo qo);
+
+    /**
      * 功能描述：
      *  <添加>
      * @Description: add
@@ -74,4 +81,5 @@ public interface BeApplicationService extends GlobalService<BeApplication>  {
      * @return
      */
     List<BeApplicationVo> getByAdminId();
+
 }

@@ -60,7 +60,6 @@ public class RoleController extends GlobalController<Role, RoleService> {
     public  Result list() {
         List<Role> list = baseService.list();
         list.forEach(t->{
-            t.setHasChildren(false);
             t.setRoleId(t.getId());
         });
         result.setData(list);

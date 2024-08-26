@@ -25,11 +25,17 @@ public class Role extends GlobalModel {
     @TableField("name")
     private String name;
 
+    @TableField("app_id")
+    private Integer appId;
+
     @TableField("comments")
     private String comments;
 
     @TableField(exist = false)
     private Integer roleId;
+
+    @TableField(exist = false)
+    private String appName;
 
     @TableField(exist = false)
     private List<Role> children;

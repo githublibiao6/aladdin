@@ -52,15 +52,12 @@ public class StringUtil {
         return count;
     }
 
-    public static boolean isBlank(String str) {
-        if(str == null || "".equals(str)){
-            return true;
-        }
-        return "".equals(str.trim());
+    public static boolean isEmpty(String str) {
+        return str == null || "".equals(str);
     }
 
-    public static boolean notBlank(String str) {
-        return !isBlank(str);
+    public static boolean isNotEmpty(String str) {
+        return !isEmpty(str);
     }
 
 

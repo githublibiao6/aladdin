@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author cles
  * @date 2022-02-24T23:38:47.815
 */
-@RequestMapping("system/beLoginLog")
+@RequestMapping("beLoginLog")
 @Controller
 public class BeLoginLogController  extends GlobalController<BeLoginLog, BeLoginLogService> {
 

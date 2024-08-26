@@ -36,10 +36,10 @@ public class ShiroService {
 
         if (authorities.size() > 0) {
             for (BeAuthUrlVo authUrl : authorities) {
-                if(StringUtil.isBlank(authUrl.getUrl())){
+                if(StringUtil.isEmpty(authUrl.getUrl())){
                     continue;
                 }
-                if(StringUtil.isBlank(authUrl.getPermission())){
+                if(StringUtil.isEmpty(authUrl.getPermission())){
                     continue;
                 }
                 filterChainDefinitionMap.put(authUrl.getUrl(), authUrl.getPermission());

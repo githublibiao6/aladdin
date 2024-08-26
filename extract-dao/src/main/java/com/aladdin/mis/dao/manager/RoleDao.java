@@ -26,7 +26,6 @@ public interface RoleDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Role>
      * @version: 1.0.0
      */
-    @Select("select t.* from be_role t where sys005 = 1 ")
     List<Role> list();
 
     /**

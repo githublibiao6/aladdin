@@ -248,7 +248,6 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     @Override
     public List<Menu> getByParentId(Integer parentId) {
         MenuQo qo = new MenuQo();
-        qo.setShow(1);
         List<Menu> list = dao.list(qo);
         Menu parent = detailQuery(parentId);
         if(0 == parent.getMenuType()){
@@ -268,7 +267,5 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
             }
         }
         return data;
-
-        return list.stream().filter(s-> finalParentId.equals(s.getParent())).collect(Collectors.toList());
     }
 }

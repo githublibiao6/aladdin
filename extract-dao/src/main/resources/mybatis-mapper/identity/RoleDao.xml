@@ -8,6 +8,13 @@
     </select>
 
 
+    <select id="list" resultType="com.aladdin.mis.manager.bean.Role">
+        select t.*, a.app_name from be_role t
+         left join be_application a on t.app_id = a.id
+         where t.sys005 = 1
+    </select>
+
+
     <!--<update  id="remove" parameterType="com.apps.omnipotent.manager.bean.Role">
         update be_role  set delete_flag = 0 where id=#{id}
     </update >

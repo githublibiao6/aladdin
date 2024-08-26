@@ -46,6 +46,11 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     }
 
     @Override
+    public List<BeApplicationVo> listInfo(BeApplicationQo qo) {
+        return beApplicationDao.list(qo);
+    }
+
+    @Override
     public boolean add(BeApplication m) {
         BeApplication application = insertSelective(m);
         Menu menu = menuService.getByAppId(m.getId());

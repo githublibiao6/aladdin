@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * 应用表 BeApplicationService---
  * @author cles
@@ -27,11 +29,21 @@ public class BeApplicationController  extends GlobalController<BeApplication, Be
     /**
      * 获取分页
      */
-    @RequestMapping("/pageInfo")
+    @RequestMapping("/paginate")
     @ResponseBody
-    public  Result pageList(@RequestBody BeApplicationQo qo) {
+    public  Result paginate(@RequestBody BeApplicationQo qo) {
         PageInfo<BeApplicationVo> page = baseService.page(qo);
         return Result.success(page);
+    }
+
+    /**
+     * 获取分页
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public  Result list(@RequestBody BeApplicationQo qo) {
+        List<BeApplicationVo> list = baseService.listInfo(qo);
+        return Result.success(list);
     }
 
     /**

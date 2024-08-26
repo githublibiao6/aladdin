@@ -1,6 +1,7 @@
 package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
+import com.aladdin.mis.common.string.utils.StringUtil;
 import com.aladdin.mis.dao.manager.RoleDao;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
@@ -116,6 +117,9 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
      * @version: 1.0.0
      */
     private void saveRoleMenu(Integer roleId, String menus){
+        if(StringUtil.isEmpty(menus)){
+            return;
+        }
         roleMenuService.removeByRoleId(roleId);
         String[] arr = menus.split(",");
         for (String menu : arr) {
