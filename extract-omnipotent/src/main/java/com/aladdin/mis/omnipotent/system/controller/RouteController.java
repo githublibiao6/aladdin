@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.system.service.MenuService;
+import com.aladdin.mis.identity.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

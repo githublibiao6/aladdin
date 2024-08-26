@@ -1,6 +1,8 @@
 package com.aladdin.mis.utils;
 
 import com.aladdin.mis.system.user.vo.OmUser;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 
 /**
  * 登录的用户
@@ -14,10 +16,10 @@ public  class UserUtil {
      */
     public static OmUser getCurrentUser() {
         // todo
-//        Subject subject = SecurityUtils.getSubject();
-//        if(subject != null){
-//            return (OmUser) subject.getPrincipal();
-//        }
+        Subject subject = SecurityUtils.getSubject();
+        if(subject != null){
+            return (OmUser) subject.getPrincipal();
+        }
         OmUser om = new OmUser();
         om.setUserType("0");
         om.setUserId(0);

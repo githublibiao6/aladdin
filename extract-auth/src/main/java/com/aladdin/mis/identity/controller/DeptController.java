@@ -6,7 +6,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
-import com.aladdin.mis.system.service.DeptService;
+import com.aladdin.mis.identity.service.DeptService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

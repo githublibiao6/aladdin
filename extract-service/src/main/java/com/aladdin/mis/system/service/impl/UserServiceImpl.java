@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.system.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.DigestUtil;

@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.MenuDao;
@@ -6,7 +6,7 @@ import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
-import com.aladdin.mis.system.service.MenuService;
+import com.aladdin.mis.identity.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,11 +217,14 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
      */
     @Override
     public List<Menu> list(MenuQo qo) {
-        BeApplication app = applicationService.getByKeyAndSecret();
-        if(app == null){
-            return new ArrayList<>();
+        // 如果应用为空，获取当前应用的appId
+        if(qo.getAppId() == null){
+            BeApplication app = applicationService.getByKeyAndSecret();
+            if(app == null){
+                return new ArrayList<>();
+            }
+            qo.setAppId(app.getId());
         }
-        qo.setAppId(app.getId());
         List<Menu> list = dao.list(qo);
         // todo 根据用户权限获取菜单
         if(!list.isEmpty()){
@@ -266,5 +269,6 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
         }
         return data;
 
+        return list.stream().filter(s-> finalParentId.equals(s.getParent())).collect(Collectors.toList());
     }
 }

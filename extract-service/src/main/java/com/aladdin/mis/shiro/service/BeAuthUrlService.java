@@ -15,7 +15,7 @@ public interface BeAuthUrlService extends GlobalService<BeAuthUrl>  {
 
     /**
      * 获取所有的shiro url配置
-     * @return
+     * @return list
      */
     List<BeAuthUrlVo> list();
 }

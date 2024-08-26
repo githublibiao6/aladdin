@@ -5,7 +5,7 @@ import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.manager.qo.BeUserMenuQo;
-import com.aladdin.mis.system.service.BeUserMenuService;
+import com.aladdin.mis.identity.service.BeUserMenuService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.github.pagehelper.PageInfo;

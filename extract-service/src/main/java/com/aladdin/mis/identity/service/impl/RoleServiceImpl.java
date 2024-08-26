@@ -1,11 +1,11 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.RoleDao;
 import com.aladdin.mis.manager.bean.Role;
 import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.system.service.RoleMenuService;
-import com.aladdin.mis.system.service.RoleService;
+import com.aladdin.mis.identity.service.RoleMenuService;
+import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

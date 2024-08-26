@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DeptDao;
@@ -6,7 +6,7 @@ import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.aladdin.mis.system.service.DeptService;
+import com.aladdin.mis.identity.service.DeptService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

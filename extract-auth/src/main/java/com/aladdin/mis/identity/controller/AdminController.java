@@ -9,7 +9,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.Admin;
 import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.AdminQo;
-import com.aladdin.mis.system.service.AdminService;
+import com.aladdin.mis.identity.service.AdminService;
 import com.aladdin.mis.manager.vo.DeptAdminVo;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.github.pagehelper.PageInfo;

@@ -6,6 +6,8 @@ import com.aladdin.mis.identity.qo.BeApplicationQo;
 import com.aladdin.mis.identity.vo.BeApplicationVo;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
+
 /**
  * BeApplicationService
  * @author cles
@@ -66,4 +68,10 @@ public interface BeApplicationService extends GlobalService<BeApplication>  {
      * @return
      */
     BeApplication getByKeyAndSecret();
+
+    /**
+     * 根据管理员信息获取应用列表
+     * @return
+     */
+    List<BeApplicationVo> getByAdminId();
 }
