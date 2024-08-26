@@ -268,4 +268,28 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
         }
         return data;
     }
+
+    @Override
+    public void saveApplicationMenu(BeApplication application) {
+        Menu menu = getByAppId(application.getId());
+        if(menu != null && !menu.getMenuText().equals(application.getAppName())){
+            menu.setMenuText(application.getAppName());
+            update(menu);
+        }else {
+            int max = getMaxSortNumByApp();
+            menu = new Menu();
+            menu.setIcon("dashboard");
+            menu.setMenuText(application.getAppName());
+            menu.setUrl("/");
+            menu.setParent(0);
+            menu.setAppId(application.getId());
+            menu.setMenuText(application.getAppName());
+            menu.setMenuType(0);
+            menu.setLevel("0");
+            menu.setEnable(1);
+            menu.setShow(1);
+            menu.setSortNum(max + 1);
+            add(menu);
+        }
+    }
 }

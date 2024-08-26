@@ -5,9 +5,9 @@ import com.aladdin.mis.dao.identity.BeApplicationDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.qo.BeApplicationQo;
 import com.aladdin.mis.identity.service.BeApplicationService;
-import com.aladdin.mis.identity.vo.BeApplicationVo;
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.identity.service.DeptService;
 import com.aladdin.mis.identity.service.MenuService;
+import com.aladdin.mis.identity.vo.BeApplicationVo;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.utils.UserUtil;
 import com.github.pagehelper.PageHelper;
@@ -32,6 +32,9 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private DeptService deptService;
+
     @Value("${global.appKey:0}")
     private  String appKey;
 
@@ -53,26 +56,10 @@ public class BeApplicationServiceImpl extends GlobalServiceImpl<BeApplication> i
     @Override
     public boolean add(BeApplication m) {
         BeApplication application = insertSelective(m);
-        Menu menu = menuService.getByAppId(m.getId());
-        if(menu != null && !menu.getMenuText().equals(m.getAppName())){
-            menu.setMenuText(m.getAppName());
-            menuService.update(menu);
-        }else {
-            int max = menuService.getMaxSortNumByApp();
-            menu = new Menu();
-            menu.setIcon("dashboard");
-            menu.setMenuText(m.getAppName());
-            menu.setUrl("/");
-            menu.setParent(0);
-            menu.setAppId(application.getId());
-            menu.setMenuText(m.getAppName());
-            menu.setMenuType(0);
-            menu.setLevel("0");
-            menu.setEnable(1);
-            menu.setShow(1);
-            menu.setSortNum(max + 1);
-            menuService.add(menu);
-        }
+
+        menuService.saveApplicationMenu(application);
+        deptService.saveApplicationDept(application);
+
         return application != null;
     }
 

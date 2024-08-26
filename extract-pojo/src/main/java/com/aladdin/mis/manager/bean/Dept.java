@@ -36,6 +36,12 @@ public class Dept extends GlobalModel {
      */
     private String comments;
 
+    /**
+     * 应用主键
+     */
+    @TableField("app_id")
+    private String appId;
+
     @TableField(exist = false)
     private Integer deptId;
 

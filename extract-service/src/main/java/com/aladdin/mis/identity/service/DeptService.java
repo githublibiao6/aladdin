@@ -1,6 +1,7 @@
 package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
+import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
@@ -125,4 +126,10 @@ public interface DeptService extends GlobalService<Dept> {
      * @return
      */
     List<Dept> listData(DeptQo qo);
+
+    /**
+     * 保存应用机构
+     * @param application
+     */
+    void saveApplicationDept(BeApplication application);
 }

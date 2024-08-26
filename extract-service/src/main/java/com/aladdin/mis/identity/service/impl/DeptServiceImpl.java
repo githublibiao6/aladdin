@@ -2,6 +2,7 @@ package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DeptDao;
+import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.manager.bean.Dept;
 import com.aladdin.mis.manager.qo.DeptQo;
 import com.aladdin.mis.manager.vo.DeptVo;
@@ -126,7 +127,12 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
         return list.stream().filter(s-> -1 == s.getParent()).collect(Collectors.toList());
     }
 
-    private void convertMenuTree(List<Dept> list,  Integer pid){
+    @Override
+    public void saveApplicationDept(BeApplication application) {
+
+    }
+
+    private void convertMenuTree(List<Dept> list, Integer pid){
         list.forEach(t->{
             List<Dept> children = new ArrayList<>();
             if(pid.equals(t.getParent())){

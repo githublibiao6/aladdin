@@ -2,6 +2,7 @@ package com.aladdin.mis.identity.service;
 
 
 import com.aladdin.mis.base.service.GlobalService;
+import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.manager.bean.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
@@ -157,4 +158,10 @@ public interface MenuService  extends GlobalService<Menu> {
      * @return list
      */
     List<Menu> getByParentId(Integer parentId);
+
+    /**
+     * 保存应用菜单
+     * @param application
+     */
+    void saveApplicationMenu(BeApplication application);
 }
