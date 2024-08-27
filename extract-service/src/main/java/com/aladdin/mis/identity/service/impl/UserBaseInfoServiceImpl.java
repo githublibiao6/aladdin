@@ -1,8 +1,8 @@
-package com.aladdin.mis.system.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.dao.manager.UserBaseInfoDao;
-import com.aladdin.mis.system.service.UserBaseInfoService;
+import com.aladdin.mis.dao.identity.UserBaseInfoDao;
+import com.aladdin.mis.identity.service.UserBaseInfoService;
 import com.aladdin.mis.manager.bean.UserBaseInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -11,7 +11,7 @@ import com.aladdin.mis.manager.dto.UserDto;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.identity.service.BeUserMenuService;
 import com.aladdin.mis.identity.service.RoleService;
-import com.aladdin.mis.system.service.UserService;
+import com.aladdin.mis.identity.service.UserService;
 import com.aladdin.mis.manager.vo.BeUserMenuVo;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.system.user.vo.OmUser;
@@ -153,7 +153,7 @@ public class UserController extends GlobalController<User, UserService> {
     /**
      * 获取分页
      */
-    @RequestMapping("/page")
+    @RequestMapping("/paginate")
     @ResponseBody
     public  Result pageList(@RequestBody UserQo entity) {
         PageInfo<User> page = baseService.page(entity);
@@ -165,7 +165,7 @@ public class UserController extends GlobalController<User, UserService> {
      */
     @RequestMapping("/page2")
     @ResponseBody
-    public  Result page2(@RequestBody UserQo qo) {
+    public Result page2(@RequestBody UserQo qo) {
         Condition condition = Condition.newInstance()
                 .setLimit(qo.getLimit())
                 .setPage(qo.getPage())

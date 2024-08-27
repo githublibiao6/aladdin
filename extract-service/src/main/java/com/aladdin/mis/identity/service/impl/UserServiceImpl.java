@@ -1,4 +1,4 @@
-package com.aladdin.mis.system.service.impl;
+package com.aladdin.mis.identity.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.crypto.digest.DigestUtil;
@@ -8,11 +8,11 @@ import com.aladdin.mis.common.base.qo.Condition;
 import com.aladdin.mis.common.currency.DefaultParam;
 import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.dao.manager.UserDao;
+import com.aladdin.mis.dao.identity.UserDao;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
-import com.aladdin.mis.system.service.UserBaseInfoService;
-import com.aladdin.mis.system.service.UserService;
+import com.aladdin.mis.identity.service.UserBaseInfoService;
+import com.aladdin.mis.identity.service.UserService;
 import com.aladdin.mis.manager.vo.UserVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

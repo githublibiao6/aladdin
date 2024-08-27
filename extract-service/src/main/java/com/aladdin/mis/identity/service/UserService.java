@@ -1,11 +1,10 @@
-package com.aladdin.mis.system.service;
+package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.qo.UserQo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
