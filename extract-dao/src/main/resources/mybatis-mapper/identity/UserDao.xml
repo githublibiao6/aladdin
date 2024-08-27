@@ -30,6 +30,10 @@
         t.vip_level,
         t.score,
         t.money,
+        t.thumbs,
+        t.friend,
+        t.follow,
+        t.fans,
         t.notes,
         t.last_login_time,
         t.error_times,
@@ -73,6 +77,10 @@
         <result property="vip_level" column="vipLevel"/>
         <result property="score" column="score"/>
         <result property="money" column="money"/>
+        <result property="thumbs" column="thumbs"/>
+        <result property="friend" column="friend"/>
+        <result property="follow" column="follow"/>
+        <result property="fans" column="fans"/>
         <result property="notes" column="notes"/>
         <result property="last_login_time" column="lastLoginTime"/>
         <result property="error_times" column="errorTimes"/>
@@ -168,6 +176,18 @@
         </if>
         <if test="money  != null and money != '' ">
             and t.money = #{money}
+        </if>
+        <if test="thumbs  != null and thumbs != '' ">
+            and t.thumbs = #{thumbs}
+        </if>
+        <if test="friend  != null and friend != '' ">
+            and t.friend = #{friend}
+        </if>
+        <if test="follow  != null and follow != '' ">
+            and t.follow = #{follow}
+        </if>
+        <if test="fans  != null and fans != '' ">
+            and t.fans = #{fans}
         </if>
         <if test="notes  != null and notes != '' ">
             and t.notes = #{notes}

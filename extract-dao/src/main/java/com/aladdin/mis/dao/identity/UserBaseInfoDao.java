@@ -25,7 +25,7 @@ public interface UserBaseInfoDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0
      */
-    List<UserBaseInfo> listUser(UserQo.UserQo qo);
+    List<UserBaseInfo> listUser(UserQo qo);
 
     /**
      * 获取指定id人员的基本信息数据

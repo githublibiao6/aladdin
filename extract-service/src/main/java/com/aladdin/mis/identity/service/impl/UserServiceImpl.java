@@ -42,7 +42,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
     private UserBaseInfoService userBaseInfoService;
 
     @Override
-    public PageInfo<User> page(com.aladdin.mis.identity.qo.UserQo.UserQo qo) {
+    public PageInfo<User> page(com.aladdin.mis.identity.qo.UserQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());
         List<User> list = dao.listUser(qo);
         return new PageInfo<>(list);
@@ -50,8 +50,8 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
     @Override
     public List<User> list(String name) {
-        com.aladdin.mis.identity.qo.UserQo.UserQo qo = new UserQo.UserQo();
-        qo.setName(name);
+        UserQo qo = new UserQo();
+        qo.setUserName(name);
         return dao.listUser(qo);
     }
 
@@ -96,7 +96,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         User data = insertSelective(entity);
 
         userBaseInfoService.init(data.getId());
-        com.aladdin.mis.identity.vo.UserVo.UserVo vo = new UserVo.UserVo();
+        UserVo vo = new UserVo();
         BeanUtils.copyProperties(data, vo);
         return Result.success("注册成功", vo);
     }

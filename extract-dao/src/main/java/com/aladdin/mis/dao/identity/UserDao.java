@@ -24,6 +24,6 @@ public interface UserDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0
      */
-    List<User> listUser(UserQo.UserQo qo);
+    List<User> listUser(UserQo qo);
 
 }

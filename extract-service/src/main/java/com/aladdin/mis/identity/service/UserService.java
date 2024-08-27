@@ -26,7 +26,7 @@ public interface UserService extends GlobalService<User> {
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageInfo<User> page(UserQo.UserQo entity);
+    PageInfo<User> page(UserQo entity);
 
     /**
      * 功能描述：

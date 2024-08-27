@@ -3,16 +3,17 @@ package com.aladdin.mis.identity.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Data;
 
 /**
- *
+ * 
  * @author cles
- * @date 2024-08-27 23:36:22
+ * @date 2024-08-27 23:46:45
 */
 @Table("user")
 @Data
@@ -173,6 +174,30 @@ public class User extends GlobalModel {
      */
     @TableField("money")
     private Integer money;
+
+    /**
+     * thumbs获赞
+     */
+    @TableField("thumbs")
+    private Integer thumbs;
+
+    /**
+     * friend
+     */
+    @TableField("friend")
+    private Integer friend;
+
+    /**
+     * follow粉丝
+     */
+    @TableField("follow")
+    private Integer follow;
+
+    /**
+     * fans
+     */
+    @TableField("fans")
+    private Integer fans;
 
     /**
      * notes备注

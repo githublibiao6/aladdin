@@ -155,7 +155,7 @@ public class UserController extends GlobalController<User, UserService> {
      */
     @RequestMapping("/paginate")
     @ResponseBody
-    public  Result pageList(@RequestBody com.aladdin.mis.identity.qo.UserQo.UserQo entity) {
+    public  Result pageList(@RequestBody UserQo entity) {
         PageInfo<User> page = baseService.page(entity);
         return Result.success(page);
     }
@@ -165,7 +165,7 @@ public class UserController extends GlobalController<User, UserService> {
      */
     @RequestMapping("/page2")
     @ResponseBody
-    public Result page2(@RequestBody UserQo.UserQo qo) {
+    public Result page2(@RequestBody UserQo qo) {
         Condition condition = Condition.newInstance()
                 .setLimit(qo.getLimit())
                 .setPage(qo.getPage())
