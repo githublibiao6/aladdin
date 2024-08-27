@@ -3,17 +3,17 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.DeptDao">
     <!-- 获取所有的部门信息 -->
-    <select id="list" resultType="com.aladdin.mis.manager.vo.DeptVo">
+    <select id="list" resultType="com.aladdin.mis.identity.vo.DeptVo">
         select * from be_dept where sys005=1
     </select>
 
     <!-- 获取所有的部门信息 -->
-    <select id="listData" resultType="com.aladdin.mis.manager.bean.Dept">
+    <select id="listData" resultType="com.aladdin.mis.identity.entity.Dept">
         select * from be_dept where sys005=1
     </select>
 
     <!-- 根据id获取部门详细信息 -->
-    <select id="getById" resultType="com.aladdin.mis.manager.bean.Dept">
+    <select id="getById" resultType="com.aladdin.mis.identity.entity.Dept">
         select * from be_dept where id = #{id}
     </select>
 </mapper>

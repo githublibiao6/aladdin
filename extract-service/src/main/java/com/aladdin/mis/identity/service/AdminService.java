@@ -1,11 +1,10 @@
 package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
-import com.aladdin.mis.manager.bean.Admin;
-import com.aladdin.mis.manager.qo.AdminQo;
-import com.aladdin.mis.manager.vo.DeptAdminVo;
+import com.aladdin.mis.identity.entity.Admin;
+import com.aladdin.mis.identity.qo.AdminQo;
+import com.aladdin.mis.identity.vo.DeptAdminVo;
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 /**

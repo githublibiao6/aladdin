@@ -1,6 +1,6 @@
-package com.aladdin.mis.manager.qo;
+package com.aladdin.mis.identity.qo;
 
-import com.aladdin.mis.manager.bean.Dept;
+import com.aladdin.mis.identity.entity.Dept;
 import lombok.Data;
 
 /**

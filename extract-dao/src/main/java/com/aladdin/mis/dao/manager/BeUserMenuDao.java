@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.manager.qo.BeUserMenuQo;
-import com.aladdin.mis.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.identity.qo.BeUserMenuQo;
+import com.aladdin.mis.identity.vo.BeUserMenuVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

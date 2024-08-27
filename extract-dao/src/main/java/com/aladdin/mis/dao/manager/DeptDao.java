@@ -1,8 +1,8 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.manager.bean.Dept;
-import com.aladdin.mis.manager.qo.DeptQo;
-import com.aladdin.mis.manager.vo.DeptVo;
+import com.aladdin.mis.identity.entity.Dept;
+import com.aladdin.mis.identity.qo.DeptQo;
+import com.aladdin.mis.identity.vo.DeptVo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

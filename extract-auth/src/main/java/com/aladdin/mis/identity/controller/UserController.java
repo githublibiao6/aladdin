@@ -6,13 +6,13 @@ import com.aladdin.mis.common.currency.Parameter;
 import com.aladdin.mis.common.redis.config.JedisConfig;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.identity.qo.UserQo;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.manager.dto.UserDto;
-import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.identity.service.BeUserMenuService;
 import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.identity.service.UserService;
-import com.aladdin.mis.manager.vo.BeUserMenuVo;
+import com.aladdin.mis.identity.vo.BeUserMenuVo;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
@@ -155,7 +155,7 @@ public class UserController extends GlobalController<User, UserService> {
      */
     @RequestMapping("/paginate")
     @ResponseBody
-    public  Result pageList(@RequestBody UserQo entity) {
+    public  Result pageList(@RequestBody com.aladdin.mis.identity.qo.UserQo.UserQo entity) {
         PageInfo<User> page = baseService.page(entity);
         return Result.success(page);
     }
@@ -165,7 +165,7 @@ public class UserController extends GlobalController<User, UserService> {
      */
     @RequestMapping("/page2")
     @ResponseBody
-    public Result page2(@RequestBody UserQo qo) {
+    public Result page2(@RequestBody UserQo.UserQo qo) {
         Condition condition = Condition.newInstance()
                 .setLimit(qo.getLimit())
                 .setPage(qo.getPage())

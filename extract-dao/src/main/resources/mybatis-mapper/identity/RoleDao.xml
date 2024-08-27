@@ -3,12 +3,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.manager.RoleDao">
 
-    <select id="findById" resultType="com.aladdin.mis.manager.bean.Role">
+    <select id="findById" resultType="com.aladdin.mis.identity.entity.Role">
         select * from be_role where id=#{id}
     </select>
 
 
-    <select id="list" resultType="com.aladdin.mis.manager.bean.Role">
+    <select id="list" resultType="com.aladdin.mis.identity.entity.Role">
         select t.*, a.app_name from be_role t
          left join be_application a on t.app_id = a.id
          where t.sys005 = 1

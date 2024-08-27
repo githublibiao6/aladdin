@@ -3,7 +3,7 @@ package com.aladdin.mis.identity.service.impl;
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.identity.service.AdminRoleService;
 import com.aladdin.mis.dao.manager.AdminRoleDao;
-import com.aladdin.mis.manager.bean.AdminRole;
+import com.aladdin.mis.identity.entity.AdminRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

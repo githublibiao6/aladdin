@@ -1,7 +1,7 @@
 package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
-import com.aladdin.mis.manager.bean.AdminRole;
+import com.aladdin.mis.identity.entity.AdminRole;
 
 import java.util.List;
 

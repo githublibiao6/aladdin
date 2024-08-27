@@ -1,4 +1,4 @@
-package com.aladdin.mis.manager.qo;
+package com.aladdin.mis.identity.qo;
 
 import com.aladdin.mis.manager.entity.BeUserMenu;
 import lombok.Data;

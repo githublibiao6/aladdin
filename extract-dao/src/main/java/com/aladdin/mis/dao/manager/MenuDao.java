@@ -1,14 +1,13 @@
 package com.aladdin.mis.dao.manager;
 
 
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**

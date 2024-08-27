@@ -5,7 +5,7 @@ import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.db.config.DbConfig;
 import com.aladdin.mis.common.db.config.Db;
-import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.service.AdminService;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
 import com.aladdin.mis.system.user.vo.OmUser;

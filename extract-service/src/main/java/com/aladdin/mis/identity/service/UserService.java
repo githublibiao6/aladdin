@@ -2,8 +2,8 @@ package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.identity.qo.UserQo;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.manager.qo.UserQo;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public interface UserService extends GlobalService<User> {
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
-    PageInfo<User> page(UserQo entity);
+    PageInfo<User> page(UserQo.UserQo entity);
 
     /**
      * 功能描述：

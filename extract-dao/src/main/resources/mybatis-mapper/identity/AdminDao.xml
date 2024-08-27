@@ -4,22 +4,22 @@
 <mapper namespace="com.aladdin.mis.dao.manager.AdminDao">
 
     <!-- 查看传入的admin是否存在 -->
-     <select id="verification" resultType="com.aladdin.mis.manager.bean.Admin">
+     <select id="verification" resultType="com.aladdin.mis.identity.entity.Admin">
         select *
         from be_admin m where m.login_name = #{admin.loginName} and m.login_password = #{admin.loginPassword}
     </select>
     <!-- 根据登录名获得admin -->
-    <select id="getByname" resultType="com.aladdin.mis.manager.bean.Admin">
+    <select id="getByname" resultType="com.aladdin.mis.identity.entity.Admin">
         select *
         from be_admin m where m.login_name = #{name} and  m.login_password= #{pass}
     </select>
 
-    <select id="list" resultType="com.aladdin.mis.manager.bean.Admin">
+    <select id="list" resultType="com.aladdin.mis.identity.entity.Admin">
         select t.*, d.name deptName  from be_admin t
           left join be_dept d on t.dept_id = d.id where t.sys005 = 1
     </select>
 
-    <select id="pageList" resultType="com.aladdin.mis.manager.bean.Admin">
+    <select id="pageList" resultType="com.aladdin.mis.identity.entity.Admin">
         select t.*, d.name deptName
         from be_admin t
         left join be_dept d on t.dept_id = d.id where t.sys005 = 1
@@ -28,26 +28,26 @@
         </if>
     </select>
 
-    <select id="findById" resultType="com.aladdin.mis.manager.bean.Admin">
+    <select id="findById" resultType="com.aladdin.mis.identity.entity.Admin">
         select * from be_admin where id=#{id}
     </select>
 
-    <select id="findByAccount" resultType="com.aladdin.mis.manager.bean.Admin">
+    <select id="findByAccount" resultType="com.aladdin.mis.identity.entity.Admin">
         select * from be_admin where sys005=1
         and (login_name like concat('%',#{account},'%')
            or phone like concat('%',#{account},'%'))
     </select>
 
-    <update  id="remove" parameterType="com.aladdin.mis.manager.bean.Admin">
+    <update  id="remove" parameterType="com.aladdin.mis.identity.entity.Admin">
         delete from be_admin  where id=#{id}
     </update >
 
-    <insert id="add" parameterType="com.aladdin.mis.manager.bean.Admin">
+    <insert id="add" parameterType="com.aladdin.mis.identity.entity.Admin">
     	insert into be_admin (id,login_name,login_password,notes,effective_flag)
     	values(#{id},#{loginName},#{loginPassword},#{notes},1)
     </insert>
 
-    <update  id="update" parameterType="com.aladdin.mis.manager.bean.Admin">
+    <update  id="update" parameterType="com.aladdin.mis.identity.entity.Admin">
         update be_admin set login_name=#{loginName},notes=#{notes} where id=#{id}
     </update >
 </mapper>

@@ -3,7 +3,7 @@ package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.identity.entity.BeApplication;
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.github.pagehelper.PageInfo;
 

@@ -4,7 +4,7 @@ import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.MenuDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.service.BeApplicationService;
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.pagehelper.entity.qo.MenuQo;
 import com.aladdin.mis.identity.service.MenuService;
 import com.github.pagehelper.PageHelper;

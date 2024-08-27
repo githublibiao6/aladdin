@@ -9,11 +9,11 @@ import com.aladdin.mis.common.currency.DefaultParam;
 import com.aladdin.mis.common.currency.DefaultTools;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.identity.UserDao;
+import com.aladdin.mis.identity.qo.UserQo;
+import com.aladdin.mis.identity.vo.UserVo;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.manager.qo.UserQo;
 import com.aladdin.mis.identity.service.UserBaseInfoService;
 import com.aladdin.mis.identity.service.UserService;
-import com.aladdin.mis.manager.vo.UserVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -42,7 +42,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
     private UserBaseInfoService userBaseInfoService;
 
     @Override
-    public PageInfo<User> page(UserQo qo) {
+    public PageInfo<User> page(com.aladdin.mis.identity.qo.UserQo.UserQo qo) {
         PageHelper.offsetPage(qo.getPage(), qo.getLimit());
         List<User> list = dao.listUser(qo);
         return new PageInfo<>(list);
@@ -50,7 +50,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
 
     @Override
     public List<User> list(String name) {
-        UserQo qo = new UserQo();
+        com.aladdin.mis.identity.qo.UserQo.UserQo qo = new UserQo.UserQo();
         qo.setName(name);
         return dao.listUser(qo);
     }
@@ -96,7 +96,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         User data = insertSelective(entity);
 
         userBaseInfoService.init(data.getId());
-        UserVo vo = new UserVo();
+        com.aladdin.mis.identity.vo.UserVo.UserVo vo = new UserVo.UserVo();
         BeanUtils.copyProperties(data, vo);
         return Result.success("注册成功", vo);
     }

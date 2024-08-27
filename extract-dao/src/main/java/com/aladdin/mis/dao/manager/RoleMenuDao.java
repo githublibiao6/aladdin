@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.manager;
 
-import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.manager.vo.RoleMenuVo;
+import com.aladdin.mis.identity.entity.RoleMenu;
+import com.aladdin.mis.identity.vo.RoleMenuVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.identity;
 
+import com.aladdin.mis.identity.qo.UserQo;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.manager.qo.UserQo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,6 +24,6 @@ public interface UserDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0
      */
-    List<User> listUser(UserQo qo);
+    List<User> listUser(UserQo.UserQo qo);
 
 }

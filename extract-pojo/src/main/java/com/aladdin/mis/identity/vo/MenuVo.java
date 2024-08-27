@@ -1,6 +1,6 @@
-package com.aladdin.mis.manager.vo;
+package com.aladdin.mis.identity.vo;
 
-import com.aladdin.mis.manager.bean.Menu;
+import com.aladdin.mis.identity.entity.Menu;
 import lombok.Data;
 
 /**

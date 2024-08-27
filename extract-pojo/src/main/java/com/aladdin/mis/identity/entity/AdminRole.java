@@ -1,4 +1,4 @@
-package com.aladdin.mis.manager.bean;
+package com.aladdin.mis.identity.entity;
 
 
 import com.aladdin.mis.annotation.entity.Table;

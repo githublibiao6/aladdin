@@ -1,6 +1,6 @@
-package com.aladdin.mis.manager.qo;
+package com.aladdin.mis.identity.qo;
 
-import com.aladdin.mis.manager.bean.User;
+import com.aladdin.mis.identity.entity.Admin;
 import lombok.Data;
 
 /**
@@ -9,7 +9,7 @@ import lombok.Data;
  * @date 2018年6月5日 下午9:03:15
  */
 @Data
-public class UserQo extends User {
+public class AdminQo extends Admin {
 
     /**
      * 当前页码
@@ -22,13 +22,8 @@ public class UserQo extends User {
     private Integer limit;
 
     /**
-     * 每页数量
+     * 组织机构主键
      */
-    private String keyWord;
-
-    /**
-     * 用户状态
-     */
-    private String status;
+    private Integer deptId;
 
 }

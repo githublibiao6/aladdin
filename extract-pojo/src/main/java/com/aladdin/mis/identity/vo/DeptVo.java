@@ -1,4 +1,4 @@
-package com.aladdin.mis.manager.vo;
+package com.aladdin.mis.identity.vo;
 
 import lombok.Data;
 

@@ -1,9 +1,8 @@
 package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.base.service.GlobalService;
-import com.aladdin.mis.manager.bean.RoleMenu;
-import com.aladdin.mis.manager.vo.RoleMenuVo;
-import org.springframework.stereotype.Service;
+import com.aladdin.mis.identity.entity.RoleMenu;
+import com.aladdin.mis.identity.vo.RoleMenuVo;
 
 import java.util.List;
 

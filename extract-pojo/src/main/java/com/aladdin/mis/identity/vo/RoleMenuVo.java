@@ -1,6 +1,6 @@
-package com.aladdin.mis.manager.vo;
+package com.aladdin.mis.identity.vo;
 
-import com.aladdin.mis.manager.entity.BeUserMenu;
+import com.aladdin.mis.identity.entity.RoleMenu;
 import lombok.Data;
 
 /**
@@ -9,17 +9,12 @@ import lombok.Data;
  * @date 2022-03-01T22:38:09.248
 */
 @Data
-public class BeUserMenuVo extends BeUserMenu {
+public class RoleMenuVo extends RoleMenu {
 
     /**
      * 是否选中状态
      */
     private boolean disabled;
-
-    /**
-     * 角色主键
-     */
-    private Integer roleId;
 
     /**
      * 角色code
@@ -32,14 +27,8 @@ public class BeUserMenuVo extends BeUserMenu {
     private String menuPermissions;
 
     /**
-     * 所拥有的的菜单权限
-     */
-    private String menus;
-
-    /**
-     * 菜单权限
+     * 菜单类型
      */
     private String menuType;
-
 
 }

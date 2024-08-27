@@ -7,7 +7,7 @@ import com.aladdin.mis.engineering.entity.ProjectTaskLog;
 import com.aladdin.mis.engineering.entity.ProjectTaskUser;
 import com.aladdin.mis.engineering.service.ProjectTaskLogService;
 import com.aladdin.mis.engineering.service.ProjectTaskUserService;
-import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.service.AdminService;
 import com.aladdin.mis.system.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;

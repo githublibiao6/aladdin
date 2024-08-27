@@ -2,8 +2,8 @@ package com.aladdin.mis.identity.controller;
 
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.manager.bean.Role;
-import com.aladdin.mis.manager.bean.RoleMenu;
+import com.aladdin.mis.identity.entity.Role;
+import com.aladdin.mis.identity.entity.RoleMenu;
 import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.alibaba.fastjson.JSONObject;

@@ -9,7 +9,7 @@ import com.aladdin.mis.engineering.entity.ProjectBugUser;
 import com.aladdin.mis.engineering.service.ProjectBugLogService;
 import com.aladdin.mis.engineering.service.ProjectBugService;
 import com.aladdin.mis.engineering.service.ProjectBugUserService;
-import com.aladdin.mis.manager.bean.Admin;
+import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.service.AdminService;
 import com.aladdin.mis.system.service.DictionaryTeamsService;
 import com.aladdin.mis.system.user.vo.OmUser;

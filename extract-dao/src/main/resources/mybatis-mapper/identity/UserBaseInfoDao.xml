@@ -1,8 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.aladdin.mis.dao.identity.UserBaseInfoDao">
 
-    <select id="listUser" resultType="com.aladdin.mis.manager.bean.UserBaseInfo">
+    <sql id="baseColumn">
+        t.id,
+        t.user_id,
+        t.id_card,
+        t.name,
+        t.nation,
+        t.marriage,
+        t.education,
+        t.degree,
+        t.office_no,
+        t.auth_phone,
+        t.auth_qq,
+        t.auth_email,
+        t.auth_we_chat,
+        t.auth_zfb,
+        t.comments,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.UserBaseInfo" > 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="id_card" column="idCard"/>
+        <result property="name" column="name"/>
+        <result property="nation" column="nation"/>
+        <result property="marriage" column="marriage"/>
+        <result property="education" column="education"/>
+        <result property="degree" column="degree"/>
+        <result property="office_no" column="officeNo"/>
+        <result property="auth_phone" column="authPhone"/>
+        <result property="auth_qq" column="authQq"/>
+        <result property="auth_email" column="authEmail"/>
+        <result property="auth_we_chat" column="authWeChat"/>
+        <result property="auth_zfb" column="authZfb"/>
+        <result property="comments" column="comments"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.identity.vo.UserBaseInfoVo">
+        select <include refid="baseColumn"></include>
+        from user_base_info t where t.sys005 = 1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="idCard  != null and idCard != '' ">
+            and t.id_card = #{idCard}
+        </if>
+        <if test="name  != null and name != '' ">
+            and t.name = #{name}
+        </if>
+        <if test="nation  != null and nation != '' ">
+            and t.nation = #{nation}
+        </if>
+        <if test="marriage  != null and marriage != '' ">
+            and t.marriage = #{marriage}
+        </if>
+        <if test="education  != null and education != '' ">
+            and t.education = #{education}
+        </if>
+        <if test="degree  != null and degree != '' ">
+            and t.degree = #{degree}
+        </if>
+        <if test="officeNo  != null and officeNo != '' ">
+            and t.office_no = #{officeNo}
+        </if>
+        <if test="authPhone  != null and authPhone != '' ">
+            and t.auth_phone = #{authPhone}
+        </if>
+        <if test="authQq  != null and authQq != '' ">
+            and t.auth_qq = #{authQq}
+        </if>
+        <if test="authEmail  != null and authEmail != '' ">
+            and t.auth_email = #{authEmail}
+        </if>
+        <if test="authWeChat  != null and authWeChat != '' ">
+            and t.auth_we_chat = #{authWeChat}
+        </if>
+        <if test="authZfb  != null and authZfb != '' ">
+            and t.auth_zfb = #{authZfb}
+        </if>
+        <if test="comments  != null and comments != '' ">
+            and t.comments = #{comments}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+    <select id="listUser" resultType="com.aladdin.mis.identity.entity.UserBaseInfo">
         select * from user_base_info m where m.sys005='1'
 
         <if test="keyWord != null and keyWord != '' ">
@@ -15,7 +118,7 @@
         </if>
     </select>
 
-    <select id="getUserInfoByUserId " resultType="com.aladdin.mis.manager.bean.UserBaseInfo">
+    <select id="getUserInfoByUserId " resultType="com.aladdin.mis.identity.entity.UserBaseInfo">
         select * from user_base_info m where m.sys005='1'
 
         and m.user_id = #{userId}

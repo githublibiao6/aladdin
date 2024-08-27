@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.identity;
 
-import com.aladdin.mis.manager.bean.UserBaseInfo;
-import com.aladdin.mis.manager.qo.UserQo;
+import com.aladdin.mis.identity.entity.UserBaseInfo;
+import com.aladdin.mis.identity.qo.UserQo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +25,7 @@ public interface UserBaseInfoDao {
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0
      */
-    List<UserBaseInfo> listUser(UserQo qo);
+    List<UserBaseInfo> listUser(UserQo.UserQo qo);
 
     /**
      * 获取指定id人员的基本信息数据
