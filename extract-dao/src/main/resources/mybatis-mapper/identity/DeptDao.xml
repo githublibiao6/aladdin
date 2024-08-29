@@ -16,4 +16,7 @@
     <select id="getById" resultType="com.aladdin.mis.identity.entity.Dept">
         select * from be_dept where id = #{id}
     </select>
+    <select id="getByAppId" resultType="com.aladdin.mis.identity.entity.Dept">
+        select * from be_dept where sys005=1 and app_id = #{appId} limit 1
+    </select>
 </mapper>

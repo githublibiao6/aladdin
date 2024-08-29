@@ -17,7 +17,7 @@ import java.util.List;
 public class Dept extends GlobalModel {
 
     /**
-     * 编号
+     * 父节点
      */
     private Integer parent;
 
@@ -40,7 +40,7 @@ public class Dept extends GlobalModel {
      * 应用主键
      */
     @TableField("app_id")
-    private String appId;
+    private Integer appId;
 
     @TableField(exist = false)
     private Integer deptId;

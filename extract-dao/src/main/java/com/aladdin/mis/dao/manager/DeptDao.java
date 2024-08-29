@@ -3,6 +3,7 @@ package com.aladdin.mis.dao.manager;
 import com.aladdin.mis.identity.entity.Dept;
 import com.aladdin.mis.identity.qo.DeptQo;
 import com.aladdin.mis.identity.vo.DeptVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface DeptDao {
      * @param id
      * @return
      */
-    Dept getById(Integer id);
+    Dept getById(@Param("id") Integer id);
 
     /**
      * 获取列表
@@ -36,4 +37,10 @@ public interface DeptDao {
      */
     List<Dept> listData(DeptQo qo);
 
+    /**
+     * 根据appId获取机构
+     * @param appId
+     * @return
+     */
+    Dept getByAppId(@Param("appId") Integer appId);
 }

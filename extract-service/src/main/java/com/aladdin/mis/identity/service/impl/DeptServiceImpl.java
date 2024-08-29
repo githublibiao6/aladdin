@@ -4,6 +4,7 @@ import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DeptDao;
 import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.entity.Dept;
+import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.identity.qo.DeptQo;
 import com.aladdin.mis.identity.vo.DeptVo;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
@@ -129,7 +130,23 @@ public class DeptServiceImpl extends GlobalServiceImpl<Dept> implements DeptServ
 
     @Override
     public void saveApplicationDept(BeApplication application) {
+        Dept dept = getByAppId(application.getId());
+        if(dept != null && !dept.getName().equals(application.getAppName())){
+            dept.setName(application.getAppName());
+            update(dept);
+        }else {
+            dept = new Dept();
+            dept.setName(application.getAppName());
+            dept.setCode(application.getAppCode());
+            dept.setParent(-1);
+            dept.setAppId(application.getId());
+            add(dept);
+        }
+    }
 
+    @Override
+    public Dept getByAppId(Integer appId) {
+        return dao.getByAppId(appId);
     }
 
     private void convertMenuTree(List<Dept> list, Integer pid){

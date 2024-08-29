@@ -132,4 +132,11 @@ public interface DeptService extends GlobalService<Dept> {
      * @param application
      */
     void saveApplicationDept(BeApplication application);
+
+    /**
+     * 根据appId获取机构
+     * @param appId
+     * @return
+     */
+    Dept getByAppId(Integer appId);
 }
