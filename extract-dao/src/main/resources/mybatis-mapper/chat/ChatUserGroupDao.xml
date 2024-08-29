@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.chat.ChatUserGroupDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.group_id,
+        t.user_id,
+        t.join_time,
+        t.chat_level,
+        t.nick_name,
+        t.interest,
+        t.top,
+        t.not_disturb,
+        t.group_name,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserGroup" > 
+        <id property="id" column="id"/>
+        <result property="group_id" column="groupId"/>
+        <result property="user_id" column="userId"/>
+        <result property="join_time" column="joinTime"/>
+        <result property="chat_level" column="chatLevel"/>
+        <result property="nick_name" column="nickName"/>
+        <result property="interest" column="interest"/>
+        <result property="top" column="top"/>
+        <result property="not_disturb" column="notDisturb"/>
+        <result property="group_name" column="groupName"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatUserGroupVo">
+        select <include refid="baseColumn"></include>
+        from chat_user_group t where t.sys005 = 1
+        <if test="groupId  != null and groupId != '' ">
+            and t.group_id = #{groupId}
+        </if>
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="joinTime  != null and joinTime != '' ">
+            and t.join_time = #{joinTime}
+        </if>
+        <if test="chatLevel  != null and chatLevel != '' ">
+            and t.chat_level = #{chatLevel}
+        </if>
+        <if test="nickName  != null and nickName != '' ">
+            and t.nick_name = #{nickName}
+        </if>
+        <if test="interest  != null and interest != '' ">
+            and t.interest = #{interest}
+        </if>
+        <if test="top  != null and top != '' ">
+            and t.top = #{top}
+        </if>
+        <if test="notDisturb  != null and notDisturb != '' ">
+            and t.not_disturb = #{notDisturb}
+        </if>
+        <if test="groupName  != null and groupName != '' ">
+            and t.group_name = #{groupName}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>

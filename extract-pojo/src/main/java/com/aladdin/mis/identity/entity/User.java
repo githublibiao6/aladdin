@@ -13,11 +13,17 @@ import lombok.Data;
 /**
  * 
  * @author cles
- * @date 2024-08-27 23:46:45
+ * @date 2024-08-30 00:18:02
 */
 @Table("user")
 @Data
 public class User extends GlobalModel {
+
+    /**
+     * chatNum群聊号码
+     */
+    @TableField("chat_num")
+    private Integer chatNum;
 
     /**
      * account登录账号

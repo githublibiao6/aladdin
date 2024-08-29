@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="com.aladdin.mis.dao.chat.ChatSessionDao">
+<mapper namespace="com.aladdin.mis.dao.chat.ChatUserFriendDao">
 
     <sql id="baseColumn">
         t.id,
-        t.session_name,
-        t.session_kind,
-        t.create_time,
-        t.create_user,
-        t.chat_user,
+        t.friend_id,
+        t.user_id,
+        t.join_time,
         t.chat_level,
+        t.nick_name,
+        t.interest,
         t.sys000,
         t.sys001,
         t.sys002,
@@ -20,14 +20,14 @@
         t.sys007
     </sql>
 
-    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatSession" > 
+    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserFriend" > 
         <id property="id" column="id"/>
-        <result property="session_name" column="sessionName"/>
-        <result property="session_kind" column="sessionKind"/>
-        <result property="create_time" column="createTime"/>
-        <result property="create_user" column="createUser"/>
-        <result property="chat_user" column="chatUser"/>
+        <result property="friend_id" column="friendId"/>
+        <result property="user_id" column="userId"/>
+        <result property="join_time" column="joinTime"/>
         <result property="chat_level" column="chatLevel"/>
+        <result property="nick_name" column="nickName"/>
+        <result property="interest" column="interest"/>
         <result property="sys000" column="sys000"/>
         <result property="sys001" column="sys001"/>
         <result property="sys002" column="sys002"/>
@@ -38,26 +38,26 @@
         <result property="sys007" column="sys007"/>
     </resultMap>
 
-    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatSessionVo">
+    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatUserFriendVo">
         select <include refid="baseColumn"></include>
-        from chat_session t where t.sys005 = 1
-        <if test="sessionName  != null and sessionName != '' ">
-            and t.session_name = #{sessionName}
+        from chat_user_friend t where t.sys005 = 1
+        <if test="friendId  != null and friendId != '' ">
+            and t.friend_id = #{friendId}
         </if>
-        <if test="sessionKind  != null and sessionKind != '' ">
-            and t.session_kind = #{sessionKind}
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
         </if>
-        <if test="createTime  != null and createTime != '' ">
-            and t.create_time = #{createTime}
-        </if>
-        <if test="createUser  != null and createUser != '' ">
-            and t.create_user = #{createUser}
-        </if>
-        <if test="chatUser  != null and chatUser != '' ">
-            and t.chat_user = #{chatUser}
+        <if test="joinTime  != null and joinTime != '' ">
+            and t.join_time = #{joinTime}
         </if>
         <if test="chatLevel  != null and chatLevel != '' ">
             and t.chat_level = #{chatLevel}
+        </if>
+        <if test="nickName  != null and nickName != '' ">
+            and t.nick_name = #{nickName}
+        </if>
+        <if test="interest  != null and interest != '' ">
+            and t.interest = #{interest}
         </if>
         <if test= " sortInfo  != null and sortInfo != '' ">
            order by ${sortInfo}

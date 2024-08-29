@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.chat.ChatUserFriendApplyDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.user_id,
+        t.friend_id,
+        t.source,
+        t.apply_status,
+        t.apply_time,
+        t.apply_message,
+        t.audit_time,
+        t.audit_status,
+        t.audit_msg,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserFriendApply" > 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="friend_id" column="friendId"/>
+        <result property="source" column="source"/>
+        <result property="apply_status" column="applyStatus"/>
+        <result property="apply_time" column="applyTime"/>
+        <result property="apply_message" column="applyMessage"/>
+        <result property="audit_time" column="auditTime"/>
+        <result property="audit_status" column="auditStatus"/>
+        <result property="audit_msg" column="auditMsg"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatUserFriendApplyVo">
+        select <include refid="baseColumn"></include>
+        from chat_user_friend_apply t where t.sys005 = 1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="friendId  != null and friendId != '' ">
+            and t.friend_id = #{friendId}
+        </if>
+        <if test="source  != null and source != '' ">
+            and t.source = #{source}
+        </if>
+        <if test="applyStatus  != null and applyStatus != '' ">
+            and t.apply_status = #{applyStatus}
+        </if>
+        <if test="applyTime  != null and applyTime != '' ">
+            and t.apply_time = #{applyTime}
+        </if>
+        <if test="applyMessage  != null and applyMessage != '' ">
+            and t.apply_message = #{applyMessage}
+        </if>
+        <if test="auditTime  != null and auditTime != '' ">
+            and t.audit_time = #{auditTime}
+        </if>
+        <if test="auditStatus  != null and auditStatus != '' ">
+            and t.audit_status = #{auditStatus}
+        </if>
+        <if test="auditMsg  != null and auditMsg != '' ">
+            and t.audit_msg = #{auditMsg}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>

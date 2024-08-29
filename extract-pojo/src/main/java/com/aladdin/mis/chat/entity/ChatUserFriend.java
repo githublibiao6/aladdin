@@ -13,48 +13,48 @@ import lombok.Data;
 /**
  * 聊天记录-两人对话
  * @author cles
- * @date 2024-08-30 00:20:03
+ * @date 2024-08-30 00:20:11
 */
-@Table("chat_session")
+@Table("chat_user_friend")
 @Data
-public class ChatSession extends GlobalModel {
+public class ChatUserFriend extends GlobalModel {
 
     /**
-     * sessionName会话名称
+     * friendId好友主键
      */
-    @TableField("session_name")
-    private String sessionName;
+    @TableField("friend_id")
+    private Integer friendId;
 
     /**
-     * sessionKind会话类别
+     * userId用户id
      */
-    @TableField("session_kind")
-    private Integer sessionKind;
+    @TableField("user_id")
+    private Integer userId;
 
     /**
-     * createTime创建时间
+     * joinTime加好友时间
      */
-    @TableField("create_time")
+    @TableField("join_time")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createTime;
-
-    /**
-     * createUser创建者
-     */
-    @TableField("create_user")
-    private Integer createUser;
-
-    /**
-     * chatUser接受者
-     */
-    @TableField("chat_user")
-    private Integer chatUser;
+    private LocalDateTime joinTime;
 
     /**
      * chatLevel聊天等级
      */
     @TableField("chat_level")
     private Integer chatLevel;
+
+    /**
+     * nickName好友备注
+     */
+    @TableField("nick_name")
+    private String nickName;
+
+    /**
+     * interest是否特别关注
+     */
+    @TableField("interest")
+    private Integer interest;
 
 }

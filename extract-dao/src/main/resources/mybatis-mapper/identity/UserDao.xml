@@ -4,6 +4,7 @@
 
     <sql id="baseColumn">
         t.id,
+        t.chat_num,
         t.account,
         t.password,
         t.signature,
@@ -51,6 +52,7 @@
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.User" > 
         <id property="id" column="id"/>
+        <result property="chat_num" column="chatNum"/>
         <result property="account" column="account"/>
         <result property="password" column="password"/>
         <result property="signature" column="signature"/>
@@ -99,6 +101,9 @@
     <select id="list" resultType="com.aladdin.mis.identity.vo.UserVo">
         select <include refid="baseColumn"></include>
         from user t where t.sys005 = 1
+        <if test="chatNum  != null and chatNum != '' ">
+            and t.chat_num = #{chatNum}
+        </if>
         <if test="account  != null and account != '' ">
             and t.account = #{account}
         </if>

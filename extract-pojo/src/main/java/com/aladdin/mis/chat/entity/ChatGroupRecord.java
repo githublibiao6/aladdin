@@ -13,23 +13,29 @@ import lombok.Data;
 /**
  * 聊天会话-两人对话
  * @author cles
- * @date 2024-08-30 00:19:56
+ * @date 2024-08-30 00:19:17
 */
-@Table("chat_record")
+@Table("chat_group_record")
 @Data
-public class ChatRecord extends GlobalModel {
+public class ChatGroupRecord extends GlobalModel {
+
+    /**
+     * groupId组群id
+     */
+    @TableField("group_id")
+    private Integer groupId;
+
+    /**
+     * groupUserId组员id
+     */
+    @TableField("group_user_id")
+    private Integer groupUserId;
 
     /**
      * sendUser发送者id
      */
     @TableField("send_user")
     private Integer sendUser;
-
-    /**
-     * receiveUser接收用户id
-     */
-    @TableField("receive_user")
-    private Integer receiveUser;
 
     /**
      * infoKind信息类别
@@ -76,27 +82,9 @@ public class ChatRecord extends GlobalModel {
     private LocalDateTime sendTime;
 
     /**
-     * chatSessionId聊天会话
-     */
-    @TableField("chat_session_id")
-    private Integer chatSessionId;
-
-    /**
-     * status消息状态 ？ 发送成功
+     * status消息状态
      */
     @TableField("status")
     private Integer status;
-
-    /**
-     * createShow发送者是否显示
-     */
-    @TableField("create_show")
-    private Integer createShow;
-
-    /**
-     * chatShow接受者是否显示
-     */
-    @TableField("chat_show")
-    private Integer chatShow;
 
 }
