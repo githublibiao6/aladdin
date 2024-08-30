@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.business.controller;
 
-import com.aladdin.mis.blog.entity.Essay;
+import com.aladdin.mis.business.entity.Essay;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.business.service.EssayService;

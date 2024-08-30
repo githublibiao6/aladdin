@@ -3,7 +3,7 @@
 <mapper namespace="com.aladdin.mis.dao.business.EssayDao">
 
     <!-- 查询 -->
-    <select id="findById" resultType="com.aladdin.mis.blog.entity.Essay">
+    <select id="findById" resultType="com.aladdin.mis.business.entity.Essay">
         select * from essay where id = #{id}
     </select>
 </mapper>

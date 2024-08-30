@@ -1,4 +1,4 @@
-package com.aladdin.mis.blog.entity;
+package com.aladdin.mis.business.entity;
 
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;

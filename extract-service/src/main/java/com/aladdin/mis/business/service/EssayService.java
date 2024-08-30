@@ -1,6 +1,6 @@
 package com.aladdin.mis.business.service;
 
-import com.aladdin.mis.blog.entity.Essay;
+import com.aladdin.mis.business.entity.Essay;
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
 import com.github.pagehelper.PageInfo;
