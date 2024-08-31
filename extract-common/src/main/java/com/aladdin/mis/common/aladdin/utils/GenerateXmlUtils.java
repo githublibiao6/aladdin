@@ -45,6 +45,7 @@ public  class GenerateXmlUtils {
         });
 
         content.append("    </resultMap>\n\n");
+        content.append("    <!-- *************GenerateXmlUtils************** -->\n");
         content.append("    <select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
                 "        select <include refid=\"baseColumn\"></include>\n" +
                 "        from "+tableInfo.getTableName()+" t where t.sys005 = 1\n");
@@ -73,7 +74,6 @@ public  class GenerateXmlUtils {
             boolean result = CommonFileUtil.writeContentToFile(content.toString() + "    " + oldContent,
                     po.getFilePath(), po.getEntityName()+"Dao.xml", true);
         }else {
-            content.append("    <!-- *************GenerateXmlUtils************** -->\n");
             content.append("</mapper>\n");
             boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                     po.getFilePath(), po.getEntityName()+"Dao.xml", true);

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.business.BizPostDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.user_id,
+        t.post_num,
+        t.title,
+        t.sub_title,
+        t.post_type,
+        t.content,
+        t.read_num,
+        t.collect_num,
+        t.reply_num,
+        t.thumb_num,
+        t.tread_num,
+        t.status,
+        t.last_reply_time,
+        t.publish_time,
+        t.publisher,
+        t.post_label,
+        t.top,
+        t.top_time,
+        t.top_end_time,
+        t.top_type,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.business.entity.BizPost" > 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="post_num" column="postNum"/>
+        <result property="title" column="title"/>
+        <result property="sub_title" column="subTitle"/>
+        <result property="post_type" column="postType"/>
+        <result property="content" column="content"/>
+        <result property="read_num" column="readNum"/>
+        <result property="collect_num" column="collectNum"/>
+        <result property="reply_num" column="replyNum"/>
+        <result property="thumb_num" column="thumbNum"/>
+        <result property="tread_num" column="treadNum"/>
+        <result property="status" column="status"/>
+        <result property="last_reply_time" column="lastReplyTime"/>
+        <result property="publish_time" column="publishTime"/>
+        <result property="publisher" column="publisher"/>
+        <result property="post_label" column="postLabel"/>
+        <result property="top" column="top"/>
+        <result property="top_time" column="topTime"/>
+        <result property="top_end_time" column="topEndTime"/>
+        <result property="top_type" column="topType"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.business.vo.BizPostVo">
+        select <include refid="baseColumn"></include>
+        from biz_post t where t.sys005 = 1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="postNum  != null and postNum != '' ">
+            and t.post_num = #{postNum}
+        </if>
+        <if test="title  != null and title != '' ">
+            and t.title = #{title}
+        </if>
+        <if test="subTitle  != null and subTitle != '' ">
+            and t.sub_title = #{subTitle}
+        </if>
+        <if test="postType  != null and postType != '' ">
+            and t.post_type = #{postType}
+        </if>
+        <if test="content  != null and content != '' ">
+            and t.content = #{content}
+        </if>
+        <if test="readNum  != null and readNum != '' ">
+            and t.read_num = #{readNum}
+        </if>
+        <if test="collectNum  != null and collectNum != '' ">
+            and t.collect_num = #{collectNum}
+        </if>
+        <if test="replyNum  != null and replyNum != '' ">
+            and t.reply_num = #{replyNum}
+        </if>
+        <if test="thumbNum  != null and thumbNum != '' ">
+            and t.thumb_num = #{thumbNum}
+        </if>
+        <if test="treadNum  != null and treadNum != '' ">
+            and t.tread_num = #{treadNum}
+        </if>
+        <if test="status  != null and status != '' ">
+            and t.status = #{status}
+        </if>
+        <if test="lastReplyTime  != null and lastReplyTime != '' ">
+            and t.last_reply_time = #{lastReplyTime}
+        </if>
+        <if test="publishTime  != null and publishTime != '' ">
+            and t.publish_time = #{publishTime}
+        </if>
+        <if test="publisher  != null and publisher != '' ">
+            and t.publisher = #{publisher}
+        </if>
+        <if test="postLabel  != null and postLabel != '' ">
+            and t.post_label = #{postLabel}
+        </if>
+        <if test="top  != null and top != '' ">
+            and t.top = #{top}
+        </if>
+        <if test="topTime  != null and topTime != '' ">
+            and t.top_time = #{topTime}
+        </if>
+        <if test="topEndTime  != null and topEndTime != '' ">
+            and t.top_end_time = #{topEndTime}
+        </if>
+        <if test="topType  != null and topType != '' ">
+            and t.top_type = #{topType}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>

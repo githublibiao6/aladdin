@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.business.BizPostReplyDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.post_id,
+        t.reply_id,
+        t.user_id,
+        t.user_name,
+        t.user_pic,
+        t.back_user_id,
+        t.back_user_name,
+        t.back_user_pic,
+        t.content,
+        t.parent_id,
+        t.thumb_num,
+        t.reply_time,
+        t.terminal,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.business.entity.BizPostReply" > 
+        <id property="id" column="id"/>
+        <result property="post_id" column="postId"/>
+        <result property="reply_id" column="replyId"/>
+        <result property="user_id" column="userId"/>
+        <result property="user_name" column="userName"/>
+        <result property="user_pic" column="userPic"/>
+        <result property="back_user_id" column="backUserId"/>
+        <result property="back_user_name" column="backUserName"/>
+        <result property="back_user_pic" column="backUserPic"/>
+        <result property="content" column="content"/>
+        <result property="parent_id" column="parentId"/>
+        <result property="thumb_num" column="thumbNum"/>
+        <result property="reply_time" column="replyTime"/>
+        <result property="terminal" column="terminal"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <select id="list" resultType="com.aladdin.mis.business.vo.BizPostReplyVo">
+        select <include refid="baseColumn"></include>
+        from biz_post_reply t where t.sys005 = 1
+        <if test="postId  != null and postId != '' ">
+            and t.post_id = #{postId}
+        </if>
+        <if test="replyId  != null and replyId != '' ">
+            and t.reply_id = #{replyId}
+        </if>
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="userName  != null and userName != '' ">
+            and t.user_name = #{userName}
+        </if>
+        <if test="userPic  != null and userPic != '' ">
+            and t.user_pic = #{userPic}
+        </if>
+        <if test="backUserId  != null and backUserId != '' ">
+            and t.back_user_id = #{backUserId}
+        </if>
+        <if test="backUserName  != null and backUserName != '' ">
+            and t.back_user_name = #{backUserName}
+        </if>
+        <if test="backUserPic  != null and backUserPic != '' ">
+            and t.back_user_pic = #{backUserPic}
+        </if>
+        <if test="content  != null and content != '' ">
+            and t.content = #{content}
+        </if>
+        <if test="parentId  != null and parentId != '' ">
+            and t.parent_id = #{parentId}
+        </if>
+        <if test="thumbNum  != null and thumbNum != '' ">
+            and t.thumb_num = #{thumbNum}
+        </if>
+        <if test="replyTime  != null and replyTime != '' ">
+            and t.reply_time = #{replyTime}
+        </if>
+        <if test="terminal  != null and terminal != '' ">
+            and t.terminal = #{terminal}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+    <!-- *************GenerateXmlUtils************** -->
+</mapper>
