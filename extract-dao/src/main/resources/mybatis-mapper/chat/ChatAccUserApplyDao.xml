@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.chat.ChatAccUserApplyDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.user_id,
+        t.age,
+        t.sex,
+        t.nick_name,
+        t.acc_pic,
+        t.back_pic,
+        t.star,
+        t.introduce,
+        t.voice,
+        t.join_time,
+        t.status,
+        t.time_type,
+        t.price,
+        t.time_slot,
+        t.apply_status,
+        t.apply_time
+apply_message
+apply_time,
+        t.apply_message,
+        t.audit_time,
+        t.audit_user,
+        t.audit_user_name,
+        t.audit_status,
+        t.audit_msg,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatAccUserApply" > 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="nick_name" column="nickName"/>
+        <result property="acc_pic" column="accPic"/>
+        <result property="back_pic" column="backPic"/>
+        <result property="star" column="star"/>
+        <result property="introduce" column="introduce"/>
+        <result property="voice" column="voice"/>
+        <result property="join_time" column="joinTime"/>
+        <result property="status" column="status"/>
+        <result property="time_type" column="timeType"/>
+        <result property="price" column="price"/>
+        <result property="time_slot" column="timeSlot"/>
+        <result property="apply_status" column="applyStatus"/>
+        <result property="apply_time
+apply_message
+apply_time" column="applyTime
+applyMessage
+applyTime"/>
+        <result property="apply_message" column="applyMessage"/>
+        <result property="audit_time" column="auditTime"/>
+        <result property="audit_user" column="auditUser"/>
+        <result property="audit_user_name" column="auditUserName"/>
+        <result property="audit_status" column="auditStatus"/>
+        <result property="audit_msg" column="auditMsg"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <!-- *************GenerateXmlUtils************** -->
+    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatAccUserApplyVo">
+        select <include refid="baseColumn"></include>
+        from chat_acc_user_apply t where t.sys005 = 1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="age  != null and age != '' ">
+            and t.age = #{age}
+        </if>
+        <if test="sex  != null and sex != '' ">
+            and t.sex = #{sex}
+        </if>
+        <if test="nickName  != null and nickName != '' ">
+            and t.nick_name = #{nickName}
+        </if>
+        <if test="accPic  != null and accPic != '' ">
+            and t.acc_pic = #{accPic}
+        </if>
+        <if test="backPic  != null and backPic != '' ">
+            and t.back_pic = #{backPic}
+        </if>
+        <if test="star  != null and star != '' ">
+            and t.star = #{star}
+        </if>
+        <if test="introduce  != null and introduce != '' ">
+            and t.introduce = #{introduce}
+        </if>
+        <if test="voice  != null and voice != '' ">
+            and t.voice = #{voice}
+        </if>
+        <if test="joinTime  != null and joinTime != '' ">
+            and t.join_time = #{joinTime}
+        </if>
+        <if test="status  != null and status != '' ">
+            and t.status = #{status}
+        </if>
+        <if test="timeType  != null and timeType != '' ">
+            and t.time_type = #{timeType}
+        </if>
+        <if test="price  != null and price != '' ">
+            and t.price = #{price}
+        </if>
+        <if test="timeSlot  != null and timeSlot != '' ">
+            and t.time_slot = #{timeSlot}
+        </if>
+        <if test="applyStatus  != null and applyStatus != '' ">
+            and t.apply_status = #{applyStatus}
+        </if>
+        <if test="applyTime
+applyMessage
+applyTime  != null and applyTime
+applyMessage
+applyTime != '' ">
+            and t.apply_time
+apply_message
+apply_time = #{applyTime
+applyMessage
+applyTime}
+        </if>
+        <if test="applyMessage  != null and applyMessage != '' ">
+            and t.apply_message = #{applyMessage}
+        </if>
+        <if test="auditTime  != null and auditTime != '' ">
+            and t.audit_time = #{auditTime}
+        </if>
+        <if test="auditUser  != null and auditUser != '' ">
+            and t.audit_user = #{auditUser}
+        </if>
+        <if test="auditUserName  != null and auditUserName != '' ">
+            and t.audit_user_name = #{auditUserName}
+        </if>
+        <if test="auditStatus  != null and auditStatus != '' ">
+            and t.audit_status = #{auditStatus}
+        </if>
+        <if test="auditMsg  != null and auditMsg != '' ">
+            and t.audit_msg = #{auditMsg}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+</mapper>
