@@ -3,17 +3,16 @@ package com.aladdin.mis.business.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
  * 帖子回复表
  * @author cles
- * @date 2024-08-31 21:52:48
+ * @date 2024-09-01 20:24:06
 */
 @Table("biz_post_reply")
 @Data
@@ -50,22 +49,22 @@ public class BizPostReply extends GlobalModel {
     private String userPic;
 
     /**
-     * backUserId回复人
+     * toUserId回复人
      */
-    @TableField("back_user_id")
-    private Integer backUserId;
+    @TableField("to_user_id")
+    private Integer toUserId;
 
     /**
-     * backUserName被回复人
+     * toUserName被回复人
      */
-    @TableField("back_user_name")
-    private String backUserName;
+    @TableField("to_user_name")
+    private String toUserName;
 
     /**
-     * backUserPic被回复人头像
+     * toUserPic被回复人头像
      */
-    @TableField("back_user_pic")
-    private String backUserPic;
+    @TableField("to_user_pic")
+    private String toUserPic;
 
     /**
      * content评论内容
@@ -86,6 +85,12 @@ public class BizPostReply extends GlobalModel {
     private Integer thumbNum;
 
     /**
+     * replyNum回复数量
+     */
+    @TableField("reply_num")
+    private Integer replyNum;
+
+    /**
      * replyTime回复时间
      */
     @TableField("reply_time")
@@ -98,5 +103,17 @@ public class BizPostReply extends GlobalModel {
      */
     @TableField("terminal")
     private String terminal;
+
+    /**
+     * top是否置顶
+     */
+    @TableField("top")
+    private Integer top;
+
+    /**
+     * first是否首评
+     */
+    @TableField("first")
+    private Integer first;
 
 }
