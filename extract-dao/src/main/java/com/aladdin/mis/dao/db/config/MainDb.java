@@ -180,6 +180,9 @@ public class MainDb {
                 case "datetime":
                     field.setColumnType("LocalDateTime");
                     break;
+                case "time":
+                    field.setColumnType("LocalTime");
+                    break;
                 default:
                     break;
             }

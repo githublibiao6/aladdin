@@ -3,13 +3,14 @@ package com.aladdin.mis.common.db.factory.impl;
  * Created by cles on 2020/5/31 21:42
  */
 
-import com.aladdin.mis.common.db.factory.BaseSqlMaker;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
+import com.aladdin.mis.common.db.factory.BaseSqlMaker;
 import com.alibaba.fastjson.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -156,6 +157,16 @@ public class MysqlSqlMaker extends BaseSqlMaker {
                     String value = sdf.format(date);
                     sql.append("'")
                             .append(value)
+                            .append("'")
+                            .append(",");
+                    break;
+                case "Time":
+                    sql.append(colName).append("=");
+                    LocalTime localTime = (LocalTime) t.getFieldValue();
+                    DateTimeFormatter ltf = DateTimeFormatter.ofPattern("HH:mm:ss");
+                    String localTimeValue = ltf.format(localTime);
+                    sql.append("'")
+                            .append(localTimeValue)
                             .append("'")
                             .append(",");
                     break;

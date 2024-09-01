@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.business.BizMemoGroupDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.user_id,
+        t.group_number,
+        t.group_name,
+        t.order_num,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.business.entity.BizMemoGroup" > 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="group_number" column="groupNumber"/>
+        <result property="group_name" column="groupName"/>
+        <result property="order_num" column="orderNum"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <!-- *************GenerateXmlUtils************** -->
+    <select id="list" resultType="com.aladdin.mis.business.vo.BizMemoGroupVo">
+        select <include refid="baseColumn"></include>
+        from biz_memo_group t where t.sys005 = 1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="groupNumber  != null and groupNumber != '' ">
+            and t.group_number = #{groupNumber}
+        </if>
+        <if test="groupName  != null and groupName != '' ">
+            and t.group_name = #{groupName}
+        </if>
+        <if test="orderNum  != null and orderNum != '' ">
+            and t.order_num = #{orderNum}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+</mapper>

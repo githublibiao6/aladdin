@@ -19,6 +19,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -210,6 +211,9 @@ public abstract class BaseModel implements Serializable {
             }else if(LocalDateTime.class.equals(type)){
                 obj.setColType("datetime");
                 obj.setColumnType("LocalDateTime");
+            }else if(LocalTime.class.equals(type)){
+                obj.setColType("time");
+                obj.setColumnType("LocalTime");
             }else {
                 obj.setColType("varchar");
                 obj.setColumnType("String");
