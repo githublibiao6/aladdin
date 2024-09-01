@@ -71,6 +71,12 @@ public class Project extends GlobalModel {
     private Integer deptId;
 
     /**
+    * 应用主键
+    */
+    @TableField("app_id")
+    private Integer appId;
+
+    /**
      *
      */
     @TableField("remark")

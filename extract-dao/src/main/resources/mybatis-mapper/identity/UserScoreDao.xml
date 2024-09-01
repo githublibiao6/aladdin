@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.aladdin.mis.dao.identity.UserScoreDao">
+
+    <sql id="baseColumn">
+        t.id,
+        t.user_id,
+        t.category,
+        t.type,
+        t.number,
+        t.current_number,
+        t.relation_id,
+        t.remark,
+        t.comments,
+        t.sys000,
+        t.sys001,
+        t.sys002,
+        t.sys003,
+        t.sys004,
+        t.sys005,
+        t.sys006,
+        t.sys007
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.UserScore" > 
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="category" column="category"/>
+        <result property="type" column="type"/>
+        <result property="number" column="number"/>
+        <result property="current_number" column="currentNumber"/>
+        <result property="relation_id" column="relationId"/>
+        <result property="remark" column="remark"/>
+        <result property="comments" column="comments"/>
+        <result property="sys000" column="sys000"/>
+        <result property="sys001" column="sys001"/>
+        <result property="sys002" column="sys002"/>
+        <result property="sys003" column="sys003"/>
+        <result property="sys004" column="sys004"/>
+        <result property="sys005" column="sys005"/>
+        <result property="sys006" column="sys006"/>
+        <result property="sys007" column="sys007"/>
+    </resultMap>
+
+    <!-- *************GenerateXmlUtils************** -->
+    <select id="list" resultType="com.aladdin.mis.identity.vo.UserScoreVo">
+        select <include refid="baseColumn"></include>
+        from user_score t where t.sys005 = 1
+        <if test="userId  != null and userId != '' ">
+            and t.user_id = #{userId}
+        </if>
+        <if test="category  != null and category != '' ">
+            and t.category = #{category}
+        </if>
+        <if test="type  != null and type != '' ">
+            and t.type = #{type}
+        </if>
+        <if test="number  != null and number != '' ">
+            and t.number = #{number}
+        </if>
+        <if test="currentNumber  != null and currentNumber != '' ">
+            and t.current_number = #{currentNumber}
+        </if>
+        <if test="relationId  != null and relationId != '' ">
+            and t.relation_id = #{relationId}
+        </if>
+        <if test="remark  != null and remark != '' ">
+            and t.remark = #{remark}
+        </if>
+        <if test="comments  != null and comments != '' ">
+            and t.comments = #{comments}
+        </if>
+        <if test= " sortInfo  != null and sortInfo != '' ">
+           order by ${sortInfo}
+        </if>
+    </select>
+
+</mapper>
