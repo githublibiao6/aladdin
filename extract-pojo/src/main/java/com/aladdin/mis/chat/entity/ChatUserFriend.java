@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
- * 聊天记录-两人对话
+ * 好友记录
  * @author cles
  * @date 2024-08-30 00:20:11
 */
@@ -56,5 +56,4 @@ public class ChatUserFriend extends GlobalModel {
      */
     @TableField("interest")
     private Integer interest;
-
 }

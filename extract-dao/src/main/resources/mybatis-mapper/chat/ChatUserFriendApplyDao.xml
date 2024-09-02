@@ -12,15 +12,7 @@
         t.apply_message,
         t.audit_time,
         t.audit_status,
-        t.audit_msg,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.audit_msg
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserFriendApply" > 

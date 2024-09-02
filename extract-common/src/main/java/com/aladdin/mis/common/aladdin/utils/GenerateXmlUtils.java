@@ -24,10 +24,13 @@ public  class GenerateXmlUtils {
         content.append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\"> \n");
         content.append("<mapper namespace=\""+po.getImportDaoClass().substring(7,po.getImportDaoClass().length()-1 )+"\">\n\n");
         content.append("    <sql id=\"baseColumn\">\n");
-
         List<TableFieldInfo> fields = tableInfo.getFields();
-
+        String s = "id,sys000,sys001,sys002,sys003,sys004,sys005,sys006,sys007";
+        Set<String > set = new HashSet<>(Arrays.asList(s.split(",")));
         fields.forEach(t->{
+            if(set.contains(t.getColumnName())){
+                return;
+            }
             content.append("        t."+ t.getColName() +",\n");
         });
         content.delete(content.length()-2, content.length());
@@ -50,8 +53,6 @@ public  class GenerateXmlUtils {
                 "        select <include refid=\"baseColumn\"></include>\n" +
                 "        from "+tableInfo.getTableName()+" t where t.sys005 = 1\n");
 
-        String s = "id,sys000,sys001,sys002,sys003,sys004,sys005,sys006,sys007";
-        Set<String > set = new HashSet<>(Arrays.asList(s.split(",")));
 
         fields.forEach(t->{
             if(set.contains(t.getColumnName())){

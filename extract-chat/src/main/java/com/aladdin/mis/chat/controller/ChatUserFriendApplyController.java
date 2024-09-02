@@ -1,6 +1,8 @@
 package com.aladdin.mis.chat.controller;
 
+import com.aladdin.mis.business.entity.Essay;
 import com.aladdin.mis.chat.entity.ChatUserFriendApply;
+import com.aladdin.mis.chat.param.ChatUserFriendApplyParam;
 import com.aladdin.mis.chat.service.ChatUserFriendApplyService;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.chat.qo.ChatUserFriendApplyQo;
@@ -19,7 +21,7 @@ import org.springframework.stereotype.Controller;
 import java.util.List;
 
 /**
- * 聊天记录-两人对话 ChatUserFriendApplyService--- 
+ * 聊天记录-好友申请 ChatUserFriendApplyService---
  * @author cles
  * @date 2024-08-30 00:20:18
 */
@@ -27,4 +29,30 @@ import java.util.List;
 @Controller
 public class ChatUserFriendApplyController  extends GlobalController<ChatUserFriendApply, ChatUserFriendApplyService> {
 
+    /**
+     * 添加文章
+     */
+    @RequestMapping("/create")
+    @ResponseBody
+    public Result create(@RequestBody ChatUserFriendApplyParam m) {
+        result = new Result();
+        return baseService.create(m);
+    }
+
+    /**
+     * 添加文章
+     */
+    @RequestMapping("/edit")
+    @ResponseBody
+    public Result edit(@RequestBody ChatUserFriendApply m) {
+        result = new Result();
+        boolean flag = baseService.edit(m);
+        result.setSuccess(flag);
+        if(flag){
+            result.setMessage("修改成功");
+        }else {
+            result.setMessage("修改失败");
+        }
+        return result;
+    }
 }

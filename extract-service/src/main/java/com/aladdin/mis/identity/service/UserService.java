@@ -96,4 +96,12 @@ public interface UserService extends GlobalService<User> {
      * @return
      */
     boolean updatePass(User user);
+
+
+    /**
+     * 根据号码获取用户
+     * @param userNumber
+     * @return
+     */
+    User getByUserNumber(Integer userNumber);
 }

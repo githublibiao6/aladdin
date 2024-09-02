@@ -93,6 +93,13 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         entity.setLastLoginTime(LocalDateTime.now());
         entity.setUpdatePwdTime(LocalDateTime.now());
         entity.setErrorTimes(0);
+        // todo 生成唯一标识符 账号
+
+        LocalDateTime now = LocalDateTime.now();
+        int second = now.getSecond();
+        String userNumber = (second + 36) + RandomUtil.randomNumbers(6);
+        // 启用校验位
+
         User data = insertSelective(entity);
 
         userBaseInfoService.init(data.getId());
@@ -136,5 +143,10 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         String pass = md5.digestHex(user.getPassword() + salt);
         user.setPassword(pass);
         return update(user);
+    }
+
+    @Override
+    public User getByUserNumber(Integer userNumber) {
+        return null;
     }
 }
