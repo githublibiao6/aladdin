@@ -11,25 +11,31 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
- * 好友记录
+ * 朋友关联
  * @author cles
- * @date 2024-08-30 00:20:11
+ * @date 2024-09-02 22:56:01
 */
 @Table("chat_user_friend")
 @Data
 public class ChatUserFriend extends GlobalModel {
 
     /**
-     * friendId好友主键
-     */
-    @TableField("friend_id")
-    private Integer friendId;
-
-    /**
      * userId用户id
      */
     @TableField("user_id")
     private Integer userId;
+
+    /**
+     * groupId朋友分组
+     */
+    @TableField("group_id")
+    private Integer groupId;
+
+    /**
+     * friendId好友主键
+     */
+    @TableField("friend_id")
+    private Integer friendId;
 
     /**
      * joinTime加好友时间
@@ -56,4 +62,5 @@ public class ChatUserFriend extends GlobalModel {
      */
     @TableField("interest")
     private Integer interest;
+
 }

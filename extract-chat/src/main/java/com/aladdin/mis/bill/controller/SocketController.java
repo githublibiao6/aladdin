@@ -29,7 +29,7 @@ public class SocketController {
      * concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象
      * private static CopyOnWriteArraySet<SocketController> webSocketSet = new CopyOnWriteArraySet<SocketController>();
      */
-    private static ConcurrentHashMap<Long ,SocketController> webSocketSet = new ConcurrentHashMap<Long,SocketController>();
+    private static ConcurrentHashMap<Long ,SocketController> webSocketSet = new ConcurrentHashMap<>();
 
     /**
      * 与某个客户端的连接会话，需要通过它来与客户端进行数据收发
@@ -57,6 +57,8 @@ public class SocketController {
     @OnMessage
     public void onMessage(String message, Session session) throws Exception {
         LOGGER.info("Receive a message from client: " + message);
+        LOGGER.info("session id: " + session.getId());
+        LOGGER.info("webSocketSet.count" + webSocketSet.size());
         if("1".equals(session.getId())){
             webSocketSet.get(1L).sendMessage(message);
         }else {
@@ -71,6 +73,7 @@ public class SocketController {
 
     public void sendMessage(String message) throws Exception {
         if (this.session.isOpen()) {
+            System.out.println(this.session.getId());
             this.session.getBasicRemote().sendText(message);
         }
     }

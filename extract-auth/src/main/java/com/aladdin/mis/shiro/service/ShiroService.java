@@ -48,6 +48,7 @@ public class ShiroService {
         filterChainDefinitionMap.put("/generate/create","anon");
         filterChainDefinitionMap.put("/buildForm/**","anon");
         filterChainDefinitionMap.put("/buildModular/**","anon");
+        filterChainDefinitionMap.put("/socket/**","anon");
 
         //配置匿名可访问页面和静态文件
         filterChainDefinitionMap.put("/css/**","anon");

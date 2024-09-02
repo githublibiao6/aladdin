@@ -14,7 +14,6 @@ public  class GenerateDaoUtils {
     public static void writeDaoToFile(GeneratePo po){
         TableInfo tableInfo = po.getTableInfo();
 
-
         StringBuffer content = new StringBuffer("package "+ po.getPackagePath() +";\n\n");
         content.append(po.getImportEntityClass()).append("\n");
         content.append(po.getImportEntityQoClass()).append("\n");

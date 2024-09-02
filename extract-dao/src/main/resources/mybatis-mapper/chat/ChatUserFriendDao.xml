@@ -3,27 +3,20 @@
 <mapper namespace="com.aladdin.mis.dao.chat.ChatUserFriendDao">
 
     <sql id="baseColumn">
-        t.id,
-        t.friend_id,
         t.user_id,
+        t.group_id,
+        t.friend_id,
         t.join_time,
         t.chat_level,
         t.nick_name,
-        t.interest,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.interest
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserFriend" > 
         <id property="id" column="id"/>
-        <result property="friend_id" column="friendId"/>
         <result property="user_id" column="userId"/>
+        <result property="group_id" column="groupId"/>
+        <result property="friend_id" column="friendId"/>
         <result property="join_time" column="joinTime"/>
         <result property="chat_level" column="chatLevel"/>
         <result property="nick_name" column="nickName"/>
@@ -37,32 +30,6 @@
         <result property="sys006" column="sys006"/>
         <result property="sys007" column="sys007"/>
     </resultMap>
-
-    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatUserFriendVo">
-        select <include refid="baseColumn"></include>
-        from chat_user_friend t where t.sys005 = 1
-        <if test="friendId  != null and friendId != '' ">
-            and t.friend_id = #{friendId}
-        </if>
-        <if test="userId  != null and userId != '' ">
-            and t.user_id = #{userId}
-        </if>
-        <if test="joinTime  != null and joinTime != '' ">
-            and t.join_time = #{joinTime}
-        </if>
-        <if test="chatLevel  != null and chatLevel != '' ">
-            and t.chat_level = #{chatLevel}
-        </if>
-        <if test="nickName  != null and nickName != '' ">
-            and t.nick_name = #{nickName}
-        </if>
-        <if test="interest  != null and interest != '' ">
-            and t.interest = #{interest}
-        </if>
-        <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}
-        </if>
-    </select>
 
     <!-- *************GenerateXmlUtils************** -->
 </mapper>

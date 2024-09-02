@@ -61,4 +61,16 @@ public class GenerateController  {
         return result;
     }
 
+    /**
+     * 生成表结构类
+     */
+    @RequestMapping("/test")
+    @ResponseBody
+    public Result test() {
+        Result result = new Result();
+        System.out.println("*****");
+        result.setSuccess(true);
+        return result;
+    }
+
 }

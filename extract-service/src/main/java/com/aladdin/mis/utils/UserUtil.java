@@ -15,9 +15,8 @@ public  class UserUtil {
      * @return user
      */
     public static OmUser getCurrentUser() {
-        // todo
         Subject subject = SecurityUtils.getSubject();
-        if(subject != null){
+        if(subject != null && subject.getPrincipal() != null){
             return (OmUser) subject.getPrincipal();
         }
         OmUser om = new OmUser();
