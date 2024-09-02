@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
 * @Description: socket 连接
-* @Param:
+* @Param: https://blog.51cto.com/u_15049782/4707502 单机多连接
 * @return:
 * @Author: cles
 * @Date: 2020/4/17 23:47
@@ -30,6 +30,8 @@ public class SocketController {
      * private static CopyOnWriteArraySet<SocketController> webSocketSet = new CopyOnWriteArraySet<SocketController>();
      */
     private static ConcurrentHashMap<Long ,SocketController> webSocketSet = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<Long ,Session> sessionSocket = new ConcurrentHashMap<>();
 
     /**
      * 与某个客户端的连接会话，需要通过它来与客户端进行数据收发
