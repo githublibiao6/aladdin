@@ -19,9 +19,7 @@
         t.price,
         t.time_slot,
         t.apply_status,
-        t.apply_time
-apply_message
-apply_time,
+        t.apply_time,
         t.apply_message,
         t.audit_time,
         t.audit_user,
@@ -55,11 +53,7 @@ apply_time,
         <result property="price" column="price"/>
         <result property="time_slot" column="timeSlot"/>
         <result property="apply_status" column="applyStatus"/>
-        <result property="apply_time
-apply_message
-apply_time" column="applyTime
-applyMessage
-applyTime"/>
+        <result property="apply_time" column="applyTime"/>
         <result property="apply_message" column="applyMessage"/>
         <result property="audit_time" column="auditTime"/>
         <result property="audit_user" column="auditUser"/>
@@ -125,16 +119,8 @@ applyTime"/>
         <if test="applyStatus  != null and applyStatus != '' ">
             and t.apply_status = #{applyStatus}
         </if>
-        <if test="applyTime
-applyMessage
-applyTime  != null and applyTime
-applyMessage
-applyTime != '' ">
-            and t.apply_time
-apply_message
-apply_time = #{applyTime
-applyMessage
-applyTime}
+        <if test="applyTime != null and applyTime!= '' ">
+            and t.apply_time = #{applyTime}
         </if>
         <if test="applyMessage  != null and applyMessage != '' ">
             and t.apply_message = #{applyMessage}

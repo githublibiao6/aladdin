@@ -113,17 +113,11 @@ public class ChatAccUserApply extends GlobalModel {
 
     /**
      * applyTime
-applyMessage
-applyTime
      */
-    @TableField("apply_time
-apply_message
-apply_time")
+    @TableField("apply_time")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime applyTime
-applyMessage
-applyTime;
+    private LocalDateTime applyTime;
 
     /**
      * applyMessage申请信息

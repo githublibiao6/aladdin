@@ -128,7 +128,7 @@ public interface DeptService extends GlobalService<Dept> {
     List<Dept> listData(DeptQo qo);
 
     /**
-     * 保存应用机构
+     * 保存应用-机构
      * @param application
      */
     void saveApplicationDept(BeApplication application);
