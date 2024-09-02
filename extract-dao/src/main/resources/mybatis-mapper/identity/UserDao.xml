@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aladdin.mis.dao.identity.UserDao">
 
     <sql id="baseColumn">
-        t.id,
-        t.chat_num,
+        t.user_number,
         t.account,
         t.password,
         t.signature,
@@ -39,20 +38,12 @@
         t.last_login_time,
         t.error_times,
         t.update_pwd_time,
-        t.open_id,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.open_id
     </sql>
 
-    <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.User" > 
+    <resultMap id="baseResultMap" type="com.aladdin.mis.identity.entity.User" >
         <id property="id" column="id"/>
-        <result property="chat_num" column="chatNum"/>
+        <result property="user_number" column="userNumber"/>
         <result property="account" column="account"/>
         <result property="password" column="password"/>
         <result property="signature" column="signature"/>
@@ -102,8 +93,8 @@
     <select id="list" resultType="com.aladdin.mis.identity.vo.UserVo">
         select <include refid="baseColumn"></include>
         from user t where t.sys005 = 1
-        <if test="chatNum  != null and chatNum != '' ">
-            and t.chat_num = #{chatNum}
+        <if test="userNumber  != null and userNumber != '' ">
+            and t.user_number = #{userNumber}
         </if>
         <if test="account  != null and account != '' ">
             and t.account = #{account}
@@ -215,124 +206,6 @@
         </if>
     </select>
 
-    <!-- *************GenerateXmlUtils************** -->
-    <select id="list" resultType="com.aladdin.mis.identity.vo.UserVo">
-        select <include refid="baseColumn"></include>
-        from user t where t.sys005 = 1
-        <if test="chatNum  != null and chatNum != '' ">
-            and t.chat_num = #{chatNum}
-        </if>
-        <if test="account  != null and account != '' ">
-            and t.account = #{account}
-        </if>
-        <if test="password  != null and password != '' ">
-            and t.password = #{password}
-        </if>
-        <if test="signature  != null and signature != '' ">
-            and t.signature = #{signature}
-        </if>
-        <if test="salt  != null and salt != '' ">
-            and t.salt = #{salt}
-        </if>
-        <if test="userName  != null and userName != '' ">
-            and t.user_name = #{userName}
-        </if>
-        <if test="phone  != null and phone != '' ">
-            and t.phone = #{phone}
-        </if>
-        <if test="email  != null and email != '' ">
-            and t.email = #{email}
-        </if>
-        <if test="sex  != null and sex != '' ">
-            and t.sex = #{sex}
-        </if>
-        <if test="photoUri  != null and photoUri != '' ">
-            and t.photo_uri = #{photoUri}
-        </if>
-        <if test="birth  != null and birth != '' ">
-            and t.birth = #{birth}
-        </if>
-        <if test="ipCity  != null and ipCity != '' ">
-            and t.ip_city = #{ipCity}
-        </if>
-        <if test="domicileCode  != null and domicileCode != '' ">
-            and t.domicile_code = #{domicileCode}
-        </if>
-        <if test="domicile  != null and domicile != '' ">
-            and t.domicile = #{domicile}
-        </if>
-        <if test="areaCode  != null and areaCode != '' ">
-            and t.area_code = #{areaCode}
-        </if>
-        <if test="address  != null and address != '' ">
-            and t.address = #{address}
-        </if>
-        <if test="virtualCode  != null and virtualCode != '' ">
-            and t.virtual_code = #{virtualCode}
-        </if>
-        <if test="virtualAddress  != null and virtualAddress != '' ">
-            and t.virtual_address = #{virtualAddress}
-        </if>
-        <if test="qq  != null and qq != '' ">
-            and t.qq = #{qq}
-        </if>
-        <if test="weChat  != null and weChat != '' ">
-            and t.we_chat = #{weChat}
-        </if>
-        <if test="zfb  != null and zfb != '' ">
-            and t.zfb = #{zfb}
-        </if>
-        <if test="degree  != null and degree != '' ">
-            and t.degree = #{degree}
-        </if>
-        <if test="status  != null and status != '' ">
-            and t.status = #{status}
-        </if>
-        <if test="userType  != null and userType != '' ">
-            and t.user_type = #{userType}
-        </if>
-        <if test="vipLevel  != null and vipLevel != '' ">
-            and t.vip_level = #{vipLevel}
-        </if>
-        <if test="score  != null and score != '' ">
-            and t.score = #{score}
-        </if>
-        <if test="money  != null and money != '' ">
-            and t.money = #{money}
-        </if>
-        <if test="thumbs  != null and thumbs != '' ">
-            and t.thumbs = #{thumbs}
-        </if>
-        <if test="friend  != null and friend != '' ">
-            and t.friend = #{friend}
-        </if>
-        <if test="follow  != null and follow != '' ">
-            and t.follow = #{follow}
-        </if>
-        <if test="fans  != null and fans != '' ">
-            and t.fans = #{fans}
-        </if>
-        <if test="notes  != null and notes != '' ">
-            and t.notes = #{notes}
-        </if>
-        <if test="lastLoginTime  != null and lastLoginTime != '' ">
-            and t.last_login_time = #{lastLoginTime}
-        </if>
-        <if test="errorTimes  != null and errorTimes != '' ">
-            and t.error_times = #{errorTimes}
-        </if>
-        <if test="updatePwdTime  != null and updatePwdTime != '' ">
-            and t.update_pwd_time = #{updatePwdTime}
-        </if>
-        <if test="openId  != null and openId != '' ">
-            and t.open_id = #{openId}
-        </if>
-        <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}
-        </if>
-    </select>
-
-    <!-- *************GenerateXmlUtils************** -->
     <select id="listUser" resultType="com.aladdin.mis.manager.bean.User">
         select * from user m where m.sys005='1'
 

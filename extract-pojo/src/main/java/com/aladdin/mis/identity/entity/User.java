@@ -12,17 +12,17 @@ import java.time.LocalDateTime;
 /**
  *
  * @author cles
- * @date 2024-09-01 23:28:21
+ * @date 2024-09-02 21:54:19
 */
 @Table("user")
 @Data
 public class User extends GlobalModel {
 
     /**
-     * chatNum群聊号码
+     * userNumber群聊号码
      */
-    @TableField("chat_num")
-    private Integer chatNum;
+    @TableField("user_number")
+    private Integer userNumber;
 
     /**
      * account登录账号

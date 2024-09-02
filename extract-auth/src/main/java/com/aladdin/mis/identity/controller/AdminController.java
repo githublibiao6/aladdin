@@ -191,7 +191,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
             }
         }
         Admin admin = new Admin();
-        s.copyProperties(dto, admin);
+        BeanUtils.copyProperties(dto, admin);
 
         boolean flag = baseService.updatePass(admin);
         if(flag){

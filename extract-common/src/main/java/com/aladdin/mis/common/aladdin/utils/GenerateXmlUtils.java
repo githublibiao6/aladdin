@@ -48,33 +48,31 @@ public  class GenerateXmlUtils {
         });
 
         content.append("    </resultMap>\n\n");
-        content.append("    <!-- *************GenerateXmlUtils************** -->\n");
-        content.append("    <select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
-                "        select <include refid=\"baseColumn\"></include>\n" +
-                "        from "+tableInfo.getTableName()+" t where t.sys005 = 1\n");
-
-
-        fields.forEach(t->{
-            if(set.contains(t.getColumnName())){
-                return;
-            }
-            content.append("        <if test=\""+t.getColumnName()+"  != null and "+t.getColumnName()+" != '' "+"\">\n" +
-                    "            and t."+t.getColName()+" = #{"+t.getColumnName()+"}\n" +
-                    "        </if>\n" );
-        });
-        content.append("        <if test= \" sortInfo  != null and sortInfo != '' "+"\">\n" +
-                "           order by ${sortInfo}\n" +
-                "        </if>\n" );
-        content.append("    </select>\n\n");
-
-
-        System.err.println(content);
         String oldContent = CommonFileUtil.readContentToFile(po.getFilePath(), po.getEntityName()+"Dao.xml");
         if(oldContent != null){
             oldContent = oldContent.substring(oldContent.indexOf("<!-- *************GenerateXmlUtils************** -->"));
             boolean result = CommonFileUtil.writeContentToFile(content.toString() + "    " + oldContent,
                     po.getFilePath(), po.getEntityName()+"Dao.xml", true);
         }else {
+            content.append("    <!-- *************GenerateXmlUtils************** -->\n");
+            content.append("    <select id=\"list\" resultType=\""+po.getImportEntityVoClass().substring(7,po.getImportEntityVoClass().length()-1 )+"\">\n" +
+                    "        select <include refid=\"baseColumn\"></include>\n" +
+                    "        from "+tableInfo.getTableName()+" t where t.sys005 = 1\n");
+
+
+            fields.forEach(t->{
+                if(set.contains(t.getColumnName())){
+                    return;
+                }
+                content.append("        <if test=\""+t.getColumnName()+"  != null and "+t.getColumnName()+" != '' "+"\">\n" +
+                        "            and t."+t.getColName()+" = #{"+t.getColumnName()+"}\n" +
+                        "        </if>\n" );
+            });
+            content.append("        <if test= \" sortInfo  != null and sortInfo != '' "+"\">\n" +
+                    "           order by ${sortInfo}\n" +
+                    "        </if>\n" );
+            content.append("    </select>\n\n");
+
             content.append("</mapper>\n");
             boolean result = CommonFileUtil.writeContentToFile(content.toString(),
                     po.getFilePath(), po.getEntityName()+"Dao.xml", true);

@@ -13,7 +13,7 @@ import lombok.Data;
 /**
  * 陪聊员
  * @author cles
- * @date 2024-09-02 00:11:31
+ * @date 2024-09-02 00:20:02
 */
 @Table("chat_acc_user_apply")
 @Data

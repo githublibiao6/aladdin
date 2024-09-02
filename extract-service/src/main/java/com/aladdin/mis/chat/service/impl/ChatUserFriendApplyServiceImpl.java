@@ -61,7 +61,6 @@ public class ChatUserFriendApplyServiceImpl extends GlobalServiceImpl<ChatUserFr
     @Override
     public boolean edit(ChatUserFriendApply m) {
         m.setAuditTime(LocalDateTime.now());
-        // todo 添加好友分组
         // 用户添加 类似账号
         return updateSelective(m);
     }

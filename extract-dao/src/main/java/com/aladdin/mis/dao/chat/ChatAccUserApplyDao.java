@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao.chat;
 
-import com.aladdin.mis.chat.entity.ChatAccUserApply;
 import com.aladdin.mis.chat.qo.ChatAccUserApplyQo;
 import com.aladdin.mis.chat.vo.ChatAccUserApplyVo;
 import org.springframework.stereotype.Repository;
@@ -13,6 +12,7 @@ import java.util.List;
 */
 @Repository
 public interface ChatAccUserApplyDao {
+
     /**
      * 列表
      * @param qo

@@ -27,7 +27,7 @@ public  class GenerateDaoUtils {
         content.append(" * @date ").append(LocalDateTime.now()).append("\n");
         content.append("*/\n");
         content.append("@Repository\n");
-        content.append("public interface ").append(po.getEntityName()).append("Dao {\n");
+        content.append("public interface ").append(po.getEntityName()).append("Dao {\n\n");
 
         content.append("    /**\n" +
                 "     * 列表\n" +
