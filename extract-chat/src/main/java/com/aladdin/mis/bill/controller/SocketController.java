@@ -1,5 +1,6 @@
 package com.aladdin.mis.bill.controller;
 
+import com.aladdin.mis.bill.config.WebSocketSessionConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,52 +21,28 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 public class SocketController {
 
-    /**
-     * 用来记录当前连接数的变量
-     */
-    private static volatile int onlineCount = 0;
-
-    /**
-     * concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象
-     * private static CopyOnWriteArraySet<SocketController> webSocketSet = new CopyOnWriteArraySet<SocketController>();
-     */
-    private static ConcurrentHashMap<Long ,SocketController> webSocketSet = new ConcurrentHashMap<>();
-
-    private static ConcurrentHashMap<Long ,Session> sessionSocket = new ConcurrentHashMap<>();
-
-    /**
-     * 与某个客户端的连接会话，需要通过它来与客户端进行数据收发
-     */
-    private Session session;
-
     private static final Logger LOGGER = LoggerFactory.getLogger(SocketController.class);
 
     @OnOpen
-    public void onOpen(Session session, @PathParam("id") long id, @PathParam("name") String name) throws Exception {
-        this.session = session;
-        System.err.println(this.session.getId());
-        // 测试
-        webSocketSet.put(id, this);
+    public void onOpen(Session session, @PathParam("id") Integer id, @PathParam("name") String name) {
+        WebSocketSessionConfig.setSession(id, session);
+        WebSocketSessionConfig.sendMessage(id, "服务器发送");
         LOGGER.info("Open a websocket. id={}, name={}", id, name);
-        this.sendMessage("服务器发送");
     }
 
     @OnClose
-    public void onClose() {
-        webSocketSet.remove(this);
+    public void onClose(@PathParam("id") Integer id) {
+        WebSocketSessionConfig.removeSession(id);
         LOGGER.info("Close a websocket. ");
     }
 
     @OnMessage
     public void onMessage(String message, Session session) throws Exception {
+        Integer toUserId = 2;
+        LOGGER.info("toUserId: " + toUserId);
         LOGGER.info("Receive a message from client: " + message);
         LOGGER.info("session id: " + session.getId());
-        LOGGER.info("webSocketSet.count" + webSocketSet.size());
-        if("1".equals(session.getId())){
-            webSocketSet.get(1L).sendMessage(message);
-        }else {
-            webSocketSet.get(2L).sendMessage(message);
-        }
+        WebSocketSessionConfig.sendMessage(toUserId , message);
     }
 
     @OnError
@@ -73,22 +50,8 @@ public class SocketController {
         LOGGER.error("Error while websocket. ", error);
     }
 
-    public void sendMessage(String message) throws Exception {
-        if (this.session.isOpen()) {
-            System.out.println(this.session.getId());
-            this.session.getBasicRemote().sendText(message);
-        }
+    public int getOnlineCount() {
+        return WebSocketSessionConfig.getSessionCount();
     }
 
-    public static synchronized int getOnlineCount() {
-        return onlineCount;
-    }
-
-    public static synchronized void addOnlineCount() {
-        SocketController.onlineCount++;
-    }
-
-    public static synchronized void subOnlineCount() {
-        SocketController.onlineCount--;
-    }
 }
