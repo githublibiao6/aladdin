@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.websocket.Session;
+
 /**
  * test controller
  * @author lb
@@ -20,6 +22,19 @@ public class ChartController {
      */
     @RequestMapping("/welcome")
     public JSONObject welcome() {
+        JSONObject o = new JSONObject();
+        o.put("success", true);
+        o.put("code", 20000);
+        return o;
+    }
+
+    /**
+     * 菜单跳转
+     *
+     * @return
+     */
+    @RequestMapping("/sendMessage")
+    public JSONObject welcome(Session session, Integer toUserId) {
         JSONObject o = new JSONObject();
         o.put("success", true);
         o.put("code", 20000);
