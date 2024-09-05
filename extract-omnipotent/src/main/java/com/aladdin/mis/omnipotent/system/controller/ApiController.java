@@ -5,6 +5,7 @@ import com.aladdin.mis.chat.service.ChatUserFriendGroupService;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
 import com.aladdin.mis.utils.UserUtil;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,31 @@ public class ApiController {
         group.setUserId(UserUtil.getCurrentUser().getUserId());
         groupService.insert(group);
         return result;
+    }
+
+    /**
+     * 健康地址
+     * @return
+     */
+    @RequestMapping("/healthy")
+    public JSONObject welcome() {
+        JSONObject o = new JSONObject();
+        o.put("success", true);
+        o.put("code", 20000);
+        return o;
+    }
+
+    /**
+     * 健康地址
+     * @return
+     */
+    @RequestMapping("/version")
+    public JSONObject version() {
+        JSONObject o = new JSONObject();
+        o.put("data", "v1.0.0");
+        o.put("success", true);
+        o.put("code", 20000);
+        return o;
     }
 
 }
