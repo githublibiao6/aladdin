@@ -38,6 +38,9 @@ public  class GenerateXmlUtils {
         content.append("    <resultMap id=\"baseResultMap\" type=\""+po.getImportEntityClass().substring(7,po.getImportEntityClass().length() -1)+"\" > \n");
 
         fields.forEach(t->{
+            if(set.contains(t.getColumnName())){
+                return;
+            }
             if("id".equals(t.getColumnName())){
                 content.append("        <id property=\"id\" column=\"id\"/>\n");
             }else if(t.getColumnType().startsWith("List")){

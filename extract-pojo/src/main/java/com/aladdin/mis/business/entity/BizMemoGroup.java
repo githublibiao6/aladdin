@@ -11,9 +11,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
- * 日记表
+ * 便签组表
  * @author cles
- * @date 2024-09-01 22:25:35
+ * @date 2024-09-15 23:15:54
 */
 @Table("biz_memo_group")
 @Data
