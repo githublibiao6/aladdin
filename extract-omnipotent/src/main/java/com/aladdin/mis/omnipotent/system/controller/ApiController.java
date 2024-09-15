@@ -57,7 +57,7 @@ public class ApiController {
     }
 
     /**
-     * 健康地址
+     * 查询版本
      * @return
      */
     @RequestMapping("/version")
