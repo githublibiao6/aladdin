@@ -3,7 +3,6 @@
 <mapper namespace="com.aladdin.mis.dao.business.BizMemoDao">
 
     <sql id="baseColumn">
-        t.id,
         t.user_id,
         t.group_id,
         t.content,
@@ -15,19 +14,10 @@
         t.importance,
         t.next_remind_time,
         t.remind_info,
-        t.create_time,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.create_time
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.business.entity.BizMemo" > 
-        <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
         <result property="group_id" column="groupId"/>
         <result property="content" column="content"/>
@@ -40,14 +30,6 @@
         <result property="next_remind_time" column="nextRemindTime"/>
         <result property="remind_info" column="remindInfo"/>
         <result property="create_time" column="createTime"/>
-        <result property="sys000" column="sys000"/>
-        <result property="sys001" column="sys001"/>
-        <result property="sys002" column="sys002"/>
-        <result property="sys003" column="sys003"/>
-        <result property="sys004" column="sys004"/>
-        <result property="sys005" column="sys005"/>
-        <result property="sys006" column="sys006"/>
-        <result property="sys007" column="sys007"/>
     </resultMap>
 
     <!-- *************GenerateXmlUtils************** -->

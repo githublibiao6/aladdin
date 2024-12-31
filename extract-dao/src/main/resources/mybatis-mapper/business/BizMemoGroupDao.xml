@@ -3,35 +3,17 @@
 <mapper namespace="com.aladdin.mis.dao.business.BizMemoGroupDao">
 
     <sql id="baseColumn">
-        t.id,
         t.user_id,
         t.group_number,
         t.group_name,
-        t.order_num,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.order_num
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.business.entity.BizMemoGroup" > 
-        <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
         <result property="group_number" column="groupNumber"/>
         <result property="group_name" column="groupName"/>
         <result property="order_num" column="orderNum"/>
-        <result property="sys000" column="sys000"/>
-        <result property="sys001" column="sys001"/>
-        <result property="sys002" column="sys002"/>
-        <result property="sys003" column="sys003"/>
-        <result property="sys004" column="sys004"/>
-        <result property="sys005" column="sys005"/>
-        <result property="sys006" column="sys006"/>
-        <result property="sys007" column="sys007"/>
     </resultMap>
 
     <!-- *************GenerateXmlUtils************** -->

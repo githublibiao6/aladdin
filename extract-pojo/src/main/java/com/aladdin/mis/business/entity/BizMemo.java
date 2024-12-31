@@ -11,9 +11,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
- * 日记表
+ * 便签表
  * @author cles
- * @date 2024-09-01 22:25:16
+ * @date 2024-09-15 23:15:57
 */
 @Table("biz_memo")
 @Data
@@ -32,7 +32,7 @@ public class BizMemo extends GlobalModel {
     private Integer groupId;
 
     /**
-     * content日记内容
+     * content便签内容
      */
     @TableField("content")
     private String content;
