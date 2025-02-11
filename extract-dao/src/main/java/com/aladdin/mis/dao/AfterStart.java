@@ -1,10 +1,7 @@
 package com.aladdin.mis.dao;
 
-import com.aladdin.mis.common.db.dao.SqlLogDao;
 import com.aladdin.mis.dao.db.config.MainDb;
-import com.aladdin.mis.common.db.config.DbPro;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -20,15 +17,15 @@ import org.springframework.stereotype.Component;
 @Order(value = 1)
 public class AfterStart implements ApplicationRunner {
 
-    @Autowired
-    private SqlLogDao sqlLogDao;
+//    @Autowired
+//    private SqlLogDao sqlLogDao;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
         try{
             // 临时处理sqlDao为空的问题
-            DbPro.setSqlLogDao(sqlLogDao);
+//            DbPro.setSqlLogDao(sqlLogDao);
             log.info("启动后执行");
             /*将菜单缓存进redis*/
             /* 将主数据源的表缓存 */

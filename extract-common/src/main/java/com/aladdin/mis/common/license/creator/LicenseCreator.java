@@ -36,7 +36,7 @@ public class LicenseCreator {
         param.setPrivateKeysStorePath("D:\\GAME\\lic\\privateKeys.keystore");
         // 证书生成时间-当前时间
         param.setIssuedTime(new Date());
-        LocalDateTime localDateTime = LocalDateTime.of(2024, 9, 18, 18, 10, 59);
+        LocalDateTime localDateTime = LocalDateTime.of(2025, 9, 18, 18, 10, 59);
         Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         // 证书过期时间-2024年12月31日23:59:59
         param.setExpiryTime(date);

@@ -22,3 +22,8 @@ hystrix:
 ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
+
+license:
+  subject: license
+  publicAlias: publicCert
+  storePass: public_password12345

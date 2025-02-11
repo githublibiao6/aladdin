@@ -1,9 +1,7 @@
 package com.aladdin.mis.system.service.impl;
 
-import com.aladdin.mis.common.db.dao.SqlLogDao;
 import com.aladdin.mis.common.db.bean.SqlLog;
 import com.aladdin.mis.system.service.SqlLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,12 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class SqlLogServiceImpl  implements SqlLogService {
 
-    @Autowired
-    private SqlLogDao sqlLogDao;
+//    @Autowired
+//    private SqlLogDao sqlLogDao;
 
     @Override
     public void save(SqlLog entity) {
-        sqlLogDao.save(entity);
+        // todo 处理启动问题
+//        sqlLogDao.save(entity);
     }
 }
 
