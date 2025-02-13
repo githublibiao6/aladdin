@@ -1,6 +1,5 @@
 package com.aladdin.mis.dao;
 
-import com.aladdin.mis.dao.db.config.MainDb;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -29,7 +28,7 @@ public class AfterStart implements ApplicationRunner {
             log.info("启动后执行");
             /*将菜单缓存进redis*/
             /* 将主数据源的表缓存 */
-            MainDb.init();
+//            MainDb.init();
 //            Map<String, TableInfo> map = MainDb.getTableMap();
 //            List<JSONObject> t = Db.use().findList("select * from be_admin");
             /*map.forEach((k,v)->{
