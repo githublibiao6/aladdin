@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.config;
+package com.aladdin.mis.socket.config;
 /*
  *  Created by cles on 2020/7/14 23:23
  */

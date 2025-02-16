@@ -1,10 +1,10 @@
-package com.aladdin.mis.bill.service.impl;
+package com.aladdin.mis.socket.service.impl;
 /*
  *  Created by cles on 2020/7/14 23:24
  */
 
-import com.aladdin.mis.bill.config.AliPayConfig;
-import com.aladdin.mis.bill.service.AlipayService;
+import com.aladdin.mis.socket.config.AliPayConfig;
+import com.aladdin.mis.socket.service.AlipayService;
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;

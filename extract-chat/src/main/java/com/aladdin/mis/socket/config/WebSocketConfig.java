@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.config;
+package com.aladdin.mis.socket.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

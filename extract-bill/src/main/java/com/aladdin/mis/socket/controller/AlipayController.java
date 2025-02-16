@@ -1,6 +1,6 @@
-package com.aladdin.mis.bill.controller;
+package com.aladdin.mis.socket.controller;
 
-import com.aladdin.mis.bill.service.AlipayService;
+import com.aladdin.mis.socket.service.AlipayService;
 import com.alipay.api.AlipayApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

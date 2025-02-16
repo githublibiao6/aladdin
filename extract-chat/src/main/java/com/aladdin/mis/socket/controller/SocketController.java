@@ -1,6 +1,6 @@
-package com.aladdin.mis.bill.controller;
+package com.aladdin.mis.socket.controller;
 
-import com.aladdin.mis.bill.config.WebSocketSessionConfig;
+import com.aladdin.mis.socket.config.WebSocketSessionConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
 * @Description: socket 连接

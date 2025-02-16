@@ -1,4 +1,4 @@
-package com.aladdin.mis.bill.controller;
+package com.aladdin.mis.socket.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
