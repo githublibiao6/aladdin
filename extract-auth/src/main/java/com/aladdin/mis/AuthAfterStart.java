@@ -1,14 +1,11 @@
 package com.aladdin.mis;
 
 import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
-import com.aladdin.mis.common.db.dao.SqlLogDao;
-import com.aladdin.mis.common.db.config.DbPro;
 import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.identity.entity.Role;
 import com.aladdin.mis.identity.service.MenuService;
 import com.aladdin.mis.identity.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -30,8 +27,8 @@ public class AuthAfterStart implements ApplicationRunner {
 
     private MenuService menuService;
 
-    @Autowired
-    private SqlLogDao sqlLogDao;
+//    @Autowired
+//    private SqlLogDao sqlLogDao;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -40,7 +37,7 @@ public class AuthAfterStart implements ApplicationRunner {
 
         try{
             // 临时处理sqlDao为空的问题
-            DbPro.setSqlLogDao(sqlLogDao);
+//            DbPro.setSqlLogDao(sqlLogDao);
             log.info("启动后执行");
             /*将菜单缓存进redis*/
             List<Role> list= roleService.list();
