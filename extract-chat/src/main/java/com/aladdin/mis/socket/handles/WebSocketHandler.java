@@ -61,6 +61,12 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     }
 
 
+    /**
+     * 接收消息
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("msg" +msg);
@@ -71,6 +77,15 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
             // 处理websocket连接业务
             handlerWebSocketFrame(ctx, (WebSocketFrame) msg);
         }
+
+        //接收msg消息{与上一章节netty04相比，此处已经不需要自己进行解码}
+//        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " 接收到消息：" + msg);
+//        //通知客户端链消息发送成功
+//        String str = "服务端收到：" + new Date() + " " + msg + "\r\n";
+//        ByteBuf buf = Unpooled.buffer(str.getBytes().length);
+//        buf.writeBytes(str.getBytes("GBK"));
+//        ctx.writeAndFlush(buf);
+//        System.out.println("-----------------------------------------");
     }
 
     @Override
@@ -127,6 +142,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
          * Handler已经是线程处理，每个用户的请求是线程隔离的
          */
         // 返回WebSocket响应
+        System.out.println(ctx.name());
         ctx.writeAndFlush(new TextWebSocketFrame("server return:" + text));
         /*// 群发
         TextWebSocketFrame twsf = new TextWebSocketFrame(new Date().toString()
