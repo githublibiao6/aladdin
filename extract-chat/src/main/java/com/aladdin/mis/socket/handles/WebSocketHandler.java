@@ -16,9 +16,10 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.websocketx.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
 
 /**
  * @author cles
@@ -27,10 +28,18 @@ import java.util.Date;
  * @version: 1.0.0
  */
 @Slf4j
+@Component
 public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
+
+    private static InfoHandler infoHandler;
 
     private WebSocketServerHandshaker webSocketServerHandshaker;
     private static final String WEB_SOCKET_URL = "ws://127.0.0.1:8888/websocket";
+
+    @Autowired
+    public void setInfoHandler(InfoHandler infoHandler) {
+        WebSocketHandler.infoHandler = infoHandler;
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -126,6 +135,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
             return;
         }
         log.info("WebSocket message received: {}", text);
+        infoHandler.handle(text);
         /**
          * 可通过客户传输的text，设计处理策略：
          * 如：text={"type": "messageHandler", "userId": "111"}
@@ -135,8 +145,9 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
          * Handler已经是线程处理，每个用户的请求是线程隔离的
          */
         // 返回WebSocket响应
-        System.out.println(ctx.name());
-        ctx.writeAndFlush(new TextWebSocketFrame("server return:" + text));
+        System.out.println(ctx.channel().id());
+        // 返回浏览器端消息
+//        ctx.writeAndFlush(new TextWebSocketFrame("server return:" + text));
         /* 群发 这里的群发是可以给所有人发
         TextWebSocketFrame twsf = new TextWebSocketFrame(new Date().toString()
                 + ctx.channel().id()
