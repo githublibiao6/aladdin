@@ -14,8 +14,12 @@ import io.netty.util.concurrent.GlobalEventExecutor;
  * @version: 1.0.0
  */
 public class NettyConfig {
+
     /**
      * 存储接入的客户端的channel对象
      */
     public static ChannelGroup group = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+
+
+
 }

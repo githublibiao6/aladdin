@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 /**
- * 聊天记录-两人对话
+ * 群聊申请
  * @author cles
  * @date 2024-08-30 00:19:39
 */

@@ -1,6 +1,7 @@
 package com.aladdin.mis.chat.controller;
 
 import com.aladdin.mis.chat.entity.ChatList;
+import com.aladdin.mis.chat.enums.MessageEnum;
 import com.aladdin.mis.chat.service.ChatListService;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.chat.qo.ChatListQo;

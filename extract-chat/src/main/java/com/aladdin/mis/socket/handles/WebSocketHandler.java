@@ -18,6 +18,7 @@ import io.netty.handler.codec.http.websocketx.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 
 /**
  * @author cles
@@ -25,7 +26,6 @@ import java.nio.charset.StandardCharsets;
  * @Date 2025/2/17 23:06
  * @version: 1.0.0
  */
-
 @Slf4j
 public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
 
@@ -36,6 +36,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // 创建连接时执行
         NettyConfig.group.add(ctx.channel());
+        // todo 保存连接日志 连接id和用户的关系
         log.info("client channel active, id={}", ctx.channel().id().toString());
     }
 
@@ -60,7 +61,6 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }
     }
 
-
     /**
      * 接收消息
      * @param ctx
@@ -77,7 +77,6 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
             // 处理websocket连接业务
             handlerWebSocketFrame(ctx, (WebSocketFrame) msg);
         }
-
         //接收msg消息{与上一章节netty04相比，此处已经不需要自己进行解码}
 //        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " 接收到消息：" + msg);
 //        //通知客户端链消息发送成功
@@ -98,12 +97,6 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
             // 处理websocket连接业务
             handlerWebSocketFrame(ctx, (WebSocketFrame) msg);
         }
-    }
-
-    @Override
-    public boolean acceptInboundMessage(Object msg) throws Exception {
-        System.out.println(msg);
-        return true;
     }
 
     /**
@@ -144,7 +137,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         // 返回WebSocket响应
         System.out.println(ctx.name());
         ctx.writeAndFlush(new TextWebSocketFrame("server return:" + text));
-        /*// 群发
+        /* 群发 这里的群发是可以给所有人发
         TextWebSocketFrame twsf = new TextWebSocketFrame(new Date().toString()
                 + ctx.channel().id()
                 + " : "
