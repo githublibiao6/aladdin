@@ -13,7 +13,7 @@ import lombok.Data;
 /**
  * 聊天记录-两人对话
  * @author cles
- * @date 2024-08-30 00:20:03
+ * @date 2025-02-20 23:26:50
 */
 @Table("chat_session")
 @Data

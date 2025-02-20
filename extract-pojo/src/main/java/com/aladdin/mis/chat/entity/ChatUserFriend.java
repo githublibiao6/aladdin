@@ -3,17 +3,16 @@ package com.aladdin.mis.chat.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
  * 朋友关联
  * @author cles
- * @date 2024-09-02 22:56:01
+ * @date 2025-02-20 23:26:57
 */
 @Table("chat_user_friend")
 @Data
@@ -44,6 +43,18 @@ public class ChatUserFriend extends GlobalModel {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime joinTime;
+
+    /**
+     * chatId两人聊天id
+     */
+    @TableField("chat_id")
+    private Integer chatId;
+
+    /**
+     * chatListId聊天列表id
+     */
+    @TableField("chat_list_id")
+    private Integer chatListId;
 
     /**
      * chatLevel聊天等级

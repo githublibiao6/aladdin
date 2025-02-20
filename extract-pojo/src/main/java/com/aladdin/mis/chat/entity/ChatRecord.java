@@ -3,16 +3,17 @@ package com.aladdin.mis.chat.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Data;
 
 /**
  * 聊天会话-两人对话
  * @author cles
- * @date 2024-08-30 00:19:56
+ * @date 2025-02-20 23:26:41
 */
 @Table("chat_record")
 @Data
@@ -25,7 +26,7 @@ public class ChatRecord extends GlobalModel {
     private Integer sendUser;
 
     /**
-     * receiveUser接收用户id
+     * toUser接收用户id
      */
     @TableField("to_user")
     private Integer toUser;

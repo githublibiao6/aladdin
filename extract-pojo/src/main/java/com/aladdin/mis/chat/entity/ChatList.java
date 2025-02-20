@@ -13,7 +13,7 @@ import lombok.Data;
 /**
  * 聊天列表
  * @author cles
- * @date 2024-08-30 00:19:46
+ * @date 2025-02-20 23:26:26
 */
 @Table("chat_list")
 @Data
@@ -98,5 +98,13 @@ public class ChatList extends GlobalModel {
      */
     @TableField("interest")
     private Integer interest;
+
+    /**
+     * lastTime最新消息id
+     */
+    @TableField("last_time")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime lastTime;
 
 }

@@ -7,28 +7,23 @@
         t.group_id,
         t.friend_id,
         t.join_time,
+        t.chat_id,
+        t.chat_list_id,
         t.chat_level,
         t.nick_name,
         t.interest
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserFriend" > 
-        <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
         <result property="group_id" column="groupId"/>
         <result property="friend_id" column="friendId"/>
         <result property="join_time" column="joinTime"/>
+        <result property="chat_id" column="chatId"/>
+        <result property="chat_list_id" column="chatListId"/>
         <result property="chat_level" column="chatLevel"/>
         <result property="nick_name" column="nickName"/>
         <result property="interest" column="interest"/>
-        <result property="sys000" column="sys000"/>
-        <result property="sys001" column="sys001"/>
-        <result property="sys002" column="sys002"/>
-        <result property="sys003" column="sys003"/>
-        <result property="sys004" column="sys004"/>
-        <result property="sys005" column="sys005"/>
-        <result property="sys006" column="sys006"/>
-        <result property="sys007" column="sys007"/>
     </resultMap>
 
     <!-- *************GenerateXmlUtils************** -->

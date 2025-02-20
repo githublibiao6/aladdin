@@ -9,18 +9,9 @@
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatUserFriendGroup" > 
-        <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
         <result property="group_name" column="groupName"/>
         <result property="order_num" column="orderNum"/>
-        <result property="sys000" column="sys000"/>
-        <result property="sys001" column="sys001"/>
-        <result property="sys002" column="sys002"/>
-        <result property="sys003" column="sys003"/>
-        <result property="sys004" column="sys004"/>
-        <result property="sys005" column="sys005"/>
-        <result property="sys006" column="sys006"/>
-        <result property="sys007" column="sys007"/>
     </resultMap>
 
     <!-- *************GenerateXmlUtils************** -->

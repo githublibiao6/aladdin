@@ -3,17 +3,16 @@ package com.aladdin.mis.chat.entity;
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 
 /**
- * 群聊申请
+ * 群-用户申请
  * @author cles
- * @date 2024-08-30 00:19:39
+ * @date 2025-02-20 23:26:12
 */
 @Table("chat_group_user_apply")
 @Data

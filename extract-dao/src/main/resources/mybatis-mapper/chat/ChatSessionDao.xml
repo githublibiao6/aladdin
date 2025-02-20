@@ -3,66 +3,22 @@
 <mapper namespace="com.aladdin.mis.dao.chat.ChatSessionDao">
 
     <sql id="baseColumn">
-        t.id,
         t.session_name,
         t.session_kind,
         t.create_time,
         t.create_user,
         t.chat_user,
-        t.chat_level,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.chat_level
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatSession" > 
-        <id property="id" column="id"/>
         <result property="session_name" column="sessionName"/>
         <result property="session_kind" column="sessionKind"/>
         <result property="create_time" column="createTime"/>
         <result property="create_user" column="createUser"/>
         <result property="chat_user" column="chatUser"/>
         <result property="chat_level" column="chatLevel"/>
-        <result property="sys000" column="sys000"/>
-        <result property="sys001" column="sys001"/>
-        <result property="sys002" column="sys002"/>
-        <result property="sys003" column="sys003"/>
-        <result property="sys004" column="sys004"/>
-        <result property="sys005" column="sys005"/>
-        <result property="sys006" column="sys006"/>
-        <result property="sys007" column="sys007"/>
     </resultMap>
-
-    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatSessionVo">
-        select <include refid="baseColumn"></include>
-        from chat_session t where t.sys005 = 1
-        <if test="sessionName  != null and sessionName != '' ">
-            and t.session_name = #{sessionName}
-        </if>
-        <if test="sessionKind  != null and sessionKind != '' ">
-            and t.session_kind = #{sessionKind}
-        </if>
-        <if test="createTime  != null and createTime != '' ">
-            and t.create_time = #{createTime}
-        </if>
-        <if test="createUser  != null and createUser != '' ">
-            and t.create_user = #{createUser}
-        </if>
-        <if test="chatUser  != null and chatUser != '' ">
-            and t.chat_user = #{chatUser}
-        </if>
-        <if test="chatLevel  != null and chatLevel != '' ">
-            and t.chat_level = #{chatLevel}
-        </if>
-        <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}
-        </if>
-    </select>
 
     <!-- *************GenerateXmlUtils************** -->
 </mapper>

@@ -3,7 +3,6 @@
 <mapper namespace="com.aladdin.mis.dao.chat.ChatListDao">
 
     <sql id="baseColumn">
-        t.id,
         t.user_id,
         t.chat_kind,
         t.chat_id,
@@ -17,18 +16,10 @@
         t.status,
         t.chat_level,
         t.interest,
-        t.sys000,
-        t.sys001,
-        t.sys002,
-        t.sys003,
-        t.sys004,
-        t.sys005,
-        t.sys006,
-        t.sys007
+        t.last_time
     </sql>
 
     <resultMap id="baseResultMap" type="com.aladdin.mis.chat.entity.ChatList" > 
-        <id property="id" column="id"/>
         <result property="user_id" column="userId"/>
         <result property="chat_kind" column="chatKind"/>
         <result property="chat_id" column="chatId"/>
@@ -42,62 +33,8 @@
         <result property="status" column="status"/>
         <result property="chat_level" column="chatLevel"/>
         <result property="interest" column="interest"/>
-        <result property="sys000" column="sys000"/>
-        <result property="sys001" column="sys001"/>
-        <result property="sys002" column="sys002"/>
-        <result property="sys003" column="sys003"/>
-        <result property="sys004" column="sys004"/>
-        <result property="sys005" column="sys005"/>
-        <result property="sys006" column="sys006"/>
-        <result property="sys007" column="sys007"/>
+        <result property="last_time" column="lastTime"/>
     </resultMap>
-
-    <select id="list" resultType="com.aladdin.mis.chat.vo.ChatListVo">
-        select <include refid="baseColumn"></include>
-        from chat_list t where t.sys005 = 1
-        <if test="userId  != null and userId != '' ">
-            and t.user_id = #{userId}
-        </if>
-        <if test="chatKind  != null and chatKind != '' ">
-            and t.chat_kind = #{chatKind}
-        </if>
-        <if test="chatId  != null and chatId != '' ">
-            and t.chat_id = #{chatId}
-        </if>
-        <if test="chatName  != null and chatName != '' ">
-            and t.chat_name = #{chatName}
-        </if>
-        <if test="unreadCount  != null and unreadCount != '' ">
-            and t.unread_count = #{unreadCount}
-        </if>
-        <if test="lastMessage  != null and lastMessage != '' ">
-            and t.last_message = #{lastMessage}
-        </if>
-        <if test="pictureUrl  != null and pictureUrl != '' ">
-            and t.picture_url = #{pictureUrl}
-        </if>
-        <if test="sendTime  != null and sendTime != '' ">
-            and t.send_time = #{sendTime}
-        </if>
-        <if test="chatLabel  != null and chatLabel != '' ">
-            and t.chat_label = #{chatLabel}
-        </if>
-        <if test="top  != null and top != '' ">
-            and t.top = #{top}
-        </if>
-        <if test="status  != null and status != '' ">
-            and t.status = #{status}
-        </if>
-        <if test="chatLevel  != null and chatLevel != '' ">
-            and t.chat_level = #{chatLevel}
-        </if>
-        <if test="interest  != null and interest != '' ">
-            and t.interest = #{interest}
-        </if>
-        <if test= " sortInfo  != null and sortInfo != '' ">
-           order by ${sortInfo}
-        </if>
-    </select>
 
     <!-- *************GenerateXmlUtils************** -->
 </mapper>
