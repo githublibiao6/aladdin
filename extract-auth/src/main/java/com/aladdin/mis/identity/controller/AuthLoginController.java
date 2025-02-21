@@ -2,7 +2,9 @@ package com.aladdin.mis.identity.controller;
 
 import com.aladdin.mis.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.shiro.OmClient;
 import com.aladdin.mis.system.user.vo.LoginUser;
+import com.aladdin.mis.system.user.vo.OmUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +41,17 @@ public class AuthLoginController {
         return result;
     }
 
+
+    @RequestMapping("/userInfo")
+    @ResponseBody
+    public Result userInfo() {
+        Result result = new Result();
+        result.setCode(20000);
+        OmUser user = OmClient.getCurrentUser();
+        result.setData(user);
+        return result;
+    }
+
     /**
      * 请求被拦截的处理
      * 查询配置 ShiroConfig: auth/interceptLogin
@@ -46,7 +59,7 @@ public class AuthLoginController {
      */
     @RequestMapping("/interceptLogin")
     @ResponseBody
-    public Result login() {
+    public Result interceptLogin() {
         Result result = new Result();
         result.setMessage("请求被拦截了");
         result.setCode(50014);

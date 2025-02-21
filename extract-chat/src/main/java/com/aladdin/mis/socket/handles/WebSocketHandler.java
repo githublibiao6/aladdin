@@ -3,6 +3,7 @@ package com.aladdin.mis.socket.handles;
  *  Created by cles on 2025/2/17 23:06
  */
 
+import com.aladdin.mis.shiro.OmClient;
 import com.aladdin.mis.socket.config.NettyConfig;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -131,6 +132,11 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         }
         String text = ((TextWebSocketFrame) frame).text();
         if ("ping".equals(text)) {
+            ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
+            return;
+        }
+        if (text.startsWith("Authorization")) {
+            OmClient.getCurrentUser();
             ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
             return;
         }

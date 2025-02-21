@@ -155,8 +155,7 @@ public class ShiroConfig {
      **/
 
     @Bean
-    public SessionManager sessionManager()
-    {
+    public SessionManager sessionManager(){
         // 将我们继承后重写的shiro session 注册
         MySessionManager sessionManager = new MySessionManager();
 

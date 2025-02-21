@@ -2,6 +2,7 @@ package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.identity.service.AuthLoginService;
 import com.aladdin.mis.common.system.entity.Result;
+import com.aladdin.mis.shiro.OmClient;
 import com.aladdin.mis.system.user.vo.LoginUser;
 import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
@@ -55,6 +56,7 @@ public class AuthLoginServiceImpl implements AuthLoginService {
         }
         // 生成的sessionId 返回给前端
         // session 超时时间
+        OmClient.setUser();
         subject.getSession().setTimeout(1000 * 60 * 30);
         String sessionId = (String)subject.getSession().getId();
         result.setData(sessionId);
