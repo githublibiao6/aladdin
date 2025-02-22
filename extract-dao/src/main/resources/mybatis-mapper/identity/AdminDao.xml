@@ -34,8 +34,8 @@
 
     <select id="findByAccount" resultType="com.aladdin.mis.identity.entity.Admin">
         select * from be_admin where sys005=1
-        and (login_name like concat('%',#{account},'%')
-           or phone like concat('%',#{account},'%'))
+        and (login_name = #{account}
+           or phone = #{account})
     </select>
 
     <update  id="remove" parameterType="com.aladdin.mis.identity.entity.Admin">

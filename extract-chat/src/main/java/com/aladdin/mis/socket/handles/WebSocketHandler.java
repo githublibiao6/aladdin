@@ -3,7 +3,6 @@ package com.aladdin.mis.socket.handles;
  *  Created by cles on 2025/2/17 23:06
  */
 
-import com.aladdin.mis.shiro.OmClient;
 import com.aladdin.mis.socket.config.NettyConfig;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -53,6 +52,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         // 关闭连接时执行
+        NettyConfig.userMap.remove(ctx.channel().id());
         NettyConfig.group.remove(ctx.channel());
         log.info("client channel disconnected, id={}", ctx.channel().id().toString());
     }
@@ -136,7 +136,8 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
             return;
         }
         if (text.startsWith("Authorization")) {
-            OmClient.getCurrentUser();
+            String token = text.replace("Authorization", "");
+            NettyConfig.userMap.put(ctx.channel().id(), token);
             ctx.channel().write(new PongWebSocketFrame(frame.content().retain()));
             return;
         }
@@ -153,7 +154,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<Object> {
         // 返回WebSocket响应
         System.out.println(ctx.channel().id());
         // 返回浏览器端消息
-//        ctx.writeAndFlush(new TextWebSocketFrame("server return:" + text));
+        ctx.writeAndFlush(new TextWebSocketFrame("server return:" + text));
         /* 群发 这里的群发是可以给所有人发
         TextWebSocketFrame twsf = new TextWebSocketFrame(new Date().toString()
                 + ctx.channel().id()

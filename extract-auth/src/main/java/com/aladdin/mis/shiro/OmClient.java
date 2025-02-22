@@ -28,7 +28,10 @@ public class OmClient {
      * @return
      */
     public static void setUser(){
-        userMap.put((String)SecurityUtils.getSubject().getSession().getId()
+//        userMap.put((String)SecurityUtils.getSubject().getSession().getId()
+//                , (OmUser) SecurityUtils.getSubject().getPrincipal());
+        // 测试代码
+        userMap.put(((OmUser) SecurityUtils.getSubject().getPrincipal()).getUserId()+""
                 , (OmUser) SecurityUtils.getSubject().getPrincipal());
     }
 
