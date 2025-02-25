@@ -31,7 +31,7 @@ public class OmClient {
 //        userMap.put((String)SecurityUtils.getSubject().getSession().getId()
 //                , (OmUser) SecurityUtils.getSubject().getPrincipal());
         // 测试代码
-        userMap.put(((OmUser) SecurityUtils.getSubject().getPrincipal()).getUserId()+""
+        userMap.put(((OmUser) SecurityUtils.getSubject().getPrincipal()).getUserName()+""
                 , (OmUser) SecurityUtils.getSubject().getPrincipal());
     }
 

@@ -28,8 +28,13 @@ public class InfoHandler {
     private ChatRecordService chatRecordService;
 
     public boolean handle(String info){
-        ChatMessageParam param = JSONObject.parseObject(info, ChatMessageParam.class);
-        System.out.println(JSONObject.toJSONString(param));
+        try{
+            ChatMessageParam param = JSONObject.parseObject(info, ChatMessageParam.class);
+            System.out.println(JSONObject.toJSONString(param));
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
         return true;
     }
 }
