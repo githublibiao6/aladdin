@@ -83,13 +83,13 @@ public abstract class  GlobalController<T extends GlobalModel, M extends GlobalS
     @RequestMapping("/saveInfo")
     @ResponseBody
     public Result saveInfo(@RequestBody T entity) {
-        if(entity.getPrimaryKey() == null){
-            T data = baseService.insertSelective(entity);
-            result.setData(data);
-        }else {
-            boolean data = baseService.updateSelective(entity);
-            result.setData(data);
-        }
+//        if(entity.getPrimaryKey() == null){
+//            T data = baseService.insertSelective(entity);
+//            result.setData(data);
+//        }else {
+//            boolean data = baseService.updateSelective(entity);
+//            result.setData(data);
+//        }
         return Result.success();
     }
 
@@ -99,13 +99,13 @@ public abstract class  GlobalController<T extends GlobalModel, M extends GlobalS
     @PutMapping("/")
     @ResponseBody
     public Result saveOrUpdate(@RequestBody T entity) {
-        if(entity.getPrimaryKey() == null){
-            T data = baseService.insertSelective(entity);
-            result.setData(data);
-        }else {
-            boolean data = baseService.updateSelective(entity);
-            result.setData(data);
-        }
+//        if(entity.getPrimaryKey() == null){
+//            T data = baseService.insertSelective(entity);
+//            result.setData(data);
+//        }else {
+//            boolean data = baseService.updateSelective(entity);
+//            result.setData(data);
+//        }
         return Result.success();
     }
 
@@ -129,12 +129,13 @@ public abstract class  GlobalController<T extends GlobalModel, M extends GlobalS
     @RequestMapping("/deleteInfo")
     @ResponseBody
     public Result deleteInfo(@RequestBody T entity) {
-        boolean flag = baseService.deleteById(entity.getPrimaryKey());
-        if(flag){
-            return Result.success();
-        }else {
-            return Result.error();
-        }
+//        boolean flag = baseService.deleteById(entity.getPrimaryKey());
+//        if(flag){
+//            return Result.success();
+//        }else {
+//            return Result.error();
+//        }
+        return Result.success();
     }
 
     /**
@@ -154,8 +155,8 @@ public abstract class  GlobalController<T extends GlobalModel, M extends GlobalS
     @RequestMapping("/detailInfo")
     @ResponseBody
     public Result detailInfo(@RequestBody T entity) {
-        T data = baseService.detailQuery(entity.getPrimaryKey());
-        return Result.success(data);
+//        T data = baseService.detailQuery(entity.getPrimaryKey());
+        return Result.success();
     }
 
     /**

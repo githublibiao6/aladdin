@@ -158,7 +158,7 @@ public class FileUtil {
         String newFileName = UUID.randomUUID().toString() + "." + extArr[1];
         try {
             File newLocalFile = new File(absolutePath, newFileName);
-            Base64Utils.generateImage(base64 , newLocalFile.getAbsolutePath());
+//            Base64Utils.generateImage(base64 , newLocalFile.getAbsolutePath());
         } catch (Exception e1) {
             LOGGER.error("-----image file save local exceprion:{}-----", e1.getMessage());
         }
@@ -202,7 +202,7 @@ public class FileUtil {
         String newFileName = UUID.randomUUID().toString() + "." + extArr[1];
         try {
             File newLocalFile = new File(absolutePath, newFileName);
-            Base64Utils.base64ToVideo(pic[1] , newLocalFile.getAbsolutePath());
+//            Base64Utils.base64ToVideo(pic[1] , newLocalFile.getAbsolutePath());
         } catch (Exception e1) {
             LOGGER.error("-----image file save local exceprion:{}-----", e1.getMessage());
         }

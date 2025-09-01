@@ -31,8 +31,8 @@
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- 声明版本号，以后统一在这里进行管理-->
     <project.version>0.1-SNAPSHOT</project.version>
@@ -127,84 +127,14 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.16.16</version><!--版本号自己选一个就行-->
+      <version>1.18.24</version>
     </dependency>
 
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
-      <version>1.2.31</version>
+      <version>1.2.83</version>
     </dependency>
 
   </dependencies>
-
-<!--  <build>-->
-<!--    <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
-<!--      <plugins>-->
-<!--        <plugin>-->
-<!--          <groupId>org.apache.tomcat.maven</groupId>-->
-<!--          <artifactId>tomcat7-maven-plugin</artifactId>-->
-<!--          <version>2.2</version>-->
-<!--          <configuration>-->
-<!--            &lt;!&ndash;端口控制&ndash;&gt;-->
-<!--            <port>8070</port>-->
-<!--            <warSourceDirectory>src/main/webapp</warSourceDirectory>-->
-<!--            &lt;!&ndash;编码&ndash;&gt;-->
-<!--            <uriEncoding>UTF-8</uriEncoding>-->
-<!--          </configuration>-->
-<!--        </plugin>-->
-
-<!--        <plugin>-->
-<!--          <groupId>org.apache.maven.plugins</groupId>-->
-<!--          <artifactId>maven-war-plugin</artifactId>-->
-<!--          <version>2.2</version>-->
-<!--          <configuration>-->
-<!--            &lt;!&ndash; 指定web.xml的路径  &ndash;&gt;-->
-<!--            <webXml>src\main\webapp\WEB-INF\web.xml</webXml>-->
-<!--            &lt;!&ndash; 指定jsp、js、css的路劲 &ndash;&gt;-->
-<!--            <warSourceDirectory>webapp</warSourceDirectory>-->
-<!--          </configuration>-->
-<!--        </plugin>-->
-<!--        &lt;!&ndash; clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle &ndash;&gt;-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-clean-plugin</artifactId>-->
-<!--          <version>3.1.0</version>-->
-<!--        </plugin>-->
-<!--        &lt;!&ndash; default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging &ndash;&gt;-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-resources-plugin</artifactId>-->
-<!--          <version>3.0.2</version>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-compiler-plugin</artifactId>-->
-<!--          <version>3.8.0</version>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-surefire-plugin</artifactId>-->
-<!--          <version>2.22.1</version>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-jar-plugin</artifactId>-->
-<!--          <version>3.0.2</version>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-install-plugin</artifactId>-->
-<!--          <version>2.5.2</version>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-deploy-plugin</artifactId>-->
-<!--          <version>2.8.2</version>-->
-<!--        </plugin>-->
-<!--        &lt;!&ndash; site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle &ndash;&gt;-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-site-plugin</artifactId>-->
-<!--          <version>3.7.1</version>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <artifactId>maven-project-info-reports-plugin</artifactId>-->
-<!--          <version>3.0.0</version>-->
-<!--        </plugin>-->
-<!--      </plugins>-->
-<!--    </pluginManagement>-->
-<!--  </build>-->
 </project>

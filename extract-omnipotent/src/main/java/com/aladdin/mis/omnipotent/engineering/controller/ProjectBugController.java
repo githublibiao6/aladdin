@@ -44,13 +44,13 @@ public class ProjectBugController extends GlobalController<ProjectBug, ProjectBu
     @RequestMapping("/saveInfo")
     @ResponseBody
     public Result saveInfo(@RequestBody ProjectBug entity) {
-        if(entity.getPrimaryKey() == null){
-            ProjectBug data = baseService.insertSelective(entity);
-            result.setData(data);
-        }else {
-            boolean data = baseService.updateSelective(entity);
-            result.setData(data);
-        }
+//        if(entity.getPrimaryKey() == null){
+//            ProjectBug data = baseService.insertSelective(entity);
+//            result.setData(data);
+//        }else {
+//            boolean data = baseService.updateSelective(entity);
+//            result.setData(data);
+//        }
         return result;
     }
 

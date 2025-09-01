@@ -118,7 +118,7 @@ public class ProjectTableFieldServiceImpl extends GlobalServiceImpl<ProjectTable
         log.setIcon("el-icon-sunrise");
         OmUser om = UserUtil.getCurrentUser();
         log.setOperationUser(om.getUserName());
-        String content = om.getUserName() + "新建表字段"+entity.getTableName()+";";
+        String content = om.getUserName() + "新建表字段+entity.getTableName()+;";
         content += "字段描述为" +entity.getColumnComment()+ ";";
         log.setContent(content);
         logService.insert(log);

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 *
  */
 @Data
-public class GlobalModel extends BaseModel {
+public class GlobalModel {
 
     /**
      * 主键

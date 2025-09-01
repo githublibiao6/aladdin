@@ -11,7 +11,7 @@ import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.aladdin.mis.common.db.bean.TableInfo;
 import com.alibaba.druid.pool.DruidDataSource;
-import org.reflections.Reflections;
+//import org.reflections.Reflections;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -202,81 +202,81 @@ public class MainDb {
      * @param packageName 实体类对应包名称
      */
     private static void getRequestMappingMethod(String packageName) {
-        Reflections reflections = new Reflections(packageName);
-        Set<Class<?>> classesList = reflections.getTypesAnnotatedWith(Table.class);
+//        Reflections reflections = new Reflections(packageName);
+//        Set<Class<?>> classesList = reflections.getTypesAnnotatedWith(Table.class);
 
-        for (Class clazz : classesList) {
-            List<Field> fieldList = new ArrayList<>();
-            Table table = (Table) clazz.getAnnotation(Table.class);
-            if(table == null){
-                continue;
-            }
-            String tableName = table.value();
-            TableInfo tableInfo = map.get(tableName);
-            if(tableInfo == null){
-                continue;
-            }
-            List<TableFieldInfo> list = tableInfo.getFields();
-            Field[] fields  = clazz.getDeclaredFields();
-            Class parentClazz = clazz.getSuperclass();
-            Field[] parentFields  = parentClazz.getDeclaredFields();
-            fieldList.addAll(Arrays.asList(fields));
-            fieldList.addAll(Arrays.asList(parentFields));
-            for (Field field : fieldList) {
-                String fieldName = field.getName();
-                boolean tableFieldExists = field.isAnnotationPresent(TableField.class);
-                String type = field.getGenericType().toString();
-
-                if(tableFieldExists){
-                    TableField tableField = field.getDeclaredAnnotation(TableField.class);
-                    fieldName = tableField.value();
-                }
-                String finalFieldName = fieldName;
-                list.forEach(t->{
-                    if(finalFieldName.equals(t.getColumnName())){
-                        t.setColumnName(field.getName());
-                        if("class [Ljava.lang.String;".equals(type)){
-                            t.setColumnType("String[]");
-                        }
-                        if(t.getColType() != null){
-                            switch (t.getColType()){
-                                case "text":
-                                    t.setColumnType("String");
-                                    break;
-                                case "varchar":
-                                    if(t.getColumnComment() != null && t.getColumnComment().endsWith("list")){
-                                        t.setColumnType("List<String>");
-                                    }else {
-                                        t.setColumnType("String");
-                                    }
-                                    break;
-                                case "int":
-                                    t.setColumnType("Integer");
-                                    break;
-                                case "tinyint":
-                                    t.setColumnType("Integer");
-                                    if(t.getColLength() != null && 1 == t.getColLength()){
-                                        t.setColumnType("Boolean");
-                                    }
-                                    break;
-                                case "double":
-                                    t.setColumnType("Double");
-                                    break;
-                                case "date":
-                                    t.setColumnType("LocalDate");
-                                    break;
-                                case "timestamp":
-                                case "datetime":
-                                    t.setColumnType("LocalDateTime");
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                });
-            }
-        }
+//        for (Class clazz : classesList) {
+//            List<Field> fieldList = new ArrayList<>();
+//            Table table = (Table) clazz.getAnnotation(Table.class);
+//            if(table == null){
+//                continue;
+//            }
+//            String tableName = table.value();
+//            TableInfo tableInfo = map.get(tableName);
+//            if(tableInfo == null){
+//                continue;
+//            }
+//            List<TableFieldInfo> list = tableInfo.getFields();
+//            Field[] fields  = clazz.getDeclaredFields();
+//            Class parentClazz = clazz.getSuperclass();
+//            Field[] parentFields  = parentClazz.getDeclaredFields();
+//            fieldList.addAll(Arrays.asList(fields));
+//            fieldList.addAll(Arrays.asList(parentFields));
+//            for (Field field : fieldList) {
+//                String fieldName = field.getName();
+//                boolean tableFieldExists = field.isAnnotationPresent(TableField.class);
+//                String type = field.getGenericType().toString();
+//
+//                if(tableFieldExists){
+//                    TableField tableField = field.getDeclaredAnnotation(TableField.class);
+//                    fieldName = tableField.value();
+//                }
+//                String finalFieldName = fieldName;
+//                list.forEach(t->{
+//                    if(finalFieldName.equals(t.getColumnName())){
+//                        t.setColumnName(field.getName());
+//                        if("class [Ljava.lang.String;".equals(type)){
+//                            t.setColumnType("String[]");
+//                        }
+//                        if(t.getColType() != null){
+//                            switch (t.getColType()){
+//                                case "text":
+//                                    t.setColumnType("String");
+//                                    break;
+//                                case "varchar":
+//                                    if(t.getColumnComment() != null && t.getColumnComment().endsWith("list")){
+//                                        t.setColumnType("List<String>");
+//                                    }else {
+//                                        t.setColumnType("String");
+//                                    }
+//                                    break;
+//                                case "int":
+//                                    t.setColumnType("Integer");
+//                                    break;
+//                                case "tinyint":
+//                                    t.setColumnType("Integer");
+//                                    if(t.getColLength() != null && 1 == t.getColLength()){
+//                                        t.setColumnType("Boolean");
+//                                    }
+//                                    break;
+//                                case "double":
+//                                    t.setColumnType("Double");
+//                                    break;
+//                                case "date":
+//                                    t.setColumnType("LocalDate");
+//                                    break;
+//                                case "timestamp":
+//                                case "datetime":
+//                                    t.setColumnType("LocalDateTime");
+//                                    break;
+//                                default:
+//                                    break;
+//                            }
+//                        }
+//                    }
+//                });
+//            }
+//        }
     }
 
     /**

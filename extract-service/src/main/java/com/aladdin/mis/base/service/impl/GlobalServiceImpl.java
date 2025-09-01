@@ -366,12 +366,13 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
 
     @Override
     public  <T> T  saveOrUpdate(GlobalModel model) {
-        if(model.getPrimaryKey() == null){
-            return insertSelective(model);
-        }else {
-            updateSelective(model);
-            return detailQuery(model.getPrimaryKey());
-        }
+//        if(model.getPrimaryKey() == null){
+//            return insertSelective(model);
+//        }else {
+//            updateSelective(model);
+//            return detailQuery(model.getPrimaryKey());
+//        }
+        return null;
     }
 
     private Class getClazz (GlobalModel baseModel){
@@ -393,17 +394,18 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
         Class clazz = getClazz(baseModel);
         Field[] fields = clazz.getDeclaredFields();
         Map<String, Object> map = new HashMap<>(16);
-        for (Field field : fields){
-            try {
-                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
-                Method getMethod = pd.getReadMethod();
-                Object value = getMethod.invoke(baseModel);
-                String column = field.getName();
-                map.put(column,value);
-            } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        }
+        // todo 报错了
+//        for (Field field : fields){
+//            try {
+//                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
+//                Method getMethod = pd.getReadMethod();
+//                Object value = getMethod.invoke(baseModel);
+//                String column = field.getName();
+//                map.put(column,value);
+//            } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
+//                e.printStackTrace();
+//            }
+//        }
         // 单独获取主键
         try {
             PropertyDescriptor pd = new PropertyDescriptor("id", clazz);
@@ -431,12 +433,13 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
 
     @Override
     public boolean delete(GlobalModel baseModel) {
-        try{
-            TableInfo table = baseModel.deleteInfo();
-            return Db.use().deleteById(table.getTableName(), "id",  table.getIdValue()) > 0;
-        }catch (Exception e){
-            return false;
-        }
+//        try{
+//            TableInfo table = baseModel.deleteInfo();
+//            return Db.use().deleteById(table.getTableName(), "id",  table.getIdValue()) > 0;
+//        }catch (Exception e){
+//            return false;
+//        }
+        return true;
     }
 
     private Class<T> getT() {
