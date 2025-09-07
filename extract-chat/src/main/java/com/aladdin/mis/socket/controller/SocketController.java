@@ -1,13 +1,13 @@
 package com.aladdin.mis.socket.controller;
 
 import com.aladdin.mis.socket.config.WebSocketSessionConfig;
+import jakarta.websocket.*;
+import jakarta.websocket.server.PathParam;
+import jakarta.websocket.server.ServerEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.*;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
 
 /**
 * @Description: socket 连接
@@ -24,7 +24,7 @@ public class SocketController {
 
     @OnOpen
     public void onOpen(Session session, @PathParam("id") Integer id, @PathParam("name") String name) {
-        WebSocketSessionConfig.setSession(id, session);
+//        WebSocketSessionConfig.setSession(id, session);
         WebSocketSessionConfig.sendMessage(id, "服务器发送");
         LOGGER.info("Open a websocket. id={}, name={}", id, name);
     }
