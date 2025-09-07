@@ -101,7 +101,7 @@ public class ShiroService {
                 throw new RuntimeException("get ShiroFilter from shiroFilterFactoryBean error!");
             }
 
-            PathMatchingFilterChainResolver filterChainResolver = (PathMatchingFilterChainResolver) shiroFilter.getFilterChainResolver();
+            /*PathMatchingFilterChainResolver filterChainResolver = (PathMatchingFilterChainResolver) shiroFilter.getFilterChainResolver();
             DefaultFilterChainManager manager = (DefaultFilterChainManager) filterChainResolver.getFilterChainManager();
 
             // 清空老的权限控制
@@ -116,7 +116,7 @@ public class ShiroService {
                 String chainDefinition = entry.getValue().trim()
                         .replace(" ", "");
                 manager.createChain(url, chainDefinition);
-            }
+            }*/
         }
     }
 }

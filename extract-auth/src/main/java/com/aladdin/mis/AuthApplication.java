@@ -20,17 +20,14 @@ import org.springframework.context.annotation.ComponentScan;
  * 陈王昔时宴平乐，斗酒十千恣欢谑。
  * 主人何为言少钱，径须沽取对君酌。
  * 五花马，千金裘，呼儿将出换美酒，与尔同销万古愁
- */
 
-/**
  * @author cles
- * @Description:  springboot 启动
+ * @Description:  springBoot 启动
  * @Author: cles
- * @Date: 2020/4/29 23:17
+ * @Date: 2025/9/1 9:00
  */
 @SpringBootApplication()
 @MapperScan("com.aladdin.mis.dao")
-//  开启异步调用
 public class AuthApplication {
 
     public static void main(String[] args) {

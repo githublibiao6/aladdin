@@ -51,10 +51,11 @@ public class MainDb {
      *  application.properteis中对应属性的前缀
      */
     @Bean(name = "main_db")
-    public void dataSource() {
+    public DruidDataSource dataSource() {
         DbConfig db = new DbConfig();
         DruidDataSource druidDataSource = db.buildDataSource(url,username,password,null);
         Db.setMain(druidDataSource);
+        return druidDataSource;
     }
 
     /**

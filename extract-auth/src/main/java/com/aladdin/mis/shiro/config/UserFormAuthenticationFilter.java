@@ -8,23 +8,24 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * @description: 自定义的角色过滤器
  * @author cles
  * @Date 2020/5/18 23:08
  */
-public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
+// extends FormAuthenticationFilter
+public class UserFormAuthenticationFilter  {
 
     public UserFormAuthenticationFilter()
     {
         super();
     }
-
+/*
     @Override
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response,
                                    Object mappedValue)
@@ -65,5 +66,5 @@ public class UserFormAuthenticationFilter extends FormAuthenticationFilter {
             WebUtils.toHttp(response).getWriter().print(JSONObject.toJSONString(result));
             return false;
         }
-    }
+    }*/
 }

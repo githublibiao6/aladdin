@@ -1,6 +1,6 @@
 package com.aladdin.mis.file.service;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 文件

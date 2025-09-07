@@ -5,7 +5,7 @@ import com.aladdin.mis.file.service.FileExcelService;
 import com.aladdin.mis.file.service.FileService;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * 上传图片

@@ -8,8 +8,8 @@ import org.apache.shiro.web.util.WebUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import java.io.Serializable;
 
 /**
@@ -22,14 +22,15 @@ import java.io.Serializable;
  */
 @Configuration
 @Slf4j
-public class MySessionManager extends DefaultWebSessionManager {
+// extends DefaultWebSessionManager
+public class MySessionManager  {
 
     private static final String REFERENCED_SESSION_ID_SOURCE = "Stateless request";
 
     public MySessionManager() {
         super();
     }
-
+/*
     @Override
     protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
         String id = WebUtils.toHttp(request).getHeader("Authorization");
@@ -44,5 +45,5 @@ public class MySessionManager extends DefaultWebSessionManager {
             Serializable m = super.getSessionId(request, response);
             return m;
         }
-    }
+    }*/
 }

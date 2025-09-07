@@ -84,7 +84,7 @@ public class JedisConfig {
      * @return
      */
     @Bean
-    public void initJedis() {
+    public int initJedis() {
         log.info("初始化JedisPoolConfig");
         Connect connect = new Connect();
         connect.setRhost(host);
@@ -101,7 +101,9 @@ public class JedisConfig {
         } catch (Exception e) {
             log.info("初始化jedis错误");
             e.printStackTrace();
+            return 0;
         }
+        return 1;
     }
 
     /**

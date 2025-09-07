@@ -7,10 +7,10 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authz.RolesAuthorizationFilter;
 import org.apache.shiro.web.util.WebUtils;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -18,9 +18,10 @@ import java.io.IOException;
  * @author cles
  * @Date 2020/5/18 23:08
  */
-public class CustomRolesAuthorizationFilter extends RolesAuthorizationFilter {
+// extends RolesAuthorizationFilter
+public class CustomRolesAuthorizationFilter  {
 
-    @Override
+    /*@Override
     public boolean isAccessAllowed(ServletRequest req, ServletResponse resp, Object mappedValue) {
         Subject subject = getSubject(req, resp);
         String[] rolesArray = (String[]) mappedValue;
@@ -56,7 +57,7 @@ public class CustomRolesAuthorizationFilter extends RolesAuthorizationFilter {
             WebUtils.toHttp(response).getWriter().print("401");
         }
         return false;
-    }
+    }*/
 
 //    @Override
 //    public boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {

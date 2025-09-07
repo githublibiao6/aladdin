@@ -3,12 +3,12 @@ package com.aladdin.mis.api;
 import com.aladdin.mis.common.redis.config.JedisUtil;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.utils.FileUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 
 /**

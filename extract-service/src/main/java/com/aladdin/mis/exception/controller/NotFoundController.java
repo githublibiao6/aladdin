@@ -43,8 +43,4 @@ public class NotFoundController implements ErrorController {
 
     }
 
-    @Override
-    public String getErrorPath() {
-        return "/error";
-    }
 }
