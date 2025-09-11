@@ -10,7 +10,7 @@ import com.aladdin.mis.system.service.impl.DictionaryTeamsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
