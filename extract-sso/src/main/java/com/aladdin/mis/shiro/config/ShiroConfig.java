@@ -42,7 +42,7 @@ public class ShiroConfig {
         /*Shiro配置类的过滤器中启用安全管理器，即shiroFilterFactoryBean中配置SecurityManager*/
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-        /*
+        /* fixme
         添加Shiro内置过滤器，常用的有如下过滤器：
         anon： 无需认证就可以访问
         authc： 必须认证才可以访问
