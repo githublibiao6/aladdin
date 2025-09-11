@@ -1,5 +1,6 @@
 package com.aladdin.mis.common.global.model;
 
+import com.aladdin.mis.common.base.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 *
  */
 @Data
-public class GlobalModel {
+public class GlobalModel extends BaseModel {
 
     /**
      * 主键

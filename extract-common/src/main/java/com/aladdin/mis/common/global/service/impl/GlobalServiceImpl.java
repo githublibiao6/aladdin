@@ -9,10 +9,12 @@ import com.aladdin.mis.common.db.bean.TableInfo;
 import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.common.db.config.MainDb;
 import com.aladdin.mis.common.exception.MyException;
+import com.aladdin.mis.common.system.vo.OmUser;
 import com.aladdin.mis.common.utils.BaseModelUtil;
 import com.aladdin.mis.common.utils.JSONObjectUtil;
 import com.aladdin.mis.common.global.model.GlobalModel;
 import com.aladdin.mis.common.global.service.GlobalService;
+import com.aladdin.mis.common.utils.UserUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -261,7 +263,6 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
         Class<T> clazz = (Class<T>) getT();
         String tableName = getTableName(clazz);
         TableInfo table = MainDb.getTableInfo(tableName);
-
         StringBuilder sql = new StringBuilder("select * from "+tableName);
         sql.append(" where sys005=1 ");
         sql.append(getOrCondition(condition, table));
@@ -284,7 +285,6 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
 
     private JSONObject detailVo(Integer id, Class clazz) {
         String tableName = BaseModelUtil.getTableName(clazz);
-        String moduleName = BaseModelUtil.getModuleName(clazz);
         String primaryKey = BaseModelUtil.getPrimaryKey(tableName);
         TableInfo table = MainDb.getTableInfo(tableName);
 
@@ -319,61 +319,59 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
     @Override
     public Integer insert(GlobalModel baseModel) {
         // todo
-//        TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
-//        table.setFields(setTableField(table.getFields(), baseModel));
-//        String tableName = table.getTableName();
-//        List<TableFieldInfo> list = table.getFields();
-//        OmUser finalUser = UserUtil.getCurrentUser();
-//        list.forEach(t->{
-//            if(CREATE_USER_FIELD.equals(t.getColumnName())){
-//                t.setFieldValue(finalUser.getUserId());
-//            }
-//            if(CREATE_TIME_FIELD.equals(t.getColumnName())){
-//                t.setFieldValue(LocalDateTime.now());
-//            }
-//            if(FLAG.equals(t.getColumnName())){
-//                t.setFieldValue(1);
-//            }
-//        });
-//        try{
-//            Integer id = Db.use().save(tableName, "id", list);
-//            return id;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
+        table.setFields(setTableField(table.getFields(), baseModel));
+        String tableName = table.getTableName();
+        List<TableFieldInfo> list = table.getFields();
+        OmUser finalUser = UserUtil.getCurrentUser();
+        list.forEach(t->{
+            if(CREATE_USER_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(finalUser.getUserId());
+            }
+            if(CREATE_TIME_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(LocalDateTime.now());
+            }
+            if(FLAG.equals(t.getColumnName())){
+                t.setFieldValue(1);
+            }
+        });
+        try{
+            Integer id = Db.use().save(tableName, "id", list);
+            return id;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public  boolean updateSelective(GlobalModel baseModel) {
         // todo
-//        TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
-//        table.setFields(setTableField(table.getFields(), baseModel));
-//        String tableName = table.getTableName();
-//        List<TableFieldInfo> list = table.getFields();
-//        OmUser finalUser = UserUtil.getCurrentUser();
-//        list.forEach(t->{
-//            if(UPDATE_USER_FIELD.equals(t.getColumnName())){
-//                t.setFieldValue(finalUser.getUserId());
-//            }
-//            if(UPDATE_TIME_FIELD.equals(t.getColumnName())){
-//                t.setFieldValue(LocalDateTime.now());
-//            }
-//        });
-//        int count = Db.use().update(tableName, "id", list);
-//        return count > 0;
-        return false;
+        TableInfo table = MainDb.getTableInfo(getTableName(getClazz(baseModel)));
+        table.setFields(setTableField(table.getFields(), baseModel));
+        String tableName = table.getTableName();
+        List<TableFieldInfo> list = table.getFields();
+        OmUser finalUser = UserUtil.getCurrentUser();
+        list.forEach(t->{
+            if(UPDATE_USER_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(finalUser.getUserId());
+            }
+            if(UPDATE_TIME_FIELD.equals(t.getColumnName())){
+                t.setFieldValue(LocalDateTime.now());
+            }
+        });
+        int count = Db.use().update(tableName, "id", list);
+        return count > 0;
     }
 
     @Override
     public  <T> T  saveOrUpdate(GlobalModel model) {
-//        if(model.getPrimaryKey() == null){
-//            return insertSelective(model);
-//        }else {
-//            updateSelective(model);
-//            return detailQuery(model.getPrimaryKey());
-//        }
-        return null;
+        if(model.getPrimaryKey() == null){
+            return insertSelective(model);
+        }else {
+            updateSelective(model);
+            return detailQuery(model.getPrimaryKey());
+        }
     }
 
     private Class getClazz (GlobalModel baseModel){
