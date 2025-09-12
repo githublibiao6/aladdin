@@ -15,6 +15,9 @@ new
 service-dao-pojo-base
 common
 
+lastest
+common - sso - system
+
 #identity 鉴权
 #log 日志
 

@@ -1,4 +1,4 @@
-package com.aladdin.mis.api;
+package com.aladdin.mis.sso.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author lb
  * @date 2018年6月5日 下午8:56:11
  */
-@RequestMapping("demo")
+@RequestMapping("common")
 @RestController
 public class DemoController {
 
@@ -27,16 +27,6 @@ public class DemoController {
         obj.put("code", 20000);
         obj.put("data", null);
         return obj;
-    }
-
-    /**
-     * 菜单跳转
-     *
-     * @return
-     */
-    @RequestMapping("/index.do")
-    public String index() {
-        return "test/index";
     }
 
 }

@@ -1,7 +1,8 @@
-package com.aladdin.mis.service.impl;
+package com.aladdin.mis.sso.service.impl;
 
 
-import com.aladdin.mis.service.AuthLoginService;
+import com.aladdin.mis.sso.model.param.LoginUser;
+import com.aladdin.mis.sso.service.AuthLoginService;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
@@ -22,11 +23,11 @@ import java.util.Map;
 public class AuthLoginServiceImpl implements AuthLoginService {
 
     @Override
-    public JSONObject signIn(Map user) {
+    public JSONObject signIn(LoginUser user) {
         JSONObject result = new JSONObject();
         Subject subject = SecurityUtils.getSubject();
         // shiro 调用
-        UsernamePasswordToken token = new UsernamePasswordToken(user.get("name").toString(), user.get("pass").toString());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
         //如果获取不到用户名就是登录失败，但登录失败的话，会直接抛出异常
         try{
             Session session = subject.getSession();
@@ -37,7 +38,7 @@ public class AuthLoginServiceImpl implements AuthLoginService {
             // 会触发 Realm的doGetAuthenticationInfo方法
             subject.login(token);
         }catch (AccountException accountException){
-
+            accountException.printStackTrace();
             return result;
         }catch (Exception e){
             e.printStackTrace();

@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * sso
  * @author cles
  * @description: sso验证
  * @Date 2021/12/28 0:10

@@ -1,4 +1,4 @@
-package com.aladdin.mis.shiro.realm;
+package com.aladdin.mis.sso.shiro.realm;
 /**
  * Created by cles on 2020/4/23 22:39
  */
@@ -16,9 +16,6 @@ import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @description: 用户Realm
@@ -154,6 +151,10 @@ public class UserRealm extends AuthorizingRealm {
         //单用户登录
         //处理session
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();
+
+        // 这里默认的是 ServletContainerSessionManager，好处是我们不用再自己管理session了，将session交给servlet容器来管理
+        // 但我们要自己保存session的话，比如将session保存到redis中实现集群间的session同步，我们就可以实现自己的sessionDao类，继承AbstractSessionDAO
+        // com.aladdin.mis.sso.shiro.config.ShiroConfig.securityManager 里设置 sessionManager
         DefaultWebSessionManager sessionManager = (DefaultWebSessionManager) securityManager.getSessionManager();
         //获取当前已登录的用户session列表
 //        Collection<Session> sessions = sessionManager.getSessionDAO().getActiveSessions();

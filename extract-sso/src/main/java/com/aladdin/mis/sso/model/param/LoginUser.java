@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.system.vo;
+package com.aladdin.mis.sso.model.param;
 
 
 import lombok.Data;
@@ -22,5 +22,10 @@ public class LoginUser {
      * 用户密码
      */
     private String password;
+
+    /**
+     * 登陆来源
+     */
+    private String datasource;
 
 }

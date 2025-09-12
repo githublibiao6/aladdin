@@ -1,6 +1,7 @@
-package com.aladdin.mis.controller;
+package com.aladdin.mis.sso.controller;
 
-import com.aladdin.mis.service.AuthLoginService;
+import com.aladdin.mis.sso.model.param.LoginUser;
+import com.aladdin.mis.sso.service.AuthLoginService;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class LoginController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public JSONObject login(@RequestBody Map user) {
+    public JSONObject login(@RequestBody LoginUser user) {
         JSONObject result = new JSONObject();
         result.put("code", 20000);
         Map<String, String> map = new HashMap<>(16);

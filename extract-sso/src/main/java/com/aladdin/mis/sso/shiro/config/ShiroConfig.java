@@ -1,24 +1,21 @@
-package com.aladdin.mis.shiro.config;
+package com.aladdin.mis.sso.shiro.config;
 /**
  * Created by cles on 2020/4/27 21:52
  */
 
-import com.aladdin.mis.shiro.realm.UserRealm;
-import jakarta.servlet.Filter;
+import com.aladdin.mis.sso.shiro.realm.UserRealm;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
-import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
+import org.apache.shiro.web.servlet.Cookie;
+import org.apache.shiro.web.servlet.ShiroHttpSession;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 
 import java.util.*;
 
@@ -104,6 +101,60 @@ public class ShiroConfig {
         list.add(myRealm());
         securityManager.setRealms(list);*/
 
+//        SecurityManager安全管理器需要到realm中去验证认证信息，所以给SecurityManager设置Realm。*/
+
+        // fixme 查看具体作用
+//        DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
+//        DefaultSessionStorageEvaluator defaultSessionStorageEvaluator = new DefaultSessionStorageEvaluator();
+//        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
+//        subjectDAO.setSessionStorageEvaluator(defaultSessionStorageEvaluator);
+//        manager.setSubjectDAO(subjectDAO);
+
+//        manager.setCacheManager();
+        manager.setSessionManager(sessionManager());
+
         return manager;
+    }
+
+    /**
+     * @Description: 自定义的 shiro session 缓存管理器
+     * 用于跨域等情况下获取请求头中的sessionId
+     * @method: sessionManager
+     * @author: MengyuWu
+     * @date: 18:38 2019-8-26
+     * @throws
+     **/
+
+    @Bean
+    public SessionManager sessionManager(){
+        // 将我们继承后重写的shiro session 注册
+        MySessionManager sessionManager = new MySessionManager();
+
+        Collection<SessionListener> sessionListeners = new ArrayList<>();
+        sessionManager.setSessionListeners(sessionListeners);
+        // 单位为毫秒，600000毫秒为1个小时
+        sessionManager.setSessionValidationInterval(3600000 * 12);
+        // 3600000 milliseconds = 1 hour
+        sessionManager.setGlobalSessionTimeout(3600000 * 12);
+        // 是否删除无效的，默认也是开启
+        sessionManager.setDeleteInvalidSessions(true);
+        // 是否开启 检测，默认开启
+        sessionManager.setSessionValidationSchedulerEnabled(true);
+        // 创建会话Cookie
+        Cookie cookie = new SimpleCookie(ShiroHttpSession.DEFAULT_SESSION_ID_NAME);
+        cookie.setName("WEBID");
+        cookie.setHttpOnly(true);
+        sessionManager.setSessionIdCookie(cookie);
+        // fixme 处理sessionDao 如果我们要自己保存session的话，比如将session保存到redis中实现集群间的session同步，
+        //  我们就可以实现自己的sessionDao类，继承AbstractSessionDAO。
+//        sessionManager.setSessionDAO();
+
+        // 单位为毫秒，600000毫秒为1个小时
+        sessionManager.setSessionValidationInterval(3600000 * 12);
+        // 3600000 milliseconds = 1 hour
+        sessionManager.setGlobalSessionTimeout(1000 * 60 * 60 * 12);
+        // 是否删除无效的，默认也是开启
+        sessionManager.setDeleteInvalidSessions(true);
+        return sessionManager;
     }
 }

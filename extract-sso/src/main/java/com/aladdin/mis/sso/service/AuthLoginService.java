@@ -1,5 +1,6 @@
-package com.aladdin.mis.service;
+package com.aladdin.mis.sso.service;
 
+import com.aladdin.mis.sso.model.param.LoginUser;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.Map;
@@ -17,7 +18,7 @@ public interface AuthLoginService {
      * @param user
      * @return
      */
-    JSONObject signIn(Map user);
+    JSONObject signIn(LoginUser user);
 
     /**
      * 用户登出
