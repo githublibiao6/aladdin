@@ -8,8 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
-import redis.clients.jedis.*;
-import redis.clients.jedis.util.Slowlog;
+import redis.clients.jedis.Connection;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.resps.Tuple;
 
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
@@ -442,54 +445,54 @@ public class RedisUtil {
     /**
      * 按条件获取分页数据（scan）
      */
-    public static List<ZTreeBean> getKeyPage(Jedis jedis, int index, int page, String pid, String pattern) {
-        long startTime = System.currentTimeMillis();
-        List<ZTreeBean> treeList = new ArrayList<>();
-        jedis.select(index);
-        if (StringUtils.isEmpty(pattern)) {
-            pattern = "*";
-        }
-        //计算获取的数据量
-        long pageSize;
-        long currSize = page * 1000;
-        long currScan = (page - 1) * 1000;
-        long keysSize = getKeysCount(jedis, index, pattern);
-        if (keysSize - currSize < 0) {
-            pageSize = currSize - keysSize;
-        } else {
-            pageSize = 1000;
-        }
-        //scan数据查询
-        ScanParams scanParams = new ScanParams();
-        scanParams.match(pattern);
-        scanParams.count((int) pageSize);
-        ScanResult<String> scanResult = jedis.scan(currScan + "", scanParams);
-        long endTime = System.currentTimeMillis();
-        log.info("getKeyPage查询耗时：" + (endTime - startTime));
-        //封装返回符合条件数据
-        ZTreeBean zTreeBean = null;
-        if (null != scanResult) {
-            for (String key : scanResult.getResult()) {
-                zTreeBean = new ZTreeBean();
-                zTreeBean.setId(KeyUtil.getUUIDKey());
-                zTreeBean.setPId(pid);
-                zTreeBean.setName(key);
-                zTreeBean.setParent(false);
-                zTreeBean.setIndex(index);
-                zTreeBean.setIcon("../image/data-01.png");
-                treeList.add(zTreeBean);
-            }
-        }
-        return treeList;
-    }
+//    public static List<ZTreeBean> getKeyPage(Jedis jedis, int index, int page, String pid, String pattern) {
+//        long startTime = System.currentTimeMillis();
+//        List<ZTreeBean> treeList = new ArrayList<>();
+//        jedis.select(index);
+//        if (StringUtils.isEmpty(pattern)) {
+//            pattern = "*";
+//        }
+//        //计算获取的数据量
+//        long pageSize;
+//        long currSize = page * 1000;
+//        long currScan = (page - 1) * 1000;
+//        long keysSize = getKeysCount(jedis, index, pattern);
+//        if (keysSize - currSize < 0) {
+//            pageSize = currSize - keysSize;
+//        } else {
+//            pageSize = 1000;
+//        }
+//        //scan数据查询
+//        ScanParams scanParams = new ScanParams();
+//        scanParams.match(pattern);
+//        scanParams.count((int) pageSize);
+//        ScanResult<String> scanResult = jedis.scan(currScan + "", scanParams);
+//        long endTime = System.currentTimeMillis();
+//        log.info("getKeyPage查询耗时：" + (endTime - startTime));
+//        //封装返回符合条件数据
+//        ZTreeBean zTreeBean = null;
+//        if (null != scanResult) {
+//            for (String key : scanResult.getResult()) {
+//                zTreeBean = new ZTreeBean();
+//                zTreeBean.setId(KeyUtil.getUUIDKey());
+//                zTreeBean.setPId(pid);
+//                zTreeBean.setName(key);
+//                zTreeBean.setParent(false);
+//                zTreeBean.setIndex(index);
+//                zTreeBean.setIcon("../image/data-01.png");
+//                treeList.add(zTreeBean);
+//            }
+//        }
+//        return treeList;
+//    }
 
     /**
      * 解析服务器信息
      */
     public static RedisInfo getRedisInfo(Jedis jedis) {
         RedisInfo redisInfo = null;
-        Client client = jedis.getClient();
-        client.info();
+        Connection client = jedis.getClient();
+//        client.info();
         String info = client.getBulkReply();
         String[] infos = info.split("# ");
         if (infos.length > 0) {
@@ -881,7 +884,7 @@ public class RedisUtil {
                 break;
             //zset (有序集)
             case "zset":
-                Set<Tuple> zset = jedis.zrevrangeWithScores(key, 0, -1);
+                List<Tuple> zset = jedis.zrevrangeWithScores(key, 0, -1);
                 List<Tuple> zsetList = new ArrayList<>(zset);
                 if (StringUtils.isEmpty(order) || order.equals("asc")) {
                     Collections.reverse(zsetList);
@@ -958,9 +961,9 @@ public class RedisUtil {
     /**
      * 获取redis日志信息
      */
-    public static List<Slowlog> getRedisLog(Jedis jedis) {
-        return jedis.slowlogGet(100);
-    }
+//    public static List<Slowlog> getRedisLog(Jedis jedis) {
+//        return jedis.slowlogGet(100);
+//    }
 
     /**
      * 获取redis配置

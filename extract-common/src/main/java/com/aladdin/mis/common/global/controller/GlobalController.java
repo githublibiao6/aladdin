@@ -6,7 +6,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.global.model.GlobalModel;
 import com.aladdin.mis.common.global.service.GlobalService;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
+//import com.github.pagehelper.PageInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +42,12 @@ public abstract class GlobalController<T extends GlobalModel, M extends GlobalSe
     /**
      * 获取通用分页
      */
-    @PostMapping("/pageInfo")
-    @ResponseBody
-    public Result pageInfo(@RequestBody Condition condition) {
-        PageInfo<T> page = baseService.pageByCondition(condition);
-        return Result.success(page);
-    }
+//    @PostMapping("/pageInfo")
+//    @ResponseBody
+//    public Result pageInfo(@RequestBody Condition condition) {
+//        PageInfo<T> page = baseService.pageByCondition(condition);
+//        return Result.success(page);
+//    }
 
     /**
      * 获取通用entity

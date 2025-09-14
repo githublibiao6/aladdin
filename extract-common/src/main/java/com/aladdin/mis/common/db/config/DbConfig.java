@@ -53,6 +53,9 @@ public class DbConfig {
         @SuppressWarnings("resource")
         DruidDataSource druidDataSource = new DruidDataSource();
         String  driveClass = "";
+        if(url == null){
+            return null;
+        }
         if(dbType == null){
             if(url.startsWith("jdbc:mysql")){
                 dbType = "mysql";

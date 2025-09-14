@@ -6,8 +6,11 @@ import com.aladdin.mis.common.utils.ExceptionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -18,21 +21,23 @@ import java.util.concurrent.locks.ReentrantLock;
 @Slf4j
 @Configuration
 @EnableAutoConfiguration
+@ConditionalOnProperty(name = "spring.redis.host", havingValue = "true")
+//@Profile("dev")
 public class JedisConfig {
 
-    @Value("${spring.redis.host}")
+    @Value("${spring.redis.host:}")
     private String host;
-    @Value("${spring.redis.port}")
+    @Value("${spring.redis.port:}")
     private String port;
-    @Value("${spring.redis.password}")
+    @Value("${spring.redis.password:}")
     private String password;
-    @Value("${spring.redis.database}")
+    @Value("${spring.redis.database:}")
     private int database;
-    @Value("${spring.redis.jedis.pool.max-idle}")
+    @Value("${spring.redis.jedis.pool.max-idle:}")
     private int maxIdle;
-    @Value("${spring.redis.jedis.pool.max-wait}")
+    @Value("${spring.redis.jedis.pool.max-wait:}")
     private long maxWaitMillis;
-    @Value("${spring.redis.jedis.pool.max-active}")
+    @Value("${spring.redis.jedis.pool.max-active:}")
     private int maxActive;
     @Value("${global.redis.enable:false}")
     private boolean enableRedis;

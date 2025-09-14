@@ -51,9 +51,11 @@ public class MainDb {
     @Bean(name = "main_db")
     public DruidDataSource dataSource() {
         DbConfig db = new DbConfig();
-        DruidDataSource druidDataSource = db.buildDataSource(url,username,password,null);
-        Db.setMain(druidDataSource);
-        return druidDataSource;
+        // fixme 设置主数据源
+//        DruidDataSource druidDataSource = db.buildDataSource(url,username,password,null);
+//        Db.setMain(druidDataSource);
+//        return druidDataSource;
+        return null;
     }
 
     /**

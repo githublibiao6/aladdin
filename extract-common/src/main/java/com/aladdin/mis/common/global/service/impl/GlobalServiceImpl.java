@@ -16,8 +16,8 @@ import com.aladdin.mis.common.global.model.GlobalModel;
 import com.aladdin.mis.common.global.service.GlobalService;
 import com.aladdin.mis.common.utils.UserUtil;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+//import com.github.pagehelper.PageHelper;
+//import com.github.pagehelper.PageInfo;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -44,34 +44,34 @@ public class  GlobalServiceImpl<T extends GlobalModel>  implements GlobalService
     private static final String UPDATE_USER_FIELD = "sys004";
     private static final String FLAG = "sys005";
 
-    @Override
-    public <T> PageInfo<T> pageByCondition(Condition condition) {
-        Integer page = condition.getPage();
-        Integer limit = condition.getLimit();
-        if (page == null) {
-            page = 1;
-        }
-        if(limit == null) {
-            limit = 10;
-        }
-        PageHelper.offsetPage(page, limit);
-        Class<T> m = (Class<T>) getT();
-        String tableName = getTableName(m);
-        TableInfo table = MainDb.getTableInfo(tableName);
-
-        String sql = "select * from " + tableName + " where sys005=1 " +
-                getOrCondition(condition, table) +
-                getCondition(condition, table) +
-                getOrder(condition, table);
-
-        List<JSONObject> list = Db.use().findList(sql);
-        PageInfo<JSONObject> pageInfo = new PageInfo<>(list);
-        List<JSONObject> pageList = pageInfo.getList();
-        if(pageList != null && !pageList.isEmpty()){
-            pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
-        }
-        return (PageInfo<T>) pageInfo;
-    }
+//    @Override
+//    public <T> PageInfo<T> pageByCondition(Condition condition) {
+//        Integer page = condition.getPage();
+//        Integer limit = condition.getLimit();
+//        if (page == null) {
+//            page = 1;
+//        }
+//        if(limit == null) {
+//            limit = 10;
+//        }
+//        PageHelper.offsetPage(page, limit);
+//        Class<T> m = (Class<T>) getT();
+//        String tableName = getTableName(m);
+//        TableInfo table = MainDb.getTableInfo(tableName);
+//
+//        String sql = "select * from " + tableName + " where sys005=1 " +
+//                getOrCondition(condition, table) +
+//                getCondition(condition, table) +
+//                getOrder(condition, table);
+//
+//        List<JSONObject> list = Db.use().findList(sql);
+//        PageInfo<JSONObject> pageInfo = new PageInfo<>(list);
+//        List<JSONObject> pageList = pageInfo.getList();
+//        if(pageList != null && !pageList.isEmpty()){
+//            pageList.forEach(JSONObjectUtil::getCamelCaseJSONObject);
+//        }
+//        return (PageInfo<T>) pageInfo;
+//    }
 
     private String getCondition(Condition condition, TableInfo table){
         if(condition == null){

@@ -2,7 +2,7 @@ package com.aladdin.mis.common.global.service;
 
 import com.aladdin.mis.common.base.qo.Condition;
 import com.aladdin.mis.common.global.model.GlobalModel;
-import com.github.pagehelper.PageInfo;
+//import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public interface GlobalService<T> {
      * @param condition 实体
      * @return model
      */
-    <T> PageInfo<T> pageByCondition(Condition condition);
+//    <T> PageInfo<T> pageByCondition(Condition condition);
 
     /**
      * 通用list

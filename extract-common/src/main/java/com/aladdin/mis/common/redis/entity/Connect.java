@@ -46,7 +46,7 @@ public class Connect {
     /**
      * 主机
      */
-    @Value("${spring.redis.host}")
+    @Value("${spring.redis.host:}")
     private String rhost;
 
     /**
