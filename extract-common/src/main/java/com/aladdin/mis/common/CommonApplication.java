@@ -1,6 +1,5 @@
-package com.aladdin.mis;
+package com.aladdin.mis.common;
 
-import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

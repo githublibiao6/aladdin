@@ -4,8 +4,6 @@ package com.aladdin.mis.sso.shiro.config;
  */
 
 import com.aladdin.mis.sso.shiro.realm.UserRealm;
-import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
-import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
