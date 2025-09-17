@@ -5,7 +5,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.db.config.Db;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.qo.DictionaryQo;
-import com.aladdin.mis.system.service.DictionaryService;
+import com.aladdin.mis.mapper.service.DictionaryService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

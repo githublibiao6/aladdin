@@ -7,8 +7,8 @@ import com.aladdin.mis.engineering.entity.ProjectTableField;
 import com.aladdin.mis.engineering.entity.ProjectTableLog;
 import com.aladdin.mis.engineering.service.ProjectTableFieldService;
 import com.aladdin.mis.engineering.service.ProjectTableLogService;
-import com.aladdin.mis.system.service.DictionaryTeamsService;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.mapper.service.DictionaryTeamsService;
+import com.aladdin.mis.mapper.user.vo.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

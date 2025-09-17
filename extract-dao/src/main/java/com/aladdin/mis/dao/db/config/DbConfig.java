@@ -4,7 +4,7 @@ package com.aladdin.mis.dao.db.config;
  */
 
 import com.aladdin.mis.common.db.config.Db;
-import com.aladdin.mis.system.db.entity.DataSource;
+import com.aladdin.mis.mapper.db.entity.DataSource;
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
 

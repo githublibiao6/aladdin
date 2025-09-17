@@ -4,7 +4,7 @@ import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.chat.entity.ChatList;
 import com.aladdin.mis.chat.service.ChatListService;
 import com.aladdin.mis.shiro.OmClient;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.mapper.user.vo.OmUser;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

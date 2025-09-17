@@ -1,8 +1,8 @@
-package com.aladdin.mis.system.entity;
+package com.aladdin.mis.mapper.entity;
 
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
-import com.aladdin.mis.system.base.GlobalModel;
+import com.aladdin.mis.mapper.base.GlobalModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

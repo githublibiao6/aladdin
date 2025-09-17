@@ -1,4 +1,4 @@
-package com.aladdin.mis.system.service;
+package com.aladdin.mis.mapper.service;
 
 /**
  * @author xiao.ws

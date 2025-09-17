@@ -1,10 +1,10 @@
-package com.aladdin.mis.system.service.impl;
+package com.aladdin.mis.mapper.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.DicTeamsDao;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
 import com.aladdin.mis.manager.qo.DictionaryQo;
-import com.aladdin.mis.system.service.DictionaryTeamsService;
+import com.aladdin.mis.mapper.service.DictionaryTeamsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

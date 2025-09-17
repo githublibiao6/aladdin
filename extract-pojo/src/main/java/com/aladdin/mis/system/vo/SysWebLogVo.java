@@ -1,6 +1,6 @@
-package com.aladdin.mis.system.vo;
+package com.aladdin.mis.mapper.vo;
 
-import com.aladdin.mis.system.entity.SysWebLog;
+import com.aladdin.mis.mapper.entity.SysWebLog;
 import lombok.Data;
 
 /**

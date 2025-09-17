@@ -1,6 +1,8 @@
 package com.aladdin.mis.api;
 
+import com.aladdin.mis.mapper.BeLoginLogMapper;
 import com.alibaba.fastjson.JSONObject;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,18 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @author lb
  * @date 2018年6月5日 下午8:56:11
  */
-@RequestMapping("demo")
+@RequestMapping("api")
 @RestController
 public class DemoController {
+
+    @Resource
+    private BeLoginLogMapper beLoginLogMapper;
 
     /**
      * 健康地址
      * @return obj
      */
-    @RequestMapping("/welcome")
+    @RequestMapping("/test")
     @ResponseBody
     public JSONObject welcome() {
         JSONObject obj = new JSONObject();
+        beLoginLogMapper.list();
         obj.put("success", true);
         obj.put("message", "访问成功");
         obj.put("code", 20000);

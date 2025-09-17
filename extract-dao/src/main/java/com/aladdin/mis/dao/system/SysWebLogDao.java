@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.system;
 
-import com.aladdin.mis.system.qo.SysWebLogQo;
-import com.aladdin.mis.system.vo.SysWebLogVo;
+import com.aladdin.mis.mapper.qo.SysWebLogQo;
+import com.aladdin.mis.mapper.vo.SysWebLogVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

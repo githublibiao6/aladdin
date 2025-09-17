@@ -3,7 +3,7 @@ package com.aladdin.mis.shiro;
  *  Created by cles on 2023/2/2 23:34
  */
 
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.mapper.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
 
 import java.util.HashMap;
