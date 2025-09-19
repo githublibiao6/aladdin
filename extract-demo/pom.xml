@@ -4,151 +4,138 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <artifactId>odin-parent</artifactId>
-        <groupId>com.aladdin.mis</groupId>
-        <version>0.1-SNAPSHOT</version>
-        <relativePath>../odin-parent/pom.xml</relativePath>
-    </parent>
-
     <artifactId>extract-demo</artifactId>
     <version>${project.version}</version>
     <packaging>jar</packaging>
+    <groupId>com.aladdin.mis</groupId>
 
     <name>extract-demo</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
-        <!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-        <!--    <maven.compiler.source>1.8</maven.compiler.source>-->
-        <!--    <maven.compiler.target>1.8</maven.compiler.target>-->
+        <java.version>17</java.version>
+        <!--        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
+        <!--        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 声明版本号，以后统一在这里进行管理-->
+        <project.version>0.1-SNAPSHOT</project.version>
+        <springboot.version>3.5.5</springboot.version>
+        <spring.version>6.2.10</spring.version>
     </properties>
 
     <dependencies>
 
-        <!--    <dependency>-->
-        <!--      <groupId>com.aladdin.mis</groupId>-->
-        <!--      <artifactId>extract-dao</artifactId>-->
-        <!--      <version>${project.version}</version>-->
-        <!--    </dependency>-->
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${springboot.version}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
 
-        <!-- license 证书 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
+        <version>${springboot.version}</version>
+    </dependency>
+
+    <!--Web依赖-->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${springboot.version}</version>
+    </dependency>
+
+    <!--      org.springframework.beans 依赖库  TlsSocketStrategy 在的版本才对-->
+    <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>5.4.4</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+
+    <!-- MyBatis -->
+<!--    <dependency>-->
+<!--        <groupId>org.mybatis.spring.boot</groupId>-->
+<!--        <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--        <version>3.0.2</version>-->
+<!--    </dependency>-->
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.5.5</version>
+        <exclusions>
+            <exclusion>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+
+    <!-- MySQL 驱动 -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+    </dependency>
+
         <dependency>
-            <groupId>de.schlichtherle.truelicense</groupId>
-            <artifactId>truelicense-core</artifactId>
-            <version>1.33</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+
         </dependency>
 
-        <!--二维码 -->
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.3.0</version>
-        </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.httpcomponents</groupId>-->
+    <!--      <artifactId>httpclient</artifactId>-->
+    <!--      <version>4.5.14</version>-->
+    <!--    </dependency>-->
 
-        <!--    <dependency>-->
-        <!--      <groupId>com.github.pagehelper</groupId>-->
-        <!--      <artifactId>pagehelper-spring-boot-starter</artifactId>-->
-        <!--      <version>1.4.6</version>-->
-        <!--    </dependency>-->
 
-        <!-- aop
-            当我们需要使用CGLIB来实现AOP的时候，需要配置spring.aop.proxy-target-class=true，不然默认使用的是标准Java的实现，就会报错-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
+    <!--单元测试配置-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.boot</groupId>-->
+    <!--      <artifactId>spring-boot-starter-test</artifactId>-->
+    <!--      <version>${springboot.version}</version>-->
+    <!--    </dependency>-->
 
-        <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>4.2.3</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- redis -->
 
-        <!-- hutool -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.0.M3</version>
-        </dependency>
-        <!-- hutool -->
+    <!-- 日志 -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.30</version>
+    </dependency>
 
-        <!-- 国密 -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15to18</artifactId>
-            <version>1.69</version>
-        </dependency>
-        <!-- 国密 -->
-
-        <!-- mongodb -->
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--      <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
-        <!--      <version>${springboot.version}</version>-->
-        <!--    </dependency>-->
-        <!-- mongodb -->
-
-        <!-- 阿里云短信 -->
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>dysmsapi20170525</artifactId>
-            <version>2.0.9</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents.client5</groupId>
-                    <artifactId>httpclient5</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- 阿里云短信 -->
-        <!-- 阿里云异步短信 -->
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>alibabacloud-dysmsapi20170525</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <!-- 阿里云异步短信 -->
-
-        <!-- druid-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.22</version>
-            <!--NoClassDefFoundError: org/springframework/boot/bind/RelaxedPropertyResolver-->
-            <!--自带的springboot版本太低-->
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-boot-autoconfigure</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.3.0</version>
-            <scope>compile</scope>
-        </dependency>
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.83</version>
+    </dependency>
     </dependencies>
 
     <build>
@@ -165,5 +152,73 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <!--                <plugin>-->
+                <!--                    <groupId>org.apache.tomcat.maven</groupId>-->
+                <!--                    <artifactId>tomcat7-maven-plugin</artifactId>-->
+                <!--                    <version>2.2</version>-->
+                <!--                    <configuration>-->
+                <!--                        &lt;!&ndash;端口控制&ndash;&gt;-->
+                <!--                        <port>8888</port>-->
+                <!--                        <warSourceDirectory>src/main/webapp</warSourceDirectory>-->
+                <!--                        &lt;!&ndash;编码&ndash;&gt;-->
+                <!--                        <uriEncoding>UTF-8</uriEncoding>-->
+                <!--                    </configuration>-->
+                <!--                </plugin>-->
+
+                <!--                <plugin>-->
+                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+                <!--                    <artifactId>maven-war-plugin</artifactId>-->
+                <!--                    <version>2.2</version>-->
+                <!--                    <configuration>-->
+                <!--                        &lt;!&ndash; 指定web.xml的路径  &ndash;&gt;-->
+                <!--                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>-->
+                <!--                        &lt;!&ndash; 指定jsp、js、css的路劲 &ndash;&gt;-->
+                <!--                        <warSourceDirectory>webapp</warSourceDirectory>-->
+                <!--                    </configuration>-->
+                <!--                </plugin>-->
+
+                <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+                <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.7.1</version>
+                </plugin>
+                <!--                <plugin>-->
+                <!--                    <artifactId>maven-project-info-reports-plugin</artifactId>-->
+                <!--                    <version>3.0.0</version>-->
+                <!--                </plugin>-->
+            </plugins>
+        </pluginManagement>
     </build>
 </project>

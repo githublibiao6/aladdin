@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aladdin.mis.mapper.BeLoginLogMapper">
+<mapper namespace="com.aladdin.mis.demo.mapper.BeLoginLogMapper">
 
     <sql id="baseColumn">
         id,
@@ -23,7 +23,8 @@
         sys006,
         sys007
     </sql>
-    <update id="list">
+
+    <update id="listById">
         select 1 from dual
     </update>
 

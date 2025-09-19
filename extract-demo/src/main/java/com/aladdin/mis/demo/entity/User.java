@@ -1,4 +1,4 @@
-package com.aladdin.mis.entity;
+package com.aladdin.mis.demo.entity;
 
 import lombok.Data;
 

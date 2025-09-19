@@ -1,4 +1,5 @@
-package com.aladdin.mis.mapper;
+package com.aladdin.mis.demo.mapper;
+
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,6 +15,6 @@ public interface BeLoginLogMapper {
      * 测试
      * @return list
      */
-    void list();
+    void listById();
 
 }

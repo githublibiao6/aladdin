@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 //@EnableDiscoveryClient
 @MapperScan(basePackages = {"com.aladdin.mis.*.mapper.*"})
-//@ComponentScan(basePackages = {"com.aladdin.mis.*.mapper.*"})
+@ComponentScan(basePackages = {"com.aladdin.mis.*.mapper.*"})
 @SpringBootApplication
 public class CommonApplication {
 

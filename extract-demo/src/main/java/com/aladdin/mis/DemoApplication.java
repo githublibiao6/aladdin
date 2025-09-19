@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 项目启动主类
  * @author cleslb
  */
-@MapperScan(basePackages = {"com.aladdin.mis.mapper"})
+@MapperScan(basePackages = {"com.aladdin.mis.demo.mapper"})
 @SpringBootApplication
 public class DemoApplication {
 

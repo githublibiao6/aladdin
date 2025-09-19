@@ -1,6 +1,6 @@
-package com.aladdin.mis.api;
+package com.aladdin.mis.demo.api;
 
-import com.aladdin.mis.mapper.BeLoginLogMapper;
+import com.aladdin.mis.demo.mapper.BeLoginLogMapper;
 import com.alibaba.fastjson.JSONObject;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +27,7 @@ public class DemoController {
     @ResponseBody
     public JSONObject welcome() {
         JSONObject obj = new JSONObject();
-        beLoginLogMapper.list();
+        beLoginLogMapper.listById();
         obj.put("success", true);
         obj.put("message", "访问成功");
         obj.put("code", 20000);
