@@ -1,14 +1,14 @@
-package com.aladdin.mis.system.service.impl;
+package com.aladdin.mis.mapper.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.utils.UserUtil;
 import com.aladdin.mis.dao.system.BeLoginLogDao;
-import com.aladdin.mis.system.entity.BeLoginLog;
-import com.aladdin.mis.system.qo.BeLoginLogQo;
-import com.aladdin.mis.system.service.BeLoginLogService;
-import com.aladdin.mis.system.user.vo.OmUser;
-import com.aladdin.mis.system.vo.BeLoginLogVo;
+import com.aladdin.mis.mapper.entity.BeLoginLog;
+import com.aladdin.mis.mapper.qo.BeLoginLogQo;
+import com.aladdin.mis.mapper.service.BeLoginLogService;
+import com.aladdin.mis.mapper.user.vo.OmUser;
+import com.aladdin.mis.mapper.vo.BeLoginLogVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

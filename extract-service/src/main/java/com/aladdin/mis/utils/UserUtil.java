@@ -1,6 +1,6 @@
 package com.aladdin.mis.utils;
 
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.mis.mapper.user.vo.OmUser;
 
 //import javax.security.auth.Subject;
 

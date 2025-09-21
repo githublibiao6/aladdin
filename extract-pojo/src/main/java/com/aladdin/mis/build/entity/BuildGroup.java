@@ -2,7 +2,7 @@ package com.aladdin.mis.build.entity;
 
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
-import com.aladdin.mis.system.base.GlobalModel;
+import com.aladdin.mis.mapper.base.GlobalModel;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.aladdin.mis.system.service.impl;
+package com.aladdin.mis.mapper.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
 import com.aladdin.mis.dao.manager.EmployeeDao;
 import com.aladdin.mis.manager.bean.Employee;
-import com.aladdin.mis.system.service.EmployeeService;
+import com.aladdin.mis.mapper.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

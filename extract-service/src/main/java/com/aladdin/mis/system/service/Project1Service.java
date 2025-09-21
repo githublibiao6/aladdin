@@ -1,4 +1,4 @@
-package com.aladdin.mis.system.service;
+package com.aladdin.mis.mapper.service;
 
 import com.aladdin.mis.manager.bean.Project;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;

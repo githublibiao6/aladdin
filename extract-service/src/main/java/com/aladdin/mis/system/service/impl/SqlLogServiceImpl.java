@@ -1,7 +1,7 @@
-package com.aladdin.mis.system.service.impl;
+package com.aladdin.mis.mapper.service.impl;
 
 import com.aladdin.mis.common.db.bean.SqlLog;
-import com.aladdin.mis.system.service.SqlLogService;
+import com.aladdin.mis.mapper.service.SqlLogService;
 import org.springframework.stereotype.Service;
 
 /**

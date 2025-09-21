@@ -2,7 +2,7 @@ package com.aladdin.mis.identity.controller;
 
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.manager.bean.Employee;
-import com.aladdin.mis.system.service.EmployeeService;
+import com.aladdin.mis.mapper.service.EmployeeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import com.ieslab.misp.excel.util.ExcelUtil;

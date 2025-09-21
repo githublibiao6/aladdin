@@ -14,11 +14,11 @@ public enum ResultCodeEnum {
      * 返回结果code
      * 已使用
      */
-    SUCCESS(20000, "请求成功"),
+    SUCCESS(200, "请求成功"),
 
-    SAVE(20000, "保存成功"),
+    SAVE(200, "保存成功"),
 
-    UPDATE(20000, "更新成功"),
+    UPDATE(200, "更新成功"),
 
     FAIL(500, "请求错误"),;
 

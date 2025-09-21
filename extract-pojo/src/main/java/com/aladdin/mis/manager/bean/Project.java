@@ -1,7 +1,7 @@
 package com.aladdin.mis.manager.bean;
 
 
-import com.aladdin.mis.system.base.GlobalModel;
+import com.aladdin.mis.mapper.base.GlobalModel;
 import lombok.Data;
 
 /**
