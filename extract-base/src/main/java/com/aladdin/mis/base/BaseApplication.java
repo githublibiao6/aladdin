@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author jacklee
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.aladdin.mis.base.mapper"})
+@MapperScan(basePackages = {"com.aladdin.mis.*.mapper"})
 public class BaseApplication {
 
     public static void main(String[] args) {

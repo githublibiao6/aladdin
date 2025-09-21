@@ -4,7 +4,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: odin-parent
+    name: base
   servlet:
     multipart:
       max-file-size: 1024MB
@@ -16,17 +16,5 @@ spring:
     url: jdbc:mysql://localhost:3306/sso?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-#hystrix的超时时间
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-        isolation:
-          thread:
-            timeoutInMilliseconds: 90000
-#ribbon的超时时间
-ribbon:
-  ReadTimeout: 30000
-  ConnectTimeout: 30000
+mybatis:
+  mapper-locations: classpath*:/mybatis-mapper/**/*.xml

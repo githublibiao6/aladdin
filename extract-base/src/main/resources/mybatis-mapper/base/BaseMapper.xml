@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aladdin.mis.base.mapper.BaseMapper">
+
+    <insert id="save" >
+        insert into sql_log (
+            session_id,
+            request_user_name,
+            sql_type,
+            execute_sql,
+            table_name,
+            table_id,
+            start_time,
+            end_time,
+            cost,
+            code,
+            error_msg
+        ) values (
+            #{sessionId},
+            #{requestUserName},
+            #{sqlType},
+            #{executeSql},
+            #{tableName},
+            #{tableId},
+            #{startTime},
+            #{endTime},
+            #{cost},
+            #{code},
+            #{errorMsg}
+        )
+    </insert>
+
+    <update id="find">
+        select 1 from dual
+    </update>
+
+</mapper>
