@@ -1,4 +1,4 @@
-package com.aladdin.mis.sso.shiro.realm;
+package com.aladdin.mis.base.shiro.realm;
 /**
  * Created by cles on 2020/4/23 22:39
  */

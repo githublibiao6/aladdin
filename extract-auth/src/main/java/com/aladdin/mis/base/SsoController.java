@@ -1,4 +1,4 @@
-package com.aladdin.mis.sso;
+package com.aladdin.mis.base;
 
 import com.aladdin.mis.identity.service.AuthLoginService;
 import com.aladdin.mis.shiro.OmClient;

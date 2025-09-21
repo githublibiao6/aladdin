@@ -1,4 +1,4 @@
-package com.aladdin.mis.sso.model.param;
+package com.aladdin.mis.base.model.param;
 
 
 import lombok.Data;

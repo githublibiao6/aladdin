@@ -1,8 +1,8 @@
-package com.aladdin.mis.sso.service.impl;
+package com.aladdin.mis.base.service.impl;
 
 
-import com.aladdin.mis.sso.model.param.LoginUser;
-import com.aladdin.mis.sso.service.AuthLoginService;
+import com.aladdin.mis.base.model.param.LoginUser;
+import com.aladdin.mis.base.service.AuthLoginService;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
@@ -10,8 +10,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 
 /**

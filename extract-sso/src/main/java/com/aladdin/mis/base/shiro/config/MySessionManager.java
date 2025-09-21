@@ -1,4 +1,4 @@
-package com.aladdin.mis.sso.shiro.config;
+package com.aladdin.mis.base.shiro.config;
 
 
 import io.micrometer.common.util.StringUtils;

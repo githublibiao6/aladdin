@@ -1,7 +1,7 @@
-package com.aladdin.mis.sso.controller;
+package com.aladdin.mis.base.controller;
 
-import com.aladdin.mis.sso.model.param.LoginUser;
-import com.aladdin.mis.sso.service.AuthLoginService;
+import com.aladdin.mis.base.model.param.LoginUser;
+import com.aladdin.mis.base.service.AuthLoginService;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

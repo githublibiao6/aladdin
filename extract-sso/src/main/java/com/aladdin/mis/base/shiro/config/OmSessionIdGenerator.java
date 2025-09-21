@@ -1,4 +1,4 @@
-package com.aladdin.mis.sso.shiro.config;
+package com.aladdin.mis.base.shiro.config;
 /*
  *  Created by cles on 2022/1/14 21:51
  */

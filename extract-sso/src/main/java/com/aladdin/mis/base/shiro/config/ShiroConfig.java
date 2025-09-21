@@ -1,9 +1,9 @@
-package com.aladdin.mis.sso.shiro.config;
+package com.aladdin.mis.base.shiro.config;
 /**
  * Created by cles on 2020/4/27 21:52
  */
 
-import com.aladdin.mis.sso.shiro.realm.UserRealm;
+import com.aladdin.mis.base.shiro.realm.UserRealm;
 import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;

@@ -1,4 +1,4 @@
-package com.aladdin.mis.sso;
+package com.aladdin.mis.base;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,9 +1,7 @@
-package com.aladdin.mis.sso.service;
+package com.aladdin.mis.base.service;
 
-import com.aladdin.mis.sso.model.param.LoginUser;
+import com.aladdin.mis.base.model.param.LoginUser;
 import com.alibaba.fastjson.JSONObject;
-
-import java.util.Map;
 
 
 /**
