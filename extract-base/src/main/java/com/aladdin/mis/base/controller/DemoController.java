@@ -1,6 +1,8 @@
 package com.aladdin.mis.base.controller;
 
+import com.aladdin.mis.base.mapper.BaseMapper;
 import com.alibaba.fastjson2.JSONObject;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
+    @Resource
+    private BaseMapper baseMapper;
+
     /**
      * 健康地址
      * @return obj
@@ -22,6 +27,7 @@ public class DemoController {
     @ResponseBody
     public JSONObject welcome() {
         JSONObject obj = new JSONObject();
+        baseMapper.find();
         obj.put("success", true);
         obj.put("message", "访问成功");
         obj.put("code", 200);
