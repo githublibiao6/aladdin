@@ -15,7 +15,7 @@ import com.aladdin.mis.common.utils.JSONObjectUtil;
 import com.aladdin.mis.common.global.model.GlobalModel;
 import com.aladdin.mis.common.global.service.GlobalService;
 import com.aladdin.mis.common.utils.UserUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 //import com.github.pagehelper.PageHelper;
 //import com.github.pagehelper.PageInfo;
 import org.springframework.context.annotation.Primary;

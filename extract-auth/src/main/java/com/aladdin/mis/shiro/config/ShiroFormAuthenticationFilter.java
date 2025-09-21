@@ -3,7 +3,7 @@ package com.aladdin.mis.shiro.config;
  * Created by cles on 2020/5/18 23:08
  */
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;

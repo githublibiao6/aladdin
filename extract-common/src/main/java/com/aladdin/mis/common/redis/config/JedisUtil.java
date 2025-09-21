@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.redis.config;
 
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson2.JSONArray;
 import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
@@ -96,7 +96,7 @@ public class JedisUtil {
         List<T> list = new ArrayList<>();
         Jedis jedis = JedisConfig.getJedis(0);
         String str = jedis.get(key);
-        JSONArray arr = (JSONArray) JSONArray.parse(str);
+        JSONArray arr = (JSONArray) JSONArray.parseArray(str);
         arr.forEach(t->{
             list.add((T)t);
         });

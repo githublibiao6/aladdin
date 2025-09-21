@@ -5,7 +5,7 @@ import com.aladdin.mis.system.service.DictionaryService;
 import com.aladdin.mis.dao.manager.DicDao;
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.vo.DictVo;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

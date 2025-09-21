@@ -1,7 +1,7 @@
 package com.aladdin.mis.permission.controller;
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;

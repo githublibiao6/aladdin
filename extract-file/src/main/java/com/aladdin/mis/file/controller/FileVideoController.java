@@ -3,7 +3,7 @@ package com.aladdin.mis.file.controller;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.file.service.FilePictureService;
 import com.aladdin.mis.file.service.FileVideoService;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -5,7 +5,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.love.entity.DateLog;
 import com.aladdin.mis.omnipotent.love.service.DateLogService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -4,7 +4,7 @@ package com.aladdin.mis.shiro.config;
  */
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 

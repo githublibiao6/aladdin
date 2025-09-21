@@ -5,7 +5,7 @@ package com.aladdin.mis.common.db.factory.impl;
 
 import com.aladdin.mis.common.db.factory.BaseSqlMaker;
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 
 import java.util.List;
 

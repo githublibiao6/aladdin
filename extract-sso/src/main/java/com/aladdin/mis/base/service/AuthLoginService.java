@@ -1,7 +1,7 @@
 package com.aladdin.mis.base.service;
 
 import com.aladdin.mis.base.model.param.LoginUser;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 
 
 /**

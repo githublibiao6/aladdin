@@ -3,7 +3,7 @@ package com.aladdin.mis.base.service.impl;
 
 import com.aladdin.mis.base.model.param.LoginUser;
 import com.aladdin.mis.base.service.AuthLoginService;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;

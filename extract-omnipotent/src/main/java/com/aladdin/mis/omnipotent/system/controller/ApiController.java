@@ -5,7 +5,7 @@ import com.aladdin.mis.chat.service.ChatUserFriendGroupService;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
 import com.aladdin.mis.utils.UserUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

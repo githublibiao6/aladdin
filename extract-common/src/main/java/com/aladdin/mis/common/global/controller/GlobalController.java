@@ -5,8 +5,8 @@ import com.aladdin.mis.common.base.qo.Condition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.global.model.GlobalModel;
 import com.aladdin.mis.common.global.service.GlobalService;
-import com.alibaba.fastjson.JSONObject;
 //import com.github.pagehelper.PageInfo;
+import com.alibaba.fastjson2.JSONObject;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -188,7 +188,7 @@ public abstract class GlobalController<T extends GlobalModel, M extends GlobalSe
         return request.getParameter(key);
     }
 
-    public <T> T getModel(JSONObject json,Class<T> mode) throws IllegalAccessException, InstantiationException {
+    public <T> T getModel(JSONObject json, Class<T> mode) throws IllegalAccessException, InstantiationException {
         Field[] fields = mode.getFields();
         T t = mode.newInstance();
         for(Field s:fields){

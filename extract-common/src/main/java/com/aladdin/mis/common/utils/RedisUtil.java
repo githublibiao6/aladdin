@@ -3,7 +3,7 @@ package com.aladdin.mis.common.utils;
 
 import com.aladdin.mis.common.string.utils.StringUtil;
 import com.aladdin.mis.common.redis.entity.*;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;

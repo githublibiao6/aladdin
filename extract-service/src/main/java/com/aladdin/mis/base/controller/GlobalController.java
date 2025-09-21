@@ -6,7 +6,7 @@ import com.aladdin.mis.common.base.qo.Condition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -2,7 +2,7 @@ package com.aladdin.mis.system.service;
 
 import com.aladdin.mis.base.service.GlobalService;
 import com.aladdin.mis.manager.bean.Dictionary;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

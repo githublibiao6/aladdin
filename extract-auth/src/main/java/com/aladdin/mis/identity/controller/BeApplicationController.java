@@ -6,7 +6,7 @@ import com.aladdin.mis.identity.entity.BeApplication;
 import com.aladdin.mis.identity.qo.BeApplicationQo;
 import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.identity.vo.BeApplicationVo;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

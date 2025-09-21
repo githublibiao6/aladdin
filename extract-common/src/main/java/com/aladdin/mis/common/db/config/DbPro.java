@@ -8,7 +8,7 @@ import com.aladdin.mis.common.db.bean.TableFieldInfo;
 import com.aladdin.mis.common.db.dao.SqlLogDao;
 import com.aladdin.mis.common.db.factory.DbMaker;
 import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

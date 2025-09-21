@@ -3,7 +3,7 @@ package com.aladdin.mis.common.redis.config;
  *  Created by cles on 2020/8/3 0:25
  */
 
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson2.JSONArray;
 import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class Redis {
     public <T> List<T> getList(String key) {
         List<T> list = new ArrayList<>();
         String str = jedis.get(key);
-        JSONArray arr = (JSONArray) JSONArray.parse(str);
+        JSONArray arr = (JSONArray) JSONArray.parseArray(str);
         arr.forEach(t->{
             list.add((T)t);
         });

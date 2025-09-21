@@ -5,7 +5,7 @@ package com.aladdin.mis.socket.handles;
 
 import com.aladdin.mis.chat.param.ChatMessageParam;
 import com.aladdin.mis.chat.service.ChatRecordService;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

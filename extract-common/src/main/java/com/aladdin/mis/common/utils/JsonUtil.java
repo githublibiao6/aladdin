@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.utils;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.aladdin.mis.common.redis.entity.KeyBean;
 
 import java.util.regex.Matcher;

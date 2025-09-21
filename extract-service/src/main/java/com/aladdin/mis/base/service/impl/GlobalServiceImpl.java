@@ -15,7 +15,7 @@ import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.util.BaseModelUtil;
 import com.aladdin.mis.utils.UserUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.context.annotation.Primary;

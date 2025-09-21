@@ -6,7 +6,7 @@ import com.aladdin.mis.identity.entity.Role;
 import com.aladdin.mis.identity.entity.RoleMenu;
 import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

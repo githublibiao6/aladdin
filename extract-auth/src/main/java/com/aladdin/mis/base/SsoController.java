@@ -7,7 +7,7 @@ import com.aladdin.mis.system.entity.BeLoginLog;
 import com.aladdin.mis.system.service.BeLoginLogService;
 import com.aladdin.mis.system.user.vo.LoginUser;
 import com.aladdin.mis.system.user.vo.OmUser;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

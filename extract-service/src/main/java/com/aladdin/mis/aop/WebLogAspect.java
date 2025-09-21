@@ -9,7 +9,7 @@ import com.aladdin.mis.common.system.entity.VisitLog;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.mongdb.service.VisitLogService;
 import com.aladdin.mis.base.controller.GlobalController;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

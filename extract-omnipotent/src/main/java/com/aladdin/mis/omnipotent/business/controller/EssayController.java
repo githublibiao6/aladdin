@@ -5,7 +5,7 @@ import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.business.service.EssayService;
 import com.aladdin.mis.pagehelper.entity.PageEntity;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
