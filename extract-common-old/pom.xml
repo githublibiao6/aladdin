@@ -11,11 +11,11 @@
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
-  <artifactId>extract-common</artifactId>
+  <artifactId>extract-common-old</artifactId>
   <version>${project.version}</version>
   <packaging>jar</packaging>
 
-  <name>extract-common</name>
+  <name>extract-common-old</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -143,10 +143,17 @@
               </exclusion>
           </exclusions>
       </dependency>
+
+      <!-- -->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.30</version>
+      </dependency>
   </dependencies>
 
     <build>
-        <finalName>common</finalName>
+        <finalName>common-old</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

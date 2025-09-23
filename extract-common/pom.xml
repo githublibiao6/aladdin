@@ -11,7 +11,7 @@
         <relativePath>../odin-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>extract-common-old</artifactId>
+    <artifactId>extract-common</artifactId>
     <version>${project.version}</version>
     <packaging>jar</packaging>
 
