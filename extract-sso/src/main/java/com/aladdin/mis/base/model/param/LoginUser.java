@@ -5,12 +5,22 @@ package com.aladdin.mis.base.model.param;
 * @Description
 * @MethodName  GlobalModel
 * @author lb
-* @date 2022年2月17日 下午10:50:54
+* @date 2025年9月23日 下午10:50:54
  */
-public record LoginUser(String userName,
+public record LoginUser(
+        /*
+         * 用户名
+         */
+        String userName,
 
-                        String password,
+        /*
+         * 密码
+         */
+        String password,
 
-                        String datasource) {
+        /*
+         * 登录来源
+         */
+        String datasource) {
 
 }
