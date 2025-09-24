@@ -1,7 +1,5 @@
 package com.aladdin.mis.common.utils;
 
-import com.alibaba.fastjson2.JSON;
-import com.aladdin.mis.common.redis.entity.KeyBean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,20 +7,20 @@ import java.util.regex.Pattern;
 
 public class JsonUtil {
 
-    public static KeyBean parseKeyBeanObject(String json) {
-        try {
-            if (!json.equals("")) {
-                KeyBean keyBean = JSON.parseObject(json, KeyBean.class);
-                //JSONObject jsonObj = JSON.parseObject(json);
-                //keyBean.setKey(getUnicodeToString(jsonObj.getString("key")));
-                return keyBean;
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            return null;
-        }
-    }
+//    public static KeyBean parseKeyBeanObject(String json) {
+//        try {
+//            if (!json.equals("")) {
+//                KeyBean keyBean = JSON.parseObject(json, KeyBean.class);
+//                //JSONObject jsonObj = JSON.parseObject(json);
+//                //keyBean.setKey(getUnicodeToString(jsonObj.getString("key")));
+//                return keyBean;
+//            } else {
+//                return null;
+//            }
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
 
     public static String unicodeToString(String unicode) {
         StringBuffer string = new StringBuffer();
@@ -67,9 +65,9 @@ public class JsonUtil {
         return str;
     }
 
-    public static void main(String[] args) throws Exception {
-        String str = "admin-menu-key:haha\u000B\u0000\u0005t\u0000\u0005menus";
-        System.out.println(getUnicodeToString(str));
-        System.out.println(getStringToUnicode(getUnicodeToString(str)));
-    }
+//    public static void main(String[] args) throws Exception {
+//        String str = "admin-menu-key:haha\u000B\u0000\u0005t\u0000\u0005menus";
+//        System.out.println(getUnicodeToString(str));
+//        System.out.println(getStringToUnicode(getUnicodeToString(str)));
+//    }
 }

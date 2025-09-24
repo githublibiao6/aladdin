@@ -1,4 +1,4 @@
-package com.aladdin.mis.common.string.utils;
+package com.aladdin.mis.common.utils;
 
 import org.springframework.util.StringUtils;
 

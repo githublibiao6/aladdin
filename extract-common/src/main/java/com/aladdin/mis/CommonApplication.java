@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @author cles
  */
 @MapperScan(basePackages = {"com.aladdin.mis.*.mapper.*"})
-@ComponentScan(basePackages = {"com.aladdin.mis.*.mapper.*"})
 @SpringBootApplication
 public class CommonApplication {
 
