@@ -24,7 +24,13 @@
   </properties>
 
   <dependencies>
-
+      <!--    lombok    -->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.30</version> <!-- 当前最新稳定版 -->
+          <scope>provided</scope>
+      </dependency>
   </dependencies>
 
   <build>
