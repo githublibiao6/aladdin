@@ -3,7 +3,9 @@ package com.aladdin.mis.base.service.impl;
 import com.aladdin.mis.base.mapper.BaseMapper;
 import com.aladdin.mis.base.model.BaseModel;
 import com.aladdin.mis.base.service.BaseService;
+import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -14,36 +16,42 @@ import java.util.List;
  *  < 全局service方法 >
  * @Description:
  * @Author: cles
- * @Date: 2020/6/23 23:23
+ * @Date: 2025/09/26 23:23
  * @return:
  * @version: 1.0.0
  */
-public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> implements BaseService<M, T> {
+public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> implements BaseService<T> {
 
+    @Resource
+    protected M baseMapper;
 
-    @Override
-    public int insert(T entity) {
-        return 0;
+    public M getBaseMapper() {
+        return this.baseMapper;
     }
 
     @Override
-    public int deleteById(Serializable id) {
-        return 0;
+    public boolean insert(T entity) {
+        return this.getBaseMapper().insert(entity) > 0 ;
     }
 
     @Override
-    public int deleteById(T entity) {
-        return 0;
+    public boolean deleteById(Serializable id) {
+        return false;
     }
 
     @Override
-    public int deleteBatchIds(Collection<?> idList) {
-        return 0;
+    public boolean deleteById(T entity) {
+        return false;
     }
 
     @Override
-    public int updateById(T entity) {
-        return 0;
+    public boolean deleteBatchIds(Collection<?> idList) {
+        return false;
+    }
+
+    @Override
+    public boolean updateById(T entity) {
+        return false;
     }
 
     @Override

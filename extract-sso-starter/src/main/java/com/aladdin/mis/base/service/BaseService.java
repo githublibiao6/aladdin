@@ -3,7 +3,6 @@ package com.aladdin.mis.base.service;
 import com.aladdin.mis.base.mapper.BaseMapper;
 import com.aladdin.mis.base.model.BaseModel;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.ResultHandler;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -18,17 +17,17 @@ import java.util.List;
  * @return:
  * @version: 1.0.0
  */
-public interface BaseService<M extends BaseMapper<T>, T extends BaseModel> {
+public interface BaseService<T extends BaseModel> {
 
-    int insert(T entity);
+    boolean insert(T entity);
 
-    int deleteById(Serializable id);
+    boolean deleteById(Serializable id);
 
-    int deleteById(T entity);
+    boolean deleteById(T entity);
 
-    int deleteBatchIds(@Param("coll") Collection<?> idList);
+    boolean deleteBatchIds(@Param("coll") Collection<?> idList);
 
-    int updateById(@Param("et") T entity);
+    boolean updateById(@Param("et") T entity);
 
     T selectById(Serializable id);
 
