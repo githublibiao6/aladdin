@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 public interface BaseMapper<T> extends Mapper<T> {
 
@@ -17,6 +18,7 @@ public interface BaseMapper<T> extends Mapper<T> {
 
     int deleteBatchIds(@Param("coll") Collection<?> idList);
 
+    @Update("")
     int updateById(@Param("et") T entity);
 
     T selectById(Serializable id);

@@ -17,4 +17,11 @@ import java.util.List;
  */
 public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> implements PersonService {
 
+    @Resource
+    private PersonMapper personMapper;
+
+    @Override
+    public void updatePerson(Person person) {
+        personMapper.updatePerson(person);
+    }
 }
