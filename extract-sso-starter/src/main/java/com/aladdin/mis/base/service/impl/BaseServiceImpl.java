@@ -51,7 +51,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
     @Override
     public boolean updateById(T entity) {
-        return false;
+        return baseMapper.updateById(entity) > 0;
     }
 
     @Override

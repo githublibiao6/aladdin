@@ -1,11 +1,11 @@
 package com.aladdin.mis.base.mapper;
 
 
-import org.apache.ibatis.annotations.Param;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 public interface BaseMapper<T> extends Mapper<T> {
 
