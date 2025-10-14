@@ -1,6 +1,6 @@
 package com.aladdin.mis.base.config;
 
-import com.aladdin.mis.base.interceptor.BaseSqlInterceptor;
+import com.aladdin.mis.base.interceptor.BaseModelHandleInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class MyBatisConfig {
 
     @Bean
-    public BaseSqlInterceptor entityInsertInterceptor() {
-        return new BaseSqlInterceptor();
+    public BaseModelHandleInterceptor entityInsertInterceptor() {
+        return new BaseModelHandleInterceptor();
     }
 }

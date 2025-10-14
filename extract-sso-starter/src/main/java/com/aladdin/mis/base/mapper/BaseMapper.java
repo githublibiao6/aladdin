@@ -11,25 +11,22 @@ import org.apache.ibatis.annotations.Update;
 
 public interface BaseMapper<T> extends Mapper<T> {
 
-    @Update("")
+    @Update("insert")
     int insert(T entity);
 
-    @Update("")
+    @Update("deleteById")
     int deleteById(Serializable id);
 
-    @Update("")
-    int deleteById(T entity);
-
-    @Update("")
+    @Update("deleteBatchIds")
     int deleteBatchIds(@Param("coll") Collection<?> idList);
 
-    @Update("")
+    @Update("updateById")
     int updateById(@Param("et") T entity);
 
-    @Select("")
+    @Select("selectById")
     T selectById(Serializable id);
 
-    @Select("")
+    @Select("selectBatchIds")
     List<T> selectBatchIds(@Param("coll") Collection<? extends Serializable> idList);
 }
 
