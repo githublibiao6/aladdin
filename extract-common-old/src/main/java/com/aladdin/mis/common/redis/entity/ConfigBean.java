@@ -5,7 +5,7 @@ import lombok.Data;
 /**
 * @Description: 配置信息
 * @Author: cles
-* @Date: 2020/4/17 23:55
+* @Date: 2025/4/17 23:55
 */
 @Data
 public class ConfigBean {

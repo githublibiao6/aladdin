@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.redis.config;
 /*
- *  Created by cles on 2020/8/3 0:25
+ *  Created by cles on 2025/8/3 0:25
  */
 
 import com.alibaba.fastjson2.JSONArray;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author cles
  * @description:
- * @Date 2020/8/3 0:25
+ * @Date 2025/8/3 0:25
  * @version: 1.0.0
  */
 public class Redis {
@@ -89,7 +89,7 @@ public class Redis {
      * @Param: [key, o]
      * @return: boolean
      * @Author: cles
-     * @Date: 2020/4/15 22:28
+     * @Date: 2025/4/15 22:28
      */
     public <T> boolean setObject(String key, T o) {
         String res = jedis.set(key,o.toString());

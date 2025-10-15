@@ -6,7 +6,7 @@ package com.aladdin.mis.common.exception;
 /** todo 全局错误日志
  * @description:
  * @author cles
- * @Date 2020/5/31 16:42
+ * @Date 2025/5/31 16:42
  */
 public class MyException extends RuntimeException {
 

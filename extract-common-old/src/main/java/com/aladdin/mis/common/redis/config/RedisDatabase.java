@@ -1,12 +1,12 @@
 package com.aladdin.mis.common.redis.config;
 /*
- *  Created by cles on 2020/8/3 0:04
+ *  Created by cles on 2025/8/3 0:04
  */
 
 /**
  * @author cles
  * @description:
- * @Date 2020/8/3 0:04
+ * @Date 2025/8/3 0:04
  * @version: 1.0.0
  */
 

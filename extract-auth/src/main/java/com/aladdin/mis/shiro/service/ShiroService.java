@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.service;
 /**
- * Created by cles on 2020/5/18 22:57
+ * Created by cles on 2025/5/18 22:57
  */
 
 import com.aladdin.mis.common.string.utils.StringUtil;
@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * @description:
  * @author cles
- * @Date 2020/5/18 22:57
+ * @Date 2025/5/18 22:57
  */
 @Service
 public class ShiroService {

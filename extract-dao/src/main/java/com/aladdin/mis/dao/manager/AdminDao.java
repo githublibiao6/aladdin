@@ -21,7 +21,7 @@ public interface AdminDao {
      *  < 查看传入的admin是否存在 >
      * @Description: verification
      * @Author: cles
-     * @Date: 2020/6/21 23:51
+     * @Date: 2025/6/21 23:51
      * @param admin 参数1
      * @return: com.apps.omnipotent.manager.bean.Admin
      * @version: 1.0.0

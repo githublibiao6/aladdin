@@ -1,12 +1,12 @@
 package com.apps.omnopotent;
 /**
- * Created by cles on 2020/5/30 20:40
+ * Created by cles on 2025/5/30 20:40
  */
 
 /**
  * @description: 简单测试
  * @author cles
- * @Date 2020/5/30 20:40
+ * @Date 2025/5/30 20:40
  */
 public class JunitTest extends TestMall{
 

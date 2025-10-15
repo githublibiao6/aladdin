@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * @description:
  * @author cles
- * @Date 2020/5/31 21:42
+ * @Date 2025/5/31 21:42
  */
 public class MysqlSqlMaker extends BaseSqlMaker {
 
@@ -59,6 +59,8 @@ public class MysqlSqlMaker extends BaseSqlMaker {
             switch (t.getColumnType()){
                 case "int":
                 case "Integer":
+                case "Long":
+                case "long":
                 case "Boolean":
                 case "boolean":
                     sql.append(t.getFieldValue()).append(",");

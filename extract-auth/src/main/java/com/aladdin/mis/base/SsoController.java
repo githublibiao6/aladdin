@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * sso 登录
 * @Description:
 * @Author: cles
-* @Date: 2020/4/16 22:17
+* @Date: 2025/4/16 22:17
 */
 @Slf4j
 @Controller

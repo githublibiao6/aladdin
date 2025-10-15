@@ -1,7 +1,7 @@
 //todo 多数据源
 //package com.aladdin.mis.common.db.core.impl;
 ///**
-// * Created by cles on 2020/6/4 23:14
+// * Created by cles on 2025/6/4 23:14
 // */
 //
 //import com.aladdin.mis.common.db.core.DbTableInfo;
@@ -13,7 +13,7 @@
 ///**
 // * @description:
 // * @author cles
-// * @Date 2020/6/4 23:14
+// * @Date 2025/6/4 23:14
 // */
 //public class MysqlTableInfo implements DbTableInfo {
 //

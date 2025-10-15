@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.threadpool.service.impl;
 /**
- * Created by cles on 2020/4/28 23:38
+ * Created by cles on 2025/4/28 23:38
  */
 
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * @description:
  * @author cles
- * @Date 2020/4/28 23:38
+ * @Date 2025/4/28 23:38
  */
 
 @Service

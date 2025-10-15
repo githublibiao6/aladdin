@@ -1,12 +1,12 @@
 package com.aladdin.mis.exception;
 /**
- * Created by cles on 2020/5/31 16:42
+ * Created by cles on 2025/5/31 16:42
  */
 
 /**
  * @description:
  * @author cles
- * @Date 2020/5/31 16:42
+ * @Date 2025/5/31 16:42
  */
 public class MyException extends RuntimeException {
 

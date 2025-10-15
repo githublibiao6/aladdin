@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.manager.utils;
 /**
- * Created by cles on 2020/5/13 23:38
+ * Created by cles on 2025/5/13 23:38
  */
 
 import com.aladdin.mis.manager.bean.Dictionary;
@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * @description: 字典工具类
  * @author cles
- * @Date 2020/5/13 23:38
+ * @Date 2025/5/13 23:38
  */
 @Component
 public class DictionaryUtils {

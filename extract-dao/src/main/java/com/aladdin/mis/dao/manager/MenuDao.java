@@ -26,7 +26,7 @@ public interface MenuDao {
      *  < >
      * @Description: add
      * @Author: cles
-     * @Date: 2020/8/26 23:31
+     * @Date: 2025/8/26 23:31
      * @param menu 参数1
      * @return: int
      * @version: 1.0.0
@@ -39,7 +39,7 @@ public interface MenuDao {
      * @Description: list
      * @Author: cles
      * @param qo 条件
-     * @Date: 2020/8/26 23:31
+     * @Date: 2025/8/26 23:31
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
@@ -50,7 +50,7 @@ public interface MenuDao {
      *  < >
      * @Description: list
      * @Author: cles
-     * @Date: 2020/8/26 23:31
+     * @Date: 2025/8/26 23:31
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
@@ -62,7 +62,7 @@ public interface MenuDao {
      *  < >
      * @Description: update
      * @Author: cles
-     * @Date: 2020/8/26 23:30
+     * @Date: 2025/8/26 23:30
      * @param menu 参数1
      * @return: int
      * @version: 1.0.0
@@ -74,7 +74,7 @@ public interface MenuDao {
      *  < >
      * @Description: findById
      * @Author: cles
-     * @Date: 2020/8/26 23:30
+     * @Date: 2025/8/26 23:30
      * @param id 参数1
      * @return: com.apps.omnipotent.manager.bean.Menu
      * @version: 1.0.0
@@ -86,7 +86,7 @@ public interface MenuDao {
      *  < >
      * @Description: remove
      * @Author: cles
-     * @Date: 2020/8/26 23:30
+     * @Date: 2025/8/26 23:30
      * @param id 参数1
      * @return: int
      * @version: 1.0.0
@@ -98,7 +98,7 @@ public interface MenuDao {
      *  < >
      * @Description: queryByRoleId
      * @Author: cles
-     * @Date: 2020/8/26 23:30
+     * @Date: 2025/8/26 23:30
      * @param roleId 参数1
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0

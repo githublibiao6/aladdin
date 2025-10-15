@@ -2,6 +2,7 @@ package com.aladdin.mis.base.controller;
 
 import com.aladdin.mis.base.entity.Person;
 import com.aladdin.mis.base.service.PersonService;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +21,9 @@ public class TestController {
         Person person = new Person();
         person.setId(1);
         person.setName("zs");
-        personService.updateById(person);
+        person.setAge(14);
+        personService.insert(person);
+        System.out.println(JSONObject.toJSONString(person));
         System.err.println("doTest");
         return "doTest";
     }

@@ -52,7 +52,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
      *  < 获取菜单树形列表 >
      * @Description: pageList
      * @Author: cles
-     * @Date: 2020/6/23 23:00
+     * @Date: 2025/6/23 23:00
      * @param qo 参数1
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
@@ -160,7 +160,7 @@ public class MenuServiceImpl extends GlobalServiceImpl<Menu> implements MenuServ
     * @Param: [code]
     * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
     * @Author: cles
-    * @Date: 2020/4/15 23:34
+    * @Date: 2025/4/15 23:34
     */
     @Override
     public List<Menu> queryByRoleId(String code) {

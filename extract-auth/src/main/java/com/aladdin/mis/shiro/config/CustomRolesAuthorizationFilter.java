@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.config;
 /**
- * Created by cles on 2020/5/18 23:08
+ * Created by cles on 2025/5/18 23:08
  */
 
 import org.apache.shiro.subject.Subject;
@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * @description: 自定义的角色过滤器
  * @author cles
- * @Date 2020/5/18 23:08
+ * @Date 2025/5/18 23:08
  */
 // extends RolesAuthorizationFilter
 public class CustomRolesAuthorizationFilter  {

@@ -23,7 +23,7 @@ public interface RoleMenuDao {
      *  < 删除角色的菜单 >
      * @Description: removeByRoleId
      * @Author: cles
-     * @Date: 2020/7/8 22:42
+     * @Date: 2025/7/8 22:42
      * @param roleId 参数1
      * @return: com.apps.omnipotent.manager.bean.RoleMenu
      * @version: 1.0.0
@@ -35,7 +35,7 @@ public interface RoleMenuDao {
      *  < 根据菜单和角色查询菜单角色关联 >
      * @Description: findByMenuAndRole
      * @Author: cles
-     * @Date: 2020/7/8 22:42
+     * @Date: 2025/7/8 22:42
      * @param roleId 参数1
      * @return: com.apps.omnipotent.manager.bean.RoleMenu
      * @version: 1.0.0
@@ -47,7 +47,7 @@ public interface RoleMenuDao {
      *  < 根据菜单和角色查询菜单角色关联 >
      * @Description: findByMenuAndRole
      * @Author: cles
-     * @Date: 2020/7/8 22:42
+     * @Date: 2025/7/8 22:42
      * @param roles 参数1
      * @return: com.apps.omnipotent.manager.bean.RoleMenu
      * @version: 1.0.0

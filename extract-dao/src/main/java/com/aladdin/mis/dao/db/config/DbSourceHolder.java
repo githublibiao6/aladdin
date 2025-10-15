@@ -1,6 +1,6 @@
 package com.aladdin.mis.dao.db.config;
 /**
- * Created by cles on 2020/5/8 0:01
+ * Created by cles on 2025/5/8 0:01
  */
 
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @description: 数据源配置
  * @author cles
- * @Date 2020/5/8 0:01
+ * @Date 2025/5/8 0:01
  */
 @Slf4j
 public class DbSourceHolder {

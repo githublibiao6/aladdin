@@ -19,7 +19,7 @@ public interface ImgDao {
      *  < 根据主键获取数据 >
      * @Description: findById
      * @Author: cles
-     * @Date: 2020/7/6 22:17
+     * @Date: 2025/7/6 22:17
      * @param code 参数1
      * @param id 参数1
      * @return: com.apps.omnipotent.manager.bean.Role

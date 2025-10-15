@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.db.factory.impl;
 /*
- * Created by cles on 2020/5/31 21:42
+ * Created by cles on 2025/5/31 21:42
  */
 
 import com.aladdin.mis.common.db.bean.TableFieldInfo;
@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * @description:
  * @author cles
- * @Date 2020/5/31 21:42
+ * @Date 2025/5/31 21:42
  */
 public class MysqlSqlMaker extends BaseSqlMaker {
 

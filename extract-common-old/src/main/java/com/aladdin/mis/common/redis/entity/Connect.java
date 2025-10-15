@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
 * @Description: redis 连接信息
 * @Author: cles
-* @Date: 2020/4/17 23:55
+* @Date: 2025/4/17 23:55
 */
 @Data
 @Configuration

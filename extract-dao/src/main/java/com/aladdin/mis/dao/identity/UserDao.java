@@ -19,7 +19,7 @@ public interface UserDao {
      *  < 获取全部 >
      * @Description: listUser
      * @Author: cles
-     * @Date: 2020/7/2 23:09
+     * @Date: 2025/7/2 23:09
      * @param qo 参数1
      * @return: java.util.List<com.apps.omnipotent.manager.bean.User>
      * @version: 1.0.0

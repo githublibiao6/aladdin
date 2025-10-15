@@ -22,7 +22,7 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      * @Description: page
      * @param qo
      * @Author: cles
-     * @Date: 2020/6/23 23:02
+     * @Date: 2025/6/23 23:02
      * @return: com.apps.omnipotent.system.pagehelper.entity.PageEntity
      * @version: 1.0.0
      */
@@ -33,7 +33,7 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      *  <添加字典>
      * @Description: add
      * @Author: cles
-     * @Date: 2020/6/18 0:32
+     * @Date: 2025/6/18 0:32
      * @param m 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -45,7 +45,7 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      *  < 更新字典 >
      * @Description: update
      * @Author: cles
-     * @Date: 2020/6/21 23:45
+     * @Date: 2025/6/21 23:45
      * @param m 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -57,7 +57,7 @@ public interface DictionaryTeamsService  extends GlobalService<DictionaryTeams> 
      *  < 根据id删除字典>
      * @Description: remove
      * @Author: cles
-     * @Date: 2020/6/21 23:19
+     * @Date: 2025/6/21 23:19
      * @param id 字典主键
      * @return: boolean
      * @version: 1.0.0

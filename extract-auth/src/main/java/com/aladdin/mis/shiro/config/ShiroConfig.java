@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.config;
 /**
- * Created by cles on 2020/4/27 21:52
+ * Created by cles on 2025/4/27 21:52
  */
 
 import com.aladdin.mis.shiro.service.ShiroService;
@@ -28,7 +28,7 @@ import java.util.*;
 /**
  * @description: shiro
  * @Author cles
- * @Date 2020/4/27 21:52
+ * @Date 2025/4/27 21:52
  */
 @Configuration
 public class ShiroConfig {
@@ -37,7 +37,7 @@ public class ShiroConfig {
      * @Description:  开启注解
      * @return: org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor
      * @Author: cles
-     * @Date: 2020/5/15 0:22
+     * @Date: 2025/5/15 0:22
      */
     @Bean(name = "sourceAdvisor")
     public AuthorizationAttributeSourceAdvisor sourceAdvisor(){
@@ -104,7 +104,7 @@ public class ShiroConfig {
     * @Param: []
     * @return: org.apache.shiro.web.mgt.DefaultWebSecurityManager
     * @Author: cles
-    * @Date: 2020/4/27 23:29
+    * @Date: 2025/4/27 23:29
     */
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager securityManager(){

@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.realm;
 /**
- * Created by cles on 2020/4/23 22:39
+ * Created by cles on 2025/4/23 22:39
  */
 
 import com.aladdin.mis.identity.service.AdminService;
@@ -30,7 +30,7 @@ import java.util.Set;
 
 /**
  * @description: 用户Realm
- * @Date 2020/4/23 22:39
+ * @Date 2025/4/23 22:39
  * @author cles
  */
 public class UserRealm extends AuthorizingRealm {
@@ -56,7 +56,7 @@ public class UserRealm extends AuthorizingRealm {
     * @Param: [principalCollection]
     * @return: org.apache.shiro.authz.AuthorizationInfo
     * @Author: cles
-    * @Date: 2020/4/23 22:40
+    * @Date: 2025/4/23 22:40
     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -100,7 +100,7 @@ public class UserRealm extends AuthorizingRealm {
     * @Param: [authenticationToken]
     * @return: org.apache.shiro.authc.AuthenticationInfo
     * @Author: cles
-    * @Date: 2020/4/23 22:40
+    * @Date: 2025/4/23 22:40
     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {

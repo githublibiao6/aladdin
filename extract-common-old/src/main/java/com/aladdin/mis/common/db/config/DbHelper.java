@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.db.config;
 /**
- * Created by cles on 2020/5/10 23:22
+ * Created by cles on 2025/5/10 23:22
  */
 
 import com.aladdin.mis.common.system.entity.Record;
@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * @description: 数据库操作
  * @author cles
- * @Date 2020/5/10 23:22
+ * @Date 2025/5/10 23:22
  */
 @Slf4j
 public class DbHelper {
@@ -93,7 +93,7 @@ public class DbHelper {
      * @Param: [dataSource, sql]
      * @return: java.lang.Integer
      * @Author: cles
-     * @Date: 2020/5/31 20:32
+     * @Date: 2025/5/31 20:32
      */
     public static int update(DruidDataSource dataSource, String sql) {
         //2. 获得数据库连接
@@ -125,7 +125,7 @@ public class DbHelper {
     * @Param: [dataSource, sql]
     * @return: java.util.List<com.apps.omnipotent.system.bean.Record>
     * @Author: cles
-    * @Date: 2020/5/11 0:15
+    * @Date: 2025/5/11 0:15
     */
     public static List<Map<String, Object>> find(DruidDataSource dataSource, String sql) {
         //2. 获得数据库连接
@@ -219,7 +219,7 @@ public class DbHelper {
     * @Param: [rs, conn, stmt]
     * @return: void
     * @Author: cles
-    * @Date: 2020/6/11 22:33
+    * @Date: 2025/6/11 22:33
     */
     private static void closeConnection(ResultSet rs, DruidPooledConnection conn, Statement stmt){
         if(rs != null){

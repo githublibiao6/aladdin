@@ -6,7 +6,7 @@ import java.io.*;
 /**
 * @Description: 文件工具类
 * @Author: cles
-* @Date: 2020/4/15 0:18
+* @Date: 2025/4/15 0:18
 */
 public class FileUtil {
 
@@ -15,7 +15,7 @@ public class FileUtil {
     * @Param: [response, file]
     * @return: void
     * @Author: cles
-    * @Date: 2020/4/15 0:20
+    * @Date: 2025/4/15 0:20
     */
     public static void downLoadFile(HttpServletResponse response, File file) {
         // 设置强制下载不打开

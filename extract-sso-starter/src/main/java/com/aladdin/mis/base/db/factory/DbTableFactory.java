@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @description:  初始化接口
  * @author cles
- * @Date 2020/6/4 23:04
+ * @Date 2025/6/4 23:04
  */
 public interface DbTableFactory {
 

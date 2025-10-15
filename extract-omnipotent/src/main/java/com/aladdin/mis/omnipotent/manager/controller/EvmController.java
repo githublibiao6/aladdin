@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *  < >
  * @Description: 二维码
  * @Author: cles
- * @Date: 2020/7/12 17:01
+ * @Date: 2025/7/12 17:01
  * @return:
  * @version: 1.0.0
  */

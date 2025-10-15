@@ -12,7 +12,7 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
 * @Description: redis配置
 * @Author: cles
-* @Date: 2020/4/29 23:32
+* @Date: 2025/4/29 23:32
 */
 public class RedisConfig {
 

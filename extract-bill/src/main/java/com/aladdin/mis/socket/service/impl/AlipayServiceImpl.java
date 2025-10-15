@@ -1,6 +1,6 @@
 package com.aladdin.mis.socket.service.impl;
 /*
- *  Created by cles on 2020/7/14 23:24
+ *  Created by cles on 2025/7/14 23:24
  */
 
 import com.aladdin.mis.socket.config.AliPayConfig;
@@ -24,7 +24,7 @@ import java.util.Set;
 /**
  * @author cles
  * @description:
- * @Date 2020/7/14 23:24
+ * @Date 2025/7/14 23:24
  * @version: 1.0.0
  */
 @Slf4j
@@ -39,7 +39,7 @@ public class AlipayServiceImpl implements AlipayService {
      *  < 测试service >
      * @Description: index
      * @Author: cles
-     * @Date: 2020/7/14 23:25
+     * @Date: 2025/7/14 23:25
      * @return: void
      * @version: 1.0.0
      */

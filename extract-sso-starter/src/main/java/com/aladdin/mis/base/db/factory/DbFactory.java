@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 /**
  * @description: 数据库工厂
  * @author cles
- * @Date 2020/5/31 20:54
+ * @Date 2025/5/31 20:54
  */
 @Service
 public interface DbFactory {

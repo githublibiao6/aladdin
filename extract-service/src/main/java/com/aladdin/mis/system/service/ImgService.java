@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 /**
 * @Description: 图片service
 * @Author: cles
-* @Date: 2020/4/15 23:48
+* @Date: 2025/4/15 23:48
 */
 public interface ImgService extends GlobalService<Img> {
 
@@ -16,7 +16,7 @@ public interface ImgService extends GlobalService<Img> {
      *  < 获取图片地址 >
      * @Description: getImgUrl
      * @Author: cles
-     * @Date: 2020/7/13 22:11
+     * @Date: 2025/7/13 22:11
      * @param type 参数1
      * @param id 参数2
      * @return: Img
@@ -29,7 +29,7 @@ public interface ImgService extends GlobalService<Img> {
      *  < 创建图片数据 >
      * @Description: createImg
      * @Author: cles
-     * @Date: 2020/7/13 22:37
+     * @Date: 2025/7/13 22:37
      * @param type 参数1
      * @param id 参数2
      * @return: Img

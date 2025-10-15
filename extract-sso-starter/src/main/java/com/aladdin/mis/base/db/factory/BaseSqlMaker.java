@@ -1,6 +1,6 @@
 package com.aladdin.mis.base.db.factory;
 /*
-  Created by cles on 2020/5/31 21:41
+  Created by cles on 2025/5/31 21:41
  */
 
 import com.aladdin.mis.base.db.bean.TableFieldInfo;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @description: sql语句制造机
  * @author cles
- * @Date 2020/5/31 21:41
+ * @Date 2025/5/31 21:41
  */
 public abstract class BaseSqlMaker {
 
@@ -20,7 +20,7 @@ public abstract class BaseSqlMaker {
      *  < 删除数据的语句 >
      * @Description: deleteSql
      * @Author: cles
-     * @Date: 2020/6/18 23:59
+     * @Date: 2025/6/18 23:59
      * @param tableName 表名
      * @param primaryKey 主键字段
      * @param id 主键值
@@ -36,7 +36,7 @@ public abstract class BaseSqlMaker {
      *  < 保存实体类的sql语句 >
      * @Description: saveSql
      * @Author: cles
-     * @Date: 2020/6/18 23:58
+     * @Date: 2025/6/18 23:58
      * @param tableName 表名
      * @param primaryKey 主键字段
      * @param list 字段
@@ -50,7 +50,7 @@ public abstract class BaseSqlMaker {
      *  < 保存实体类的sql语句 >
      * @Description: updateSql
      * @Author: cles
-     * @Date: 2020/6/18 23:59
+     * @Date: 2025/6/18 23:59
      * @param tableName 表名
      * @param primaryKey 主键字段
      * @param list 字段

@@ -10,7 +10,7 @@ import java.util.List;
 /**
 * @Description: 管理员service接口
 * @Author: cles
-* @Date: 2020/4/28 23:13
+* @Date: 2025/4/28 23:13
 */
 public interface AdminService  extends GlobalService<Admin> {
 

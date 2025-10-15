@@ -1,6 +1,6 @@
 package com.aladdin.mis.base.shiro.config;
 /**
- * Created by cles on 2020/4/27 21:52
+ * Created by cles on 2025/4/27 21:52
  */
 
 import com.aladdin.mis.base.shiro.realm.UserRealm;
@@ -20,7 +20,7 @@ import java.util.*;
 /**
  * @description: shiro
  * @Author cles
- * @Date 2020/4/27 21:52
+ * @Date 2025/4/27 21:52
  */
 @Configuration
 public class ShiroConfig {
@@ -87,7 +87,7 @@ public class ShiroConfig {
     * @Param: []
     * @return: org.apache.shiro.web.mgt.DefaultWebSecurityManager
     * @Author: cles
-    * @Date: 2020/4/27 23:29
+    * @Date: 2025/4/27 23:29
     */
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager securityManager(@Qualifier("userRealm") UserRealm userRealm){

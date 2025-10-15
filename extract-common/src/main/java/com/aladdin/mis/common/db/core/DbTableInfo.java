@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.db.core;
 /**
- * Created by cles on 2020/6/4 23:04
+ * Created by cles on 2025/6/4 23:04
  */
 
 import java.util.List;
@@ -9,14 +9,14 @@ import java.util.Map;
 /**
  * @description:  初始化接口
  * @author cles
- * @Date 2020/6/4 23:04
+ * @Date 2025/6/4 23:04
  */
 public interface DbTableInfo {
 
     /**
      * 获取所有的表
      * @Author: cles
-     * @Date: 2020/6/4 23:05
+     * @Date: 2025/6/4 23:05
      * @return: java.util.List<java.util.Map>
      */
     List<Map<String, Object>> listTable();

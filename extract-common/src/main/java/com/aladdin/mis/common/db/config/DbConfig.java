@@ -1,7 +1,7 @@
 //todo 多数据源
 //package com.aladdin.mis.common.db.config;
 ///**
-// * Created by cles on 2020/5/6 23:24
+// * Created by cles on 2025/5/6 23:24
 // */
 //
 //import com.aladdin.mis.common.db.bean.DataSource;
@@ -15,7 +15,7 @@
 // * @description: 动态数据源
 // * https://blog.csdn.net/z357904947/article/details/89157281
 // * @author cles
-// * @Date 2020/5/6 23:24
+// * @Date 2025/5/6 23:24
 // */
 //@Slf4j
 //public class DbConfig {
@@ -141,7 +141,7 @@
 //    * @Param: [datasourceid]
 //    * @return: boolean
 //    * @Author: cles
-//    * @Date: 2020/5/9 23:42
+//    * @Date: 2025/5/9 23:42
 //    */
 //    public boolean delDataSources(String key) {
 //            return false;
@@ -152,7 +152,7 @@
 //    * @Param: [key, driveClass, url, username, password]
 //    * @return: boolean
 //    * @Author: cles
-//    * @Date: 2020/5/11 23:42
+//    * @Date: 2025/5/11 23:42
 //    */
 //    public boolean testDatasource(String driveClass, String url, String username, String password) {
 //        try {

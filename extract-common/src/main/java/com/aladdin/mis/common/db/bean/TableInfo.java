@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.db.bean;
 /**
- * Created by cles on 2020/5/31 20:02
+ * Created by cles on 2025/5/31 20:02
  */
 
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @description: 表信息
  * @author cles
- * @Date 2020/5/31 20:02
+ * @Date 2025/5/31 20:02
  */
 @Data
 public class TableInfo {

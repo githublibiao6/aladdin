@@ -15,6 +15,15 @@ public class StringUtil {
 
     public static final String FLAG_EQUAL = "=";
 
+
+    public static boolean isEmpty(String str) {
+        return str == null || str.trim().isEmpty();
+    }
+
+    public static boolean isNotEmpty(String str) {
+        return !isEmpty(str);
+    }
+
     /**
      * 拆分key flag value形式字符返回key
      */
@@ -50,14 +59,6 @@ public class StringUtil {
             count++;
         }
         return count;
-    }
-
-    public static boolean isEmpty(String str) {
-        return str == null || "".equals(str);
-    }
-
-    public static boolean isNotEmpty(String str) {
-        return !isEmpty(str);
     }
 
 

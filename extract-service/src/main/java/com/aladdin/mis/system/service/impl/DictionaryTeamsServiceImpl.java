@@ -43,7 +43,7 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeam
      * @Param: [m]
      * @return: boolean
      * @Author: cles
-     * @Date: 2020/6/3 23:43
+     * @Date: 2025/6/3 23:43
      */
     @Override
     public boolean add(DictionaryTeams m) {
@@ -57,7 +57,7 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeam
      *  < 更新字典 >
      * @Description: update
      * @Author: cles
-     * @Date: 2020/6/21 23:47
+     * @Date: 2025/6/21 23:47
      * @param m 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -73,7 +73,7 @@ public class DictionaryTeamsServiceImpl extends GlobalServiceImpl<DictionaryTeam
      *  < 根据主键删除字典 >
      * @Description: remove
      * @Author: cles
-     * @Date: 2020/6/21 23:20
+     * @Date: 2025/6/21 23:20
      * @param id 字典主键
      * @return: boolean
      * @version: 1.0.0

@@ -1,6 +1,6 @@
 //package com.aladdin.mis.system.base;
 ///**
-// * Created by cles on 2020/5/31 12:12
+// * Created by cles on 2025/5/31 12:12
 // */
 //
 //import com.aladdin.mis.annotation.entity.TableField;
@@ -28,7 +28,7 @@
 ///**
 // * @description: 尝试
 // * @author cles
-// * @Date 2020/5/31 12:12
+// * @Date 2025/5/31 12:12
 // */
 ////public abstract class BaseModel<T extends BaseModel> implements Serializable {
 //public abstract class BaseModel implements Serializable {
@@ -38,7 +38,7 @@
 //     *  < 获取主键值 >
 //     * @Description: save
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:18
+//     * @Date: 2025/6/19 0:18
 //     * @return: String
 //     * @version: 1.0.0
 //     */
@@ -61,7 +61,7 @@
 //     *  < 实体直接保存 >
 //     * @Description: save
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:18
+//     * @Date: 2025/6/19 0:18
 //     * @return: String
 //     * @version: 1.0.0
 //     */
@@ -82,7 +82,7 @@
 //     *  < 直接删除实体 >
 //     * @Description: delete
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:15
+//     * @Date: 2025/6/19 0:15
 //     * @return: boolean
 //     * @version: 1.0.0
 //     */
@@ -110,7 +110,7 @@
 //     *  < 根据值删除 >
 //     * @Description: deleteById
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:14
+//     * @Date: 2025/6/19 0:14
 //     * @param id 参数1
 //     * @return: boolean
 //     * @version: 1.0.0
@@ -132,7 +132,7 @@
 //     *  < 更新实体>
 //     * @Description: update
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:16
+//     * @Date: 2025/6/19 0:16
 //     * @return: boolean
 //     * @version: 1.0.0
 //     */
@@ -162,7 +162,7 @@
 //     *  < 根据实体类的注解获取表名 >
 //     * @Description: getTableName
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:17
+//     * @Date: 2025/6/19 0:17
 //     * @return: java.lang.String
 //     * @version: 1.0.0
 //     */
@@ -175,7 +175,7 @@
 //     *  < 将实体转换，保存表字段映射，值等 >
 //     * @Description: getTableField
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:17
+//     * @Date: 2025/6/19 0:17
 //     * @return: java.util.List<com.alibaba.fastjson.JSONObject>
 //     * @version: 1.0.0
 //     */
@@ -254,7 +254,7 @@
 //     * @Param: [tableName]
 //     * @return: java.util.List<java.lang.String>
 //     * @Author: cles
-//     * @Date: 2020/6/16 23:31
+//     * @Date: 2025/6/16 23:31
 //     */
 //    private String getPrimaryKey(String tableName){
 //        return BaseModelUtil.getPrimaryKey(tableName);

@@ -26,7 +26,7 @@ public interface EssayDao {
      *  < >
      * @Description: findById
      * @Author: cles
-     * @Date: 2020/8/26 23:32
+     * @Date: 2025/8/26 23:32
      * @param id 主键
      * @return: com.apps.omnipotent.business.entity.Essay
      * @version: 1.0.0

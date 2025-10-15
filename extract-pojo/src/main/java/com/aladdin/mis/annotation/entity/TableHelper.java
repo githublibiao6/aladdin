@@ -1,13 +1,13 @@
 package com.aladdin.mis.annotation.entity;
 /**
- * Created by cles on 2020/5/31 15:10
+ * Created by cles on 2025/5/31 15:10
  */
 
 
 /**
  * @description:
  * @author cles
- * @Date 2020/5/31 15:10
+ * @Date 2025/5/31 15:10
  */
 public class TableHelper {
 

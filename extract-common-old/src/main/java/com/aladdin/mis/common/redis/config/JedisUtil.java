@@ -109,7 +109,7 @@ public class JedisUtil {
     * @Param: [key, o]
     * @return: boolean
     * @Author: cles
-    * @Date: 2020/4/15 22:28
+    * @Date: 2025/4/15 22:28
     */
     public static <T> boolean setObject(String key, T o) {
         if(!JedisConfig.getEnableRedis()){

@@ -1,6 +1,6 @@
 package com.aladdin.mis.socket.config;
 /*
- *  Created by cles on 2020/7/14 23:23
+ *  Created by cles on 2025/7/14 23:23
  */
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * @author cles
  * @description:
- * @Date 2020/7/14 23:23
+ * @Date 2025/7/14 23:23
  * @version: 1.0.0
  */
 @Configuration

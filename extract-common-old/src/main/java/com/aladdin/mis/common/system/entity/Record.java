@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.system.entity;
 /**
- * Created by cles on 2020/5/10 23:24
+ * Created by cles on 2025/5/10 23:24
  */
 
 import java.io.Serializable;
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @description: 实体
  * @author cles
- * @Date 2020/5/10 23:24
+ * @Date 2025/5/10 23:24
  */
 public class Record  implements Serializable {
 

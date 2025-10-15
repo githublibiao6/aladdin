@@ -1,7 +1,7 @@
 //todo 多数据源
 //package com.aladdin.mis.common.db.config;
 ///**
-// * Created by cles on 2020/5/10 22:53
+// * Created by cles on 2025/5/10 22:53
 // */
 //
 //import com.aladdin.mis.common.db.bean.SqlLog;
@@ -26,7 +26,7 @@
 ///**
 // * @description: 数据库操作实体
 // * @author cles
-// * @Date 2020/5/10 22:53
+// * @Date 2025/5/10 22:53
 // */
 //@Slf4j
 //@Data
@@ -159,7 +159,7 @@
 //    * @Param: [tableName, id]
 //    * @return: int
 //    * @Author: cles
-//    * @Date: 2020/6/14 23:25
+//    * @Date: 2025/6/14 23:25
 //    */
 //    public int  deleteById(String tableName,String primaryKey, Integer id){
 //        String sql = DbMaker.getDbSqlMaker(dataSource.getDbType()).deleteSql(tableName, primaryKey, id);

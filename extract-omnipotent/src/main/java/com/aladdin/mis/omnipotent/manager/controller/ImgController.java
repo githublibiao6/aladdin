@@ -29,7 +29,7 @@ public class ImgController extends GlobalController<Img, ImgServiceImpl> {
      *  < 返回图片 >
      * @Description: getImage
      * @Author: cles
-     * @Date: 2020/7/13 22:05
+     * @Date: 2025/7/13 22:05
      * @return: byte[]
      * @version: 1.0.0
      */
@@ -60,7 +60,7 @@ public class ImgController extends GlobalController<Img, ImgServiceImpl> {
      *  < 返回图片地址 >
      * @Description: getImageUrl
      * @Author: cles
-     * @Date: 2020/7/13 22:05
+     * @Date: 2025/7/13 22:05
      * @return: com.apps.omnipotent.system.global.entity.Result
      * @version: 1.0.0
      */

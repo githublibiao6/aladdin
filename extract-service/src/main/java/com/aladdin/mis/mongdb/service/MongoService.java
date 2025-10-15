@@ -1,6 +1,6 @@
 //package com.aladdin.mis.mongdb.service;
 ///*
-// *  Created by cles on 2020/12/1 22:44
+// *  Created by cles on 2025/12/1 22:44
 // */
 //
 ////import org.springframework.data.mongodb.core.query.Query;
@@ -11,7 +11,7 @@
 ///**
 // * @author cles
 // * @description:
-// * @Date 2020/12/1 22:44
+// * @Date 2025/12/1 22:44
 // * @version: 1.0.0
 // */
 //public interface MongoService<T>{

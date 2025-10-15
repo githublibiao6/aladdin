@@ -1,7 +1,7 @@
 // 二维码
 //package com.aladdin.mis.common.utils;
 ///*
-// *  Created by cles on 2020/7/12 16:33
+// *  Created by cles on 2025/7/12 16:33
 // */
 //import java.awt.BasicStroke;
 //import java.awt.Color;
@@ -30,7 +30,7 @@
 ///**
 // * @author cles
 // * @description: 二维码
-// * @Date 2020/7/12 16:33
+// * @Date 2025/7/12 16:33
 // * @version: 1.0.0
 // */
 //public class EVMUtils {

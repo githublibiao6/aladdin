@@ -9,7 +9,7 @@ import java.util.List;
 /**
 * @Description: 角色service
 * @Author: cles
-* @Date: 2020/4/15 23:48
+* @Date: 2025/4/15 23:48
 */
 public interface RoleMenuService extends GlobalService<RoleMenu> {
 
@@ -18,7 +18,7 @@ public interface RoleMenuService extends GlobalService<RoleMenu> {
      *  < 删除 >
      * @Description: removeByRoleId
      * @Author: cles
-     * @Date: 2020/7/6 0:07
+     * @Date: 2025/7/6 0:07
      * @param roleId 参数1
      * @return: boolean
      * @version: 1.0.0

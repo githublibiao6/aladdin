@@ -1,6 +1,6 @@
 //package com.aladdin.mis.common.utils;
 ///**
-// * Created by cles on 2020/5/31 12:12
+// * Created by cles on 2025/5/31 12:12
 // */
 //
 //
@@ -11,7 +11,7 @@
 ///**
 // * @description: 尝试
 // * @author cles
-// * @Date 2020/5/31 12:12
+// * @Date 2025/5/31 12:12
 // */
 //@Slf4j
 //public class BaseModelUtil {
@@ -21,7 +21,7 @@
 //     *  < 根据实体类的注解获取表名 >
 //     * @Description: getTableName
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:17
+//     * @Date: 2025/6/19 0:17
 //     * @return: java.lang.String
 //     * @version: 1.0.0
 //     */
@@ -50,7 +50,7 @@
 //     *  < 根据实体类的注解获取表模块 >
 //     * @Description: getTableName
 //     * @Author: cles
-//     * @Date: 2020/6/19 0:17
+//     * @Date: 2025/6/19 0:17
 //     * @return: java.lang.String
 //     * @version: 1.0.0
 //     */
@@ -71,7 +71,7 @@
 //     * @Param: [tableName]
 //     * @return: java.util.List<java.lang.String>
 //     * @Author: cles
-//     * @Date: 2020/6/16 23:31
+//     * @Date: 2025/6/16 23:31
 //     */
 //    public  static  String getPrimaryKey(String tableName){
 ////        TableInfo table = MainDb.getTableInfo(tableName);

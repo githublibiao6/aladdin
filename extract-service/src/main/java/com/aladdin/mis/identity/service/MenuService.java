@@ -15,7 +15,7 @@ import java.util.Set;
  *  < 菜单service >
  * @Description:
  * @Author: cles
- * @Date: 2020/6/23 22:55
+ * @Date: 2025/6/23 22:55
  * @return:
  * @version: 1.0.0
  */
@@ -27,7 +27,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @Description: list
      * @Author: cles
      * @param qo
-     * @Date: 2020/6/23 22:54
+     * @Date: 2025/6/23 22:54
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
@@ -45,7 +45,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @Description: pagelist
      * @Author: cles
      * @param qo
-     * @Date: 2020/6/23 22:54
+     * @Date: 2025/6/23 22:54
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
@@ -57,7 +57,7 @@ public interface MenuService  extends GlobalService<Menu> {
      * @Description: pagelist
      * @Author: cles
      * @param qo
-     * @Date: 2020/6/23 22:54
+     * @Date: 2025/6/23 22:54
      * @return: java.util.List<com.apps.omnipotent.manager.bean.Menu>
      * @version: 1.0.0
      */
@@ -68,7 +68,7 @@ public interface MenuService  extends GlobalService<Menu> {
      *  < 新增菜单 >
      * @Description: add
      * @Author: cles
-     * @Date: 2020/6/23 22:54
+     * @Date: 2025/6/23 22:54
      * @param menu 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -80,7 +80,7 @@ public interface MenuService  extends GlobalService<Menu> {
      *  < 更新 >
      * @Description: update
      * @Author: cles
-     * @Date: 2020/7/7 23:27
+     * @Date: 2025/7/7 23:27
      * @param menu 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -92,7 +92,7 @@ public interface MenuService  extends GlobalService<Menu> {
      *  < 删除 >
      * @Description: remove
      * @Author: cles
-     * @Date: 2020/7/7 23:27
+     * @Date: 2025/7/7 23:27
      * @param id 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -104,7 +104,7 @@ public interface MenuService  extends GlobalService<Menu> {
      *  < 根据主键查询 >
      * @Description: findById
      * @Author: cles
-     * @Date: 2020/7/7 23:27
+     * @Date: 2025/7/7 23:27
      * @param id 参数1
      * @return: com.apps.omnipotent.manager.bean.Menu
      * @version: 1.0.0

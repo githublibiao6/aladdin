@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.threadpool.config;
 /**
- * Created by cles on 2020/4/28 23:34
+ * Created by cles on 2025/4/28 23:34
  */
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @description: 线程池配置
  * @author cles
- * @Date 2020/4/28 23:34
+ * @Date 2025/4/28 23:34
  */
 @Configuration
 @Slf4j

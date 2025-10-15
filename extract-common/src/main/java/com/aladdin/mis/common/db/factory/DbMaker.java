@@ -1,6 +1,6 @@
 //package com.aladdin.mis.common.db.factory;
 ///**
-// * Created by cles on 2020/5/31 21:52
+// * Created by cles on 2025/5/31 21:52
 // */
 //
 //import com.aladdin.mis.common.db.core.DbTableInfo;
@@ -10,7 +10,7 @@
 ///**
 // * @description: 数据库的制造机
 // * @author cles
-// * @Date 2020/5/31 21:52
+// * @Date 2025/5/31 21:52
 // */
 //public class DbMaker {
 //

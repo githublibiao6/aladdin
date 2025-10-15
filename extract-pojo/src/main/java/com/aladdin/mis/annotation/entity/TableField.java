@@ -1,6 +1,6 @@
 package com.aladdin.mis.annotation.entity;
 /**
- * Created by cles on 2020/5/31 14:24
+ * Created by cles on 2025/5/31 14:24
  */
 
 import java.lang.annotation.ElementType;
@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 /**
  * @description:
  * @author cles
- * @Date 2020/5/31 14:24
+ * @Date 2025/5/31 14:24
  */
 @Target({ElementType.TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

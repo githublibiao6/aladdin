@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.utils;
 /**
- * Created by cles on 2020/5/30 0:33
+ * Created by cles on 2025/5/30 0:33
  */
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @description: 转换工具类
  * @author cles
- * @Date 2020/5/30 0:33
+ * @Date 2025/5/30 0:33
  */
 public class ConvertUtils {
 
@@ -19,7 +19,7 @@ public class ConvertUtils {
     * @Param: [list, pid]
     * @return: void
     * @Author: cles
-    * @Date: 2020/5/30 0:34
+    * @Date: 2025/5/30 0:34
     */
     public static void convertTree(List<Map> list, String idField, String parentField,
                              String childrenField , String pid, boolean removeChildren){

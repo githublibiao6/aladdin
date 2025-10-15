@@ -1,6 +1,6 @@
 package com.aladdin.mis.base.db.factory.impl;
 /**
- * Created by cles on 2020/5/31 21:42
+ * Created by cles on 2025/5/31 21:42
  */
 
 import com.aladdin.mis.base.db.bean.TableFieldInfo;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @description:
  * @author cles
- * @Date 2020/5/31 21:42
+ * @Date 2025/5/31 21:42
  */
 public class OracleSqlMaker extends BaseSqlMaker {
 

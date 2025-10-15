@@ -1,6 +1,6 @@
 package com.aladdin.mis.base.db.bean;
 /**
- * Created by cles on 2020/5/9 23:00
+ * Created by cles on 2025/5/9 23:00
  */
 
 import lombok.Data;

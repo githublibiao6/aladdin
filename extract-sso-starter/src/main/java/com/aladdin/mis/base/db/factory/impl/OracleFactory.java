@@ -7,7 +7,7 @@ import com.aladdin.mis.base.db.factory.DbFactory;
 /**
  * @description: sql语句生成工厂
  * @author cles
- * @Date 2020/5/31 20:54
+ * @Date 2025/5/31 20:54
  */
 public class OracleFactory implements DbFactory {
 

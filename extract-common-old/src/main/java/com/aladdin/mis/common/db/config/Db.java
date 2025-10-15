@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.db.config;
 /**
- * Created by cles on 2020/5/10 22:44
+ * Created by cles on 2025/5/10 22:44
  */
 
 
@@ -13,7 +13,7 @@ import java.util.HashMap;
 /**
  * @description: 数据源操作工具
  * @author cles
- * @Date 2020/5/10 22:44
+ * @Date 2025/5/10 22:44
  */
 @Slf4j
 @Component
@@ -27,7 +27,7 @@ public class Db {
     * @Param: [key, dataSource]
     * @return: void
     * @Author: cles
-    * @Date: 2020/5/10 23:11
+    * @Date: 2025/5/10 23:11
     */
     public static void setDbSource(String key, DruidDataSource dataSource){
         map.put(key,dataSource);
@@ -40,7 +40,7 @@ public class Db {
     * @Param: [key, dataSource]
     * @return: void
     * @Author: cles
-    * @Date: 2020/5/10 23:12
+    * @Date: 2025/5/10 23:12
     */
     public static void setMain(DruidDataSource dataSource){
         log.info("主数据源加入成功");
@@ -51,7 +51,7 @@ public class Db {
     * @Description: 使用系统数据源
     * @return: com.apps.omnipotent.system.db.utils.DbPro
     * @Author: cles
-    * @Date: 2020/5/10 23:12
+    * @Date: 2025/5/10 23:12
     */
     public static DbPro use(){
         return new DbPro(main) ;
@@ -62,7 +62,7 @@ public class Db {
     * @Param: [key]
     * @return: com.apps.omnipotent.system.db.utils.DbPro
     * @Author: cles
-    * @Date: 2020/5/10 23:12
+    * @Date: 2025/5/10 23:12
     */
     public static DbPro use(String key){
         DruidDataSource dataSource = map.get(key);

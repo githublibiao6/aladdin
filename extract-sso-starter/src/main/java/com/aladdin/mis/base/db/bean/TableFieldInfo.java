@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @description: 表字段信息
  * @author cles
- * @Date 2020/5/31 20:02
+ * @Date 2025/5/31 20:02
  */
 @Data
 public class TableFieldInfo {

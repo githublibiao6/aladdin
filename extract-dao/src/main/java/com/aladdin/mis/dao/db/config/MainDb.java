@@ -1,6 +1,6 @@
 package com.aladdin.mis.dao.db.config;
 /**
- * Created by cles on 2020/5/31 18:29
+ * Created by cles on 2025/5/31 18:29
  */
 
 import com.aladdin.mis.annotation.entity.Table;
@@ -24,7 +24,7 @@ import java.util.*;
 /**
  * @description: 默认数据源加入DB
  * @author cles
- * @Date 2020/5/31 18:29
+ * @Date 2025/5/31 18:29
  */
 @Configuration
 @ConfigurationProperties(prefix = "spring.datasource")
@@ -63,7 +63,7 @@ public class MainDb {
      *  < 初始化主数据源的表 >
      * @Description: init
      * @Author: cles
-     * @Date: 2020/6/18 22:37
+     * @Date: 2025/6/18 22:37
      * @return: void
      * @version: 1.0.0
      */
@@ -131,7 +131,7 @@ public class MainDb {
      *  < 将字段map转为字段实体>
      * @Description: convertField
      * @Author: cles
-     * @Date: 2020/6/18 22:39
+     * @Date: 2025/6/18 22:39
      * @param map 参数1
      * @return: com.apps.omnipotent.system.db.bean.TableFieldInfo
      * @version: 1.0.0
@@ -285,7 +285,7 @@ public class MainDb {
     * @Param: [tableName]
     * @return: com.apps.omnipotent.system.db.bean.TableInfo
     * @Author: cles
-    * @Date: 2020/6/9 23:34
+    * @Date: 2025/6/9 23:34
     */
     public static TableInfo getTableInfo(String tableName){
         return map.get(tableName);

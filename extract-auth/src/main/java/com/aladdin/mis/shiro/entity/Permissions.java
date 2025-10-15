@@ -1,6 +1,6 @@
 package com.aladdin.mis.shiro.entity;
 /**
- * Created by cles on 2020/4/17 23:56
+ * Created by cles on 2025/4/17 23:56
  */
 
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.Data;
  * @author cles
  * @description: 权限信息
  * @Auther cles
- * @Date 2020/4/17 23:56
+ * @Date 2025/4/17 23:56
  */
 @Data
 public class Permissions {

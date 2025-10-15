@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -12,7 +13,8 @@ import org.apache.ibatis.annotations.Update;
 public interface BaseMapper<T> extends Mapper<T> {
 
     @Update("insert")
-    int insert(T entity);
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    int insert(@Param("et") T entity);
 
     @Update("deleteById")
     int deleteById(Serializable id);

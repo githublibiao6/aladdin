@@ -31,7 +31,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
     * @Param: []
     * @return: java.util.List<com.apps.omnipotent.manager.bean.Dictionary>
     * @Author: cles
-    * @Date: 2020/5/13 23:28
+    * @Date: 2025/5/13 23:28
     */
     @Override
     public List<Dictionary> list(){
@@ -43,7 +43,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
     * @Param: [m]
     * @return: boolean
     * @Author: cles
-    * @Date: 2020/6/3 23:43
+    * @Date: 2025/6/3 23:43
     */
     @Override
     public boolean add(Dictionary m) {
@@ -55,7 +55,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
      *  < 更新字典 >
      * @Description: update
      * @Author: cles
-     * @Date: 2020/6/21 23:47
+     * @Date: 2025/6/21 23:47
      * @param m 参数1
      * @return: boolean
      * @version: 1.0.0
@@ -70,7 +70,7 @@ public class DictionaryServiceImpl extends GlobalServiceImpl<Dictionary> impleme
      *  < 根据主键删除字典 >
      * @Description: remove
      * @Author: cles
-     * @Date: 2020/6/21 23:20
+     * @Date: 2025/6/21 23:20
      * @param id 字典主键
      * @return: boolean
      * @version: 1.0.0

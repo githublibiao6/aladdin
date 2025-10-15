@@ -6,7 +6,10 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
+import org.apache.ibatis.reflection.SystemMetaObject;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 
 /**
@@ -21,8 +24,18 @@ public class BaseSqlLogInterceptor implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         BoundSql boundSql = statementHandler.getBoundSql();
+        String originalSql = statementHandler.getBoundSql().getSql();
+        System.out.println("originalSql:" + originalSql);
+        // 在这里修改 SQL
+//        String modifiedSql = "modifySql(originalSql);";
+//        // 反射设置修改后的 SQL
+//        Field field = ReflectionUtils.findField(BoundSql.class, "sql");
+//        field.setAccessible(true);
+//        field.set(statementHandler.getBoundSql(), modifiedSql);
+
         String sql = boundSql.getSql();
         System.out.println("SQL: " + sql); // 记录SQL语句
 

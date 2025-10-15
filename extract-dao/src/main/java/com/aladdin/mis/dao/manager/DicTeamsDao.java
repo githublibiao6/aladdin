@@ -20,7 +20,7 @@ public interface DicTeamsDao {
      *  < 根据字典获取字典项 >
      * @Description: listTeamsByDicId
      * @Author: cles
-     * @Date: 2020/6/23 23:24
+     * @Date: 2025/6/23 23:24
      * @param id 参数1
      * @return: java.util.List<com.apps.omnipotent.manager.bean.DictionaryTeams>
      * @version: 1.0.0
@@ -33,7 +33,7 @@ public interface DicTeamsDao {
      *  < >
      * @Description: page
      * @Author: cles
-     * @Date: 2020/6/23 23:05
+     * @Date: 2025/6/23 23:05
      * @return: java.util.List<com.apps.omnipotent.manager.bean.DictionaryTeams>
      * @version: 1.0.0
      */

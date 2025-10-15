@@ -1,6 +1,6 @@
 package com.aladdin.mis.common.db.bean;
 /**
- * Created by cles on 2020/5/9 23:00
+ * Created by cles on 2025/5/9 23:00
  */
 
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * @description:
  * @author cles
- * @Date 2020/5/9 23:00
+ * @Date 2025/5/9 23:00
  */
 @Data
 public class DataSource {

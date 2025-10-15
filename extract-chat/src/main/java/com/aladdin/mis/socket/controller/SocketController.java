@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 * @Param: https://blog.51cto.com/u_15049782/4707502 单机多连接
 * @return:
 * @Author: cles
-* @Date: 2020/4/17 23:47
+* @Date: 2025/4/17 23:47
 */
 @ServerEndpoint("/socket/{id}/{name}")
 @RestController

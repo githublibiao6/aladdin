@@ -110,7 +110,7 @@ public class RoleServiceImpl extends GlobalServiceImpl<Role> implements RoleServ
      *  < 角色id，和菜单组 建立关联>
      * @Description: saveRoleMenu
      * @Author: cles
-     * @Date: 2020/7/8 22:47
+     * @Date: 2025/7/8 22:47
      * @param roleId 参数1
      * @param menus 参数2
      * @return: void

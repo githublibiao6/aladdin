@@ -74,7 +74,7 @@ public class EssayController extends GlobalController<Essay, EssayService> {
      *  < 删除 >
      * @Description: remove
      * @Author: cles
-     * @Date: 2020/6/21 23:46
+     * @Date: 2025/6/21 23:46
      * @param json 参数1
      * @return: com.apps.omnipotent.system.global.entity.Result
      * @version: 1.0.0
