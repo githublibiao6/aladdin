@@ -78,8 +78,13 @@ public class DbPro {
     }
 
 
-    public String getDeleteSql(BaseModel model){
+    public String getSelectSql(Integer id){
 
+        return "delete sql";
+    }
+
+    public String getDeleteSql(BaseModel model){
+        // todo
         return "delete sql";
     }
 

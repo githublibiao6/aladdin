@@ -49,16 +49,28 @@ public class BaseModelHandleInterceptor implements Interceptor {
         String msId = ms.getId();
         if (msId != null ) {
             String newSql = "";
+            if(msId.endsWith(".selectById")){
+                BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
+                // todo
+                newSql =  dbPro.getSelectSql(0);
+            }
             if(msId.endsWith(".updateById")){
                 BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
                 newSql =  dbPro.getUpdateSql(baseModel);
-                System.err.println("updateSql:" + newSql);
             }
             if(msId.endsWith(".insert")){
                 BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
                 newSql =  dbPro.getSaveSql(baseModel);
-                System.err.println("saveSql:" + newSql);
             }
+            if(msId.endsWith(".removeById")){
+                BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
+                newSql =  dbPro.getDeleteSql(baseModel);
+            }
+            if(msId.endsWith(".removeById")){
+                BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
+                newSql =  dbPro.getDeleteSql(baseModel);
+            }
+            System.err.println(msId + ":Sql:" + newSql);
             queryArgs[MAPPED_STATEMENT_INDEX] = copyFromNewSql(ms,boundSql, newSql, new ArrayList<>(boundSql.getParameterMappings()), param);
         }
         return invocation.proceed();
