@@ -31,6 +31,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @description: 数据库操作实体
@@ -85,10 +86,32 @@ public class DbPro {
         return "update " + tableName + " set sys005 = 0 where  " + tableId +" = " + id;
     }
 
+    public String getDeleteSql(Class<?> clazz, List<Serializable> ids){
+        String tableName = getTableName(clazz);
+        String tableId = getTableId(tableName, clazz);
+        StringBuilder idStr = new StringBuilder();
+        ids.forEach(s->{
+            idStr.append(s).append(",");
+        });
+        idStr.deleteCharAt(idStr.length()-1);
+        return "update " + tableName + " set sys005 = 0 where t."+tableId+" in (" + idStr +")" ;
+    }
+
     public String getSelectSql(Class<?> clazz, Serializable id) {
         String tableName = getTableName(clazz);
         String tableId = getTableId(tableName, clazz);
         return  "select * from "+tableName+" t where t."+tableId+" = " +id ;
+    }
+
+    public String getSelectSql(Class<?> clazz, List<Serializable> ids) {
+        String tableName = getTableName(clazz);
+        String tableId = getTableId(tableName, clazz);
+        StringBuilder idStr = new StringBuilder();
+        ids.forEach(s->{
+            idStr.append(s).append(",");
+        });
+        idStr.deleteCharAt(idStr.length()-1);
+        return  "select * from "+tableName+" t where t."+tableId+" in (" + idStr +")" ;
     }
 
     public String getUpdateSql(BaseModel model){

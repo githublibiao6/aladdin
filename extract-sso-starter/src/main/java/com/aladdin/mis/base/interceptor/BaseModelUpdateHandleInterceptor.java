@@ -69,6 +69,13 @@ public class BaseModelUpdateHandleInterceptor implements Interceptor {
                 Serializable id = (Serializable) param;
                 newSql =  dbPro.getDeleteSql(clazz, id);
             }
+            if(msId.endsWith(".deleteBatchIds")){
+                List<ResultMap> list = ms.getResultMaps();
+                ResultMap resultMap = list.get(MAPPED_STATEMENT_INDEX);
+                Class<?> clazz = resultMap.getType();
+                List<Serializable> ids = (List<Serializable>) ((Map<?, ?>) param).get("coll");
+                newSql =  dbPro.getDeleteSql(clazz, ids);
+            }
             System.err.println(msId + ":Sql:" + newSql);
             queryArgs[MAPPED_STATEMENT_INDEX] = copyFromNewSql(ms,boundSql, newSql, new ArrayList<>(boundSql.getParameterMappings()), param);
         }

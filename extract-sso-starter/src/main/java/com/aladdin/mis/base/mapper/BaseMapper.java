@@ -28,7 +28,7 @@ public interface BaseMapper<T> extends Mapper<T> {
     @Select("selectById")
     T selectById(Serializable id);
 
-    @Update("selectBatchIds")
+    @Select("selectBatchIds")
     List<T> selectBatchIds(@Param("coll") Collection<? extends Serializable> idList);
 }
 

@@ -54,6 +54,13 @@ public class BaseModelQueryHandleInterceptor implements Interceptor {
                 Serializable id = (Serializable) param;
                 newSql =  dbPro.getSelectSql(clazz, id);
             }
+            if(msId.endsWith(".selectBatchIds")){
+                List<ResultMap> list = ms.getResultMaps();
+                ResultMap resultMap = list.get(MAPPED_STATEMENT_INDEX);
+                Class<?> clazz = resultMap.getType();
+                List<Serializable> ids = (List<Serializable>) ((Map<?, ?>) param).get("coll");
+                newSql =  dbPro.getSelectSql(clazz, ids);
+            }
             System.err.println(msId + ":Sql:" + newSql);
             queryArgs[MAPPED_STATEMENT_INDEX] = copyFromNewSql(ms,boundSql, newSql, new ArrayList<>(boundSql.getParameterMappings()), param);
         }

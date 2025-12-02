@@ -1,8 +1,5 @@
 package com.aladdin.mis.base.config;
 
-import com.aladdin.mis.base.service.PersonService;
-import com.aladdin.mis.base.service.impl.PersonServiceImpl;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -10,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class BaseAutoConfiguration {
-
-    @Bean
-    public PersonService testService() {
-        return new PersonServiceImpl();
-    }
+//
+//    @Bean
+//    public PersonService testService() {
+//        return new PersonServiceImpl();
+//    }
 }

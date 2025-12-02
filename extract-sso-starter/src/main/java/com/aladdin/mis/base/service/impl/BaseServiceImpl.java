@@ -4,10 +4,12 @@ import com.aladdin.mis.base.mapper.BaseMapper;
 import com.aladdin.mis.base.model.BaseModel;
 import com.aladdin.mis.base.service.BaseService;
 import jakarta.annotation.Resource;
+import lombok.Getter;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,13 +27,9 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     @Resource
     protected M baseMapper;
 
-    public M getBaseMapper() {
-        return this.baseMapper;
-    }
-
     @Override
     public boolean insert(T entity) {
-        return this.getBaseMapper().insert(entity) > 0 ;
+        return baseMapper.insert(entity) > 0 ;
     }
 
     @Override
@@ -56,12 +54,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
     @Override
     public T selectById(Serializable id) {
-        T o = baseMapper.selectById(id);
-        return o;
+        return baseMapper.selectById(id);
     }
 
     @Override
     public List<T> selectBatchIds(Collection<? extends Serializable> idList) {
-        return List.of();
+        return baseMapper.selectBatchIds(idList);
     }
 }
