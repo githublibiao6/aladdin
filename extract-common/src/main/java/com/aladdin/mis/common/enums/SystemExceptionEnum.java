@@ -1,8 +1,11 @@
 package com.aladdin.mis.common.enums;
 
+import lombok.Getter;
+
 /**
  * 系统错误枚举
  */
+@Getter
 public enum SystemExceptionEnum {
 
     SUCCESS(200, "成功"),
@@ -20,14 +23,6 @@ public enum SystemExceptionEnum {
      * 错误信息
      */
     private String message;
-
-    public Integer getCode() {
-        return this.code;
-    }
-
-    public String getMessage() {
-        return this.message;
-    }
 
     private SystemExceptionEnum(final Integer code, final String message) {
         this.code = code;

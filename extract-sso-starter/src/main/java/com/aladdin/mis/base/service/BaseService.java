@@ -29,7 +29,7 @@ public interface BaseService<T extends BaseModel> {
 
     boolean updateById(@Param("et") T entity);
 
-    T selectById(Serializable id);
+    T selectById(@Param("et") Serializable id);
 
     List<T> selectBatchIds(@Param("coll") Collection<? extends Serializable> idList);
 

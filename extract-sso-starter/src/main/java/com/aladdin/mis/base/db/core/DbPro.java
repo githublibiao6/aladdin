@@ -2,6 +2,7 @@ package com.aladdin.mis.base.db.core;
 
 import com.aladdin.mis.base.annotation.Table;
 import com.aladdin.mis.base.annotation.TableField;
+import com.aladdin.mis.base.annotation.TableId;
 import com.aladdin.mis.base.db.bean.DataSourceDb;
 import com.aladdin.mis.base.db.bean.TableFieldInfo;
 import com.aladdin.mis.base.db.factory.BaseSqlMaker;
@@ -23,6 +24,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
@@ -77,15 +79,16 @@ public class DbPro {
         return saveSql(tableName, fields);
     }
 
-
-    public String getSelectSql(Integer id){
-
-        return "delete sql";
+    public String getDeleteSql(Class<?> clazz, Serializable id){
+        String tableName = getTableName(clazz);
+        String tableId = getTableId(tableName, clazz);
+        return "update " + tableName + " set sys005 = 0 where  " + tableId +" = " + id;
     }
 
-    public String getDeleteSql(BaseModel model){
-        // todo
-        return "delete sql";
+    public String getSelectSql(Class<?> clazz, Serializable id) {
+        String tableName = getTableName(clazz);
+        String tableId = getTableId(tableName, clazz);
+        return  "select * from "+tableName+" t where t."+tableId+" = " +id ;
     }
 
     public String getUpdateSql(BaseModel model){
@@ -94,9 +97,6 @@ public class DbPro {
         return updateSql(tableName, fields);
     }
 
-    public String getSelectSql(String tableName, Integer id) {
-        return  "select * from "+tableName+" m where id="+id ;
-    }
 
     public String deleteSql(String tableName, Long id) {
         return sqlMaker.deleteSql(tableName, primaryKey, id);
@@ -170,6 +170,15 @@ public class DbPro {
 
     private String getTableName(BaseModel model) {
         Class<?> clazz = model.getClass();
+        return getTableName(clazz);
+    }
+
+    /**
+     * 获取表名
+     * @param clazz class
+     * @return string
+     */
+    private String getTableName(Class<?> clazz) {
         boolean existTable = clazz.isAnnotationPresent(Table.class);
         if(existTable){
             Table table = clazz.getDeclaredAnnotation(Table.class);
@@ -180,6 +189,31 @@ public class DbPro {
             return tableName;
         }
         throw new SystemException(SystemExceptionEnum.TABLE_NOT_EXIST);
+    }
+
+
+    /**
+     * 获取表主键字段
+     * @param tableName 表名
+     * @param clazz class
+     * @return string
+     */
+    private String getTableId(String tableName, Class<?> clazz) {
+        Field[] fields = clazz.getDeclaredFields();
+        if(tableMap.get(tableName) == null){
+            for (Field field : fields){
+                boolean tableIdFieldExists = field.isAnnotationPresent(TableId.class);
+                if(tableIdFieldExists){
+                    TableId tableId = field.getDeclaredAnnotation(TableId.class);
+                    TableField tableField = field.getDeclaredAnnotation(TableField.class);
+                    if(!tableField.exist()){
+                        continue;
+                    }
+                    return tableField.value();
+                }
+            }
+        }
+        return "id";
     }
 
     private List<TableFieldInfo> getTableFields(String tableName, BaseModel model) {

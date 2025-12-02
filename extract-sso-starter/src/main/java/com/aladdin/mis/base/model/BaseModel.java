@@ -59,5 +59,5 @@ public class BaseModel {
     /**
      * 更新次数
      */
-    private int sys007;
+    private Integer sys007;
 }

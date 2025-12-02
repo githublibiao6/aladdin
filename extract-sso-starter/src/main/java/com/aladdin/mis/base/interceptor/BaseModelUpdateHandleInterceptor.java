@@ -4,10 +4,7 @@ import com.aladdin.mis.base.db.core.DbPro;
 import com.aladdin.mis.base.model.BaseModel;
 import org.apache.ibatis.builder.StaticSqlSource;
 import org.apache.ibatis.executor.Executor;
-import org.apache.ibatis.mapping.BoundSql;
-import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.mapping.ParameterMapping;
-import org.apache.ibatis.mapping.SqlSource;
+import org.apache.ibatis.mapping.*;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -16,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.util.ReflectionUtils;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,7 @@ import java.util.Map;
         @Signature(type = Executor.class, method = "update",
                 args = {MappedStatement.class, Object.class})
 })
-public class BaseModelHandleInterceptor implements Interceptor {
+public class BaseModelUpdateHandleInterceptor implements Interceptor {
 
     @Autowired
     @Lazy
@@ -50,9 +48,11 @@ public class BaseModelHandleInterceptor implements Interceptor {
         if (msId != null ) {
             String newSql = "";
             if(msId.endsWith(".selectById")){
-                BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
-                // todo
-                newSql =  dbPro.getSelectSql(0);
+                List<ResultMap> list = ms.getResultMaps();
+                ResultMap resultMap = list.get(MAPPED_STATEMENT_INDEX);
+                Class<?> clazz = resultMap.getType();
+                Serializable id = (Serializable) param;
+                newSql =  dbPro.getSelectSql(clazz, id);
             }
             if(msId.endsWith(".updateById")){
                 BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
@@ -62,13 +62,12 @@ public class BaseModelHandleInterceptor implements Interceptor {
                 BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
                 newSql =  dbPro.getSaveSql(baseModel);
             }
-            if(msId.endsWith(".removeById")){
-                BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
-                newSql =  dbPro.getDeleteSql(baseModel);
-            }
-            if(msId.endsWith(".removeById")){
-                BaseModel baseModel = (BaseModel) ((Map<?, ?>) param).get("et");
-                newSql =  dbPro.getDeleteSql(baseModel);
+            if(msId.endsWith(".deleteById")){
+                List<ResultMap> list = ms.getResultMaps();
+                ResultMap resultMap = list.get(MAPPED_STATEMENT_INDEX);
+                Class<?> clazz = resultMap.getType();
+                Serializable id = (Serializable) param;
+                newSql =  dbPro.getDeleteSql(clazz, id);
             }
             System.err.println(msId + ":Sql:" + newSql);
             queryArgs[MAPPED_STATEMENT_INDEX] = copyFromNewSql(ms,boundSql, newSql, new ArrayList<>(boundSql.getParameterMappings()), param);

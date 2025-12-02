@@ -10,7 +10,7 @@ layui.define(['jquery'], function(exports) {
 			title: 'title',
 			hide_class: 'layui-hide',
 			icon: {
-				open: 'layui-icon layui-icon-triangle-d',
+				open: 'layui-icon layui-icon-triangle-AI.md',
 				close: 'layui-icon layui-icon-triangle-r',
 				left: 16,
 			},

@@ -16,9 +16,9 @@ public class JunitTest extends TestMall{
 //    @Test
     public void test() {
 //        Model
-//        Dictionary d = new Dictionary();
-//        d.setCode("code");
-//        d.delete();
+//        Dictionary AI.md = new Dictionary();
+//        AI.md.setCode("code");
+//        AI.md.delete();
 //        List<Dictionary> list = dao.listDictionary();
 //        list.forEach(t->{
 //            System.err.println(t);

@@ -41,7 +41,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
     @Override
     public boolean deleteById(T entity) {
-        return false;
+        return baseMapper.deleteById(1) > 0;
     }
 
     @Override
@@ -56,7 +56,8 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
     @Override
     public T selectById(Serializable id) {
-        return null;
+        T o = baseMapper.selectById(id);
+        return o;
     }
 
     @Override

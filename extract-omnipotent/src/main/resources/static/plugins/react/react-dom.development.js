@@ -2331,7 +2331,7 @@ function getFallbackBeforeInputChars(topLevelType, nativeEvent) {
        * - `which` is `0`. Arrow keys, Esc key, etc.
        *
        * - `which` is the pressed key code, but no char is available.
-       *   Ex: 'AltGr + d` in Polish. There is no modified character for
+       *   Ex: 'AltGr + AI.md` in Polish. There is no modified character for
        *   this key combination and no character is inserted into the
        *   document, but FF fires the keypress for char code `100` anyway.
        *   No `input` event will occur.
@@ -2397,7 +2397,7 @@ function extractBeforeInputEvent(topLevelType, targetInst, nativeEvent, nativeEv
  * available in Chrome, Safari, Opera, and IE. This event fires after
  * `onKeyPress` and `onCompositionEnd`, but before `onInput`.
  *
- * `beforeInput` is spec'd but not implemented in any browsers, and
+ * `beforeInput` is spec'AI.md but not implemented in any browsers, and
  * the `input` event does not provide any useful information about what has
  * actually been added, contrary to the spec. Thus, `textInput` is the best
  * available event to identify the characters that have actually been inserted
@@ -2764,7 +2764,7 @@ function shouldUseChangeEvent(elem) {
 function manualDispatchChangeEvent(nativeEvent) {
   var event = createAndAccumulateChangeEvent(activeElementInst, nativeEvent, getEventTarget(nativeEvent));
 
-  // If change and propertychange bubbled, we'd just bind to it like all the
+  // If change and propertychange bubbled, we'AI.md just bind to it like all the
   // other events and have it go through ReactBrowserEventEmitter. Since it
   // doesn't, we manually listen for the events and so we have to enqueue and
   // process the abstract event manually.
@@ -3160,7 +3160,7 @@ var EnterLeaveEventPlugin = {
  */
 
 /**
- * This API should be called `delete` but we'd have to make sure to always
+ * This API should be called `delete` but we'AI.md have to make sure to always
  * transform these to strings for IE support. When this transform is fully
  * supported we can rename it.
  */
@@ -7741,13 +7741,13 @@ function ChildReconciler(shouldTrackSideEffects) {
     // with that model. If it ends up not being worth the tradeoffs, we can
     // add it later.
 
-    // Even with a two ended optimization, we'd want to optimize for the case
+    // Even with a two ended optimization, we'AI.md want to optimize for the case
     // where there are few changes and brute force the comparison instead of
-    // going for the Map. It'd like to explore hitting that path first in
+    // going for the Map. It'AI.md like to explore hitting that path first in
     // forward-only mode and only go for the Map once we notice that we need
     // lots of look ahead. This doesn't handle reversal as well as two ended
     // search but that's unusual. Besides, for the two ended optimization to
-    // work on Iterables, we'd need to copy the whole set.
+    // work on Iterables, we'AI.md need to copy the whole set.
 
     // In this first iteration, we'll just live with hitting the bad case
     // (adding everything to a Map) in for every insert/move.
@@ -12521,7 +12521,7 @@ function postMountWrapper(element, props) {
       break;
   }
 
-  // Normally, we'd just do `node.checked = node.checked` upon initial mount, less this bug
+  // Normally, we'AI.md just do `node.checked = node.checked` upon initial mount, less this bug
   // this is needed to work around a chrome bug where setting defaultChecked
   // will sometimes influence the value of checked (even after detachment).
   // Reference: https://bugs.chromium.org/p/chromium/issues/detail?id=608416
