@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> implements BaseService<T> {
 
-    @Resource
+    @Autowired
     protected M baseMapper;
 
     @Override
@@ -34,7 +34,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
     @Override
     public boolean deleteById(Serializable id) {
-        return false;
+        return baseMapper.deleteById(id) > 0;
     }
 
     @Override
