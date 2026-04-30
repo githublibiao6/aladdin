@@ -3,6 +3,12 @@ package com.aladdin.mis.common.utils;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Cleanup;
+import lombok.val;
+
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
@@ -118,6 +124,29 @@ public class FileUtil {
             LOGGER.error("-----image file save local exceprion:{}-----", e1.getMessage());
         }
         return Constant.UPLOAD_ATTACHMENT_URL  + typePath + "/" + newFileName;
+    }
+
+    /**
+     * 根据url下载文件MultipartFile
+     * @param url
+     * @return
+     */
+    public static MultipartFile downloadMultipartFileByUrl(String url) {
+        try{
+            String fileName = url.substring(url.lastIndexOf('/') + 1).split("\\?")[0];
+            @Cleanup val inputStream = URLUtil.url(url).openStream();
+            FileItemFactory factory = new DiskFileItemFactory(16, null);
+            FileItem fileItem = factory.createItem(fileName, MediaType.MULTIPART_FORM_DATA_VALUE, true, fileName);
+            val bytes = IoUtil.readBytes(inputStream);
+            @Cleanup val outputStream = fileItem.getOutputStream();
+            IoUtil.write(outputStream, false, bytes);
+            CommonsMultipartFile file = new CommonsMultipartFile(fileItem);
+            LOGGER.error("文件下载完成");
+            LOGGER.error("文件下载成功:{}", file.getOriginalFilename());
+            return file;
+        }catch (Exception e){
+            return null;
+        }
     }
 
 
