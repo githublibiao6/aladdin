@@ -1,4 +1,4 @@
-package com.apps.omnopotent;
+package extract-omnipotent.src.test.java.com.apps.omnopotent;
 /**
  * Created by cles on 2025/5/30 20:40
  */

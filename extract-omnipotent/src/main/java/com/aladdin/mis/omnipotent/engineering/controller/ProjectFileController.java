@@ -1,7 +1,7 @@
 package com.aladdin.mis.omnipotent.engineering.controller;
 
-import com.aladdin.mis.common.annotation.WebLog;
-import com.aladdin.mis.common.base.qo.Condition;
+import com.aladdin.common.core.annotation.WebLog;
+import com.aladdin.common.db.qo.Condition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.engineering.entity.ProjectFile;
 import com.aladdin.mis.engineering.qo.ProjectFileQo;

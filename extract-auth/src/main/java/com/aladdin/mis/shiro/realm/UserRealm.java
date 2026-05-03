@@ -6,12 +6,12 @@ package com.aladdin.mis.shiro.realm;
 import com.aladdin.mis.identity.service.AdminService;
 import com.aladdin.mis.identity.service.BeUserMenuService;
 import com.aladdin.mis.identity.service.DeptService;
-import com.aladdin.mis.common.currency.DefaultTools;
-import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
+import com.aladdin.common.core.constant.DefaultTools;
+import com.aladdin.common.core.utils.SpringContextUtil;
 import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.entity.Dept;
 import com.aladdin.mis.identity.vo.BeUserMenuVo;
-import com.aladdin.mis.mapper.user.vo.OmUser;
+import com.aladdin.mis.system.user.vo.OmUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
@@ -127,7 +127,7 @@ public class UserRealm extends AuthorizingRealm {
         }
         admin = list.get(0);
         String salt = admin.getSalt();
-        String pass = DefaultTools.MD5_TOOL.digestHex(password + salt);
+        String pass = DefaultTools.md5Hex(password + salt);
         if(!pass.equals(admin.getLoginPassword())){
             throw new AccountException("密码错误");
         }
@@ -177,13 +177,13 @@ public class UserRealm extends AuthorizingRealm {
 
     private void setService(){
         if(adminService == null){
-            adminService = SpringBeanFactoryUtils.getBean(AdminService.class);
+            adminService = SpringContextUtil.getBean(AdminService.class);
         }
         if(userMenuService == null){
-            userMenuService = SpringBeanFactoryUtils.getBean(BeUserMenuService.class);
+            userMenuService = SpringContextUtil.getBean(BeUserMenuService.class);
         }
         if(deptService == null){
-            deptService = SpringBeanFactoryUtils.getBean(DeptService.class);
+            deptService = SpringContextUtil.getBean(DeptService.class);
         }
 
     }

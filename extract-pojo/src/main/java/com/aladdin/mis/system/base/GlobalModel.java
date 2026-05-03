@@ -1,4 +1,4 @@
-package com.aladdin.mis.mapper.base;
+package com.aladdin.mis.system.base;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

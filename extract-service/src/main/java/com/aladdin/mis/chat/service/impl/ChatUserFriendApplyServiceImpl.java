@@ -10,7 +10,7 @@ import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.chat.ChatUserFriendApplyDao;
 import com.aladdin.mis.identity.service.UserService;
 import com.aladdin.mis.manager.bean.User;
-import com.aladdin.mis.mapper.user.vo.OmUser;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.utils.UserUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

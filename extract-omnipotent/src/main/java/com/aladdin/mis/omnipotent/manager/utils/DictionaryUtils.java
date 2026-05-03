@@ -5,12 +5,12 @@ package com.aladdin.mis.omnipotent.manager.utils;
 
 import com.aladdin.mis.manager.bean.Dictionary;
 import com.aladdin.mis.manager.bean.DictionaryTeams;
-import com.aladdin.mis.mapper.service.impl.DictionaryServiceImpl;
-import com.aladdin.mis.mapper.service.impl.DictionaryTeamsServiceImpl;
+import com.aladdin.mis.system.service.impl.DictionaryServiceImpl;
+import com.aladdin.mis.system.service.impl.DictionaryTeamsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;

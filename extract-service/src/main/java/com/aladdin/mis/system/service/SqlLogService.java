@@ -1,6 +1,6 @@
-package com.aladdin.mis.mapper.service;
+package com.aladdin.mis.system.service;
 
-import com.aladdin.mis.common.db.bean.SqlLog;
+import com.aladdin.common.db.bean.SqlLog;
 
 /**
  * SqlLogService

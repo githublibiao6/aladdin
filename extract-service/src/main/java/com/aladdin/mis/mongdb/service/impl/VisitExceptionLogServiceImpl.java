@@ -3,7 +3,7 @@ package com.aladdin.mis.mongdb.service.impl;
  *  Created by cles on 2022/2/22 22:47
  */
 
-import com.aladdin.mis.common.system.entity.VisitExceptionLog;
+import com.aladdin.common.security.entity.VisitExceptionLog;
 import com.aladdin.mis.mongdb.service.VisitExceptionLogService;
 import org.springframework.stereotype.Service;
 

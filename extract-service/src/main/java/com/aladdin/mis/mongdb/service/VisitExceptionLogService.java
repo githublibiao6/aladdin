@@ -3,7 +3,7 @@ package com.aladdin.mis.mongdb.service;
  *  Created by cles on 2022/2/22 22:46
  */
 
-import com.aladdin.mis.common.system.entity.VisitExceptionLog;
+import com.aladdin.common.security.entity.VisitExceptionLog;
 
 /**
  * @author cles

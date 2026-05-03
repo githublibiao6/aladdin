@@ -6,7 +6,7 @@
 //import com.aladdin.mis.annotation.entity.TableField;
 //import com.aladdin.mis.common.db.bean.TableFieldInfo;
 //import com.aladdin.mis.common.db.bean.TableInfo;
-//import com.aladdin.mis.common.db.config.Db;
+//import com.aladdin.common.db.config.Db;
 //import com.aladdin.mis.util.BaseModelUtil;
 //import org.springframework.util.StringUtils;
 //

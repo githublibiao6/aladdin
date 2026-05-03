@@ -1,8 +1,8 @@
 package com.aladdin.mis.identity.service;
 
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.mapper.user.vo.LoginUser;
-import com.aladdin.mis.mapper.user.vo.OmUser;
+import com.aladdin.mis.system.user.vo.LoginUser;
+import com.aladdin.mis.system.user.vo.OmUser;
 
 
 /**

@@ -2,20 +2,17 @@ package com.aladdin.mis.base.controller;
 
 
 import com.aladdin.mis.base.service.GlobalService;
-import com.aladdin.mis.common.base.qo.Condition;
+import com.aladdin.common.db.qo.Condition;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.system.base.GlobalModel;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson2.JSONObject;
-import com.aladdin.mis.mapper.base.GlobalModel;
-import com.aladdin.mis.mapper.user.vo.OmUser;
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.UnknownHostException;

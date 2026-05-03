@@ -4,8 +4,6 @@ import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
 import com.aladdin.mis.system.base.GlobalModel;
 import com.alibaba.fastjson2.JSONObject;
-import com.aladdin.mis.mapper.base.GlobalModel;
-import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import java.util.List;

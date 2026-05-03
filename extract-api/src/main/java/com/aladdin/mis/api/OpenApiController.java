@@ -1,7 +1,8 @@
 package com.aladdin.mis.api;
 
-import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
-import com.aladdin.mis.common.db.bean.TableInfo;
+import com.aladdin.mis.dao.generate.GenerateUtils;
+import com.aladdin.mis.dao.generate.FileWriteFunction;
+import com.aladdin.common.db.bean.TableInfo;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.vo.CreateTableVo;
 import com.aladdin.mis.dao.db.config.MainDb;
@@ -38,7 +39,7 @@ public class OpenApiController {
         Result result = new Result();
         try{
             TableInfo info = MainDb.initTableInfo(vo.getTableName());
-            GenerateUtils.create(info, vo.getModule(), vo.getPath());
+            GenerateUtils.create(info, vo.getModule(), vo.getPath(), new ApiFileWriteFunction());
         }catch (Exception e){
             e.printStackTrace();
             result.setMessage("生成失败");

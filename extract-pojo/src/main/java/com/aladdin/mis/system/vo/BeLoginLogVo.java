@@ -1,4 +1,4 @@
-package com.aladdin.mis.mapper.vo;
+package com.aladdin.mis.system.vo;
 
 import lombok.Data;
 

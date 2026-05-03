@@ -1,7 +1,7 @@
 package com.aladdin.mis.base.service;
 
-import com.aladdin.mis.common.base.qo.Condition;
-import com.aladdin.mis.mapper.base.GlobalModel;
+import com.aladdin.common.db.qo.Condition;
+import com.aladdin.mis.system.base.GlobalModel;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

@@ -7,7 +7,7 @@ public class Test {
     public static void main(String[] args) {
 
         String filePath = "E:\\lb\\aladdin\\extract-omnipotent\\src\\main\\java\\com\\aladdin\\mis\\omnipotent\\love";
-        StringBuffer content = new StringBuffer("package com.aladdin.mis.omnipotent.love;\n\n");
+        StringBuffer content = new StringBuffer("package extract-omnipotent.src.main.java.com.aladdin.mis.omnipotent.love;\n\n");
         content.append("import com.aladdin.mis.common.db.core.Table; \n");
         content.append("import com.aladdin.mis.common.system.entity.GlobalModel; \n");
         content.append("import lombok.Data; \n\n");

@@ -2,7 +2,7 @@ package com.aladdin.mis.manager.bean;
 
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
-import com.aladdin.mis.mapper.base.GlobalModel;
+import com.aladdin.mis.system.base.GlobalModel;
 import lombok.Data;
 
 /**

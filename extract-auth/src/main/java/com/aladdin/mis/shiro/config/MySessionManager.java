@@ -8,8 +8,8 @@ import org.apache.shiro.web.util.WebUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import java.io.Serializable;
 
 /**

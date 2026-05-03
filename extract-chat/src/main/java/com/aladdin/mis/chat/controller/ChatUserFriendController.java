@@ -5,7 +5,7 @@ import com.aladdin.mis.chat.service.ChatUserFriendService;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.chat.qo.ChatUserFriendQo;
 import com.aladdin.mis.chat.vo.ChatUserFriendVo;
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.github.pagehelper.PageInfo;
 import com.aladdin.mis.base.service.GlobalService;

@@ -184,13 +184,13 @@ public class UserRealm extends AuthorizingRealm {
 
     private void setService(){
 //        if(adminService == null){
-//            adminService = SpringBeanFactoryUtils.getBean(AdminService.class);
+//            adminService = SpringContextUtil.getBean(AdminService.class);
 //        }
 //        if(userMenuService == null){
-//            userMenuService = SpringBeanFactoryUtils.getBean(BeUserMenuService.class);
+//            userMenuService = SpringContextUtil.getBean(BeUserMenuService.class);
 //        }
 //        if(deptService == null){
-//            deptService = SpringBeanFactoryUtils.getBean(DeptService.class);
+//            deptService = SpringContextUtil.getBean(DeptService.class);
 //        }
 
     }

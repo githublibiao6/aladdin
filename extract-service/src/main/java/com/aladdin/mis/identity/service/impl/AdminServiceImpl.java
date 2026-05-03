@@ -1,9 +1,8 @@
 package com.aladdin.mis.identity.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.digest.Digester;
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.common.currency.DefaultTools;
+import com.aladdin.common.core.constant.DefaultTools;
 import com.aladdin.mis.dao.manager.AdminDao;
 import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.qo.AdminQo;
@@ -122,9 +121,7 @@ public class AdminServiceImpl extends GlobalServiceImpl<Admin> implements AdminS
         user.setSalt(salt);
         user.setSys006("00");
         // MD5 加密
-        Digester md5 = DefaultTools.MD5_TOOL;
-        // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
-        String pass = md5.digestHex(user.getLoginPassword() + salt);
+        String pass = DefaultTools.md5Hex(user.getLoginPassword() + salt);
         user.setLoginPassword(pass);
         return update(user);
     }

@@ -1,12 +1,10 @@
 package com.aladdin.mis.identity.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.digest.DigestUtil;
-import cn.hutool.crypto.digest.Digester;
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.common.base.qo.Condition;
-import com.aladdin.mis.common.currency.DefaultParam;
-import com.aladdin.mis.common.currency.DefaultTools;
+import com.aladdin.common.db.qo.Condition;
+import com.aladdin.common.core.constant.DefaultParam;
+import com.aladdin.common.core.constant.DefaultTools;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.dao.identity.UserDao;
 import com.aladdin.mis.identity.qo.UserQo;
@@ -84,10 +82,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         entity.setSalt(salt);
 
         // MD5 加密
-        Digester md5 = DefaultTools.MD5_TOOL;
-        // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
-        String pass = md5.digestHex(entity.getPassword() + salt);
-        String md5Hex1 = DigestUtil.md5Hex(entity.getPassword() + salt);
+        String pass = DefaultTools.md5Hex(entity.getPassword() + salt);
         entity.setPassword(pass);
 
         entity.setLastLoginTime(LocalDateTime.now());
@@ -119,9 +114,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         user.setSys006("01");
 
         // MD5 加密
-        Digester md5 = DefaultTools.MD5_TOOL;
-        // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
-        String pass = md5.digestHex(DefaultParam.DEFAULT_PASSWORD + salt);
+        String pass = DefaultTools.md5Hex(DefaultParam.DEFAULT_PASSWORD + salt);
         user.setPassword(pass);
 
         user.setUpdatePwdTime(LocalDateTime.now());
@@ -138,9 +131,7 @@ public class UserServiceImpl extends GlobalServiceImpl<User> implements UserServ
         user.setSalt(salt);
         user.setSys006("00");
         // MD5 加密
-        Digester md5 = DefaultTools.MD5_TOOL;
-        // 密码加密 md5 加密后的密文加上salt 再进行一次 md5加密 生成数据库保存的密码
-        String pass = md5.digestHex(user.getPassword() + salt);
+        String pass = DefaultTools.md5Hex(user.getPassword() + salt);
         user.setPassword(pass);
         return update(user);
     }

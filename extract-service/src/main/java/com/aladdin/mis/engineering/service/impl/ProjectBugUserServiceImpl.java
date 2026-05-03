@@ -11,8 +11,8 @@ import com.aladdin.mis.engineering.service.ProjectBugService;
 import com.aladdin.mis.engineering.service.ProjectBugUserService;
 import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.service.AdminService;
-import com.aladdin.mis.mapper.service.DictionaryTeamsService;
-import com.aladdin.mis.mapper.user.vo.OmUser;
+import com.aladdin.mis.system.service.DictionaryTeamsService;
+import com.aladdin.mis.system.user.vo.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

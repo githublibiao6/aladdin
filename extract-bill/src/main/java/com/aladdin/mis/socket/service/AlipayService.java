@@ -3,7 +3,7 @@ package com.aladdin.mis.socket.service;
  *  Created by cles on 2025/7/14 23:24
  */
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author cles

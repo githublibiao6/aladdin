@@ -1,4 +1,4 @@
-package com.aladdin.mis.mapper.db.entity;
+package com.aladdin.mis.system.db.entity;
 /**
  * Created by cles on 2025/5/9 23:00
  */

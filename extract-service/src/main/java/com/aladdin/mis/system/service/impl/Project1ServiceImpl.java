@@ -1,8 +1,8 @@
-package com.aladdin.mis.mapper.service.impl;
+package com.aladdin.mis.system.service.impl;
 
 import com.aladdin.mis.dao.manager.Project1Dao;
 import com.aladdin.mis.manager.bean.Project;
-import com.aladdin.mis.mapper.service.Project1Service;
+import com.aladdin.mis.system.service.Project1Service;
 import com.aladdin.mis.pagehelper.entity.QueryCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

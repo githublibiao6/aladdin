@@ -7,13 +7,13 @@
   <parent>
     <artifactId>odin-parent</artifactId>
     <groupId>com.aladdin.mis</groupId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
   <groupId>com.aladdin.mis</groupId>
   <artifactId>extract-api</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>extract-api</name>
@@ -25,6 +25,17 @@
       <groupId>com.aladdin.mis</groupId>
       <artifactId>extract-dao</artifactId>
       <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.aladdin.mis</groupId>
+      <artifactId>aladdin-common-security</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
   </dependencies>

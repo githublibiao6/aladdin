@@ -1,7 +1,7 @@
 package com.aladdin.mis.identity.service.impl;
 
 import com.aladdin.mis.base.service.impl.GlobalServiceImpl;
-import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.common.core.utils.StringUtil;
 import com.aladdin.mis.dao.manager.RoleDao;
 import com.aladdin.mis.identity.entity.Role;
 import com.aladdin.mis.identity.entity.RoleMenu;

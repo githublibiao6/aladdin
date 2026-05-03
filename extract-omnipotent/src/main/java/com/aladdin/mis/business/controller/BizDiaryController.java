@@ -5,7 +5,7 @@ import com.aladdin.mis.business.service.BizDiaryService;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.business.qo.BizDiaryQo;
 import com.aladdin.mis.business.vo.BizDiaryVo;
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.github.pagehelper.PageInfo;
 import com.aladdin.mis.base.service.GlobalService;

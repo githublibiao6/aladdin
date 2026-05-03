@@ -4,7 +4,7 @@ package com.aladdin.mis.mongdb.service;
  */
 
 
-import com.aladdin.mis.common.system.entity.VisitLog;
+import com.aladdin.common.security.entity.VisitLog;
 
 /**
  * @author cles

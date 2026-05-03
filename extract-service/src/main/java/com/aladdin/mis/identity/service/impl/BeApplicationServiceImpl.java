@@ -8,7 +8,7 @@ import com.aladdin.mis.identity.service.BeApplicationService;
 import com.aladdin.mis.identity.service.DeptService;
 import com.aladdin.mis.identity.service.MenuService;
 import com.aladdin.mis.identity.vo.BeApplicationVo;
-import com.aladdin.mis.mapper.user.vo.OmUser;
+import com.aladdin.mis.system.user.vo.OmUser;
 import com.aladdin.mis.utils.UserUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

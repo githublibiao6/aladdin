@@ -1,12 +1,12 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.mapper.entity.BeLoginLog;
-import com.aladdin.mis.mapper.qo.BeLoginLogQo;
-import com.aladdin.mis.mapper.service.BeLoginLogService;
-import com.aladdin.mis.mapper.vo.BeLoginLogVo;
+import com.aladdin.mis.system.entity.BeLoginLog;
+import com.aladdin.mis.system.qo.BeLoginLogQo;
+import com.aladdin.mis.system.service.BeLoginLogService;
+import com.aladdin.mis.system.vo.BeLoginLogVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

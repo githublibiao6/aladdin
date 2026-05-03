@@ -3,9 +3,9 @@ package com.aladdin.mis.aop;
  *  Created by cles on 2021/8/12 22:34
  */
 
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.entity.VisitLog;
+import com.aladdin.common.security.entity.VisitLog;
 import com.aladdin.mis.manager.bean.User;
 import com.aladdin.mis.mongdb.service.VisitLogService;
 import com.aladdin.mis.base.controller.GlobalController;
@@ -19,7 +19,7 @@ import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class WebLogAspect {
         user.setName("游客");
     }
 
-    @Pointcut("@annotation(com.aladdin.mis.common.annotation.WebLog)")
+    @Pointcut("@annotation(com.aladdin.common.core.annotation.WebLog)")
     public void annotationPointcut() {
 
     }

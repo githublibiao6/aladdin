@@ -1,6 +1,6 @@
-package com.aladdin.mis.mapper.qo;
+package com.aladdin.mis.system.qo;
 
-import com.aladdin.mis.mapper.entity.BeLoginLog;
+import com.aladdin.mis.system.entity.BeLoginLog;
 import lombok.Data;
 
 /**

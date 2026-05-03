@@ -5,11 +5,11 @@ package com.aladdin.mis.dao.db.config;
 
 import com.aladdin.mis.annotation.entity.Table;
 import com.aladdin.mis.annotation.entity.TableField;
-import com.aladdin.mis.common.db.core.DbTableInfo;
-import com.aladdin.mis.common.db.factory.DbMaker;
-import com.aladdin.mis.common.db.config.Db;
-import com.aladdin.mis.common.db.bean.TableFieldInfo;
-import com.aladdin.mis.common.db.bean.TableInfo;
+import com.aladdin.common.db.core.DbTableInfo;
+import com.aladdin.common.db.factory.DbMaker;
+import com.aladdin.common.db.config.Db;
+import com.aladdin.common.db.bean.TableFieldInfo;
+import com.aladdin.common.db.bean.TableInfo;
 import com.alibaba.druid.pool.DruidDataSource;
 //import org.reflections.Reflections;
 import org.springframework.boot.context.properties.ConfigurationProperties;

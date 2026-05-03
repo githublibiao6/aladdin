@@ -2,7 +2,6 @@ package com.aladdin.mis.omnipotent.system.controller;
 
 import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.identity.service.impl.MenuServiceImpl;
-import com.aladdin.mis.common.redis.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-/**
-* @Description:  刚开始测试用的，没啥用
-* @Author: cles
-* @Date: 2025/4/17 23:46
-*/
 @Controller
 @RequestMapping("/hello")
 public class HelloSpringboot {
@@ -23,15 +17,8 @@ public class HelloSpringboot {
     @Autowired
     private MenuServiceImpl service;
 
-    /**
-     * @Author cles
-     * @Description
-     * @Date 23:14 2019/7/10
-     * @return java.lang.String
-     **/
     @RequestMapping("/index")
     public String say(Menu m, Model model, @RequestParam(value = "s",defaultValue = "1") String s) {
-        HelloService.me.index();
         List<Menu> list = service.list();
         model.addAttribute("list","list1231");
         model.addAttribute("m",list.get(0));

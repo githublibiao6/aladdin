@@ -1,10 +1,10 @@
 package com.aladdin.mis.api;
 
-import com.aladdin.mis.common.redis.config.JedisUtil;
+import com.aladdin.common.security.redis.util.RedisUtil;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.utils.FileUtil;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.aladdin.common.core.utils.FileUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +35,7 @@ public class FileController {
         }
         result.setMessage("文件存在");
         result.setSuccess(true);
-        result.setData(JedisUtil.use(0).getList("list"));
+        result.setData(RedisUtil.getList("list"));
         FileUtil.downLoadFile(response,file);
         return result;
     }

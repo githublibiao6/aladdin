@@ -1,14 +1,5 @@
 package com.aladdin.common.core.exception;
 
-import lombok.Getter;
-
-/**
- * 全局错误码枚举
- *
- * @author cles
- * @date 2026/04/30
- */
-@Getter
 public enum GlobalErrorCode implements ErrorCode {
 
     SUCCESS(200, "操作成功"),
@@ -30,5 +21,15 @@ public enum GlobalErrorCode implements ErrorCode {
     GlobalErrorCode(int code, String msg) {
         this.code = code;
         this.msg = msg;
+    }
+
+    @Override
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String getMsg() {
+        return msg;
     }
 }

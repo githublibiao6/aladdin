@@ -5,7 +5,7 @@ import com.aladdin.mis.business.service.BizPostCollectService;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.business.qo.BizPostCollectQo;
 import com.aladdin.mis.business.vo.BizPostCollectVo;
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.common.system.entity.Result;
 import com.github.pagehelper.PageInfo;
 import com.aladdin.mis.base.service.GlobalService;

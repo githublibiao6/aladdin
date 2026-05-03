@@ -1,7 +1,7 @@
 package com.aladdin.mis.dao.system;
 
-import com.aladdin.mis.mapper.qo.BeLoginLogQo;
-import com.aladdin.mis.mapper.vo.BeLoginLogVo;
+import com.aladdin.mis.system.qo.BeLoginLogQo;
+import com.aladdin.mis.system.vo.BeLoginLogVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,10 +1,12 @@
 package com.aladdin.mis.omnipotent.generate;
 
-import com.aladdin.mis.common.aladdin.utils.GenerateUtils;
-import com.aladdin.mis.common.db.bean.TableInfo;
+import com.aladdin.mis.dao.generate.GenerateUtils;
+import com.aladdin.mis.dao.generate.FileWriteFunction;
+import com.aladdin.common.db.bean.TableInfo;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.common.vo.CreateTableVo;
 import com.aladdin.mis.dao.db.config.MainDb;
+import com.aladdin.common.core.utils.FileUtil;
 import com.aladdin.mis.engineering.qo.GenerateQo;
 import com.aladdin.mis.engineering.service.GenerateService;
 import com.aladdin.mis.engineering.vo.GenerateVo;
@@ -50,7 +52,7 @@ public class GenerateController  {
         Result result = new Result();
         try{
             TableInfo info = MainDb.initTableInfo(vo.getTableName());
-            GenerateUtils.create(info, vo.getModule(), vo.getPath());
+            GenerateUtils.create(info, vo.getModule(), vo.getPath(), new CommonFileWriteFunction());
         }catch (Exception e){
             e.printStackTrace();
             result.setMessage("生成失败");

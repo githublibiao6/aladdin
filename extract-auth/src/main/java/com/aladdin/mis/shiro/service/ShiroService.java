@@ -3,7 +3,7 @@ package com.aladdin.mis.shiro.service;
  * Created by cles on 2025/5/18 22:57
  */
 
-import com.aladdin.mis.common.string.utils.StringUtil;
+import com.aladdin.common.core.utils.StringUtil;
 import com.aladdin.mis.shiro.vo.BeAuthUrlVo;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;

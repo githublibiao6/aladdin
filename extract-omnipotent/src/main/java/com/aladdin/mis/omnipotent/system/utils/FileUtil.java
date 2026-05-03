@@ -1,6 +1,6 @@
 package com.aladdin.mis.omnipotent.system.utils;
 
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 /**

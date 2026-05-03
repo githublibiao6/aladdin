@@ -1,10 +1,10 @@
 package com.aladdin.mis.identity.controller;
 
-import com.aladdin.mis.common.base.qo.Condition;
-import com.aladdin.mis.common.currency.GlobalConfig;
-import com.aladdin.mis.common.currency.Parameter;
-import com.aladdin.mis.common.redis.config.JedisConfig;
-import com.aladdin.mis.common.redis.config.JedisUtil;
+import com.aladdin.common.db.qo.Condition;
+import com.aladdin.common.core.constant.GlobalConfig;
+import com.aladdin.common.core.constant.Parameter;
+import com.aladdin.common.security.redis.config.JedisConfig;
+import com.aladdin.common.security.redis.util.RedisUtil;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.identity.qo.UserQo;
 import com.aladdin.mis.manager.bean.User;
@@ -14,8 +14,6 @@ import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.identity.service.UserService;
 import com.aladdin.mis.identity.vo.BeUserMenuVo;
 import com.aladdin.mis.base.controller.GlobalController;
-import com.aladdin.mis.mapper.user.vo.OmUser;
-import com.alibaba.fastjson.JSONObject;
 import com.aladdin.mis.system.user.vo.OmUser;
 import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
@@ -26,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +55,7 @@ public class UserController extends GlobalController<User, UserService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
-            String verifyCode = JedisUtil.getString(Parameter.VERIFY_CODE_PREFIX + ":" + sessionId);
+            String verifyCode = RedisUtil.getString(Parameter.VERIFY_CODE_PREFIX + ":" + sessionId);
             String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");
@@ -87,7 +85,7 @@ public class UserController extends GlobalController<User, UserService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
-            String verifyCode = JedisUtil.getString(Parameter.RESET_PASS_CODE_PREFIX + ":" + sessionId);
+            String verifyCode = RedisUtil.getString(Parameter.RESET_PASS_CODE_PREFIX + ":" + sessionId);
             String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");
@@ -122,7 +120,7 @@ public class UserController extends GlobalController<User, UserService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis，并且开启检验时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode ){
-            String verifyCode = JedisUtil.getString(Parameter.PHONE_CODE_PREFIX+":"+ sessionId);
+            String verifyCode = RedisUtil.getString(Parameter.PHONE_CODE_PREFIX+":"+ sessionId);
             String code = dto.getVerifyCode();
             if(code == null){
                 return  Result.error(50031, "验证码为空");

@@ -1,9 +1,9 @@
 package com.aladdin.mis.identity.controller;
 
-import com.aladdin.mis.common.currency.GlobalConfig;
-import com.aladdin.mis.common.currency.Parameter;
-import com.aladdin.mis.common.redis.config.JedisConfig;
-import com.aladdin.mis.common.redis.config.JedisUtil;
+import com.aladdin.common.core.constant.GlobalConfig;
+import com.aladdin.common.core.constant.Parameter;
+import com.aladdin.common.security.redis.config.JedisConfig;
+import com.aladdin.common.security.redis.util.RedisUtil;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.identity.entity.Admin;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import jakarta.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -176,7 +176,7 @@ public class AdminController extends GlobalController<Admin, AdminService> {
         // 将验证码放入redis缓存， 等待验证
         // 开启redis时，才进行下面的校验
         if(JedisConfig.getEnableRedis() && GlobalConfig.verifyEnable && GlobalConfig.verifyCode) {
-            String verifyCode = JedisUtil.getString(Parameter.RESET_PASS_CODE_PREFIX + ":" + sessionId);
+            String verifyCode = RedisUtil.getString(Parameter.RESET_PASS_CODE_PREFIX + ":" + sessionId);
             String code = dto.getVerifyCode();
             if (code == null) {
                 return Result.error(50022, "验证码为空");

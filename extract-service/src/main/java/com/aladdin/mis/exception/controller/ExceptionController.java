@@ -5,7 +5,7 @@ package com.aladdin.mis.exception.controller;
 
 import com.aladdin.mis.mongdb.service.VisitExceptionLogService;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.common.system.entity.VisitExceptionLog;
+import com.aladdin.common.security.entity.VisitExceptionLog;
 import com.aladdin.mis.common.utils.ExceptionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

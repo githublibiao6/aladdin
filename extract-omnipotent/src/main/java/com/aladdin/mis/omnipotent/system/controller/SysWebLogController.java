@@ -1,12 +1,12 @@
 package com.aladdin.mis.omnipotent.system.controller;
 
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
-import com.aladdin.mis.mapper.entity.SysWebLog;
-import com.aladdin.mis.mapper.qo.SysWebLogQo;
-import com.aladdin.mis.mapper.service.SysWebLogService;
-import com.aladdin.mis.mapper.vo.SysWebLogVo;
+import com.aladdin.mis.system.entity.SysWebLog;
+import com.aladdin.mis.system.qo.SysWebLogQo;
+import com.aladdin.mis.system.service.SysWebLogService;
+import com.aladdin.mis.system.vo.SysWebLogVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

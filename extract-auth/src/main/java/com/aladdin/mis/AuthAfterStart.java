@@ -1,6 +1,6 @@
 package com.aladdin.mis;
 
-import com.aladdin.mis.common.utils.SpringBeanFactoryUtils;
+import com.aladdin.common.core.utils.SpringContextUtil;
 import com.aladdin.mis.identity.entity.Menu;
 import com.aladdin.mis.identity.entity.Role;
 import com.aladdin.mis.identity.service.MenuService;
@@ -53,10 +53,10 @@ public class AuthAfterStart implements ApplicationRunner {
 
     private void setService(){
         if(roleService == null){
-            roleService = SpringBeanFactoryUtils.getBean(RoleService.class);
+            roleService = SpringContextUtil.getBean(RoleService.class);
         }
         if(menuService == null){
-            menuService = SpringBeanFactoryUtils.getBean(MenuService.class);
+            menuService = SpringContextUtil.getBean(MenuService.class);
         }
 
     }

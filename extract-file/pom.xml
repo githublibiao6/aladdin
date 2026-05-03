@@ -7,13 +7,13 @@
   <parent>
     <artifactId>odin-parent</artifactId>
     <groupId>com.aladdin.mis</groupId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <relativePath>../odin-parent/pom.xml</relativePath>
   </parent>
 
   <groupId>com.aladdin</groupId>
   <artifactId>extract-file</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
 
   <name>extract-file</name>
   <!-- FIXME change it to the project's website -->

@@ -6,9 +6,9 @@ package com.aladdin.mis.auth.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.lang.Console;
-import com.aladdin.mis.common.currency.Parameter;
-import com.aladdin.mis.common.redis.config.JedisUtil;
-import com.aladdin.mis.common.service.VerificationCodeService;
+import com.aladdin.common.core.constant.Parameter;
+import com.aladdin.common.security.redis.util.RedisUtil;
+import com.aladdin.mis.identity.service.VerificationCodeService;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.manager.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -47,7 +47,7 @@ public class VerificationCodeController {
         String code = lineCaptcha.getCode();
         String sessionId = vo.getSessionId();
         // 将验证码放入redis缓存， 等待验证
-        JedisUtil.setString(Parameter.VERIFY_CODE_PREFIX+":"+ sessionId , 60 * 2 , code);
+        RedisUtil.setString(Parameter.VERIFY_CODE_PREFIX+":"+ sessionId , 60 * 2 , code);
         /**
          *  result.setData(lineCaptcha);
          **/

@@ -1,6 +1,6 @@
 package com.aladdin.mis.permission.controller;
 
-import com.aladdin.mis.common.annotation.WebLog;
+import com.aladdin.common.core.annotation.WebLog;
 import com.aladdin.mis.base.controller.GlobalController;
 import com.aladdin.mis.common.system.entity.Result;
 import com.aladdin.mis.identity.entity.Menu;
