@@ -1,7 +1,7 @@
 package com.aladdin.mis.file.service.impl;
 
 
-import com.aladdin.mis.common.utils.FileUtil;
+import com.aladdin.common.core.utils.FileUtil;
 import com.aladdin.mis.file.service.FileVideoService;
 import org.springframework.stereotype.Service;
 

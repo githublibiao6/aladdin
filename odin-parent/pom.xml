@@ -17,9 +17,9 @@
     <name>odin-parent</name>
 
     <modules>
-        <module>../aladdin-common-core</module>
-        <module>../aladdin-common-db</module>
-        <module>../aladdin-common-security</module>
+        <module>../aladdin-common</module>
+        <module>../extract-system</module>
+        <module>../extract-auth</module>
     </modules>
 
     <properties>

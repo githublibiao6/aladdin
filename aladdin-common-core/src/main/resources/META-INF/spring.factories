@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.aladdin.common.core.config.CoreAutoConfiguration,\
-  com.aladdin.common.core.swagger.SwaggerConfig

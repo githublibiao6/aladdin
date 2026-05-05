@@ -14,7 +14,7 @@ import com.aladdin.mis.identity.service.RoleService;
 import com.aladdin.mis.identity.service.UserService;
 import com.aladdin.mis.identity.vo.BeUserMenuVo;
 import com.aladdin.mis.base.controller.GlobalController;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.common.security.entity.OmUser;
 import com.alibaba.fastjson2.JSONObject;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;

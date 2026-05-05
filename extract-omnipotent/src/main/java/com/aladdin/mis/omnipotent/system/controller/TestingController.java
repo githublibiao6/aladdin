@@ -8,7 +8,7 @@ import com.aladdin.common.db.config.Db;
 import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.service.AdminService;
 import com.aladdin.mis.omnipotent.system.threadpool.service.impl.AsyncServiceImpl;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.common.security.entity.OmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

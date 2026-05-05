@@ -27,7 +27,7 @@
     <dependencies>
         <dependency>
             <groupId>com.aladdin.mis</groupId>
-            <artifactId>extract-service</artifactId>
+            <artifactId>extract-system</artifactId>
             <version>${project.version}</version>
         </dependency>
 

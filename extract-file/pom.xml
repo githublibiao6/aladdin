@@ -31,7 +31,7 @@
     <!--https://blog.csdn.net/weixin_44000133/article/details/132190107-->
     <dependency>
       <groupId>com.aladdin.mis</groupId>
-      <artifactId>extract-common</artifactId>
+      <artifactId>extract-system</artifactId>
       <version>${project.version}</version>
     </dependency>
 

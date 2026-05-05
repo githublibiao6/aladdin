@@ -7,7 +7,7 @@ import com.aladdin.mis.manager.entity.BeUserMenu;
 import com.aladdin.mis.identity.qo.BeUserMenuQo;
 import com.aladdin.mis.identity.service.BeUserMenuService;
 import com.aladdin.mis.identity.vo.BeUserMenuVo;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.common.security.entity.OmUser;
 import com.github.pagehelper.PageInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

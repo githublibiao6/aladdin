@@ -67,3 +67,31 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath*:/mybatis-mapper/**/*.xml
+
+aladdin:
+  security:
+    enabled: true
+    filter-enabled: false
+    login-log-enabled: true
+    operation-log-enabled: true
+    whitelist:
+      - /css/**
+      - /js/**
+      - /img/**
+      - /images/**
+      - /pic/**
+      - /login
+      - /ajaxLogin
+      - /**/login
+      - /**/logout
+      - /test/**
+      - /api/**
+      - /openApi/**
+      - /sso/welcome
+      - /**/register
+      - /verifyCode/**
+      - /shiro/**
+      - /generate/create
+      - /buildForm/**
+      - /buildModular/**
+      - /socket/**

@@ -11,7 +11,7 @@ import com.aladdin.common.core.utils.SpringContextUtil;
 import com.aladdin.mis.identity.entity.Admin;
 import com.aladdin.mis.identity.entity.Dept;
 import com.aladdin.mis.identity.vo.BeUserMenuVo;
-import com.aladdin.mis.system.user.vo.OmUser;
+import com.aladdin.common.security.entity.OmUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
