@@ -1,0 +1,88 @@
+package com.aladdin.common.security.config;
+
+import com.aladdin.common.security.filter.JwtAuthenticationFilter;
+import com.aladdin.common.security.service.TokenService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Spring Security配置
+ *
+ * @author cles
+ * @date 2026/05/06
+ */
+@Configuration
+@ConditionalOnProperty(prefix = "aladdin.security", name = "enabled", havingValue = "true", matchIfMissing = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final TokenService tokenService;
+    private final SecurityProperties securityProperties;
+
+    public SecurityConfig(TokenService tokenService, SecurityProperties securityProperties) {
+        this.tokenService = tokenService;
+        this.securityProperties = securityProperties;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(securityProperties.getWhitelist()).permitAll()
+                .antMatchers("/doc.html", "/webjars/**", "/v3/api-docs/**", "/swagger-resources/**").permitAll()
+                .antMatchers("/actuator/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .headers().frameOptions().disable()
+                .and()
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        http.exceptionHandling()
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    Map<String, Object> result = new HashMap<>();
+                    result.put("code", 401);
+                    result.put("msg", "未认证，请先登录");
+                    result.put("data", null);
+                    response.getWriter().write(new ObjectMapper().writeValueAsString(result));
+                })
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    Map<String, Object> result = new HashMap<>();
+                    result.put("code", 403);
+                    result.put("msg", "无权限访问");
+                    result.put("data", null);
+                    response.getWriter().write(new ObjectMapper().writeValueAsString(result));
+                });
+    }
+
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter(tokenService, securityProperties);
+    }
+}
