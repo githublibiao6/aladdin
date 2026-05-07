@@ -1,5 +1,6 @@
 package com.aladdin.common.db.config;
 
+import com.aladdin.common.db.dynamic.DynamicDataSourceAutoConfiguration;
 import com.aladdin.common.db.interceptor.AutoFillInterceptor;
 import com.aladdin.common.db.interceptor.DataPermissionHandler;
 import com.aladdin.common.db.interceptor.DataPermissionInterceptor;
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -21,6 +23,7 @@ import java.util.List;
  */
 @Configuration
 @ConditionalOnProperty(prefix = "aladdin.db", name = "enabled", havingValue = "true", matchIfMissing = true)
+@Import(DynamicDataSourceAutoConfiguration.class)
 public class DbAutoConfiguration {
 
     private final List<SqlSessionFactory> sqlSessionFactoryList;

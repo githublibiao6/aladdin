@@ -1,6 +1,7 @@
 package com.aladdin.common.security.service;
 
 import com.aladdin.common.security.config.SecurityProperties;
+import com.aladdin.common.security.redis.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,6 +15,7 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * JWT Token服务
@@ -26,12 +28,16 @@ public class TokenService {
 
     private static final Logger log = LoggerFactory.getLogger(TokenService.class);
 
-    private final SecurityProperties securityProperties;
+    private static final String TOKEN_PREFIX = "login:token:";
+    private static final String USER_PREFIX = "login:user:";
 
+    private final SecurityProperties securityProperties;
+    private final RedisService redisService;
     private SecretKey secretKey;
 
-    public TokenService(SecurityProperties securityProperties) {
+    public TokenService(SecurityProperties securityProperties, RedisService redisService) {
         this.securityProperties = securityProperties;
+        this.redisService = redisService;
     }
 
     @PostConstruct
@@ -40,11 +46,15 @@ public class TokenService {
         this.secretKey = Keys.hmacShaKeyFor(keyBytes);
     }
 
+    /**
+     * 创建Token
+     */
     public String createToken(Long userId, String username, Map<String, Object> claims) {
         Date now = new Date();
-        Date expireDate = new Date(now.getTime() + securityProperties.getToken().getExpireMinutes() * 60 * 1000);
+        long expireMs = securityProperties.getToken().getExpireMinutes() * 60 * 1000L;
+        Date expireDate = new Date(now.getTime() + expireMs);
 
-        return Jwts.builder()
+        String token = Jwts.builder()
                 .setSubject(String.valueOf(userId))
                 .claim("username", username)
                 .addClaims(claims)
@@ -52,8 +62,16 @@ public class TokenService {
                 .setExpiration(expireDate)
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
+
+        redisService.set(TOKEN_PREFIX + userId, token, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+        redisService.set(USER_PREFIX + userId, username, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+
+        return token;
     }
 
+    /**
+     * 解析Token
+     */
     public Claims parseToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(secretKey)
@@ -62,9 +80,18 @@ public class TokenService {
                 .getBody();
     }
 
+    /**
+     * 验证Token
+     */
     public boolean validateToken(String token) {
         try {
-            parseToken(token);
+            Claims claims = parseToken(token);
+            Long userId = Long.parseLong(claims.getSubject());
+            String cachedToken = redisService.get(TOKEN_PREFIX + userId);
+            if (cachedToken == null || !cachedToken.equals(token)) {
+                log.warn("Token已失效或已被踢出: userId={}", userId);
+                return false;
+            }
             return true;
         } catch (Exception e) {
             log.warn("Token验证失败: {}", e.getMessage());
@@ -72,16 +99,62 @@ public class TokenService {
         }
     }
 
+    /**
+     * 从Token获取用户ID
+     */
     public Long getUserId(String token) {
         Claims claims = parseToken(token);
         return Long.parseLong(claims.getSubject());
     }
 
+    /**
+     * 从Token获取用户名
+     */
     public String getUsername(String token) {
         Claims claims = parseToken(token);
         return claims.get("username", String.class);
     }
 
+    /**
+     * 刷新Token（续期）
+     */
+    public String refreshToken(String token) {
+        try {
+            Claims claims = parseToken(token);
+            Long userId = Long.parseLong(claims.getSubject());
+            String username = claims.get("username", String.class);
+
+            long expireMs = securityProperties.getToken().getExpireMinutes() * 60 * 1000L;
+            long remaining = claims.getExpiration().getTime() - System.currentTimeMillis();
+
+            if (remaining < expireMs / 2) {
+                return createToken(userId, username, null);
+            }
+
+            redisService.expire(TOKEN_PREFIX + userId, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+            redisService.expire(USER_PREFIX + userId, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+            return token;
+        } catch (Exception e) {
+            log.warn("Token刷新失败: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * 移除Token（踢出用户）
+     */
+    public void removeToken(Long userId) {
+        redisService.delete(TOKEN_PREFIX + userId);
+        redisService.delete(USER_PREFIX + userId);
+    }
+
+    public long getExpireMinutes() {
+        return securityProperties.getToken().getExpireMinutes();
+    }
+
+    /**
+     * Token是否过期
+     */
     public boolean isTokenExpired(String token) {
         try {
             Claims claims = parseToken(token);
@@ -89,12 +162,5 @@ public class TokenService {
         } catch (Exception e) {
             return true;
         }
-    }
-
-    public String refreshToken(String token) {
-        Claims claims = parseToken(token);
-        Long userId = Long.parseLong(claims.getSubject());
-        String username = claims.get("username", String.class);
-        return createToken(userId, username, null);
     }
 }

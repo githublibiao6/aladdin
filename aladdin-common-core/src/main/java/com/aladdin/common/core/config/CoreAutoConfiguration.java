@@ -1,9 +1,12 @@
 package com.aladdin.common.core.config;
 
 import com.aladdin.common.core.exception.GlobalExceptionHandler;
+import com.aladdin.common.core.feign.RemoteCallAutoConfiguration;
+import com.aladdin.common.core.swagger.SwaggerConfig;
 import com.aladdin.common.core.utils.SpringContextUtil;
 import com.aladdin.common.core.web.CorsConfig;
 import com.aladdin.common.core.web.JacksonConfig;
+import com.aladdin.common.core.web.RequestLogInterceptor;
 import com.aladdin.common.core.web.ResponseAdvice;
 import com.aladdin.common.core.web.TraceIdInterceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -27,7 +30,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         JacksonConfig.class,
         GlobalExceptionHandler.class,
         ResponseAdvice.class,
-        SpringContextUtil.class
+        SpringContextUtil.class,
+        SwaggerConfig.class,
+        RemoteCallAutoConfiguration.class
 })
 public class CoreAutoConfiguration implements WebMvcConfigurer {
 
@@ -39,12 +44,18 @@ public class CoreAutoConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(requestLogInterceptor()).addPathPatterns("/**");
         if (coreProperties.getTraceId().isEnabled()) {
             registry.addInterceptor(traceIdInterceptor()).addPathPatterns("/**");
         }
         if (coreProperties.isRepeatSubmitEnabled()) {
             registry.addInterceptor(repeatSubmitInterceptor()).addPathPatterns("/**");
         }
+    }
+
+    @Bean
+    public RequestLogInterceptor requestLogInterceptor() {
+        return new RequestLogInterceptor();
     }
 
     @Bean

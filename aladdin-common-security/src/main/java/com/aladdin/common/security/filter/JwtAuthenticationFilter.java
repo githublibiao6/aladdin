@@ -2,7 +2,10 @@ package com.aladdin.common.security.filter;
 
 import com.aladdin.common.core.context.UserContextHolder;
 import com.aladdin.common.security.config.SecurityProperties;
+import com.aladdin.common.security.service.LoginUserDetails;
+import com.aladdin.common.security.service.SecurityUserDetailsService;
 import com.aladdin.common.security.service.TokenService;
+import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * JWT认证过滤器
@@ -31,10 +36,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final TokenService tokenService;
     private final SecurityProperties securityProperties;
+    private SecurityUserDetailsService userDetailsService;
 
     public JwtAuthenticationFilter(TokenService tokenService, SecurityProperties securityProperties) {
         this.tokenService = tokenService;
         this.securityProperties = securityProperties;
+    }
+
+    public void setUserDetailsService(SecurityUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
@@ -42,15 +52,40 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         String token = extractToken(request);
         if (StringUtils.hasText(token) && tokenService.validateToken(token)) {
-            Long userId = tokenService.getUserId(token);
-            String username = tokenService.getUsername(token);
-            List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(userId, null, authorities);
-            authentication.setDetails(username);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            UserContextHolder.setUserId(userId);
-            UserContextHolder.setUsername(username);
+            try {
+                Claims claims = tokenService.parseToken(token);
+                Long userId = Long.parseLong(claims.getSubject());
+                String username = claims.get("username", String.class);
+
+                Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+                Object permsObj = claims.get("permissions");
+                if (permsObj instanceof List) {
+                    @SuppressWarnings("unchecked")
+                    List<String> perms = (List<String>) permsObj;
+                    for (String perm : perms) {
+                        authorities.add(new SimpleGrantedAuthority(perm));
+                    }
+                }
+
+                LoginUserDetails loginUser = new LoginUserDetails(userId, username, "", 1, null);
+                loginUser.getAuthorities().addAll(authorities);
+
+                UsernamePasswordAuthenticationToken authentication =
+                        new UsernamePasswordAuthenticationToken(loginUser, null, authorities);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+
+                UserContextHolder.setUserId(userId);
+                UserContextHolder.setUsername(username);
+
+                String refreshedToken = tokenService.refreshToken(token);
+                if (refreshedToken != null && !refreshedToken.equals(token)) {
+                    response.setHeader(securityProperties.getToken().getHeader(),
+                            securityProperties.getToken().getPrefix() + refreshedToken);
+                }
+            } catch (Exception e) {
+                log.warn("JWT认证处理异常: {}", e.getMessage());
+                SecurityContextHolder.clearContext();
+            }
         }
         try {
             filterChain.doFilter(request, response);

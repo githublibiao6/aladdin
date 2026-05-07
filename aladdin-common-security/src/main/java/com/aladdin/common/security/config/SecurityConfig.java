@@ -1,8 +1,10 @@
 package com.aladdin.common.security.config;
 
 import com.aladdin.common.security.filter.JwtAuthenticationFilter;
+import com.aladdin.common.security.service.SecurityUserDetailsService;
 import com.aladdin.common.security.service.TokenService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,16 +28,21 @@ import java.util.Map;
  * @date 2026/05/06
  */
 @Configuration
+@ConditionalOnBean(SecurityUserDetailsService.class)
 @ConditionalOnProperty(prefix = "aladdin.security", name = "enabled", havingValue = "true", matchIfMissing = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final TokenService tokenService;
     private final SecurityProperties securityProperties;
+    private final SecurityUserDetailsService userDetailsService;
 
-    public SecurityConfig(TokenService tokenService, SecurityProperties securityProperties) {
+    public SecurityConfig(TokenService tokenService,
+                          SecurityProperties securityProperties,
+                          SecurityUserDetailsService userDetailsService) {
         this.tokenService = tokenService;
         this.securityProperties = securityProperties;
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean
@@ -83,6 +90,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter(tokenService, securityProperties);
+        JwtAuthenticationFilter filter = new JwtAuthenticationFilter(tokenService, securityProperties);
+        filter.setUserDetailsService(userDetailsService);
+        return filter;
     }
 }

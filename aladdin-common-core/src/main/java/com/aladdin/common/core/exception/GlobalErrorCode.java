@@ -13,7 +13,21 @@ public enum GlobalErrorCode implements ErrorCode {
     INTERNAL_ERROR(50000, "系统内部错误"),
     PARAM_VALID_ERROR(10001, "参数校验失败"),
     REPEAT_SUBMIT(10002, "重复提交"),
-    BUSINESS_ERROR(10003, "业务处理异常");
+    BUSINESS_ERROR(10003, "业务处理异常"),
+    TOKEN_INVALID(20001, "Token无效"),
+    TOKEN_EXPIRED(20002, "Token已过期"),
+    TOKEN_MISSING(20003, "缺少Token"),
+    LOGIN_FAIL(20004, "登录失败"),
+    LOGIN_EXPIRED(20005, "登录已过期"),
+    ACCOUNT_DISABLED(20006, "账号已被禁用"),
+    ACCOUNT_LOCKED(20007, "账号已被锁定"),
+    CAPTCHA_ERROR(20008, "验证码错误"),
+    CAPTCHA_EXPIRED(20009, "验证码已过期"),
+    PASSWORD_ERROR(20010, "密码错误"),
+    USER_NOT_FOUND(20011, "用户不存在"),
+    DATA_PERMISSION_DENIED(30001, "无数据权限"),
+    DATA_NOT_FOUND(30002, "数据不存在"),
+    DATA_DUPLICATE(30003, "数据已存在");
 
     private final int code;
     private final String msg;
