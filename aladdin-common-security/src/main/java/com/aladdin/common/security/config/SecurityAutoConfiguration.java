@@ -13,29 +13,24 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-/**
- * 安全模块自动配置
- *
- * @author cles
- * @date 2026/05/06
- */
 @Configuration
 @ConditionalOnProperty(prefix = "aladdin.security", name = "enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(SecurityProperties.class)
 @Import({
-        SecurityConfig.class,
-        com.aladdin.common.security.redis.RedisConfig.class
+        SecurityConfig.class
 })
 public class SecurityAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(LoginLogService.class)
+    @ConditionalOnProperty(prefix = "aladdin.security", name = "redis-enabled", havingValue = "true", matchIfMissing = true)
     public LoginLogService loginLogService(StringRedisTemplate redisTemplate) {
         return new RedisLoginLogServiceImpl(redisTemplate);
     }
 
     @Bean
     @ConditionalOnMissingBean(OperationLogService.class)
+    @ConditionalOnProperty(prefix = "aladdin.security", name = "redis-enabled", havingValue = "true", matchIfMissing = true)
     public OperationLogService operationLogService(StringRedisTemplate redisTemplate) {
         return new RedisOperationLogServiceImpl(redisTemplate);
     }

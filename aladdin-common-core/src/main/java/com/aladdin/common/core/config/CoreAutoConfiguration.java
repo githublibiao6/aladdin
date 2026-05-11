@@ -6,9 +6,11 @@ import com.aladdin.common.core.swagger.SwaggerConfig;
 import com.aladdin.common.core.utils.SpringContextUtil;
 import com.aladdin.common.core.web.CorsConfig;
 import com.aladdin.common.core.web.JacksonConfig;
+import com.aladdin.common.core.web.RateLimitAspect;
 import com.aladdin.common.core.web.RequestLogInterceptor;
 import com.aladdin.common.core.web.ResponseAdvice;
 import com.aladdin.common.core.web.TraceIdInterceptor;
+import com.aladdin.common.core.web.XssFilterConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +34,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         ResponseAdvice.class,
         SpringContextUtil.class,
         SwaggerConfig.class,
-        RemoteCallAutoConfiguration.class
+        RemoteCallAutoConfiguration.class,
+        XssFilterConfig.class,
+        RateLimitAspect.class
 })
 public class CoreAutoConfiguration implements WebMvcConfigurer {
 

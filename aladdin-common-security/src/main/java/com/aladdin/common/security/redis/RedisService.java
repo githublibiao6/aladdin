@@ -1,5 +1,8 @@
 package com.aladdin.common.security.redis;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -7,138 +10,227 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-/**
- * 统一Redis操作服务
- *
- * @author cles
- * @date 2026/05/06
- */
 @Component
 public class RedisService {
 
+    private static final Logger log = LoggerFactory.getLogger(RedisService.class);
+
     private final RedisTemplate<String, Object> redisTemplate;
     private final StringRedisTemplate stringRedisTemplate;
+    private final boolean redisAvailable;
 
-    public RedisService(RedisTemplate<String, Object> redisTemplate, StringRedisTemplate stringRedisTemplate) {
-        this.redisTemplate = redisTemplate;
-        this.stringRedisTemplate = stringRedisTemplate;
+    public RedisService(ObjectProvider<RedisTemplate<String, Object>> redisTemplateProvider,
+                        ObjectProvider<StringRedisTemplate> stringRedisTemplateProvider) {
+        this.redisTemplate = redisTemplateProvider.getIfAvailable();
+        this.stringRedisTemplate = stringRedisTemplateProvider.getIfAvailable();
+        this.redisAvailable = this.redisTemplate != null && this.stringRedisTemplate != null;
+        if (!redisAvailable) {
+            log.warn("Redis不可用，RedisService将以空操作模式运行");
+        }
     }
 
     public void set(String key, Object value) {
-        redisTemplate.opsForValue().set(key, value);
+        if (redisAvailable) {
+            redisTemplate.opsForValue().set(key, value);
+        }
     }
 
     public void set(String key, Object value, long timeout, TimeUnit unit) {
-        redisTemplate.opsForValue().set(key, value, timeout, unit);
+        if (redisAvailable) {
+            redisTemplate.opsForValue().set(key, value, timeout, unit);
+        }
     }
 
     public boolean setIfAbsent(String key, Object value, long timeout, TimeUnit unit) {
-        Boolean result = redisTemplate.opsForValue().setIfAbsent(key, value, timeout, unit);
-        return result != null && result;
+        if (redisAvailable) {
+            Boolean result = redisTemplate.opsForValue().setIfAbsent(key, value, timeout, unit);
+            return result != null && result;
+        }
+        return false;
     }
 
     @SuppressWarnings("unchecked")
     public <T> T get(String key) {
-        return (T) redisTemplate.opsForValue().get(key);
+        if (redisAvailable) {
+            return (T) redisTemplate.opsForValue().get(key);
+        }
+        return null;
     }
 
     public String getString(String key) {
-        return stringRedisTemplate.opsForValue().get(key);
+        if (redisAvailable) {
+            return stringRedisTemplate.opsForValue().get(key);
+        }
+        return null;
     }
 
     public Boolean delete(String key) {
-        return redisTemplate.delete(key);
+        if (redisAvailable) {
+            return redisTemplate.delete(key);
+        }
+        return false;
     }
 
     public Long delete(Collection<String> keys) {
-        return redisTemplate.delete(keys);
+        if (redisAvailable) {
+            return redisTemplate.delete(keys);
+        }
+        return 0L;
     }
 
     public Boolean expire(String key, long timeout, TimeUnit unit) {
-        return redisTemplate.expire(key, timeout, unit);
+        if (redisAvailable) {
+            return redisTemplate.expire(key, timeout, unit);
+        }
+        return false;
     }
 
     public Long getExpire(String key) {
-        return redisTemplate.getExpire(key);
+        if (redisAvailable) {
+            return redisTemplate.getExpire(key);
+        }
+        return -1L;
     }
 
     public Boolean hasKey(String key) {
-        return redisTemplate.hasKey(key);
+        if (redisAvailable) {
+            return redisTemplate.hasKey(key);
+        }
+        return false;
     }
 
     public Long increment(String key) {
-        return redisTemplate.opsForValue().increment(key);
+        if (redisAvailable) {
+            return redisTemplate.opsForValue().increment(key);
+        }
+        return null;
     }
 
     public Long increment(String key, long delta) {
-        return redisTemplate.opsForValue().increment(key, delta);
+        if (redisAvailable) {
+            return redisTemplate.opsForValue().increment(key, delta);
+        }
+        return null;
     }
 
     public Long decrement(String key) {
-        return redisTemplate.opsForValue().decrement(key);
+        if (redisAvailable) {
+            return redisTemplate.opsForValue().decrement(key);
+        }
+        return null;
     }
 
     public void hSet(String key, String hashKey, Object value) {
-        redisTemplate.opsForHash().put(key, hashKey, value);
+        if (redisAvailable) {
+            redisTemplate.opsForHash().put(key, hashKey, value);
+        }
     }
 
     public Object hGet(String key, String hashKey) {
-        return redisTemplate.opsForHash().get(key, hashKey);
+        if (redisAvailable) {
+            return redisTemplate.opsForHash().get(key, hashKey);
+        }
+        return null;
     }
 
     public Map<Object, Object> hGetAll(String key) {
-        return redisTemplate.opsForHash().entries(key);
+        if (redisAvailable) {
+            return redisTemplate.opsForHash().entries(key);
+        }
+        return Collections.emptyMap();
     }
 
     public void hPutAll(String key, Map<String, Object> map) {
-        redisTemplate.opsForHash().putAll(key, map);
+        if (redisAvailable) {
+            redisTemplate.opsForHash().putAll(key, map);
+        }
     }
 
     public Long hDelete(String key, Object... hashKeys) {
-        return redisTemplate.opsForHash().delete(key, hashKeys);
+        if (redisAvailable) {
+            return redisTemplate.opsForHash().delete(key, hashKeys);
+        }
+        return 0L;
     }
 
     public Boolean hHasKey(String key, String hashKey) {
-        return redisTemplate.opsForHash().hasKey(key, hashKey);
+        if (redisAvailable) {
+            return redisTemplate.opsForHash().hasKey(key, hashKey);
+        }
+        return false;
     }
 
     public Long sAdd(String key, Object... values) {
-        return redisTemplate.opsForSet().add(key, values);
+        if (redisAvailable) {
+            return redisTemplate.opsForSet().add(key, values);
+        }
+        return 0L;
     }
 
     public Set<Object> sMembers(String key) {
-        return redisTemplate.opsForSet().members(key);
+        if (redisAvailable) {
+            return redisTemplate.opsForSet().members(key);
+        }
+        return Collections.emptySet();
     }
 
     public Boolean sIsMember(String key, Object value) {
-        return redisTemplate.opsForSet().isMember(key, value);
+        if (redisAvailable) {
+            return redisTemplate.opsForSet().isMember(key, value);
+        }
+        return false;
     }
 
     public Long sRemove(String key, Object... values) {
-        return redisTemplate.opsForSet().remove(key, values);
+        if (redisAvailable) {
+            return redisTemplate.opsForSet().remove(key, values);
+        }
+        return 0L;
     }
 
     public Boolean zAdd(String key, Object value, double score) {
-        return redisTemplate.opsForZSet().add(key, value, score);
+        if (redisAvailable) {
+            return redisTemplate.opsForZSet().add(key, value, score);
+        }
+        return false;
     }
 
     public Set<Object> zRange(String key, long start, long end) {
-        return redisTemplate.opsForZSet().range(key, start, end);
+        if (redisAvailable) {
+            return redisTemplate.opsForZSet().range(key, start, end);
+        }
+        return Collections.emptySet();
     }
 
     public Long zRemove(String key, Object... values) {
-        return redisTemplate.opsForZSet().remove(key, values);
+        if (redisAvailable) {
+            return redisTemplate.opsForZSet().remove(key, values);
+        }
+        return 0L;
     }
 
     public Long lPush(String key, Object value) {
-        return redisTemplate.opsForList().leftPush(key, value);
+        if (redisAvailable) {
+            return redisTemplate.opsForList().leftPush(key, value);
+        }
+        return 0L;
     }
 
     public List<Object> lRange(String key, long start, long end) {
-        return redisTemplate.opsForList().range(key, start, end);
+        if (redisAvailable) {
+            return redisTemplate.opsForList().range(key, start, end);
+        }
+        return Collections.emptyList();
     }
 
     public Long lSize(String key) {
-        return redisTemplate.opsForList().size(key);
+        if (redisAvailable) {
+            return redisTemplate.opsForList().size(key);
+        }
+        return 0L;
+    }
+
+    public boolean isRedisAvailable() {
+        return redisAvailable;
     }
 }

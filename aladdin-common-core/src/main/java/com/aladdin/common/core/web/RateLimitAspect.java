@@ -27,7 +27,6 @@ import java.util.Collections;
  * @date 2026/05/06
  */
 @Aspect
-@Component
 @ConditionalOnProperty(prefix = "aladdin.core.rate-limit", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class RateLimitAspect {
 

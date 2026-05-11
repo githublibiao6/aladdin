@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.aladdin.common.security.config.SecurityAutoConfiguration
+  com.aladdin.common.security.config.SecurityAutoConfiguration,\
+  com.aladdin.common.security.redis.RedisConfig

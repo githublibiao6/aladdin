@@ -9,6 +9,7 @@ import io.jsonwebtoken.Claims;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
@@ -57,21 +58,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Long userId = Long.parseLong(claims.getSubject());
                 String username = claims.get("username", String.class);
 
-                Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+                Set<String> permissions = new HashSet<>();
                 Object permsObj = claims.get("permissions");
                 if (permsObj instanceof List) {
                     @SuppressWarnings("unchecked")
                     List<String> perms = (List<String>) permsObj;
-                    for (String perm : perms) {
-                        authorities.add(new SimpleGrantedAuthority(perm));
-                    }
+                    permissions.addAll(perms);
                 }
 
-                LoginUserDetails loginUser = new LoginUserDetails(userId, username, "", 1, null);
-                loginUser.getAuthorities().addAll(authorities);
+                LoginUserDetails loginUser = new LoginUserDetails(userId, username, "", 1, permissions);
 
                 UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(loginUser, null, authorities);
+                        new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
 
                 UserContextHolder.setUserId(userId);

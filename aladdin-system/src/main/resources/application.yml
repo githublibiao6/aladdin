@@ -1,0 +1,64 @@
+server:
+  port: 9201
+
+spring:
+  application:
+    name: aladdin-system
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/aladdin?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/mybatis-mapper/**/*.xml
+  type-handlers-package: com.aladdin.system.dao.handle,com.aladdin.mis.dao.handle
+
+aladdin:
+  security:
+    enabled: true
+    whitelist:
+      - /system/public/**
+      - /css/**
+      - /js/**
+      - /img/**
+      - /login
+      - /ajaxLogin
+      - /**/login
+      - /**/logout
+      - /sso/welcome
+      - /**/register
+      - /verifyCode/**
+      - /doc.html
+      - /webjars/**
+      - /v3/api-docs/**
+      - /swagger-resources/**
+      - /actuator/**
+    token:
+      secret: aladdin-platform-secret-key-2026
+      expire-minutes: 120
+      header: Authorization
+      prefix: "Bearer "

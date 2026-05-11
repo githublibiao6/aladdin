@@ -6,6 +6,9 @@ import com.aladdin.common.db.core.DbTableInfo;
 import com.aladdin.common.db.factory.DbMaker;
 import com.aladdin.common.core.utils.StringUtil;
 import com.alibaba.druid.pool.DruidDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,16 +19,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 主数据源配置
- *
- * @author cles
- * @date 2026/04/30
- */
 @Configuration
 @ConfigurationProperties(prefix = "spring.datasource")
 @Component
+@ConditionalOnProperty(prefix = "aladdin.db", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class MainDb {
+
+    private static final Logger log = LoggerFactory.getLogger(MainDb.class);
 
     private static Map<String, TableInfo> map = new HashMap<>();
     private String url;
@@ -46,8 +46,15 @@ public class MainDb {
 
     @Bean(name = "main_db")
     public DruidDataSource dataSource() {
-        DbConfig db = new DbConfig();
-        return null;
+        DbConfig dbConfig = new DbConfig();
+        DruidDataSource druidDataSource = dbConfig.buildDataSource(url, username, password, null);
+        if (druidDataSource == null) {
+            log.error("主数据源创建失败，请检查数据库连接配置: {}", url);
+            throw new RuntimeException("主数据源创建失败，无法连接数据库: " + url);
+        }
+        Db.setMain(druidDataSource);
+        log.info("主数据源加入成功");
+        return druidDataSource;
     }
 
     public static void init() {

@@ -1,6 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.aladdin.common.core.config.CoreAutoConfiguration,\
-  com.aladdin.common.core.swagger.SwaggerConfig,\
-  com.aladdin.common.db.config.DbAutoConfiguration,\
-  com.aladdin.common.security.config.SecurityAutoConfiguration,\
-  com.aladdin.common.security.shiro.SsoShiroConfig
