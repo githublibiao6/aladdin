@@ -29,7 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.version>0.0.1-SNAPSHOT</project.version>
         <springboot.version>2.7.18</springboot.version>
-        <mybatis.version>2.3.2</mybatis.version>
+        <mybatis-flex.version>1.11.7</mybatis-flex.version>
         <springdoc.version>1.7.0</springdoc.version>
         <hutool.version>5.8.34</hutool.version>
         <fastjson2.version>2.0.9</fastjson2.version>
@@ -83,9 +83,19 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.version}</version>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-spring-boot-starter</artifactId>
+                <version>${mybatis-flex.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-processor</artifactId>
+                <version>${mybatis-flex.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-core</artifactId>
+                <version>${mybatis-flex.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>

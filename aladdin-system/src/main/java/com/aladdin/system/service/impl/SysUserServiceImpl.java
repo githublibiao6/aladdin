@@ -8,27 +8,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-/**
- * 系统用户服务实现
- *
- * @author cles
- * @date 2026/05/06
- */
 @Service
 public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUser> implements SysUserService {
 
     @Override
     public SysUser getByUsername(String username) {
-        return dao.selectByUsername(username);
+        return getMapper().selectByUsername(username);
     }
 
     @Override
     public Set<String> getRoleKeysByUserId(Long userId) {
-        return dao.selectRoleKeysByUserId(userId);
+        return getMapper().selectRoleKeysByUserId(userId);
     }
 
     @Override
     public Set<String> getPermsByUserId(Long userId) {
-        return dao.selectPermsByUserId(userId);
+        return getMapper().selectPermsByUserId(userId);
     }
 }

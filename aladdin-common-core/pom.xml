@@ -52,9 +52,13 @@
         </dependency>
 
         <dependency>
+            <groupId>com.mybatis-flex</groupId>
+            <artifactId>mybatis-flex-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version> <!-- 请使用最新版本 -->
+            <version>1.18.30</version>
         </dependency>
     </dependencies>
 

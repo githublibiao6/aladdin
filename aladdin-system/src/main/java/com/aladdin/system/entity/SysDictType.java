@@ -1,17 +1,13 @@
 package com.aladdin.system.entity;
 
 import com.aladdin.common.core.domain.BaseEntity;
+import com.mybatisflex.annotation.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * 系统字典类型实体
- *
- * @author cles
- * @date 2026/05/06
- */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Table("sys_dict_type")
 public class SysDictType extends BaseEntity {
 
     private String dictName;

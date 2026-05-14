@@ -2,18 +2,11 @@ package com.aladdin.system.dao;
 
 import com.aladdin.common.db.base.BaseDao;
 import com.aladdin.system.entity.SysUser;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.Set;
 
-/**
- * 系统用户数据访问：" *
- * @author cles
- * @date 2026/05/06
- */
-@Mapper
 public interface SysUserDao extends BaseDao<SysUser> {
 
     @Select("SELECT * FROM sys_user WHERE username = #{username} AND sys005 = 1")

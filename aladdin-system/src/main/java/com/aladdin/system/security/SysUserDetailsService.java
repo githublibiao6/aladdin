@@ -38,10 +38,16 @@ public class SysUserDetailsService implements SecurityUserDetailsService {
         Set<String> permissions = new HashSet<>();
         Set<String> roleKeys = sysUserService.getRoleKeysByUserId(user.getId());
         for (String roleKey : roleKeys) {
-            permissions.add("ROLE_" + roleKey);
+            if (roleKey != null && !roleKey.trim().isEmpty()) {
+                permissions.add("ROLE_" + roleKey);
+            }
         }
         Set<String> perms = sysUserService.getPermsByUserId(user.getId());
-        permissions.addAll(perms);
+        for (String perm : perms) {
+            if (perm != null && !perm.trim().isEmpty()) {
+                permissions.add(perm);
+            }
+        }
 
         return new LoginUserDetails(user.getId(), user.getUsername(), user.getPassword(),
                 user.getStatus(), permissions);

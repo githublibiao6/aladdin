@@ -57,9 +57,11 @@ public class AuthController {
             authentication = authenticationManager.authenticate(authenticationToken);
         } catch (BadCredentialsException e) {
             saveLoginLog(username, null, "0", 10001, "密码错误");
+            log.error("登录失败-密码错误: {}", e.getMessage());
             return R.fail(10001, "用户名或密码错误");
         } catch (Exception e) {
             saveLoginLog(username, null, "0", 10001, e.getMessage());
+            log.error("登录失败-异常: ", e);
             return R.fail(10001, "登录失败");
         }
 

@@ -1,17 +1,13 @@
 package com.aladdin.system.entity;
 
 import com.aladdin.common.core.domain.BaseEntity;
+import com.mybatisflex.annotation.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * 系统部门实体
- *
- * @author cles
- * @date 2026/05/06
- */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Table("sys_dept")
 public class SysDept extends BaseEntity {
 
     private Long parentId;

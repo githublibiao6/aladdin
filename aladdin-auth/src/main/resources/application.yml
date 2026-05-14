@@ -9,7 +9,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 43.142.17.3:8848
+        username: nacos
+        password: nacosbw123
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,17 +28,10 @@ spring:
     port: 9164
     database: 0
 
-pagehelper:
-  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
-
-mybatis:
+mybatis-flex:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath*:/mybatis-mapper/**/*.xml
-  type-handlers-package: com.aladdin.mis.dao.handle
 
 aladdin:
   security:
