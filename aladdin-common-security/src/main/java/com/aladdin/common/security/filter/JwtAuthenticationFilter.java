@@ -12,6 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -64,6 +65,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     @SuppressWarnings("unchecked")
                     List<String> perms = (List<String>) permsObj;
                     permissions.addAll(perms);
+                }
+
+                // 如果JWT中没有权限信息，从UserDetailsService重新加载
+                if (permissions.isEmpty() && userDetailsService != null) {
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    if (userDetails != null) {
+                        for (GrantedAuthority auth : userDetails.getAuthorities()) {
+                            permissions.add(auth.getAuthority());
+                        }
+                    }
                 }
 
                 LoginUserDetails loginUser = new LoginUserDetails(userId, username, "", 1, permissions);

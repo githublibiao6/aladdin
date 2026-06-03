@@ -1,5 +1,6 @@
 package com.aladdin.common.security.config;
 
+import com.aladdin.common.security.handler.SecurityExceptionHandler;
 import com.aladdin.common.security.log.LoginLogService;
 import com.aladdin.common.security.log.OperationLogService;
 import com.aladdin.common.security.log.aspect.OperationLogAspect;
@@ -17,7 +18,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 @ConditionalOnProperty(prefix = "aladdin.security", name = "enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(SecurityProperties.class)
 @Import({
-        SecurityConfig.class
+        SecurityConfig.class,
+        SecurityExceptionHandler.class
 })
 public class SecurityAutoConfiguration {
 

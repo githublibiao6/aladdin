@@ -4,35 +4,43 @@ import com.aladdin.common.security.service.LoginUserDetails;
 import com.aladdin.common.security.service.SecurityUserDetailsService;
 import com.aladdin.system.entity.SysUser;
 import com.aladdin.system.service.SysUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * 用户详情服务实现
- * <p>
- * 连接Spring Security认证与系统用户表
- *
- * @author cles
- * @date 2026/05/06
- */
 @Service
 public class SysUserDetailsService implements SecurityUserDetailsService {
 
-    private final SysUserService sysUserService;
+    private static final Logger log = LoggerFactory.getLogger(SysUserDetailsService.class);
 
-    public SysUserDetailsService(SysUserService sysUserService) {
+    private static final String DEV_PASSWORD = "123456";
+
+    private final SysUserService sysUserService;
+    private final PasswordEncoder passwordEncoder;
+
+    public SysUserDetailsService(SysUserService sysUserService, @Lazy PasswordEncoder passwordEncoder) {
         this.sysUserService = sysUserService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = sysUserService.getByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("用户不存：" + username);
+            throw new UsernameNotFoundException("用户不存在：" + username);
+        }
+
+        if (DEV_PASSWORD.equals(user.getPassword()) || !user.getPassword().startsWith("$2a$")) {
+            log.info("开发模式：重置用户[{}]密码为BCrypt加密", username);
+            user.setPassword(passwordEncoder.encode(DEV_PASSWORD));
+            sysUserService.updateById(user);
         }
 
         Set<String> permissions = new HashSet<>();

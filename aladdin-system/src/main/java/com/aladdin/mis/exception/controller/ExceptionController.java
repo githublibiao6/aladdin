@@ -40,8 +40,7 @@ public class ExceptionController{
         exceptionLog.setException(ExceptionUtil.getStackTrace(e));
         exceptionLog.setTitle("未知错误" + e.getMessage());
         visitExceptionLogService.saveVisitExceptionLog(exceptionLog);
-        log.error("系统发生未知错误");
-        e.printStackTrace();
+        log.error("系统发生未知错误", e);
         return result;
 
     }
