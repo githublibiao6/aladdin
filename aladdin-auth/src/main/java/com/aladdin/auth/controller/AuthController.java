@@ -1,6 +1,7 @@
 package com.aladdin.auth.controller;
 
 import com.aladdin.common.core.domain.R;
+import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.core.utils.IpUtil;
 import com.aladdin.common.core.utils.ServletUtil;
 import com.aladdin.common.security.entity.LoginLog;
@@ -57,12 +58,12 @@ public class AuthController {
             authentication = authenticationManager.authenticate(authenticationToken);
         } catch (BadCredentialsException e) {
             log.error("登录失败-密码错误: {}", e.getMessage());
-            saveLoginLog(username, null, "0", 10001, "密码错误");
-            return R.fail(10001, "用户名或密码错误");
+            saveLoginLog(username, null, "0", GlobalErrorCode.LOGIN_PASSWORD_ERROR.getCode(), GlobalErrorCode.LOGIN_PASSWORD_ERROR.getMsg());
+            return R.fail(GlobalErrorCode.LOGIN_PASSWORD_ERROR);
         } catch (Exception e) {
-            saveLoginLog(username, null, "0", 10001, e.getMessage());
+            saveLoginLog(username, null, "0", GlobalErrorCode.LOGIN_FAIL_ERROR.getCode(), e.getMessage());
             log.error("登录失败-异常: ", e);
-            return R.fail(10001, "登录失败");
+            return R.fail(GlobalErrorCode.LOGIN_FAIL_ERROR);
         }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -77,7 +78,7 @@ public class AuthController {
         data.put("userId", loginUser.getUserId());
         data.put("username", loginUser.getUsername());
 
-        saveLoginLog(username, loginUser.getUserId(), "1", 20000, "登录成功");
+        saveLoginLog(username, loginUser.getUserId(), "1", GlobalErrorCode.LOGIN_SUCCESS.getCode(), "登录成功");
         return R.ok("登录成功", data);
     }
 
@@ -87,7 +88,7 @@ public class AuthController {
         if (authentication != null && authentication.getPrincipal() instanceof LoginUserDetails) {
             LoginUserDetails loginUser = (LoginUserDetails) authentication.getPrincipal();
             tokenService.removeToken(loginUser.getUserId());
-            saveLoginLog(loginUser.getUsername(), loginUser.getUserId(), "2", 20000, "登出成功");
+            saveLoginLog(loginUser.getUsername(), loginUser.getUserId(), "2", GlobalErrorCode.LOGIN_SUCCESS.getCode(), "登出成功");
         }
         SecurityContextHolder.clearContext();
         return R.ok("登出成功", null);

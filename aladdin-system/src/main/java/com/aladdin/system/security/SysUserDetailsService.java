@@ -32,6 +32,7 @@ public class SysUserDetailsService implements SecurityUserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 获取用户
         SysUser user = sysUserService.getByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("用户不存在：" + username);

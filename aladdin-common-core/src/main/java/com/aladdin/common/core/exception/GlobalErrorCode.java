@@ -27,7 +27,10 @@ public enum GlobalErrorCode implements ErrorCode {
     USER_NOT_FOUND(20011, "用户不存在"),
     DATA_PERMISSION_DENIED(30001, "无数据权限"),
     DATA_NOT_FOUND(30002, "数据不存在"),
-    DATA_DUPLICATE(30003, "数据已存在");
+    DATA_DUPLICATE(30003, "数据已存在"),
+    LOGIN_SUCCESS(20000, "登录成功"),
+    LOGIN_PASSWORD_ERROR(20012, "用户名或密码错误"),
+    LOGIN_FAIL_ERROR(20013, "登录失败");
 
     private final int code;
     private final String msg;

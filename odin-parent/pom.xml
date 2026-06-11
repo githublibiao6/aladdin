@@ -25,7 +25,7 @@
     </modules>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.version>0.0.1-SNAPSHOT</project.version>
         <springboot.version>2.7.18</springboot.version>
@@ -37,7 +37,7 @@
         <truelicense.version>1.33</truelicense.version>
         <spring-cloud.version>2021.0.8</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
-        <redisson.version>3.23.5</redisson.version>
+        <redisson.version>3.17.7</redisson.version>
         <poi.version>5.2.5</poi.version>
     </properties>
 

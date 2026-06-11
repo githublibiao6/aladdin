@@ -53,16 +53,16 @@ public class LoginService {
             userDetails = userDetailsService.loadUserByUsername(username);
         } catch (Exception e) {
             log.warn("用户不存在: {}", username);
-            throw new BusinessException(GlobalErrorCode.UNAUTHORIZED, "用户名或密码错误");
+            throw new BusinessException(GlobalErrorCode.LOGIN_PASSWORD_ERROR, "用户名或密码错误");
         }
 
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             log.warn("密码错误: {}", username);
-            throw new BusinessException(GlobalErrorCode.UNAUTHORIZED, "用户名或密码错误");
+            throw new BusinessException(GlobalErrorCode.LOGIN_PASSWORD_ERROR, "用户名或密码错误");
         }
 
         if (!userDetails.isEnabled()) {
-            throw new BusinessException(GlobalErrorCode.FORBIDDEN, "用户已被禁用");
+            throw new BusinessException(GlobalErrorCode.ACCOUNT_DISABLED, "用户已被禁用");
         }
 
         LoginUserDetails loginUser = (LoginUserDetails) userDetails;

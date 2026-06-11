@@ -50,7 +50,7 @@ public class SysUserController {
         return sysUserService.save(user) ? R.ok() : R.fail();
     }
 
-    @PutMapping
+    @PostMapping("edit")
     @PreAuthorize("hasAuthority('system:user:edit')")
     public R<Void> update(@RequestBody SysUser user) {
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
