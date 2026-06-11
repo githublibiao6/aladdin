@@ -18,4 +18,10 @@ public interface SysUserService extends BaseService<SysUser> {
     Set<String> getRoleKeysByUserId(Long userId);
 
     Set<String> getPermsByUserId(Long userId);
+
+    SysUser getUserWithDeptById(Long id);
+
+    boolean resetPassword(Long id, String password);
+
+    boolean updateStatus(Long id, Integer status);
 }

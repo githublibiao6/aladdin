@@ -1,11 +1,12 @@
 package com.aladdin.system.controller;
 
 import com.aladdin.common.core.domain.R;
+import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.security.service.LoginService;
-import com.aladdin.system.entity.SysMenu;
+import com.aladdin.system.entity.SysResource;
 import com.aladdin.system.entity.SysRole;
 import com.aladdin.system.entity.SysUser;
-import com.aladdin.system.service.SysMenuService;
+import com.aladdin.system.service.SysResourceService;
 import com.aladdin.system.service.SysRoleService;
 import com.aladdin.system.service.SysUserService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,20 +15,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+/**
+ * 系统用户控制器
+ *
+ * @author cles
+ * @date 2026/05/06
+ */
 @RestController
 @RequestMapping("/user")
 public class SysUserController {
 
     private final SysUserService sysUserService;
     private final SysRoleService sysRoleService;
-    private final SysMenuService sysMenuService;
+    private final SysResourceService sysResourceService;
     private final PasswordEncoder passwordEncoder;
 
     public SysUserController(SysUserService sysUserService, SysRoleService sysRoleService,
-                             SysMenuService sysMenuService, PasswordEncoder passwordEncoder) {
+                             SysResourceService sysResourceService, PasswordEncoder passwordEncoder) {
         this.sysUserService = sysUserService;
         this.sysRoleService = sysRoleService;
-        this.sysMenuService = sysMenuService;
+        this.sysResourceService = sysResourceService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -40,7 +47,11 @@ public class SysUserController {
     @GetMapping("/detail/{id}")
     @PreAuthorize("hasAuthority('system:user:list')")
     public R<SysUser> getById(@PathVariable Long id) {
-        return R.ok(sysUserService.getById(id));
+        SysUser user = sysUserService.getUserWithDeptById(id);
+        if (user != null) {
+            user.setPassword(null);
+        }
+        return R.ok(user);
     }
 
     @PostMapping
@@ -50,7 +61,7 @@ public class SysUserController {
         return sysUserService.save(user) ? R.ok() : R.fail();
     }
 
-    @PostMapping("edit")
+    @PostMapping("/edit")
     @PreAuthorize("hasAuthority('system:user:edit')")
     public R<Void> update(@RequestBody SysUser user) {
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
@@ -64,7 +75,7 @@ public class SysUserController {
         return sysUserService.updateById(user) ? R.ok() : R.fail();
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/remove/{id}")
     @PreAuthorize("hasAuthority('system:user:remove')")
     public R<Void> remove(@PathVariable Long id) {
         return sysUserService.removeById(id) ? R.ok() : R.fail();
@@ -74,22 +85,22 @@ public class SysUserController {
     public R<Map<String, Object>> getCurrentUserInfo() {
         Long userId = LoginService.getCurrentUserId();
         if (userId == null) {
-            return R.fail(401, "未登录");
+            return R.fail(GlobalErrorCode.UNAUTHORIZED);
         }
         SysUser user = sysUserService.getById(userId);
         if (user == null) {
-            return R.fail(401, "用户不存在");
+            return R.fail(GlobalErrorCode.USER_NOT_FOUND);
         }
         user.setPassword(null);
 
         List<SysRole> roles = sysRoleService.getRolesByUserId(userId);
-        List<SysMenu> menus = sysMenuService.getMenusByUserId(userId);
+        List<SysResource> resources = sysResourceService.getResourcesByUserId(userId);
         Set<String> perms = sysUserService.getPermsByUserId(userId);
 
         Map<String, Object> data = new HashMap<>();
         data.put("user", user);
         data.put("roles", roles);
-        data.put("menus", menus);
+        data.put("resources", resources);
         data.put("permissions", perms);
         return R.ok(data);
     }
@@ -98,7 +109,7 @@ public class SysUserController {
     public R<Set<String>> getCurrentUserPermissions() {
         Long userId = LoginService.getCurrentUserId();
         if (userId == null) {
-            return R.fail(401, "未登录");
+            return R.fail(GlobalErrorCode.UNAUTHORIZED);
         }
         Set<String> roleKeys = sysUserService.getRoleKeysByUserId(userId);
         Set<String> perms = sysUserService.getPermsByUserId(userId);
@@ -108,5 +119,24 @@ public class SysUserController {
         }
         all.addAll(perms);
         return R.ok(all);
+    }
+
+    @PostMapping("/resetPassword")
+    @PreAuthorize("hasAuthority('system:user:edit')")
+    public R<Void> resetPassword(@RequestBody Map<String, Object> body) {
+        Long id = Long.valueOf(body.get("id").toString());
+        String password = (String) body.get("password");
+        if (password == null || password.isEmpty()) {
+            password = "123456";
+        }
+        return sysUserService.resetPassword(id, passwordEncoder.encode(password)) ? R.ok() : R.fail();
+    }
+
+    @PostMapping("/changeStatus")
+    @PreAuthorize("hasAuthority('system:user:edit')")
+    public R<Void> changeStatus(@RequestBody Map<String, Object> body) {
+        Long id = Long.valueOf(body.get("id").toString());
+        Integer status = Integer.valueOf(body.get("status").toString());
+        return sysUserService.updateStatus(id, status) ? R.ok() : R.fail();
     }
 }

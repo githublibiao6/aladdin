@@ -25,4 +25,19 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUser> imp
     public Set<String> getPermsByUserId(Long userId) {
         return getMapper().selectPermsByUserId(userId);
     }
+
+    @Override
+    public SysUser getUserWithDeptById(Long id) {
+        return getMapper().selectUserWithDeptById(id);
+    }
+
+    @Override
+    public boolean resetPassword(Long id, String password) {
+        return getMapper().updatePassword(id, password) > 0;
+    }
+
+    @Override
+    public boolean updateStatus(Long id, Integer status) {
+        return getMapper().updateStatus(id, status) > 0;
+    }
 }

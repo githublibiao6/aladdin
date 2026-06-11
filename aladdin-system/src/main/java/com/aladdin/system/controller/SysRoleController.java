@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 系统角色控制器
+ *
+ * @author cles
+ * @date 2026/05/06
+ */
 @RestController
 @RequestMapping("/role")
 public class SysRoleController {
@@ -34,7 +40,11 @@ public class SysRoleController {
     @GetMapping("/detail/{id}")
     @PreAuthorize("hasAuthority('system:role:list')")
     public R<SysRole> getById(@PathVariable Long id) {
-        return R.ok(sysRoleService.getById(id));
+        SysRole role = sysRoleService.getById(id);
+        if (role != null) {
+            role.setDeptIds(sysRoleService.getDeptIdsByRoleId(id));
+        }
+        return R.ok(role);
     }
 
     @PostMapping
@@ -43,25 +53,25 @@ public class SysRoleController {
         return sysRoleService.save(role) ? R.ok() : R.fail();
     }
 
-    @PutMapping
+    @PostMapping("/edit")
     @PreAuthorize("hasAuthority('system:role:edit')")
     public R<Void> update(@RequestBody SysRole role) {
         return sysRoleService.updateById(role) ? R.ok() : R.fail();
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/remove/{id}")
     @PreAuthorize("hasAuthority('system:role:remove')")
     public R<Void> remove(@PathVariable Long id) {
         return sysRoleService.removeById(id) ? R.ok() : R.fail();
     }
 
-    @PostMapping("/assignMenus")
+    @PostMapping("/assignResources")
     @PreAuthorize("hasAuthority('system:role:edit')")
-    public R<Void> assignMenus(@RequestBody Map<String, Object> body) {
+    public R<Void> assignResources(@RequestBody Map<String, Object> body) {
         Long roleId = Long.valueOf(body.get("roleId").toString());
         @SuppressWarnings("unchecked")
-        List<Long> menuIds = (List<Long>) body.get("menuIds");
-        sysRoleService.assignMenus(roleId, menuIds);
+        List<Long> resourceIds = (List<Long>) body.get("resourceIds");
+        sysRoleService.assignResources(roleId, resourceIds);
         return R.ok();
     }
 
@@ -72,6 +82,17 @@ public class SysRoleController {
         @SuppressWarnings("unchecked")
         List<Long> roleIds = (List<Long>) body.get("roleIds");
         sysRoleService.assignRoles(userId, roleIds);
+        return R.ok();
+    }
+
+    @PostMapping("/assignDataScope")
+    @PreAuthorize("hasAuthority('system:role:edit')")
+    public R<Void> assignDataScope(@RequestBody Map<String, Object> body) {
+        Long roleId = Long.valueOf(body.get("roleId").toString());
+        Integer dataScope = Integer.valueOf(body.get("dataScope").toString());
+        @SuppressWarnings("unchecked")
+        List<Long> deptIds = (List<Long>) body.get("deptIds");
+        sysRoleService.assignDataScope(roleId, dataScope, deptIds);
         return R.ok();
     }
 }

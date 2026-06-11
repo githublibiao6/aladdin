@@ -4,9 +4,16 @@ import com.aladdin.common.db.base.BaseDao;
 import com.aladdin.system.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.Set;
 
+/**
+ * 系统用户DAO
+ *
+ * @author cles
+ * @date 2026/05/06
+ */
 public interface SysUserDao extends BaseDao<SysUser> {
 
     @Select("SELECT * FROM sys_user WHERE username = #{username} AND sys005 = 1")
@@ -17,9 +24,20 @@ public interface SysUserDao extends BaseDao<SysUser> {
             "WHERE ur.user_id = #{userId} AND r.sys005 = 1")
     Set<String> selectRoleKeysByUserId(@Param("userId") Long userId);
 
-    @Select("SELECT m.perms FROM sys_menu m " +
-            "INNER JOIN sys_role_menu rm ON m.id = rm.menu_id " +
-            "INNER JOIN sys_user_role ur ON rm.role_id = ur.role_id " +
-            "WHERE ur.user_id = #{userId} AND m.sys005 = 1")
+    @Select("SELECT res.perms FROM sys_resource res " +
+            "INNER JOIN sys_role_resource rr ON res.id = rr.resource_id " +
+            "INNER JOIN sys_user_role ur ON rr.role_id = ur.role_id " +
+            "WHERE ur.user_id = #{userId} AND res.sys005 = 1")
     Set<String> selectPermsByUserId(@Param("userId") Long userId);
+
+    @Select("SELECT u.*, d.dept_name FROM sys_user u " +
+            "LEFT JOIN sys_dept d ON u.dept_id = d.id " +
+            "WHERE u.id = #{id} AND u.sys005 = 1")
+    SysUser selectUserWithDeptById(@Param("id") Long id);
+
+    @Update("UPDATE sys_user SET password = #{password} WHERE id = #{id}")
+    int updatePassword(@Param("id") Long id, @Param("password") String password);
+
+    @Update("UPDATE sys_user SET status = #{status} WHERE id = #{id}")
+    int updateStatus(@Param("id") Long id, @Param("status") Integer status);
 }

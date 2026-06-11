@@ -10,9 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author cles
  * @date 2026/05/08
  */
-@SpringBootApplication(scanBasePackages = {"com.aladdin.system", "com.aladdin.mis", "com.aladdin.common"})
+@SpringBootApplication(scanBasePackages = {"com.aladdin.system", "com.aladdin.common"})
 @EnableDiscoveryClient
-@MapperScan({"com.aladdin.system.dao", "com.aladdin.mis.dao"})
+@MapperScan({"com.aladdin.system.dao"})
 public class SystemApplication {
 
     public static void main(String[] args) {

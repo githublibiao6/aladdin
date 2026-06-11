@@ -6,6 +6,8 @@ import com.aladdin.system.entity.SysDictType;
 import com.aladdin.system.service.SysDictTypeService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 系统字典类型服务实现
  *
@@ -14,4 +16,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysDictTypeServiceImpl extends BaseServiceImpl<SysDictTypeDao, SysDictType> implements SysDictTypeService {
+
+    @Override
+    public SysDictType getByDictType(String dictType) {
+        return getMapper().selectByDictType(dictType);
+    }
+
+    @Override
+    public List<SysDictType> listAll() {
+        return list();
+    }
 }
