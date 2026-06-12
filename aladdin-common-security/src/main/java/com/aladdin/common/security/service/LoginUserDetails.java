@@ -5,7 +5,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,6 +25,7 @@ public class LoginUserDetails implements UserDetails {
     private String password;
     private Integer status;
     private Set<GrantedAuthority> authorities;
+    private Map<String, Object> attributes = new HashMap<>();
 
     public LoginUserDetails(Long userId, String username, String password, Integer status, Set<String> permissions) {
         this.userId = userId;
@@ -39,6 +42,14 @@ public class LoginUserDetails implements UserDetails {
 
     public Long getUserId() {
         return userId;
+    }
+
+    public void setAttribute(String key, Object value) {
+        attributes.put(key, value);
+    }
+
+    public Object getAttribute(String key) {
+        return attributes.get(key);
     }
 
     @Override

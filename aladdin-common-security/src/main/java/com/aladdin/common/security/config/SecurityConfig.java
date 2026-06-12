@@ -1,8 +1,11 @@
 package com.aladdin.common.security.config;
 
+import com.aladdin.common.security.filter.IpListFilter;
 import com.aladdin.common.security.filter.JwtAuthenticationFilter;
+import com.aladdin.common.security.redis.RedisService;
 import com.aladdin.common.security.service.SecurityUserDetailsService;
 import com.aladdin.common.security.service.TokenService;
+import com.aladdin.common.security.tenant.TenantContextFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -38,13 +41,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final TokenService tokenService;
     private final SecurityProperties securityProperties;
     private final SecurityUserDetailsService userDetailsService;
+    private final RedisService redisService;
 
     public SecurityConfig(TokenService tokenService,
                           SecurityProperties securityProperties,
-                          SecurityUserDetailsService userDetailsService) {
+                          SecurityUserDetailsService userDetailsService,
+                          RedisService redisService) {
         this.tokenService = tokenService;
         this.securityProperties = securityProperties;
         this.userDetailsService = userDetailsService;
+        this.redisService = redisService;
     }
 
     @Bean
@@ -78,7 +84,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .headers().frameOptions().disable()
                 .and()
-                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(ipListFilter(), JwtAuthenticationFilter.class)
+                .addFilterAfter(tenantContextFilter(), JwtAuthenticationFilter.class);
 
         http.exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> {
@@ -106,5 +114,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         JwtAuthenticationFilter filter = new JwtAuthenticationFilter(tokenService, securityProperties);
         filter.setUserDetailsService(userDetailsService);
         return filter;
+    }
+
+    @Bean
+    public IpListFilter ipListFilter() {
+        return new IpListFilter(redisService, securityProperties);
+    }
+
+    @Bean
+    public TenantContextFilter tenantContextFilter() {
+        return new TenantContextFilter();
     }
 }

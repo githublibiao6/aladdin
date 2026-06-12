@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -40,4 +41,13 @@ public interface SysUserDao extends BaseDao<SysUser> {
 
     @Update("UPDATE sys_user SET status = #{status} WHERE id = #{id}")
     int updateStatus(@Param("id") Long id, @Param("status") Integer status);
+
+    @Update("UPDATE sys_user SET password = #{password}, pwd_change_time = #{pwdChangeTime}, pwd_force_change = 0 WHERE id = #{id}")
+    int updatePasswordWithTime(@Param("id") Long id, @Param("password") String password, @Param("pwdChangeTime") LocalDateTime pwdChangeTime);
+
+    @Update("UPDATE sys_user SET pwd_force_change = #{forceChange} WHERE id = #{id}")
+    int updatePwdForceChange(@Param("id") Long id, @Param("forceChange") Integer forceChange);
+
+    @Select("SELECT * FROM sys_user WHERE username = #{username} AND tenant_id = #{tenantId} AND sys005 = 1")
+    SysUser selectByUsernameAndTenantId(@Param("username") String username, @Param("tenantId") Long tenantId);
 }

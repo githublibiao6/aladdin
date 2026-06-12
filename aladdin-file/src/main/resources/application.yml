@@ -1,0 +1,57 @@
+server:
+  port: 9202
+
+spring:
+  application:
+    name: aladdin-file
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+aladdin:
+  security:
+    enabled: true
+    whitelist:
+      - /file/upload
+      - /doc.html
+      - /webjars/**
+      - /v3/api-docs/**
+      - /swagger-resources/**
+      - /actuator/**
+    token:
+      secret: aladdin-platform-secret-key-2026
+      expire-minutes: 120
+      header: Authorization
+      prefix: "Bearer "
+
+  # ==============================
+  # 文件服务配置
+  # ==============================
+  file:
+    # 存储类型：local-本地存储 | minio-MinIO对象存储
+    # local：文件保存到服务器本地磁盘，适合单机部署
+    # minio：文件保存到MinIO服务，适合分布式部署
+    storage-type: "local"
+    # 本地存储配置
+    local:
+      # 文件保存路径
+      path: "d:/data/upload"
+      # 文件访问URL前缀
+      url-prefix: "http://localhost:9202/file"
+    # MinIO存储配置
+    minio:
+      # MinIO服务地址
+      endpoint: "http://127.0.0.1:9000"
+      # 访问密钥
+      access-key: "minioadmin"
+      # 秘密密钥
+      secret-key: "minioadmin"
+      # 存储桶名称
+      bucket-name: "aladdin"

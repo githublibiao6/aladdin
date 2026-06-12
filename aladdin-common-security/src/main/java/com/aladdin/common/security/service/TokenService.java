@@ -1,5 +1,6 @@
 package com.aladdin.common.security.service;
 
+import com.aladdin.common.core.constant.RedisKeyConstant;
 import com.aladdin.common.security.config.SecurityProperties;
 import com.aladdin.common.security.redis.RedisService;
 import io.jsonwebtoken.Claims;
@@ -27,9 +28,6 @@ import java.util.concurrent.TimeUnit;
 public class TokenService {
 
     private static final Logger log = LoggerFactory.getLogger(TokenService.class);
-
-    private static final String TOKEN_PREFIX = "login:token:";
-    private static final String USER_PREFIX = "login:user:";
 
     private final SecurityProperties securityProperties;
     private final RedisService redisService;
@@ -63,8 +61,8 @@ public class TokenService {
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
 
-        redisService.set(TOKEN_PREFIX + userId, token, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
-        redisService.set(USER_PREFIX + userId, username, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+        redisService.set(RedisKeyConstant.LOGIN_TOKEN + userId, token, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+        redisService.set(RedisKeyConstant.LOGIN_USER + userId, username, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
 
         return token;
     }
@@ -87,7 +85,7 @@ public class TokenService {
         try {
             Claims claims = parseToken(token);
             Long userId = Long.parseLong(claims.getSubject());
-            String cachedToken = redisService.get(TOKEN_PREFIX + userId);
+            String cachedToken = redisService.get(RedisKeyConstant.LOGIN_TOKEN + userId);
             if (cachedToken == null || !cachedToken.equals(token)) {
                 log.warn("Token已失效或已被踢出: userId={}", userId);
                 return false;
@@ -131,8 +129,8 @@ public class TokenService {
                 return createToken(userId, username, null);
             }
 
-            redisService.expire(TOKEN_PREFIX + userId, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
-            redisService.expire(USER_PREFIX + userId, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+            redisService.expire(RedisKeyConstant.LOGIN_TOKEN + userId, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
+            redisService.expire(RedisKeyConstant.LOGIN_USER + userId, securityProperties.getToken().getExpireMinutes(), TimeUnit.MINUTES);
             return token;
         } catch (Exception e) {
             log.warn("Token刷新失败: {}", e.getMessage());
@@ -144,8 +142,8 @@ public class TokenService {
      * 移除Token（踢出用户）
      */
     public void removeToken(Long userId) {
-        redisService.delete(TOKEN_PREFIX + userId);
-        redisService.delete(USER_PREFIX + userId);
+        redisService.delete(RedisKeyConstant.LOGIN_TOKEN + userId);
+        redisService.delete(RedisKeyConstant.LOGIN_USER + userId);
     }
 
     public long getExpireMinutes() {

@@ -6,6 +6,8 @@ import com.mybatisflex.annotation.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.time.LocalDateTime;
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Table("sys_user")
@@ -19,6 +21,12 @@ public class SysUser extends BaseEntity {
     private String avatar;
     private Long deptId;
     private Integer status;
+    /** 密码最后修改时间 */
+    private LocalDateTime pwdChangeTime;
+    /** 是否首次登录需修改密码 */
+    private Integer pwdForceChange;
+    /** 租户ID */
+    private Long tenantId;
 
     @Column(ignore = true)
     private String deptName;

@@ -1,10 +1,9 @@
-package com.aladdin.common.core.utils;
+package com.aladdin.file.util;
 
 import com.aladdin.common.core.exception.BusinessException;
 import com.aladdin.common.core.exception.GlobalErrorCode;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -17,7 +17,7 @@ public class RedisLoginLogServiceImpl implements LoginLogService {
 
     private static final Logger log = LoggerFactory.getLogger(RedisLoginLogServiceImpl.class);
 
-    private static final String LOGIN_LOG_KEY = "aladdin:log:login";
+    private static final String LOGIN_LOG_KEY = "ZM:log:login";
 
     private final StringRedisTemplate redisTemplate;
 

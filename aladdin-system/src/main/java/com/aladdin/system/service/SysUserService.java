@@ -24,4 +24,16 @@ public interface SysUserService extends BaseService<SysUser> {
     boolean resetPassword(Long id, String password);
 
     boolean updateStatus(Long id, Integer status);
+
+    /** 修改密码，校验不能与最近N次相同 */
+    boolean changePassword(Long userId, String oldPassword, String newPassword);
+
+    /** 修改个人信息 */
+    boolean updateProfile(Long userId, String nickname, String email, String phone, String avatar);
+
+    /** 检查密码是否过期 */
+    boolean isPasswordExpired(SysUser user);
+
+    /** 检查是否需要强制修改密码 */
+    boolean needForceChangePassword(SysUser user);
 }

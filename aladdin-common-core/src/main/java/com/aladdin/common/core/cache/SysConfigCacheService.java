@@ -1,5 +1,6 @@
 package com.aladdin.common.core.cache;
 
+import com.aladdin.common.core.constant.RedisKeyConstant;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class SysConfigCacheService {
 
-    private static final String CONFIG_PREFIX = "sys:config:";
+    private static final String CONFIG_PREFIX = RedisKeyConstant.SYS_CONFIG;
 
     private final StringRedisTemplate redisTemplate;
 

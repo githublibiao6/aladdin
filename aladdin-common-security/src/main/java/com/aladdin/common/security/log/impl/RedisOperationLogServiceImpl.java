@@ -18,7 +18,7 @@ public class RedisOperationLogServiceImpl implements OperationLogService {
 
     private static final Logger log = LoggerFactory.getLogger(RedisOperationLogServiceImpl.class);
 
-    private static final String OPERATION_LOG_KEY = "aladdin:log:operation";
+    private static final String OPERATION_LOG_KEY = "ZM:log:operation";
 
     private final StringRedisTemplate redisTemplate;
 

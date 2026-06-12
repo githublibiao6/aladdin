@@ -1,5 +1,6 @@
 package com.aladdin.system.controller;
 
+import com.aladdin.common.core.annotation.OpLog;
 import com.aladdin.common.core.domain.R;
 import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.security.service.LoginService;
@@ -58,6 +59,8 @@ public class SysUserController {
     @PreAuthorize("hasAuthority('system:user:add')")
     public R<Void> save(@RequestBody SysUser user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // 新用户默认需要强制修改密码
+        user.setPwdForceChange(1);
         return sysUserService.save(user) ? R.ok() : R.fail();
     }
 
@@ -121,8 +124,12 @@ public class SysUserController {
         return R.ok(all);
     }
 
+    /**
+     * 重置密码（管理员操作）
+     */
     @PostMapping("/resetPassword")
     @PreAuthorize("hasAuthority('system:user:edit')")
+    @OpLog(value = "重置用户密码", type = "password")
     public R<Void> resetPassword(@RequestBody Map<String, Object> body) {
         Long id = Long.valueOf(body.get("id").toString());
         String password = (String) body.get("password");
@@ -130,6 +137,39 @@ public class SysUserController {
             password = "123456";
         }
         return sysUserService.resetPassword(id, passwordEncoder.encode(password)) ? R.ok() : R.fail();
+    }
+
+    /**
+     * 修改密码（用户自己操作，需校验旧密码，不能与历史相同，记录日志）
+     */
+    @PostMapping("/changePassword")
+    @OpLog(value = "修改密码", type = "password")
+    public R<Void> changePassword(@RequestBody Map<String, String> body) {
+        Long userId = LoginService.getCurrentUserId();
+        if (userId == null) {
+            return R.fail(GlobalErrorCode.UNAUTHORIZED);
+        }
+        String oldPassword = body.get("oldPassword");
+        String newPassword = body.get("newPassword");
+        if (oldPassword == null || newPassword == null) {
+            return R.fail(GlobalErrorCode.BAD_REQUEST);
+        }
+        return sysUserService.changePassword(userId, oldPassword, newPassword) ? R.ok() : R.fail();
+    }
+
+    /**
+     * 修改个人信息
+     */
+    @PostMapping("/profile")
+    @OpLog(value = "修改个人信息", type = "profile")
+    public R<Void> updateProfile(@RequestBody Map<String, String> body) {
+        Long userId = LoginService.getCurrentUserId();
+        if (userId == null) {
+            return R.fail(GlobalErrorCode.UNAUTHORIZED);
+        }
+        return sysUserService.updateProfile(userId,
+                body.get("nickname"), body.get("email"),
+                body.get("phone"), body.get("avatar")) ? R.ok() : R.fail();
     }
 
     @PostMapping("/changeStatus")

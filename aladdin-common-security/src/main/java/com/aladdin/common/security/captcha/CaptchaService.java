@@ -1,5 +1,6 @@
 package com.aladdin.common.security.captcha;
 
+import com.aladdin.common.core.constant.RedisKeyConstant;
 import com.aladdin.common.security.redis.RedisService;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class CaptchaService {
 
-    private static final String CAPTCHA_PREFIX = "captcha:";
+    private static final String CAPTCHA_PREFIX = RedisKeyConstant.CAPTCHA;
     private static final long CAPTCHA_EXPIRE_MINUTES = 5;
 
     private final RedisService redisService;
