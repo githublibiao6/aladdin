@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,6 +36,25 @@ public interface SysUserDao extends BaseDao<SysUser> {
             "LEFT JOIN sys_dept d ON u.dept_id = d.id " +
             "WHERE u.id = #{id} AND u.sys005 = 1")
     SysUser selectUserWithDeptById(@Param("id") Long id);
+
+    @Select("<script>" +
+            "SELECT u.*, d.dept_name FROM sys_user u " +
+            "LEFT JOIN sys_dept d ON u.dept_id = d.id " +
+            "WHERE u.sys005 = 1 " +
+            "<if test='username != null and username != \"\"'>" +
+            "AND u.username LIKE CONCAT('%',#{username},'%') " +
+            "</if>" +
+            "<if test='status != null'>" +
+            "AND u.status = #{status} " +
+            "</if>" +
+            "<if test='deptId != null'>" +
+            "AND u.dept_id = #{deptId} " +
+            "</if>" +
+            "ORDER BY u.id ASC " +
+            "</script>")
+    List<SysUser> selectUserListWithDept(@Param("username") String username,
+                                          @Param("status") Integer status,
+                                          @Param("deptId") Long deptId);
 
     @Update("UPDATE sys_user SET password = #{password} WHERE id = #{id}")
     int updatePassword(@Param("id") Long id, @Param("password") String password);

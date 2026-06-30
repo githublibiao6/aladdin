@@ -1,5 +1,6 @@
 package com.aladdin.common.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,7 +16,8 @@ public class PageQuery implements Serializable {
 
     private int page = 1;
 
-    private int limit = 10;
+    @JsonAlias("pageSize")
+    private int limit = 20;
 
     private String keyWord;
 

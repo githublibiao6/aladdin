@@ -1,6 +1,8 @@
 package com.aladdin.system.service.impl;
 
 import com.aladdin.common.core.constant.RedisKeyConstant;
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.core.exception.BusinessException;
 import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.db.base.BaseServiceImpl;
@@ -124,5 +126,18 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUser> imp
             return false;
         }
         return user.getPwdForceChange() != null && user.getPwdForceChange() == 1;
+    }
+
+    @Override
+    public PageResult<SysUser> listPage(PageQuery pageQuery, String username, Integer status, Long deptId) {
+        // 使用带部门名称的查询
+        List<SysUser> allList = getMapper().selectUserListWithDept(username, status, deptId);
+        long total = allList.size();
+        int page = pageQuery.getPage();
+        int limit = pageQuery.getLimit();
+        int fromIndex = Math.min((page - 1) * limit, (int) total);
+        int toIndex = Math.min(fromIndex + limit, (int) total);
+        List<SysUser> pageList = allList.subList(fromIndex, toIndex);
+        return new PageResult<>(page, limit, total, pageList);
     }
 }

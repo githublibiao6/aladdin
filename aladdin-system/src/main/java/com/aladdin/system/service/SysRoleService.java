@@ -1,5 +1,7 @@
 package com.aladdin.system.service;
 
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.db.base.BaseService;
 import com.aladdin.system.entity.SysRole;
 
@@ -22,4 +24,7 @@ public interface SysRoleService extends BaseService<SysRole> {
     void assignDataScope(Long roleId, Integer dataScope, List<Long> deptIds);
 
     List<Long> getDeptIdsByRoleId(Long roleId);
+
+    /** 分页查询角色列表 */
+    PageResult<SysRole> listPage(PageQuery pageQuery, String roleName, Integer status);
 }

@@ -18,6 +18,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -94,9 +97,12 @@ public class AuthController {
         String token = tokenService.createToken(loginUser.getUserId(), loginUser.getUsername(), claims);
 
         Map<String, Object> data = new HashMap<>();
-        data.put("token", token);
-        data.put("userId", loginUser.getUserId());
+        data.put("accessToken", token);
+        data.put("id", loginUser.getUserId());
         data.put("username", loginUser.getUsername());
+        data.put("realName", loginUser.getNickname());
+        data.put("roles", loginUser.getRoleKeys());
+        data.put("homePath", "/workspace");
 
         saveLoginLog(username, loginUser.getUserId(), "1", GlobalErrorCode.LOGIN_SUCCESS.getCode(), "登录成功");
         return R.ok("登录成功", data);
@@ -134,7 +140,7 @@ public class AuthController {
         return R.ok("登出成功", null);
     }
 
-    @RequestMapping("/userInfo")
+    @GetMapping("/userInfo")
     public R<Map<String, Object>> userInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof LoginUserDetails) {
@@ -142,8 +148,47 @@ public class AuthController {
             Map<String, Object> data = new HashMap<>();
             data.put("userId", loginUser.getUserId());
             data.put("username", loginUser.getUsername());
-            data.put("authorities", loginUser.getAuthorities());
+            data.put("realName", loginUser.getNickname());
+            data.put("avatar", "");
+            data.put("roles", loginUser.getRoleKeys());
+            data.put("desc", "");
+            data.put("homePath", "/workspace");
             return R.ok(data);
+        }
+        return R.fail("未登录");
+    }
+
+    /**
+     * 刷新Token
+     */
+    @PostMapping("/refresh")
+    public R<String> refresh(HttpServletRequest request) {
+        String bearerToken = request.getHeader(securityProperties.getToken().getHeader());
+        String token = null;
+        if (bearerToken != null && bearerToken.startsWith(securityProperties.getToken().getPrefix())) {
+            token = bearerToken.substring(securityProperties.getToken().getPrefix().length());
+        }
+        if (token == null || token.isEmpty()) {
+            return R.fail(GlobalErrorCode.TOKEN_MISSING);
+        }
+        String newToken = tokenService.refreshToken(token);
+        if (newToken == null) {
+            return R.fail(GlobalErrorCode.TOKEN_EXPIRED);
+        }
+        return R.ok(newToken);
+    }
+
+    /**
+     * 获取当前用户权限码
+     */
+    @GetMapping("/codes")
+    public R<Set<String>> codes() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof LoginUserDetails) {
+            LoginUserDetails loginUser = (LoginUserDetails) authentication.getPrincipal();
+            Set<String> codes = new HashSet<>();
+            loginUser.getAuthorities().forEach(a -> codes.add(a.getAuthority()));
+            return R.ok(codes);
         }
         return R.fail("未登录");
     }

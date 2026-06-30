@@ -25,13 +25,7 @@ spring:
     port: 6379
     database: 0
 
-pagehelper:
-  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
-
-mybatis:
+mybatis-flex:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath*:/mybatis-mapper/**/*.xml

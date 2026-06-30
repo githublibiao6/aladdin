@@ -1,5 +1,7 @@
 package com.aladdin.system.controller;
 
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.core.domain.R;
 import com.aladdin.system.entity.SysRole;
 import com.aladdin.system.service.SysRoleService;
@@ -27,8 +29,10 @@ public class SysRoleController {
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('system:role:list')")
-    public R<List<SysRole>> list() {
-        return R.ok(sysRoleService.list());
+    public R<PageResult<SysRole>> list(PageQuery pageQuery,
+                                       @RequestParam(required = false) String roleName,
+                                       @RequestParam(required = false) Integer status) {
+        return R.ok(sysRoleService.listPage(pageQuery, roleName, status));
     }
 
     @GetMapping("/user/{userId}")

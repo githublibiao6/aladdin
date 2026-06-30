@@ -23,8 +23,10 @@ public class LoginUserDetails implements UserDetails {
     private Long userId;
     private String username;
     private String password;
+    private String nickname;
     private Integer status;
     private Set<GrantedAuthority> authorities;
+    private Set<String> roleKeys;
     private Map<String, Object> attributes = new HashMap<>();
 
     public LoginUserDetails(Long userId, String username, String password, Integer status, Set<String> permissions) {
@@ -40,8 +42,22 @@ public class LoginUserDetails implements UserDetails {
         }
     }
 
+    public LoginUserDetails(Long userId, String username, String nickname, String password, Integer status, Set<String> permissions, Set<String> roleKeys) {
+        this(userId, username, password, status, permissions);
+        this.nickname = nickname;
+        this.roleKeys = roleKeys;
+    }
+
     public Long getUserId() {
         return userId;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public Set<String> getRoleKeys() {
+        return roleKeys;
     }
 
     public void setAttribute(String key, Object value) {

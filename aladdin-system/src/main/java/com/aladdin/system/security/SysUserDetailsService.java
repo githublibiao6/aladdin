@@ -58,8 +58,8 @@ public class SysUserDetailsService implements SecurityUserDetailsService {
             }
         }
 
-        LoginUserDetails userDetails = new LoginUserDetails(user.getId(), user.getUsername(), user.getPassword(),
-                user.getStatus(), permissions);
+        LoginUserDetails userDetails = new LoginUserDetails(user.getId(), user.getUsername(), user.getNickname(),
+                user.getPassword(), user.getStatus(), permissions, roleKeys);
         // 设置租户ID到用户属性
         if (user.getTenantId() != null) {
             userDetails.setAttribute("tenantId", user.getTenantId());

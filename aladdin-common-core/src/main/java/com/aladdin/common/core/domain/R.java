@@ -2,6 +2,7 @@ package com.aladdin.common.core.domain;
 
 import com.aladdin.common.core.exception.ErrorCode;
 import com.aladdin.common.core.exception.GlobalErrorCode;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,11 +14,16 @@ import java.io.Serializable;
  * @date 2026/04/30
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class R<T> implements Serializable {
 
     private int code;
     private String msg;
     private T data;
+    /** 前端兼容字段：提示信息 */
+    private String message;
+    /** 前端兼容字段：错误信息（成功时为null） */
+    private Object error;
 
     public R() {
     }
@@ -26,6 +32,8 @@ public class R<T> implements Serializable {
         this.code = code;
         this.msg = msg;
         this.data = data;
+        this.message = msg;
+        this.error = code == GlobalErrorCode.SUCCESS.getCode() ? null : msg;
     }
 
     public static <T> R<T> ok() {

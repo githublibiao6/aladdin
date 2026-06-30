@@ -95,6 +95,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     Map<String, Object> result = new HashMap<>();
                     result.put("code", 401);
                     result.put("msg", "未认证，请先登录");
+                    result.put("message", "未认证，请先登录");
+                    result.put("error", "Unauthorized Exception");
                     result.put("data", null);
                     response.getWriter().write(new ObjectMapper().writeValueAsString(result));
                 })
@@ -104,6 +106,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     Map<String, Object> result = new HashMap<>();
                     result.put("code", 403);
                     result.put("msg", "无权限访问");
+                    result.put("message", "无权限访问");
+                    result.put("error", "Access Denied");
                     result.put("data", null);
                     response.getWriter().write(new ObjectMapper().writeValueAsString(result));
                 });

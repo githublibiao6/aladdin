@@ -1,5 +1,7 @@
 package com.aladdin.common.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,16 +16,17 @@ import java.util.List;
 @Data
 public class PageResult<T> implements Serializable {
 
-    private int page;
-    private int limit;
+    private long page;
+    @JsonProperty("pageSize")
+    private long limit;
     private long total;
-    private int totalPages;
+    private long totalPages;
     private List<T> items;
 
     public PageResult() {
     }
 
-    public PageResult(int page, int limit, long total, List<T> items) {
+    public PageResult(long page, long limit, long total, List<T> items) {
         this.page = page;
         this.limit = limit;
         this.total = total;

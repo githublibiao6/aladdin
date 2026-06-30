@@ -1,5 +1,7 @@
 package com.aladdin.system.service;
 
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.db.base.BaseService;
 import com.aladdin.system.entity.SysUser;
 
@@ -36,4 +38,7 @@ public interface SysUserService extends BaseService<SysUser> {
 
     /** 检查是否需要强制修改密码 */
     boolean needForceChangePassword(SysUser user);
+
+    /** 分页查询用户列表 */
+    PageResult<SysUser> listPage(PageQuery pageQuery, String username, Integer status, Long deptId);
 }

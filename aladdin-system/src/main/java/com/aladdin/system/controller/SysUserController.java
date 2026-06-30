@@ -1,13 +1,13 @@
 package com.aladdin.system.controller;
 
 import com.aladdin.common.core.annotation.OpLog;
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.core.domain.R;
 import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.security.service.LoginService;
-import com.aladdin.system.entity.SysResource;
 import com.aladdin.system.entity.SysRole;
 import com.aladdin.system.entity.SysUser;
-import com.aladdin.system.service.SysResourceService;
 import com.aladdin.system.service.SysRoleService;
 import com.aladdin.system.service.SysUserService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 系统用户控制器
@@ -28,21 +29,22 @@ public class SysUserController {
 
     private final SysUserService sysUserService;
     private final SysRoleService sysRoleService;
-    private final SysResourceService sysResourceService;
     private final PasswordEncoder passwordEncoder;
 
     public SysUserController(SysUserService sysUserService, SysRoleService sysRoleService,
-                             SysResourceService sysResourceService, PasswordEncoder passwordEncoder) {
+                             PasswordEncoder passwordEncoder) {
         this.sysUserService = sysUserService;
         this.sysRoleService = sysRoleService;
-        this.sysResourceService = sysResourceService;
         this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('system:user:list')")
-    public R<List<SysUser>> list() {
-        return R.ok(sysUserService.list());
+    public R<PageResult<SysUser>> list(PageQuery pageQuery,
+                                       @RequestParam(required = false) String username,
+                                       @RequestParam(required = false) Integer status,
+                                       @RequestParam(required = false) Long deptId) {
+        return R.ok(sysUserService.listPage(pageQuery, username, status, deptId));
     }
 
     @GetMapping("/detail/{id}")
@@ -97,14 +99,19 @@ public class SysUserController {
         user.setPassword(null);
 
         List<SysRole> roles = sysRoleService.getRolesByUserId(userId);
-        List<SysResource> resources = sysResourceService.getResourcesByUserId(userId);
         Set<String> perms = sysUserService.getPermsByUserId(userId);
+        List<String> roleKeys = roles.stream()
+                .map(SysRole::getRoleKey)
+                .collect(Collectors.toList());
 
         Map<String, Object> data = new HashMap<>();
-        data.put("user", user);
-        data.put("roles", roles);
-        data.put("resources", resources);
-        data.put("permissions", perms);
+        data.put("userId", user.getId());
+        data.put("username", user.getUsername());
+        data.put("realName", user.getNickname());
+        data.put("avatar", user.getAvatar());
+        data.put("roles", roleKeys);
+        data.put("desc", "");
+        data.put("homePath", "/workspace");
         return R.ok(data);
     }
 
@@ -168,7 +175,8 @@ public class SysUserController {
             return R.fail(GlobalErrorCode.UNAUTHORIZED);
         }
         return sysUserService.updateProfile(userId,
-                body.get("nickname"), body.get("email"),
+                body.get("realName") != null ? body.get("realName") : body.get("nickname"),
+                body.get("email"),
                 body.get("phone"), body.get("avatar")) ? R.ok() : R.fail();
     }
 

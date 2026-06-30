@@ -2,7 +2,7 @@ package com.aladdin.common.core.exception;
 
 public enum GlobalErrorCode implements ErrorCode {
 
-    SUCCESS(200, "操作成功"),
+    SUCCESS(0, "操作成功"),
     FAIL(500, "操作失败"),
     UNAUTHORIZED(401, "未认证"),
     FORBIDDEN(403, "无权限"),

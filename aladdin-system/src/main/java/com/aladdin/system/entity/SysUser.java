@@ -1,6 +1,7 @@
 package com.aladdin.system.entity;
 
 import com.aladdin.common.core.domain.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mybatisflex.annotation.Column;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class SysUser extends BaseEntity {
 
     private String username;
     private String password;
+    @JsonProperty("realName")
     private String nickname;
     private String email;
     private String phone;
