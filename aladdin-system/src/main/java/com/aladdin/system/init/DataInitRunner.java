@@ -30,6 +30,7 @@ public class DataInitRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         try {
             resetDevPassword();
+            initRole();
             initResources();
             initUser();
             initRoleResource();
@@ -39,6 +40,18 @@ public class DataInitRunner implements ApplicationRunner {
         } catch (Exception e) {
             log.warn("数据初始化异常: {}", e.getMessage());
         }
+    }
+
+    private void initRole() {
+        Integer count = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM sys_role WHERE id = 1", Integer.class);
+        if (count != null && count > 0) {
+            return;
+        }
+        jdbcTemplate.update("INSERT INTO sys_role (id, role_name, role_key, sort, data_scope, status, sys001, sys003, sys005, sys006) VALUES " +
+                "(1, '超级管理员', 'admin', 1, 1, 1, NOW(), 1, 1, 'system'), " +
+                "(2, '普通用户', 'user', 2, 5, 1, NOW(), 1, 1, 'system')");
+        log.info("初始化角色数据完成");
     }
 
     private void resetDevPassword() {
@@ -72,6 +85,17 @@ public class DataInitRunner implements ApplicationRunner {
     }
 
     private void initUser() {
+        // 确保admin用户存在
+        Integer adminCount = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM sys_user WHERE username = 'admin'", Integer.class);
+        if (adminCount == null || adminCount == 0) {
+            jdbcTemplate.update("INSERT INTO sys_user (username, password, nickname, email, phone, dept_id, status, sys001, sys003, sys005, sys006) VALUES " +
+                    "('admin', '123456', '超级管理员', 'admin@aladdin.com', '13800138000', 1, 1, NOW(), 1, 1, 'system')");
+            // 关联admin角色
+            jdbcTemplate.update("INSERT IGNORE INTO sys_user_role (user_id, role_id) " +
+                    "SELECT id, 1 FROM sys_user WHERE username = 'admin'");
+            log.info("初始化超级管理员完成");
+        }
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM sys_user WHERE username = 'user01'", Integer.class);
         if (count != null && count > 0) {

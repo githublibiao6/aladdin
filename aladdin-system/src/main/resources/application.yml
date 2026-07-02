@@ -9,7 +9,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 43.142.17.3:8848
+        username: nacos
+        password: nacosbw123
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -67,7 +69,7 @@ aladdin:
       # JWT签名密钥，生产环境务必修改
       secret: aladdin-platform-secret-key-2026
       # Token过期时间（分钟），过期后需重新登录
-      expire-minutes: 120
+      expire-minutes: 30
       # Token请求头名称
       header: Authorization
       # Token前缀

@@ -152,7 +152,7 @@ public class AuthController {
             data.put("avatar", "");
             data.put("roles", loginUser.getRoleKeys());
             data.put("desc", "");
-            data.put("homePath", "/workspace");
+            data.put("homePath", "/dashboard/workspace");
             return R.ok(data);
         }
         return R.fail("未登录");

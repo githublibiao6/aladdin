@@ -52,6 +52,6 @@ aladdin:
       - /actuator/**
     token:
       secret: aladdin-platform-secret-key-2026
-      expire-minutes: 120
+      expire-minutes: 30
       header: Authorization
       prefix: "Bearer "
