@@ -36,10 +36,38 @@ public class DataInitRunner implements ApplicationRunner {
             initRoleResource();
             initUserRole();
             initDictData();
+            initMenus();
             log.info("数据初始化完成");
         } catch (Exception e) {
             log.warn("数据初始化异常: {}", e.getMessage());
         }
+    }
+
+    /**
+     * 初始化默认菜单数据
+     * 默认菜单存储在sys_menu表，不受角色权限影响，对应前端路由视图
+     */
+    private void initMenus() {
+        Integer count = jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM sys_menu", Integer.class);
+        if (count != null && count > 0) {
+            return;
+        }
+        jdbcTemplate.update("INSERT INTO sys_menu (id, parent_id, menu_name, title, icon, path, component, sort, affix_tab, keep_alive, badge_type, link, status, sys001, sys003, sys005, sys006) VALUES " +
+                // 1. Dashboard 仪表盘
+                "(1, 0, 'Dashboard1', 'page.dashboard.title', 'lucide:layout-dashboard', '/dashboard', 'BasicLayout', -1, 0, 0, '', '', 1, NOW(), 1, 1, 'system'), " +
+                "(2, 1, 'Analytics', 'page.dashboard.analytics', 'lucide:area-chart', '/analytics', '/dashboard/analytics/index', 0, 1, 0, '', '', 1, NOW(), 1, 1, 'system'), " +
+                "(3, 1, 'Workspace', 'page.dashboard.workspace', 'carbon:workspace', '/workspace', '/dashboard/workspace/index', 0, 0, 0, '', '', 1, NOW(), 1, 1, 'system'), " +
+                // 2. Demos 演示
+                "(4, 0, 'Demos', 'demos.title', 'ic:baseline-view-in-ar', '/demos', 'BasicLayout', 1000, 0, 1, '', '', 1, NOW(), 1, 1, 'system'), " +
+                "(5, 4, 'AntDesignDemos', 'demos.antd', '', '/demos/ant-design', '/demos/antd/index', 0, 0, 0, '', '', 1, NOW(), 1, 1, 'system'), " +
+                // 3. VbenProject 项目链接
+                "(6, 0, 'VbenProject', 'demos.vben.title', 'https://cdn.jsdelivr.net/gh/vbenjs/static@0.1.0/source/vben-logo.svg', '/vben-admin', 'BasicLayout', 9998, 0, 0, 'dot', '', 1, NOW(), 1, 1, 'system'), " +
+                "(7, 6, 'VbenDocument', 'demos.vben.document', 'lucide:book-open-text', '/vben-admin/document', 'IFrameView', 0, 0, 0, '', 'https://doc.vben.pro', 1, NOW(), 1, 1, 'system'), " +
+                "(8, 6, 'VbenGithub', 'Github', 'mdi:github', '/vben-admin/github', 'IFrameView', 0, 0, 0, '', 'https://github.com/vbenjs/vue-vben-admin', 1, NOW(), 1, 1, 'system'), " +
+                // 4. About 关于
+                "(9, 0, 'VbenAbout', 'demos.vben.about', 'lucide:copyright', '/vben-admin/about', '/_core/about/index', 9999, 0, 0, '', '', 1, NOW(), 1, 1, 'system')");
+        log.info("初始化默认菜单数据完成");
     }
 
     private void initRole() {

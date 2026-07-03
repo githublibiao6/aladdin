@@ -248,6 +248,33 @@ public class TableInitRunner implements ApplicationRunner {
               KEY `idx_operation_time` (`operation_time`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
             """);
+
+        TABLE_DDL.put("sys_menu", """
+            CREATE TABLE IF NOT EXISTS `sys_menu` (
+              `id` bigint NOT NULL AUTO_INCREMENT,
+              `parent_id` bigint DEFAULT 0 COMMENT '父菜单ID',
+              `menu_name` varchar(100) NOT NULL COMMENT '路由name(唯一)',
+              `title` varchar(100) DEFAULT '' COMMENT '菜单标题(i18n key)',
+              `icon` varchar(255) DEFAULT '' COMMENT '图标名或URL',
+              `path` varchar(200) DEFAULT '' COMMENT '路由路径',
+              `component` varchar(200) DEFAULT '' COMMENT '组件路径或布局名(BasicLayout/IFrameView/具体路径)',
+              `sort` int DEFAULT 0 COMMENT '排序',
+              `affix_tab` int DEFAULT 0 COMMENT '是否固定tab 0否1是',
+              `keep_alive` int DEFAULT 0 COMMENT '是否缓存 0否1是',
+              `badge_type` varchar(20) DEFAULT '' COMMENT '徽标类型(dot等)',
+              `link` varchar(500) DEFAULT '' COMMENT '外链URL',
+              `status` int DEFAULT 1 COMMENT '状态 0停用 1启用',
+              `sys001` datetime DEFAULT NULL,
+              `sys002` datetime DEFAULT NULL,
+              `sys003` bigint DEFAULT NULL,
+              `sys004` bigint DEFAULT NULL,
+              `sys005` int DEFAULT 1,
+              `sys006` varchar(64) DEFAULT '',
+              `sys007` varchar(64) DEFAULT '',
+              PRIMARY KEY (`id`),
+              KEY `idx_parent_id` (`parent_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统默认菜单表'
+            """);
     }
 
     @Override
