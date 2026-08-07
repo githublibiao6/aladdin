@@ -6,6 +6,7 @@ import com.aladdin.common.security.log.OperationLogService;
 import com.aladdin.common.security.log.aspect.OperationLogAspect;
 import com.aladdin.common.security.log.impl.RedisLoginLogServiceImpl;
 import com.aladdin.common.security.log.impl.RedisOperationLogServiceImpl;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -43,5 +44,15 @@ public class SecurityAutoConfiguration {
         OperationLogAspect aspect = new OperationLogAspect();
         aspect.setOperationLogService(operationLogService);
         return aspect;
+    }
+
+    /**
+     * 注册 BeanPostProcessor，将 MethodSecurityInterceptor 的 AccessDecisionManager
+     * 替换为 AdminAwareAccessDecisionManager，使 admin 用户绕过所有 @PreAuthorize 校验。
+     * 必须声明为 static，避免 Spring 提前实例化本配置类导致 @ConditionalOnBean 失效。
+     */
+    @Bean
+    public static BeanPostProcessor methodSecurityInterceptorPostProcessor() {
+        return new MethodSecurityInterceptorPostProcessor();
     }
 }

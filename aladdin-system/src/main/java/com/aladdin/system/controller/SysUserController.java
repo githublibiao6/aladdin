@@ -4,6 +4,7 @@ import com.aladdin.common.core.annotation.OpLog;
 import com.aladdin.common.core.domain.PageQuery;
 import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.core.domain.R;
+import com.aladdin.common.core.exception.BusinessException;
 import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.security.service.LoginService;
 import com.aladdin.system.entity.SysRole;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
  * @date 2026/05/06
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping({"/user", "/system/user"})
 public class SysUserController {
 
     private final SysUserService sysUserService;
@@ -59,7 +60,12 @@ public class SysUserController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('system:user:add')")
+    @OpLog(value = "新增用户", type = "user")
     public R<Void> save(@RequestBody SysUser user) {
+        // 检查用户名是否已存在
+        if (sysUserService.getByUsername(user.getUsername()) != null) {
+            throw new BusinessException(GlobalErrorCode.DATA_DUPLICATE, "用户名已存在");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         // 新用户默认需要强制修改密码
         user.setPwdForceChange(1);
@@ -68,6 +74,7 @@ public class SysUserController {
 
     @PostMapping("/edit")
     @PreAuthorize("hasAuthority('system:user:edit')")
+    @OpLog(value = "修改用户", type = "user")
     public R<Void> update(@RequestBody SysUser user) {
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -82,6 +89,7 @@ public class SysUserController {
 
     @PostMapping("/remove/{id}")
     @PreAuthorize("hasAuthority('system:user:remove')")
+    @OpLog(value = "删除用户", type = "user")
     public R<Void> remove(@PathVariable Long id) {
         return sysUserService.removeById(id) ? R.ok() : R.fail();
     }
@@ -182,6 +190,7 @@ public class SysUserController {
 
     @PostMapping("/changeStatus")
     @PreAuthorize("hasAuthority('system:user:edit')")
+    @OpLog(value = "修改用户状态", type = "user")
     public R<Void> changeStatus(@RequestBody Map<String, Object> body) {
         Long id = Long.valueOf(body.get("id").toString());
         Integer status = Integer.valueOf(body.get("status").toString());

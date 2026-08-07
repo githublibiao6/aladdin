@@ -1,6 +1,9 @@
 package com.aladdin.system.controller;
 
+import com.aladdin.common.core.annotation.OpLog;
 import com.aladdin.common.core.cache.DictCacheService;
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.core.domain.R;
 import com.aladdin.system.entity.SysDictData;
 import com.aladdin.system.entity.SysDictType;
@@ -18,7 +21,7 @@ import java.util.List;
  * @date 2026/05/06
  */
 @RestController
-@RequestMapping("/dict/data")
+@RequestMapping({"/dict/data", "/system/dict/data"})
 public class SysDictDataController {
 
     private final SysDictDataService sysDictDataService;
@@ -35,8 +38,9 @@ public class SysDictDataController {
 
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('system:dict:list')")
-    public R<List<SysDictData>> listByTypeId(@RequestParam Long dictTypeId) {
-        return R.ok(sysDictDataService.listByDictTypeId(dictTypeId));
+    public R<PageResult<SysDictData>> listByTypeId(PageQuery pageQuery,
+                                                    @RequestParam Long dictTypeId) {
+        return R.ok(sysDictDataService.listPage(pageQuery, dictTypeId));
     }
 
     @GetMapping("/detail/{id}")
@@ -52,6 +56,7 @@ public class SysDictDataController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('system:dict:add')")
+    @OpLog(value = "新增字典数据", type = "dict")
     public R<Void> save(@RequestBody SysDictData dictData) {
         boolean result = sysDictDataService.save(dictData);
         if (result) {
@@ -62,6 +67,7 @@ public class SysDictDataController {
 
     @PostMapping("/edit")
     @PreAuthorize("hasAuthority('system:dict:edit')")
+    @OpLog(value = "修改字典数据", type = "dict")
     public R<Void> update(@RequestBody SysDictData dictData) {
         boolean result = sysDictDataService.updateById(dictData);
         if (result) {
@@ -72,6 +78,7 @@ public class SysDictDataController {
 
     @PostMapping("/remove/{id}")
     @PreAuthorize("hasAuthority('system:dict:remove')")
+    @OpLog(value = "删除字典数据", type = "dict")
     public R<Void> remove(@PathVariable Long id) {
         SysDictData dictData = sysDictDataService.getById(id);
         boolean result = sysDictDataService.removeById(id);

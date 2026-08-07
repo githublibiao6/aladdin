@@ -1,5 +1,7 @@
 package com.aladdin.system.service.impl;
 
+import com.aladdin.common.core.domain.PageQuery;
+import com.aladdin.common.core.domain.PageResult;
 import com.aladdin.common.db.base.BaseServiceImpl;
 import com.aladdin.system.dao.SysDictDataDao;
 import com.aladdin.system.entity.SysDictData;
@@ -31,5 +33,16 @@ public class SysDictDataServiceImpl extends BaseServiceImpl<SysDictDataDao, SysD
     @Override
     public List<SysDictData> listByDictType(String dictType) {
         return getMapper().selectByDictType(dictType);
+    }
+
+    @Override
+    public PageResult<SysDictData> listPage(PageQuery pageQuery, Long dictTypeId) {
+        QueryWrapper queryWrapper = QueryWrapper.create()
+                .where(SYS_DICT_DATA.DICT_TYPE_ID.eq(dictTypeId))
+                .and(SYS_DICT_DATA.SYS005.eq(1))
+                .orderBy(SYS_DICT_DATA.SORT, true);
+        com.mybatisflex.core.paginate.Page<SysDictData> page = getMapper()
+                .paginate(pageQuery.getPage(), pageQuery.getLimit(), queryWrapper);
+        return new PageResult<>(page.getPageNumber(), page.getPageSize(), page.getTotalRow(), page.getRecords());
     }
 }

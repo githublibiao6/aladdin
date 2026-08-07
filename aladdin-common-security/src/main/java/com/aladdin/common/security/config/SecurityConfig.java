@@ -7,7 +7,7 @@ import com.aladdin.common.security.service.SecurityUserDetailsService;
 import com.aladdin.common.security.service.TokenService;
 import com.aladdin.common.security.tenant.TenantContextFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,6 @@ import java.util.Map;
  * @date 2026/05/06
  */
 @Configuration
-@ConditionalOnBean(SecurityUserDetailsService.class)
 @ConditionalOnProperty(prefix = "aladdin.security", name = "enabled", havingValue = "true", matchIfMissing = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -45,11 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public SecurityConfig(TokenService tokenService,
                           SecurityProperties securityProperties,
-                          SecurityUserDetailsService userDetailsService,
+                          ObjectProvider<SecurityUserDetailsService> userDetailsServiceProvider,
                           RedisService redisService) {
         this.tokenService = tokenService;
         this.securityProperties = securityProperties;
-        this.userDetailsService = userDetailsService;
+        this.userDetailsService = userDetailsServiceProvider.getIfAvailable();
         this.redisService = redisService;
     }
 
@@ -66,7 +65,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        if (userDetailsService != null) {
+            auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        }
     }
 
     @Override
@@ -116,7 +117,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
         JwtAuthenticationFilter filter = new JwtAuthenticationFilter(tokenService, securityProperties);
-        filter.setUserDetailsService(userDetailsService);
+        if (userDetailsService != null) {
+            filter.setUserDetailsService(userDetailsService);
+        }
         return filter;
     }
 

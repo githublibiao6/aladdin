@@ -1,5 +1,6 @@
 package com.aladdin.system.controller;
 
+import com.aladdin.common.core.annotation.OpLog;
 import com.aladdin.common.core.domain.R;
 import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.common.security.service.LoginService;
@@ -18,7 +19,7 @@ import java.util.List;
  * @date 2026/06/11
  */
 @RestController
-@RequestMapping("/resource")
+@RequestMapping({"/resource", "/system/resource"})
 public class SysResourceController {
 
     private final SysResourceService sysResourceService;
@@ -56,18 +57,21 @@ public class SysResourceController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('system:resource:add')")
+    @OpLog(value = "新增资源", type = "resource")
     public R<Void> save(@RequestBody SysResource resource) {
         return sysResourceService.save(resource) ? R.ok() : R.fail();
     }
 
     @PostMapping("/edit")
     @PreAuthorize("hasAuthority('system:resource:edit')")
+    @OpLog(value = "修改资源", type = "resource")
     public R<Void> update(@RequestBody SysResource resource) {
         return sysResourceService.updateById(resource) ? R.ok() : R.fail();
     }
 
     @PostMapping("/remove/{id}")
     @PreAuthorize("hasAuthority('system:resource:remove')")
+    @OpLog(value = "删除资源", type = "resource")
     public R<Void> remove(@PathVariable Long id) {
         return sysResourceService.removeById(id) ? R.ok() : R.fail();
     }

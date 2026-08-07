@@ -50,6 +50,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUser> imp
     }
 
     @Override
+    public Set<String> getAllPerms() {
+        return getMapper().selectAllPerms();
+    }
+
+    @Override
     public SysUser getUserWithDeptById(Long id) {
         return getMapper().selectUserWithDeptById(id);
     }
@@ -130,14 +135,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUser> imp
 
     @Override
     public PageResult<SysUser> listPage(PageQuery pageQuery, String username, Integer status, Long deptId) {
-        // 使用带部门名称的查询
-        List<SysUser> allList = getMapper().selectUserListWithDept(username, status, deptId);
-        long total = allList.size();
         int page = pageQuery.getPage();
         int limit = pageQuery.getLimit();
-        int fromIndex = Math.min((page - 1) * limit, (int) total);
-        int toIndex = Math.min(fromIndex + limit, (int) total);
-        List<SysUser> pageList = allList.subList(fromIndex, toIndex);
+        int offset = (page - 1) * limit;
+        List<SysUser> pageList = getMapper().selectUserListWithDept(username, status, deptId, offset, limit);
+        long total = getMapper().countUserListWithDept(username, status, deptId);
         return new PageResult<>(page, limit, total, pageList);
     }
 }

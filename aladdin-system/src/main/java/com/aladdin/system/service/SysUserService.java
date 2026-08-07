@@ -21,6 +21,11 @@ public interface SysUserService extends BaseService<SysUser> {
 
     Set<String> getPermsByUserId(Long userId);
 
+    /**
+     * 获取系统中所有有效的权限标识（用于超级管理员放行）。
+     */
+    Set<String> getAllPerms();
+
     SysUser getUserWithDeptById(Long id);
 
     boolean resetPassword(Long id, String password);

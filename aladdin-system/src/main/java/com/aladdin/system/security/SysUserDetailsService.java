@@ -51,7 +51,12 @@ public class SysUserDetailsService implements SecurityUserDetailsService {
                 permissions.add("ROLE_" + roleKey);
             }
         }
-        Set<String> perms = sysUserService.getPermsByUserId(user.getId());
+
+        // 超级管理员(admin)直接加载系统中所有权限标识，无需逐一分配
+        boolean isAdmin = "admin".equals(user.getUsername()) || roleKeys.contains("admin");
+        Set<String> perms = isAdmin
+                ? sysUserService.getAllPerms()
+                : sysUserService.getPermsByUserId(user.getId());
         for (String perm : perms) {
             if (perm != null && !perm.trim().isEmpty()) {
                 permissions.add(perm);

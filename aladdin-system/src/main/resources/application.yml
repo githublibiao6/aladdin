@@ -32,6 +32,11 @@ mybatis-flex:
     map-underscore-to-camel-case: true
   mapper-locations: classpath*:/mybatis-mapper/**/*.xml
   type-handlers-package: com.aladdin.system.dao.handle,com.aladdin.mis.dao.handle
+  global-config:
+    # 逻辑删除配置：sys005=1正常，sys005=0已删除
+    logic-delete-column: sys005
+    normal-value-of-logic-delete: 1
+    deleted-value-of-logic-delete: 0
 
 aladdin:
   # ==============================

@@ -1,5 +1,6 @@
 package com.aladdin.system.controller;
 
+import com.aladdin.common.core.annotation.OpLog;
 import com.aladdin.common.core.domain.R;
 import com.aladdin.system.entity.SysDept;
 import com.aladdin.system.service.SysDeptService;
@@ -15,7 +16,7 @@ import java.util.List;
  * @date 2026/05/06
  */
 @RestController
-@RequestMapping("/dept")
+@RequestMapping({"/dept", "/system/dept"})
 public class SysDeptController {
 
     private final SysDeptService sysDeptService;
@@ -44,18 +45,21 @@ public class SysDeptController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('system:dept:add')")
+    @OpLog(value = "新增部门", type = "dept")
     public R<Void> save(@RequestBody SysDept dept) {
         return sysDeptService.save(dept) ? R.ok() : R.fail();
     }
 
     @PostMapping("/edit")
     @PreAuthorize("hasAuthority('system:dept:edit')")
+    @OpLog(value = "修改部门", type = "dept")
     public R<Void> update(@RequestBody SysDept dept) {
         return sysDeptService.updateById(dept) ? R.ok() : R.fail();
     }
 
     @PostMapping("/remove/{id}")
     @PreAuthorize("hasAuthority('system:dept:remove')")
+    @OpLog(value = "删除部门", type = "dept")
     public R<Void> remove(@PathVariable Long id) {
         return sysDeptService.removeById(id) ? R.ok() : R.fail();
     }

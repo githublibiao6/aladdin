@@ -32,6 +32,10 @@ public interface SysUserDao extends BaseDao<SysUser> {
             "WHERE ur.user_id = #{userId} AND res.sys005 = 1")
     Set<String> selectPermsByUserId(@Param("userId") Long userId);
 
+    @Select("SELECT DISTINCT res.perms FROM sys_resource res " +
+            "WHERE res.sys005 = 1 AND res.perms IS NOT NULL AND res.perms != ''")
+    Set<String> selectAllPerms();
+
     @Select("SELECT u.*, d.dept_name FROM sys_user u " +
             "LEFT JOIN sys_dept d ON u.dept_id = d.id " +
             "WHERE u.id = #{id} AND u.sys005 = 1")
@@ -51,10 +55,30 @@ public interface SysUserDao extends BaseDao<SysUser> {
             "AND u.dept_id = #{deptId} " +
             "</if>" +
             "ORDER BY u.id ASC " +
+            "LIMIT #{limit} OFFSET #{offset} " +
             "</script>")
     List<SysUser> selectUserListWithDept(@Param("username") String username,
                                           @Param("status") Integer status,
-                                          @Param("deptId") Long deptId);
+                                          @Param("deptId") Long deptId,
+                                          @Param("offset") int offset,
+                                          @Param("limit") int limit);
+
+    @Select("<script>" +
+            "SELECT COUNT(*) FROM sys_user u " +
+            "WHERE u.sys005 = 1 " +
+            "<if test='username != null and username != \"\"'>" +
+            "AND u.username LIKE CONCAT('%',#{username},'%') " +
+            "</if>" +
+            "<if test='status != null'>" +
+            "AND u.status = #{status} " +
+            "</if>" +
+            "<if test='deptId != null'>" +
+            "AND u.dept_id = #{deptId} " +
+            "</if>" +
+            "</script>")
+    long countUserListWithDept(@Param("username") String username,
+                                @Param("status") Integer status,
+                                @Param("deptId") Long deptId);
 
     @Update("UPDATE sys_user SET password = #{password} WHERE id = #{id}")
     int updatePassword(@Param("id") Long id, @Param("password") String password);

@@ -1,6 +1,8 @@
 package com.aladdin.system.controller;
 
 import com.aladdin.common.core.domain.R;
+import com.aladdin.common.core.exception.BusinessException;
+import com.aladdin.common.core.exception.GlobalErrorCode;
 import com.aladdin.system.entity.SysTenant;
 import com.aladdin.system.service.SysTenantService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -39,6 +41,10 @@ public class TenantController {
     @PostMapping
     @PreAuthorize("hasAuthority('system:tenant:add')")
     public R<Void> save(@RequestBody SysTenant tenant) {
+        // 检查租户编码是否已存在
+        if (tenantService.getByTenantCode(tenant.getTenantCode()) != null) {
+            throw new BusinessException(GlobalErrorCode.DATA_DUPLICATE, "租户编码已存在");
+        }
         return tenantService.save(tenant) ? R.ok() : R.fail();
     }
 
